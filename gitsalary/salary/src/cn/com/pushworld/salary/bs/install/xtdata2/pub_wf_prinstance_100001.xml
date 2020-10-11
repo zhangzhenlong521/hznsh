@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_wf_prinstance">
+  <col name="id">121</col>
+  <col name="processid">21</col>
+  <col name="billtempletcode">SAL_SCORE_PROCESS_CODE1</col>
+  <col name="billtablename">sal_score_process</col>
+  <col name="billquerytablename">sal_score_process</col>
+  <col name="billpkname">id</col>
+  <col name="billpkvalue">161</col>
+  <col name="creater">4651</col>
+  <col name="createtime">2013-08-23 16:46:46</col>
+  <col name="createactivity">21</col>
+  <col name="endtime">2013-08-24 15:27:37</col>
+  <col name="lastsubmiter">4651</col>
+  <col name="lastsubmitername">P02001/岑松</col>
+  <col name="lastsubmittime">2013-08-24 15:27:37</col>
+  <col name="lastsubmitmsg">１１１１</col>
+  <col name="lastsubmitactivity">22</col>
+  <col name="lastsubmitresult">Y</col>
+  <col name="curractivity"></col>
+  <col name="curractivityname">审批</col>
+  <col name="currowner"></col>
+  <col name="submiterhist">;4651;4651;4651;</col>
+  <col name="mylastsubmittime">;4651=2013-08-24 15:27:37;</col>
+  <col name="mylastsubmitmsg">;4651=１１１１;</col>
+  <col name="status">END</col>
+  <col name="currbatchno">3</col>
+  <col name="endtype">非正常结束</col>
+  <col name="endbypoolid">161</col>
+  <col name="routemark">提交环节=环节1;</col>
+  <col name="fromparentactivity"></col>
+  <col name="fromparentdealpoolid"></col>
+  <col name="parentinstanceid"></col>
+  <col name="rootinstanceid">121</col>
+  <col name="billsavedtablename"></col>
+</record>
+
+<!--2-->
+<record tabname="pub_wf_prinstance">
+  <col name="id">141</col>
+  <col name="processid">21</col>
+  <col name="billtempletcode">SAL_SCORE_PROCESS_CODE1</col>
+  <col name="billtablename">sal_score_process</col>
+  <col name="billquerytablename">sal_score_process</col>
+  <col name="billpkname">id</col>
+  <col name="billpkvalue">181</col>
+  <col name="creater">4651</col>
+  <col name="createtime">2013-08-24 15:30:10</col>
+  <col name="createactivity">21</col>
+  <col name="endtime"></col>
+  <col name="lastsubmiter">4670</col>
+  <col name="lastsubmitername">P02098/罗显武</col>
+  <col name="lastsubmittime">2013-10-10 11:22:49</col>
+  <col name="lastsubmitmsg">已办</col>
+  <col name="lastsubmitactivity">23</col>
+  <col name="lastsubmitresult">Y</col>
+  <col name="curractivity">22</col>
+  <col name="curractivityname">审批</col>
+  <col name="currowner">;4651;</col>
+  <col name="submiterhist">;4651;4670;</col>
+  <col name="mylastsubmittime">;4651=2013-08-24 15:30:28;4670=2013-10-10 11:22:49;</col>
+  <col name="mylastsubmitmsg">;4651=１１１;4670=已办;</col>
+  <col name="status">RUN</col>
+  <col name="currbatchno">3</col>
+  <col name="endtype"></col>
+  <col name="endbypoolid"></col>
+  <col name="routemark">提交环节=环节1;</col>
+  <col name="fromparentactivity"></col>
+  <col name="fromparentdealpoolid"></col>
+  <col name="parentinstanceid"></col>
+  <col name="rootinstanceid">141</col>
+  <col name="billsavedtablename"></col>
+</record>
+
+</root>

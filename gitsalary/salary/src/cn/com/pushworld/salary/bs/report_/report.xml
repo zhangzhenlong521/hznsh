@@ -1,0 +1,19 @@
+<reports>
+	<report>
+		<sql>
+<![CDATA[
+
+]]>
+		</sql>
+		<left iscombine="">
+		    <title tname="" subagain="" subagain_name="" orders=""> </title>
+		</left>
+		<top>
+		    <title tname="" subagain="" subagain_name="" orders=""> </title>
+		</top>
+		<cross topagain="" topagain_name="" isfront_leftagain="" isfront_topagain="">
+		    <result cname="" cname_name="" calculate="" leftagain="" leftagain_name=""> </result>
+		</cross>
+	</report>
+</reports>
+

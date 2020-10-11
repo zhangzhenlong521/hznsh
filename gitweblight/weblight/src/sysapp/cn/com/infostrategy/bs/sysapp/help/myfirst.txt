@@ -1,0 +1,33 @@
+package gwang;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTPanel;
+
+public class MyFirst extends AbstractWorkPanel implements ActionListener {
+
+	private WLTButton btnTest = null;	//按钮
+	
+	@Override
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		WLTPanel panelMain = new WLTPanel();
+		btnTest = new WLTButton("Test");
+		btnTest.addActionListener(this);	//注册点击事件
+		panelMain.add(btnTest);
+		this.add(panelMain, BorderLayout.NORTH);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnTest){
+			MessageBox.show(this, "Hello PushWorld!");
+		}
+	}
+
+}

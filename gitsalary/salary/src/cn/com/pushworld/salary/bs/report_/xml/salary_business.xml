@@ -1,0 +1,31 @@
+<reports>
+	<report>
+	    <sql>
+<![CDATA[
+select a.checkscore 员工考核分数, b.name 姓名, c.name 主部门, b.stationkind 岗位归类, e.checkdate 月度, f.name 定量指标类型 
+from sal_person_check_score a 
+left join v_sal_personinfo b on a.checkeduser = b.id 
+left join pub_corp_dept c on b.maindeptid=c.id 
+left join sal_target_check_log e on e.id=a.logid 
+left join sal_person_check_list f on a.targetid=f.id 
+where e.status='考核结束' and b.name is not null 
+and e.checkdate>=?month_start? and e.checkdate<=?month_end? and f.id in (?checktarget?) 
+order by b.code, e.checkdate
+]]>
+		</sql>
+		<left iscombine="N">
+		    <title tname="姓名"> </title>
+			<title tname="主部门"> </title>
+			<title tname="岗位归类"> </title>
+		</left>
+		<top>
+			<title tname="定量指标类型" subagain="小合计;小平均空" subagain_name="合计;平均"> </title>
+			<title tname="月度"> </title>
+		</top>
+		<cross topagain="合计;平均空" topagain_name="合计;平均" isfront_topagain="N">
+			<result cname="员工考核分数" calculate="求和"> </result>
+		</cross>
+	</report>
+</reports>
+
+

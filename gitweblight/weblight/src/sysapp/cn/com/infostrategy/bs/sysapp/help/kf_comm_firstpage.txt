@@ -1,0 +1,123 @@
+★新手学习的第一个最简单的例子代码!
+★将下面整个类的代码复杂到自己创建的类中,修改下包名,就可直接编译!
+★将整个类名注册在自己创建的菜单项中
+★这个例子讲述了:如何通过SQL查询数据,修改数据(单条/批量)
+★详细如下：
+
+package com.xuchanghua.ui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+
+/**
+ * 这是一个最基本的功能面板,界面上就一个按钮,点击后送一条SQL查询数据库,然后返回HashVO[]对象,然后拼成一个文本,最后使用弹出框显示！
+ * 这个功能主要有以下知识点:
+ * 1.构建一个面板,创建一个按钮,并增加监听事件
+ * 2.使用UIUtil.getHashVoArrayByDS(),送一条SQL查询数据库
+ * 3.使得UIUtil.executeUpdateByDS(),送一条SQL,修改数据库
+ * 4.使用UIUtil.executeBatchByDS(),送一批SQL,修改数据库,这一批SQL会自动保证在一个"事务"中
+ * 5.使用MessageBox.show(),弹出框显示数据!
+ * @author xch
+ */
+public class TestCommWKPanel extends AbstractWorkPanel implements ActionListener {
+
+  private WLTButton btn_1, btn_2, btn_3 = null; //
+
+  @Override
+  public void initialize() {
+    this.setLayout(new FlowLayout()); //设置布局为水平布局,如果不设置,默认是BorderLayout
+    btn_1 = new WLTButton("查询数据"); //创建按钮
+    btn_2 = new WLTButton("修改数据"); //创建按钮
+    btn_3 = new WLTButton("批量修改数据"); //创建按钮
+
+    btn_1.addActionListener(this); //为按钮增加监听事件,监听对象就是本类,所以本类要实现ActionListener接口
+    btn_2.addActionListener(this);
+    btn_3.addActionListener(this);
+
+    this.add(btn_1); //在面板上加入按钮!!
+    this.add(btn_2); //在面板上加入按钮!!
+    this.add(btn_3); //在面板上加入按钮!!
+  }
+
+  /**
+   * 按钮监听方法,是ActionListener中指定的接口方法!
+   */
+  public void actionPerformed(ActionEvent _event) {
+    if (_event.getSource() == btn_1) { //如果被点击的对象是第一个按钮
+      onSelectData(); //
+    } else if (_event.getSource() == btn_2) {  //点的是第二个按钮
+      onUpdateData(); //
+    } else if (_event.getSource() == btn_3) {  //第三个按钮
+      onUpdateBatchData(); //
+    }
+  }
+
+  /**
+   * 送一个SQL,查询数据!!
+   */
+  private void onSelectData() {
+    try {
+      HashVO[] hvs = UIUtil.getHashVoArrayByDS(null, "select id,code,name from pub_role"); //查询数据库,返回HashVO[]
+      StringBuffer sb_text = new StringBuffer(); //用来拼接结果的字符串
+      for (int i = 0; i < hvs.length; i++) { //遍历所有结果
+        String str_roleCode = hvs[i].getStringValue("code"); //取得角色编码
+        String str_roleName = hvs[i].getStringValue("name"); //取得角色名称
+        sb_text.append("[" + str_roleCode + "]/[" + str_roleName + "]\r\n"); //加入字符串
+      }
+      MessageBox.show(this, sb_text.toString()); //使用弹出框显示结果
+    } catch (Exception _ex) {
+      //_ex.printStackTrace();  //一般是在控制台输出异常,结果一般人不知道,所以需要弹出异常框!!
+      MessageBox.showException(this, _ex); //如果发生异常,则直接弹出异常框!!
+    }
+  }
+
+  /**
+   * 送一个SQL,修改数据!!
+   * SQL语句可以是Insert,Update,Delete,都是调用同一个函数!
+   * 建议自己创建一个自定义表,然后做Insert,Update操作,好看到结果!!
+   */
+  private void onUpdateData() {
+    try {
+      int li_count = UIUtil.executeUpdateByDS(null, "update pub_role set descr='超级管理员' where code='Super Admin'"); //
+      MessageBox.show(this, "修改数据库成功,一共更新了[" + li_count + "]条数据!"); //使用弹出框显示结果
+    } catch (Exception _ex) {
+      //_ex.printStackTrace();  //一般是在控制台输出异常,结果一般人不知道,所以需要弹出异常框!!
+      MessageBox.showException(this, _ex); //如果发生异常,则直接弹出异常框!!
+    }
+  }
+
+  /**
+   * 送一批SQL,批量修改数据!!
+   * 需要特别注意的是:执行一批SQL,这一批SQL是一个完整事务,即如果第2条SQL执行发生问题,第一条也会回滚!!这是关键!!!
+   * 如果使用上面的方法executeUpdateByDS()分别调两次,则不能保证在一个事务中,即第一条执行成功后是立即提交事务的,第二条错误后并不回滚第一条的处理结果!
+   */
+  private void onUpdateBatchData() {
+    try {     
+      String str_sql_1 = "update pub_role set descr='超级管理员' where code='Super Admin'"; //
+      String str_sql_2 = "update pub_role set descr='普通用户'   where code='Comm User'"; //
+
+      //执行一批SQL都是执行函数executeBatchByDS(),但有两种入参方式,一种是就送一个字符串数组,如下:
+      String[] str_sqls = new String[] { str_sql_1, str_sql_2 }; //SQL数组
+      UIUtil.executeBatchByDS(null, str_sqls); //真正操作数据库
+
+      //第二种是送一个List对象,比如java.util.ArrayList对象
+      ArrayList list_sqls = new ArrayList(); //
+      list_sqls.add(str_sql_1); //
+      list_sqls.add(str_sql_2); //
+      UIUtil.executeBatchByDS(null, list_sqls); //真正操作数据库
+
+      MessageBox.show(this, "修改数据库成功!!"); //使用弹出框显示结果
+    } catch (Exception _ex) {
+      //_ex.printStackTrace();  //一般是在控制台输出异常,结果一般人不知道,所以需要弹出异常框!!
+      MessageBox.showException(this, _ex); //如果发生异常,则直接弹出异常框!!
+    }
+  }
+
+}

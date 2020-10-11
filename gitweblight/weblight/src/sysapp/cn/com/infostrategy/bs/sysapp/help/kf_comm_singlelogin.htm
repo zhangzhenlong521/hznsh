@@ -1,0 +1,86 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>单点登录与IE访问原理</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+<p class="p_text"> 
+系统有两种访问方式,一种是桌面快捷方式访问,一种是IE访问!<br>
+第一次访问只能先用IE访问(因为还没有下载客户端),然后按道理IE会弹出一个自动下载JRE客户端的提示框,然后下载并安装客户端后,桌面会创建快捷方式,以后也可以使用快捷方式访问!<br>
+如果不能弹出下载客户端的提示,则点击下方的“下载插件”超链接,手动下载!<br>
+
+安装客户端插件后,可以从浏览器直接访问,但因为各种原因,常常会发生两种最常见的问题：<br>
+A.明明已安装了插件,但还总是弹出一个提示下载客户端的对话框,这极有可能是因为客户清空了浏览器的缓存,因为我们是根据Cookie来判断,所以一清空浏览器Cookie,则就会提醒,这时告诉用户,只要点击【已安装】按钮即可！<br>
+B.浏览器显示“无法显示该网页”,在地址栏中显示【webpush20100601://localjava/call?http://127.0.0.1:9001/.....】,这种原因极有可能是注册表没有写成功,告诉用户直接双击运行【C:\WebPushJRE\jre1.6.0_26\bin\wpreg.reg】,注册即可！<br>
+IE等浏览器访问系统的原理是:在注册表中注册了一条记录[HKEY_CLASSES_ROOT\webpush20100601\Shell\open\command],其值是【C:\WebPushJRE\jre1.6.0_26\bin\javaw6.exe -client ....  "%1"】,即当在浏览器中输入【webpush20100601://...】时,表示webpush20100601相当于一个协议,然后IE会自动在注册表中找到对应的命令，其实是【C:\WebPushJRE\jre1.6.0_26\bin\javaw6.exe】,然后将浏览器地址栏中后面的参数传给实际命令,这时就想当于执行了一个Java程序,且入参是一个实际的url地址!<br>
+这就是IE等浏览器调用系统的原理,这与在IE中调用QQ程序原理一样！我们必须要理解这个原理,并能在注册表找到对应的设置!<br>
+
+<br>
+许多客户有OA等门户系统,然后是登录进OA,然后点击OA上的一个超链接,直接进入合规系统的主界面(即跳过登录界面),这个叫【单点登录】,是如何实现的呢?<br>
+从OA进入我们系统,需要使用一个特殊的参数，即【http://...../login?logintype=single&usercode=admin】,也就是说有两个参数,一个叫【logintype】,其值必须是【single】,还有个叫【usercode】,其值是从OA中传过来的人员编码！<br>
+但在OA中一般是不可能配置一个动态的URL的,而且也不能明码取得用户编码的,所以一般是指向我们的一个静态的JSP,然后在我们的JSP中使用一段逻辑取得用户编码,然后再次跳转到上面的单点登录URL<br>
+下面是一个标准的jsp中的代码：<br>
+<textarea cols="150" rows="20" wrap="OFF" style="color:blue">
+<html>
+
+<%
+String str_usercode = null;  //我们需要的人员编码
+//这里是一段客户OA系统开发商提供的如果计算出人员编码的逻辑,比如有的方法是先从Cookie中取得一个令牌号,然后使用令牌号再次从CA中心取得实际用户编码
+str_usercode = "admin";  //比如已取得实际值,下面输出html
+
+out.println("<head>");
+out.println("<title>我的单点登陆JSP</title>");  //
+out.println("<meta http-equiv=\"refresh\" content=\"2;url=./login?logintype=single&usercode=" + str_usercode + "\">");   //最关键的逻辑,即在IE客户端2秒钟后再自动调用平台的单点登录
+out.println("</head>");
+out.println("<body>当前登录用户:" + str_usercode + ",2秒后自动跳转...</body>");
+%>
+
+</html>
+</textarea>
+<br>
+假如这个jsp叫myLogin.jsp,然后就在客户OA系统中配置一个URL指向这个JSP即可！<br>
+这种设计思路最大的好处就是项目的单点登录逻辑与平台的单点登录是独立分开的!! 平台只要一个usercode就行了,至于这个usercode如果计算出来的平台不管,都由项目中去做!! <br>
+项目中取得usercode后只要再跳转到平台真正的单点登录url即可!! 即 /login?logintype=single&usercode=user001<br>
+
+系统默认如果单点登录失败后(比如用户名不存在时), 是不会出现用户名密码输入框的(标准做法应该是这样!), 但也可以通过系统参数"单点登录失败时是否可以手工登录"进行控制其显示!
+<br/>
+
+<br>
+除了单点登录外,还有一种情况就是不是跳转到我们的主界面,而是直接打开某个功能点,比如打开工作流处理,消息中心等！像在中铁建项目中,是在OA的直接有我们系统的菜单功能点,然后点击某个功能点后,直接打开我们系统的界面！<br>
+方法是URL如下:<br>
+第一种方法是:【...../login?logintype=skip&menuid=153&usercode=admin】,第二种方法是:【...../login?logintype=skip2&menuid=153&usercode=admin】<br>
+即logintype有两种取值,一种叫skip,另一种叫skip2,然后还要指定一个menuid,表示是打开哪个菜单！然后指定一个参数usercode,即使用哪个用户登录跳转的!<br>
+skip与skip2的区别是,skip是直接打开某个功能点界面,即每次都是启一个虚拟机,而skip2是使用多页签的方式打开,即只要启一个Java虚拟机,从而提高性能!<br>
+
+<br>
+单点登录打开我们系统后,有两个非常致命的麻烦是,如果关闭浏览器,或在浏览器点击OA的注销按钮时,需要关闭我们的系统!即主门户都退出了,如何通知其他系统都退出?中铁建项目中的EAC退出时必须关闭我们的系统,就是这种典型需求!<br>
+之所以麻烦是因为,这时浏览器与Java程序之间无法通讯了！后来我们想了个办法,即还是通过Cookie来通讯！即在Java程序中使用JDIC在后台加载一个IE窗口,然后监听Cookie值,然后使用JDIC的功能,从而实现Java与IE通讯(详细原理见下面说明)<br>
+<br>
+关闭逻辑处理方法是:在html的body的onbeforeUnload事件中调用"unLoadWebPush();函数",即关闭浏览器窗口里执行一段逻辑,这段逻辑就是往一个Cookie变量中写值[exit],这个Cookie变量要在weblight.xml中通过参数PushMonitorIEExit来定义！<br>
+因为刷新也会触发body的onbeforeUnload事件,所以在unLoadWebPush()函数中有时需要判断到底是刷新窗口还是真的关闭窗口!方法一般是根据窗口的x,y值来判断,有的因为是Frame构架,则还有自己写一段逻辑(比如中铁建),这段代码直接写在系统参数【单点登录关闭窗口JS代码】中！<br>
+<br>
+最麻烦的是注销逻辑,因为注销不是关闭窗口,而是OA中的一段自己的逻辑,这里我们需要针对不同OA的注销的特点写一段自己的JS的逻辑,判断是否是发生"注销"了??比如在中铁建项目中就是判断注销窗口的层(名叫zhuxiaodiv)是否显示了,如果显示则认为是触发"注销逻辑"了！这段逻辑写在refreshThread()方法中,但里面的内容在系统参数[单点登录跳转页面JS刷新线程代码]中定义<br>
+但因为OA产生注销逻辑不会主动通知我们，所以我们需要采用“不停刷新机制”反过来去判断OA的特征！只要在系统参数中定义[单点登录跳转页面JS刷新线程代码],则在运行Java后,就会在html中产生一个线程,每0.5秒执行一下refreshThread(),在这个JS函数中判断是否发生注销逻辑,如果发生则往Cookie中写退出标记,然后停止线程(调用stopRefreshThread()函数)！<br>
+
+<br>
+<span style="color:FF0000">Web程序与WebPush的Java程序通讯的方法</span><br>
+因为我们系统是从IE中弹出的Java程序,但弹出后就与IE脱离了,不能直接互相通讯了!但有时有需求IE窗口中的Web界面做了某个处理后，需要通知Java程序,比如点击Web中的注销按钮，需要Java程序退出!<br><br>
+
+方法与原理如下: 有个类MonitorIECookieDialog中使用JDIC加载了一个URL,/login?logintype=monitoriecookie,这个类在启动时立即在后台运行着的!<br><br>
+
+这个页面中其实就是就是不停刷新取Cookie,代码在LoginJSPUtil.getMonitorIECookieHtml()方法中<br><br>
+
+如果取得指定的Cookie中的值，就通过设置标题document.title='指定值',<br><br>
+
+然后MonitorIECookieDialog中的WebBrowser做了一个窗口标题改变监听(addWebBrowserListener),从而触发其中的callSwing()方法<br><br>
+
+所以说,通过这条路径从而实现在弹出我们的Java程序后，原来的IE窗口中的Web界面中的某个逻辑与我们Java程序之间的通讯!!即Web界面中只要设置Cookie值，Java程序这里就会立即得到,从而进行相应处理!<br>
+
+
+<br><br><br>
+</p>
+</body>
+</html>
