@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 标准产品的 -->
+<root>
+	<!--qiaoyifeng-begain-->
+	<table name="cp_investigation_plan" pkname="id" descr="排查计划表" remark="排查计划表" >
+		<columns>
+			<col name="id"                    type="decimal"   length="27"    	descr="主键"/>
+		    <col name="channels"              type="varchar"   length="20"      descr="渠道"/>
+		    <col name="plannumber"            type="varchar"   length="30"      descr="计划编号"/>
+		    <col name="planname"              type="varchar"   length="100"    	descr="计划名称"/> 
+		    <col name="planstarttime"         type="varchar"   length="10"   	descr="计划开始时间"/>
+		    <col name="planendtime"           type="varchar"   length="10"   	descr="计划结束时间"/>
+		    <col name="plancontent"           type="varchar"   length="2000"   	descr="计划内容"/>
+		    <col name="businesstype"          type="varchar"   length="30"   	descr="业务类型"/>
+		    <col name="planapplypeople"       type="varchar"   length="200"   	descr="计划申请人"/>
+		    <col name="planapplydept"         type="varchar"   length="20"   	descr="计划申请机构"/>
+		    <col name="planapplydate"         type="varchar"   length="20"   	descr="计划申请日期"/>
+		    <col name="affix"                 type="varchar"   length="2000"   	descr="附件"/>
+		    <col name="state"                 type="varchar"   length="10"   	descr="状态"/>
+		</columns>
+      </table>
+      
+      <table name="cp_projectapproval_audit" pkname="id" descr="立项审查表" remark="立项审查表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="27"    	descr="主键"/>
+		    <col name="channels"                 type="varchar"   length="20"       descr="渠道"/>
+		    <col name="projectapprovalnumber"    type="varchar"   length="30"       descr="立项编号"/>
+		    <col name="projectype"               type="varchar"   length="100"    	descr="项目类型"/> 
+		    <col name="schemeapplyforname"       type="varchar"   length="10"   	descr="排查立项名称"/>
+		    <col name="isplancontent"            type="varchar"   length="10"   	descr="是否为计划内项目"/>
+		    <col name="relevanceplannumber"      type="varchar"   length="2000"   	descr="关联计划"/>
+		    <col name="checkingprojectmatter"    type="varchar"   length="30"   	descr="排查项目内容"/>
+		    <col name="businesstype"             type="varchar"   length="200"   	descr="计划申请人"/>
+		    <col name="checkingway"              type="varchar"   length="20"   	descr="计划申请机构"/>
+		    <col name="assistance_dept"          type="varchar"   length="20"   	descr="计划申请日期"/>
+		</columns>
+      </table>
+      
+      <table name="cp_implement" pkname="id" descr="排查实施问题维护表" remark="排查实施问题维护表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="IMPLEMENTDATE"            type="varchar"   length="10"       descr="登记日期"/>
+		    <col name="IMPLEMENTDEPT"            type="varchar"   length="20"       descr="实施申请机构"/>
+		    <col name="ESTINGTYPE"               type="varchar"   length="20"    	descr="排查类型"/> 
+		    <col name="ESTINGDEPT"               type="varchar"   length="10"   	descr="排查机构"/>
+		    <col name="BYESTINGDEPT"             type="varchar"   length="1000"   	descr="被检查机构"/>
+		    <col name="estingimplement"          type="varchar"   length="3000"   	descr="排查实施内容"/>
+		    <col name="ESTINGSTARTDATE"          type="varchar"   length="10"   	descr="排查开始日期"/>
+		    <col name="ESTINGENDDATE"            type="varchar"   length="10"   	descr="排查完成日期"/>
+		    <col name="ESTINGPOSTPONECAUSE"      type="varchar"   length="100"   	descr="排查延期原因"/>
+		    <col name="EXAMINEBUSINESTROKECOUN"  type="varchar"   length="10"   	descr="检查业务笔数"/>
+		    <col name="EXAMINEBUSINEMONEY"       type="varchar"   length="10"   	descr="检查业务金额(万元)"/>
+		    <col name="ISFANDQUESTION"           type="varchar"   length="10"   	descr="是否发现问题"/>
+		    <col name="AFFIX"                    type="varchar"   length="500"   	descr="上传附件"/>
+		    <col name="IMPLEMENTPEOPLE"          type="varchar"   length="50"   	descr="经办人"/>
+		    <col name="TESTINGNUMBER"            type="varchar"   length="50"   	descr="排查编号"/>
+		    <col name="STATE"                    type="varchar"   length="10"   	descr="状态"/>
+		    <col name="PROJECTAPPROVAL_AUDIT_ID" type="decimal"   length="27"   	descr="检查立项名称"/>
+		    <col name="Q_STATE"                  type="varchar"   length="10"   	descr="实施问题状态"/>
+		    <col name="C_STATE"                  type="varchar"   length="10"   	descr="案件状态"/>
+		    <col name="ISDEFER"            		 type="varchar"   length="10"   	descr="是否延期"/>
+		    <col name="Q_REFORM_STATE"           type="varchar"   length="20"   	descr="问题整改状态"/>
+		    <col name="Q_ABILITY_STATE"          type="varchar"   length="20"   	descr="问题问责状态"/>
+		    <col name="C_ABILITY_STATE"          type="varchar"   length="20"   	descr="案件问责状态"/>
+		    <col name="C_REFORM_STATE"           type="varchar"   length="20"   	descr="案件整改状态"/>
+		    <col name="CHECK_DEPT"               type="varchar"   length="23"   	descr="检查机构"/>
+		    <col name="ASSISTANCE_DEPT"          type="varchar"   length="500"   	descr="协查机构"/>
+		    <col name="SCHEMESTARTTIME"          type="varchar"   length="10"   	descr="计划开始时间"/>
+		    <col name="SCHEMEENDTIME"            type="varchar"   length="10"   	descr="计划结束时间"/>
+		    <col name="CHANNELS"                 type="varchar"   length="20"   	descr="渠道"/>
+		</columns>
+      </table>
+	  
+	  <table name="cp_question" pkname="id" descr="排查问题维护表" remark="排查问题维护表" >
+		<columns>
+			<col name="id"                            	type="decimal"   length="28"    	descr="主键"/>
+		    <col name="TYPE"                          	type="varchar"   length="10"       	descr="类型"/>
+		    <col name="CASENUMBER"            	      	type="varchar"   length="20"       	descr="案件编号"/>
+		    <col name="CASESUBMITPEOPLE"              	type="varchar"   length="10"    	descr="案件提交经办人"/> 
+		    <col name="CASESUBMITDEPT"           		type="varchar"   length="10"   		descr="案件提交部门"/>
+		    <col name="DUTYDEPT"                 		type="varchar"   length="10"   		descr="责任部门"/>
+		    <col name="CASEHAPPENDATE"           		type="varchar"   length="10"   		descr="案件发生日期"/>
+		    <col name="CASEFANDDATE"             		type="varchar"   length="10"   		descr="案件发现日期"/>
+		    <col name="CASEOUTLINE"              		type="varchar"   length="1000"   	descr="案件概述"/>
+		    <col name="ISCOVER"      			 		type="varchar"   length="10"   		descr="是否隐藏"/>
+		    <col name="RELEVANCEPROJECTNUMBER"   		type="varchar"   length="10"   		descr="排查立项名称"/>
+		    <col name="CHECKREASONEXPLAIN"       		type="varchar"   length="1000"   	descr="检查原因解释"/>
+		    <col name="PROJECTTYPE"              		type="varchar"   length="10"   		descr="项目类型"/>
+		    <col name="INVOLVEMONEY"             		type="varchar"   length="10"   		descr="涉及货币"/>
+		    <col name="RISKCONDITION"            		type="varchar"   length="10"   		descr="风险状况"/>
+		    <col name="RECORDSTAFF"              		type="varchar"   length="100"   	descr="记录员工"/>
+		    <col name="RECORDNAME"               		type="varchar"   length="100"   	descr="记录名称"/>
+		    <col name="RECORDDEPT" 				 		type="varchar"   length="100"   	descr="记录部门"/>
+		    <col name="ALREADYINFLUENCE"         		type="varchar"   length="1000"   	descr="已经影响"/>
+		    <col name="TAKESTEPS"                		type="varchar"   length="1000"   	descr="采取措施"/>
+		    <col name="UPLOADINGAFFIX"           		type="varchar"   length="2000"   	descr="上传附件"/>
+		    <col name="QUESTIONUMBER"            		type="varchar"   length="30"   		descr="问题编号"/>
+		    <col name="QUESTIONAME"              		type="varchar"   length="500"   	descr="问题概述"/>
+		    <col name="QUESTIONHAPPENDATE"       		type="varchar"   length="10"   		descr="问题发生日期"/>
+		    <col name="QUESTIONFANDDATE"        	 	type="varchar"   length="10"   		descr="问题发现日期"/>
+		    <col name="QUESTIONDEPT"             		type="varchar"   length="10"   		descr="问题责任机构"/>
+		    <col name="RELEVANCEFLOW"            		type="varchar"   length="10"   		descr="关联流程"/>
+		    <col name="RELEVANCERISK"                   type="varchar"   length="10"   		descr="关联风险点"/>
+		    <col name="RELEVANCESYSTEM"                 type="varchar"   length="10"   		descr="关联制度"/>
+		    <col name="QUESTIONSTROKECOUNT"             type="varchar"   length="10"   		descr="违规问题笔数"/>
+		    <col name="QUESTIONMONEY"                   type="varchar"   length="10"   		descr="问题金额(万元)"/>
+		    <col name="GETOUTOFLINEQUESTIONDESCRIBE"    type="varchar"   length="1000"   	descr="违规问题描述"/>
+		    <col name="GETOUTOPEOPLENUMBER"             type="varchar"   length="10"   		descr="违规员工工号"/>
+		    <col name="GETOUTONAME"             		type="varchar"   length="10"   		descr="违规员工姓名"/>
+		    <col name="GETOUTODEPT"             		type="varchar"   length="10"   		descr="违规员工所属机构"/>
+		    <col name="ABARBEITUNGDEPT"          		type="varchar"   length="10"   		descr="整改责任机构"/>
+		    <col name="STAYABARBEITUNGMATTER"          	type="varchar"   length="1000"   	descr="待整改事项"/>
+		    <col name="ABARBEITUNGLEVEL"          	    type="varchar"   length="10"   		descr="整改重要性水平"/>
+		    <col name="ABARBEITUNGFINISHDATE"          	type="varchar"   length="10"   		descr="整改预计完成日期"/>
+		    <col name="AFFIX"          					type="varchar"   length="2000"   	descr="（整改方案）"/>
+		    <col name="QUESTION_TYPE"          			type="varchar"   length="50"   		descr="问题类型"/>
+		    <col name="CP_IMPLEMENT_ID"          	    type="decimal"   length="27"   		descr="排查实施id"/>
+		    <col name="STATE"          					type="varchar"   length="10"   		descr="状态"/>
+		    <col name="ABARBEITUNGUSER"          		type="varchar"   length="23"   		descr="整改责任人"/>
+		    <col name="REFORM_STATE"          			type="varchar"   length="10"   		descr="整改状态"/>
+		    <col name="ABILITY_STATE"          			type="varchar"   length="10"   		descr="问责状态"/>
+		    <col name="QUESTION_INPUT_TYPE"          	type="varchar"   length="10"   		descr="问题录入方式"/>
+		    <col name="CREATE_USER"          			type="decimal"   length="26"   		descr="创建人"/>
+		    <col name="CREATE_CORP"          			type="decimal"   length="26"   		descr="创建机构"/>
+		    <col name="CREATE_DATE"          			type="varchar"   length="10"   		descr="创建日期"/>
+		    <col name="CHANNELS"          				type="varchar"   length="20"   		descr="渠道"/>
+		    <col name="CHECK_CORP"          			type="decimal"   length="26"   		descr="检查机构"/>
+		    <col name="CHECKTYPE"          			    type="varchar"   length="10"   		descr="问题发现渠道"/>
+		    <col name="QUESTIOCFDATE"          			type="varchar"   length="22"   		descr="问题解决日期"/>
+		    <col name="INVESTIGATION_PLAN_ID"          	type="varchar"   length="26"   		descr="检查计划id"/>
+		    <col name="byestingdept"          			type="varchar"   length="50"   		descr="被排查部门"/>
+		</columns>
+      </table>
+      
+      <table name="OR_RISK_FACTOR" pkname="id" descr="风险成因表" remark="风险成因表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="27"    	descr="主键"/>
+		    <col name="CODE"                 	 type="varchar"   length="50"       descr="风险因子类别编号"/>
+		    <col name="NAME"    				 type="varchar"   length="100"      descr="风险因子类别名称"/>
+		    <col name="INTRODUCTION"             type="varchar"   length="4000"    	descr="定义"/> 
+		    <col name="PARENT_CODE"       		 type="varchar"   length="50"   	descr="上级风险因子类别编号"/>
+		    <col name="PARENTID"            	 type="varchar"   length="100"   	descr="parentid"/>
+		    <col name="SEQ"      				 type="varchar"   length="100"   	descr="seq"/>
+		</columns>
+      </table>
+      
+      <table name="cp_illegal_employee" pkname="id" descr="违规员工表" remark="违规员工表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="TYPE"            		 type="varchar"   length="10"       descr="类型"/>
+		    <col name="ILLEGAL_CODE"             type="varchar"   length="22"       descr="违规员工工号"/>
+		    <col name="ILLEGAL_NAME"             type="varchar"   length="10"    	descr="违规员工姓名"/> 
+		    <col name="ILLEGAL_CORP"             type="varchar"   length="22"   	descr="违规员工所在机构"/>
+		    <col name="ILLEGAL_STROKE_COUNT"     type="decimal"   length="27"   	descr="违规问题笔数"/>
+		    <col name="ILLEGAL_MONEY"            type="decimal"   length="27"   	descr="违规问题金额(万元"/>
+		    <col name="PARENTID"          		 type="decimal"   length="27"   	descr="问题或案件id"/>
+		    <col name="STATE"            		 type="varchar"   length="10"   	descr="状态"/>
+		    <col name="ILLEGAL_POST"      		 type="varchar"   length="23"   	descr="违规员工岗位"/>
+		    <col name="DUTY_TYPE"  				 type="varchar"   length="20"   	descr="责任部门"/>
+		    <col name="CHANNELS"       			 type="varchar"   length="20"   	descr="渠道"/>
+		</columns>
+      </table>
+      
+      <table name="cp_abarbeitungmenu" pkname="id" descr="整改情况表" remark="整改情况表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="ABARBEITUNGDEPT"          type="varchar"   length="10"       descr="整改情况录入机构"/>
+		    <col name="ABARBEITUNGTIME"          type="varchar"   length="10"       descr="整改情况录入时间"/>
+		    <col name="ABARBEITUNGCAUSE"         type="varchar"   length="1000"    	descr="整改延期原因"/> 
+		    <col name="ABARBEITUNGMEASURE"       type="varchar"   length="1000"   	descr="整改措施"/>
+		    <col name="ABARBEITUNGRESULT"        type="varchar"   length="1000"   	descr="整改效果"/>
+		    <col name="AFFIX"          			 type="varchar"   length="2000"   	descr="整改附件"/>
+		    <col name="QUESTION_ID"          	 type="decimal"   length="27"   	descr="问题"/>
+		    <col name="STATE"            		 type="varchar"   length="10"   	descr="整改状态"/>
+		    <col name="CHANNELS"      			 type="varchar"   length="20"   	descr="发现渠道"/>
+		    <col name="QUESTION"  				 type="varchar"   length="500"   	descr="问题"/>
+		    <col name="IDENTIFIER"       		 type="decimal"   length="26"   	descr="验证人"/>
+		    <col name="VERIFICATIONDEPT"         type="decimal"   length="26"   	descr="验证部门或机构"/>
+		    <col name="VERIFICATIONDATE"         type="varchar"   length="10"   	descr="验证日期"/>
+		    <col name="ABARBEITUNGSTATUS"        type="varchar"   length="10"   	descr="验证状态"/>
+		    <col name="VERIFICATIONOPINION"      type="varchar"   length="500"   	descr="验证意见"/>
+		    <col name="UPLOADAFFIX"              type="varchar"   length="500"   	descr="验证附件"/>
+		    <col name="ISABARBEITUNGCAUSE" 		 type="varchar"   length="10"   	descr="原因"/>
+		    <col name="RECTIFY_IMPROVE"          type="varchar"   length="1000"   	descr="整改"/>
+		    <col name="RECTIFY_IMPROVE_DATA"     type="varchar"   length="22"   	descr="整改记录"/>
+		    <col name="STATUS"            		 type="varchar"   length="50"   	descr="状态"/>
+		</columns>
+      </table>
+      
+      <table name="cp_calltoaccount" pkname="id" descr="问题问责表" remark="问题问责表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="ISBRINGINTOINTEGRAL"      type="varchar"   length="10"       descr="是否纳入违规积分"/>
+		    <col name="OVERSTEPINTEGRAL"         type="varchar"   length="20"       descr="违规积分"/>
+		    <col name="ISBRINGINTOGREYLIST"      type="varchar"   length="10"    	descr="是否纳入员工灰名单管理"/> 
+		    <col name="STAFFGREYLIST"       	 type="varchar"   length="20"   	descr="员工灰名单管理"/>
+		    <col name="ISTOACCOUNTABILITY"       type="varchar"   length="10"   	descr="是否纳入条线部门问责"/>
+		    <col name="TOACCOUNTABILITY"         type="varchar"   length="10"   	descr="条线部门问责"/>
+		    <col name="ISAUDITACCOUNTABILITY"    type="decimal"   length="10"   	descr="是否提交监察审计部问责"/>
+		    <col name="AUDITACCOUNTABILITY"      type="varchar"   length="10"   	descr="监察审计部门问责"/>
+		    <col name="ABILITY_STAFF"      		 type="decimal"   length="27"   	descr="问责员工"/>
+		    <col name="CP_ILLEGAL_EMPLOYEE_ID"   type="decimal"   length="27"   	descr="问题违规员工"/>
+		    <col name="ABILITY_CODE"       		 type="varchar"   length="10"   	descr="员工工号"/>
+		    <col name="ABILITY_CORP"         	 type="varchar"   length="23"   	descr="问责机构"/>
+		    <col name="ABILITY_POST"         	 type="varchar"   length="23"   	descr="问责岗位"/>
+		    <col name="type"        			 type="varchar"   length="20"   	descr="类型"/>
+		    <col name="STAFF_FILES_ID"      	 type="varchar"   length="10"   	descr="员工档案编号"/>
+		    <col name="DEPTFILESMAINTAIN_ID"     type="varchar"   length="10"   	descr="部门文件"/>
+		    <col name="YEAR" 		 			 type="varchar"   length="20"   	descr="年度"/>
+		    <col name="createdate"          	 type="varchar"   length="10"   	descr="创建时间"/>
+		</columns>
+      </table>
+      
+      <table name="SCORE_REGISTER" pkname="id" descr="违规积分登记表" remark="违规积分登记表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="remark"      			 type="varchar"   length="1000"     descr="违规事实"/>
+		    <col name="happendate"         		 type="varchar"   length="50"       descr="发生日期"/>
+		    <col name="finddate"      			 type="varchar"   length="10"    	descr="发现日期"/> 
+		    <col name="scoretypeid"       	 	 type="decimal"   length="22"   	descr="违规类型"/>
+		    <col name="scoretype"       		 type="varchar"   length="100"   	descr="违规类型"/>
+		    <col name="scorestandardid"          type="decimal"   length="22"   	descr="违规行为主键"/>
+		    <col name="scorestandard2"    		 type="varchar"   length="500"   	descr="违规行为"/>
+		    <col name="standardscore"      		 type="varchar"   length="10"   	descr="违规分值"/>
+		    <col name="riskrank"      		 	 type="varchar"   length="50"   	descr="风险等级"/>
+		    <col name="findrank"   				 type="varchar"   length="50"   	descr="发现渠道"/>
+		    <col name="referscore"       		 type="varchar"   length="10"   	descr="标准分值"/>
+		    <col name="userids"         	 	 type="varchar"   length="500"   	descr="扣分详情"/>
+		    <col name="attachfile"         	     type="varchar"   length="1000"   	descr="附件"/>
+		    <col name="checkusers"        		 type="varchar"   length="100"   	descr="检查人"/>
+		    <col name="checkdept"      	 		 type="varchar"   length="100"   	descr="检查机构"/>
+		    <col name="state"     				 type="varchar"   length="20"   	descr="状态"/>
+		    <col name="createdept" 		 		 type="decimal"   length="22"   	descr="登记机构"/>
+		    <col name="creator"          	     type="decimal"   length="22"   	descr="登记人"/>
+		    <col name="createdate"       		 type="varchar"   length="10"   	descr="登记日期"/>
+		    <col name="publishdate"       		 type="varchar"   length="10"   	descr="认定日期"/>
+		    <col name="effectdate"       		 type="varchar"   length="10"   	descr="复议截止日期"/>
+		    <col name="BOOKNO"       		 	 type="varchar"   length="50"   	descr="申请书号"/>
+		</columns>
+      </table>
+      
+      <table name="cp_greylist" pkname="id" descr="员工灰名单表" remark="员工灰名单表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="GREYLISTSOURCE"      	 type="varchar"   length="200"      descr="灰名单来源"/>
+		    <col name="STAFFNAME"         		 type="varchar"   length="10"       descr="员工姓名"/>
+		    <col name="STAFFJOBNUMBER"      	 type="varchar"   length="10"    	descr="员工工号"/> 
+		    <col name="STAFFDEPT"       	 	 type="varchar"   length="10"   	descr="员工所属机构"/>
+		    <col name="STAFFPOST"       		 type="varchar"   length="10"   	descr="员工岗位"/>
+		    <col name="BRINGINTOREASON"          type="varchar"   length="10"   	descr="纳入灰名单原因"/>
+		    <col name="ILLEGALMATTER"    		 type="varchar"   length="500"   	descr="违规事项"/>
+		    <col name="AFFIRMDUTY"      		 type="varchar"   length="10"   	descr="认定责任"/>
+		    <col name="ACCOUNTABILITYDATE"       type="varchar"   length="50"   	descr="问责录入日期"/>
+		    <col name="HANDLINGINFORMATION"   	 type="varchar"   length="500"   	descr="处理情况"/>
+		    <col name="REMARK"       		 	 type="varchar"   length="200"   	descr="备注"/>
+		    <col name="STATE"         	 	 	 type="varchar"   length="10"   	descr="状态"/>
+		    <col name="PARENTID"         	     type="varchar"   length="10"   	descr="parentid"/>
+		    <col name="CP_CALLTOACCOUNT_ID"      type="decimal"   length="27"   	descr="cp_calltoaccount_id"/>
+		    <col name="STATUS"      	 		 type="varchar"   length="10"   	descr="状态"/>
+		    <col name="OTHER_REASON"     		 type="varchar"   length="100"   	descr="其他原因"/>
+		</columns>
+      </table>
+      
+      <table name="cp_stripline_accountability" pkname="id" descr="条线部门问责表" remark="条线部门问责表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="ACCOUNTABILITYWAY"      	 type="varchar"   length="20"       descr="条线问责方式"/>
+		    <col name="ACCOUNTABILITYPEOPLE"     type="varchar"   length="10"       descr="问责录入人"/>
+		    <col name="ACCOUNTABILITYDATE"       type="varchar"   length="10"    	descr="问责录入日期"/> 
+		    <col name="ACCOUNTABILITYDEPT"       type="varchar"   length="10"   	descr="问责录入机构"/>
+		    <col name="CP_CALLTOACCOUNT_ID"      type="decimal"   length="27"   	descr="cp_calltoaccount_id"/>
+		    <col name="STATE"          			 type="varchar"   length="10"   	descr="状态"/>
+		    <col name="MERIT_PRIZE"    		 	 type="varchar"   length="50"   	descr="预留绩效奖金(元)"/>
+		    <col name="OTHER_ABILITY_WAY"      	 type="varchar"   length="100"   	descr="其他问责方式"/>
+		</columns>
+      </table>
+      
+      <table name="cp_monitoraudit_accountability" pkname="id" descr="监察审计部问责表" remark="监察审计部问责表" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="DISCIPLINEPUNISHMENT"     type="varchar"   length="10"     	descr="纪律处分"/>
+		    <col name="ELSEPUNISH"         		 type="varchar"   length="10"       descr="其他处罚"/>
+		    <col name="ACCOUNTABILITYPEOPLE"     type="varchar"   length="10"    	descr="问责录入人"/> 
+		    <col name="ACCOUNTABILITYDATE"       type="varchar"   length="10"   	descr="问责录入日期"/>
+		    <col name="ACCOUNTABILITYDEPT"       type="varchar"   length="10"   	descr="问责录入机构"/>
+		    <col name="CP_CALLTOACCOUNT_ID"      type="decimal"   length="27"   	descr="cp_calltoaccount_id"/>
+		    <col name="STATE"    		 		 type="varchar"   length="10"   	descr="状态"/>
+		    <col name="INCOMEPUNISH"      		 type="varchar"   length="50"   	descr="经济处罚"/>
+		    <col name="PUNISH_CRITICISM"      	 type="varchar"   length="50"   	descr="其他处罚-批评教育"/>
+		    <col name="PUNISH_ORGANIZATION"   	 type="varchar"   length="50"   	descr="其他处罚-组织处理"/>
+		    <col name="TYPE"       		 		 type="varchar"   length="10"   	descr="类型"/>
+		    <col name="BUCKLE_BONUS"         	 type="varchar"   length="10"   	descr="扣减奖金"/>
+		    <col name="OBLIGATE_BONUS"         	 type="varchar"   length="22"   	descr="预留绩效奖金"/>
+		    <col name="PAY_FOR_MONEYA"        	 type="varchar"   length="10"   	descr="赔偿金额"/>
+		    <col name="ILLEGALITY_INCOME"      	 type="varchar"   length="10"   	descr="没收非法所得金额"/>
+		    <col name="AFFIRMDUTY"     			 type="varchar"   length="20"   	descr="认定责任"/>
+		    <col name="HANDLINGINFORMATION" 	 type="varchar"   length="500"   	descr="处理情况"/>
+		</columns>
+      </table>
+      
+      <table name="ck_wgentry" pkname="id" descr="违规词条库" remark="违规词条库" >
+		<columns>
+			<col name="id"                       type="decimal"   length="28"    	descr="主键"/>
+		    <col name="wgname"      	 		 type="varchar"   length="500"      descr="违规词条"/>
+		    <col name="wgscore"     			 type="varchar"   length="50"       descr="违规分值"/>
+		</columns>
+      </table>
+      
+      <table name="CP_CHECKING_EVALUATE" pkname="id" descr="" remark="" >
+		<columns>
+			<col name="id"                       	   type="decimal"   length="28"    	descr="主键"/>
+		    <col name="QUESTIONHAPPENREASON"     	   type="varchar"   length="100"    descr=""/>
+		    <col name="INTERNALLYPILOTING_LINK"  	   type="varchar"   length="50"     descr=""/>
+		    <col name="INTERNALLYPILOTING_MEASURE"     type="varchar"   length="20"    	descr=""/> 
+		    <col name="BASEL_BUSINESSLINE"       	   type="varchar"   length="20"   	descr=""/>
+		    <col name="RELEVANCEFLOW"       	   	   type="varchar"   length="10"   	descr=""/>
+		    <col name="RELEVANCESYSTEM"       	       type="varchar"   length="10"   	descr=""/>
+		    <col name="IMPLEMENTEVALUATE"    		   type="varchar"   length="10"   	descr=""/>
+		    <col name="FINISHEVALUATE"      		   type="varchar"   length="10"   	descr=""/>
+		    <col name="ACCOUNTABILITYEVALUATE"         type="varchar"   length="10"   	descr=""/>
+		    <col name="PROJECTAPPROVAL_AUDIT_ID"   	   type="varchar"   length="10"   	descr=""/>
+		    <col name="CP_QUESTION_ID"       		   type="varchar"   length="10"   	descr=""/>
+		    <col name="CREATE_DATE"         	 	   type="varchar"   length="22"   	descr=""/>
+		    <col name="CREATE_USER"         	 	   type="varchar"   length="50"   	descr=""/>
+		    <col name="CREATE_CORP"        	 	   	   type="varchar"   length="50"   	descr=""/>
+		</columns>
+      </table>
+	<!--qiaoyifeng-end-->
+</root>

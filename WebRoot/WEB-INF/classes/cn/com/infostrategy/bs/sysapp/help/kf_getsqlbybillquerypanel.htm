@@ -1,0 +1,154 @@
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<TITLE>利用查询面板生成条件SQL</TITLE>
+		<style type="text/css">
+.p_text {
+	font-size: 12px;
+}
+
+;
+.tabstyle {
+	border-collapse: collapse;
+	font-size: 12px;
+	border: 1px;
+}
+
+;
+.tdstyle {
+	border: solid 1px #888888;
+	font-size: 12px;
+}
+;
+</style>
+	</head>
+	<body>
+		<p class="p_text">
+			查询面板上有查询控件,点击查询按钮平台自动生成查询sql进行查询,而我们开发过程中经常会用到这些sql条件,
+			<br>
+			比如开发报表的时候或者自定义查询事件的时候等等。
+			<br>
+			<br>
+			查询面板即BillQueryPanel:<br>
+			<span style="color: red">getQuerySQL()</span>此方法直接获取到整个查询sql。
+			<br>
+			<span style="color: red">getRealValueAt(String _key)、getValueAt(String _key)</span>此方法直接获取查询面板上某一项的实际值。
+			<br>
+			<span style="color: red">getQuickQueryConditionAsMap()</span>此方法返回一个map,map中存放了所有查询字段以及其具体的值,做报表的<br>
+			时候可以用到,通常和ReportUtil配合使用。<br>
+			具体参见MultiLevelReportDataBuilderIFC、StyleReport_1_BuildDataIFC、StyleReport_2_BuildDataIFC、StyleReport_3_BuildDataIFC中<br>
+			的build....方法其中的map参数即是此map。<br>
+			ReportUtil:<br>
+			public String getWhereConditionByInType(HashMap _map, String _queryItemKey, String _dbItemKey)获取in条件的sql条件如:可以多选同时使用in模式的参照。<br>
+			public String getWhereConditionByReplaceTYpe(HashMap _map, String _queryItemKey, String _dbItemKey) 用来获取日历、时间、数字框的条件sql。<br>
+			<br>
+			<br>
+			下面针对BillQueryPanel中获取某一项的条件sql进行概况:<br>
+			<table width="60%" class="tabstyle" cellspacing=0 cellpadding=5>
+			<tr bgcolor="#DCFAC8">
+				<td class="tdstyle">
+					<p align="center">
+						<strong>查询类型</strong>
+				</td>
+				<td class="tdstyle">
+					<p align="center">
+						<strong>控件类型</strong>
+				</td>
+				<td class="tdstyle">
+					<p align="center">
+						<strong>说明</strong><strong></strong>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle" rowspan="8">
+					默认机制
+				</td>
+				<td class="tdstyle">
+					文本框,多行文本框
+				</td>
+				<td class="tdstyle">
+					先将输入内容根据空格分隔,遍历每一项进行sql拼接,如果某一项以~开头则拼成like '***%'形式否则拼成like '%***%'形式。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					 数字框
+				</td>
+				<td class="tdstyle">
+					一般情况下得到实际值后按分号分隔得到两个范围值,进行拼接。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					下拉框
+				</td>
+				<td class="tdstyle">
+					一般情况下得到实际值判断如果包含分号就按分号分隔拼成in条件,否则直接拼成=条件。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					勾选框
+				</td>
+				<td class="tdstyle">
+					直接获取实际值拼成=条件。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					日历与时间
+				</td>
+				<td class="tdstyle">
+					获取RefItemVO,然后将refItemVO.getHashVO().getStringValue("querycondition")中{itemkey}替换成key即可。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					多选参照
+				</td>
+				<td class="tdstyle">
+					获取实际值,按分号分隔拼成like ';***;' or 的形式。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					其他参照
+				</td>
+				<td class="tdstyle">
+					获取实际值,如果有分号就分号分隔拼成in形式,否则直接拼成=形式。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					文件选择框
+				</td>
+				<td class="tdstyle">
+					没啥大意义。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle" rowspan="1">
+					in机制
+				</td>
+				<td class="tdstyle">
+				 所有
+				</td>
+				<td class="tdstyle">
+				分号分隔拼成in形式。
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle" rowspan="1">
+					likeor机制
+				</td>
+				<td class="tdstyle">
+				 所有
+				</td>
+				<td class="tdstyle">
+				分号分隔拼成like ';***;'形式。
+				</td>
+			</tr>
+			</table>
+		<p>
+	</body>
+</html>

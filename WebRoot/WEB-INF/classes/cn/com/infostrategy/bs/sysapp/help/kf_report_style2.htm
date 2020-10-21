@@ -1,0 +1,155 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>风格报表2</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+ 
+<p class="p_text">
+风格报表2一般也是用来进行明细查询的,但它与风格报表1不同的是,他可将相同记录的行数据进行纵向合并！比如前3条记录的"产品名称"一样,则进行合并,只显示一条！<br>
+他只需要指定两个东西,一个是查询面板的模板编码,一个是后台数据构造类！<br>
+ 
+ 
+<br><br>
+UI端必须继承于抽象类AbstractStyleReportPanel_2,BS端类必须继续于接口StyleReport_2_BuildDataIFC,或继承于类AbstractStyleReport_2_BuildDataAdapter,而且要将BS端的类名全路径注册在UI端类的getBSBuildDataClass()方法中<br>
+BS数据构造器中方法:<br>
+方法【String[] getSpanColumns()】是指定哪些弄是需要纵向合并处理的!比如 new String[] { "产品", "销售日期" },这引起列名必须存在于返回的HashVO[]数据的中<br>
+方法【String[][] getSortColumns()】是指定哪些列要排序,事实上也只有排序后,才能进行合并处理,比如：return new String[][] { { "产品", "N", "N" },{ "销售日期", "N", "N" },}; <br>
+ 
+ 
+<br>
+下面我们写一个完整的例子,一共三个类!代码如下：<br>
+【UI端例子代码】<br>
+<textarea cols="150" rows="15" wrap="OFF" style="color:blue">
+package com.pushdemo.ui.p102;
+ 
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+ 
+public class TestReport2WKPanel extends AbstractWorkPanel {
+ 
+	@Override
+	public void initialize() {
+		this.add(new TestStyle2ReportPanel()); //创建一个实际的风格报表2面板,加入主面板!
+	}
+ 
+}
+</textarea>
+ 
+<br><br><br>
+【UI端真正风格报表面板代码】<br>
+<textarea cols="150" rows="25" wrap="OFF" style="color:blue">
+package com.pushdemo.ui.p102;
+ 
+import cn.com.infostrategy.ui.report.style2.AbstractStyleReportPanel_2;
+ 
+/**
+ * 风格报表2的例子!
+ * @author xch
+ *
+ */
+public class TestStyle2ReportPanel extends AbstractStyleReportPanel_2 {
+ 
+	@Override
+	public String getBillQueryTempletCode() {
+		return "WLTDUAL"; //上方查询面板的模板编码!
+	}
+ 
+	@Override
+	public String getBSBuildDataClass() {
+		return "com.pushdemo.bs.p102.TestReport2DataBuilder"; //服务器端构造类名!
+	}
+ 
+}
+</textarea>
+ 
+<br><br><br><br>
+【BS端代码】<br>
+<textarea cols="150" rows="88" wrap="OFF" style="color:blue">
+package com.pushdemo.bs.p102;
+ 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+ 
+import cn.com.infostrategy.bs.common.CommDMO;
+import cn.com.infostrategy.bs.report.style2.AbstractStyleReport_2_BuildDataAdapter;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.sysapp.login.CurrLoginUserVO;
+ 
+/**
+ * 风格报表2,也是明细查询,但与风格报表1的区别是,它可以将一些列进行纵向合并！！
+ * @author xch
+ *
+ */
+public class TestReport2DataBuilder extends AbstractStyleReport_2_BuildDataAdapter {
+ 
+	@Override
+	public String getTitle() {
+		return "我的测试报表标题";
+	}
+ 
+	@Override
+	public HashVO[] buildDataByCondition(HashMap _conditionMap, CurrLoginUserVO userVO) throws Exception {
+		String str_sql = (String) _conditionMap.get("$SQL"); //查询面板中直接算出来的SQL！ 需要使用字符串替换其中的字段名！
+		String str_sql_1 = (String) _conditionMap.get("$SQL_1"); //同上,但自动将查询面板中的数据权限也计算好了！
+		System.out.println("查询面板生成的SQL条件是【" + str_sql_1 + "】"); //
+		//String str_realSQL = TBUtil.getTBUtil().replaceAll(str_sql_1, "date", "createdate"); //将查询条件中的字段名替换成实际表中的字段名!
+ 
+		CommDMO dmo = new CommDMO(); //一般逻辑是查询一张表返回!
+		//HashVO[] hvs = dmo.getHashVoArrayByDS(null, "select code,name,style1,style2,style3 from pub_lookandfeel where 1=1 order by seq"); //这里应该将上面的SQL送进来!
+		return createDemoData();
+	}
+ 
+	//动态在内存中创建Demo数据!!!
+	private HashVO[] createDemoData() {
+		String[] str_prod = new String[] { "彩电", "冰箱", "空调" }; //
+		String[] str_month = new String[] { "2011-05-08", "2011-05-09", "2011-05-10" };
+		String[] str_saler = new String[] { "张建国", "李卫东", "王强" };
+		Random rans = new Random(); //
+		ArrayList al_hvs = new ArrayList(); //
+		for (int i = 0; i < str_prod.length; i++) {
+			for (int j = 0; j < str_month.length; j++) {
+				for (int k = 0; k < str_saler.length; k++) {
+					HashVO hvo = new HashVO(); //
+					hvo.setAttributeValue("产品", str_prod[i]); //
+					hvo.setAttributeValue("销售日期", str_month[j]); //
+					hvo.setAttributeValue("销售员", str_saler[k]); //
+					hvo.setAttributeValue("单价(元)", rans.nextInt(500) + 10); //
+					hvo.setAttributeValue("数量(台)", rans.nextInt(3) + 1); //
+					al_hvs.add(hvo); //
+				}
+			}
+		}
+		HashVO[] hvs = (HashVO[]) al_hvs.toArray(new HashVO[0]); //
+		return hvs;
+	}
+ 
+	/**
+	 * 指定将哪些列的数据进行纵向合并!因为有大量明细时,排序后许多明细是一样的!这时需要将相同的合并成一条！看起来更清爽！！ 
+	 */
+	@Override
+	public String[] getSpanColumns() {
+		return new String[] { "产品", "销售日期" }; //
+	}
+ 
+	/**
+	 * 排序定义,指定哪些列如何排序!如果想对某些列合并,必须先对其排序!
+	 */
+	@Override
+	public String[][] getSortColumns() {
+		return new String[][] { // 
+		{ "产品", "N", "N" }, //
+				{ "销售日期", "N", "N" }, //
+		};
+	}
+ 
+}
+</textarea>
+ 
+<br>
+</p>
+</body>
+</html>

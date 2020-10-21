@@ -1,0 +1,222 @@
+package com.pushworld.ipushgrc.ui.target.p030;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.JSplitPane;
+
+import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.StringItemVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillCardDialog;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillListSelectListener;
+import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+
+import com.pushworld.ipushgrc.ui.IPushGRCServiceIfc;
+
+/**
+ * 指标实际值
+ * @author xch
+ *
+ */
+public class CmpTargetInstWKPanel extends AbstractWorkPanel implements ActionListener, BillListSelectListener {
+
+	private BillListPanel billList_inst, billList_inst_par = null; //CMP_TARGET_INSTPAR_CODE1
+	private WLTButton btn_createInst, btn_compute, btn_systemImport; //创建实例,实际演算,系统抽取
+	private WLTButton btn_importpar, btn_updatepar; //
+
+	@Override
+	public void initialize() {
+		//指标实例
+		billList_inst = new BillListPanel("CMP_TARGET_INST_CODE1"); //
+
+		btn_createInst = new WLTButton("创建演算"); //
+		btn_compute = new WLTButton("执行演算"); //
+		btn_systemImport = new WLTButton("系统抽取");
+		btn_createInst.addActionListener(this); //
+		btn_compute.addActionListener(this); //
+		btn_systemImport.addActionListener(this);
+		billList_inst.addBatchBillListButton(new WLTButton[] { btn_createInst, btn_compute, btn_systemImport }); //加入按钮
+		billList_inst.repaintBillListButton(); //重绘按钮面板!!
+
+		billList_inst.addBillListSelectListener(this); //选择事件!
+
+		//指标因子实例!!!
+		billList_inst_par = new BillListPanel("CMP_TARGET_INSTPAR_CODE1"); //指标因子实例!!
+		btn_importpar = new WLTButton("导入因子值"); //
+		btn_importpar.addActionListener(this);
+		btn_updatepar = WLTButton.createButtonByType(WLTButton.LIST_POPEDIT, "维护因子值"); ////
+		billList_inst_par.addBatchBillListButton(new WLTButton[] { btn_importpar, btn_updatepar }); //
+		billList_inst_par.repaintBillListButton(); //重绘按钮面板!!
+
+		WLTSplitPane split = new WLTSplitPane(JSplitPane.VERTICAL_SPLIT, billList_inst, billList_inst_par); //
+		this.add(split); //
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_createInst) {
+			onCreateInst(); //创建演算实例!
+		} else if (e.getSource() == btn_compute) {
+			onCompute(); //
+		} else if (e.getSource() == btn_importpar) {
+			onImportParValueFromExcel(); //
+		} else if (e.getSource() == btn_systemImport) { //系统抽取，现在职能实现接口了！
+			try {
+				systemImport("23");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+	/**
+	 * 创建演算!!!
+	 */
+	private void onCreateInst() {
+		try {
+			BillCardDialog dialog = new BillCardDialog(this, "CMP_TARGET_INST_CODE1", WLTConstants.BILLDATAEDITSTATE_UPDATE); //
+			dialog.getBillcardPanel().setEditable("instyear", false);
+			dialog.getBillcardPanel().setEditable("cyclevalue", false);
+			dialog.setSaveBtnVisiable(false); //不显示保存按钮!
+			dialog.setVisible(true); //
+			if (dialog.getCloseType() != 1) {
+				return;
+			}
+			BillVO billVO = dialog.getBillVO(); //取得窗口的返回值!!!
+			String str_corpId = billVO.getStringValue("corpname"); ////
+			String str_corpName = billVO.getStringViewValue("corpname"); ////
+			String str_instyear = billVO.getStringValue("instyear"); //年度
+			String str_cyclevalue = billVO.getStringValue("cyclevalue"); //周期
+			String str_target_id = billVO.getStringValue("target_name"); //指标id!
+			String str_target_name = billVO.getStringViewValue("target_name"); //指标名称!
+
+			HashMap parMap = new HashMap(); //
+			parMap.put("corpid", str_corpId); //
+			parMap.put("corpname", str_corpName); //
+			parMap.put("instyear", str_instyear); //
+			parMap.put("cyclevalue", str_cyclevalue); //
+			parMap.put("target_id", str_target_id); //
+			parMap.put("target_name", str_target_name); //
+
+			IPushGRCServiceIfc service = (IPushGRCServiceIfc) UIUtil.lookUpRemoteService(IPushGRCServiceIfc.class); //
+			String str_instid = service.createTargetInstance(parMap); //
+			billList_inst.QueryDataByCondition("id='" + str_instid + "'"); //
+			billList_inst_par.QueryDataByCondition("target_instid='" + str_instid + "'"); //
+			MessageBox.show(this, "创建成功!!"); //
+		} catch (Exception _ex) {
+			MessageBox.showException(this, _ex); //
+		}
+	}
+
+	/**
+	 * 进行演算!!!
+	 */
+	private void onCompute() {
+		BillVO billVO = billList_inst.getSelectedBillVO(); ////
+		if (billVO == null) {
+			MessageBox.showSelectOne(this); //
+			return; //
+		}
+
+		BillVO vo = billList_inst.getSelectedBillVO();
+		String tname = vo.getStringValue("target_name");
+		String form = "";
+		try {
+			form = UIUtil.getStringValueByDS(null, "select computecls from cmp_target where name = '" + tname + "'");
+		} catch (Exception e) {
+			MessageBox.showException(this, e);
+		}
+		try {
+			if (form == null || form.equals("")) {
+				MessageBox.show(this, "此指标的计算公式为空!");
+				return;
+			}
+			billList_inst.setValueAt(new StringItemVO(new ComputeTargetByFormula(billList_inst_par).getValue(form)), billList_inst.getSelectedRow(), "targetvalue");
+		} catch (Exception e) {
+			MessageBox.showException(this, new Throwable(e));
+		}
+
+		//		final String str_instid = billVO.getStringValue("id"); //
+		//		String str_targetvalue = billVO.getStringValue("targetvalue"); //
+		//		if (str_targetvalue != null && !str_targetvalue.trim().equals("")) {
+		//			if (!MessageBox.confirm(this, "该指标已有值,是否重新计算?")) {
+		//				return; //
+		//			}
+		//		}
+		//
+		//		new SplashWindow(this, "真在进行计算,请等待...", new AbstractAction() {
+		//			public void actionPerformed(ActionEvent e) {
+		//				try {
+		//					doCompute(str_instid); //
+		//				} catch (Exception _ex) {
+		//					SplashWindow.closeSplashWindow(); //
+		//					MessageBox.showException(CmpTargetInstWKPanel.this, _ex); //
+		//				}
+		//			}
+		//		}); //
+	}
+
+	private void doCompute(String _instid) throws Exception {
+		IPushGRCServiceIfc service = (IPushGRCServiceIfc) UIUtil.lookUpRemoteService(IPushGRCServiceIfc.class); //
+		String str_returnValue = service.execTargetCompute(_instid); //
+		billList_inst.setValueAt(new StringItemVO(str_returnValue), billList_inst.getSelectedRow(), "targetvalue"); //
+		MessageBox.show(this, "指标演算成功,计算值是[" + str_returnValue + "]!"); //
+	}
+
+	/**
+	 * 从一个Excel中导入指标因大的实际值!!!
+	 */
+	private void onImportParValueFromExcel() {
+		//		MessageBox.show(this, "从Excel文件中导入指标因子值,需要指定Excel模板!"); //
+	}
+
+	public void onBillListSelectChanged(BillListSelectionEvent _event) {
+		billList_inst_par.clearTable(); //
+		BillVO billVO = _event.getCurrSelectedVO(); //
+		if (billVO == null) {
+			return;
+		}
+
+		String str_id = billVO.getStringValue("id"); //
+		billList_inst_par.QueryDataByCondition("target_instid='" + str_id + "'"); //
+
+	}
+
+	public void onSystemImport() {
+		BillVO billVO = billList_inst.getSelectedBillVO(); ////
+		if (billVO == null) {
+			MessageBox.showSelectOne(this); //
+			return; //
+		}
+		try {
+			systemImport(billVO.getStringValue("target_id"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void systemImport(String targetids) throws Exception {
+		//		IPushGRCServiceIfc service = (IPushGRCServiceIfc) UIUtil.lookUpRemoteService(IPushGRCServiceIfc.class); //
+		//		HashMap map = new HashMap();
+		//		map.put("corpid", UIUtil.getLoginUserBLDeptIDs()[0]);
+		//		map.put("corpname", ClientEnvironment.getLoginUserDeptName());
+		//		service.systemImport(map, targetids);
+		String targetName = "事件发生发现时间间隔"; //这个ID是用户选择的系统抽取的指标。
+		String classPath = UIUtil.getStringValueByDS(null, "select computecls from CMP_TARGET where name = '" + targetName + "'");
+		Object obj = Class.forName(classPath).newInstance();
+		if (obj instanceof TargetSystemImportIFC) {
+			TargetSystemImportIFC ifc = (TargetSystemImportIFC) obj;
+			ifc.compute();
+		} else {
+			MessageBox.show(this, "配置问题,请实现接口TargetSystemImportIFC!");
+		}
+	}
+}

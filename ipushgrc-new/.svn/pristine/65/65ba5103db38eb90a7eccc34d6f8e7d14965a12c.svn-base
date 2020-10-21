@@ -1,0 +1,124 @@
+package com.pushworld.icheck.ui.p080;
+
+import cn.com.infostrategy.ui.common.UIUtil;
+
+public class ZZLUIUtil {
+	public static String getnamesSplit(String nameids){
+		String names=null;
+		if(nameids!=null){
+		if(nameids.contains(";")){
+		nameids=nameids.replace(";", ",");
+		nameids=nameids.substring(1,nameids.length()-1);
+		}
+		StringBuilder  sb=new StringBuilder();
+		try {
+			String [] name=UIUtil.getStringArrayFirstColByDS(null,"select name from pub_user where id in("+nameids+")");
+			for(int i=0;i<name.length;i++){
+				sb.append(name[i].toString());
+				if(i==name.length-1){
+				sb.append("");
+				}else{
+					sb.append("，");
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		names=sb.toString();
+		}
+		return names;
+	}
+	public static String getUserName(String nameid){
+		String name=null;
+		try {
+			String  username=UIUtil.getStringValueByDS(null,"select name from pub_user where id in("+nameid+")");
+			name=username.toString();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return name;
+	}
+	public static String getDeptName(String nameid){
+		String name=null;
+		try {
+			String  username=UIUtil.getStringValueByDS(null,"select name from pub_corp_dept where id in("+nameid+")");
+			name=username.toString();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return name;
+	}
+	public static String [] getTeamNames(String nameids){
+		String [] names=null;
+		nameids=nameids.replace(";",",");
+		nameids=nameids.substring(1,nameids.length()-1);
+		try {
+			names=UIUtil.getStringArrayFirstColByDS(null, "select name from pub_user where id in("+nameids+")");
+		}  catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return names;
+	}
+	public static String numTurnStringNum(int a){
+		String num=null;
+		String si=String.valueOf(a);
+		 String []aa={"","十","百","千","万","十万","百万","千万","亿","十亿"};
+		 String []bb={"一","二","三","四","五","六","七","八","九"};
+		 char[] ch=si.toCharArray();
+		 int maxindex=ch.length;
+		 if(maxindex==2){
+		 for(int i=maxindex-1,j=0;i>=0;i--,j++){
+		 if(ch[j]!=48){
+		 if(j==0&&ch[j]==49){
+			 num=aa[i];
+		 }else{
+			 num=bb[ch[j]-49]+aa[i];
+		 }
+		 }
+		 }
+		 }else{
+		 for(int i=maxindex-1,j=0;i>=0;i--,j++){
+		 if(ch[j]!=48){
+			 num=bb[ch[j]-49]+aa[i];
+		 }
+		 }
+		 }
+		return num;
+	}
+	public static String getdeptsSplit(String nameids){
+		String names=null;
+		if(nameids.contains(";")){
+		nameids=nameids.replace(";", ",");
+		nameids=nameids.substring(1,nameids.length()-1);
+		}
+		StringBuilder  sb=new StringBuilder();
+		try {
+			String [] name=UIUtil.getStringArrayFirstColByDS(null,"select name from pub_corp_dept where id in("+nameids+")");
+			for(int i=0;i<name.length;i++){
+				sb.append(name[i].toString());
+				if(i==name.length-1){
+					
+				}else{
+					sb.append("，");	
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		names=sb.toString();
+		return names;
+	}
+	public static String getTimeString(String time){
+		String newtime=null;
+		String str[]=time.split("-");
+	    newtime=str[0].toString()+"年"+str[1]+"月"+str[2]+"日";
+		return newtime;
+	}
+
+}

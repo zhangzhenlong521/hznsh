@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_wardevent_user">
+  <col name="id">1</col>
+  <col name="wardorevent">违规事件</col>
+  <col name="cmp_wardevent_id">2</col>
+  <col name="usercode">bjcheck</col>
+  <col name="username">3</col>
+  <col name="usersex">男</col>
+  <col name="userdegreen">高中</col>
+  <col name="userage">21-30岁</col>
+  <col name="userworkage">5年以下</col>
+  <col name="userstate">主动违规</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_wardevent_user">
+  <col name="id">3</col>
+  <col name="wardorevent">违规事件</col>
+  <col name="cmp_wardevent_id">3</col>
+  <col name="usercode">bjhz</col>
+  <col name="username">6</col>
+  <col name="usersex">男</col>
+  <col name="userdegreen">博士</col>
+  <col name="userage">21-30岁</col>
+  <col name="userworkage">10-15年</col>
+  <col name="userstate">被动涉及</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_wardevent_user">
+  <col name="id">5</col>
+  <col name="wardorevent">违规事件</col>
+  <col name="cmp_wardevent_id">3</col>
+  <col name="usercode">bjjcleader</col>
+  <col name="username">7</col>
+  <col name="usersex">女</col>
+  <col name="userdegreen">硕士</col>
+  <col name="userage">21-30岁</col>
+  <col name="userworkage">10-15年</col>
+  <col name="userstate">主动违规</col>
+</record>
+
+<!--4-->
+<record tabname="cmp_wardevent_user">
+  <col name="id">7</col>
+  <col name="wardorevent">违规事件</col>
+  <col name="cmp_wardevent_id">3</col>
+  <col name="usercode">bjhgleader</col>
+  <col name="username">5</col>
+  <col name="usersex">男</col>
+  <col name="userdegreen">本科</col>
+  <col name="userage">31-40岁</col>
+  <col name="userworkage">5-10年</col>
+  <col name="userstate">被动涉及</col>
+</record>
+
+</root>

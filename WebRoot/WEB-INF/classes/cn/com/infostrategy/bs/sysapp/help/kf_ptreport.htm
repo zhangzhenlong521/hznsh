@@ -1,0 +1,221 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>平台报表</title>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+.tabstyle {  border-collapse:   collapse; font-size: 12px; };
+.tdstyle    {  border:   solid   1px   #888888; font-size: 12px; };
+</style>
+</head>
+
+<body>
+普信平台一般提供4种模式的报表：一是列表模式的明细查询报表，二是基于可钻取网络及图表的分组统计报表，三是基于自由格式的Excel模板报表，四是基于固定Word模板或Html的报表<br><br>
+
+<span style="color:#0000FF"><strong>－)列表模式的查询报表</strong></span><br>
+<table  width="60%" class="tabstyle"  cellspacing=0 cellpadding=5>
+  <tr bgcolor="#DCFAC8">
+    <td class="tdstyle" align="center">序号</td>
+    <td class="tdstyle" align="center">功能</td>
+    <td class="tdstyle" align="center">说明</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">1</td>
+    <td class="tdstyle">可自由设置列</td>
+    <td class="tdstyle">基本需求 , 即可以自由定义列</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">2</td>
+    <td class="tdstyle">可以设置查询条件</td>
+    <td class="tdstyle">自由定义查询条件</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">3</td>
+    <td class="tdstyle">可以设置查询 SQL</td>
+    <td class="tdstyle">查询逻辑可以直接由某个 SQL 生成</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">4</td>
+    <td class="tdstyle">指定特定查询类</td>
+    <td class="tdstyle">如果 SQL 搞不定，则定义一个类 , 由类搞定</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">5</td>
+    <td class="tdstyle">列表可设置表宽与顺序</td>
+    <td class="tdstyle">可以设置表格各列的宽度及之间顺序</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">6</td>
+    <td class="tdstyle">可以将结果导出 Excel</td>
+    <td class="tdstyle">将列表数据导出成 Excel 文件</td>
+  </tr>
+</table>
+
+<br><br>
+<span style="color:#0000FF"><strong>二)统计报表</strong></span><br>
+<table width="60%" class="tabstyle"  cellspacing=0 cellpadding=5>
+  <tr bgcolor="#DCFAC8">
+    <td class="tdstyle" align="center">序号</td>
+    <td class="tdstyle" align="center">功能</td>
+    <td class="tdstyle" align="center">说明</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">1</td>
+    <td class="tdstyle">可以指定维度 , 支持表头超过 2 个以上的维护</td>
+    <td class="tdstyle">维度是直接设置的 , 无论是行头还是列头 , 都可以支持 2 个以上的维护</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">2</td>
+    <td class="tdstyle">基于已有维度自由配置表格展示</td>
+    <td class="tdstyle">各个维度是可以任意相互转换的 , 即既可以放在行头上 , 也可以放在列头上</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">3</td>
+    <td class="tdstyle">锁定某一个或多个值进行钻取</td>
+    <td class="tdstyle">锁定一个或多个格子中的值 , 点击右键 , 可以进行有逐层钻取 , 然后还可以自由回到上一层</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">4</td>
+    <td class="tdstyle">锁定一个维护进行过滤</td>
+    <td class="tdstyle">一个维护上的值太多后 , 可以点击维度右键 , 进行过滤</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">5</td>
+    <td class="tdstyle">锁定某一个或多个值进行穿透明细</td>
+    <td class="tdstyle">点击某一个格子中的值 , 直接穿透查看其明细组成</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">6</td>
+    <td class="tdstyle">指定查询逻辑之 SQL</td>
+    <td class="tdstyle">查询逻辑可以是 SQL, 只需配置一个 SQL 即可</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">7</td>
+    <td class="tdstyle">指定查询逻辑之类名</td>
+    <td class="tdstyle">SQL 搞不定的 , 定义一个类 , 使用类搞定</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">8</td>
+    <td class="tdstyle">可以增加新的维度</td>
+    <td class="tdstyle">原来维度不足时 , 可以新增字段 , 然后将该之字段加入成新的维度</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">9</td>
+    <td class="tdstyle">可预设维度</td>
+    <td class="tdstyle">将最常见的维度预先存储起来 , 形成简洁快速查询模式 , 然后可以切换成自由定义维度模式</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">10</td>
+    <td class="tdstyle">图表可持柱形图 / 曲线图 / 饼图三种风格</td>
+    <td class="tdstyle">每个图表都是柱形图 , 曲线图 , 饼图三种形式 , 可以直接相互转换</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">11</td>
+    <td class="tdstyle">图表支持 2D 与 3D 风格</td>
+    <td class="tdstyle">柱形图与饼图都有 2D 与 3D 风格 ,3D 会更漂亮些 , 但数据量多时太挤了</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">12</td>
+    <td class="tdstyle">图表支持行数据 / 列数据 / 行列数据</td>
+    <td class="tdstyle">可以直接选中某一行或某一列查看对应的图表 , 然后可以多选若干行与列进行比较查看</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">13</td>
+    <td class="tdstyle">图表支持上下布局与左右布局</td>
+    <td class="tdstyle">图与表可以呈上下摆列或左右排列</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">14</td>
+    <td class="tdstyle">图表可放大</td>
+    <td class="tdstyle">将某个图满屏放大显示，形成最佳视觉冲击力</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">15</td>
+    <td class="tdstyle">图表可拆分</td>
+    <td class="tdstyle">维度数据太多时 , 图表会拥挤的没法看 , 需要拆分显示</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">16</td>
+    <td class="tdstyle">图表可 X/Y 轴转换</td>
+    <td class="tdstyle">行与列有时不符要求 , 可立即进行转 90 度的互换</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">17</td>
+    <td class="tdstyle">图可以导出 Excel,Word,Html 多种格式</td>
+    <td class="tdstyle">图与表可以直接导出 Word,Excel,Html 三种格式</td>
+  </tr>
+</table>
+
+<br><br>
+<span style="color:#0000FF"><strong>三)自由格式 Excel 报表</strong></span><br>
+<table width="60%" class="tabstyle"  cellspacing=0 cellpadding=5>
+  <tr bgcolor="#DCFAC8">
+    <td class="tdstyle" align="center">序号</td>
+    <td class="tdstyle" align="center">功能</td>
+    <td class="tdstyle" align="center">说明</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">1</td>
+    <td class="tdstyle">可自由定义 Excel 模板</td>
+    <td class="tdstyle">Excel 模板可以直接在线配置 , 画出满足格式要求的报表</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">2</td>
+    <td class="tdstyle">Excel 模板支持合并 , 拆分功能</td>
+    <td class="tdstyle">可以像 Excel 一样将一些行与列进行合并或拆分 !</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">3</td>
+    <td class="tdstyle">Excel 模板支持行高，列宽，颜色，字体，上下左右排序等 设置</td>
+    <td class="tdstyle">可以改变行高 , 列宽 , 前景与背景颜色，字体 , 控件类型 , 上下排序，左右排序等配置 ,</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">4</td>
+    <td class="tdstyle">可设置 CellKey ，定义函数抽取数据</td>
+    <td class="tdstyle">定义 Cellkey, 通过函数来调用赋值</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">5</td>
+    <td class="tdstyle">有编辑联动公式</td>
+    <td class="tdstyle">某些项变化值后 , 另一个项的值需要联动变化</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">6</td>
+    <td class="tdstyle">定义宏代码 , 查询时进行替换</td>
+    <td class="tdstyle">定义特定宏代码 , 然后查询时进行替换处理 , 比如 [ 制单人 ],[ 制单机构 ]</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">7</td>
+    <td class="tdstyle">可导出 Excel</td>
+    <td class="tdstyle">将报表数据导出成 Excel</td>
+  </tr>
+</table>
+
+<br><br>
+<span style="color:#0000FF"><strong>四)Word/Html 固定格式报表</strong></span><br>
+<table width="60%"  class="tabstyle" cellspacing=0 cellpadding=5>
+  <tr bgcolor="#DCFAC8">
+    <td class="tdstyle" align="center">序号</td>
+    <td class="tdstyle" align="center">功能</td>
+    <td class="tdstyle" align="center">说明</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">1</td>
+    <td class="tdstyle">可定义 Word 模板</td>
+    <td class="tdstyle">定义一个 Word 模板 , 输出时就是这个样子</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">2</td>
+    <td class="tdstyle">定义宏代码 , 生成时可替换</td>
+    <td class="tdstyle">Word 中指定宏代码 , 运行时替换成实际数据</td>
+  </tr>
+  <tr>
+    <td class="tdstyle">3</td>
+    <td class="tdstyle">可在在线直接上传新的模板文件</td>
+    <td class="tdstyle">可在线直接上传新的报表模板</td>
+  </tr>
+</table>
+
+<br><br><br>
+</body>
+</html>

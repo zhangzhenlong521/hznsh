@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_bom_b">
+  <col name="id">1</col>
+  <col name="bomid">5</col>
+  <col name="x">424</col>
+  <col name="y">378</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">高管层责任</col>
+  <col name="itemname">高管层责任</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%21")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--2-->
+<record tabname="pub_bom_b">
+  <col name="id">2</col>
+  <col name="bomid">5</col>
+  <col name="x">531</col>
+  <col name="y">379</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">政策与目标管理</col>
+  <col name="itemname">政策与目标管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%22")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--3-->
+<record tabname="pub_bom_b">
+  <col name="id">4</col>
+  <col name="bomid">5</col>
+  <col name="x">316</col>
+  <col name="y">423</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">企业文化</col>
+  <col name="itemname">企业文化</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%25")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--4-->
+<record tabname="pub_bom_b">
+  <col name="id">5</col>
+  <col name="bomid">5</col>
+  <col name="x">424</col>
+  <col name="y">423</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">组织结构</col>
+  <col name="itemname">组织结构</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%24")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--5-->
+<record tabname="pub_bom_b">
+  <col name="id">6</col>
+  <col name="bomid">5</col>
+  <col name="x">531</col>
+  <col name="y">423</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">人力资源</col>
+  <col name="itemname">人力资源</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%26")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--6-->
+<record tabname="pub_bom_b">
+  <col name="id">7</col>
+  <col name="bomid">5</col>
+  <col name="x">423</col>
+  <col name="y">232</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">信息交流沟通</col>
+  <col name="itemname">信息交流沟通</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%10")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--7-->
+<record tabname="pub_bom_b">
+  <col name="id">8</col>
+  <col name="bomid">5</col>
+  <col name="x">372</col>
+  <col name="y">267</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">文件控制</col>
+  <col name="itemname">文件控制</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%11")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--8-->
+<record tabname="pub_bom_b">
+  <col name="id">9</col>
+  <col name="bomid">5</col>
+  <col name="x">476</col>
+  <col name="y">267</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">记录/档案控制</col>
+  <col name="itemname">记录/档案控制</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%52")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--9-->
+<record tabname="pub_bom_b">
+  <col name="id">10</col>
+  <col name="bomid">5</col>
+  <col name="x">193</col>
+  <col name="y">44</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">设计开发</col>
+  <col name="itemname">设计开发</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%8")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--10-->
+<record tabname="pub_bom_b">
+  <col name="id">11</col>
+  <col name="bomid">5</col>
+  <col name="x">194</col>
+  <col name="y">80</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">渠道管理</col>
+  <col name="itemname">渠道管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%40")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--11-->
+<record tabname="pub_bom_b">
+  <col name="id">12</col>
+  <col name="bomid">5</col>
+  <col name="x">194</col>
+  <col name="y">116</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">法律事务</col>
+  <col name="itemname">法律事务</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%42")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--12-->
+<record tabname="pub_bom_b">
+  <col name="id">13</col>
+  <col name="bomid">5</col>
+  <col name="x">296</col>
+  <col name="y">44</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">采购及外包控制</col>
+  <col name="itemname">采购及外包控制</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%35")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--13-->
+<record tabname="pub_bom_b">
+  <col name="id">14</col>
+  <col name="bomid">5</col>
+  <col name="x">296</col>
+  <col name="y">80</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">授信业务</col>
+  <col name="itemname">授信业务</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%38")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--14-->
+<record tabname="pub_bom_b">
+  <col name="id">15</col>
+  <col name="bomid">5</col>
+  <col name="x">295</col>
+  <col name="y">116</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">安全保卫</col>
+  <col name="itemname">安全保卫</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%43")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--15-->
+<record tabname="pub_bom_b">
+  <col name="id">16</col>
+  <col name="bomid">5</col>
+  <col name="x">398</col>
+  <col name="y">44</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">财务管理</col>
+  <col name="itemname">财务管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%36")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--16-->
+<record tabname="pub_bom_b">
+  <col name="id">21</col>
+  <col name="bomid">5</col>
+  <col name="x">398</col>
+  <col name="y">80</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">柜台及会计结算</col>
+  <col name="itemname">柜台及会计结算</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%41")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--17-->
+<record tabname="pub_bom_b">
+  <col name="id">22</col>
+  <col name="bomid">5</col>
+  <col name="x">398</col>
+  <col name="y">116</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">后勤管理</col>
+  <col name="itemname">后勤管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%44")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--18-->
+<record tabname="pub_bom_b">
+  <col name="id">23</col>
+  <col name="bomid">5</col>
+  <col name="x">500</col>
+  <col name="y">44</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">资金业务</col>
+  <col name="itemname">资金业务</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%37")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--19-->
+<record tabname="pub_bom_b">
+  <col name="id">24</col>
+  <col name="bomid">5</col>
+  <col name="x">500</col>
+  <col name="y">80</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">中间业务</col>
+  <col name="itemname">中间业务</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%39")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--20-->
+<record tabname="pub_bom_b">
+  <col name="id">25</col>
+  <col name="bomid">5</col>
+  <col name="x">500</col>
+  <col name="y">116</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">工会管理</col>
+  <col name="itemname">工会管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%45")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--21-->
+<record tabname="pub_bom_b">
+  <col name="id">26</col>
+  <col name="bomid">5</col>
+  <col name="x">602</col>
+  <col name="y">44</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">应急管理</col>
+  <col name="itemname">应急管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%48")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--22-->
+<record tabname="pub_bom_b">
+  <col name="id">27</col>
+  <col name="bomid">5</col>
+  <col name="x">602</col>
+  <col name="y">80</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">系统控制</col>
+  <col name="itemname">系统控制</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%47")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--23-->
+<record tabname="pub_bom_b">
+  <col name="id">28</col>
+  <col name="bomid">5</col>
+  <col name="x">602</col>
+  <col name="y">116</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">社会责任</col>
+  <col name="itemname">社会责任</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%46")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--24-->
+<record tabname="pub_bom_b">
+  <col name="id">29</col>
+  <col name="bomid">5</col>
+  <col name="x">13</col>
+  <col name="y">214</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">风险识别与评估</col>
+  <col name="itemname">风险识别与评估</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%7")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--25-->
+<record tabname="pub_bom_b">
+  <col name="id">30</col>
+  <col name="bomid">5</col>
+  <col name="x">116</col>
+  <col name="y">214</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">市场风险</col>
+  <col name="itemname">市场风险</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%27")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--26-->
+<record tabname="pub_bom_b">
+  <col name="id">31</col>
+  <col name="bomid">5</col>
+  <col name="x">218</col>
+  <col name="y">214</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">信用风险</col>
+  <col name="itemname">信用风险</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%28")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--27-->
+<record tabname="pub_bom_b">
+  <col name="id">32</col>
+  <col name="bomid">5</col>
+  <col name="x">12</col>
+  <col name="y">250</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">操作风险</col>
+  <col name="itemname">操作风险</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%29")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--28-->
+<record tabname="pub_bom_b">
+  <col name="id">33</col>
+  <col name="bomid">5</col>
+  <col name="x">115</col>
+  <col name="y">250</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">合规风险</col>
+  <col name="itemname">合规风险</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%30")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--29-->
+<record tabname="pub_bom_b">
+  <col name="id">34</col>
+  <col name="bomid">5</col>
+  <col name="x">218</col>
+  <col name="y">250</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">流动性风险</col>
+  <col name="itemname">流动性风险</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%31")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--30-->
+<record tabname="pub_bom_b">
+  <col name="id">35</col>
+  <col name="bomid">5</col>
+  <col name="x">12</col>
+  <col name="y">286</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">风险报告</col>
+  <col name="itemname">风险报告</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%32")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--31-->
+<record tabname="pub_bom_b">
+  <col name="id">36</col>
+  <col name="bomid">5</col>
+  <col name="x">116</col>
+  <col name="y">286</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">风险应对</col>
+  <col name="itemname">风险应对</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%33")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--32-->
+<record tabname="pub_bom_b">
+  <col name="id">37</col>
+  <col name="bomid">5</col>
+  <col name="x">218</col>
+  <col name="y">286</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">外规识别与管理</col>
+  <col name="itemname">外规识别与管理</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%34")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--33-->
+<record tabname="pub_bom_b">
+  <col name="id">38</col>
+  <col name="bomid">5</col>
+  <col name="x">630</col>
+  <col name="y">229</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">监督、检查</col>
+  <col name="itemname">监督、检查</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%9")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--34-->
+<record tabname="pub_bom_b">
+  <col name="id">40</col>
+  <col name="bomid">5</col>
+  <col name="x">732</col>
+  <col name="y">229</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">体系评价</col>
+  <col name="itemname">体系评价</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%50")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--35-->
+<record tabname="pub_bom_b">
+  <col name="id">41</col>
+  <col name="bomid">5</col>
+  <col name="x">630</col>
+  <col name="y">273</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">违规处置和改进措施</col>
+  <col name="itemname">违规处置和改进措施</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%49")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--36-->
+<record tabname="pub_bom_b">
+  <col name="id">42</col>
+  <col name="bomid">5</col>
+  <col name="x">732</col>
+  <col name="y">273</col>
+  <col name="width">104</col>
+  <col name="height">36</col>
+  <col name="itemkey">管理评审</col>
+  <col name="itemname">管理评审</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByIcsysPanel("ictypeid%51")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--37-->
+<record tabname="pub_bom_b">
+  <col name="id">43</col>
+  <col name="bomid">3</col>
+  <col name="x">28</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">公司银行部</col>
+  <col name="itemname">公司银行部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("公司银行部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--38-->
+<record tabname="pub_bom_b">
+  <col name="id">44</col>
+  <col name="bomid">3</col>
+  <col name="x">92</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">个人银行部</col>
+  <col name="itemname">个人银行部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("个人银行部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--39-->
+<record tabname="pub_bom_b">
+  <col name="id">45</col>
+  <col name="bomid">3</col>
+  <col name="x">158</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">资金运营部</col>
+  <col name="itemname">资金运营部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("资金运营部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--40-->
+<record tabname="pub_bom_b">
+  <col name="id">46</col>
+  <col name="bomid">3</col>
+  <col name="x">224</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">授信审批中心</col>
+  <col name="itemname">授信审批中心</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("授信审批中心")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--41-->
+<record tabname="pub_bom_b">
+  <col name="id">47</col>
+  <col name="bomid">3</col>
+  <col name="x">272</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">授信监管部</col>
+  <col name="itemname">授信监管部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("授信监管部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--42-->
+<record tabname="pub_bom_b">
+  <col name="id">48</col>
+  <col name="bomid">3</col>
+  <col name="x">319</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">计划财务部</col>
+  <col name="itemname">计划财务部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("计划财务部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--43-->
+<record tabname="pub_bom_b">
+  <col name="id">49</col>
+  <col name="bomid">3</col>
+  <col name="x">366</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">会计结算部</col>
+  <col name="itemname">会计结算部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("会计结算部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--44-->
+<record tabname="pub_bom_b">
+  <col name="id">50</col>
+  <col name="bomid">3</col>
+  <col name="x">413</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">事后监督中心</col>
+  <col name="itemname">事后监督中心</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("事后监督中心")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--45-->
+<record tabname="pub_bom_b">
+  <col name="id">51</col>
+  <col name="bomid">3</col>
+  <col name="x">470</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">办公室</col>
+  <col name="itemname">办公室</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("办公室")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--46-->
+<record tabname="pub_bom_b">
+  <col name="id">52</col>
+  <col name="bomid">3</col>
+  <col name="x">517</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">信息科技部</col>
+  <col name="itemname">信息科技部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("信息科技部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--47-->
+<record tabname="pub_bom_b">
+  <col name="id">53</col>
+  <col name="bomid">3</col>
+  <col name="x">564</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">人力资源部</col>
+  <col name="itemname">人力资源部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("人力资源部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--48-->
+<record tabname="pub_bom_b">
+  <col name="id">55</col>
+  <col name="bomid">3</col>
+  <col name="x">611</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">安全保卫部</col>
+  <col name="itemname">安全保卫部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("安全保卫部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--49-->
+<record tabname="pub_bom_b">
+  <col name="id">56</col>
+  <col name="bomid">3</col>
+  <col name="x">676</col>
+  <col name="y">200</col>
+  <col name="width">55</col>
+  <col name="height">125</col>
+  <col name="itemkey">合规与风险管理部</col>
+  <col name="itemname">合规与风险管理部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("合规与风险管理部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--50-->
+<record tabname="pub_bom_b">
+  <col name="id">57</col>
+  <col name="bomid">3</col>
+  <col name="x">753</col>
+  <col name="y">200</col>
+  <col name="width">45</col>
+  <col name="height">125</col>
+  <col name="itemkey">内审部</col>
+  <col name="itemname">内审部</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname">com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel("内审部")</col>
+  <col name="bindtype">Class类</col>
+  <col name="bindmenu"></col>
+  <col name="loadtype"></col>
+</record>
+
+<!--51-->
+<record tabname="pub_bom_b">
+  <col name="id">80</col>
+  <col name="bomid">1</col>
+  <col name="x">35</col>
+  <col name="y">113</col>
+  <col name="width">171</col>
+  <col name="height">39</col>
+  <col name="itemkey">流程编制</col>
+  <col name="itemname">流程编制</col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">83</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--52-->
+<record tabname="pub_bom_b">
+  <col name="id">81</col>
+  <col name="bomid">1</col>
+  <col name="x">35</col>
+  <col name="y">175</col>
+  <col name="width">170</col>
+  <col name="height">41</col>
+  <col name="itemkey">风险评估</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">91</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--53-->
+<record tabname="pub_bom_b">
+  <col name="id">82</col>
+  <col name="bomid">1</col>
+  <col name="x">36</col>
+  <col name="y">240</col>
+  <col name="width">168</col>
+  <col name="height">38</col>
+  <col name="itemkey">合规检查</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">101</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--54-->
+<record tabname="pub_bom_b">
+  <col name="id">92</col>
+  <col name="bomid">1</col>
+  <col name="x">34</col>
+  <col name="y">301</col>
+  <col name="width">169</col>
+  <col name="height">40</col>
+  <col name="itemkey">合规事件</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">108</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--55-->
+<record tabname="pub_bom_b">
+  <col name="id">93</col>
+  <col name="bomid">1</col>
+  <col name="x">33</col>
+  <col name="y">366</col>
+  <col name="width">169</col>
+  <col name="height">37</col>
+  <col name="itemkey">岗职梳理</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">63</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--56-->
+<record tabname="pub_bom_b">
+  <col name="id">94</col>
+  <col name="bomid">1</col>
+  <col name="x">540</col>
+  <col name="y">111</col>
+  <col name="width">170</col>
+  <col name="height">40</col>
+  <col name="itemkey">流程一眼清</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">4617</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--57-->
+<record tabname="pub_bom_b">
+  <col name="id">95</col>
+  <col name="bomid">1</col>
+  <col name="x">540</col>
+  <col name="y">173</col>
+  <col name="width">173</col>
+  <col name="height">38</col>
+  <col name="itemkey">风险一眼清</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">4626</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--58-->
+<record tabname="pub_bom_b">
+  <col name="id">96</col>
+  <col name="bomid">1</col>
+  <col name="x">541</col>
+  <col name="y">238</col>
+  <col name="width">169</col>
+  <col name="height">36</col>
+  <col name="itemkey">检查一眼清</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">4641</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--59-->
+<record tabname="pub_bom_b">
+  <col name="id">97</col>
+  <col name="bomid">1</col>
+  <col name="x">539</col>
+  <col name="y">297</col>
+  <col name="width">170</col>
+  <col name="height">39</col>
+  <col name="itemkey">事情一眼清</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">4650</col>
+  <col name="loadtype"></col>
+</record>
+
+<!--60-->
+<record tabname="pub_bom_b">
+  <col name="id">98</col>
+  <col name="bomid">1</col>
+  <col name="x">538</col>
+  <col name="y">363</col>
+  <col name="width">173</col>
+  <col name="height">36</col>
+  <col name="itemkey">岗职一眼清</col>
+  <col name="itemname"></col>
+  <col name="bindbomcode"></col>
+  <col name="bindclassname"></col>
+  <col name="bindtype">菜单</col>
+  <col name="bindmenu">4594</col>
+  <col name="loadtype"></col>
+</record>
+
+</root>

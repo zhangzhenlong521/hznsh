@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_workflowassign">
+  <col name="id">1</col>
+  <col name="billtypecode">绩效考评</col>
+  <col name="busitypecode">打分修改申请</col>
+  <col name="processid">21</col>
+  <col name="accrmodel"></col>
+  <col name="htmlreport"></col>
+  <col name="wordreport"></col>
+  <col name="openmsgroles"></col>
+  <col name="viewlastmsgroles"></col>
+  <col name="flowintercept"></col>
+  <col name="flowintercept_ui"></col>
+  <col name="descr"></col>
+</record>
+
+</root>

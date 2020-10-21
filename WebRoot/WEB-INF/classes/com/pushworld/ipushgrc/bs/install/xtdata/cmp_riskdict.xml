@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_riskdict">
+  <col name="id">1</col>
+  <col name="name">战略风险</col>
+  <col name="parentid"></col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="cmp_riskdict">
+  <col name="id">2</col>
+  <col name="name">信用风险</col>
+  <col name="parentid"></col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="cmp_riskdict">
+  <col name="id">3</col>
+  <col name="name">市场风险</col>
+  <col name="parentid"></col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--4-->
+<record tabname="cmp_riskdict">
+  <col name="id">4</col>
+  <col name="name">流动性风险</col>
+  <col name="parentid"></col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--5-->
+<record tabname="cmp_riskdict">
+  <col name="id">5</col>
+  <col name="name">合规风险</col>
+  <col name="parentid"></col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--6-->
+<record tabname="cmp_riskdict">
+  <col name="id">6</col>
+  <col name="name">操作风险</col>
+  <col name="parentid"></col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--7-->
+<record tabname="cmp_riskdict">
+  <col name="id">7</col>
+  <col name="name">计划与资源风险</col>
+  <col name="parentid">1</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--8-->
+<record tabname="cmp_riskdict">
+  <col name="id">8</col>
+  <col name="name">重大决策风险</col>
+  <col name="parentid">1</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--9-->
+<record tabname="cmp_riskdict">
+  <col name="id">9</col>
+  <col name="name">收购合并与分拆交易风险</col>
+  <col name="parentid">1</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--10-->
+<record tabname="cmp_riskdict">
+  <col name="id">10</col>
+  <col name="name">市场变化风险</col>
+  <col name="parentid">1</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--11-->
+<record tabname="cmp_riskdict">
+  <col name="id">11</col>
+  <col name="name">违约风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--12-->
+<record tabname="cmp_riskdict">
+  <col name="id">12</col>
+  <col name="name">清算风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">12</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--13-->
+<record tabname="cmp_riskdict">
+  <col name="id">13</col>
+  <col name="name">利率风险</col>
+  <col name="parentid">3</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--14-->
+<record tabname="cmp_riskdict">
+  <col name="id">14</col>
+  <col name="name">汇率风险</col>
+  <col name="parentid">3</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--15-->
+<record tabname="cmp_riskdict">
+  <col name="id">15</col>
+  <col name="name">商品价格风险</col>
+  <col name="parentid">3</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--16-->
+<record tabname="cmp_riskdict">
+  <col name="id">16</col>
+  <col name="name">股票价格风险</col>
+  <col name="parentid">3</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--17-->
+<record tabname="cmp_riskdict">
+  <col name="id">17</col>
+  <col name="name">监管风险</col>
+  <col name="parentid">5</col>
+  <col name="seq">17</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--18-->
+<record tabname="cmp_riskdict">
+  <col name="id">18</col>
+  <col name="name">舞弊风险</col>
+  <col name="parentid">5</col>
+  <col name="seq">18</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--19-->
+<record tabname="cmp_riskdict">
+  <col name="id">19</col>
+  <col name="name">人员风险</col>
+  <col name="parentid">6</col>
+  <col name="seq">19</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--20-->
+<record tabname="cmp_riskdict">
+  <col name="id">20</col>
+  <col name="name">内部程序风险</col>
+  <col name="parentid">6</col>
+  <col name="seq">20</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--21-->
+<record tabname="cmp_riskdict">
+  <col name="id">21</col>
+  <col name="name">信息技术/信息系统风险</col>
+  <col name="parentid">6</col>
+  <col name="seq">21</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--22-->
+<record tabname="cmp_riskdict">
+  <col name="id">22</col>
+  <col name="name">外部事件风险</col>
+  <col name="parentid">6</col>
+  <col name="seq">22</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--23-->
+<record tabname="cmp_riskdict">
+  <col name="id">23</col>
+  <col name="name">法律风险</col>
+  <col name="parentid">6</col>
+  <col name="seq">23</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--24-->
+<record tabname="cmp_riskdict">
+  <col name="id">61</col>
+  <col name="name">声誉风险</col>
+  <col name="parentid">1</col>
+  <col name="seq">61</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+</root>

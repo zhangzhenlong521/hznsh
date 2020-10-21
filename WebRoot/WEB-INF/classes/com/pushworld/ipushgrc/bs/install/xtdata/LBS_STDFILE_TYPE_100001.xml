@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">13</col>
+  <col name="CODE">70</col>
+  <col name="NAME">分行文本库</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ">2</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--2-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">14</col>
+  <col name="CODE">80</col>
+  <col name="NAME">行业协会推荐文本库</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ">3</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--3-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">15</col>
+  <col name="CODE">90</col>
+  <col name="NAME">其他</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ">4</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--4-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">16</col>
+  <col name="CODE">16</col>
+  <col name="NAME">总行文本库</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ">1</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--5-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">101</col>
+  <col name="CODE">60</col>
+  <col name="NAME">参考文本库</col>
+  <col name="PARENTID">16</col>
+  <col name="SEQ">2</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--6-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">102</col>
+  <col name="CODE">50</col>
+  <col name="NAME">标准文本库</col>
+  <col name="PARENTID">16</col>
+  <col name="SEQ">1</col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--7-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">103</col>
+  <col name="CODE">40</col>
+  <col name="NAME">标准文本库</col>
+  <col name="PARENTID">13</col>
+  <col name="SEQ"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--8-->
+<record tabname="LBS_STDFILE_TYPE">
+  <col name="ID">104</col>
+  <col name="CODE">30</col>
+  <col name="NAME">参考文本库</col>
+  <col name="PARENTID">13</col>
+  <col name="SEQ"></col>
+  <col name="PUSHUSER"></col>
+</record>
+</root>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<root tablename="pub_wf_process">
+<!--1-->
+<record tabname="pub_wf_process">
+  <col name="ID">3961</col>
+  <col name="CODE">违规积分流程</col>
+  <col name="NAME">违规积分流程</col>
+  <col name="WFTYPE">工作流</col>
+  <col name="WFEGUIINTERCEPT">com.pushworld.ipushgrc.ui.score.p060.ReApplyWFUIIntercept</col>
+  <col name="WFEGBSINTERCEPT">com.pushworld.ipushgrc.bs.score.p060.ReApplyWFBSIntercept</col>
+</record>
+
+</root>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="hznsh">
+    <output-path>E:/apache-tomcat-7.0.103-windows-x64/apache-tomcat-7.0.103/webapps/hznsh</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="hznsh/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hznsh" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

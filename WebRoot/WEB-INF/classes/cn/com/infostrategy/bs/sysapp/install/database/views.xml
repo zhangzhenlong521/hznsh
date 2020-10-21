@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<!-- 创建平台中的所有视图，在创建视图时，如果数据源是sqlserver，以前的语句 create or replace 会报错，所以改为了create -->
+	<view name="vi_menu" descr="菜单视图">
+		<sql>
+		create or replace view vi_menu as
+		select 
+			t1.id,
+			t1.code,
+			t1.name,
+			t1.ename,
+			t1.parentmenuid,
+			t2.name parentmenuid_name,
+			t1.seq,
+			t1.usecmdtype,
+			t1.commandtype,
+			t1.command ,
+			t1.commandtype2,
+			t1.command2 ,
+			t1.commandtype3,
+			t1.command3 ,
+			t1.isinmenubar,
+			t1.isautostart,
+			t1.icon ,
+			t1.showintoolbar,
+			t1.toolbarimg,
+			t1.opentypeweight,
+			t1.opentypeheight,
+			t1.isextend ,
+			t1.isalwaysopen,
+			t1.extendheight,
+			t1.opentype,
+			t1.helpfile,
+			t1.conf,
+			t1.comments,
+			t1.ishid 
+		from pub_menu t1 
+		left outer join pub_menu t2 on t1.parentmenuid=t2.id
+		</sql>
+	</view>
+	
+	<view name="v_pub_user_post_1" descr="人员与机构岗位">
+		<sql>
+		   create or replace view v_pub_user_post_1	as
+			select 
+			t1.id id,
+			t1.userdept deptid,
+			t2.code     deptcode,
+			t2.name     deptname,
+			t1.postid   postid,
+			t3.code     postcode,
+			t3.name     postname,
+			t1.userid   userid,
+			t4.code     usercode,
+			t4.code2    usercode2,
+			t4.name     username,
+			t4.staff    userstaff,
+			t1.seq      seq,
+			t3.seq      postseq,
+			t3.refpostid refpostid,
+			t1.isdefault,
+			t2.linkcode
+			from pub_user_post t1
+			left outer join pub_corp_dept t2 on t2.id = t1.userdept
+			left outer join pub_post      t3 on t3.id = t1.postid
+			left outer join pub_user      t4 on t4.id = t1.userid
+		</sql>
+	</view>
+	
+	
+	<view name="v_pub_user_role_1" descr="人员与角色关联">
+		<sql>
+		  create or replace view v_pub_user_role_1	as
+			select 
+			t1.id,
+			t1.userid   userid,
+			t2.code     usercode,
+			t2.name     username,
+			t1.roleid   roleid,
+			t3.code     rolecode,
+			t3.name     rolename,
+			t1.userdept userdept,
+			t4.code     userdeptcode,
+			t4.name     userdeptname
+			from pub_user_role t1
+			left outer join pub_user      t2 on t2.id = t1.userid
+			left outer join pub_role      t3 on t3.id = t1.roleid
+			left outer join pub_corp_dept t4 on t4.id = t1.userdept
+		</sql>
+	</view>
+	
+	<view name="v_pub_wf_dealpool_1" descr="流程历史记录视图,关联上了实例表">
+		<sql>
+			create or replace view v_pub_wf_dealpool_1	as
+			select 
+			t1.*,
+			t2.billtablename,
+			t2.billpkname,
+			t2.billpkvalue
+			from pub_wf_dealpool t1 
+			left outer join pub_wf_prinstance t2 
+			on t1.prinstanceid=t2.id
+		</sql>
+	</view>
+	
+	<view name="v_pub_comboboxdict_1" descr="下拉框类型">
+		<sql>
+		  create or replace view v_pub_comboboxdict_1 as
+		  select distinct
+		  t1.type type
+		  from pub_comboboxdict t1
+		</sql>
+	</view>
+	
+	<view name="v_pub_sqlins" descr="in子查询存储的临时表">
+	   <sql>
+	     create or replace view v_pub_sqlins as
+			select bno,id1  ids from pub_sqlins union all
+			select bno,id2  ids from pub_sqlins union all
+			select bno,id3  ids from pub_sqlins union all
+			select bno,id4  ids from pub_sqlins union all
+			select bno,id5  ids from pub_sqlins union all
+			select bno,id6  ids from pub_sqlins union all
+			select bno,id7  ids from pub_sqlins union all
+			select bno,id8  ids from pub_sqlins union all
+			select bno,id9  ids from pub_sqlins union all
+			select bno,id10 ids from pub_sqlins  union all
+			select bno,id11 ids from pub_sqlins  union all
+			select bno,id12 ids from pub_sqlins  union all
+			select bno,id13 ids from pub_sqlins  union all
+			select bno,id14 ids from pub_sqlins  union all
+			select bno,id15 ids from pub_sqlins  union all
+			select bno,id16 ids from pub_sqlins  union all
+			select bno,id17 ids from pub_sqlins  union all
+			select bno,id18 ids from pub_sqlins  union all
+			select bno,id19 ids from pub_sqlins  union all
+			select bno,id20 ids from pub_sqlins  union all
+			select bno,id21 ids from pub_sqlins  union all
+			select bno,id22 ids from pub_sqlins  union all
+			select bno,id23 ids from pub_sqlins  union all
+			select bno,id24 ids from pub_sqlins  union all
+			select bno,id25 ids from pub_sqlins  union all
+			select bno,id26 ids from pub_sqlins  union all
+			select bno,id27 ids from pub_sqlins  union all
+			select bno,id28 ids from pub_sqlins  union all
+			select bno,id29 ids from pub_sqlins  union all
+			select bno,id30 ids from pub_sqlins
+	   </sql>
+	</view>
+	
+	<view name="v_wf_opinions" descr="工作流导出报表需要查询的表">
+	   <sql>
+create or replace view v_wf_opinions as
+    select
+        d.participant_user userid,
+        d.submitmessage message,
+        d.curractivity curractivity,
+        a.belongdeptgroup deptgroupname,
+        d.prinstanceid prinstanceid,
+        d.submittime
+    from pub_wf_dealpool d,pub_wf_activity a
+    where d.issubmit = 'Y' and d.curractivity = a.id
+		</sql>
+	</view>
+	
+	<view name="v_pub_task_deal" descr="工作流待办任务视图,因为新的机制需要与业务单据表关联,结果会造成桢的的列名,所以必须搞个视图把名称改下">
+	   <sql>
+	   		create or replace view v_pub_task_deal as
+			select
+			t1.id                   task_taskdealid,
+			t1.taskclass            task_taskclass,
+			t1.prinstanceid         task_prinstanceid,
+			t1.parentinstanceid     task_parentinstanceid,
+			t1.rootinstanceid       task_rootinstanceid,
+			t1.prdealpoolid         task_prdealpoolid,
+			t1.createbydealpoolid   task_createbydealpoolid,
+			t1.templetcode          task_templetcode,
+			t1.tabname              task_tabname,
+			t1.querytabname         task_querytabname,
+			t1.pkname               task_pkname,
+			t1.pkvalue              task_pkvalue,
+			t1.tabitemvalue         task_tabitemvalue,
+			t1.creater              task_creater,
+			t1.creatername          task_creatername,
+			t1.createcorp           task_createcorp,
+			t1.createcorpname       task_createcorpname,
+			t1.createtime           task_createtime,
+			t1.createrdealmsg       task_createrdealmsg,
+			t1.msg                  task_msg,
+			t1.dealuser             task_dealuser,
+			t1.dealusername         task_dealusername,
+			t1.dealusercorp         task_dealusercorp,
+			t1.dealusercorpname     task_dealusercorpname,
+			t1.accruserid           task_accruserid,
+			t1.isccto               task_isccto,
+			t1.prioritylevel        task_prioritylevel,
+			t1.dealtimelimit        task_dealtimelimit,
+			t1.islookat             task_islookat,
+			t1.lookattime           task_lookattime,
+			t2.curractivity         task_curractivity,
+			t2.curractivityname     task_curractivityname
+			from pub_task_deal t1 left join pub_wf_prinstance t2 on t1.rootinstanceid=t2.id
+	   </sql>
+	</view>
+	
+	<view name="v_pub_task_off" descr="工作流已办任务视图,因为新的机制需要与业务单据表关联,结果会造成桢的的列名,所以必须搞个视图把名称改下">
+	   <sql>
+	   	create or replace view v_pub_task_off as
+		select
+		t1.id                            task_taskoffid,
+		t1.taskdealid                    task_taskdealid,
+		t1.taskclass                     task_taskclass,
+		t1.prinstanceid                  task_prinstanceid,
+		t1.parentinstanceid              task_parentinstanceid,
+		t1.rootinstanceid                task_rootinstanceid,
+		t1.prdealpoolid                  task_prdealpoolid,
+		t1.createbydealpoolid            task_createbydealpoolid,
+		t1.templetcode                   task_templetcode,
+		t1.tabname                       task_tabname,
+		t1.querytabname                  task_querytabname,
+		t1.pkname                        task_pkname,
+		t1.pkvalue                       task_pkvalue,
+		t1.tabitemvalue                  task_tabitemvalue,
+		t1.creater                       task_creater,
+		t1.creatername                   task_creatername,
+		t1.createcorp                    task_createcorp,
+		t1.createcorpname                task_createcorpname,
+		t1.createtime                    task_createtime,
+		t1.createrdealmsg                task_createrdealmsg,
+		t1.msg                           task_msg,
+		t1.dealuser                      task_dealuser,
+		t1.dealusername                  task_dealusername,
+		t1.dealusercorp                  task_dealusercorp,
+		t1.dealusercorpname              task_dealusercorpname,
+		t1.accruserid                    task_accruserid,
+		t1.isccto                        task_isccto,
+		t1.prioritylevel                 task_prioritylevel,
+		t1.dealtimelimit                 task_dealtimelimit,
+		t1.islookat                      task_islookat,
+		t1.lookattime                    task_lookattime,
+		t1.realdealuser                  task_realdealuser,
+		t1.realdealusername              task_realdealusername,
+		t1.dealtime                      task_dealtime,
+		t1.dealmsg                       task_dealmsg,
+		t1.submittouser                  task_submittouser,
+		t1.submittousername              task_submittousername,
+		t1.submittocorp                  task_submittocorp,
+		t1.submittocorpname              task_submittocorpname,
+		t2.curractivity                  task_curractivity,
+		t2.curractivityname              task_curractivityname
+		from pub_task_off t1 left join pub_wf_prinstance t2 on t1.rootinstanceid=t2.id
+	   </sql>
+	</view>
+</root>
+

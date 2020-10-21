@@ -1,0 +1,252 @@
+package com.pushworld.ipushgrc.ui.icheck.p070;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.UpdateSQLBuilder;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.ClientEnvironment;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.SplashWindow;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillCardDialog;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillQueryPanel;
+
+import com.pushworld.ipushgrc.ui.icheck.p040.ICheckUIUtil;
+
+/**
+ * 网络版和单机版-整改台账维护【李春娟/2016-09-21】 网络版：各被检查单位录入整改信息 单机版：检查人员到现场整改跟踪
+ * 
+ */
+
+public class CheckAdjustWKPanel extends AbstractWorkPanel implements
+		ActionListener {
+	private BillListPanel billList_adjust = null;
+	private WLTButton btn_edit, btn_imp, btn_exp;
+	private JButton btn_Query = null;
+	private boolean isNet = true;// 是否是网络版，默认是
+	private String logindeptid = ClientEnvironment.getInstance()
+			.getLoginUserDeptId();
+	private String[] postid = ClientEnvironment.getInstance()
+			.getLoginUserPostIds();
+	private String name = ClientEnvironment.getInstance().getLoginUserName();
+	private String schemeid = null;
+
+	public void initialize() {
+		String type = this.getMenuConfMapValueAsStr("网络版", "Y");
+		if ("N".equalsIgnoreCase(type)) {// 单机版只显示【结束】按钮【李春娟/2016-09-12】
+			isNet = false;
+			billList_adjust = new BillListPanel("CK_PROBLEM_INFO_LCJ_E03");
+			btn_edit = WLTButton.createButtonByType(WLTButton.LIST_POPEDIT,
+					"整改跟踪");
+		} else {
+			billList_adjust = new BillListPanel("CK_PROBLEM_INFO_LCJ_E02");
+			btn_edit = WLTButton.createButtonByType(WLTButton.LIST_POPEDIT,
+					"录入整改信息");
+		}
+		btn_imp = new WLTButton("导入");
+		btn_exp = new WLTButton("导出");
+		btn_edit.addActionListener(this);
+		btn_imp.addActionListener(this);
+		btn_exp.addActionListener(this);
+		billList_adjust.addBatchBillListButton(new WLTButton[] { btn_edit,
+				btn_imp, btn_exp });
+		billList_adjust.repaintBillListButton();
+		billList_adjust.getQuickQueryPanel().addBillQuickActionListener(this);
+		cationPermissions();
+		this.add(billList_adjust);
+
+	}
+
+	private void cationPermissions() {
+		Map postMap = new HashMap<Object, Object>();
+		for (int i = 0; i < postid.length; i++) {
+			postMap.put(postid[i], postid[i]);
+		}
+		if (postMap.get("运行监管员") != null || postMap.get("总经理") != null
+				|| postMap.get("副经理") != null || postMap.get("副总经理") != null) {
+			btn_edit.setEnabled(true);
+		} else if (ClientEnvironment.getInstance().isAdmin()) {
+			btn_edit.setEnabled(true);
+		} else {
+			btn_edit.setEnabled(false);
+		}
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		Object obj = e.getSource();
+		if (obj == btn_imp) {// 导入
+			onImp();
+		} else if (obj == btn_exp) {// 导出
+			onExp();
+		} else if (obj == btn_edit) {
+			BillVO vo = billList_adjust.getSelectedBillVO();
+			if (vo == null) {
+				MessageBox.show("请选择一条信息进行整改！");
+				return;
+			}
+			final BillCardDialog dialog = new BillCardDialog(this, "整改台账",
+					"CK_PROBLEM_INFO_LCJ_E02", 800, 1000);
+			dialog.getBillcardPanel().setBillVO(vo);
+			dialog.getBtn_save().setVisible(false);
+			dialog.getBillcardPanel().setRealValueAt("zgcreateuser", name);
+			dialog.getBillcardPanel().setRealValueAt("zgcreatedept",
+					ClientEnvironment.getInstance().getLoginUserDeptName());
+			final String id = vo.getStringValue("id");
+			dialog.getBtn_confirm().addActionListener(new ActionListener() {
+				UpdateSQLBuilder sql = new UpdateSQLBuilder("ck_problem_info");
+
+				public void actionPerformed(ActionEvent actionevent) {
+					try {
+						BillVO billvo = dialog.getBillcardPanel().getBillVO();
+						String[] key = billvo.getKeys();
+						String value = "";
+						String value2 = "";
+						sql.setWhereCondition("id=" + id);
+						for (int i = 2; i < key.length; i++) {
+							value = key[i].toString();
+							if (!value.contains("help")) {
+								value2 = billvo.getRealValue(value);
+								sql.putFieldValue(value, value2);
+							}
+						}
+						UIUtil.executeUpdateByDS(null, sql.getSQL());
+						billList_adjust.refreshCurrSelectedRow();
+						dialog.closeMe();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			dialog.setVisible(true);
+		} else if (obj instanceof BillQueryPanel) {
+			OnQuanXian();
+
+		}
+	}
+/***
+ * 整改台账权限
+ */
+	private void OnQuanXian() {
+		try {
+			String schemeid=billList_adjust.getQuickQueryPanel().getCompentRealValue("schemeid");
+			String schemeiddeptid=billList_adjust.getQuickQueryPanel().getCompentRealValue("deptid");
+			if(schemeid==null){
+				MessageBox.show(this,"项目名称不能为空");
+				return;
+			}
+			if(schemeid!=null){
+				String planid=UIUtil.getStringValueByDS(null,"select planid from CK_SCHEME where id='"+schemeid+"'");
+				String deptid=UIUtil.getStringValueByDS(null,"select checkdept from CK_PLAN where id='"+planid+"'");
+				 if (ClientEnvironment.getInstance().isAdmin() || logindeptid.equals(deptid)) {
+					 if(schemeiddeptid!=null){
+						 billList_adjust
+							.queryDataByDS(
+									null,
+									"select * from ck_problem_info where schemeid='"+schemeid+"' and deptid='"+schemeiddeptid+"'");
+					 }else{
+						 billList_adjust
+							.queryDataByDS(
+									null,
+									"select * from ck_problem_info where schemeid='"+schemeid+"'"); 
+					 }
+				
+				 }else{
+					 billList_adjust
+						.queryDataByDS(
+								null,
+								"select * from ck_problem_info where schemeid='"+schemeid+"' and deptid='"+logindeptid+"'");
+				 }
+			}
+		} catch (Exception a) {
+			a.printStackTrace();
+		}
+		
+	}
+
+	/**
+	 * 导入整改台账
+	 */
+	private void onImp() {
+		int i = new ICheckUIUtil().importDataByPackage(this, "导入整改台账",
+				isNet ? 0 : 1, 0);
+		if (i == 1) {
+			billList_adjust.refreshData();
+			MessageBox.show(this, "整改台账导入成功!");
+		}
+	}
+
+	/**
+	 * 导出整改台账
+	 */
+	private void onExp() {
+		BillListDialog listDialog = new BillListDialog(this, "请勾选需要导出的方案",
+				"CK_SCHEME_IMPL_E01", 900, 500);// 以前检查实施只有一张表，修改为将检查实施弄成主子表关系【李春娟/2016-09-23】
+		listDialog.getBilllistPanel().setRowNumberChecked(true);// 设置勾选
+		listDialog.getBilllistPanel()
+				.setDataFilterCustCondition("status='已结束'");
+		listDialog.getBilllistPanel().queryDataByCondition(null,
+				"createdate,schemeid desc");// 按创建日期倒序排序
+		listDialog.setVisible(true);
+		if (listDialog.getCloseType() == 1) {// 如果选择了记录，点击确定按钮
+			final BillVO[] vos = listDialog.getBilllistPanel()
+					.getCheckedBillVOs();
+			if (vos == null || vos.length == 0) {// 一般情況，点击"确定"按钮后这里不为空
+				MessageBox.show(this, "请至少勾选一个方案.");
+				return;
+			} else {
+				JFileChooser chooser = new JFileChooser();
+				chooser.setDialogTitle("请选择存放目录");
+				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int flag = chooser.showSaveDialog(this);
+				if (flag == 1 || chooser.getSelectedFile() == null) {
+					return;
+				}
+				final String str_path = chooser.getSelectedFile()
+						.getAbsolutePath(); //
+				if (str_path == null) {
+					return;
+				}
+				File f = new File(str_path);
+				if (!f.exists()) {
+					MessageBox.show(this, "路径:" + str_path + " 不存在!");
+					return;
+				}
+				new SplashWindow(this, new AbstractAction() {
+					public void actionPerformed(ActionEvent e) {
+						ICheckUIUtil checkUtil = new ICheckUIUtil();
+						for (int i = 0; i < vos.length; i++) {
+							String schemeid = vos[i].getStringValue("schemeid");
+							String deptid = vos[i].getStringValue("deptid");
+							String deptname = vos[i]
+									.getStringViewValue("deptid");
+							if (deptname != null) {
+								if (deptname.contains("-")) {// 全路径分隔号
+									deptname = deptname.substring(deptname
+											.lastIndexOf("-") + 1);
+								}
+							}
+							checkUtil.exportAdjust(
+									(SplashWindow) e.getSource(), str_path,
+									schemeid, deptid, deptname, isNet ? 0 : 1);
+						}
+					}
+				}, 600, 130, 300, 300, false); // 
+
+			}
+		}
+	}
+
+}

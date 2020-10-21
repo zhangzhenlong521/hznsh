@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<record tabname="pub_templet_1" pkname="pk_pub_templet_1" sename="S_PUB_TEMPLET_1">
+  <col name="pk_pub_templet_1">1503</col>
+  <col name="templetcode">REPORTQUERY_CODE2</col>
+  <col name="templetname">报表查询_CODE2</col>
+  <col name="templetname_e">工资单</col>
+  <col name="datasourcename"></col>
+  <col name="tablename">sal_salarybill</col>
+  <col name="dataconstraint"></col>
+  <col name="pkname">id</col>
+  <col name="pksequencename">S_SAL_SALARYBILL</col>
+  <col name="tostringkey"></col>
+  <col name="savedtablename">sal_salarybill</col>
+  <col name="datapolicy"></col>
+  <col name="datapolicymap"></col>
+  <col name="datasqlandorcondition"></col>
+  <col name="bsdatafilterclass"></col>
+  <col name="bsdatafilterissql">N</col>
+  <col name="ordercondition">monthly desc</col>
+  <col name="autoloads">-1</col>
+  <col name="autoloadconstraint"></col>
+  <col name="cardinitformula"></col>
+  <col name="cardcustpanel"></col>
+  <col name="cardwidth">777</col>
+  <col name="isshowcardborder">N</col>
+  <col name="cardborder">BORDER</col>
+  <col name="cardlayout">FLOWLAYOUT</col>
+  <col name="isshowcardcustbtn">N</col>
+  <col name="cardcustbtndesc"></col>
+  <col name="cardsaveselfdesccheck"></col>
+  <col name="cardsaveifcheck">N</col>
+  <col name="mustinputcolor"></col>
+  <col name="listinitformula"></col>
+  <col name="listcustpanel"></col>
+  <col name="isshowlistpagebar">Y</col>
+  <col name="islistpagebarwrap">Y</col>
+  <col name="isshowlistopebar">N</col>
+  <col name="iscollapsequickquery">N</col>
+  <col name="isshowlistquickquery">Y</col>
+  <col name="isshowcommquerybtn">N</col>
+  <col name="isshowlistcustbtn">N</col>
+  <col name="listcustbtndesc"></col>
+  <col name="listbtnorderdesc"></col>
+  <col name="listrowheight"></col>
+  <col name="listheaderisgroup">N</col>
+  <col name="islistautorowheight">N</col>
+  <col name="listheadheight"></col>
+  <col name="listweidudesc"></col>
+  <col name="definerenderer"></col>
+  <col name="treepk">id</col>
+  <col name="treeparentpk">parentid</col>
+  <col name="treeviewfield">name</col>
+  <col name="treeseqfield">seq</col>
+  <col name="treeisshowroot">Y</col>
+  <col name="treeisonlyone">N</col>
+  <col name="treeisshowtoolbar">N</col>
+  <col name="treecustbtndesc"></col>
+  <col name="treeischecked">N</col>
+  <col name="templetbtns"></col>
+  <col name="propbeanclassname"></col>
+  <col name="wfcustexport"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">3138</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">1503</col>
+  <col name="itemkey">id</col>
+  <col name="itemname">主键</col>
+  <col name="itemname_e">id</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">数字框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt"></col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck"></col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">1</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">140</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor"></col>
+  <col name="listishtmlhref"></col>
+  <col name="isquickquerywrap"></col>
+  <col name="isquickqueryshowable"></col>
+  <col name="isquickqueryeditable"></col>
+  <col name="iscommquerywrap"></col>
+  <col name="iscommqueryshowable"></col>
+  <col name="iscommqueryeditable"></col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace"></col>
+  <col name="workflowiseditable"></col>
+  <col name="listiscombine"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">3139</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">1503</col>
+  <col name="itemkey">month_start</col>
+  <col name="itemname">开始月度</col>
+  <col name="itemname_e">month_start</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">自定义参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("自定义参照",
+"自定义类名","cn.com.pushworld.salary.ui.paymanage.RefDialog_Month"
+);</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">N</col>
+  <col name="isencrypt"></col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck"></col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">2</col>
+  <col name="listwidth">79</col>
+  <col name="cardwidth">140</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor"></col>
+  <col name="listishtmlhref"></col>
+  <col name="isquickquerywrap"></col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap"></col>
+  <col name="iscommqueryshowable"></col>
+  <col name="iscommqueryeditable"></col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace"></col>
+  <col name="workflowiseditable"></col>
+  <col name="listiscombine"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">3140</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">1503</col>
+  <col name="itemkey">month_end</col>
+  <col name="itemname">结束月度</col>
+  <col name="itemname_e">month_end</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">自定义参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("自定义参照",
+"自定义类名","cn.com.pushworld.salary.ui.paymanage.RefDialog_Month"
+);</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">N</col>
+  <col name="isencrypt"></col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck"></col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">3</col>
+  <col name="listwidth">79</col>
+  <col name="cardwidth">140</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor"></col>
+  <col name="listishtmlhref"></col>
+  <col name="isquickquerywrap"></col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap"></col>
+  <col name="iscommqueryshowable"></col>
+  <col name="iscommqueryeditable"></col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace"></col>
+  <col name="workflowiseditable"></col>
+  <col name="listiscombine"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">3141</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">1503</col>
+  <col name="itemkey">querycorp</col>
+  <col name="itemname">机构</col>
+  <col name="itemname_e">querycorp</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">树型模板参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("树型模板参照",
+ "模板编码","PUB_CORP_DEPT_CODE1",
+ "ID字段","id",
+ "NAME字段","shortname",
+ "可以多选","Y",
+ "是否连动勾选","Y", 
+ "文本是否换行","Y" ,
+ "返回路径链名","N"
+ );</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">N</col>
+  <col name="isencrypt"></col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck"></col>
+  <col name="loadformula"> setRefItemName("checkeddept",getTreePathColValue("pub_corp_dept","shortname","id","parentid","id",getItemValue("checkeddept"),"返回路径链名=N/是否截掉第一层=Y"))</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">4</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">140</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor"></col>
+  <col name="listishtmlhref"></col>
+  <col name="isquickquerywrap"></col>
+  <col name="isquickqueryshowable">Y</col>
+  <col name="isquickqueryeditable">Y</col>
+  <col name="iscommquerywrap"></col>
+  <col name="iscommqueryshowable"></col>
+  <col name="iscommqueryeditable"></col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace"></col>
+  <col name="workflowiseditable"></col>
+  <col name="listiscombine"></col>
+</record>
+
+</root>

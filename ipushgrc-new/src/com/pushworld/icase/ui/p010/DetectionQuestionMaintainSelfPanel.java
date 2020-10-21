@@ -1,0 +1,270 @@
+package com.pushworld.icase.ui.p010;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JSplitPane;
+
+import org.apache.log4j.Logger;
+
+import cn.com.infostrategy.bs.common.ObjectUtils;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.WLTLogger;
+import cn.com.infostrategy.to.common.WLTRemoteException;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.RefItemVO;
+import cn.com.infostrategy.to.mdata.StringItemVO;
+import cn.com.infostrategy.ui.AbstractBillListQueryCallback;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.ClientEnvironment;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefEvent;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefListener;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillListSelectListener;
+import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+
+/**
+ * 排查问题维护 自查整改
+ * @author zane
+ *  ning 
+ */
+
+public class DetectionQuestionMaintainSelfPanel extends AbstractWorkPanel implements ActionListener,BillListSelectListener,BillListHtmlHrefListener {
+
+
+	private static final long serialVersionUID = -6909843946321417628L;
+	private Logger log = WLTLogger.getLogger(DetectionQuestionMaintainSelfPanel.class);
+	private BillListPanel listPanel, childListPanel;
+	private WLTButton question_add, question_look;
+	private BillVO selVO;
+	private	String deptid = ClientEnvironment.getCurrLoginUserVO().getPKDept();
+	private String deptname = ClientEnvironment.getCurrLoginUserVO().getBlDeptName();
+	public void initialize() {
+		WLTSplitPane main_splitpane = new WLTSplitPane(JSplitPane.VERTICAL_SPLIT);
+		listPanel = new BillListPanel("CP_IMPLEMENT_CODE2");
+		
+		listPanel.setItemsVisible(new String[]{"add_case"}, false);
+		
+		
+		listPanel.addBillListButton(WLTButton.createButtonByType(WLTButton.LIST_SHOWCARD));
+		
+		listPanel.repaintBillListButton();
+		listPanel.addBillListSelectListener(this);
+		listPanel.addBillListHtmlHrefListener(this);
+		listPanel.setDataFilterCustCondition("channels='案防排查' and estingtype='自查' and byestingdept like '%"+deptid+"%' and ( state='实施中' or state='实施结束' )");
+		listPanel.setListQueryCallback(new MyAbstractBillListQueryCallback());
+
+		childListPanel = new BillListPanel("CP_QUESTION_CODE1");
+		
+		question_add = new WLTButton("问题录入");	
+		question_add.addActionListener(this);
+		
+		
+		childListPanel.addBillListButton(question_add);
+		
+		question_look = new WLTButton("浏览/打印");
+
+		question_look.addActionListener(this);
+		childListPanel.addBillListButton(question_look);
+		
+		childListPanel.repaintBillListButton();
+		childListPanel.addBillListSelectListener(this);
+		
+		// 默认按钮不可编辑
+		question_add.setEnabled(false);
+		
+		main_splitpane.add(listPanel, 1);
+		main_splitpane.add(childListPanel, 2);
+		this.add(main_splitpane);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object obj = e.getSource();
+		if(obj==question_add){
+			onQuestionAdd();
+		}else if(obj==question_look){
+			onQuestionLook();
+		}
+	}
+	
+	
+
+
+	private void onQuestionAdd(){
+		if(getMessage()){
+			return;
+		}
+		
+		String byestingdept = selVO.getRefItemVOValue("byestingdept").getId();
+		CasePreventionQuestionOperateListener co=new CasePreventionQuestionOperateListener(childListPanel, "CP_QUESTION_CODE1_1001", 1, "cp_implement_id",  selVO.getStringValue("id"),selVO.getStringValue("PROJECTAPPROVAL_AUDIT_ID"), byestingdept, "案防排查");
+		co.actionPerformed(null);
+		if(co.getClicksCount()==1){
+			System.out.println(">>>>>>>>>>>>>>>>>>>");
+			listPanel.refreshCurrSelectedRow();
+		}
+
+		
+		
+	}
+	
+
+	
+	private void onQuestionLook(){
+		if(getMessage()){
+			return;
+		}
+		
+		String byestingdept = selVO.getRefItemVOValue("byestingdept").getId();
+		new CasePreventionQuestionOperateListener(childListPanel, "CP_QUESTION_CODE1_1", 4, "cp_implement_id",  selVO.getStringValue("id"),selVO.getStringValue("PROJECTAPPROVAL_AUDIT_ID"), byestingdept, "案防排查").actionPerformed(null);
+	}
+
+
+
+	private void onInputCase() {
+		if(getMessage()){
+			return;
+		}		
+		final BillListDialog listdialog = new BillListDialog(listPanel, "案件录入", "CP_CASE_CODE2");
+		listdialog.maxToScreenSizeBy1280AndLocationCenter();
+		listdialog.getBilllistPanel().setDataFilterCustCondition("cp_implement_id="+selVO.getStringValue("id"));
+		String byestingdept = selVO.getRefItemVOValue("byestingdept").getId();
+		
+//		if("实施中".equals(state)){
+			WLTButton case_add = new WLTButton("新增");
+			case_add.addActionListener(new CasePreventionCaseOperateListener(listdialog.getBilllistPanel(), "CP_CASE_CODE2", 1, "cp_implement_id", selVO.getStringValue("id"), selVO.getStringValue("projectapproval_audit_id"), false, byestingdept));
+			listdialog.getBilllistPanel().addBillListButton(case_add);
+			
+			WLTButton case_edit = new WLTButton("修改");
+			case_edit.addActionListener(new CasePreventionCaseOperateListener(listdialog.getBilllistPanel(), "CP_CASE_CODE2", 2, "cp_implement_id", selVO.getStringValue("id"), selVO.getStringValue("projectapproval_audit_id"), false, byestingdept));
+			listdialog.getBilllistPanel().addBillListButton(case_edit);
+			
+			WLTButton case_del = new WLTButton("删除");
+			case_del.addActionListener(new CasePreventionCaseOperateListener(listdialog.getBilllistPanel(), "CP_CASE_CODE2", 3, "cp_implement_id", selVO.getStringValue("id"), selVO.getStringValue("projectapproval_audit_id"), false, byestingdept));
+			listdialog.getBilllistPanel().addBillListButton(case_del);
+//		}
+		
+		WLTButton case_look = new WLTButton("浏览/打印");
+		case_look.addActionListener(new CasePreventionCaseOperateListener(listdialog.getBilllistPanel(), "CP_CASE_CODE2", 4, "cp_implement_id", selVO.getStringValue("id"), selVO.getStringValue("projectapproval_audit_id"), false, byestingdept));
+		listdialog.getBilllistPanel().addBillListButton(case_look);
+		listdialog.getBilllistPanel().repaintBillListButton();
+		listdialog.getBilllistPanel().QueryDataByCondition(null);
+		listdialog.getBtn_confirm().setVisible(false);
+		listdialog.setVisible(true);
+		
+		if(listdialog.getCloseType()!=1){
+		}
+		
+	}
+	
+	private boolean getMessage(){
+		selVO = listPanel.getSelectedBillVO();
+		if(null==selVO){
+			MessageBox.showSelectOne(listPanel);
+			return true;
+		}
+		
+		return false;
+	}
+
+	
+	public void onBillListSelectChanged(BillListSelectionEvent _event) {
+		if(_event.getBillListPanel()==this.listPanel){  // 实施计划
+			
+			BillVO vo = _event.getCurrSelectedVO();
+			childListPanel.QueryDataByCondition("cp_implement_id="+vo.getStringValue("id")+" and  checktype='自查发现' and abarbeitungdept="+ClientEnvironment.getCurrLoginUserVO().getPKDept());
+			String reform_state = vo.getStringValue("state");
+			boolean isedit;
+			if("实施中".equals(reform_state)){
+				isedit=true;
+				question_add.setEnabled(isedit);
+		
+			}else if("实施结束".equals(reform_state)){
+				isedit=true;
+				//
+				question_add.setEnabled(false);			
+			}else{
+				isedit=false;
+				question_add.setEnabled(isedit);
+	
+			
+			}
+		}else{
+			
+		}
+	
+	}
+
+	public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+		selVO = listPanel.getSelectedBillVO();
+		if(_event.getItemkey().equals("temp1")){
+			final BillListDialog listdialog = new BillListDialog(listPanel, "问题", "CP_QUESTION_CODE1");
+			listdialog.maxToScreenSizeBy1280AndLocationCenter();
+			listdialog.getBilllistPanel().setDataFilterCustCondition("cp_implement_id="+listPanel.getSelectedBillVO().getStringValue("id")+" and abarbeitungdept="+ClientEnvironment.getCurrLoginUserVO().getPKDept());
+			listdialog.getBilllistPanel().getBillListBtnPanel().setVisible(false);
+			listdialog.getBtn_confirm().setVisible(false);
+			listdialog.getBilllistPanel().QueryDataByCondition(null);
+			WLTButton case_look = new WLTButton("浏览/打印");
+			case_look.addActionListener(new CasePreventionQuestionOperateListener(listdialog.getBilllistPanel(), "CP_QUESTION_CODE1", 4, "cp_implement_id", selVO.getStringValue("id"),selVO.getStringValue("projectapproval_audit_id"), null, "案防排查"));
+			listdialog.getBilllistPanel().addBillListButton(case_look);
+			listdialog.getBilllistPanel().repaintBillListButton();
+			listdialog.setVisible(true);
+		}else if(_event.getItemkey().equals("temp2")){
+			final BillListDialog listdialog = new BillListDialog(listPanel, "案件", "CP_CASE_CODE2");
+			listdialog.maxToScreenSizeBy1280AndLocationCenter();
+			listdialog.getBilllistPanel().setDataFilterCustCondition("cp_implement_id="+listPanel.getSelectedBillVO().getStringValue("id"));
+			listdialog.getBilllistPanel().QueryDataByCondition(null);
+			listdialog.getBilllistPanel().getBillListBtnPanel().setVisible(false);
+			listdialog.getBtn_confirm().setVisible(false);
+			WLTButton case_look = new WLTButton("浏览/打印");
+			case_look.addActionListener(new CasePreventionQuestionOperateListener(listdialog.getBilllistPanel(), "CP_CASE_CODE2", 4, "cp_implement_id", selVO.getStringValue("id"),selVO.getStringValue("projectapproval_audit_id"), null, "案防排查"));
+			listdialog.getBilllistPanel().addBillListButton(case_look);
+			listdialog.getBilllistPanel().repaintBillListButton();
+			listdialog.setVisible(true);
+		}else if(_event.getItemkey().equals("add_case")){
+			onInputCase();
+		}
+	
+	}
+	
+	class MyAbstractBillListQueryCallback extends AbstractBillListQueryCallback{
+
+		@Override
+		public void queryCallback() {
+			try {
+				BillVO[] vos = listPanel.getAllBillVOs();
+				int index = 0;
+				for(BillVO vo : vos){
+					String temp2 = UIUtil.getStringValueByDS(null, "select count(1) from CP_CASE where cp_implement_id="+vo.getStringValue("id")+" and dutydept= "+ClientEnvironment.getCurrLoginUserVO().getPKDept());
+					HashVO[] temp1 = UIUtil.getHashVoArrayByDS(null, "select count(1) temp1, sum(questionstrokecount) questionstrokecount from CP_QUESTION where cp_implement_id="+vo.getStringValue("id")+" and abarbeitungdept="+ClientEnvironment.getCurrLoginUserVO().getPKDept());
+					
+					listPanel.setValueAt(new StringItemVO(temp2), index, "temp2");
+					if(ObjectUtils.isEmpty(temp1)){
+						listPanel.setValueAt(new StringItemVO("0"), index, "temp1");
+						listPanel.setValueAt(new StringItemVO("0"), index, "questionstrokecount");
+					}else{
+						listPanel.setValueAt(new StringItemVO(temp1[0].getStringValue("temp1")), index, "temp1");
+						listPanel.setValueAt(new StringItemVO(temp1[0].getStringValue("questionstrokecount")), index, "questionstrokecount");
+					}
+					
+						listPanel.setValueAt(new RefItemVO(";"+deptid+";","",deptname), index, "byestingdept");	
+					
+					index+=1;
+				}
+			} catch (WLTRemoteException e) {
+				log.error(e);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+		
+	}
+	
+
+	
+}

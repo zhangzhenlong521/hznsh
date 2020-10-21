@@ -1228,7 +1228,7 @@ public class BillListPanel extends BillPanel {
 		jComboBox_onePageRecords.addItem("500");
 		jComboBox_onePageRecords.addItem("1000"); //这个应该是常用的上限!!!
 		jComboBox_onePageRecords.addItem("2000");
-		jComboBox_onePageRecords.addItem("10000");//以前是全部,但这样会造成数据量太大时系统崩掉!且后台本身的2000限制,所以干脆搞成2000算了!!
+		jComboBox_onePageRecords.addItem("5000");//zzl[20201012]
 		jComboBox_onePageRecords.setSelectedIndex(2); //默认是50
 		jComboBox_onePageRecords.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent evt) {

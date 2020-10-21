@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_ctrldict">
+  <col name="id">1</col>
+  <col name="name">加强管理</col>
+  <col name="parentid"></col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="cmp_ctrldict">
+  <col name="id">2</col>
+  <col name="name">加强培训</col>
+  <col name="parentid"></col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="cmp_ctrldict">
+  <col name="id">3</col>
+  <col name="name">淘汰不合格员工</col>
+  <col name="parentid"></col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--4-->
+<record tabname="cmp_ctrldict">
+  <col name="id">4</col>
+  <col name="name">完善制度</col>
+  <col name="parentid"></col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--5-->
+<record tabname="cmp_ctrldict">
+  <col name="id">21</col>
+  <col name="name">学习新制度</col>
+  <col name="parentid">2</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--6-->
+<record tabname="cmp_ctrldict">
+  <col name="id">22</col>
+  <col name="name">学习新法规</col>
+  <col name="parentid">2</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--7-->
+<record tabname="cmp_ctrldict">
+  <col name="id">23</col>
+  <col name="name">加强监控力度</col>
+  <col name="parentid">1</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--8-->
+<record tabname="cmp_ctrldict">
+  <col name="id">24</col>
+  <col name="name">对以往问题加强跟踪</col>
+  <col name="parentid">1</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+</root>

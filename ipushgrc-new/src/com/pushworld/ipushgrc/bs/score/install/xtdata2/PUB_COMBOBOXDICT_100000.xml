@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="GBK"?>
+<root tablename="PUB_COMBOBOXDICT">
+<!--1-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2341</col>
+  <col name="TYPE">违规积分处理情况</col>
+  <col name="ID">2</col>
+  <col name="NAME">罚款</col>
+  <col name="SEQ">2</col>
+</record>
+
+<!--2-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2342</col>
+  <col name="TYPE">违规积分处理情况</col>
+  <col name="ID">3</col>
+  <col name="NAME">全行通报</col>
+  <col name="SEQ">3</col>
+</record>
+
+<!--3-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2343</col>
+  <col name="TYPE">违规积分处理情况</col>
+  <col name="ID">1</col>
+  <col name="CODE">001</col>
+  <col name="NAME">书面警告</col>
+  <col name="SEQ">1</col>
+</record>
+
+<!--4-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2361</col>
+  <col name="TYPE">违规事件整改结果</col>
+  <col name="ID">达到整改效果</col>
+  <col name="CODE">达到整改效果</col>
+  <col name="NAME">达到整改效果</col>
+  <col name="SEQ">1</col>
+</record>
+
+<!--5-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2363</col>
+  <col name="TYPE">违规事件整改结果</col>
+  <col name="ID">没执行整改</col>
+  <col name="CODE">没执行整改</col>
+  <col name="NAME">没执行整改</col>
+  <col name="SEQ">2</col>
+</record>
+
+<!--6-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2365</col>
+  <col name="TYPE">违规事件整改结果</col>
+  <col name="ID">执行不力</col>
+  <col name="CODE">执行不力</col>
+  <col name="NAME">执行不力</col>
+  <col name="SEQ">3</col>
+</record>
+
+<!--7-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2367</col>
+  <col name="TYPE">违规事件整改结果</col>
+  <col name="ID">执行效果不明显</col>
+  <col name="CODE">执行效果不明显</col>
+  <col name="NAME">执行效果不明显</col>
+  <col name="SEQ">4</col>
+</record>
+
+<!--8-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2601</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">test</col>
+  <col name="NAME">test</col>
+  <col name="SEQ">6</col>
+</record>
+
+<!--9-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2521</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">低风险</col>
+  <col name="NAME">低风险</col>
+  <col name="SEQ">2</col>
+</record>
+
+<!--10-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2522</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">中等风险</col>
+  <col name="NAME">中等风险</col>
+  <col name="SEQ">3</col>
+</record>
+
+<!--11-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2523</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">高风险</col>
+  <col name="NAME">高风险</col>
+  <col name="SEQ">4</col>
+</record>
+
+<!--12-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2524</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">极大风险</col>
+  <col name="NAME">极大风险</col>
+  <col name="SEQ">5</col>
+</record>
+
+<!--13-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2520</col>
+  <col name="TYPE">违规积分_风险等级</col>
+  <col name="ID">极小风险</col>
+  <col name="NAME">极小风险1</col>
+  <col name="SEQ">1</col>
+</record>
+
+<!--14-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2604</col>
+  <col name="TYPE">违规积分_发现渠道</col>
+  <col name="ID">新渠道</col>
+  <col name="CODE">1.5</col>
+  <col name="NAME">新渠道</col>
+  <col name="SEQ">5</col>
+</record>
+
+<!--15-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2526</col>
+  <col name="TYPE">违规积分_发现渠道</col>
+  <col name="ID">员工自查</col>
+  <col name="CODE">1</col>
+  <col name="NAME">员工自查</col>
+  <col name="SEQ">1</col>
+</record>
+
+<!--16-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2527</col>
+  <col name="TYPE">违规积分_发现渠道</col>
+  <col name="ID">上级机构检查</col>
+  <col name="CODE">1.5</col>
+  <col name="NAME">上级机构检查</col>
+  <col name="SEQ">2</col>
+</record>
+
+<!--17-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2321</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">1</col>
+  <col name="CODE">001</col>
+  <col name="NAME">未通知</col>
+  <col name="SEQ">1</col>
+</record>
+
+<!--18-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2322</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">6</col>
+  <col name="NAME">已处理</col>
+  <col name="SEQ">6</col>
+</record>
+
+<!--19-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2323</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">2</col>
+  <col name="NAME">已通知</col>
+  <col name="SEQ">2</col>
+</record>
+
+<!--20-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2324</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">3</col>
+  <col name="NAME">审批中</col>
+  <col name="SEQ">3</col>
+</record>
+
+<!--21-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2325</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">4</col>
+  <col name="NAME">结束</col>
+  <col name="SEQ">4</col>
+</record>
+
+<!--22-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2326</col>
+  <col name="TYPE">违规积分状态</col>
+  <col name="ID">5</col>
+  <col name="NAME">待裁定</col>
+  <col name="SEQ">5</col>
+</record>
+
+<!--23-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2528</col>
+  <col name="TYPE">违规积分_发现渠道</col>
+  <col name="ID">外部监管部门检查</col>
+  <col name="CODE">2</col>
+  <col name="NAME">外部监管部门检查</col>
+  <col name="SEQ">3</col>
+</record>
+
+<!--24-->
+<record tabname="PUB_COMBOBOXDICT">
+  <col name="PK_PUB_COMBOBOXDICT">2529</col>
+  <col name="TYPE">违规积分_发现渠道</col>
+  <col name="ID">其他</col>
+  <col name="CODE">1</col>
+  <col name="NAME">其他</col>
+  <col name="SEQ">4</col>
+</record>
+
+</root>

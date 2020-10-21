@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="ID">64</col>
+  <col name="TEMPLETCODE">2010年合规考核模板_柜面</col>
+  <col name="TEMPLETNAME">2010年合规考核模板_柜面</col>
+  <col name="BILLNO"></col>
+  <col name="ROWLENGTH">2</col>
+  <col name="COLLENGTH">2</col>
+  <col name="SEQ"></col>
+  <col name="DESCR"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--2-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="ID">211</col>
+  <col name="TEMPLETCODE">riskmetrix</col>
+  <col name="TEMPLETNAME">风险矩阵</col>
+  <col name="BILLNO"></col>
+  <col name="ROWLENGTH">12</col>
+  <col name="COLLENGTH">7</col>
+  <col name="SEQ"></col>
+  <col name="DESCR"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--3-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="ID">213</col>
+  <col name="TEMPLETCODE">ctrlmatrix</col>
+  <col name="TEMPLETNAME">控制矩阵</col>
+  <col name="BILLNO"></col>
+  <col name="ROWLENGTH">7</col>
+  <col name="COLLENGTH">6</col>
+  <col name="SEQ"></col>
+  <col name="DESCR"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--4-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="ID">361</col>
+  <col name="TEMPLETCODE">mypostandduty</col>
+  <col name="TEMPLETNAME">我的岗位说明书</col>
+  <col name="BILLNO"></col>
+  <col name="ROWLENGTH">12</col>
+  <col name="COLLENGTH">4</col>
+  <col name="SEQ"></col>
+  <col name="DESCR"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+<!--5-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="ID">421</col>
+  <col name="TEMPLETCODE">IC_EVA_OVER_RATE</col>
+  <col name="TEMPLETNAME">内控覆盖率</col>
+  <col name="BILLNO"></col>
+  <col name="ROWLENGTH">5</col>
+  <col name="COLLENGTH">2</col>
+  <col name="SEQ"></col>
+  <col name="DESCR"></col>
+  <col name="PUSHUSER"></col>
+</record>
+
+</root>

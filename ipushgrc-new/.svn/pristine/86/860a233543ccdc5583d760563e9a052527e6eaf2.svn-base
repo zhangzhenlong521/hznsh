@@ -1,0 +1,24 @@
+package com.pushworld.ipushgrc.ui.cmpreport.p120;
+
+import javax.swing.JLabel;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+
+/**
+ * 合规报告预警
+ * 定期报告做预警 比如月报到时没有提交、季度报到期没有提交、年报到期没有提交
+ * 预警需要给没有提交报告的人和管理人发送提示。
+ * @author xch
+ *
+ */
+public class CmpAlarmWKPanel extends AbstractWorkPanel {
+	private BillListPanel billList = null; //
+
+	@Override
+	public void initialize() {
+		billList = new BillListPanel("CMP_REPORT_ALARM_CODE1"); //
+		this.add(billList); //
+	}
+
+}
