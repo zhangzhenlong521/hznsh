@@ -105,7 +105,7 @@ public class AppointedAccountingWKPanel extends AbstractWorkPanel implements Act
      */
     private void viewScoreMode(String date){
         try {
-            String [] all=UIUtil.getStringArrayFirstColByDS(null,"select username from SAL_WPKJ_SCORE where SCOREdate='"+date+"' and SCORE is null");
+            String [] all=UIUtil.getStringArrayFirstColByDS(null,"select username from SAL_WPKJ_SCORE where SCOREdate='"+date+"'");
             if(all.length<=0){
                 insertSql(date);
             }

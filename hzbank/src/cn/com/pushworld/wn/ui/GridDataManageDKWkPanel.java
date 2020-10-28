@@ -2,18 +2,19 @@ package cn.com.pushworld.wn.ui;
 
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.WLTConstants;
-import cn.com.infostrategy.to.mdata.BillVO;
-import cn.com.infostrategy.to.mdata.DeleteSQLBuilder;
-import cn.com.infostrategy.to.mdata.InsertSQLBuilder;
-import cn.com.infostrategy.to.mdata.UpdateSQLBuilder;
+import cn.com.infostrategy.to.common.WLTLogger;
+import cn.com.infostrategy.to.mdata.*;
 import cn.com.infostrategy.ui.common.*;
 import cn.com.infostrategy.ui.mdata.*;
+import cn.com.infostrategy.ui.sysapp.other.BigFileUpload;
+import cn.com.infostrategy.ui.sysapp.other.RefDialog_Month;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
 public class GridDataManageDKWkPanel extends AbstractWorkPanel implements ActionListener, BillListHtmlHrefListener {
     private String code = "EXCEL_TAB_85_CODE";
     private BillListPanel listPanel = null;
-    private WLTButton btn_add, btn_update, btn_delete, btn_log;// 新增 修改 删除
+    private WLTButton btn_add, btn_update, btn_delete, btn_log,btn_query;// 新增 修改 删除
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
             .getCode();
     private final String USERNAME = ClientEnvironment.getCurrSessionVO()
@@ -32,13 +33,16 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
     private BillListPanel list;
     private WLTButton btn_dr=new WLTButton("导入");//zzl[2020-9-18] 添加导入功能
     private Container _parent=null;
+    private String selectDate = "";
     @Override
     public void initialize() {
 
     }
     public BillListPanel getListPanel(){
+        createView();
         this._parent=_parent;
         listPanel = new BillListPanel(code);
+        btn_query=new WLTButton("查询");
         btn_add = new WLTButton("新增");
         btn_add.addActionListener(this);
         btn_update = new WLTButton("修改");
@@ -88,7 +92,7 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
                 return;
             }
             BillCardPanel cardPanel = new BillCardPanel(//EXCEL_TAB_85_EDIT_CODE
-                    "EXCEL_TAB_85_EDIT_CODE");
+                    "EXCEL_TAB_85_EDIT_CODE2");
             cardPanel.setBillVO(vo);
             BillCardDialog dialog = new BillCardDialog(listPanel, "修改",
                     cardPanel, WLTConstants.BILLDATAEDITSTATE_UPDATE);// 修改设置
@@ -196,14 +200,16 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
     @Override
     public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
         final BillVO vo=listPanel.getSelectedBillVO();
-        final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","S_LOAN_KHXX_202001_CODE1",1200,800);
-        dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"'");
+        final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","HZ_DK_WGMX_CODE1",1600,800);
+        dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+vo.getStringValue("F")+"'");
         dialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 StringBuffer sb=new StringBuffer();
                 String A=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A");
                 String G=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("G");
+                String num=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("num");
+                String ye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("ye");
                 if(A==null || A.equals("") || A.equals(null) || A.equals(" ")){
                 }else{
                     sb.append(" and A='"+A+"'");
@@ -212,11 +218,27 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
                 }else{
                     sb.append(" and G='"+G+"'");
                 }
-                if(sb.toString()==null){
-                    dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"'");
+                if(num==null || num.equals("") || num.equals(null) || num.equals(" ")){
                 }else{
-                    dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' "+sb.toString()+"");
+                    sb.append(" and num='"+num+"'");
                 }
+                if(ye==null || ye.equals("") || ye.equals(null) || ye.equals(" ")){
+                }else{
+                    String [] str=ye.split(";");
+                    sb.append(" and ye>='"+str[0]+"' and ye<='"+str[1]+"'");
+                }
+                if(sb.toString()==null){
+                    dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+vo.getStringValue("F")+"'");
+                }else{
+                    dialog.getBilllistPanel().QueryDataByCondition("J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+vo.getStringValue("F")+"' "+sb.toString()+"");
+                }
+            }
+        });
+        dialog.getBilllistPanel().addBillListHtmlHrefListener(new BillListHtmlHrefListener(){
+            @Override
+            public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+                BillVO vo=dialog.getBilllistPanel().getSelectedBillVO();
+                getDkDialog(dialog,vo);
             }
         });
         btn_dr.addActionListener(new ActionListener() {
@@ -229,6 +251,68 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
         dialog.getBilllistPanel().repaintBillListButton();
         dialog.setBtn_confirmVisible(false);
         dialog.setVisible(true);
+    }
+
+    /**
+     * zzl 贷款网格明细查看
+     * @param dialog
+     * @param vo
+     */
+    public void getDkDialog(final Dialog dialog, final BillVO vo){
+        Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
+        templetVO.setTempletname("贷款明细查看");
+        String [] columns = new String[]{"B","C","D","E","F","J","K","AP","BH","BI"};
+        String [] columnNames=new String[]{"贷款号","客户名称","手机号码","贷款日期","到期日期","贷款金额","结欠金额","证件号码","机构号","机构简称"};
+        templetVO.setRealViewColumns(columns);
+        templetVO.setIsshowlistpagebar(false);
+        templetVO.setIsshowlistopebar(false);
+        templetVO.setListheaderisgroup(false);
+        templetVO.setIslistpagebarwrap(false);
+        templetVO.setIsshowlistquickquery(false);
+        templetVO.setIscollapsequickquery(true);
+        templetVO.setIslistautorowheight(true);
+        Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[columns.length];
+        for(int i=0;i<columns.length;i++){
+            templetItemVOs[i]=new Pub_Templet_1_ItemVO();
+            templetItemVOs[i].setListisshowable(true);
+            templetItemVOs[i].setPub_Templet_1VO(templetVO);
+            templetItemVOs[i].setListwidth(150);
+            templetItemVOs[i].setItemtype("文本框");
+            templetItemVOs[i].setListiseditable("4");
+            templetItemVOs[i].setItemkey(columns[i].toString());
+            templetItemVOs[i].setItemname(columnNames[i].toString());
+        }
+        templetVO.setItemVos(templetItemVOs);
+        final BillListPanel list = new BillListPanel(templetVO);
+        final HashVO[][] vos = {null};
+        try{
+            vos[0] =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.s_loan_dk_"+getDateUpMonth()+" " +
+                    "where '283'||BH='"+vo.getStringValue("code")+"' and UPPER(AP)=UPPER('"+vo.getStringValue("G")+"')");
+            list.addBillListButton(btn_query);
+            list.putValue(vos[0]);
+            btn_query.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    String [] datas=getDate(list);
+                    String date=datas[0].toString().replace("-","");
+                    try {
+                        vos[0] =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.s_loan_dk_"+date+" " +
+                                "where '283'||BH='"+vo.getStringValue("code")+"' and UPPER(AP)=UPPER('"+vo.getStringValue("G")+"')");
+                        list.putValue(vos[0]);
+                        list.repaint();
+                    } catch (Exception e) {
+                        MessageBox.show(list,"只能查看考核月之前的数据");
+                        e.printStackTrace();
+                    }
+                }
+            });
+            list.repaintBillListButton();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        BillListDialog billListDialog=new BillListDialog(dialog,"贷款明细查询",list,1600,600,true);
+        billListDialog.setBtn_confirmVisible(false);
+        billListDialog.setVisible(true);
     }
 
     /**
@@ -267,5 +351,80 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
             }
         });
         cardDialog.setVisible(true);
+    }
+    /**
+     * zzl
+     * 比较日期决定创建的视图
+     */
+    public void createView() {
+        try {
+            SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            String createDate = UIUtil.getStringValueByDS(null, "select CREATED from dba_objects where object_name = 'V_HZ_DK_WGMX' and OBJECT_TYPE='VIEW'");
+            if (createDate == null || createDate.equals("") || createDate.equals(null)) {
+                UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,dk.ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
+            } else {
+                Date date1 = formatTemp.parse(createDate);
+                Date date2 = formatTemp.parse(getDateOneDay());
+                if (date1.getTime() < date2.getTime()) {
+                    UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,dk.ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * zzl得到每月1号
+     * 当前时间
+     */
+    public String getDateOneDay(){
+        Calendar cale = null;
+        cale = Calendar.getInstance();
+        // 获取当月第一天和最后一天
+        SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        String firstday, lastday;
+        // 获取当前月的第一天
+        cale = Calendar.getInstance();
+        cale.add(Calendar.MONTH, 0);
+        cale.set(Calendar.DAY_OF_MONTH, 1);
+        firstday = formatTemp.format(cale.getTime());
+        return firstday;
+    }
+    /**
+     * zzl得到上月的月份
+     * 当前时间
+     */
+    public String getDateUpMonth(){
+        Calendar cale = null;
+        cale = Calendar.getInstance();
+        // 获取当月第一天和最后一天
+        SimpleDateFormat formatTemp = new SimpleDateFormat("yyyyMM");
+        String firstday, lastday;
+        // 获取当前月的第一天
+        cale = Calendar.getInstance();
+        cale.add(Calendar.MONTH, -1);
+        firstday = formatTemp.format(cale.getTime());
+        return firstday;
+    }
+    /**
+     * 时间
+     * @param _parent
+     * @return
+     */
+    private String [] getDate(Container _parent) {
+        String [] str=null;
+        int a=0;
+        try {
+            RefDialog_Month chooseMonth = new RefDialog_Month(_parent, "请选择上传数据的月份", new RefItemVO(selectDate, "", selectDate), null);
+            chooseMonth.initialize();
+            chooseMonth.setVisible(true);
+            selectDate = chooseMonth.getReturnRefItemVO().getName();
+            a=chooseMonth.getCloseType();
+            str=new String[]{selectDate,String.valueOf(a)};
+            return str;
+        } catch (Exception e) {
+            WLTLogger.getLogger(BigFileUpload.class).error(e);
+        }
+        return new String[]{"2013-08",String.valueOf(a)};
     }
 }
