@@ -32,8 +32,9 @@ import cn.com.infostrategy.ui.common.ClientEnvironment;
 import cn.com.infostrategy.ui.common.UIUtil;
 import cn.com.pushworld.wn.to.WnUtils;
 import cn.com.pushworld.wn.ui.WnSalaryServiceIfc;
-import org.apache.log4j.Logger;
 
+import org.apache.axis.encoding.ser.ArraySerializer;
+import org.apache.log4j.Logger;
 
 //import org.springframework.web.servlet.mvc.LastModified;
 
@@ -96,63 +97,90 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 
 	@Override
 	public String getHfWg() {
-		String str1="";
+		String str1 = "";
 		try {
-			String [][] count=dmo.getStringArrayByDS(null,"select count(*),floor(count(*)/10000) from s_loan_khxx_202001 where J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%'");
-			int zj=Integer.parseInt(count[0][0]);
-			int xj=Integer.parseInt(count[0][1]);
-			int a=1;
-			List list=new ArrayList();
-			UpdateSQLBuilder update=new UpdateSQLBuilder("s_loan_khxx_202001");
-			for(int i=0;i<xj+1;i++){
-				HashVO [] vos=null;
-				if(i==xj){
-					vos=dmo.getHashVoArrayByDS(null,"SELECT G,H  FROM (SELECT ROWNUM AS rowno, t.* FROM s_loan_khxx_202001 t WHERE ROWNUM <= '"+zj+"' and J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%') table_alias WHERE table_alias.rowno >='"+i*10000+"'");
-				}else{
-					vos=dmo.getHashVoArrayByDS(null,"SELECT G,H  FROM (SELECT ROWNUM AS rowno, t.* FROM s_loan_khxx_202001 t WHERE ROWNUM <= '"+a*10000+"' and J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%') table_alias WHERE table_alias.rowno >='"+i*10000+"'");
+			String[][] count = dmo
+					.getStringArrayByDS(
+							null,
+							"select count(*),floor(count(*)/10000) from s_loan_khxx_202001 where J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%'");
+			int zj = Integer.parseInt(count[0][0]);
+			int xj = Integer.parseInt(count[0][1]);
+			int a = 1;
+			List list = new ArrayList();
+			UpdateSQLBuilder update = new UpdateSQLBuilder("s_loan_khxx_202001");
+			for (int i = 0; i < xj + 1; i++) {
+				HashVO[] vos = null;
+				if (i == xj) {
+					vos = dmo
+							.getHashVoArrayByDS(
+									null,
+									"SELECT G,H  FROM (SELECT ROWNUM AS rowno, t.* FROM s_loan_khxx_202001 t WHERE ROWNUM <= '"
+											+ zj
+											+ "' and J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%') table_alias WHERE table_alias.rowno >='"
+											+ i * 10000 + "'");
+				} else {
+					vos = dmo
+							.getHashVoArrayByDS(
+									null,
+									"SELECT G,H  FROM (SELECT ROWNUM AS rowno, t.* FROM s_loan_khxx_202001 t WHERE ROWNUM <= '"
+											+ a
+											* 10000
+											+ "' and J is null and K is null and H like'%县%' and H like'%乡%' and H like'%村%') table_alias WHERE table_alias.rowno >='"
+											+ i * 10000 + "'");
 
 				}
-				for(int j=0;j<vos.length;j++){
-					String str=vos[j].getStringValue("H");
-					String strx="";
-					String strc="";
-//					if(str.contains("镇") && str.contains("乡") && str.contains("村")){
-//						strx=str.substring(str.indexOf("镇")+1,str.indexOf("乡")+1);
-//						strc=str.substring(str.indexOf("乡")+1,str.indexOf("村")+1);
-//					}else if(str.contains("镇") && str.contains("村")){
-//						strx=str.substring(str.indexOf("县")+1,str.indexOf("镇")+1);
-//						strc=str.substring(str.indexOf("镇")+1,str.indexOf("村")+1);
-//					}
-//					if(str.contains("县") && str.contains("镇") && str.contains("路")) {
-//						strx = str.substring(str.indexOf("县") + 1, str.indexOf("镇") + 1);
-//						strc = str.substring(str.indexOf("镇") + 1, str.indexOf("路") + 1);
-//					}else if(str.contains("县") && str.contains("镇") && str.contains("村")){
-//						strx = str.substring(str.indexOf("县") + 1, str.indexOf("镇") + 1);
-//						strc = str.substring(str.indexOf("镇") + 1, str.indexOf("村") + 1);
-//					}else
-						if(str.contains("县") && str.contains("乡") && str.contains("村")){
-						strx = str.substring(str.indexOf("县") + 1, str.indexOf("乡") + 1);
-						strc = str.substring(str.indexOf("乡") + 1, str.indexOf("村") + 1);
+				for (int j = 0; j < vos.length; j++) {
+					String str = vos[j].getStringValue("H");
+					String strx = "";
+					String strc = "";
+					// if(str.contains("镇") && str.contains("乡") &&
+					// str.contains("村")){
+					// strx=str.substring(str.indexOf("镇")+1,str.indexOf("乡")+1);
+					// strc=str.substring(str.indexOf("乡")+1,str.indexOf("村")+1);
+					// }else if(str.contains("镇") && str.contains("村")){
+					// strx=str.substring(str.indexOf("县")+1,str.indexOf("镇")+1);
+					// strc=str.substring(str.indexOf("镇")+1,str.indexOf("村")+1);
+					// }
+					// if(str.contains("县") && str.contains("镇") &&
+					// str.contains("路")) {
+					// strx = str.substring(str.indexOf("县") + 1,
+					// str.indexOf("镇") + 1);
+					// strc = str.substring(str.indexOf("镇") + 1,
+					// str.indexOf("路") + 1);
+					// }else if(str.contains("县") && str.contains("镇") &&
+					// str.contains("村")){
+					// strx = str.substring(str.indexOf("县") + 1,
+					// str.indexOf("镇") + 1);
+					// strc = str.substring(str.indexOf("镇") + 1,
+					// str.indexOf("村") + 1);
+					// }else
+					if (str.contains("县") && str.contains("乡")
+							&& str.contains("村")) {
+						strx = str.substring(str.indexOf("县") + 1,
+								str.indexOf("乡") + 1);
+						strc = str.substring(str.indexOf("乡") + 1,
+								str.indexOf("村") + 1);
 					}
-					if(!strx.equals("") || !strc.equals("")){
-						update.setWhereCondition("G='"+vos[j].getStringValue("G")+"'");
-						update.putFieldValue("J",strx);
-						update.putFieldValue("K",strc);
+					if (!strx.equals("") || !strc.equals("")) {
+						update.setWhereCondition("G='"
+								+ vos[j].getStringValue("G") + "'");
+						update.putFieldValue("J", strx);
+						update.putFieldValue("K", strc);
 						list.add(update.getSQL());
 					}
 				}
-				if(list.size()>1000){
-					dmo.executeBatchByDS(null,list);
+				if (list.size() > 1000) {
+					dmo.executeBatchByDS(null, list);
 					list.clear();
-				}else{
-					dmo.executeBatchByDS(null,list);
+				} else {
+					dmo.executeBatchByDS(null, list);
 					list.clear();
 				}
 				a++;
 			}
-			str1="导入成功";
+			str1 = "导入成功";
 		} catch (Exception e) {
-			str1="导入失败";
+			str1 = "导入失败";
 			e.printStackTrace();
 		}
 
@@ -917,22 +945,23 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			UpdateSQLBuilder update = new UpdateSQLBuilder(
 					"wnsalarydb.s_loan_khxx_" + sy);
 			List list = new ArrayList<String>();
-//			String[][] str = dmo
-//					.getStringArrayByDS(
-//							null,
-//							"select dy.b,dy.w,dy.x,dy.v from wnsalarydb.s_loan_khxx_"
-//									+ dy
-//									+ " dy left join  wnsalarydb.s_loan_khxx_"
-//									+ sy
-//									+ " sy on dy.i=sy.i where dy.w||dy.x!=sy.w||sy.x group by dy.b,dy.w,dy.x,dy.v");
+			// String[][] str = dmo
+			// .getStringArrayByDS(
+			// null,
+			// "select dy.b,dy.w,dy.x,dy.v from wnsalarydb.s_loan_khxx_"
+			// + dy
+			// + " dy left join  wnsalarydb.s_loan_khxx_"
+			// + sy
+			// +
+			// " sy on dy.i=sy.i where dy.w||dy.x!=sy.w||sy.x group by dy.b,dy.w,dy.x,dy.v");
 			String[][] str = dmo
-				     .getStringArrayByDS(
-				       null,
-				       "select dy.b,dy.w,dy.x,dy.v from wnsalarydb.s_loan_khxx_"
-				         + dy
-				         + " dy left join  wnsalarydb.s_loan_khxx_"
-				         + sy
-				         + " sy on dy.b=sy.b where dy.w||dy.x!=sy.w||sy.x  or  dy.v!=dy.v");
+					.getStringArrayByDS(
+							null,
+							"select dy.b,dy.w,dy.x,dy.v from wnsalarydb.s_loan_khxx_"
+									+ dy
+									+ " dy left join  wnsalarydb.s_loan_khxx_"
+									+ sy
+									+ " sy on dy.b=sy.b where dy.w||dy.x!=sy.w||sy.x  or  dy.v!=dy.v");
 			for (int i = 0; i < str.length; i++) {
 				update.setWhereCondition("B='" + str[i][0] + "'");
 				update.putFieldValue("W", str[i][1]);
@@ -3181,7 +3210,11 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				HashMap<String, String> userMap = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select username,username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6");
+								"select username,username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6");
 				String userCount = dmo
 						.getStringValueByDS(
 								null,
@@ -3241,8 +3274,8 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					} else {
 						wgjfcount = Double.parseDouble(wgjfMap.get(user));
 					}
-					count = wmgfcount + gzzlcount + wdpjcount
-							+ qxpjcount + ckzfcount + dztdlcount + wgjfcount;
+					count = wmgfcount + gzzlcount + wdpjcount + qxpjcount
+							+ ckzfcount + dztdlcount + wgjfcount;
 					insert.putFieldValue("name", user);
 					insert.putFieldValue("wdmc", userDeptMap.get(user));
 					insert.putFieldValue("pjtime", str);
@@ -3283,22 +3316,33 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			result = "当前时间不在考核时间范围内！";
 		}
 		try {
-			HashMap<String, String> userMap = dmo.
-					getHashMapBySQLByDS(null,
-					"select name,name from (select * from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c>=2)");
-			HashMap<String, String> bcyuserMap = dmo.
-					getHashMapBySQLByDS(null, 
-					"select name,name from (select * from (select name from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c<2 or c is null) union all ( select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname in ('营业部')))");
-			String userCount = dmo.
-					getStringValueByDS(null,
-					"select count(*) from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c>=2");// 获取到考核人数
+			HashMap<String, String> userMap = dmo
+					.getHashMapBySQLByDS(
+							null,
+							"select name,name from (select * from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c>=2)");
+			HashMap<String, String> bcyuserMap = dmo
+					.getHashMapBySQLByDS(
+							null,
+							"select name,name from (select * from (select name from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c<2 or c is null) union all ( select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname in ('营业部')))");
+			String userCount = dmo
+					.getStringValueByDS(
+							null,
+							"select count(*) from (select a.name,b.c from (select name from v_sal_personinfo where stationkind like '%委派会计%' and deptname not in ('营业部')) a left join (select b,count(b) as c from (select * from  excel_tab_115 where d like '%委派会计%') group by b) b on a.name=b.b) where c>=2");// 获取到考核人数
 			HashMap<String, String> userDeptMap = dmo
 					.getHashMapBySQLByDS(null,
-					"select username,deptname from v_pub_user_post_1 where postname='委派会计'");
-			HashMap<String, String> xcdfMap = dmo.getHashMapBySQLByDS(null, "select a.name,b.b/100*50 from (select name,deptname from v_sal_personinfo where stationkind like '%委派会计%' and  isuncheck = 'N') a, excel_tab_119 b where a.deptname=b.a");
-			HashMap<String, String> ypjfMap = dmo.getHashMapBySQLByDS(null, "select a.name,b.c/6/100*30 as c from (select name,deptname from v_sal_personinfo where stationkind like '%委派会计%' and  isuncheck='N') a,(select deptname,sum(b) c from (select a.name deptname,b.b from (select name,shortname from pub_corp_dept) a,excel_tab_118 b where instr(b.a,a.shortname)>0) group by deptname) b where a.deptname=b.deptname");
-			HashMap<String, String> jzksMap = dmo.getHashMapBySQLByDS(null, "select a,b/100*20 from excel_tab_120");
-			HashMap<String, String> wgjfMap = dmo.getHashMapBySQLByDS(null, "select c,e from excel_tab_112 ");
+							"select username,deptname from v_pub_user_post_1 where postname='委派会计'");
+			HashMap<String, String> xcdfMap = dmo
+					.getHashMapBySQLByDS(
+							null,
+							"select a.name,b.b/100*50 from (select name,deptname from v_sal_personinfo where stationkind like '%委派会计%' and  isuncheck = 'N') a, excel_tab_119 b where a.deptname=b.a");
+			HashMap<String, String> ypjfMap = dmo
+					.getHashMapBySQLByDS(
+							null,
+							"select a.name,b.c/6/100*30 as c from (select name,deptname from v_sal_personinfo where stationkind like '%委派会计%' and  isuncheck='N') a,(select deptname,sum(b) c from (select a.name deptname,b.b from (select name,shortname from pub_corp_dept) a,excel_tab_118 b where instr(b.a,a.shortname)>0) group by deptname) b where a.deptname=b.deptname");
+			HashMap<String, String> jzksMap = dmo.getHashMapBySQLByDS(null,
+					"select a,b/100*20 from excel_tab_120");
+			HashMap<String, String> wgjfMap = dmo.getHashMapBySQLByDS(null,
+					"select c,e from excel_tab_112 ");
 			for (String user : userMap.keySet()) {
 				Double xcdf = 0.0;// 现场打分
 				Double ypjf = 0.0;// 月平均打分
@@ -3328,7 +3372,8 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				}
 				count = xcdf + ypjf + jzks + wgjf;
 				BigDecimal bxcdf = new BigDecimal(count);
-				count = bxcdf.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+				count = bxcdf.setScale(2, BigDecimal.ROUND_HALF_UP)
+						.doubleValue();
 				insert.putFieldValue("name", user);
 				insert.putFieldValue("wdmc", userDeptMap.get(user));
 				insert.putFieldValue("pjtime", str);
@@ -3336,7 +3381,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				insert.putFieldValue("ypjf", ypjf);
 				insert.putFieldValue("jzks", jzks);
 				insert.putFieldValue("wgjf", wgjf);
-				insert.putFieldValue("count",count );
+				insert.putFieldValue("count", count);
 				insert.putFieldValue("khrs", userCount);
 				list.add(insert.getSQL());
 			}
@@ -3374,10 +3419,10 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				insert.putFieldValue("ypjf", ypjf);
 				insert.putFieldValue("jzks", jzks);
 				insert.putFieldValue("wgjf", wgjf);
-				if(userDeptMap.get(user).equals("营业部")){
+				if (userDeptMap.get(user).equals("营业部")) {
 					insert.putFieldValue("count", "营业部");
-				}else{
-					insert.putFieldValue("count", "不参与排名");					
+				} else {
+					insert.putFieldValue("count", "不参与排名");
 				}
 
 				insert.putFieldValue("khrs", "--");
@@ -3402,10 +3447,19 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	private HashMap<String, String> getWgjf(String str, String year) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
-			if(str.contains("上")){
-				map = dmo.getHashMapBySQLByDS(null, "select c,ROUND((0-sum(e)),2) from excel_tab_112 where year||'-'||month='"+year+"-03' or year||'-'||month='"+year+"-06' group by c");	
-			}else if(str.contains("下")){
-				map = dmo.getHashMapBySQLByDS(null, "select C,ROUND((0-sum(e)),2) from excel_tab_112 where year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-09' or year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-12' group by c");		
+			if (str.contains("上")) {
+				map = dmo.getHashMapBySQLByDS(null,
+						"select c,ROUND((0-sum(e)),2) from excel_tab_112 where year||'-'||month='"
+								+ year + "-03' or year||'-'||month='" + year
+								+ "-06' group by c");
+			} else if (str.contains("下")) {
+				map = dmo.getHashMapBySQLByDS(
+						null,
+						"select C,ROUND((0-sum(e)),2) from excel_tab_112 where year||'-'||month='"
+								+ String.valueOf((Integer.valueOf(year) - 1))
+								+ "-09' or year||'-'||month='"
+								+ String.valueOf((Integer.valueOf(year) - 1))
+								+ "-12' group by c");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -3423,16 +3477,28 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	private HashMap<String, String> getDztdl(String str, String year) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
-			if(str.contains("上")){
+			if (str.contains("上")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select a.name,ROUND(b.m/100*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo  where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6)) a,(select name,shortname from pub_corp_dept where  shortname is not null) b where a.deptname=b.name) a,(select b,m from excel_tab_111 where year||'-'||month='"+year+"-06') b where instr(b.b,a.shortname)>0");
-			}else if(str.contains("下")){
+								"select a.name,ROUND(b.m/100*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo  where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6)) a,(select name,shortname from pub_corp_dept where  shortname is not null) b where a.deptname=b.name) a,(select b,m from excel_tab_111 where year||'-'||month='"
+										+ year
+										+ "-06') b where instr(b.b,a.shortname)>0");
+			} else if (str.contains("下")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select a.name,ROUND(b.m/100*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo  where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6)) a,(select name,shortname from pub_corp_dept where  shortname is not null) b where a.deptname=b.name) a,(select b,m from excel_tab_111 where year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-12') b where instr(b.b,a.shortname)>0");
+								"select a.name,ROUND(b.m/100*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo  where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6)) a,(select name,shortname from pub_corp_dept where  shortname is not null) b where a.deptname=b.name) a,(select b,m from excel_tab_111 where year||'-'||month='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12') b where instr(b.b,a.shortname)>0");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -3455,12 +3521,26 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select name,case when rate>20 then 20 when rate <0 then 0 else rate end as rate from (select a.name,ROUND(b.c*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6)) a ,(select name,shortname from pub_corp_dept where shortname is not null) b where a.deptname=b.name) a,(select A,F/B as c from excel_tab_9 where year||'-'||month='"+year+"-06' order by A) b where instr(b.a,a.shortname)>0)");
+								"select name,case when rate>20 then 20 when rate <0 then 0 else rate end as rate from (select a.name,ROUND(b.c*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6)) a ,(select name,shortname from pub_corp_dept where shortname is not null) b where a.deptname=b.name) a,(select A,F/B as c from excel_tab_9 where year||'-'||month='"
+										+ year
+										+ "-06' order by A) b where instr(b.a,a.shortname)>0)");
 			} else if (str.contains("下")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select name,case when rate>20 then 20 when rate <0 then 0 else rate end as rate from (select a.name,ROUND(b.c*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6)) a ,(select name,shortname from pub_corp_dept where shortname is not null) b where a.deptname=b.name) a,(select  A.A,(A.C-B.C)/B.C as c from (select A,C from excel_tab_9 where year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-06') b left join (select A,C from excel_tab_9 where year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-12') a on a.A=b.A) b where instr(b.a,a.shortname)>0)");
+								"select name,case when rate>20 then 20 when rate <0 then 0 else rate end as rate from (select a.name,ROUND(b.c*20,2) as rate from (select a.name,b.shortname from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N' and name in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6)) a ,(select name,shortname from pub_corp_dept where shortname is not null) b where a.deptname=b.name) a,(select  A.A,(A.C-B.C)/B.C as c from (select A,C from excel_tab_9 where year||'-'||month='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-06') b left join (select A,C from excel_tab_9 where year||'-'||month='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12') a on a.A=b.A) b where instr(b.a,a.shortname)>0)");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -3478,16 +3558,48 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	private HashMap<String, String> getQxpjzb(String str, String year) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
-			if(str.contains("上")){
+			if (str.contains("上")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select b name,case when rate>15 then 15  else rate end as rate from (select a.b,ROUND(a.c/b.avg*15,2) as rate from (select b,sum(d)/6 as c from excel_tab_57 where year='"+year+"' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6) group by b) a,(select a.c/b.c as avg  from (select sum(d)/6 as c from excel_tab_57 where year='"+year+"' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6))a,(select count(*) as c from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6) b) b)");
-			}else if(str.contains("下")){
+								"select b name,case when rate>15 then 15  else rate end as rate from (select a.b,ROUND(a.c/b.avg*15,2) as rate from (select b,sum(d)/6 as c from excel_tab_57 where year='"
+										+ year
+										+ "' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6) group by b) a,(select a.c/b.c as avg  from (select sum(d)/6 as c from excel_tab_57 where year='"
+										+ year
+										+ "' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6))a,(select count(*) as c from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6) b) b)");
+			} else if (str.contains("下")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select b name,case when rate>15 then 15  else rate end as rate from (select a.b,ROUND(a.c/b.avg*15,2) as rate from (select b,sum(d)/6 as c from excel_tab_57 where year='"+String.valueOf((Integer.valueOf(year) - 1))+"' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6) group by b) a,(select a.c/b.c as avg  from (select sum(d)/6 as c from excel_tab_57 where year='"+String.valueOf((Integer.valueOf(year) - 1))+"' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6))a,(select count(*) as c from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6) b) b)");
+								"select b name,case when rate>15 then 15  else rate end as rate from (select a.b,ROUND(a.c/b.avg*15,2) as rate from (select b,sum(d)/6 as c from excel_tab_57 where year='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6) group by b) a,(select a.c/b.c as avg  from (select sum(d)/6 as c from excel_tab_57 where year='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6))a,(select count(*) as c from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6) b) b)");
 			}
 
 		} catch (Exception e) {
@@ -3510,12 +3622,48 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select B,case when rate>15 then 15 else rate end as rate from (select a.b,ROUND((a.avg/b.s)*15,2) as rate from (select a.b,b.deptname,a.avg from (select b,sum(d)/6 as avg from excel_tab_57 where year='"+year+"' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6) group by b order by sum(d)/6) a,(select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') b where a.b=b.name) a,(select a.c,a.sum/b.count as s from (select c,sum(d) as sum from excel_tab_57 where year='"+year+"' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6) group by c) a left join (select c,count(c) as count from excel_tab_57 where year='"+year+"' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31' and xiangmu='总分' group by username) where c=6) group by c) b on a.c=b.c) b where a.deptname=b.c order by a.b)");
-			}else if(str.contains("下")){
+								"select B,case when rate>15 then 15 else rate end as rate from (select a.b,ROUND((a.avg/b.s)*15,2) as rate from (select a.b,b.deptname,a.avg from (select b,sum(d)/6 as avg from excel_tab_57 where year='"
+										+ year
+										+ "' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6) group by b order by sum(d)/6) a,(select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') b where a.b=b.name) a,(select a.c,a.sum/b.count as s from (select c,sum(d) as sum from excel_tab_57 where year='"
+										+ year
+										+ "' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6) group by c) a left join (select c,count(c) as count from excel_tab_57 where year='"
+										+ year
+										+ "' and month in ('01','02','03','04','05','06') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31' and xiangmu='总分' group by username) where c=6) group by c) b on a.c=b.c) b where a.deptname=b.c order by a.b)");
+			} else if (str.contains("下")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select B,case when rate>15 then 15 else rate end as rate from (select a.b,ROUND((a.avg/b.s)*15,2) as rate from (select a.b,b.deptname,a.avg from (select b,sum(d)/6 as avg from excel_tab_57 where year='"+String.valueOf((Integer.valueOf(year) - 1))+"' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6) group by b order by sum(d)/6) a,(select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') b where a.b=b.name) a,(select a.c,a.sum/b.count as s from (select c,sum(d) as sum from excel_tab_57 where year='"+String.valueOf((Integer.valueOf(year) - 1))+"' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6) group by c) a left join (select c,count(c) as count from excel_tab_57 where year='"+String.valueOf((Integer.valueOf(year) - 1))+"' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31' and xiangmu='总分' group by username) where c=6) group by c) b on a.c=b.c) b where a.deptname=b.c order by a.b)");
+								"select B,case when rate>15 then 15 else rate end as rate from (select a.b,ROUND((a.avg/b.s)*15,2) as rate from (select a.b,b.deptname,a.avg from (select b,sum(d)/6 as avg from excel_tab_57 where year='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6) group by b order by sum(d)/6) a,(select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') b where a.b=b.name) a,(select a.c,a.sum/b.count as s from (select c,sum(d) as sum from excel_tab_57 where year='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6) group by c) a left join (select c,count(c) as count from excel_tab_57 where year='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "' and month in ('07','08','09','10','11','12') and b in (select username from (select username,count(username) as c from WN_GYDX_TABLE where pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31' and xiangmu='总分' group by username) where c=6) group by c) b on a.c=b.c) b where a.deptname=b.c order by a.b)");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -3528,20 +3676,30 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	 * 
 	 * @param str
 	 * @param year
-	 * @return
-	 * over
+	 * @return over
 	 */
 	private HashMap<String, String> getGzzl(String str, String year) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
 			if (str.contains("上")) {
-				map = dmo.getHashMapBySQLByDS(null,
-						"select name,ROUND(sum(score)/6/100*10,2) as c from (select username name,fenzhi score from WN_GYDX_TABLE where xiangmu='总分' and pftime>='"+year+"-01-01' and pftime<='"+year+"-06-31') group by name");
+				map = dmo
+						.getHashMapBySQLByDS(
+								null,
+								"select name,ROUND(sum(score)/6/100*10,2) as c from (select username name,fenzhi score from WN_GYDX_TABLE where xiangmu='总分' and pftime>='"
+										+ year
+										+ "-01-01' and pftime<='"
+										+ year
+										+ "-06-31') group by name");
 
 			} else if (str.contains("下")) {
-				map = dmo.getHashMapBySQLByDS(
-						null,
-						"select name,ROUND(sum(score)/6/100*10,2) as c from (select username name,fenzhi score from WN_GYDX_TABLE where xiangmu='总分' and pftime>='"+String.valueOf((Integer.valueOf(year) - 1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year) - 1))+"-12-31') group by name");
+				map = dmo
+						.getHashMapBySQLByDS(
+								null,
+								"select name,ROUND(sum(score)/6/100*10,2) as c from (select username name,fenzhi score from WN_GYDX_TABLE where xiangmu='总分' and pftime>='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-07-01' and pftime<='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12-31') group by name");
 			}
 		} catch (Exception e) {
 
@@ -3557,52 +3715,53 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	 * @return
 	 */
 
-//	private HashMap<String, String> getFwzl(String str, String year) {
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		try {
-//			if (str.contains("上")) {
-//				// map =
-//				// dmo.getHashMapBySQLByDS(null,"select a.B,(a.C+b.C)/24/100*10 as c from (select B,sum(F) as c from (select b,f from excel_tab_39 where year||'-'||month='"+year+"-01' or year||'-'||month='"+year+"-02' or year||'-'||month='"+year+"-03' or year||'-'||month='"+year+"-04' or year||'-'||month='"+year+"-05' or year||'-'||month='"+year+"-06') group by B) a,(select username username,sum(kouofen) as c from WN_GYPF_TABLE  where xiangmu ='总分' and pftime>='"+year+"-01-01' and pftime<='"+year+"-06-30' group by username) b where a.B=b.username");
-//				map = dmo.getHashMapBySQLByDS(null,
-//						"select B,sum(f)/6/100*10 as c from excel_tab_39 where year||'-'||month='"
-//								+ year + "-01' or year||'-'||month='" + year
-//								+ "-02' or year||'-'||month='" + year
-//								+ "-03' or year||'-'||month='" + year
-//								+ "-04' or year||'-'||month='" + year
-//								+ "-05' or year||'-'||month='" + year
-//								+ "-06' group by B");
-//			} else if (str.contains("下")) {
-//				// map =
-//				// dmo.getHashMapBySQLByDS(null,"select a.B,(a.C+b.C)/24/100*10 as c from (select B,sum(F) as c from (select b,f from excel_tab_39 where year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-07' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-08' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-09' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-10' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-11' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-12') group by B) a,(select username username,sum(kouofen) as c from WN_GYPF_TABLE  where xiangmu ='总分' and pftime>='"+String.valueOf((Integer.valueOf(year)-1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year)-1))+"-12-31' group by username) b where a.B=b.username");
-//				map = dmo.getHashMapBySQLByDS(
-//						null,
-//						"select B,sum(f)/6/100*10 as c from excel_tab_39 where year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-07' or year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-08' or year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-09' or year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-10' or year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-11' or year||'-'||month='"
-//								+ String.valueOf((Integer.valueOf(year) - 1))
-//								+ "-12' group by B");
-//			}
-//		} catch (Exception e) {
-//
-//		}
-//		return map;
-//	}
+	// private HashMap<String, String> getFwzl(String str, String year) {
+	// HashMap<String, String> map = new HashMap<String, String>();
+	// try {
+	// if (str.contains("上")) {
+	// // map =
+	// //
+	// dmo.getHashMapBySQLByDS(null,"select a.B,(a.C+b.C)/24/100*10 as c from (select B,sum(F) as c from (select b,f from excel_tab_39 where year||'-'||month='"+year+"-01' or year||'-'||month='"+year+"-02' or year||'-'||month='"+year+"-03' or year||'-'||month='"+year+"-04' or year||'-'||month='"+year+"-05' or year||'-'||month='"+year+"-06') group by B) a,(select username username,sum(kouofen) as c from WN_GYPF_TABLE  where xiangmu ='总分' and pftime>='"+year+"-01-01' and pftime<='"+year+"-06-30' group by username) b where a.B=b.username");
+	// map = dmo.getHashMapBySQLByDS(null,
+	// "select B,sum(f)/6/100*10 as c from excel_tab_39 where year||'-'||month='"
+	// + year + "-01' or year||'-'||month='" + year
+	// + "-02' or year||'-'||month='" + year
+	// + "-03' or year||'-'||month='" + year
+	// + "-04' or year||'-'||month='" + year
+	// + "-05' or year||'-'||month='" + year
+	// + "-06' group by B");
+	// } else if (str.contains("下")) {
+	// // map =
+	// //
+	// dmo.getHashMapBySQLByDS(null,"select a.B,(a.C+b.C)/24/100*10 as c from (select B,sum(F) as c from (select b,f from excel_tab_39 where year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-07' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-08' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-09' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-10' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-11' or year||'-'||month='"+String.valueOf((Integer.valueOf(year)-1))+"-12') group by B) a,(select username username,sum(kouofen) as c from WN_GYPF_TABLE  where xiangmu ='总分' and pftime>='"+String.valueOf((Integer.valueOf(year)-1))+"-07-01' and pftime<='"+String.valueOf((Integer.valueOf(year)-1))+"-12-31' group by username) b where a.B=b.username");
+	// map = dmo.getHashMapBySQLByDS(
+	// null,
+	// "select B,sum(f)/6/100*10 as c from excel_tab_39 where year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-07' or year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-08' or year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-09' or year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-10' or year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-11' or year||'-'||month='"
+	// + String.valueOf((Integer.valueOf(year) - 1))
+	// + "-12' group by B");
+	// }
+	// } catch (Exception e) {
+	//
+	// }
+	// return map;
+	// }
 
 	/**
 	 * 所在网点文明规范服务管理考核平均分
 	 * 
 	 * @param str
 	 * @param year
-	 * @return
-	 * over
+	 * @return over
 	 */
 
 	private HashMap<String, String> getWmgf(String str, String year) {
@@ -3612,12 +3771,20 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select a.name,ROUND(b.c/100*20,2) as c from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') a,(select a.name,b.c from pub_corp_dept a, (select b,sum(c)/2 as c from excel_tab_116 where year||'-'||month='"+year+"-03' or year||'-'||month='"+year+"-06' group by b) b where instr(b.b,a.shortname)>0) b where a.deptname=b.name");
+								"select a.name,ROUND(b.c/100*20,2) as c from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') a,(select a.name,b.c from pub_corp_dept a, (select b,sum(c)/2 as c from excel_tab_116 where year||'-'||month='"
+										+ year
+										+ "-03' or year||'-'||month='"
+										+ year
+										+ "-06' group by b) b where instr(b.b,a.shortname)>0) b where a.deptname=b.name");
 			} else if (str.contains("下")) {
 				map = dmo
 						.getHashMapBySQLByDS(
 								null,
-								"select a.name,ROUND(b.c/100*20,2) as c from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') a,(select a.name,b.c from pub_corp_dept a, (select b,sum(c)/2 as c from excel_tab_116 where year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-09' or year||'-'||month='"+String.valueOf((Integer.valueOf(year) - 1))+"-12' group by b) b where instr(b.b,a.shortname)>0) b where a.deptname=b.name");
+								"select a.name,ROUND(b.c/100*20,2) as c from (select name,deptname from v_sal_personinfo where stationkind like '%柜员%' and isuncheck='N') a,(select a.name,b.c from pub_corp_dept a, (select b,sum(c)/2 as c from excel_tab_116 where year||'-'||month='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-09' or year||'-'||month='"
+										+ String.valueOf((Integer.valueOf(year) - 1))
+										+ "-12' group by b) b where instr(b.b,a.shortname)>0) b where a.deptname=b.name");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -5529,8 +5696,8 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			// diffHashVo[i].getStringValue("curbu"));
 			// }
 			// 首先定义SQL，获取到两个月存在差异的数据
-			lastDate=lastDate.replaceAll("-","").substring(0,6);
-			curDate=curDate.replaceAll("-", "").substring(0,6);
+			lastDate = lastDate.replaceAll("-", "").substring(0, 6);
+			curDate = curDate.replaceAll("-", "").substring(0, 6);
 			String sql = "SELECT  lastMonth.b lastb,lastMonth.ba lastba,lastMonth.bu lastbu,lastMonth.bv lastbv,lastMonth.bx lastbx,lastMonth.\"BY\" lastby,curMonth.b curb,curMonth.ba curba,curMonth.bu curbu,curMonth.bv curbv,curMonth.bx curbx,curMonth.\"BY\" curby FROM ("
 					+ "(SELECT b,ba,bu,bv,bx,\"BY\" FROM WNSALARYDB.S_LOAN_DK_"
 					+ lastDate
@@ -5542,32 +5709,33 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					+ " ON lastMonth.b=curMonth.b"
 					+ ") WHERE lastMonth.ba!=curMonth.ba OR  lastMonth.bu!=curMonth.bu OR lastMonth.bv!=curMonth.bv OR  lastMonth.bx !=curMonth.bx OR lastMonth.\"BY\"!=curMonth.\"BY\"";
 			String[][] diff = dmo.getStringArrayByDS(null, sql);
-			if(diff.length<=0){
-				message="【"+lastDate+"】数据无需变更";
-			}else {
+			if (diff.length <= 0) {
+				message = "【" + lastDate + "】数据无需变更";
+			} else {
 				/**
 				 * 注意: 非涉农贷款绩效需要做网格化，是以客户分区一和客户分区二进行统计的。
 				 */
-				UpdateSQLBuilder update=new  UpdateSQLBuilder("s_loan_dk_"+lastDate);
-				List<String> list=new ArrayList<String>();
+				UpdateSQLBuilder update = new UpdateSQLBuilder("s_loan_dk_"
+						+ lastDate);
+				List<String> list = new ArrayList<String>();
 				for (int i = 0; i < diff.length; i++) {
-					update.setWhereCondition("B='"+diff[i][0]+"'");// 查询条件
-					update.putFieldValue("ba", diff[i][7]);//当前贷款客户经理信息变更
-					update.putFieldValue("bu", diff[i][8]);//分区一变更
-					update.putFieldValue("bv", diff[i][9]);//分区二变更
-					update.putFieldValue("bx",diff[i][10] );// 客户分区一变更
-					update.putFieldValue("\"BY\"", diff[i][11]);//客户分区二变更
+					update.setWhereCondition("B='" + diff[i][0] + "'");// 查询条件
+					update.putFieldValue("ba", diff[i][7]);// 当前贷款客户经理信息变更
+					update.putFieldValue("bu", diff[i][8]);// 分区一变更
+					update.putFieldValue("bv", diff[i][9]);// 分区二变更
+					update.putFieldValue("bx", diff[i][10]);// 客户分区一变更
+					update.putFieldValue("\"BY\"", diff[i][11]);// 客户分区二变更
 					list.add(update.getSQL());
-					if(list.size()>=5000){
+					if (list.size() >= 5000) {
 						dmo.executeBatchByDS(null, list);
 						list.clear();
 					}
 				}
-				if(list.size()>0){
+				if (list.size() > 0) {
 					dmo.executeBatchByDS(null, list);
 					list.clear();
 				}
-				message="【"+lastDate+"】贷款数据已经变更完成";
+				message = "【" + lastDate + "】贷款数据已经变更完成";
 			}
 		} catch (Exception e) {
 			message = "贷款信息变更失败";
@@ -5662,5 +5830,82 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			e.printStackTrace();
 		}
 		return message;
+	}
+
+	/**
+	 * 确认信息
+	 */
+	@Override
+	public String confirm(BillVO[] vos, Map<String, String> map) {
+		String message = "";
+		try {
+			UpdateSQLBuilder update = new UpdateSQLBuilder("excel_tab_148");
+			List<String> list = new ArrayList<String>();
+			for (BillVO billVO : vos) {
+				update.setWhereCondition("A='" + billVO.getStringValue("A")
+						+ "'");
+				for (String key : map.keySet()) {
+					update.putFieldValue(key,
+							map.get(key) == null ? "" : map.get(key));
+				}
+				list.add(update.getSQL());//
+			}
+			dmo.executeBatchByDS(null, list);
+			message = "处理成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return message;
+	}
+
+	/**
+	 * 获取到委派会计考核中[现金管理、授权业务、集中作业]的得分
+	 */
+	@Override
+	public List<HashMap<String, String>> getKJHandSroce(String selectDate) {
+		List<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
+		try {
+
+			// 授权业务
+			String _sql = "select sal.code, to_char(5-mark.score,'FM9999990.009')  from ( "
+					+ "(select b,case when aw<=2 then 0 when (aw-2)/0.5>5 then 5 else (aw-2)/0.5 end score  from excel_tab_149 where year||'-'|| month ='"
+					+ selectDate
+					+ "') mark "
+					+ " join (select code,name,'贵州赫章农村商业银行股份有限公司'||name fullname from pub_corp_dept pcd  where (CORPTYPE ='乡镇银行' OR CORPTYPE ='城区银行' OR NAME ='营业部') AND  NAME  NOT IN ('城区银行','乡镇银行')) dept on mark.b=dept.fullname"
+					+ " join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=dept.name"
+					+ " )";
+			System.out.println("授权业务执行SQL:"+_sql);
+			HashMap<String, String> sqMaps = dmo
+					.getHashMapBySQLByDS(null, _sql);
+			result.add(sqMaps);
+			// 现金管理
+			_sql = "select code ,to_char(5-case when sum(num)*1>5 then 5 else sum(num)*1 end,'FM9999990.009')  num  from ("
+					+ "select sal.code, case when  jd.l>kc.kc then 1 else 0 end num from ("
+					+ "(select * from excel_tab_150  where year ||'-'|| month ='"
+					+ selectDate
+					+ "') jd"
+					+ "  join (select '贵州赫章农村商业银行股份有限公司'||b name ,(c+10)*10000 kc  from excel_tab_151) kc on kc.name=jd.a"
+					+ "  join (select code,name,'贵州赫章农村商业银行股份有限公司'||name fullname,corptype from pub_corp_dept pcd  where (corptype ='乡镇银行' or corptype ='城区银行' or name ='营业部') and  name  not in ('城区银行','乡镇银行')) corp on corp.fullname=jd.a"
+					+ "  join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=corp.name"
+					+ ")) group by code";
+			System.out.println("现金管理执行SQL:"+_sql);
+			HashMap<String, String> xjMap = dmo.getHashMapBySQLByDS(null, _sql);
+			result.add(xjMap);
+			// 集中作业
+			_sql = "select dept.code,to_char(5-case when yw.e<=2 then 0.0 when (yw.e-2)/0.5>=5 then 5 else  (yw.e-2)/0.5*1  end,'FM9999990.009')  score   from ("
+					+ "("
+					+ "select a,e from excel_tab_152 where b='贵州赫章农村商业银行股份有限公司'"
+					+ " union all "
+					+ "select a,e from excel_tab_152 where b!='贵州赫章农村商业银行股份有限公司' and a like '283%' "
+					+ ") yw join "
+					+ "(select code,deptcode from v_sal_personinfo vsp  where stationkind ='委派会计') dept on yw.a=dept.deptcode"
+					+ ")";
+			System.out.println("集中作业执行SQL:"+_sql);
+			HashMap<String, String> jzMap = dmo.getHashMapBySQLByDS(null, _sql);
+			result.add(jzMap);
+		} catch (Exception e) {
+		 e.printStackTrace();
+		}
+		return result;
 	}
 }
