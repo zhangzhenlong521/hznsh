@@ -1,7 +1,10 @@
 package cn.com.pushworld.wn.ui;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.ui.common.WLTRemoteCallServiceIfc;
 
@@ -299,5 +302,18 @@ public interface WnSalaryServiceIfc extends WLTRemoteCallServiceIfc {
 	 */
 	public String znCount(String curSelectMonthStart, String curSelectDate,
 			String curSelectMonth,String dateInterVal ,boolean b);
+	/**
+	 * 确认信息
+	 * @param vos
+	 * @param state
+	 * @param confirmComment
+	 * @return
+	 */
+	public String confirm(BillVO[] vos, Map<String, String> map);
+	/**
+	 * 计算得到，委派会计的三项分值: 现金管理  授权业务 集中作业
+	 * @return
+	 */
+	public List<HashMap<String,String>> getKJHandSroce(String selectDate);
   
 }
