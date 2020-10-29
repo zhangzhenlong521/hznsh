@@ -61,24 +61,30 @@ public class SelfSalaryQueryWKPanel extends AbstractWorkPanel implements ActionL
 		info.setForeground(Color.RED);
 		dr.getPanel_btn().add(info);
 		bq.addBillQuickActionListener(this);
-		if( ClientEnvironment.getInstance().getLoginUserName().equals("admin")){
-			WGSelfSalaryQueryWKPanel wgPanel=new WGSelfSalaryQueryWKPanel();
-			pane = new WLTTabbedPane(); //
-			pane.addTab("绩效工资查询", UIUtil.getImage("32_32_05.gif"),
-					dr); //
-			pane.addTab("网格工资查询", UIUtil.getImage("office_070.gif"),wgPanel.getDr()); //
-			this.add(pane, BorderLayout.CENTER);
-		}else if(loginCorpdistinct==null || loginCorpdistinct.equals("")){
-			this.add(dr, BorderLayout.CENTER);
-		}else if(wgflg && loginCorpdistinct.contains("涉农")){
-			WGSelfSalaryQueryWKPanel wgPanel=new WGSelfSalaryQueryWKPanel();
-			pane = new WLTTabbedPane(); //
-			pane.addTab("绩效工资查询", UIUtil.getImage("32_32_05.gif"),dr); //
-			pane.addTab("网格工资查询", UIUtil.getImage("office_070.gif"),wgPanel.getDr()); //
-			this.add(pane, BorderLayout.CENTER);
-		}else{
-			this.add(dr, BorderLayout.CENTER);
-		}
+//		if( ClientEnvironment.getInstance().getLoginUserName().equals("admin")){
+//			WGSelfSalaryQueryWKPanel wgPanel=new WGSelfSalaryQueryWKPanel();
+//			pane = new WLTTabbedPane(); //
+//			pane.addTab("绩效工资查询", UIUtil.getImage("32_32_05.gif"),
+//					dr); //
+//			pane.addTab("网格工资查询", UIUtil.getImage("office_070.gif"),wgPanel.getDr()); //
+//			this.add(pane, BorderLayout.CENTER);
+//		}else if(loginCorpdistinct==null || loginCorpdistinct.equals("")){
+//			this.add(dr, BorderLayout.CENTER);
+//		}else if(wgflg && loginCorpdistinct.contains("涉农")){
+//			WGSelfSalaryQueryWKPanel wgPanel=new WGSelfSalaryQueryWKPanel();
+//			pane = new WLTTabbedPane(); //
+//			pane.addTab("绩效工资查询", UIUtil.getImage("32_32_05.gif"),dr); //
+//			pane.addTab("网格工资查询", UIUtil.getImage("office_070.gif"),wgPanel.getDr()); //
+//			this.add(pane, BorderLayout.CENTER);
+//		}else{
+//			this.add(dr, BorderLayout.CENTER);
+//		}
+		WGSelfSalaryQueryWKPanel wgPanel=new WGSelfSalaryQueryWKPanel();
+		pane = new WLTTabbedPane(); //
+		pane.addTab("绩效工资查询", UIUtil.getImage("32_32_05.gif"),
+				dr); //
+		pane.addTab("网格工资查询", UIUtil.getImage("office_070.gif"),wgPanel.getDr()); //
+		this.add(pane, BorderLayout.CENTER);
 
 	}
 

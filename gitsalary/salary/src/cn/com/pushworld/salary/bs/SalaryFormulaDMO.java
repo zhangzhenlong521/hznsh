@@ -152,7 +152,7 @@ public class SalaryFormulaDMO extends AbstractDMO {
 			updateSqlList.add("delete from sal_factor_calvalue where logid='" + planid + "' and type='员工定量指标'");
 			StringBuffer sqlTarget=new StringBuffer();
 			if(planVO.getStringValue("zbtype").equals("网格")){
-				sqlTarget.append("select t1.*,t2.valuetype,t2.operationtype,t2.factors,t3.maindeptid,t3.maindeptid deptid,t3.maindeptid checkeddept,t4.id wgid from sal_person_check_score t1 left join  sal_person_check_list t2 on t1.targetid = t2.id left join wnsalarydb.Excel_tab_85 t4 on t1.checkeduser = t4.id left join  v_sal_personinfo t3 on t4.G = t3.code  where t1.targettype='员工定量指标' and logid='"+planid+"' and t2.catalogid in('215')"); //
+				sqlTarget.append("select t1.*,t2.valuetype,t2.operationtype,t2.factors,t3.maindeptid,t3.maindeptid deptid,t3.maindeptid checkeddept,t4.id wgid from sal_person_check_score t1 left join  sal_person_check_list t2 on t1.targetid = t2.id left join Excel_tab_85 t4 on t1.checkeduser = t4.id left join  v_sal_personinfo t3 on t4.G = t3.code  where t1.targettype='员工定量指标' and logid='"+planid+"' and t2.catalogid in('215')"); //
 			}else{
 				sqlTarget.append("select t1.*,t2.valuetype,t2.operationtype,t2.factors,t3.maindeptid,t3.maindeptid deptid,t3.maindeptid checkeddept from sal_person_check_score t1 left join  sal_person_check_list t2 on t1.targetid = t2.id left join v_sal_personinfo t3 on t1.checkeduser = t3.id  where t1.targettype='员工定量指标' and t1.logid='" + planid + "' and t2.catalogid not in('215')");
 			}

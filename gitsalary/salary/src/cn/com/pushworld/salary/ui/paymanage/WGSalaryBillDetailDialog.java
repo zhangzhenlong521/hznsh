@@ -43,7 +43,7 @@ public class WGSalaryBillDetailDialog extends BillDialog implements BillTreeSele
 
     public void init() {
         corp_tree = new BillTreePanel("PUB_CORP_DEPT_SELF");
-        corp_tree.queryDataByCondition(" 1=1 and (CORPDISTINCT='涉农网点' or name='网点' or name='乡镇网点')");
+        corp_tree.queryDataByCondition("name='分行' or CORPTYPE in ('城区银行','乡镇银行','村镇银行')");
         corp_tree.addBillTreeSelectListener(this);
         getSalaryBillDetailList(salarybillid);
         wsp = new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT, corp_tree, bl);
