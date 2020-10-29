@@ -20,14 +20,24 @@ public class DKDatacCeaning implements WLTJobIFC {
     @Override
     public String run() throws Exception {
         try{
-            if(getKHDQMonth().equals("01")){
-                dmo.executeUpdateByDS(null,"insert into hzbank.s_loan_dk_"+getKHMonthTime(0)+" as select * from hzbank.s_loan_dk_"+getKHMonthTime(1)+"");
+            StringBuilder sb=new StringBuilder();
+            String [] column=dmo.getStringArrayFirstColByDS("hzbank","select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='S_LOAN_DK_"+getKHMonthTime(1)+"' ORDER BY COLUMN_ID");
+            for(int i=0;i<column.length;i++){
+                if(i==column.length-1){
+                    sb.append(column[i]);
+                }else{
+                    sb.append(column[i]+",");
+                }
             }
-            dmo.executeUpdateByDS(null,"insert into hzbank.s_loan_dk_"+getKHMonthTime(0)+" as select * from hzbank.s_loan_dk_"+getKHMonthTime(1)+"");
-            dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getKHMonthTime(0)+" a\n" +
+            if(getKHDQMonth().equals("01")) {
+                dmo.executeUpdateByDS(null, "insert into hzbank.s_loan_dk_" + getKHMonthTime(0) + " " +
+                        "(" + sb.toString() + ") select " + sb.toString() + " from hzbank.s_loan_dk_" + getKHMonthTime(1) + " where XD_COL1||BIZ_DT in(\n" +
+                        "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_" + getKHMonthTime(1) + " where XD_COL7>0 group by XD_COL1)");
+            }
+                dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getKHMonthTime(0)+" a\n" +
                     "USING (select XD_COL1,XD_COL22 from hzbank.s_loan_dk_"+getKHMonthTime(0)+" where XD_COL1||BIZ_DT in(\n" +
-                    "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getKHMonthTime(0)+" where BIZ_DT>'"+getSYMTime(1)+"' group by XD_COL1)) b\n" +
-                    "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL22=b.XD_COL22");
+                    "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getKHMonthTime(0)+" where BIZ_DT='"+getXZTime()+"' group by XD_COL1)) b\n" +
+                    "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL22=b.XD_COL22");//BIZ_DT='"+getXZTime()+"' BIZ_DT>'"+getSYMTime(1)+"'
             return "清洗贷款数据成功";
         }catch (Exception e){
             e.printStackTrace();
@@ -78,6 +88,17 @@ public class DKDatacCeaning implements WLTJobIFC {
         cal.add(Calendar.MONTH, -a);
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DATE));
         Date otherDate = cal.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        return dateFormat.format(otherDate);
+    }
+
+    /**
+     * 得到现在的日期
+     *
+     * @return
+     */
+    public String getXZTime() {
+        Date otherDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         return dateFormat.format(otherDate);
     }

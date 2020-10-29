@@ -52,12 +52,14 @@ public class GridDataManageWkPanel extends AbstractWorkPanel implements
 		btn_log = new WLTButton("日志查看");
 		btn_log.addActionListener(this);
 		HashVO [] vos=null;
+		HashMap<String,String> roleMap=new HashMap<String, String>();
 		try{
 			vos=UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
+			roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
 		}catch (Exception e){
-
 		}
-		if(ClientEnvironment.isAdmin()){
+
+		if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
 			listPanel.QueryDataByCondition("PARENTID='1'");//zzl[20201012]
 			listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
 			listPanel.setDataFilterCustCondition("PARENTID='1'");
@@ -75,7 +77,7 @@ public class GridDataManageWkPanel extends AbstractWorkPanel implements
 		listPanel.addBillListHtmlHrefListener(this); // zzl[20201012]
 		tabbedPane =new WLTTabbedPane();
 		tabbedPane.addTab("存款网格",listPanel);
-		if(ClientEnvironment.isAdmin() || vos[0].getStringValue("POSTNAME").contains("行长") || vos[0].getStringValue("POSTNAME").contains("客户经理")){
+		if(ClientEnvironment.isAdmin() || vos[0].getStringValue("POSTNAME").contains("行长") || vos[0].getStringValue("POSTNAME").contains("客户经理") || roleMap.get("绩效系统管理员")!=null){
 			GridDataManageDKWkPanel dk=new GridDataManageDKWkPanel();
 			tabbedPane.addTab("贷款网格",dk.getListPanel());
 		}
@@ -356,20 +358,17 @@ public class GridDataManageWkPanel extends AbstractWorkPanel implements
         return firstday;
 	}
 	/**
-	 * zzl得到上月的月份
+	 * zzl得到上月的月份最后一天
 	 * 当前时间
 	 */
 	public String getDateUpMonth(){
-		Calendar cale = null;
-		cale = Calendar.getInstance();
-		// 获取当月第一天和最后一天
-		SimpleDateFormat formatTemp = new SimpleDateFormat("yyyyMM");
-		String firstday, lastday;
-		// 获取当前月的第一天
-		cale = Calendar.getInstance();
-		cale.add(Calendar.MONTH, -1);
-		firstday = formatTemp.format(cale.getTime());
-		return firstday;
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MONTH, -1);
+		cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DATE));
+		Date otherDate = cal.getTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		return dateFormat.format(otherDate);
 	}
 	public void getCkDialog(final Dialog dialog, final BillVO vo){
 		Pub_Templet_1VO templetVO = new Pub_Templet_1VO();

@@ -13,9 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -52,12 +50,14 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
         btn_log = new WLTButton("日志查看");
         btn_log.addActionListener(this);
         HashVO[] vos=null;
+        HashMap<String,String> roleMap=new HashMap<String, String>();
         try{
             vos=UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
+            roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
         }catch (Exception e){
 
         }
-        if(ClientEnvironment.isAdmin()){
+        if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
@@ -361,12 +361,12 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
             SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String createDate = UIUtil.getStringValueByDS(null, "select CREATED from dba_objects where object_name = 'V_HZ_DK_WGMX' and OBJECT_TYPE='VIEW'");
             if (createDate == null || createDate.equals("") || createDate.equals(null)) {
-                UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,dk.ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
+                UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,case when dk.ye is null then 0 else dk.ye end ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
             } else {
                 Date date1 = formatTemp.parse(createDate);
                 Date date2 = formatTemp.parse(getDateOneDay());
                 if (date1.getTime() < date2.getTime()) {
-                    UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,dk.ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
+                    UIUtil.executeUpdateByDS(null, "create or replace view hzdb.v_hz_dk_wgmx as select wg.*,case when dk.ye is null then '待开发' else '我行客户' end num,case when dk.ye is null then 0 else dk.ye end ye from(select xx.A,xx.B,xx.C,xx.D,xx.E,xx.F,xx.G,xx.H,xx.I,xx.J,xx.K,wg.f deptcode,wg.code code from hzdb.s_loan_khxx_202001 xx left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg left join (select BH,AP,sum(K) ye from hzdb.s_loan_dk_"+getDateUpMonth()+" group by BH,AP) dk on wg.code='283'||dk.BH and UPPER(wg.G)=UPPER(dk.AP)");
                 }
             }
         } catch (Exception e) {

@@ -119,7 +119,7 @@ public class AppointedAccountingWKPanel extends AbstractWorkPanel implements
 		try {
 			String[] all = UIUtil.getStringArrayFirstColByDS(null,
 					"select username from SAL_WPKJ_SCORE where SCOREdate='"
-							+ date + "' and SCORE is null");
+							+ date + "'");
 			if (all.length <= 0) {
 				insertSql(date);
 			}
