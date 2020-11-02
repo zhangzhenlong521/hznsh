@@ -92,7 +92,15 @@ public class GridDataManageWkPanel extends AbstractWorkPanel implements
 		 dialog.getBillcardPanel().setRealValueAt("PARENTID","1");
 		 dialog.setSaveBtnVisiable(false);
 		 dialog.setVisible(true);
-		 listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+		 if(dialog.getBillcardPanel().getBillVO().getStringValue("D").equals("") ||
+				 dialog.getBillcardPanel().getBillVO().getStringValue("D")==null ||
+				 dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(null) ||
+				 dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(" ")
+		 ){
+
+		 }else{
+			 listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+		 }
 		} else if (e.getSource() == btn_update) {// ÐÞ¸Ä²Ù×÷
 			BillVO vo=listPanel.getSelectedBillVO();
 			if (vo == null) {

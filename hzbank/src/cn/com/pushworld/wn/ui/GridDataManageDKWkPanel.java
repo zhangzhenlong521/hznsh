@@ -81,10 +81,18 @@ public class GridDataManageDKWkPanel extends AbstractWorkPanel implements Action
         if (e.getSource() == btn_add) {// 新增按钮
             BillCardDialog dialog=new BillCardDialog(listPanel,"新增","EXCEL_TAB_85_EDIT_CODE",900,300);
             dialog.getBillcardPanel().setEditable("PARENTID",false);
-            dialog.getBillcardPanel().setRealValueAt("PARENTID","1");
+            dialog.getBillcardPanel().setRealValueAt("PARENTID","2");
             dialog.setSaveBtnVisiable(false);
             dialog.setVisible(true);
-            listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+            if(dialog.getBillcardPanel().getBillVO().getStringValue("D").equals("") ||
+                    dialog.getBillcardPanel().getBillVO().getStringValue("D")==null ||
+                    dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(null) ||
+                    dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(" ")
+            ){
+
+            }else{
+                listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+            }
         } else if (e.getSource() == btn_update) {// 修改操作
             BillVO vo = listPanel.getSelectedBillVO();
             if (vo == null) {
