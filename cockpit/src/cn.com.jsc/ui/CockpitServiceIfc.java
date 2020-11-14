@@ -7,4 +7,5 @@ import cn.com.infostrategy.ui.common.WLTRemoteCallServiceIfc;
  * 数据可视化接口
  */
 public interface CockpitServiceIfc extends WLTRemoteCallServiceIfc {
+    public String getCkStatistical();
 }
