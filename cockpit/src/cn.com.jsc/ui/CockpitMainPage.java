@@ -34,7 +34,7 @@ public class CockpitMainPage extends AbstractWorkPanel {
     @Override
     public void initialize() {
         JFrame jFrame=new JFrame();
-        WLTSplitPane cKcop_jpane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CkNewJLabel().getJLabel(),new CkBarChart().getChartPanel());//zzl 竖向分屏
+        WLTSplitPane cKcop_jpane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CkNewJLabel().getJLabel(),new CkBarChart().getJLabel());//zzl 竖向分屏
         cKcop_jpane.setDividerLocation(500);//zzl 存款的说明和柱状图   new CkNewJLabel().getJLabel() 1.0 new CkBarChart().getChartPanel()
         cKcop_jpane.setOpaque(true);
         //各支行存款情况统计
@@ -76,7 +76,8 @@ public class CockpitMainPage extends AbstractWorkPanel {
         bad_pane5.setDividerLocation(1800);
         WLTSplitPane zh_pane = new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT, cop_pane, bad_pane5); //zzl 横向分屏
         zh_pane.setDividerLocation(700); //
-        jFrame.add(zh_pane);
-        jFrame.setVisible(true);
+//        jFrame.add(zh_pane);
+//        jFrame.setVisible(true);
+        this.add(new CkNewJLabel().getJLabel());
     }
 }
