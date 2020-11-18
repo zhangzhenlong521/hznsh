@@ -77,73 +77,104 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     @Override
     public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
         final BillVO vo=listPanel.getSelectedBillVO();
-        final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","HZ_DK_WGMX_CODE1",2000,800);
-        dialog.getBilllistPanel().getTempletVO().setTablename(tablename);
-        dialog.getBilllistPanel().getTempletVO().setSavedtablename(tablename);
         deptcode=vo.getStringValue("F");
-        dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
-        dialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                StringBuffer sb=new StringBuffer();
-                String A=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A");
-                String G=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("G");
-                String num=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("num");
-                String dkye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dkye");
-                if(A==null || A.equals("") || A.equals(null) || A.equals(" ")){
-                }else{
-                    sb.append(" and A='"+A+"'");
+        if(_event.getItemkey().equals("D")){
+            final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","HZ_DK_WGMX_CODE1",2000,800);
+            dialog.getBilllistPanel().getTempletVO().setTablename(tablename);
+            dialog.getBilllistPanel().getTempletVO().setSavedtablename(tablename);
+            dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
+            dialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    StringBuffer sb=new StringBuffer();
+                    String A=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A");
+                    String G=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("G");
+                    String num=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("num");
+                    String dkye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dkye");
+                    if(A==null || A.equals("") || A.equals(null) || A.equals(" ")){
+                    }else{
+                        sb.append(" and A='"+A+"'");
+                    }
+                    if(G==null || G.equals("") || G.equals(null) || G.equals(" ")){
+                    }else{
+                        sb.append(" and G='"+G+"'");
+                    }
+                    if(num==null || num.equals("") || num.equals(null) || num.equals(" ")){
+                    }else{
+                        sb.append(" and num='"+num+"'");
+                    }
+                    if(dkye==null || dkye.equals("") || dkye.equals(null) || dkye.equals(" ")){
+                    }else{
+                        String [] str=dkye.split(";");
+                        sb.append(" and dkye>='"+str[0]+"' and dkye<='"+str[1]+"'");
+                    }
+                    if(sb.toString()==null){
+                        dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
+                    }else{
+                        dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' "+sb.toString()+"");
+                    }
                 }
-                if(G==null || G.equals("") || G.equals(null) || G.equals(" ")){
-                }else{
-                    sb.append(" and G='"+G+"'");
+            });
+            dialog.getBilllistPanel().addBillListHtmlHrefListener(new BillListHtmlHrefListener(){
+                @Override
+                public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+                    BillVO vo=dialog.getBilllistPanel().getSelectedBillVO();
+                    if(_event.getItemkey().equals("dkye")){
+                        getDkDialog(dialog,vo);
+                    }else if(_event.getItemkey().equals("ckye")){
+                        getCkDialog(dialog,vo);
+                    }else if(_event.getItemkey().equals("num")){
+                        getJtDialog(dialog,vo);
+                    }
                 }
-                if(num==null || num.equals("") || num.equals(null) || num.equals(" ")){
-                }else{
-                    sb.append(" and num='"+num+"'");
+            });
+            btn_dr.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    onImpData(dialog,vo);
                 }
-                if(dkye==null || dkye.equals("") || dkye.equals(null) || dkye.equals(" ")){
-                }else{
-                    String [] str=dkye.split(";");
-                    sb.append(" and dkye>='"+str[0]+"' and dkye<='"+str[1]+"'");
+            });
+            btn_xg.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    updateDate(dialog,vo);
                 }
-                if(sb.toString()==null){
-                    dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
-                }else{
-                    dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' "+sb.toString()+"");
-                }
+            });
+            dialog.getBilllistPanel().addBillListButton(btn_dr);
+            dialog.getBilllistPanel().addBillListButton(btn_xg);
+            dialog.getBilllistPanel().repaintBillListButton();
+            dialog.setBtn_confirmVisible(false);
+            dialog.setVisible(true);
+        }else if(_event.getItemkey().equals("QK")){
+            StringBuilder sb=new StringBuilder();
+            try {
+                sb.append(vo.getStringValue("C")+vo.getStringValue("D")+":");
+                sb.append(System.getProperty("line.separator"));
+                //zzl 总客户数
+                String zhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
+                sb.append("本网格总客户数为：【"+zhs+"】户");
+                sb.append(System.getProperty("line.separator"));
+                //zzl 存款客户
+                String ckhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye is not null");
+                sb.append("已有存款客户：【"+ckhs+"】户      待开发存款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"】户");
+                sb.append(System.getProperty("line.separator"));
+                // zzl 贷款客户
+                String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye is not null");
+                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
+                sb.append(System.getProperty("line.separator"));
+                //zzl 建档户数
+                String jdhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and jdxx='已建档'");
+                sb.append("已有建档客户：【"+jdhs+"】户      待开发建档客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"】户");
+                sb.append(System.getProperty("line.separator"));
+                //zzl 黔农云
+                String qnyhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and qny='是'");
+                sb.append("已有黔农云客户：【"+qnyhs+"】户      待开发黔农云客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(qnyhs))+"】户");
+                sb.append(System.getProperty("line.separator"));
+                MessageBox.show(listPanel,sb.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        dialog.getBilllistPanel().addBillListHtmlHrefListener(new BillListHtmlHrefListener(){
-            @Override
-            public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
-                BillVO vo=dialog.getBilllistPanel().getSelectedBillVO();
-                if(_event.getItemkey().equals("dkye")){
-                    getDkDialog(dialog,vo);
-                }else if(_event.getItemkey().equals("ckye")){
-                    getCkDialog(dialog,vo);
-                }else if(_event.getItemkey().equals("num")){
-                    getJtDialog(dialog,vo);
-                }
-            }
-        });
-        btn_dr.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                onImpData(dialog,vo);
-            }
-        });
-        btn_xg.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                updateDate(dialog,vo);
-            }
-        });
-        dialog.getBilllistPanel().addBillListButton(btn_dr);
-        dialog.getBilllistPanel().addBillListButton(btn_xg);
-        dialog.getBilllistPanel().repaintBillListButton();
-        dialog.setBtn_confirmVisible(false);
-        dialog.setVisible(true);
+        }
 
     }
 

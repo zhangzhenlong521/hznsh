@@ -44,21 +44,34 @@ public class DKDatacCeaning implements WLTJobIFC {
                     "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where BIZ_DT='"+getXZTime()+"' group by XD_COL1)) b\n" +
                     "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL22=b.XD_COL22");//BIZ_DT='"+getXZTime()+"' BIZ_DT>'"+getSYMTime(1)+"'
             //zzl 有时候省联社贷款数据不会下发，只能去还款信息里找然后修改余额
-            dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getQYDayMonth()+" a USING (" +
-                    "select hk.xd_col1 XD_COL1,hk.hkye,dk.dkye from(" +
-                    "select XD_COL1,sum(XD_COL5) hkye from hzbank.s_loan_hk where XD_COL1||XD_COL4||biz_dt " +
-                    "in(select XD_COL1||max(XD_COL4)||max(biz_dt) from hzbank.s_loan_hk group by XD_COL1) group by XD_COL1) " +
-                    "hk left join(select XD_COL1,XD_COL7 dkye,XD_COL22 from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT " +
-                    "in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" group by XD_COL1) " +
-                    "and XD_COL7>0) dk on hk.xd_col1=dk.xd_col1 where hk.hkye=dk.dkye) b " +
-                    "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL7=0");
-            //zzl 每天创建数据网格数据主要为了提高查询速度
-            String dk=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.s_loan_dk_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+//            dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getQYDayMonth()+" a USING (" +
+//                    "select hk.xd_col1 XD_COL1,hk.hkye,dk.dkye from(" +
+//                    "select XD_COL1,sum(XD_COL5) hkye from hzbank.s_loan_hk where XD_COL1||XD_COL4||biz_dt " +
+//                    "in(select XD_COL1||max(XD_COL4)||max(biz_dt) from hzbank.s_loan_hk group by XD_COL1) group by XD_COL1) " +
+//                    "hk left join(select XD_COL1,XD_COL7 dkye,XD_COL22 from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT " +
+//                    "in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" group by XD_COL1) " +
+//                    "and XD_COL7>0) dk on hk.xd_col1=dk.xd_col1 where hk.hkye=dk.dkye) b " +
+//                    "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL7=0");
+            dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getQYDayMonth()+" a USING (\n" +
+                    "select hk.xd_col1 XD_COL1,hk.hkye,dk.dkye from(select XD_COL1,sum(XD_COL5) hkye from hzbank.s_loan_hk where \n" +
+                    "to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')<='"+getDQymTime()+"' group by XD_COL1) hk left join(select XD_COL1,XD_COL7 dkye,XD_COL22 from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT \n" +
+                    " in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" group by XD_COL1) and XD_COL7>0) dk on \n" +
+                    " hk.xd_col1=dk.xd_col1 where hk.hkye>=dk.dkye) b ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL7=0");
             String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime()+"' and OBJECT_TYPE='TABLE'");
-            if(dk==null){
+            if(createDate.length>0){
 
             }else{
-                if(createDate.length>0){
+                //zzl 每天创建数据网格数据主要为了提高查询速度
+                //dk 贷款表
+                String dk=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.s_loan_dk_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+                //活期存款
+                String ck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+                //定期存款
+                String dqck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'\n");
+                //存款客户主表
+                String ckkhxx=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from  hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
+                if(dk==null || ck==null || dqck==null || ckkhxx==null){
+
                 }else{
                     dmo.executeUpdateByDS(null,"create table hzdb.grid_data_"+getQYTTime()+" as select wg.*,ck.oact_inst_no,ck.name,ck.ckye,dk.dkye,case when jd.jdxx is null then '否' else jd.jdxx end jdxx ,\n" +
                             "case when qny.sf is null then '否' else qny.sf end qny ,'家庭成员' num \n" +
@@ -88,7 +101,7 @@ public class DKDatacCeaning implements WLTJobIFC {
     }
     public static void main(String[] args) {
         DKDatacCeaning a = new DKDatacCeaning();
-        String inputParam = a.getSMonth();
+        String inputParam = a.getDQymTime();
         System.out.println(">>>>>>>>>>>>>>" + inputParam);
     }
     /**
@@ -145,6 +158,21 @@ public class DKDatacCeaning implements WLTJobIFC {
         cal.setTime(new Date());
         cal.add(Calendar.MONTH, 0);
         cal.set(Calendar.DATE, Calendar.DATE - 1);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DATE));
+        Date otherDate = cal.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(otherDate);
+    }
+    /**
+     * 得到当前月末日期
+     *
+     * @return
+     */
+    public String getDQymTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.MONTH, 0);
+        cal.set(Calendar.DATE, Calendar.DATE - 0);
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DATE));
         Date otherDate = cal.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
