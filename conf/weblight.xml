@@ -4,7 +4,7 @@
 
 <root>
 
-	<init-param key="SN"                        value="a17c54025b89yy687x4b599b6y1087152cz1861x" descr="产品序列码" />
+	<init-param key="SN"                        value="1a88037792c9b6c2776za293a685zz166125c865" descr="产品序列码" />
 	<init-param key="SERVERTYPE"                value="TOMCAT" descr="应用服务器类型" />
 	<init-param key="SERVERREALPATH"            value="/LAW/tcmwebapppath" descr="应用服务器直接路径,下载包就从这里取," />
 	<init-param key="WLTUPLOADFILEDIR"          value="D:/WebPushTemp"  descr="上传文件存放的地方" />
@@ -166,6 +166,7 @@
 			<poolsize>10000</poolsize>
 	</service>
 	
+	
 		<service name="com.pushworld.ipushgrc.ui.IPushGRCServiceIfc" descr="标准产品服务">
 			<implclass>com.pushworld.ipushgrc.bs.IPushGRCServiceImpl</implclass>
 			<initsize>1</initsize>
@@ -182,6 +183,11 @@
 			<initsize>1</initsize>
 			<poolsize>10000</poolsize>
 		</service>
+		<service name="cn.com.jsc.ui.CockpitServiceIfc" descr="大屏幕展示服务">
+		<implclass>cn.com.jsc.bs.CockpitServiceImpl</implclass>
+		<initsize>1</initsize>
+		<poolsize>10000</poolsize>
+	</service>
 	   	<!--
 		<service name="cn.com.arcu.ui.common.ARCU_RemoteServiceIfc" descr="赫章农商银行合规管理系统服务">
 			<implclass>cn.com.arcu.bs.common.ARCU_RemoteServiceImpl</implclass>
@@ -194,6 +200,7 @@
 			<poolsize>10000</poolsize>
 		</service>
 		 -->
+		 
 	</moduleservices>
 	
 	<!--需要参与缓存的Jar文件,即这些文件启动时就读入了Tomcat内存中了,客户端下载时就不需从硬盘再读了,极大提高效率!!-->

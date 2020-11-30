@@ -49,7 +49,6 @@ public class GyEmpowerRefuseWKPanel extends AbstractWorkPanel implements ActionL
 			panel.addBillListButton(gy_confirm);
 			panel.QueryDataByCondition("(M LIKE '%"+code+"%' or N LIKE '%"+code+"%') and  GY_CONFIRM IS NULL");
 		}
-		
 		panel.repaintBillListButton();
 		panel.setRowNumberChecked(true);// 设置启动
 		this.add(panel);
@@ -57,6 +56,7 @@ public class GyEmpowerRefuseWKPanel extends AbstractWorkPanel implements ActionL
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== gy_confirm){ // 柜员确认
+			message="已关闭";
 			// 柜员确认，对被拒绝的业务进行确认: 确认 有异议,如果有异议，请说明原因
 			final BillVO[] vos = panel.getCheckedBillVOs();
 			if(vos== null || vos.length<=0){
@@ -76,11 +76,13 @@ public class GyEmpowerRefuseWKPanel extends AbstractWorkPanel implements ActionL
 					}
 				}
 			});
+			
 			dialog.setVisible(true);// 设置可见
 			MessageBox.show(this,message);
 			panel.refreshData();
 			
 		}else if(e.getSource() == cw_confirm){ // 财务部确认
+			message="已关闭";
 			// 对柜员提交的有异议的业务进行审批: 同意，拒绝；
 			final BillVO[] vos = panel.getCheckedBillVOs();
 			if(vos== null || vos.length<=0){

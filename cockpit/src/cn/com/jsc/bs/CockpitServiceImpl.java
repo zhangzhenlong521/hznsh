@@ -3,9 +3,13 @@ package cn.com.jsc.bs;
 import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.jsc.ui.CockpitServiceIfc;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class CockpitServiceImpl implements CockpitServiceIfc {
     CommDMO dmo=new CommDMO();
@@ -177,4 +181,138 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
         System.out.print(cp.getYearYmTime());
     }
 
+	@Override
+	public int getCurYearQnyhs() {
+		int result=0;
+		// 获取到表名，判断表名是否存在
+		String tableName="S_LOAN_QNYYX";
+		List<String> tableList = getTableList("HZDB", tableName);
+		String sql="";
+		if(tableList.contains(tableName+"_"+getCurMonth().replace("-",""))){ // 判断当前存在表
+			sql="SELECT count(*) FROM (SELECT c, e,f,TO_NUMBER(REPLACE(n,',',''))+TO_NUMBER(REPLACE(o,',',''))+TO_NUMBER(REPLACE(P,',',''))+TO_NUMBER(REPLACE(Q,',',''))+TO_NUMBER(REPLACE(R,',',''))+TO_NUMBER(REPLACE(S,',',''))+TO_NUMBER(REPLACE(T,',',''))+TO_NUMBER(REPLACE(U,',',''))+TO_NUMBER(REPLACE(V,',',''))+TO_NUMBER(REPLACE(w,',',''))+TO_NUMBER(REPLACE(x,',',''))+TO_NUMBER(REPLACE(Y,',',''))+TO_NUMBER(REPLACE(Z,',',''))+TO_NUMBER(REPLACE(aa,',',''))+TO_NUMBER(REPLACE(ab,',',''))+TO_NUMBER(REPLACE(ac,',',''))+TO_NUMBER(REPLACE(ad,',',''))   num   FROM hzdb.S_LOAN_QNYYX_"+getCurMonth().replace("-", "")+"  WHERE i>='"+getCurYear()+"-01-01 00:00:00' ) WHERE num >0";	
+		}else{
+			if(tableList.size()==0){
+				return 0;
+			}else {
+				sql="SELECT count(*) FROM (SELECT c, e,f,TO_NUMBER(REPLACE(n,',',''))+TO_NUMBER(REPLACE(o,',',''))+TO_NUMBER(REPLACE(P,',',''))+TO_NUMBER(REPLACE(Q,',',''))+TO_NUMBER(REPLACE(R,',',''))+TO_NUMBER(REPLACE(S,',',''))+TO_NUMBER(REPLACE(T,',',''))+TO_NUMBER(REPLACE(U,',',''))+TO_NUMBER(REPLACE(V,',',''))+TO_NUMBER(REPLACE(w,',',''))+TO_NUMBER(REPLACE(x,',',''))+TO_NUMBER(REPLACE(Y,',',''))+TO_NUMBER(REPLACE(Z,',',''))+TO_NUMBER(REPLACE(aa,',',''))+TO_NUMBER(REPLACE(ab,',',''))+TO_NUMBER(REPLACE(ac,',',''))+TO_NUMBER(REPLACE(ad,',',''))   num   FROM hzdb."+tableList.get(tableList.size()-1)+"  WHERE i>='"+getCurYear()+"-01-01 00:00:00' ) WHERE num >0";
+			}
+		}
+		try{
+			String num = dmo.getStringValueByDS(null, sql);
+			result=Integer.parseInt(num);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public String getCurMonth(){
+		SimpleDateFormat formate=new SimpleDateFormat("yyyy-MM");
+		String curMonth = formate.format(new Date());
+		return curMonth;
+	}
+	
+	public String getCurYear(){
+		SimpleDateFormat formate=new SimpleDateFormat("yyyy");
+		String curYear= formate.format(new Date());
+		return curYear;
+	}
+
+	@Override
+	public String getCurrYearQnyhyl() {
+		String result="";
+		try {
+			// 获取到当前表名
+			String tableName="S_LOAN_QNYYX";
+			List<String> tableList = getTableList("hzdb",tableName);
+			String sql;
+			if(tableList.contains(tableName+"_"+getCurMonth().replace("-",""))){
+				// 计算黔农云有效户数
+				tableName=tableName+"_"+getCurMonth().replace("-","");
+			}else {
+				if(tableList.size()==0){
+					return "0";
+				}else {
+				  tableName=tableList.get(tableList.size()-1);
+				}
+			}
+			sql="SELECT count(*) FROM (SELECT c, e,f,TO_NUMBER(REPLACE(n,',',''))+TO_NUMBER(REPLACE(o,',',''))+TO_NUMBER(REPLACE(P,',',''))+TO_NUMBER(REPLACE(Q,',',''))+TO_NUMBER(REPLACE(R,',',''))+TO_NUMBER(REPLACE(S,',',''))+TO_NUMBER(REPLACE(T,',',''))+TO_NUMBER(REPLACE(U,',',''))+TO_NUMBER(REPLACE(V,',',''))+TO_NUMBER(REPLACE(w,',',''))+TO_NUMBER(REPLACE(x,',',''))+TO_NUMBER(REPLACE(Y,',',''))+TO_NUMBER(REPLACE(Z,',',''))+TO_NUMBER(REPLACE(aa,',',''))+TO_NUMBER(REPLACE(ab,',',''))+TO_NUMBER(REPLACE(ac,',',''))+TO_NUMBER(REPLACE(ad,',',''))   num   FROM "+tableName+" WHERE num >0";
+		    int yxNum = Integer.parseInt(dmo.getStringValueByDS(null,sql));
+		    // 黔农云总数
+		    sql="SELECT count(*) FROM"+tableName;
+		    int totalNum = Integer.parseInt(dmo.getStringValueByDS(null, sql));
+		    result=new BigDecimal((yxNum/totalNum)*100).setScale(2,BigDecimal.ROUND_HALF_UP).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result+"%";
+	}
+	/**
+	 * zpy 根据指定的表空间和表名，来获取对应表;
+	 * @param tableSpaceName
+	 * @param tableName
+	 * @return
+	 */
+	public List<String> getTableList(String tableSpaceName,String tableName){
+		List<String> list=new ArrayList<String>();
+		try {
+			String[] tableNames = dmo.getStringArrayFirstColByDS(null, "select TABLE_NAME from dba_tables WHERE tablespace_name='"+tableSpaceName.toUpperCase()+"' AND TABLE_NAME LIKE '"+tableName.toUpperCase()+"%' ORDER BY TABLE_NAME");
+			list=new  ArrayList<String>(Arrays.asList(tableNames));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
+	@Override
+	public int getCurrYearQned() {
+		int result = 0;
+		try{
+			String tableName="ESIGN";
+			List<String> tableList = getTableList("HZBANK", tableName);
+			if(tableList.contains(tableName+"_"+getCurMonth().replace("-",""))){
+				tableName=tableName+"_"+getCurMonth().replace("-","");
+			}else {
+				if(tableList.size()==0){
+					return 0;
+				}else {
+					tableName=tableList.get(tableList.size()-1);
+				}
+			}
+			String sql="SELECT count(*) FROM  HZBANK."+tableName+" WHERE o>='"+getCurYear()+"-01-01 00:00:00' AND  j ='生效'";
+			result = Integer.parseInt(dmo.getStringValueByDS(null, sql));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public String getCurrYearQnedXszb() {
+		 String result="";
+		 try {
+			String tableName="S_LOAN_DK";
+			List<String> tableList = getTableList("HZBANK", tableName);
+			if(tableList.contains(tableName+"_"+getCurMonth().replace("-", ""))){
+				tableName=tableName+"_"+getCurMonth().replace("-", "");
+			}else {
+				if(tableList.size()==0){
+					return "0";
+				}else {
+					tableName=tableList.get(tableList.size()-1);
+				}
+			}
+			// 贷款总数
+			String sql="SELECT count(*) FROM  HZBANK."+tableName+" WHERE xd_col4>='"+getCurYear()+"-01-01 00:00:00' AND xd_col7>0";
+			int  totalDKNum =Integer.parseInt(dmo.getStringValueByDS(null, sql));
+			// 黔农E贷数量
+			sql="SELECT count(*) FROM HZBANK."+tableName+" WHERE xd_col86 IN ('x_wd','x_wj') AND xd_col4>='"+getCurYear()+"-01-01 00:00:00' AND xd_col7>0";
+			int qned= Integer.parseInt(dmo.getStringValueByDS(null, sql));
+			result= new BigDecimal((qned/totalDKNum)*100).setScale(2,BigDecimal.ROUND_HALF_UP).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result+"%";
+	}
 }

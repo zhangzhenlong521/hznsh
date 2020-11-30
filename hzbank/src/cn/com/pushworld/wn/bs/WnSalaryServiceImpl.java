@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.print.DocFlavor.STRING;
+
 import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.infostrategy.bs.common.RemoteCallServlet;
 import cn.com.infostrategy.bs.common.ServerEnvironment;
@@ -5907,5 +5909,26 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 		 e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public String dealCashManageMent(BillVO[] vos, String state, String msg) {
+		String message="";
+		try {
+			UpdateSQLBuilder update=new UpdateSQLBuilder("excel_tab_156");
+			List<String> list=new ArrayList<String>();
+			for (BillVO billVO : vos) {
+				update.setWhereCondition("B='"+billVO.getStringValue("B")+"' and  C='"+billVO.getStringValue("C")+"'");
+				update.putFieldValue("PF_STATE", state);
+				update.putFieldValue("DEAL_COMMENT", msg);
+				list.add(update.getSQL());
+			}
+			dmo.executeBatchByDS(null, list);
+			message="审查完成";
+		} catch (Exception e) {
+			message="审查出现异常，请与管理员联系;";
+			e.printStackTrace();
+		}
+		return message;
 	}
 }

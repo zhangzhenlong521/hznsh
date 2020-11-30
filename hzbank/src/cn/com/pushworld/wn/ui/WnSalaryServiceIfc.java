@@ -315,5 +315,13 @@ public interface WnSalaryServiceIfc extends WLTRemoteCallServiceIfc {
 	 * @return
 	 */
 	public List<HashMap<String,String>> getKJHandSroce(String selectDate);
+	/**
+	 * 委派会计现金管理
+	 * @param vos
+	 * @param state
+	 * @param msg
+	 * @return
+	 */
+	public String dealCashManageMent(BillVO[] vos, String state, String msg);
   
 }

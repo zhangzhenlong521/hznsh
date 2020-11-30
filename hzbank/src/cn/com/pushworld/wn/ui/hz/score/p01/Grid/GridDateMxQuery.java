@@ -79,6 +79,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         final BillVO vo=listPanel.getSelectedBillVO();
         deptcode=vo.getStringValue("F");
         if(_event.getItemkey().equals("D")){
+        	tablename="s_loan_khxx_202001";
             final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","HZ_DK_WGMX_CODE1",2000,800);
             dialog.getBilllistPanel().getTempletVO().setTablename(tablename);
             dialog.getBilllistPanel().getTempletVO().setSavedtablename(tablename);
