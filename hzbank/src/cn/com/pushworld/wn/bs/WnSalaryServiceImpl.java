@@ -5883,11 +5883,11 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			// 现金管理
 			_sql = "select code ,to_char(5-case when sum(num)*1>5 then 5 else sum(num)*1 end,'FM9999990.009')  num  from ("
 					+ "select sal.code, case when  jd.l>kc.kc then 1 else 0 end num from ("
-					+ "(select * from excel_tab_150  where year ||'-'|| month ='"
+					+ "(SELECT a,b,(e*10000) l FROM excel_tab_156  where year ||'-'|| month ='"
 					+ selectDate
-					+ "') jd"
-					+ "  join (select '贵州赫章农村商业银行股份有限公司'||b name ,(c+10)*10000 kc  from excel_tab_151) kc on kc.name=jd.a"
-					+ "  join (select code,name,'贵州赫章农村商业银行股份有限公司'||name fullname,corptype from pub_corp_dept pcd  where (corptype ='乡镇银行' or corptype ='城区银行' or name ='营业部') and  name  not in ('城区银行','乡镇银行')) corp on corp.fullname=jd.a"
+					+ "' and  pf_state!='正常') jd"
+					+ "  join (select b name ,(c+15)*10000 kc  from excel_tab_151) kc on kc.name=jd.a"
+					+ "  join (select code,name,corptype from pub_corp_dept pcd  where (corptype ='乡镇银行' or corptype ='城区银行' or name ='营业部') and  name  not in ('城区银行','乡镇银行')) corp on corp.name=jd.a"
 					+ "  join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=corp.name"
 					+ ")) group by code";
 			System.out.println("现金管理执行SQL:"+_sql);
