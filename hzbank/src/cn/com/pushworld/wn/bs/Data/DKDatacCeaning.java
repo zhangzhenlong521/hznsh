@@ -70,7 +70,9 @@ public class DKDatacCeaning implements WLTJobIFC {
                 String dqck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'\n");
                 //存款客户主表
                 String ckkhxx=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from  hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
-                if(dk==null || ck==null || dqck==null || ckkhxx==null){
+                //
+                String qnyyx=dmo.getStringValueByDS("","select distinct(A) from  hzdb.s_loan_qnyyx_"+getQYDayMonth()+"");
+                if(dk==null || ck==null || dqck==null || ckkhxx==null || qnyyx==null){
 
                 }else{
                     dmo.executeUpdateByDS(null,"create table hzdb.grid_data_"+getQYTTime()+" as select wg.*,ck.oact_inst_no,ck.name,ck.ckye,dk.dkye,case when jd.jdxx is null then '否' else jd.jdxx end jdxx ,\n" +
