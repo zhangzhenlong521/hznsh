@@ -53,15 +53,21 @@ public class CashManagementWKPanel extends AbstractWorkPanel implements ActionLi
 			dialog.getBtn_confirm().addActionListener(new  ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
+					try{
 					String state = dialog.getCardItemValue("state");
 					String msg=dialog.getCardItemValue("confirm_comment");
 				    message=service.dealCashManageMent(vos,state,msg);
 				    dialog.closeMe();
+					} catch(Exception ex){
+						message="操作失败，失败原因:\n"+ex.getMessage()+"\n 请与管理员联系";
+					}finally{
+						MessageBox.show(message);
+					}
 				}
 
 			});
 			dialog.setVisible(true);// 设置可见
-			MessageBox.show(this,message);
+			
 			listPanel.refreshData();
 			}catch(Exception e){
 				e.printStackTrace();
