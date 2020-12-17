@@ -73,12 +73,12 @@ public class GyEmpowerRefuseWKPanel extends AbstractWorkPanel implements ActionL
 						dialog.closeMe();
 					} catch (Exception e1) {
 						message="操作失败，失败原因:\n"+e1.getMessage()+"\n 请与管理员联系";
+					}finally{
+						MessageBox.show(message);
 					}
 				}
 			});
-			
 			dialog.setVisible(true);// 设置可见
-			MessageBox.show(this,message);
 			panel.refreshData();
 			
 		}else if(e.getSource() == cw_confirm){ // 财务部确认
@@ -99,11 +99,12 @@ public class GyEmpowerRefuseWKPanel extends AbstractWorkPanel implements ActionL
 						dialog.closeMe();
 					} catch (Exception e1) {
 						message="操作失败，失败原因:\n"+e1.getMessage()+"\n 请与管理员联系";
+					}finally{
+						MessageBox.show(message);
 					}
 				}
 			});
 			dialog.setVisible(true);// 设置可见
-			MessageBox.show(this,message);
 			panel.refreshData();
 		}
 	}
