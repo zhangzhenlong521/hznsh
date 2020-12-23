@@ -37,6 +37,7 @@ import cn.com.pushworld.wn.ui.WnSalaryServiceIfc;
 
 import org.apache.axis.encoding.ser.ArraySerializer;
 import org.apache.log4j.Logger;
+import org.nfunk.jep.function.Round;
 
 //import org.springframework.web.servlet.mvc.LastModified;
 
@@ -5930,5 +5931,191 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			e.printStackTrace();
 		}
 		return message;
+	}
+	/**
+	  *  计算年度结余金额
+	 * @param jyMoney :全行年度结余金额(万元)
+	 * @param selectDate: 选中的日期 (默认用的是年度12月份) 2020-12
+	 */
+	@Override
+	public String accountJyMoney(float jyMoney, String selectDate) {
+		
+		String message="";
+		try {
+			  String year=selectDate.substring(0,4);
+			 dmo.executeUpdateByDS(null, "DELETE FROM hz_ndjy_result WHERE \"year\" ='"+year+"'");
+			// 获取到当前所有员工 信息
+			String curTime=new SimpleDateFormat("yyyy-Mm-dd HH24:mi:ss").format(new Date());
+			HashVO[] userVos = dmo.getHashVoArrayByDS(null, "select code,name,MAINSTATION,DEPTID,DEPTCODE,DEPTNAME,STATIONRATIO from v_sal_personinfo where 1=1  and (id in (select personinfoid from sal_account_personinfo where accountid=143))");
+			HashMap<String,Double> aFScoreMap = dmo.getHashMapBySQLByDS(null, "SELECT CHECKEDDEPT,CHECKSCORE score FROM sal_dept_check_score WHERE targettype='部门定性指标' AND  TARGETNAME IN ('案件防控类') AND  CHECKDATE='"+selectDate);
+			HashMap<String,Double> xbScoreMap = dmo.getHashMapBySQLByDS(null, "SELECT CHECKEDDEPT,CHECKSCORE score FROM sal_dept_check_score WHERE targettype='部门定性指标' AND  TARGETNAME IN ('消费者权益保护类') AND  CHECKDATE='"+selectDate);
+			// 获取到 （案件防控  消费者权益保护类） 得分之和
+			HashMap<String,Double> afAndxbScore = dmo.getHashMapBySQLByDS(null, "SELECT CHECKEDDEPT,sum(CHECKSCORE) score FROM sal_dept_check_score WHERE targettype='部门定性指标' AND  TARGETNAME IN ('案件防控类','消费者权益保护类') AND  CHECKDATE='"+selectDate+"' GROUP BY CHECKEDDEPT");
+			// 获取到当前 按月结息类 得分
+			HashMap<String,Double> anYueJieXiScore = dmo.getHashMapBySQLByDS("null", "SELECT CHECKEDDEPT,sum(CHECKSCORE) score FROM sal_dept_check_score WHERE targettype='部门定性指标' AND  TARGETNAME IN ('按月结息类') AND  CHECKDATE='"+selectDate+"' GROUP BY CHECKEDDEPT");
+		    // 获取到当前党建 得分
+		   HashMap<String, Double> djScore=	dmo.getHashMapBySQLByDS(null, "SELECT CHECKEDDEPT,sum(CHECKSCORE) SCORE FROM sal_dept_check_score WHERE targettype='部门定性指标' AND  TARGETNAME IN ('党的建设类') AND  CHECKDATE='"+selectDate+"' GROUP BY CHECKEDDEPT");
+		    //  获取到当前支行 定量考核得分
+		   HashMap<String,Double> zhDlScore = dmo.getHashMapBySQLByDS(null, "SELECT CHECKEDDEPT,SCORE FROM  ((SELECT CHECKEDDEPT,sum(CHECKSCORE) SCORE  FROM sal_dept_check_score WHERE TARGETTYPE='部门定量指标' AND CHECKDATE>='"+year+"-01' AND CHECKDATE<='"+year+"-12'  GROUP BY CHECKEDDEPT) deptscore JOIN  (SELECT id,code,name  FROM PUB_CORP_DEPT WHERE CORPTYPE IN ('城区银行','乡镇银行') OR NAME IN('营业部','信贷部')) dept ON dept.id=deptscore.CHECKEDDEPT)");
+		   HashMap<String,Double> zhDxScore =  dmo.getHashMapBySQLByDS(null, "SELECT  CHECKEDDEPT,sum(CHECKSCORE)SCORE  FROM sal_dept_check_score WHERE TARGETTYPE='部门定性指标' AND CHECKDATE>='"+year+"-01' AND CHECKDATE<='"+year+"-12' GROUP BY CHECKEDDEPT");
+		   // 社保卡激活（需要获取到任务数 和 完成任务数,社保卡激活满分 10分，最高可得15分）
+		   //// 获取到任务数:
+		    HashMap<String,Integer> sbkTask = dmo.getHashMapBySQLByDS(null, "SELECT a,c FROM excel_tab_158 WHERE YEAR='"+year+"'");
+		   //// 获取社保卡激活完成数
+		    HashMap<String,Integer> sbkCompleteNum = dmo.getHashMapBySQLByDS(null, "");
+		    // 农户建档覆盖面
+		    //// 农户建档完成情况
+		   HashMap<String,Integer> nhjdCompleteNum= dmo.getHashMapBySQLByDS(null, "");
+		   ////农户建档任务表
+		   HashMap<String,Integer> nhjdTask= dmo.getHashMapBySQLByDS(null, "");
+		   //农户授信覆盖面
+		   ////农户授信覆盖面完成情况
+		   HashMap<String,Integer> nhsxCompleteNum=  dmo.getHashMapBySQLByDS(null, "");
+		   ////农户授信任务表
+		   HashMap<String,Integer> nhsxTask=  dmo.getHashMapBySQLByDS(null, "");
+		   //农户贷款增速
+		   ////农户贷款增速完成情况
+		   HashMap<String,Integer> nhdkCompleteNum=dmo.getHashMapBySQLByDS(null, "");
+		   ////农户贷款增速任务表
+		   HashMap<String,Integer> nhdkTask=dmo.getHashMapBySQLByDS(null, "");
+		   
+		   // 计算社保卡得分
+		   Map<String, Double> sbkScoreMap = getScore(sbkCompleteNum,sbkTask,false,10,0.0,15.0);
+		   // 计算农户建档得分
+		   Map<String, Double> nhjdScoreMap = getScore(nhjdCompleteNum, nhjdTask, true, 10,-10.0, 10.0);
+		   // 计算农户授信得分
+		   Map<String, Double> nhsxScoreMap = getScore(nhsxCompleteNum, nhsxTask, true, 10, -10.0,10.0);
+		   // 计算贷款增速得分
+		   Map<String, Double> nhdkScoreMap = getScore(nhdkCompleteNum, nhdkTask, true, 10, -10.0, 10.0);
+		   
+		   //计算部门员工系数和 
+		   HashMap<String,Double> radioScoreMap = dmo.getHashMapBySQLByDS(null,"SELECT DEPTCODE,sum(STATIONRATIO) score FROM V_SAL_PERSONINFO GROUP BY  DEPTCODE");
+		   // 计算每个部门的得分
+		   String[] deptCodes = dmo.getStringArrayFirstColByDS(null, "SELECT code  FROM PUB_CORP_DEPT WHERE (CORPTYPE IN ('城区银行','乡镇银行') OR NAME IN('营业部','信贷部')) AND  code!='城区支行' ");
+		   double m1=0.0; // 计算公式 m1= a1*b1+a2*b2+....+an*bn; a 代表当前机构得分，b 代表系数和
+		   Map<String,Double> abMap=new HashMap<String, Double>();
+		   BigDecimal decimal=null;
+		   HashMap<String, Double> aveScoreMap=new HashMap<String, Double>();
+		   HashMap<String, Double> deptScore=new HashMap<String, Double>();
+		   for (String code : deptCodes) {// 计算得分 
+				// 支行平均分计算
+		       double aveScore=((zhDlScore.get(code)==null?0.0:zhDlScore.get(code))+(zhDxScore.get(code)==null?0.0:zhDxScore.get(code)))/12;
+		       aveScoreMap.put(code, aveScore);
+		       double scoreSum=(-Math.abs(afAndxbScore.get(code)==null?0.0:afAndxbScore.get(code)))// 案防和消保得分
+		    		         + (-Math.abs(anYueJieXiScore.get(code)==null?0.0:anYueJieXiScore.get(code)))// 按月结息得分
+		    		         + (djScore.get(code)==null?0.0:djScore.get(code)) //党建得分
+		    		         + aveScore // 支行平均分
+		    		         + (sbkScoreMap.get(code)==null?0.0:sbkScoreMap.get(code)) // 社保卡激活得分
+		    		         + (nhjdTask.get(code)==null?0.0:nhjdTask.get(code)) // 农户建档覆盖面得分
+		    		         + (nhsxScoreMap.get(code) ==null?0.0:nhsxScoreMap.get(code)) // 农户授信得分
+		    		         + (nhdkScoreMap.get(code) ==null?0.0:nhdkScoreMap.get(code));
+		       deptScore.put(code, scoreSum);
+		       decimal= new BigDecimal(scoreSum*radioScoreMap.get(code));
+		       m1+=decimal.setScale(1,BigDecimal.ROUND_HALF_UP).doubleValue(); // 四舍五入保留两位小数
+		       abMap.put(code, decimal.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue());
+			}
+		   // 计算每个支行员工所得金额
+		   Map<String,Double> deptMoneyMap=new HashMap<String, Double>();
+		    double deptMoney=0.0;
+		    double stationratio=0.0;
+		   InsertSQLBuilder insert=new InsertSQLBuilder("HZ_NDJY_RESULT"); // 将计算结果插入到表中
+		   List<String> _sqllist=new ArrayList<String>();
+		   for (HashVO vo : userVos) {
+			   //获取当前员工所在机构
+			   String deptCode=vo.getStringValue("DEPTCODE");
+			   if(deptMoneyMap.get(deptCode)==null) { //表示当前机构金额尚未计算出，则需要计算
+				   //计算当前结构所得金额
+				   deptMoney= new BigDecimal(abMap.get(deptCode)/m1).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue()*jyMoney; // 当前结构所得年度结余金额
+				   deptMoneyMap.put(deptCode, deptMoney);
+			   }else {
+				   deptMoney=deptMoneyMap.get(deptCode);
+			   }
+			   // 获取到当前员工的岗位系数
+			   stationratio=vo.getDoubleValue("stationratio");
+			   // 计算当前员工年度结余工资
+			    double money=new BigDecimal((stationratio/radioScoreMap.get(deptCode))*deptMoney).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+			    insert.putFieldValue("id", dmo.getSequenceNextValByDS(null, "S_HZ_NDJY_RESULT"));// id
+			    insert.putFieldValue("dept_id",vo.getStringValue("deptid")); //机构的id
+			    insert.putFieldValue("dept_code",vo.getStringValue("deptcode") );// 机构号
+			    insert.putFieldValue("dept_name", vo.getStringValue("deptname")); // 机构名称
+			    insert.putFieldValue("user_code", vo.getStringValue("code"));// 员工号
+			    insert.putFieldValue("user_name", vo.getStringValue("name"));//员工姓名
+			    insert.putFieldValue("user_post", vo.getStringValue("MAINSTATION"));// 员工岗位
+			    insert.putFieldValue("prevention_and_control", -Math.abs(aFScoreMap.get(deptCode))); //案防机构得分
+			    insert.putFieldValue("consumer_protection", -Math.abs(xbScoreMap.get(deptCode)));// 消保机构得分
+			    insert.putFieldValue("monthly_interest_rate", -Math.abs(anYueJieXiScore.get(deptCode))); //按月结息机构得分
+			    insert.putFieldValue("avescore",aveScoreMap.get(deptCode)); // 支行平均得分
+			    insert.putFieldValue("party_building", djScore.get(deptCode)); //党建得分
+			    insert.putFieldValue("social_security", sbkScoreMap.get(deptCode)); //社保卡激活得分
+			    insert.putFieldValue("farmer_filing", nhjdScoreMap.get(deptCode)); //农户建档覆盖面得分
+			    insert.putFieldValue("farmer_credit_extension", nhsxScoreMap.get(deptCode)); // 农户授信得分
+			    insert.putFieldValue("farmer_loan",nhdkScoreMap.get(deptCode));// 农户贷款覆盖面得分
+			    insert.putFieldValue("score_total", deptScore.get(deptCode)); //支行总分
+			    insert.putFieldValue("performance_total", deptMoney); // 支行总绩效
+			    insert.putFieldValue("personal_performance_total",money); // 个人年度绩效
+			    insert.putFieldValue("year", year); 
+			    insert.putFieldValue("operateTime",curTime);// 插入当前操作时间
+			    _sqllist.add(insert.getSQL());// 形成SQL
+		   }
+		   dmo.executeBatchByDS(null,_sqllist ); // 执行插入操作
+		}catch(Exception e) {//
+			message="处理失败";
+		}finally {
+			return message;
+		}
+	}
+	/**
+	 *   计算每个支行当前指标得分情况 （完成情况/任务数）
+	 * @param completeMap :完成情况统计
+	 * @param taskMap: 弯沉任务数
+	 * @param isDel:是否需要扣分，true:扣分，false 不扣分
+	 * @param score: 当前指标分值
+	 * @return
+	 */
+	public  Map<String,Double> getScore(Map<String,Integer> completeMap,Map<String,Integer> taskMap,Boolean isDel,int score,Double minScore,Double maxScore){
+		Map<String, Double> result=new HashMap<String, Double>();
+		try {
+			String[] deptCodes = dmo.getStringArrayFirstColByDS(null, "SELECT code  FROM PUB_CORP_DEPT WHERE (CORPTYPE IN ('城区银行','乡镇银行') OR NAME IN('营业部','信贷部')) AND  code!='城区支行' ");
+			double resultScore=0;
+			for (String deptCode:deptCodes) {
+				if(isDel) { //扣分
+					int compleNum = completeMap.get(deptCode)==null?0:completeMap.get(deptCode);
+					int taskNum = taskMap.get(deptCode)==null?0:taskMap.get(deptCode);
+					if(taskNum==0) {
+						result.put(deptCode, 0.0);
+						continue;
+					}
+					double resultRate=(compleNum/taskNum); //计算完成比例
+					if(resultRate<=1) {//任务未完成，扣除未完成部分的分值
+					  resultScore=-(1-resultRate)*score <minScore?minScore:-(1-resultRate)*score ;
+					  result.put(deptCode, resultScore);
+					}else if(resultRate==1) { // 任务完成，不加分也不扣分
+						result.put(deptCode, 0.0);
+					}else { // 任务超额完成，打钱
+						resultScore=(resultRate-1)*score>maxScore?maxScore:(resultRate-1)*score;
+						result.put(deptCode, resultScore);
+					}
+				}else { // 不需要扣分
+					int compleNum = completeMap.get(deptCode)==null?0:completeMap.get(deptCode);
+					int taskNum = taskMap.get(deptCode)==null?0:taskMap.get(deptCode);
+					if(taskNum==0) {
+						result.put(deptCode, 0.0);
+						continue;
+					}
+					 resultScore=(compleNum/taskNum)*score;
+					// 要和最大分值和最小分值进行比较
+					if(resultScore>=minScore && resultScore<=maxScore) {
+						result.put(deptCode, resultScore);
+					}else if(resultScore<minScore) {
+						result.put(deptCode, minScore);
+					}else {
+						result.put(deptCode, maxScore);
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

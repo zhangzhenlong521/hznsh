@@ -323,5 +323,11 @@ public interface WnSalaryServiceIfc extends WLTRemoteCallServiceIfc {
 	 * @return
 	 */
 	public String dealCashManageMent(BillVO[] vos, String state, String msg);
+	/**
+	 *  计算年度结余金额
+	 * @param jyMoney :全行年度结余金额(万元)
+	 * @param selectDate: 选中的日期 (默认用的是年度12月份)
+	 */
+	public String accountJyMoney(float jyMoney, String selectDate);
   
 }
