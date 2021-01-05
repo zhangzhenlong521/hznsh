@@ -17,7 +17,6 @@
           <root url="file://$MODULE_DIR$/gitweblight/weblight/src/report" />
           <root url="file://$MODULE_DIR$/gitweblight/weblight/src/sysapp" />
           <root url="file://$MODULE_DIR$/gitweblight/weblight/src/workflow" />
-          <root url="file://$MODULE_DIR$/hzbank/hzbank/src" />
           <root url="file://$MODULE_DIR$/ipushgrc-new/src" />
           <root url="file://$MODULE_DIR$/test" />
         </sourceRoots>
@@ -39,6 +38,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ipushgrc-new/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/hzbank/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cockpit/src" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

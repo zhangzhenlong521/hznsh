@@ -30,10 +30,13 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private BillListPanel list;
     private WLTButton btn_dr=new WLTButton("导入");//zzl[2020-9-18] 添加导入功能\
     private WLTButton btn_xg=new WLTButton("修改");//zzl[2020-9-18] 添加导入功能\
+    private WLTButton btn_qy=new WLTButton("迁移");//zzl[2020-9-18] 添加导入功能\
     private Container _parent=null;
     private String selectDate = "";
     private String deptcode;
     private String tablename;
+    private String jlMbCode;
+    private Boolean flag=false;
     @Override
     public void initialize() {
         listPanel = new BillListPanel(code);
@@ -55,17 +58,19 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
 
         }
         if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
+            flag=true;
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
         }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
+            flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
             listPanel.setDataFilterCustCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");
         }else{
             listPanel.QueryDataByCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_update});
-            listPanel.setDataFilterCustCondition("PARENTID='2' and and G='"+vos[0].getStringValue("USERCODE")+"'");
+            listPanel.setDataFilterCustCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");
         }
         list = new BillListPanel("WN_WGINFOUPDATE_LOG_CODE");
         listPanel.repaintBillListButton();// 刷新按钮
@@ -78,11 +83,21 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
         final BillVO vo=listPanel.getSelectedBillVO();
         deptcode=vo.getStringValue("F");
+        int width=0;
+        String mbCode;
+        jlMbCode=listPanel.getSelectedBillVO().getStringValue(_event.getItemkey());
         if(_event.getItemkey().equals("D")){
-        	tablename="GRID_DATA_20201126";
-            final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看","HZ_DK_WGMX_CODE1",2000,800);
+            if(jlMbCode.equals("对公存款")){
+                mbCode="HZ_DK_WGMX_CODE3";
+                width=1000;
+            }else{
+                mbCode="HZ_DK_WGMX_CODE1";
+                width=2000;
+            }
+            final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看",mbCode,width,800);
             dialog.getBilllistPanel().getTempletVO().setTablename(tablename);
             dialog.getBilllistPanel().getTempletVO().setSavedtablename(tablename);
+            dialog.getBilllistPanel().setRowNumberChecked(true);
             dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
             dialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
                 @Override
@@ -92,6 +107,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     String G=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("G");
                     String num=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("num");
                     String dkye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dkye");
+                    String ckye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("ckye");
+                    String dgck=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dgck");
                     if(A==null || A.equals("") || A.equals(null) || A.equals(" ")){
                     }else{
                         sb.append(" and A='"+A+"'");
@@ -108,6 +125,16 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     }else{
                         String [] str=dkye.split(";");
                         sb.append(" and dkye>='"+str[0]+"' and dkye<='"+str[1]+"'");
+                    }
+                    if(ckye==null || ckye.equals("") || ckye.equals(null) || ckye.equals(" ")){
+                    }else{
+                        String [] str=ckye.split(";");
+                        sb.append(" and ckye>='"+str[0]+"' and ckye<='"+str[1]+"'");
+                    }
+                    if(dgck==null || dgck.equals("") || dgck.equals(null) || dgck.equals(" ")){
+                    }else{
+                        String [] str=dgck.split(";");
+                        sb.append(" and dgck>='"+str[0]+"' and dgck<='"+str[1]+"'");
                     }
                     if(sb.toString()==null){
                         dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
@@ -132,46 +159,95 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             btn_dr.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    onImpData(dialog,vo);
+                    onImpData(dialog,vo,jlMbCode);
                 }
             });
             btn_xg.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    updateDate(dialog,vo);
+                    updateDate(dialog,vo,jlMbCode);
+                }
+            });
+            btn_qy.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    qyData(dialog,vo);
                 }
             });
             dialog.getBilllistPanel().addBillListButton(btn_dr);
             dialog.getBilllistPanel().addBillListButton(btn_xg);
+            if(flag){
+                dialog.getBilllistPanel().addBillListButton(btn_qy);
+            }
             dialog.getBilllistPanel().repaintBillListButton();
             dialog.setBtn_confirmVisible(false);
             dialog.setVisible(true);
         }else if(_event.getItemkey().equals("QK")){
             StringBuilder sb=new StringBuilder();
+            HashVO [] vos=new HashVO[4];
             try {
                 sb.append(vo.getStringValue("C")+vo.getStringValue("D")+":");
-                sb.append(System.getProperty("line.separator"));
                 //zzl 总客户数
                 String zhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
                 sb.append("本网格总客户数为：【"+zhs+"】户");
-                sb.append(System.getProperty("line.separator"));
+//                sb.append(System.getProperty("line.separator"));
                 //zzl 存款客户
                 String ckhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye is not null");
-                sb.append("已有存款客户：【"+ckhs+"】户      待开发存款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"】户");
-                sb.append(System.getProperty("line.separator"));
+//                sb.append("已有存款客户：【"+ckhs+"】户      待开发存款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"】户");
+//                sb.append(System.getProperty("line.separator"));
+                vos[0]=new HashVO();
+                vos[0].setAttributeValue("yikf","已有存款客户："+ckhs+"户");
+                vos[0].setAttributeValue("dkf","待开发存款客户："+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"户");
                 // zzl 贷款客户
                 String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye is not null");
-                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
-                sb.append(System.getProperty("line.separator"));
+//                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
+//                sb.append(System.getProperty("line.separator"));
+                vos[1]=new HashVO();
+                vos[1].setAttributeValue("yikf","已有贷款客户："+dkhs+"户");
+                vos[1].setAttributeValue("dkf","待开发贷款客户："+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"户");
                 //zzl 建档户数
                 String jdhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and jdxx='已建档'");
-                sb.append("已有建档客户：【"+jdhs+"】户      待开发建档客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"】户");
-                sb.append(System.getProperty("line.separator"));
+//                sb.append("已有建档客户：【"+jdhs+"】户      待开发建档客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"】户");
+//                sb.append(System.getProperty("line.separator"));
+                vos[2]=new HashVO();
+                vos[2].setAttributeValue("yikf","已有建档客户："+jdhs+"户");
+                vos[2].setAttributeValue("dkf","待开发建档客户："+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"户");
                 //zzl 黔农云
                 String qnyhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and qny='是'");
-                sb.append("已有黔农云客户：【"+qnyhs+"】户      待开发黔农云客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(qnyhs))+"】户");
-                sb.append(System.getProperty("line.separator"));
-                MessageBox.show(listPanel,sb.toString());
+//                sb.append("已有黔农云客户：【"+qnyhs+"】户      待开发黔农云客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(qnyhs))+"】户");
+//                sb.append(System.getProperty("line.separator"));
+                vos[3]=new HashVO();
+                vos[3].setAttributeValue("yikf","已有黔农云客户："+qnyhs+"户");
+                vos[3].setAttributeValue("dkf","待开发黔农云客户："+(Integer.parseInt(zhs)-Integer.parseInt(qnyhs))+"户");
+                Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
+                templetVO.setTempletname(sb.toString());
+                String [] columns = new String[]{"yikf","dkf"};
+                String [] columnNames=new String[]{"已开发总计","待开发总计"};
+                templetVO.setRealViewColumns(columns);
+                templetVO.setIsshowlistpagebar(false);
+                templetVO.setIsshowlistopebar(false);
+                templetVO.setListheaderisgroup(false);
+                templetVO.setIslistpagebarwrap(false);
+                templetVO.setIsshowlistquickquery(false);
+                templetVO.setIscollapsequickquery(true);
+                templetVO.setIslistautorowheight(true);
+                Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[2];
+                for(int i=0;i<columns.length;i++){
+                    templetItemVOs[i]=new Pub_Templet_1_ItemVO();
+                    templetItemVOs[i].setListisshowable(true);
+                    templetItemVOs[i].setPub_Templet_1VO(templetVO);
+                    templetItemVOs[i].setListwidth(200);
+                    templetItemVOs[i].setItemtype("文本框");
+                    templetItemVOs[i].setListiseditable("4");
+                    templetItemVOs[i].setItemkey(columns[i].toString());
+                    templetItemVOs[i].setItemname(columnNames[i].toString());
+                }
+                templetVO.setItemVos(templetItemVOs);
+                BillListPanel list=new BillListPanel(templetVO);
+                list.putValue(vos);
+                BillListDialog dialog=new BillListDialog(listPanel,sb.toString(),list,600,400,true);
+                dialog.getBtn_confirm().setVisible(false);
+                dialog.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -180,12 +256,61 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     }
 
     /**
+     * zzl 添加迁移功能
+     */
+    private void qyData(BillListDialog dialog,BillVO vo){
+        BillListDialog cardDialog=new BillListDialog(dialog,"网格客户迁移","EXCEL_TAB_85_CODE_3");
+        cardDialog.getBilllistPanel().QueryData("select c,d,G from hzdb.EXCEL_TAB_85 where 1=1  and (PARENTID='2')  and f='"+vo.getStringValue("F")+"' and C||D<>'"+vo.getStringValue("C")+vo.getStringValue("D")+"'");
+        BillVO [] wgVos=dialog.getBilllistPanel().getCheckedBillVOs();
+        if(wgVos.length<=0){
+            MessageBox.show(cardDialog,"请勾选一条数据进行操作");
+            return;
+        }
+        cardDialog.setVisible(true);
+        if(cardDialog.getCloseType()==1){
+            BillVO billVO=cardDialog.getBilllistPanel().getSelectedBillVO();
+            if(billVO==null){
+                MessageBox.show(cardDialog,"请选择一条数据进行操作");
+                return;
+            }
+            List list=new ArrayList();
+            UpdateSQLBuilder wgUpdate=new UpdateSQLBuilder(tablename);
+            UpdateSQLBuilder khxxUpdate=new UpdateSQLBuilder("s_loan_khxx_202001");
+            for(int i=0;i<wgVos.length;i++){
+                wgUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
+                khxxUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
+                wgUpdate.putFieldValue("J",billVO.getStringValue("C"));
+                khxxUpdate.putFieldValue("J",billVO.getStringValue("C"));
+                wgUpdate.putFieldValue("K",billVO.getStringValue("D"));
+                khxxUpdate.putFieldValue("K",billVO.getStringValue("D"));
+                list.add(wgUpdate.getSQL());
+                list.add(khxxUpdate.getSQL());
+            }
+            try {
+                UIUtil.executeBatchByDS(null,list);
+                MessageBox.show(cardDialog,"迁移成功");
+                dialog.getBilllistPanel().repaint();
+                dialog.getBilllistPanel().refreshData();
+            } catch (Exception e) {
+                MessageBox.show(cardDialog,"迁移失败");
+                e.printStackTrace();
+            }
+        }
+
+    }
+    /**
      * zzl 添加修改功能
      * @param dialog
      * @param vo
      */
-    private void updateDate(final BillListDialog dialog, BillVO vo) {
-        final BillCardDialog cardDialog=new BillCardDialog(dialog,"网格信息查看","S_LOAN_KHXX_202001_CODE1",600,400);
+    private void updateDate(final BillListDialog dialog, BillVO vo,String code) {
+        String mbstr;
+        if(code.equals("对公存款")){
+            mbstr="S_LOAN_KHXX_202001_CODE2";
+        }else{
+            mbstr="S_LOAN_KHXX_202001_CODE1";
+        }
+        final BillCardDialog cardDialog=new BillCardDialog(dialog,"网格信息查看",mbstr,600,400);
         if(dialog.getBilllistPanel().getSelectedBillVO()==null){
             MessageBox.show(dialog,"请选择一条数据修改");
             return;
@@ -230,6 +355,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             BillCardDialog dialog=new BillCardDialog(listPanel,"新增","EXCEL_TAB_85_EDIT_CODE",900,300);
             dialog.getBillcardPanel().setEditable("PARENTID",false);
             dialog.getBillcardPanel().setRealValueAt("PARENTID","2");
+            dialog.getBillcardPanel().setEditable("QK",false);
+            dialog.getBillcardPanel().setRealValueAt("QK","网格概况");
             dialog.setSaveBtnVisiable(false);
             dialog.setVisible(true);
             if(dialog.getBillcardPanel().getBillVO().getStringValue("D").equals("") ||
@@ -238,7 +365,9 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(" ")
             ){
             }else{
-                listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+                if(dialog.getCloseType()==1){
+                    listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+                }
             }
         }else if(actionEvent.getSource() == btn_update){
             BillVO vo=listPanel.getSelectedBillVO();
@@ -408,8 +537,17 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
      * zzl【20201012】
      * 导入户籍数据还要检验一把
      */
-    public void onImpData(final BillListDialog dialog, final BillVO vo){
-        final BillCardDialog cardDialog=new BillCardDialog(dialog,"网格信息查看","S_LOAN_KHXX_202001_CODE1",600,400);
+    public void onImpData(final BillListDialog dialog, final BillVO vo,String code){
+        String mbstr;
+        final String count;
+        if(code.equals("对公存款")){
+            mbstr="S_LOAN_KHXX_202001_CODE2";
+            count="客户号";
+        }else{
+            mbstr="S_LOAN_KHXX_202001_CODE1";
+            count="身份证号";
+        }
+        final BillCardDialog cardDialog=new BillCardDialog(dialog,"网格信息查看",mbstr,600,400);
         cardDialog.getBillcardPanel().setRealValueAt("J",vo.getStringValue("C"));
         cardDialog.getBillcardPanel().setRealValueAt("K",vo.getStringValue("D"));
         cardDialog.getBillcardPanel().setRealValueAt("deptcode",vo.getStringValue("F"));
@@ -429,14 +567,14 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                             cardDialog.dispose();
                         }else{
                             //zzl 已存在并划入网格
-                            MessageBox.show(cardDialog,"身份证号为【"+vos[0].getStringValue("G")+"】的客户已存在并划入网格内");
+                            MessageBox.show(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入网格内");
                             return;
                         }
                     }else{
                         if(cardDialog.getBillcardPanel().getRealValueAt("G")==null ||
                                 cardDialog.getBillcardPanel().getRealValueAt("G").equals("") ||
                                 cardDialog.getBillcardPanel().getRealValueAt("G").equals(null)){
-                            MessageBox.show(cardDialog,"身份证不能为空");
+                            MessageBox.show(cardDialog,""+count+"不能为空");
                         }else{
                             cardDialog.getBillcardPanel().updateData();
                             insertSql(dialog,null,cardDialog.getBillcardPanel().getBillVO());
