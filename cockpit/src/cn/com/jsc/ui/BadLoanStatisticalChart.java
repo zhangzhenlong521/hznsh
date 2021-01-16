@@ -1,5 +1,6 @@
 package cn.com.jsc.ui;
 
+import cn.com.infostrategy.ui.common.UIUtil;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -28,11 +29,12 @@ import java.util.TimerTask;
 public class BadLoanStatisticalChart {
     ChartPanel frame1;
     CategoryPlot plot;
+    JFreeChart chart;
     public BadLoanStatisticalChart(){
-        CategoryDataset dataset = getDataSet(1);
-        JFreeChart chart = ChartFactory.createBarChart3D(
-                "全行不良贷款情况统计", // 图表标题
-                "部门", // 文件夹轴的显示标签
+        CategoryDataset dataset = getDataSet();
+        chart = ChartFactory.createBarChart3D(
+                DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行不良贷款情况统计 单位：亿元", // 图表标题
+                "时间", // 文件夹轴的显示标签
                 "数量", // 数值轴的显示标签
                 dataset, // 数据集
                 PlotOrientation.VERTICAL, // 图表方向：水平、垂直
@@ -63,36 +65,58 @@ public class BadLoanStatisticalChart {
         chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
         chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
         //到这里结束，尽管代码有点多，但仅仅为一个目的，解决汉字乱码问题
-        SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        SimpleDateFormat formatTemp2 = new SimpleDateFormat("yyyy-MM-dd");
-        Date date=new Date();
-        formatTemp2.format(date);
-        Date date1= null;
-        try {
-            date1 = formatTemp.parse(formatTemp2.format(date)+" 10:30:00");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        final SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         java.util.Timer timer =new java.util.Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             int a=0;
             @Override
             public void run() {
-                System.out.println(">>>>>>>>>>>任务开始执行"+a++);
-                plot.setDataset(getDataSet(a++));
+                System.out.println(">>>>>>>>>>>全行不良贷款情况统计开始执行"+formatTemp.format(new Date()));
+                try{
+                    String dk=UIUtil.getStringValueByDS(null,"select biz_dt from hzbank.s_loan_dk_"+DateUIUtil.getqytMonth()+" where biz_dt='"+DateUIUtil.getQYTTime()+"' and rownum=1");
+                    if(dk==null){
+                        System.out.println(">>>>>>>>>>>全行不良贷款情况统计任务结束"+formatTemp.format(new Date()));
+                    }else{
+                        //zzl 记录修改的中间表
+                        String count=UIUtil.getStringValueByDS(null,"select name from s_count where name='全行不良贷款情况统计' and dates='"+DateUIUtil.getDateMonth(0,"yyyyMMdd")+"'");
+                        if(count==null){
+                            chart.setTitle(DateUIUtil.getDateMonth(0,"yyyy年")+"全行不良贷款情况统计   单位：亿元");
+                            plot.setDataset(getDataSet());
+                            UIUtil.executeUpdateByDS(null,"Update s_count set dates='"+DateUIUtil.getDateMonth(0,"yyyyMMdd")+"' where name='全行不良贷款情况统计'");
+                            System.out.println(">>>>>>>>>>>全行不良贷款情况统计任务结束"+formatTemp.format(new Date()));
+                        }else{
+                            System.out.println(">>>>>>>>>>>全行不良贷款情况统计任务结束"+formatTemp.format(new Date()));
+                            return;
+                        }
+                    }
+                }catch (Exception p){
+                    p.printStackTrace();
+                }
             }
-        },date1,24* 3600*1000);//
+        },new Date(),3600*1000*2);//
         frame1=new ChartPanel(chart,true);        //这里也能够用chartFrame,能够直接生成一个独立的Frame
         frame1.setOpaque(true);
 
     }
-    private static CategoryDataset getDataSet(int a) {
+    private static CategoryDataset getDataSet() {//getqhBlDKLvCount
+        CockpitServiceIfc service = null;
+        try {
+            service = (CockpitServiceIfc) UIUtil
+                    .lookUpRemoteService(CockpitServiceIfc.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String [][] data=service.getqhBlDKLvCount();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(100*a, "九0支行", "九0支行");
-        dataset.addValue(200*a, "农中支行", "农中支行");
-        dataset.addValue(300*a, "城关支行", "城关支行");
-        dataset.addValue(400*a, "解东支行", "解东支行");
-        dataset.addValue(500*a, "西城支行", "西城支行");
+        for(int i=0;i<data.length;i++){
+            dataset.addValue(Double.parseDouble(data[i][0]), data[i][1], data[i][2]);
+            dataset.addValue(Double.parseDouble(data[i][3]), data[i][4], data[i][5]);
+        }
+//        dataset.addValue(100*a, "九0支行", "九0支行");
+//        dataset.addValue(200*a, "农中支行", "农中支行");
+//        dataset.addValue(300*a, "城关支行", "城关支行");
+//        dataset.addValue(400*a, "解东支行", "解东支行");
+//        dataset.addValue(500*a, "西城支行", "西城支行");
         return dataset;
     }
     public ChartPanel getChartPanel(){
