@@ -5,10 +5,18 @@ import cn.com.infostrategy.to.common.WLTConstants;
 import cn.com.infostrategy.to.mdata.*;
 import cn.com.infostrategy.ui.common.*;
 import cn.com.infostrategy.ui.mdata.*;
+import cn.com.infostrategy.ui.report.cellcompent.ExcelUtil;
+import cn.com.jsc.ui.CkBarChart;
+import cn.com.jsc.ui.CkNewJLabel;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.rmi.NotBoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -29,14 +37,20 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             .getLoginUserName();
     private BillListPanel list;
     private WLTButton btn_dr=new WLTButton("导入");//zzl[2020-9-18] 添加导入功能\
-    private WLTButton btn_xg=new WLTButton("修改");//zzl[2020-9-18] 添加导入功能\
-    private WLTButton btn_qy=new WLTButton("迁移");//zzl[2020-9-18] 添加导入功能\
+    private WLTButton btn_xg=new WLTButton("修改");//zzl[2020-9-18] 添加修改功能\
+    private WLTButton btn_qy=new WLTButton("迁移");//zzl[2020-9-18] 添加迁移功能\
+    private WLTButton btn_dow=new WLTButton("Excel模板下载");//zzl[2020-9-18] 添加Excel模板下载功能\
+    private WLTButton btn_up=new WLTButton("上传Excel");//zzl[2020-9-18] 添加上传Excel功能\
+    private ExcelUtil excelUtil=new ExcelUtil();
     private Container _parent=null;
     private String selectDate = "";
     private String deptcode;
     private String tablename;
     private String jlMbCode;
     private Boolean flag=false;
+    private BillListPanel wglist=new BillListPanel("S_LOAN_KHXX_202001_CODE1");
+    private BillListDialog dialog=null;
+
     @Override
     public void initialize() {
         listPanel = new BillListPanel(code);
@@ -76,6 +90,9 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         listPanel.repaintBillListButton();// 刷新按钮
         listPanel.addBillListHtmlHrefListener(this); // zzl[20201012]
         getTablename();
+        WLTSplitPane wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,new DayAvgPanel().getJLabel());
+        wltSplitPane.setDividerLocation(1000);
+        wltSplitPane.setDividerSize(1);
         this.add(listPanel);
     }
 
@@ -94,7 +111,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 mbCode="HZ_DK_WGMX_CODE1";
                 width=2000;
             }
-            final BillListDialog dialog=new BillListDialog(listPanel,"网格信息查看",mbCode,width,800);
+            dialog=new BillListDialog(listPanel,"网格信息查看",mbCode,width,800);
             dialog.getBilllistPanel().getTempletVO().setTablename(tablename);
             dialog.getBilllistPanel().getTempletVO().setSavedtablename(tablename);
             dialog.getBilllistPanel().setRowNumberChecked(true);
@@ -174,8 +191,23 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     qyData(dialog,vo);
                 }
             });
+            btn_dow.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    onDoExcel(dialog);
+                }
+            });
+            btn_up.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    onUpExcel(dialog);
+                    dialog.getBilllistPanel().refreshData();
+                }
+            });
             dialog.getBilllistPanel().addBillListButton(btn_dr);
             dialog.getBilllistPanel().addBillListButton(btn_xg);
+            dialog.getBilllistPanel().addBillListButton(btn_dow);
+            dialog.getBilllistPanel().addBillListButton(btn_up);
             if(flag){
                 dialog.getBilllistPanel().addBillListButton(btn_qy);
             }
@@ -252,6 +284,144 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 e.printStackTrace();
             }
         }
+
+    }
+
+    /**
+     * zzl
+     * excl 模板下载
+     */
+    private void onDoExcel(Dialog dialog) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setDialogTitle("请选择下载路径");
+        chooser.setApproveButtonText("选择");
+        FileFilter filter = new FileNameExtensionFilter("Microsoft Office Excel 工作表", "xls", "xlsx");
+        chooser.setSelectedFile(new File("网格客户明细导入模板.xls"));
+        chooser.setFileFilter(filter);
+        int flag = chooser.showOpenDialog(this);
+        if (flag != JFileChooser.APPROVE_OPTION || chooser.getSelectedFile() == null) {
+            return;
+        }
+        final String str_path = chooser.getSelectedFile().getAbsolutePath();
+        List list=new ArrayList();
+        Pub_Templet_1_ItemVO itemVos[] =wglist.getTempletVO().getItemVos();
+        for(int i=0;i<itemVos.length;i++) {
+            if (itemVos[i].getListisshowable()) {
+                list.add(itemVos[i].getItemname());
+            }
+        }
+        String [][] data=new String[1][list.size()];
+        for(int i=0;i<list.size();i++){
+            data[0][i]=list.get(i).toString();
+        }
+        try{
+            excelUtil.setDataToExcelFile(data,str_path);
+            MessageBox.show(dialog,"导出成功");
+        }catch (Exception e){
+            MessageBox.show(dialog,"导出失败");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * zzl
+     * 上传模板 检验并且导入
+     */
+    private void onUpExcel(final Dialog dialog){
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setDialogTitle("请选择上传文件");
+        chooser.setApproveButtonText("选择");
+        FileFilter filter = new FileNameExtensionFilter("Microsoft Office Excel 工作表", "xls", "xlsx");
+        chooser.setFileFilter(filter);
+        int flag = chooser.showOpenDialog(this);
+        if (flag != JFileChooser.APPROVE_OPTION || chooser.getSelectedFile() == null) {
+            return;
+        }
+        final String str_path = chooser.getSelectedFile().getAbsolutePath();
+        new SplashWindow(dialog, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String [][] data=excelUtil.getExcelFileData(str_path);
+                LinkedHashMap map=new LinkedHashMap();
+                Pub_Templet_1_ItemVO itemVos[] =wglist.getTempletVO().getItemVos();
+                for(int i=0;i<itemVos.length;i++) {
+                    if (itemVos[i].getListisshowable()) {
+                        map.put(itemVos[i].getItemname(),itemVos[i].getItemkey());
+                    }
+                }
+                if(data[0].length!=map.size()){
+                    MessageBox.show(dialog,"系统检测到文件中的列与模板中的列不一致，请使用网格客户明细模板进行导入");
+                    return;
+                }
+                BillVO vo=listPanel.getSelectedBillVO();
+                String xName=vo.getStringValue("C");//乡镇
+                String wgName=vo.getStringValue("D");//网格名称
+                String deptcode=vo.getStringValue("F");//机构号
+                try{
+                    HashMap idMap=UIUtil.getHashMapBySQLByDS(null,"select UPPER(G),deptcode from "+tablename+" where deptcode='"+deptcode+"'");//zzl 查出当前机构的所有身份证
+                    List <List>listRow=new ArrayList();//行
+                    StringBuffer sb=new StringBuffer();
+                    for(int i=0;i<data.length;i++){
+                        if(i==0){
+                            List listCol=new ArrayList();//lie
+                            for(int k=0;k<data[i].length;k++){
+                                listCol.add(data[i][k]);
+                            }
+                            listRow.add(listCol);
+                        }else{
+                            for(int j=0;j<data[i].length;j++){
+                                if(data[0][j].equals("身份证号")){
+                                    if(idMap.get(data[i][j].toUpperCase())==null){
+                                        List listCol=new ArrayList();//lie
+                                        for(int k=0;k<data[i].length;k++){
+                                            if(data[0][k].equals("乡-镇")){
+                                                listCol.add(xName);
+                                            }else if(data[0][k].equals("网格名称")){
+                                                listCol.add(wgName);
+                                            }else if(data[0][k].equals("所属机构")){
+                                                listCol.add(deptcode);
+                                            }else{
+                                                listCol.add(data[i][k]);
+                                            }
+                                        }
+                                        listRow.add(listCol);
+                                    }else{
+                                        HashVO [] vos=UIUtil.getHashVoArrayByDS(null,
+                                                "select * from "+tablename+" where deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
+                                        sb.append("客户身份证为["+data[i][j]+"]已经存在本机构的"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"网格内，不再重复导入"+System.getProperty("line.separator"));
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    //开始插入数据
+                    InsertSQLBuilder wgInsert=new InsertSQLBuilder(tablename);
+                    InsertSQLBuilder khxxInsert=new InsertSQLBuilder("S_LOAN_KHXX_202001");
+                    List sqlList=new ArrayList();
+                    if(listRow.size()>0){
+                        for(int i=1;i<listRow.size();i++){
+                            List col=listRow.get(i);
+                            for(int j=0;j<col.size();j++){
+                                wgInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
+                                khxxInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
+                            }
+                            sqlList.add(wgInsert.getSQL());
+                            sqlList.add(khxxInsert.getSQL());
+                        }
+                    }
+                    UIUtil.executeBatchByDS(null,sqlList);
+                    sb.append("本次共导入"+sqlList.size()/2+"条数据");
+                    MessageBox.show(dialog,sb.toString());
+                }catch (Exception a){
+                    MessageBox.show(dialog,"导入失败！请联系管理员");
+                    a.printStackTrace();
+                }
+            }
+
+        });
 
     }
 
@@ -567,7 +737,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                             cardDialog.dispose();
                         }else{
                             //zzl 已存在并划入网格
-                            MessageBox.show(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入网格内");
+                            MessageBox.show(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内");
                             return;
                         }
                     }else{
