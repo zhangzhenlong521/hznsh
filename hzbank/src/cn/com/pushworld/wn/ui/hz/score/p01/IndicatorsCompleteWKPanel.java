@@ -31,6 +31,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
     private final String userId = ClientEnvironment.getCurrLoginUserVO()
             .getId();
     private StringBuffer sbSql=new StringBuffer();
+    private HashMap<String,String> deptMap=new HashMap();
     @Override
     public void initialize() {
         listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
@@ -42,6 +43,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
         HashVO[] vos=null;
         HashMap<String,String> roleMap=new HashMap<String, String>();
         try{
+            deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
             if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
@@ -89,6 +91,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 map.put(str[0],mapint);
                 mapint--;
             }
+            map.put("机构名称",10);
             String [] columns=new String [keyvos.length+map.size()];
             String [] columnNames=new String[keyNamevos.length+map.size()];
             //添加 key
@@ -151,7 +154,9 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 for(int s=0;s<strCol.length;s++){
                     String col[]=strCol[s].split("&");
                     vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
+
                 }
+                vos[i].setAttributeValue("机构名称",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
             }
             list.putValue(vos);
         }catch (Exception e){
