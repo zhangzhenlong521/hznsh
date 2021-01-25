@@ -11,31 +11,31 @@ import cn.com.infostrategy.ui.common.WLTSplitPane;
 import cn.com.infostrategy.ui.mdata.BillListPanel;
 import cn.com.infostrategy.ui.mdata.BillListSelectListener;
 import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
-import cn.com.pushworld.wn.ui.hz.score.p01.Grid.DayAvgPanel;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
- * IndicatorsCompleteWKPanel
+ * DeptCompleteWKPanel
  * zzl
- * 个人指标查看T+1
+ * 部门指标查看
  * @author Dragon
- * @date 2021/1/11
+ * @date 2021/1/19
  */
-public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements BillListSelectListener {
+public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSelectListener {
     private BillListPanel listPanel;
     private WLTSplitPane wltSplitPane;
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
             .getCode();
     private final String userId = ClientEnvironment.getCurrLoginUserVO()
             .getId();
+    private final String deptid = ClientEnvironment.getCurrLoginUserVO().getBlDeptId();
     private StringBuffer sbSql=new StringBuffer();
     private HashMap<String,String> deptMap=new HashMap();
     @Override
     public void initialize() {
-        listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
-        listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score group by targetid,targetname");
+        listPanel=new BillListPanel("SAL_PERSON_CHECK_DEPT_SCORE_CODE1");
+        listPanel.QueryData("select targetid,targetname from hzdb.SAL_PERSON_CHECK_DEPT_SCORE group by targetid,targetname");
         listPanel.addBillListSelectListener(this);
         wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
         wltSplitPane.setDividerLocation(500);
@@ -43,24 +43,13 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
         HashVO[] vos=null;
         HashMap<String,String> roleMap=new HashMap<String, String>();
         try{
-            deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
+            deptMap= UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
             if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
                 sbSql.append("where 1=1");
             }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
-                String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
-                StringBuffer dis=new StringBuffer();
-                for(int i=0;i<userids.length;i++){
-                    if(i==userids.length-1){
-                        dis.append("'"+userids[i]+"'");
-                    }else{
-                        dis.append("'"+userids[i]+"',");
-                    }
-                }
-                sbSql.append("where checkeduser in("+dis.toString()+")");
-            }else{
-                sbSql.append("where checkeduser='"+userId+"'");
+                sbSql.append("where checkeddept='"+deptid+"'");
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -74,7 +63,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
     private BillListPanel viewIndicators(BillVO vo){
         BillListPanel list=null;
         try{
-            BillListPanel billListPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE2");
+            BillListPanel billListPanel=new BillListPanel("SAL_PERSON_CHECK_DEPT_SCORE_CODE2");
             Pub_Templet_1_ItemVO[] itemVO=billListPanel.getTempletVO().getItemVos();
             HashMap<String,Pub_Templet_1_ItemVO> viewcolMap=new HashMap();
             for(int i=0;i<itemVO.length;i++){
@@ -82,16 +71,15 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             String [] keyvos =billListPanel.getTempletVO().getItemKeys();
             String [] keyNamevos=billListPanel.getTempletVO().getItemNames();
-            String processfactors=UIUtil.getStringValueByDS(null,"select processfactors from hzdb.sal_person_check_auto_score where targetid='"+vo.getStringValue("TARGETID")+"' and rownum<=1 ");
-            String [] gcyz=processfactors.split(";");
+            String cgprocessfactors=UIUtil.getStringValueByDS(null,"select cgprocess from hzdb.SAL_PERSON_CHECK_DEPT_SCORE where targetid='"+vo.getStringValue("TARGETID")+"' and rownum<=1 ");
+            String [] gcyz=cgprocessfactors.split("&");
             LinkedHashMap<String,Integer> map=new LinkedHashMap();//zzl 装下过程中得因子
             int mapint=gcyz.length;
             for(int i=0;i<gcyz.length;i++){
-                String [] str=gcyz[i].toString().split("&");
+                String [] str=gcyz[i].toString().split("=");
                 map.put(str[0],mapint);
                 mapint--;
             }
-            map.put("机构名称",10);
             String [] columns=new String [keyvos.length+map.size()];
             String [] columnNames=new String[keyNamevos.length+map.size()];
             //添加 key
@@ -113,7 +101,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 namexj++;
             }
             Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
-            templetVO.setTempletname("个人业绩查看");
+            templetVO.setTempletname("部门指标完成情况查看");
             templetVO.setRealViewColumns(columns);
             templetVO.setIsshowlistpagebar(false);
             templetVO.setIsshowlistopebar(false);
@@ -148,15 +136,14 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             templetVO.setItemVos(templetItemVOs);
             list = new BillListPanel(templetVO);
-            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
+            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_dept_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
             for(int i=0;i<vos.length;i++){
-                String [] strCol=vos[i].getStringValue("processfactors").split(";");
+                String [] strCol=vos[i].getStringValue("cgprocess").split("&");
                 for(int s=0;s<strCol.length;s++){
-                    String col[]=strCol[s].split("&");
+                    String col[]=strCol[s].split("=");
                     vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
 
                 }
-                vos[i].setAttributeValue("机构名称",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
             }
             list.putValue(vos);
         }catch (Exception e){

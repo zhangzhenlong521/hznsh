@@ -126,6 +126,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     String dkye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dkye");
                     String ckye=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("ckye");
                     String dgck=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("dgck");
+                    String H=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("H");
                     if(A==null || A.equals("") || A.equals(null) || A.equals(" ")){
                     }else{
                         sb.append(" and A='"+A+"'");
@@ -152,6 +153,10 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     }else{
                         String [] str=dgck.split(";");
                         sb.append(" and dgck>='"+str[0]+"' and dgck<='"+str[1]+"'");
+                    }
+                    if(H==null || H.equals("") || H.equals(null) || H.equals(" ")){
+                    }else{
+                        sb.append(" and H like'%"+H+"%'");
                     }
                     if(sb.toString()==null){
                         dialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"'");
@@ -428,46 +433,51 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     /**
      * zzl 添加迁移功能
      */
-    private void qyData(BillListDialog dialog,BillVO vo){
-        BillListDialog cardDialog=new BillListDialog(dialog,"网格客户迁移","EXCEL_TAB_85_CODE_3");
-        cardDialog.getBilllistPanel().QueryData("select c,d,G from hzdb.EXCEL_TAB_85 where 1=1  and (PARENTID='2')  and f='"+vo.getStringValue("F")+"' and C||D<>'"+vo.getStringValue("C")+vo.getStringValue("D")+"'");
-        BillVO [] wgVos=dialog.getBilllistPanel().getCheckedBillVOs();
-        if(wgVos.length<=0){
-            MessageBox.show(cardDialog,"请勾选一条数据进行操作");
-            return;
-        }
-        cardDialog.setVisible(true);
-        if(cardDialog.getCloseType()==1){
-            BillVO billVO=cardDialog.getBilllistPanel().getSelectedBillVO();
-            if(billVO==null){
-                MessageBox.show(cardDialog,"请选择一条数据进行操作");
-                return;
-            }
-            List list=new ArrayList();
-            UpdateSQLBuilder wgUpdate=new UpdateSQLBuilder(tablename);
-            UpdateSQLBuilder khxxUpdate=new UpdateSQLBuilder("s_loan_khxx_202001");
-            for(int i=0;i<wgVos.length;i++){
-                wgUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
-                khxxUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
-                wgUpdate.putFieldValue("J",billVO.getStringValue("C"));
-                khxxUpdate.putFieldValue("J",billVO.getStringValue("C"));
-                wgUpdate.putFieldValue("K",billVO.getStringValue("D"));
-                khxxUpdate.putFieldValue("K",billVO.getStringValue("D"));
-                list.add(wgUpdate.getSQL());
-                list.add(khxxUpdate.getSQL());
-            }
-            try {
-                UIUtil.executeBatchByDS(null,list);
-                MessageBox.show(cardDialog,"迁移成功");
-                dialog.getBilllistPanel().repaint();
-                dialog.getBilllistPanel().refreshData();
-            } catch (Exception e) {
-                MessageBox.show(cardDialog,"迁移失败");
-                e.printStackTrace();
-            }
-        }
+    private void qyData(final BillListDialog dialog, final BillVO vo){
+        new SplashWindow(dialog, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BillListDialog cardDialog=new BillListDialog(dialog,"网格客户迁移","EXCEL_TAB_85_CODE_3");
+                cardDialog.getBilllistPanel().QueryData("select c,d,G from hzdb.EXCEL_TAB_85 where 1=1  and (PARENTID='2')  and f='"+vo.getStringValue("F")+"' and C||D<>'"+vo.getStringValue("C")+vo.getStringValue("D")+"'");
+                BillVO [] wgVos=dialog.getBilllistPanel().getCheckedBillVOs();
+                if(wgVos.length<=0){
+                    MessageBox.show(cardDialog,"请勾选一条数据进行操作");
+                    return;
+                }
+                cardDialog.setVisible(true);
+                if(cardDialog.getCloseType()==1){
+                    BillVO billVO=cardDialog.getBilllistPanel().getSelectedBillVO();
+                    if(billVO==null){
+                        MessageBox.show(cardDialog,"请选择一条数据进行操作");
+                        return;
+                    }
+                    List list=new ArrayList();
+                    UpdateSQLBuilder wgUpdate=new UpdateSQLBuilder(tablename);
+                    UpdateSQLBuilder khxxUpdate=new UpdateSQLBuilder("s_loan_khxx_202001");
+                    for(int i=0;i<wgVos.length;i++){
+                        wgUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
+                        khxxUpdate.setWhereCondition("G='"+wgVos[i].getStringValue("G")+"' and deptcode='"+wgVos[i].getStringValue("deptcode")+"'");
+                        wgUpdate.putFieldValue("J",billVO.getStringValue("C"));
+                        khxxUpdate.putFieldValue("J",billVO.getStringValue("C"));
+                        wgUpdate.putFieldValue("K",billVO.getStringValue("D"));
+                        khxxUpdate.putFieldValue("K",billVO.getStringValue("D"));
+                        list.add(wgUpdate.getSQL());
+                        list.add(khxxUpdate.getSQL());
+                    }
+                    try {
+                        UIUtil.executeBatchByDS(null,list);
+                        MessageBox.show(cardDialog,"迁移成功");
+                        dialog.getBilllistPanel().repaint();
+                        dialog.getBilllistPanel().refreshData();
+                    } catch (Exception a) {
+                        MessageBox.show(cardDialog,"迁移失败");
+                        a.printStackTrace();
+                    }
+                }
 
-    }
+            }
+        });
+     }
     /**
      * zzl 添加修改功能
      * @param dialog

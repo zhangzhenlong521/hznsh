@@ -66,6 +66,10 @@ public class DKDatacCeaning implements WLTJobIFC {
 //                        "and to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')<='"+getDQymTime()+"' group by XD_COL1) \n" +
 //                        "b ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL7=a.XD_COL7-b.khye");
             }
+            String dkstate=dmo.getStringValueByDS(null,"select dkdates from hzdb.s_count_cdk where dkdates='"+getQYTTime()+"' and ckdates='"+getQYTTime()+"'");
+            if(dkstate==null){
+                return "OK";
+            }
             String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime()+"' and OBJECT_TYPE='TABLE'");
             if(createDate.length>0){
 
