@@ -138,11 +138,15 @@ public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSe
             list = new BillListPanel(templetVO);
             HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_dept_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
             for(int i=0;i<vos.length;i++){
-                String [] strCol=vos[i].getStringValue("cgprocess").split("&");
-                for(int s=0;s<strCol.length;s++){
-                    String col[]=strCol[s].split("=");
-                    vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
+                if(vos[i].getStringValue("cgprocess")==null){
 
+                }else{
+                    String [] strCol=vos[i].getStringValue("cgprocess").split("&");
+                    for(int s=0;s<strCol.length;s++){
+                        String col[]=strCol[s].split("=");
+                        vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
+
+                    }
                 }
             }
             list.putValue(vos);

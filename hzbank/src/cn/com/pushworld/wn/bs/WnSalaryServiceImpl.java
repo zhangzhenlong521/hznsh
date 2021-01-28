@@ -3443,8 +3443,8 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	/**
 	 * 柜员累计违规积分
 	 * 
-	 * @param year
-	 * @param month
+	 * @param
+	 * @param
 	 * @return
 	 */
 	private HashMap<String, String> getWgjf(String str, String year) {
@@ -3614,9 +3614,9 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 	/**
 	 * 月平均工资占所在网点柜员平均定量考核工资占比
 	 * 
-	 * @param date
-	 * @param year
-	 * @return
+	 * @param
+	 * @param
+	 * * @return
 	 */
 	private HashMap<String, String> getWdpjzb(String str, String year) {
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -6064,6 +6064,25 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			return message;
 		}
 	}
+
+	@Override
+	public String onWgUpdate() {
+		try{
+			String [][] data=dmo.getStringArrayByDS(null,"select c,d,f from hzdb.EXCEL_TAB_85 where 1=1  and (PARENTID='2')");
+			for(int i=0;i<data.length;i++){
+				if(data[i][0].equals("待分配网格") || data[i][1].equals("待分配网格")){
+				}else{
+					dmo.executeUpdateByDS(null,"update hzdb.s_loan_khxx_202001 " +
+							"set deptcode='"+data[i][2]+"' where J='"+data[i][0]+"' and K='"+data[i][1]+"'");
+				}
+			}
+			return "清洗成功";
+		}catch (Exception e){
+			return "清洗失败";
+		}
+
+	}
+
 	/**
 	 *   计算每个支行当前指标得分情况 （完成情况/任务数）
 	 * @param completeMap :完成情况统计

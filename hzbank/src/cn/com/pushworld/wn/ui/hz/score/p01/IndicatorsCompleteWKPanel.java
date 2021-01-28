@@ -150,13 +150,17 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             list = new BillListPanel(templetVO);
             HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
             for(int i=0;i<vos.length;i++){
-                String [] strCol=vos[i].getStringValue("processfactors").split(";");
-                for(int s=0;s<strCol.length;s++){
-                    String col[]=strCol[s].split("&");
-                    vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
+                if(vos[i].getStringValue("processfactors")==null){
 
+                }else{
+                    String [] strCol=vos[i].getStringValue("processfactors").split(";");
+                    for(int s=0;s<strCol.length;s++){
+                        String col[]=strCol[s].split("&");
+                        vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
+
+                    }
+                    vos[i].setAttributeValue("字更兆各",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
                 }
-                vos[i].setAttributeValue("字更兆各",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
             }
             list.putValue(vos);
         }catch (Exception e){

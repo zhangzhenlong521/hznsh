@@ -550,7 +550,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 }
             }
         }else if(actionEvent.getSource() == btn_update){
-            BillVO vo=listPanel.getSelectedBillVO();
+            final BillVO vo=listPanel.getSelectedBillVO();
             if (vo == null) {
                 MessageBox.show(this, "请选中一条数据进行修改");
                 return;
@@ -559,11 +559,29 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     "EXCEL_TAB_85_EDIT_CODE2");
             cardPanel.setBillVO(vo);
             cardPanel.setRealValueAt("PARENTID","2");
-            BillCardDialog dialog = new BillCardDialog(listPanel, "修改",
+            final BillCardDialog dialog = new BillCardDialog(listPanel, "修改",
                     cardPanel, WLTConstants.BILLDATAEDITSTATE_UPDATE);// 修改设置
             dialog.setSaveBtnVisiable(false);
+            dialog.getBtn_confirm().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    try {
+                        dialog.getBillcardPanel().updateData();
+                        listPanel.refreshCurrSelectedRow();
+                        dialog.dispose();
+                        String newxz=dialog.getBillcardPanel().getRealValueAt("c");
+                        String newWg=dialog.getBillcardPanel().getRealValueAt("d");
+                        UIUtil.executeUpdateByDS(null,"update "+tablename+" set J='"+newxz+"',K='"+newWg+"' " +
+                                "where J='"+vo.getStringValue("c")+"' and K='"+vo.getStringValue("d")+"" +
+                                "' and deptcode='"+vo.getStringValue("f")+"'");
+                        UIUtil.executeUpdateByDS(null,"update hzdb.s_loan_khxx_202001 set J='"+newxz+"',K='"+newWg+"'" +
+                                "where J='"+vo.getStringValue("c")+"' and K='"+vo.getStringValue("d")+"' and deptcode='"+vo.getStringValue("f")+"'");
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
             dialog.setVisible(true);
-            listPanel.refreshCurrSelectedRow();
         }
 
 
@@ -747,8 +765,14 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                             cardDialog.dispose();
                         }else{
                             //zzl 已存在并划入网格
-                            MessageBox.show(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内");
-                            return;
+                            boolean fag= MessageBox.confirm(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内,是否强制导入！");
+                            if(fag){
+                                updateSql(cardDialog,vo);
+                                MessageBox.show(cardDialog,"修改成功重新查询即可");
+                                cardDialog.dispose();
+                            }else{
+                                return;
+                            }
                         }
                     }else{
                         if(cardDialog.getBillcardPanel().getRealValueAt("G")==null ||
@@ -771,6 +795,22 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         cardDialog.setVisible(true);
     }
 
+    /**
+     * zzl
+     * 强制修改
+     *
+     */
+    private void updateSql(BillCardDialog cardDialog,BillVO vo){
+        try{
+            UIUtil.executeUpdateByDS(null,"update S_LOAN_KHXX_202001 set J='"+vo.getStringValue("C")+"'," +
+                    "K='"+vo.getStringValue("D")+"' where G='"+cardDialog.getBillcardPanel().getRealValueAt("G")+"' and deptcode='"+vo.getStringValue("F")+"'");
+            UIUtil.executeUpdateByDS(null,"update "+tablename+" set J='"+vo.getStringValue("C")+"'," +
+                    "K='"+vo.getStringValue("D")+"' where G='"+cardDialog.getBillcardPanel().getRealValueAt("G")+"' and deptcode='"+vo.getStringValue("F")+"'");
+
+        }catch (Exception e){
+
+        }
+    }
     /**
      * zzl
      * 插入临时表的数据

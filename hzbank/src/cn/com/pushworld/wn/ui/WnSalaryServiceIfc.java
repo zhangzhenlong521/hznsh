@@ -329,5 +329,7 @@ public interface WnSalaryServiceIfc extends WLTRemoteCallServiceIfc {
 	 * @param selectDate: 选中的日期 (默认用的是年度12月份)
 	 */
 	public String accountJyMoney(float jyMoney, String selectDate);
+
+	public String onWgUpdate();
   
 }
