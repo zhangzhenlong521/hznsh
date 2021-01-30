@@ -229,14 +229,14 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 sb.append("本网格总客户数为：【"+zhs+"】户");
 //                sb.append(System.getProperty("line.separator"));
                 //zzl 存款客户
-                String ckhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye is not null");
+                String ckhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye>0");
 //                sb.append("已有存款客户：【"+ckhs+"】户      待开发存款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"】户");
 //                sb.append(System.getProperty("line.separator"));
                 vos[0]=new HashVO();
                 vos[0].setAttributeValue("yikf","已有存款客户："+ckhs+"户");
                 vos[0].setAttributeValue("dkf","待开发存款客户："+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"户");
                 // zzl 贷款客户
-                String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye is not null");
+                String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye>0");
 //                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
 //                sb.append(System.getProperty("line.separator"));
                 vos[1]=new HashVO();
@@ -364,6 +364,12 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 String xName=vo.getStringValue("C");//乡镇
                 String wgName=vo.getStringValue("D");//网格名称
                 String deptcode=vo.getStringValue("F");//机构号
+                List updateList=new ArrayList();
+                UpdateSQLBuilder wgUpdate=new UpdateSQLBuilder(tablename);
+                UpdateSQLBuilder khxxUpdate=new UpdateSQLBuilder("S_LOAN_KHXX_202001");
+                //开始插入数据
+                InsertSQLBuilder wgInsert=new InsertSQLBuilder(tablename);
+                InsertSQLBuilder khxxInsert=new InsertSQLBuilder("S_LOAN_KHXX_202001");
                 try{
                     HashMap idMap=UIUtil.getHashMapBySQLByDS(null,"select UPPER(G),deptcode from "+tablename+" where deptcode='"+deptcode+"'");//zzl 查出当前机构的所有身份证
                     List <List>listRow=new ArrayList();//行
@@ -381,6 +387,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                                     if(idMap.get(data[i][j].toUpperCase())==null){
                                         List listCol=new ArrayList();//lie
                                         for(int k=0;k<data[i].length;k++){
+                                            System.out.println(">>>>>>>>>>>>"+data[i].length);
                                             if(data[0][k].equals("乡-镇")){
                                                 listCol.add(xName);
                                             }else if(data[0][k].equals("网格名称")){
@@ -393,34 +400,46 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                                         }
                                         listRow.add(listCol);
                                     }else{
-                                        HashVO [] vos=UIUtil.getHashVoArrayByDS(null,
-                                                "select * from "+tablename+" where deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
-                                        sb.append("客户身份证为["+data[i][j]+"]已经存在本机构的"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"网格内，不再重复导入"+System.getProperty("line.separator"));
+//                                        HashVO [] vos=UIUtil.getHashVoArrayByDS(null,
+//                                                "select * from "+tablename+" where deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
+//                                        sb.append("客户身份证为["+data[i][j]+"]已经存在本机构的"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"网格内，不再重复导入"+System.getProperty("line.separator"));
+                                        wgUpdate.setWhereCondition("deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
+                                        wgUpdate.putFieldValue("J",xName);
+                                        wgUpdate.putFieldValue("K",wgName);
+                                        khxxUpdate.setWhereCondition("deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
+                                        khxxUpdate.putFieldValue("J",xName);
+                                        khxxUpdate.putFieldValue("K",wgName);
+                                        updateList.add(wgUpdate.getSQL());
+                                        updateList.add(khxxUpdate.getSQL());
                                     }
                                 }
 
                             }
                         }
                     }
-                    //开始插入数据
-                    InsertSQLBuilder wgInsert=new InsertSQLBuilder(tablename);
-                    InsertSQLBuilder khxxInsert=new InsertSQLBuilder("S_LOAN_KHXX_202001");
                     List sqlList=new ArrayList();
                     if(listRow.size()>0){
                         for(int i=1;i<listRow.size();i++){
                             List col=listRow.get(i);
                             for(int j=0;j<col.size();j++){
-                                wgInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
-                                khxxInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
-                            }
+                                if(map.get(listRow.get(0).get(j).toString())==null || col.get(j)==null){
+
+                                }else{
+                                    wgInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
+                                    khxxInsert.putFieldValue(map.get(listRow.get(0).get(j).toString()).toString(),col.get(j).toString());
+                                }
+                           }
                             sqlList.add(wgInsert.getSQL());
                             sqlList.add(khxxInsert.getSQL());
                         }
                     }
                     UIUtil.executeBatchByDS(null,sqlList);
-                    sb.append("本次共导入"+sqlList.size()/2+"条数据");
+                    sb.append("本次共导入"+sqlList.size()/2+"条数据"+System.getProperty("line.separator"));
+                    UIUtil.executeBatchByDS(null,updateList);
+                    sb.append("本次共迁移"+updateList.size()/2+"条数据"+System.getProperty("line.separator"));
                     MessageBox.show(dialog,sb.toString());
                 }catch (Exception a){
+                    System.out.println(">>>>>>>>"+wgInsert.getSQL());
                     MessageBox.show(dialog,"导入失败！请联系管理员");
                     a.printStackTrace();
                 }

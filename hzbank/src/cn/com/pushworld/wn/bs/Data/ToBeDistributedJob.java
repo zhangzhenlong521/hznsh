@@ -149,17 +149,17 @@ public class ToBeDistributedJob implements WLTJobIFC {
                         "select oact_inst_no,cust_no,sum(acct_bal) f from hzbank.A_AGR_DEP_ACCT_ENT_SV_"+getQYDayMonth()+" group by oact_inst_no,cust_no union all \n" +
                         "select oact_inst_no,cust_no,sum(acct_bal) f from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" group by oact_inst_no,cust_no)) a left join\n" +
                         "hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" b on a.cust_no = b.COD_CUST_ID where a.oact_inst_no='"+key.toString()+"' group by a.oact_inst_no,a.f,b.NAM_CUST_FULL,b.cod_cust_id,b.EXTERNAL_CUSTOMER_IC,b.TXT_custadr_ADD1) ck\n" +
-                        "left join (select * from hzdb.s_loan_khxx_202001 where deptcode='"+key.toString()+"') xx on Upper(ck.cod_cust_id)=Upper(xx.G)\n" +
+                        "left join (select * from hzdb.s_loan_khxx_202001 where deptcode='"+key.toString()+"') xx on Upper(ck.EXTERNAL_CUSTOMER_IC)=Upper(xx.G)\n" +
                         "where xx.G is null");
                 if(data.length>0){
                     dmo.executeUpdateByDS(null,"insert into  hzdb.s_loan_khxx_202001(A,G,H,J,K,deptcode)\n" +
-                            "select ck.NAM_CUST_FULL,ck.cod_cust_id,ck.TXT_custadr_ADD1,'对公存款','对公存款','"+key.toString()+"' from(\n" +
+                            "select ck.NAM_CUST_FULL,ck.EXTERNAL_CUSTOMER_IC,ck.TXT_custadr_ADD1,'对公存款','对公存款','"+key.toString()+"' from(\n" +
                             "select a.oact_inst_no,a.f,b.cod_cust_id,b.NAM_CUST_FULL,b.EXTERNAL_CUSTOMER_IC,b.TXT_custadr_ADD1 from(\n" +
                             "select * from(\n" +
                             "select oact_inst_no,cust_no,sum(acct_bal) f from hzbank.A_AGR_DEP_ACCT_ENT_SV_"+getQYDayMonth()+" group by oact_inst_no,cust_no union all \n" +
                             "select oact_inst_no,cust_no,sum(acct_bal) f from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" group by oact_inst_no,cust_no)) a left join\n" +
                             "hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" b on a.cust_no = b.COD_CUST_ID where a.oact_inst_no='"+key.toString()+"' group by a.oact_inst_no,a.f,b.NAM_CUST_FULL,b.cod_cust_id,b.EXTERNAL_CUSTOMER_IC,b.TXT_custadr_ADD1) ck\n" +
-                            "left join (select * from hzdb.s_loan_khxx_202001 where deptcode='"+key.toString()+"') xx on Upper(ck.cod_cust_id)=Upper(xx.G)\n" +
+                            "left join (select * from hzdb.s_loan_khxx_202001 where deptcode='"+key.toString()+"') xx on Upper(ck.EXTERNAL_CUSTOMER_IC)=Upper(xx.G)\n" +
                             "where xx.G is null");
                     deleteRepeat(key.toString());
                 }
