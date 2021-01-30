@@ -189,7 +189,7 @@ public class QuantifyTargetListWKPanel extends AbstractWorkPanel implements Acti
 	 * 新增
 	 */
 	private void onAdd(BillListPanel listPanel, int tab) {
-		BillCardPanel cardPanel = null;
+		BillCardPanel cardPanel=null;
 		if (tab == 1) {
 			BillVO billVO = treePanel.getSelectedVO();
 			if (billVO == null) {
@@ -238,7 +238,8 @@ public class QuantifyTargetListWKPanel extends AbstractWorkPanel implements Acti
 			return;
 		}
 		//创建一个卡片面板
-		BillCardPanel cardPanel = new BillCardPanel(listPanel.getTempletVO());
+//		BillCardPanel cardPanel = new BillCardPanel(listPanel.getTempletVO());
+		BillCardPanel cardPanel = new BillCardPanel(listPanel.getTempletVO().getTempletcode());
 		cardPanel.setBillVO(billVO);
 
 		//弹出框
@@ -382,6 +383,13 @@ public class QuantifyTargetListWKPanel extends AbstractWorkPanel implements Acti
 		if (TBUtil.getTBUtil().isEmpty(date)) {
 			return;
 		}
+		String gcyz=targetVO.getStringValue("factors");
+		String [] str=null;
+		if(gcyz==null){
+
+		}else{
+			str=gcyz.substring(1,gcyz.length()).split(";");//添加过程中的因子
+		}
 		Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
 		templetVO.setTempletname("部门指标计算");
 		String [] columns = new String[]{"targetname","checkeddeptname","rtobj","value","process"};
@@ -394,7 +402,7 @@ public class QuantifyTargetListWKPanel extends AbstractWorkPanel implements Acti
 		templetVO.setIsshowlistquickquery(false);
 		templetVO.setIscollapsequickquery(true);
 		templetVO.setIslistautorowheight(true);
-		Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[5];
+		Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[5+(str==null?0:str.length)];
 		for(int i=0;i<columns.length;i++){
 			templetItemVOs[i]=new Pub_Templet_1_ItemVO();
 			templetItemVOs[i].setListisshowable(true);
@@ -404,6 +412,23 @@ public class QuantifyTargetListWKPanel extends AbstractWorkPanel implements Acti
 			templetItemVOs[i].setListiseditable("4");
 			templetItemVOs[i].setItemkey(columns[i].toString());
 			templetItemVOs[i].setItemname(columnNames[i].toString());
+		}
+		if(str==null){
+		}else{
+			for(int i=0;i<str.length;i++){
+				if(str[i]==null || str[i].equals(null) || str[i].equals("null") || str[i].equals(" ")){
+
+				}else{
+					templetItemVOs[templetItemVOs.length-(str.length-i)]=new Pub_Templet_1_ItemVO();
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setListisshowable(true);
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setPub_Templet_1VO(templetVO);
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setListwidth(150);
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setItemtype("文本框");
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setListiseditable("4");
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setItemkey(str[i]);
+					templetItemVOs[templetItemVOs.length-(str.length-i)].setItemname(str[i]);
+				}
+			}
 		}
 		templetVO.setItemVos(templetItemVOs);
 		BillListPanel list = new BillListPanel(templetVO);

@@ -25,6 +25,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import cn.com.infostrategy.bs.common.SystemOptions;
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.TBUtil;
 import cn.com.infostrategy.to.common.WLTConstants;
@@ -59,7 +60,7 @@ import cn.com.pushworld.salary.ui.targetcheck.SalaryBomPanel;
 public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements ActionListener {
 	private static final long serialVersionUID = 5488377030880962619L;
 	private BillListPanel targetScoreListPanel = new BillListPanel("SAL_DEPT_CHECK_SCORE_CODE1"); // 指标评分详情。
-	private WLTButton btn_submit, btn_apply_modify; // 申请修改
+	private WLTButton btn_submit, btn_apply_modify,btn_save; // 申请修改
 	private SalaryTBUtil stbutil = new SalaryTBUtil();
 	private HashVO currLogID = null; // 当前计划日志ID。
 	private int currPageState = 0; // 当前页面状态.0直接评分状态 1申请修改表单选择 2具体申请修改维护。
@@ -70,6 +71,7 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 	private boolean editable = true;
 	private boolean autoCheckCommit = true;
 	private String userid = ClientEnvironment.getCurrSessionVO().getLoginUserId(); // 当前登录人ID
+	private Boolean falg= SystemOptions.getBooleanValue("定性打分是否启用加权平均",false);//zzl 20201221 有的支行不喜欢加权平均
 
 	public void initialize() {
 		try {
@@ -84,11 +86,13 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 
 	private void initBtn() {
 		btn_submit = new WLTButton("全部提交", UIUtil.getImage("zt_071.gif"));
+		btn_save = new WLTButton("保存",UIUtil.getImage("zt_041.gif"));
 		btn_submit.setPreferredSize(new Dimension(85, 21));
 		btn_submit.addActionListener(this);
 		btn_apply_modify = new WLTButton("申请修改", UIUtil.getImage("script--pencil.png"));
 		btn_apply_modify.addActionListener(this);
-		targetScoreListPanel.addBatchBillListButton(new WLTButton[] { btn_submit, btn_apply_modify });
+		btn_save.addActionListener(this);
+		targetScoreListPanel.addBatchBillListButton(new WLTButton[] { btn_submit, btn_apply_modify,btn_save});
 		targetScoreListPanel.repaintBillListButton();
 		targetScoreListPanel.setHeaderCanSort(false);
 		targetScoreListPanel.setCanShowCardInfo(false);
@@ -230,6 +234,8 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 			onBtn1();
 		} else if (e.getSource() == btn_apply_modify) {
 			onBtn2();
+		}else if(e.getSource() == btn_save){
+			onBtn3();
 		}
 	}
 
@@ -429,7 +435,29 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 		currPageState = 0;
 		resetButton();
 	}
-
+	private void onBtn3() {
+		BillVO checkItemVos[] = targetScoreListPanel.getBillVOs();
+		List updateSQLList = new ArrayList<UpdateSQLBuilder>();
+		for (int i = 0; i < checkItemVos.length; i++) {
+			UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
+//			String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
+//			String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+//			float f_weights = Float.parseFloat(weights); // 权重分值
+//			float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+//			float lastScore = f_weights * (100 - f_checkratio) / 100;
+			updateSql.putFieldValue("checkscore", checkItemVos[i].getStringValue("checkdratio") + "");
+			updateSql.putFieldValue("checkdratio", checkItemVos[i].getStringValue("checkdratio"));
+			updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
+			updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
+			updateSQLList.add(updateSql);
+		}
+		try {
+			UIUtil.executeBatchByDS(null, updateSQLList, true, false);
+		} catch (Exception e1) {
+			MessageBox.showException(targetScoreListPanel, e1);
+			e1.printStackTrace();
+		}
+	}
 	/*
 	 * 提交
 	 */
@@ -438,30 +466,67 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 		BillVO checkItemVos[] = targetScoreListPanel.getBillVOs();
 		int notFillCount = 0; // 记录未填写数量
 		List updateSQLList = new ArrayList<UpdateSQLBuilder>();
-		for (int i = 0; i < checkItemVos.length; i++) {
+			for (int i = 0; i < checkItemVos.length; i++) {
 			if (checkItemVos[i].getStringValue("checkdratio") == null || checkItemVos[i].getStringValue("checkdratio").equals("")) {
 				notFill.append("第" + (i + 1) + "行" + " " + checkItemVos[i].getStringValue("targetname") + "\r\n");
 				notFillCount++;
 			} else {//如果已经有值，那么就更新
-				UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
-				String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
-				String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
-				float f_weights = Float.parseFloat(weights); // 权重分值
-				float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
-				float lastScore = f_weights * (100 - f_checkratio) / 100;
-				updateSql.putFieldValue("checkscore", lastScore + "");
-				updateSql.putFieldValue("checkdratio", checkdratio);
-				updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
-				updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
-				updateSQLList.add(updateSql);
+				Double dfen=Double.parseDouble(checkItemVos[i].getStringValue("checkdratio"));//zzl 得分
+				Double qzhong=Double.parseDouble(checkItemVos[i].getStringValue("weights"));// zzl 权重
+				if(!falg){
+					if(qzhong<0.0){
+						if(dfen>=qzhong && dfen<=0){
+							UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
+							String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
+							String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+							float f_weights = Float.parseFloat(weights); // 权重分值
+							float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+							float lastScore = f_weights * (100 - f_checkratio) / 100;
+							updateSql.putFieldValue("checkscore", lastScore + "");
+							updateSql.putFieldValue("checkdratio", checkdratio);
+							updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
+							updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
+							updateSQLList.add(updateSql);
+						}else{
+							notFill.append("第" + (i + 1) + "行" + " " + checkItemVos[i].getStringValue("targetname") + "的得分大于权重分值，请重新打分。 \r\n");
+						}
+					}else if(Math.abs(dfen)>Math.abs(qzhong)){
+						notFill.append("第" + (i + 1) + "行" + " " + checkItemVos[i].getStringValue("targetname") + "的得分大于权重分值，请重新打分。 \r\n");
+					}else{
+						UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
+						String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
+						String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+						float f_weights = Float.parseFloat(weights); // 权重分值
+						float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+						float lastScore = f_weights * (100 - f_checkratio) / 100;
+						updateSql.putFieldValue("checkscore", lastScore + "");
+						updateSql.putFieldValue("checkdratio", checkdratio);
+						updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
+						updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
+						updateSQLList.add(updateSql);
+					}
+				}else{
+					UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
+					String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
+					String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+					float f_weights = Float.parseFloat(weights); // 权重分值
+					float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+					float lastScore = f_weights * (100 - f_checkratio) / 100;
+					updateSql.putFieldValue("checkscore", lastScore + "");
+					updateSql.putFieldValue("checkdratio", checkdratio);
+					updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
+					updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
+					updateSQLList.add(updateSql);
+
+				}
 			}
 		}
 		if (notFillCount > 0) {
-			if (notFillCount >= 5) {
-				MessageBox.show(this, "您有" + notFillCount + "条记录没有评分.");
-			} else {
-				MessageBox.show(this, "您所选择的指标有部分未评分：\r\n" + notFill.toString());
-			}
+			MessageBox.show(this, "您有" + notFillCount + "条记录没有评分.");
+			return;
+		}else if(notFill==null || notFill.equals("") || notFill.equals(null) ||notFill.length()<=0){
+		}else{
+			MessageBox.show(this, "您所选择的指标有部分评分异常：\r\n" + notFill.toString());
 			return;
 		}
 		//把所有数据再保存一次到服务器.

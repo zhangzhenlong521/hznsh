@@ -1,6 +1,9 @@
 package cn.com.pushworld.salary.bs.dinterface;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -16,8 +19,8 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 /**
  * 平台定时任务调用此类
  * 每次执行的总任务日志。
- * @author haoming
- * create by 2014-7-10
+ * @author zzl
+ * create by 2021-01-19
  */
 public class SynDataRunTimer implements WLTJobIFC {
 	private CommDMO dmo = new CommDMO();
@@ -25,55 +28,96 @@ public class SynDataRunTimer implements WLTJobIFC {
 	Logger logger = WLTLogger.getLogger(SynDataRunTimer.class); //
 
 	public String run() throws Exception {
-		//
-		String files[] = ifcdmo.getFiledesc();
-		boolean flag = true;
-		if (files == null || files.length == 0) {
-			if (TBUtil.isEmpty(ifcdmo.ftppath)) {
-				throw new Exception("目前服务器没有配置FTP路径，请配置系统参数[数据接口FTP路径]");
-			} else {
-				throw new Exception("目前服务器路径" + ifcdmo.ftppath + "没有找到任何上传记录");
-			}
-		}
-		HashVO hisjob[] = dmo.getHashVoArrayByDS(null, "select * from SAL_SYN_DATA_JOB order by datadate desc "); //历史所有job
-		List loglist = new ArrayList();
-		//比较任务历史和目录
-		if (hisjob != null && hisjob.length > 0) {
-			HashVO nearJob = hisjob[0];//最近的任务
-			String nearJobDate = nearJob.getStringValue("datadate"); //2014-07-04
-			List needdo = new ArrayList();
-			for (int i = 0; i < files.length; i++) {
-				if (!files[i].equals(nearJobDate.replace("-", ""))) {
-					needdo.add(files[i]);
-				} else {
-					break; //如果找到同一天，立马退出
+		StringBuffer state=new StringBuffer();
+//		//
+//		String files[] = ifcdmo.getFiledesc();
+//		boolean flag = true;
+//		if (files == null || files.length == 0) {
+//			if (TBUtil.isEmpty(ifcdmo.ftppath)) {
+//				throw new Exception("目前服务器没有配置FTP路径，请配置系统参数[数据接口FTP路径]");
+//			} else {
+//				throw new Exception("目前服务器路径" + ifcdmo.ftppath + "没有找到任何上传记录");
+//			}
+//		}
+//		HashVO hisjob[] = dmo.getHashVoArrayByDS(null, "select * from SAL_SYN_DATA_JOB order by datadate desc "); //历史所有job
+//		List loglist = new ArrayList();
+//		//比较任务历史和目录
+//		if (hisjob != null && hisjob.length > 0) {
+//			HashVO nearJob = hisjob[0];//最近的任务
+//			String nearJobDate = nearJob.getStringValue("datadate"); //2014-07-04
+//			List needdo = new ArrayList();
+//			for (int i = 0; i < files.length; i++) {
+//				if (!files[i].equals(nearJobDate.replace("-", ""))) {
+//					needdo.add(files[i]);
+//				} else {
+//					break; //如果找到同一天，立马退出
+//				}
+//			}
+//			for (int i = 0; i < needdo.size(); i++) { //先执行离最后一天最近的一次。
+//				String filefolder = (String) needdo.get(needdo.size() - i - 1);
+//				boolean rtfalg = onedataJob(filefolder, loglist); //执行一次任务。
+//				if (flag && !rtfalg) {
+//					flag = false;
+//				}
+//			}
+//		} else if (hisjob.length == 0) {
+//			for (int i = 0; i < files.length; i++) {
+//				boolean rtfalg = onedataJob(files[files.length - i - 1], loglist);
+//				if (flag && !rtfalg) {
+//					flag = false;
+//				}
+//			}
+//		}
+//		dmo.executeBatchByDS(null, loglist);
+//		System.gc(); //建议虚拟机释放内存.....
+//		if (!flag) {
+//			logger.error("数据接口同步定时任务执行失败");
+//			return "失败";
+//		}
+//		logger.info("数据接口同步定时任务执行成功");
+		try{
+			String dates=dmo.getStringValueByDS(null,"select distinct(datadate) from hzdb.sal_person_check_auto_score where datadate='"+getQYTTime("yyyy-MM-dd")+"'");
+			String deptDates=dmo.getStringValueByDS(null,"select distinct(checkdate) from hzdb.sal_person_check_dept_score where checkdate='"+getQYTTime("yyyy-MM-dd")+"'");
+			String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime("yyyyMMdd")+"' and OBJECT_TYPE='TABLE'");
+			String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime("yyyyMMdd")+"'");
+			if(dates==null){
+				if(createDate.length>0 && count!=null){
+					new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
+					state.append("个人指标计算成功");
 				}
+			}else{
+				state.append(getQYTTime("yyyy-MM-dd")+"个人指标已经生成");
 			}
-			for (int i = 0; i < needdo.size(); i++) { //先执行离最后一天最近的一次。
-				String filefolder = (String) needdo.get(needdo.size() - i - 1);
-				boolean rtfalg = onedataJob(filefolder, loglist); //执行一次任务。
-				if (flag && !rtfalg) {
-					flag = false;
+            //zzl 添加部门指标计算
+			if(deptDates==null){
+				if(createDate.length>0 && count!=null){
+					new SalaryFormulaDMO().countDeptScore("", getQYTTime("yyyy-MM-dd"));
+					state.append("部门指标计算成功");
 				}
+			}else{
+				state.append(getQYTTime("yyyy-MM-dd")+"部门指标数据已经生成");
 			}
-		} else if (hisjob.length == 0) {
-			for (int i = 0; i < files.length; i++) {
-				boolean rtfalg = onedataJob(files[files.length - i - 1], loglist);
-				if (flag && !rtfalg) {
-					flag = false;
-				}
-			}
+		}catch (Exception e){
+			state.append("失败"+e.toString());
+			e.printStackTrace();
 		}
-		dmo.executeBatchByDS(null, loglist);
-		System.gc(); //建议虚拟机释放内存.....
-		if (!flag) {
-			logger.error("数据接口同步定时任务执行失败");
-			return "失败";
-		}
-		logger.info("数据接口同步定时任务执行成功");
-		return "成功";
+		return state.toString();
 	}
-
+	/**
+	 * 得到前一天的日期
+	 *
+	 * @return
+	 */
+	public String getQYTTime(String dates) {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat(dates);
+		Date d = new Date();
+		cal.setTime(d);
+		int day = cal.get(Calendar.DATE);
+		cal.set(Calendar.DATE, day - 1);
+		String lastDate = format.format(cal.getTime());
+		return lastDate;
+	}
 	/**
 	 * 执行一次任务。
 	 * @param _currFolder 日期目录名称

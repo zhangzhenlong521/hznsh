@@ -19,6 +19,7 @@ import cn.com.infostrategy.to.mdata.BillCellItemVO;
 import cn.com.infostrategy.to.mdata.DeleteSQLBuilder;
 import cn.com.infostrategy.to.mdata.InsertSQLBuilder;
 import cn.com.infostrategy.to.mdata.UpdateSQLBuilder;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
 import cn.com.pushworld.salary.bs.ifc.DelayMoneyCalIfc;
 import cn.com.pushworld.salary.bs.report.YearPersonCheckReportAdpader;
 import cn.com.pushworld.salary.to.SalaryFomulaParseUtil;
@@ -1896,6 +1897,12 @@ public class SalaryFormulaDMO extends AbstractDMO {
 		String checkdeptid = targetVO.getStringValue("checkeddept");
 		String weights = targetVO.getStringValue("weights");
 		String targetType = targetVO.getStringValue("type");
+		String [] str=null;
+		if(targetVO.getStringValue("factors")==null){
+
+		}else{
+			str=targetVO.getStringValue("factors").split(";");//添加过程中的因子
+		}
 		HashVO checkdeptvos[] = dmo.getHashVoArrayByDS(null, "select * from sal_target_checkeddept where id in(" + TBUtil.getTBUtil().getInCondition(checkdeptid) + ")");
 		StringBuffer executeValueSB = new StringBuffer();
 		String dw = "部门计价指标".equals(targetType) ? "薪酬" : "得分";
@@ -1917,7 +1924,7 @@ public class SalaryFormulaDMO extends AbstractDMO {
 				scorevo.setAttributeValue("maindeptid", uid);
 				scorevo.setAttributeValue("checkdradio", planvalue);
 				scorevo.setAttributeValue("weights", weights);
-				scorevo.setAttributeValue("checkdate", selectDate);
+				scorevo.setAttributeValue("checkdate", selectDate.length()>9?selectDate.substring(0,7):selectDate);
 				scorevo.setAttributeValue("checkeddeptname", deptname);
 				currdeptid = uid;
 				StringBuffer sb = new StringBuffer();
@@ -1944,7 +1951,34 @@ public class SalaryFormulaDMO extends AbstractDMO {
 				}
 				scorevo.setAttributeValue("rtobj",rtobj);
 				scorevo.setAttributeValue("value",value);
-				scorevo.setAttributeValue("process",sb.toString());
+				String count=sb.toString().replace("\r\n","&");
+				count=count.toString().replace(" ","");
+				scorevo.setAttributeValue("process",count);
+				String [] gcyz=sb.toString().split("\r\n");
+				HashMap<String,String> map=new HashMap<String, String>();
+				for(int g=0;g<gcyz.length;g++){
+					String [] col=gcyz[g].split("=");
+					map.put(col[0].trim(),col[1].trim());
+				}
+				StringBuffer newSb=new StringBuffer();
+				if(str==null){
+
+				}else{
+					for(int c=0;c<str.length;c++){
+						if(c==str.length-1){
+							if(map.get(str[c])!=null){
+								scorevo.setAttributeValue(str[c],map.get(str[c]));
+								newSb.append(str[c]+"="+map.get(str[c]));
+							}
+						}else{
+							if(map.get(str[c])!=null){
+								scorevo.setAttributeValue(str[c],map.get(str[c]));
+								newSb.append(str[c]+"="+map.get(str[c])+"&");
+							}
+						}
+					}
+				}
+				scorevo.setAttributeValue("cgprocess",newSb.toString());//zzl 只记录过程中的因子
 				list.add(scorevo);
 //				executeValueSB.append("该指标【" + scorevo.getStringValue("checkeddeptname") + "】实际值完成值【" + rtobj + "】  " + "最终" + dw + value + " \r\n" + sb + "\r\n");
 			}
@@ -1968,9 +2002,9 @@ public class SalaryFormulaDMO extends AbstractDMO {
 			return 0;
 		}
 		List list = new ArrayList();
-		DeleteSQLBuilder delsql = new DeleteSQLBuilder("sal_person_check_auto_score"); //
-		delsql.setWhereCondition(" checkdate='" + checkdate + "' and datadate='" + datadate + "'");
-		list.add(delsql);//如果改日期已经执行过,先删除掉。
+//		DeleteSQLBuilder delsql = new DeleteSQLBuilder("sal_person_check_auto_score"); //
+//		delsql.setWhereCondition(" checkdate='" + checkdate + "' and datadate='" + datadate + "'");
+		list.add("truncate table sal_person_check_auto_score");//如果改日期已经执行过,先删除掉。
 		for (int i = 0; i < autoCalcTargetIDs.length; i++) {
 			HashVO[] rtvos = calcOnePersonTarget_P_Money(autoCalcTargetIDs[i], checkdate); //计算返回的值
 			for (int j = 0; j < rtvos.length; j++) {
@@ -1997,10 +2031,60 @@ public class SalaryFormulaDMO extends AbstractDMO {
 				insert.putFieldValue("jobid", jobid);
 				insert.putFieldValue("money", value.getStringValue("money"));
 				insert.putFieldValue("descr", value.getStringValue("descr"));
+				String [] str=value.getStringValue("factors").split(";");
+				StringBuffer sb=new StringBuffer();
+				for(int s=0;s<str.length;s++){
+					if(str[s]==null || str[s].equals(null) || str[s].equals("")){
+
+					}else{
+						if(s==str.length-1){
+							sb.append(str[s]+"&"+value.getStringValue(str[s]));
+						}else{
+							sb.append(str[s]+"&"+value.getStringValue(str[s])+";");
+						}
+					}
+				}
+				insert.putFieldValue("processfactors", sb.toString());//zzl 20210111 过程中得因子
 				list.add(insert);
 			}
 		}
 		getDmo().executeBatchByDS(null, list); //只要sql拼接完成，应该不会报错。所有不单独开启事务。
+		return 1;
+	}
+	/**
+	 * zzl
+	 * 部门指标完成情况T+1查看
+	 * and state='参与考核'
+	 */
+	public int countDeptScore(String jobid, String datadate) throws Exception {
+		String checkdate = datadate.substring(0, 4) + "-" + datadate.substring(5, 7);
+		HashVO [] vos = getDmo().getHashVoArrayByDS(null, "select * from sal_target_list where type='部门定量指标' and alwaysview='Y'"); //找出所有需要计算的指标
+		if (vos.length == 0) {
+			return 0;
+		}
+		List <HashVO []>list = new ArrayList();
+		List listSql = new ArrayList();
+		listSql.add("truncate table sal_person_check_dept_score");//如果改日期已经执行过,先删除掉。
+		for(int i=0;i<vos.length;i++){
+			list.add(calcOneDeptTargetDL2(vos[i],datadate));
+		}
+
+		String [] columns = new String[]{"targetid","targetname","checkeddept","checkeddeptname","rtobj","value","cgprocess","checkdate"};
+		InsertSQLBuilder insert=new InsertSQLBuilder("sal_person_check_dept_score");
+		for(int i=0;i<list.size();i++){
+			HashVO [] voss=list.get(i);
+			for(int j=0;j<voss.length;j++){
+				for(int c=0;c<columns.length;c++){
+					if(columns[c].equals("checkdate")){
+						insert.putFieldValue("checkdate",datadate);
+					}else{
+						insert.putFieldValue(columns[c],voss[j].getStringValue(columns[c]));
+					}
+				}
+				listSql.add(insert.getSQL());
+			}
+		}
+		getDmo().executeBatchByDS(null, listSql); //只要sql拼接完成，应该不会报错。所有不单独开启事务。
 		return 1;
 	}
 
