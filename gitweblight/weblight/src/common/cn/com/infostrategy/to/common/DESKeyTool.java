@@ -24,7 +24,7 @@ public class DESKeyTool {
 			DESKeyTool myTool = new DESKeyTool(); //
 			String str_1 = myTool.encrypt("abcd1234"); //加密的值是【wAEvayyfYTAFlBVDYTvEvw==】,如果是空串则是【BZQVQ2E7xL8=】,如果是【1】加密则是【XOIiXdBhpCU=】
 			System.out.println("加密后=[" + str_1 + "]"); //
-			String str_2 = myTool.decrypt("vhiViGuHGN54IpE9xaiWOQ=="); //
+			String str_2 = myTool.decrypt("ag2/r0MyoN0FlBVDYTvEvw=="); //
 			System.out.println("解密后=[" + str_2 + "]"); //
 		} catch (Exception ex) {
 			ex.printStackTrace(); //
@@ -162,5 +162,7 @@ public class DESKeyTool {
 		}
 		return result;
 	}
+
+
 
 }

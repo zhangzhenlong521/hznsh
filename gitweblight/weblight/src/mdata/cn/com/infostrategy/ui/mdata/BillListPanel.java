@@ -1751,6 +1751,7 @@ public class BillListPanel extends BillPanel {
 		popmenu_header.add(item_table_showhidecolumn); //隐藏/显示列
 		popmenu_header.add(item_table_resetOrderCons); //重置排序条件!!
 		popmenu_header.add(item_column_piechart); //某一列数据生成饼图
+		popmenu_header.add(item_column_quickputvalue); //快速赋值!!
 		if (is_admin) {
 			popmenu_header.add(item_column_quickputvalue); //快速赋值!!
 		}
