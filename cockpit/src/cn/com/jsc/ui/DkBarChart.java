@@ -1,6 +1,7 @@
 package cn.com.jsc.ui;
 
 import cn.com.infostrategy.ui.common.UIUtil;
+import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -12,6 +13,7 @@ import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.BarRenderer3D;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
@@ -45,29 +47,57 @@ public class DkBarChart {
                 false,          // 是否生成工具
                 false           // 是否生成URL链接
         );
+        // 设置总的背景颜色
+        chart.setBackgroundPaint(new ChartColor(25,25,112));
+        // 设置标题颜色
+        chart.getTitle().setPaint(ChartColor.green);
+        // 获得图表对象
+        CategoryPlot p = chart.getCategoryPlot();
+        // 设置图的背景颜色
+        p.setBackgroundPaint(new ChartColor(25,25,112));
+        // 设置表格线颜色
+        p.setRangeGridlinePaint(ChartColor.blue);
         // 设置外层图片 无边框 无背景色 背景图片透明
         chart.setBorderVisible(false);
-        chart.setBackgroundPaint(null);
-        chart.setBackgroundImageAlpha(0.0f);
-        //显示条目标签
+//        chart.setBackgroundPaint(null);
+//        chart.setBackgroundImageAlpha(0.0f);
         plot=chart.getCategoryPlot();//获取图表区域对象
-        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        BarRenderer3D renderer = (BarRenderer3D) plot.getRenderer();
+        renderer.setBaseOutlinePaint(Color.ORANGE);//柱子上的颜色
+        renderer.setDrawBarOutline(true);//柱子边框
+        renderer.setWallPaint(new ChartColor(25,25,112));//3D 墙体颜色
+        //显示条目标签
         renderer.setBaseItemLabelsVisible(true);
+        renderer.setBaseItemLabelFont(new Font("黑体",Font.BOLD,14));
+        renderer.setBaseItemLabelPaint(Color.white);
         renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        //显示负值
+        renderer.setNegativeItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12,TextAnchor.BASELINE_LEFT));
         //设置条目标签显示的位置,outline表示在条目区域外,baseline_center表示基于基线且居中
+        //设定柱子上面的颜色bai
+        BarRenderer3D customBarRenderer = (BarRenderer3D) plot.getRenderer();
+        customBarRenderer.setSeriesPaint(0, Color.RED); // 给series1 Bar
+        customBarRenderer.setSeriesPaint(1, Color.green); // 给series2 Bar
         renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(
                 ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_CENTER));
-        //从这里開始
-        CategoryAxis domainAxis=plot.getDomainAxis();         //水平底部列表
-        domainAxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题
-        domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题
-        ValueAxis rangeAxis=plot.getRangeAxis();//获取柱状
-        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
-        chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
+        CategoryAxis domainAxis=plot.getDomainAxis();         //X 轴
+        domainAxis.setLabelFont(new Font("黑体",Font.BOLD,14));   //X 轴 文字
+        domainAxis.setLabelPaint(Color.orange);
+        domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //X 轴 数字
+        domainAxis.setTickLabelPaint(Color.yellow) ; // 字体颜色 X
+        ValueAxis rangeAxis=plot.getRangeAxis();//Y 轴
+        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15)); //Y 轴 文字
+        rangeAxis.setLabelPaint(Color.orange);
+        rangeAxis.setTickLabelPaint(Color.green) ; // Y 轴 文字
+
+        chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15)); //底部
+        chart.getLegend().setItemPaint(Color.green);
+        chart.getLegend().setBackgroundPaint(new ChartColor(0,0,128));
         chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
-        //到这里结束，尽管代码有点多，但仅仅为一个目的，解决汉字乱码问题
+
         frame1=new ChartPanel(chart,true);        //这里也能够用chartFrame,能够直接生成一个独立的Frame
         frame1.setOpaque(true);
+
         final SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         java.util.Timer timer =new java.util.Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

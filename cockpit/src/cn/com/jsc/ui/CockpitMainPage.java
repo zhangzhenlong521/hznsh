@@ -118,11 +118,12 @@ public class CockpitMainPage extends AbstractWorkPanel {
 //            WLTSplitPane dkpane1=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new DkBarChart().getChartPanel() ,new DkFarmersChart().getChartPanel());
 //            dkpane1.setDividerLocation(600);
 //            dkpane1.setDividerSize(1);
-//            WLTSplitPane dkpane2=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,dkpane1,new DkNumberWKPaenl().getJLabel());
+//            WLTSplitPane dkpane2=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,dkpane1,new DkNewJLabel().getJLabel());
 //            dkpane2.setDividerLocation(1200);
 //            dkpane2.setDividerSize(1);
 //            WLTSplitPane zhPanl=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,ckpane2,dkpane2);
 //            zhPanl.setDividerLocation(500);
+//            zhPanl.setDividerSize(1);
 //            WLTSplitPane titlepane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,new TitleNewJLabel().getJLabel(null),zhPanl);
 //            titlepane.setDividerLocation(80);
 //            titlepane.setDividerSize(1);
@@ -130,7 +131,7 @@ public class CockpitMainPage extends AbstractWorkPanel {
 //            jFrame.setUndecorated(true);
 //            jFrame.getGraphicsConfiguration().getDevice().setFullScreenWindow(jFrame);
 //            jFrame.setVisible(true);
-            this.add(new DkBarChart().getChartPanel());
+            this.add(new BadNewJLabel().getJLabel());
         }catch (Exception e){
             e.printStackTrace();
         }

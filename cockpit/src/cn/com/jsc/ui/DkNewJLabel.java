@@ -39,15 +39,15 @@ public class DkNewJLabel {
             final String [][] gtdk=service.getGtDkStatisticalHs();
             final String [][] xdldk=service.getXdlDkStatisticalHs();
             final String [][] nhdk=service.getnhDkStatisticalHs();
-            label_1 = new JLabel("<html><h2><font color='Black' size=6>"+DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行各项贷款统计情况</font></h2></html>");//
-            label_2 = new JLabel("<html><font color='#2F4F4F' size=5>各项贷款总额："+gxdk[0][0]+"亿元</font></html>");//
-            label_3= new JLabel("<html><font color='#2F4F4F' size=5>(较年初新增："+gxdk[0][1]+"亿元)</font></html>");
-            label_4 = new JLabel("<html><font color='#4682B4' size=5>有效贷款户数："+dkhs[0][0]+"万户</font></html>");//
-            label_5= new JLabel("<html><font color='#4682B4' size=5>(较年初新增："+dkhs[0][1]+"户)</font></html>");
-            label_6= new JLabel("<html><font color='#0000FF' size=5>便民快贷："+bmdk[0][0]+"户</font></html>");//
-            label_7= new JLabel("<html><font color='#0000FF' size=5>(较年初新增："+bmdk[0][1]+"户)</font></html>");
-            label_8= new JLabel("<html><font color='#800080' size=5>个体工商户："+gtdk[0][0]+"户</font></html>");//
-            label_9= new JLabel("<html><font color='#800080' size=5>(较年初新增："+gtdk[0][1]+"户)</font></html>");
+            label_1 = new JLabel("<html><h2><font color='#FFFFFF' size=6>"+DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行各项贷款统计情况</font></h2></html>");//
+            label_2 = new JLabel("<html><font color='FFFF00' size=5>各项贷款总额："+gxdk[0][0]+"亿元</font></html>");//
+            label_3= new JLabel("<html><font color='FFFF00' size=5>(较年初新增："+gxdk[0][1]+"亿元)</font></html>");
+            label_4 = new JLabel("<html><font color='#DC143C' size=5>有效贷款户数："+dkhs[0][0]+"万户</font></html>");//
+            label_5= new JLabel("<html><font color='#DC143C' size=5>(较年初新增："+dkhs[0][1]+"户)</font></html>");
+            label_6= new JLabel("<html><font color='FFFF00' size=5>便民快贷："+bmdk[0][0]+"户</font></html>");//
+            label_7= new JLabel("<html><font color='FFFF00' size=5>(较年初新增："+bmdk[0][1]+"户)</font></html>");
+            label_8= new JLabel("<html><font color='#7CFC00' size=5>个体工商户："+gtdk[0][0]+"户</font></html>");//
+            label_9= new JLabel("<html><font color='#7CFC00' size=5>(较年初新增："+gtdk[0][1]+"户)</font></html>");
             label_10= new JLabel("<html><font color='#DC143C' size=5>新动力："+xdldk[0][0]+"户</font></html>");//
             label_11= new JLabel("<html><font color='#DC143C' size=5>(较年初新增："+xdldk[0][1]+"户)</font></html>");
             label_12= new JLabel("<html><font color='Lime' size=5>农户："+nhdk[0][0]+"户</font></html>");//
@@ -102,15 +102,15 @@ public class DkNewJLabel {
                                 String [][] gtdk=service.getGtDkStatisticalHs();
                                 String [][] xdldk=service.getXdlDkStatisticalHs();
                                 String [][] nhdk=service.getnhDkStatisticalHs();
-                                label_1.setText("<html><h2><font color='Black' size=6>"+DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行各项贷款统计情况</font></h2></html>");//
-                                label_2.setText("<html><font color='#2F4F4F' size=5>各项贷款总额："+gxdk[0][0]+"亿元</font></html>");//
-                                label_3.setText("<html><font color='#2F4F4F' size=5>(较年初新增："+gxdk[0][1]+"亿元)</font></html>");
-                                label_4.setText("<html><font color='#4682B4' size=5>有效贷款户数："+dkhs[0][0]+"万户</font></html>");//
-                                label_5.setText("<html><font color='#4682B4' size=5>(较年初新增："+dkhs[0][1]+"户)</font></html>");
+                                label_1.setText("<html><h2><font color='#FFFFFF' size=6>"+DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行各项贷款统计情况</font></h2></html>");//
+                                label_2.setText("<html><font color='FFFF00' size=5>各项贷款总额："+gxdk[0][0]+"亿元</font></html>");//
+                                label_3.setText("<html><font color='FFFF00' size=5>(较年初新增："+gxdk[0][1]+"亿元)</font></html>");
+                                label_4.setText("<html><font color='#DC143C' size=5>有效贷款户数："+dkhs[0][0]+"万户</font></html>");//
+                                label_5.setText("<html><font color='#DC143C' size=5>(较年初新增："+dkhs[0][1]+"户)</font></html>");
                                 label_6.setText("<html><font color='#0000FF' size=5>便民快贷："+bmdk[0][0]+"户</font></html>");//
                                 label_7.setText("<html><font color='#0000FF' size=5>(较年初新增："+bmdk[0][1]+"户)</font></html>");
-                                label_8.setText("<html><font color='#800080' size=5>个体工商户："+gtdk[0][0]+"户</font></html>");//
-                                label_9.setText("<html><font color='#800080' size=5>(较年初新增："+gtdk[0][1]+"户)</font></html>");
+                                label_8.setText("<html><font color='#7CFC00' size=5>个体工商户："+gtdk[0][0]+"户</font></html>");//
+                                label_9.setText("<html><font color='#7CFC00' size=5>(较年初新增："+gtdk[0][1]+"户)</font></html>");
                                 label_10.setText("<html><font color='#DC143C' size=5>新动力："+xdldk[0][0]+"户</font></html>");//
                                 label_11.setText("<html><font color='#DC143C' size=5>(较年初新增："+xdldk[0][1]+"户)</font></html>");
                                 label_12.setText("<html><font color='Lime' size=5>农户："+nhdk[0][0]+"户</font></html>");//
@@ -132,6 +132,7 @@ public class DkNewJLabel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        panel.setBackground(new Color(25,25,112));
         return panel;
 
     }

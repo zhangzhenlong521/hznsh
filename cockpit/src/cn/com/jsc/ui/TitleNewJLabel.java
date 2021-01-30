@@ -22,7 +22,7 @@ public class TitleNewJLabel {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width= new Double(screenSize.getWidth()).intValue();
         label_1 = new JLabel(imgIcon);//
-        label_1.setText("<html><font color='#FFFFFF' size=14>贵州赫章农商银行绩效考核数据管理平台-"+str+"</font></html>");
+        label_1.setText("<html><font color='#FFFFFF' size=14>贵州赫章农商银行绩效考核数据管理平台"+str+"</font></html>");
         label_1.setBounds(0, 0, 900, 100);
         panel = new JPanel(); //
         panel.setLayout(null); //

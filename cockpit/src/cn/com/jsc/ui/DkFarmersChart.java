@@ -1,6 +1,7 @@
 package cn.com.jsc.ui;
 
 import cn.com.infostrategy.ui.common.UIUtil;
+import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -26,12 +27,13 @@ public class DkFarmersChart {
     public DkFarmersChart(){
         DefaultPieDataset data = getDataSet();
         chart = ChartFactory.createPieChart3D(DateUIUtil.getDateMonth(1,"yyyy年MM月dd日")+"全行农户贷款覆盖面",data,true,false,false);
-        // 设置外层图片 无边框 无背景色 背景图片透明
-        chart.setBorderVisible(false);
-        chart.setBackgroundPaint(null);
-        chart.setBackgroundImageAlpha(0.0f);
+        chart.setBackgroundPaint(new ChartColor(25,25,112));
+        // 设置标题颜色
+        chart.getTitle().setPaint(ChartColor.yellow);
+
         //设置百分比
         pieplot = (PiePlot) chart.getPlot();
+        pieplot.setBackgroundPaint(new ChartColor(25,25,112));
         DecimalFormat df = new DecimalFormat("0.00%");//获得一个DecimalFormat对象，主要是设置小数问题
         NumberFormat nf = NumberFormat.getNumberInstance();//获得一个NumberFormat对象
         StandardPieSectionLabelGenerator sp1 = new StandardPieSectionLabelGenerator("{0}  {2}", nf, df);//获得StandardPieSectionLabelGenerator对象
@@ -44,11 +46,21 @@ public class DkFarmersChart {
 
         pieplot.setIgnoreNullValues(true);//设置不显示空值
         pieplot.setIgnoreZeroValues(true);//设置不显示负值
-        frame1=new ChartPanel(chart,true);
         chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
         PiePlot piePlot= (PiePlot) chart.getPlot();//获取图表区域对象
         piePlot.setLabelFont(new Font("宋体",Font.BOLD,10));//解决乱码
-        chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,10));
+        piePlot.setLabelPaint(Color.green);
+        piePlot.setLabelBackgroundPaint(new ChartColor(0,0,128));
+        chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,12));
+        chart.getLegend().setItemPaint(Color.yellow);
+        chart.getLegend().setBackgroundPaint(new ChartColor(0,0,128));
+        piePlot.setSectionPaint(0,Color.yellow);// 饼里的颜色
+        piePlot.setSectionPaint(1,Color.green);// 饼里的颜色
+        frame1=new ChartPanel (chart,true);
+        chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+        piePlot.setLabelFont(new Font("宋体",Font.BOLD,12));//解决乱码
+        piePlot.setLabelPaint(Color.white);
+        chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,12));
         final SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         java.util.Timer timer =new java.util.Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -89,8 +101,8 @@ public class DkFarmersChart {
         }
         String [][] data=service.getNhFgMian();
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue(data[0][1]+"-"+data[0][2]+"户",Integer.parseInt(data[0][2]));
-        dataset.setValue(data[0][3]+"-"+data[0][4]+"户",Integer.parseInt(data[0][4]));
+        dataset.setValue(data[0][1]+" "+data[0][2]+"户",Integer.parseInt(data[0][2]));
+        dataset.setValue(data[0][3]+""+data[0][4]+"户",Integer.parseInt(data[0][4]));
         return dataset;
     }
     public ChartPanel getChartPanel(){
