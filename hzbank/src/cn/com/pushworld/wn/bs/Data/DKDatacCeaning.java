@@ -110,14 +110,14 @@ public class DKDatacCeaning implements WLTJobIFC {
                             "and  XD_COL10 in ('特优','特惠级','一般','优秀','较好') group by XD_COL2,XD_COL7) jd on wg.code=jd.XD_COL2 and UPPER(wg.G)=UPPER(jd.XD_COL7)\n" +
                             "left join (select C,F,'是' sf  from hzdb.s_loan_qnyyx_"+getSMonth(xj)+" group by C,F\n) qny\n" +
                             "on wg.deptcode=qny.c and UPPER(wg.G)=UPPER(qny.f) left join(\n" +
-                            "select b.NAM_CUST_FULL a,a.*,'对公存款' j,'对公存款' k from(\n" +
+                            "select a.deptcode,b.EXTERNAL_CUSTOMER_IC g,sum(a.ckye) ckye from(\n" +
                             "select cust_no g,oact_inst_no deptcode,sum(f )ckye from(\n" +
                             "select cust_no,oact_inst_no,acct_bal f from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and acct_bal>0\n" +
                             "union all\n" +
                             "select cust_no,oact_inst_no,acct_bal f from hzbank.a_agr_dep_acct_ent_sv_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and acct_bal>0)\n" +
                             "group by cust_no,oact_inst_no) a \n" +
                             "left join(select * from hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"')b\n" +
-                            "on a.g=b.COD_CUST_ID) dg on wg.deptcode=dg.deptcode and UPPER(wg.G)=UPPER(dg.G) left join\n" +
+                            "on a.g=b.COD_CUST_ID group by a.deptcode,b.EXTERNAL_CUSTOMER_IC) dg on wg.deptcode=dg.deptcode and UPPER(wg.G)=UPPER(dg.G) left join\n" +
                             "(select '2830001-xd' deptcode,xx.CERT_CODE sfz,sum(dk.LOAN_BALANCE)  dgdkye from(\n" +
                             "select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||biz_dt in(\n" +
                             "select CUS_ID||max(biz_dt) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join\n" +
