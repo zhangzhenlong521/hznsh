@@ -66,7 +66,7 @@ public class ToBeDistributedJob implements WLTJobIFC {
 
     private void deleteTable() {
         try{
-            String count=dmo.getStringValueByDS(null,"select count(*) from hzdb.s_loan_khxx_202001 where G is null");
+                String count=dmo.getStringValueByDS(null,"select count(*) from hzdb.s_loan_khxx_202001 where G is null");
             if(Integer.parseInt(count)>0){
                 dmo.executeUpdateByDS(null,"create table hzdb.s_loan_khxx_202001_copy as select * from hzdb.s_loan_khxx_202001 where G is not null");
                 dmo.executeUpdateByDS(null," drop table hzdb.s_loan_khxx_202001");
