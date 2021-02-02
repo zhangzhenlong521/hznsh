@@ -2,6 +2,8 @@ package cn.com.pushworld.wn.bs.Data;
 
 import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.infostrategy.bs.common.WLTJobIFC;
+import cn.com.infostrategy.to.common.TBUtil;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,9 +21,11 @@ public class ToBeDistributedJob implements WLTJobIFC {
     private CommDMO dmo = new CommDMO();
     HashMap<String,String> ckmap=new HashMap<String, String>();
     HashMap<String,String> dkmap=new HashMap<String, String>();
+    TBUtil tbUtil=new TBUtil();
     @Override
     public String run() throws Exception {
         try{
+
             ckmap=dmo.getHashMapBySQLByDS(null,"select c,b from hzdb.excel_tab_28");
             dkmap=dmo.getHashMapBySQLByDS(null,"select b,c from hzdb.excel_tab_28");
             //dk ´û¿î±í

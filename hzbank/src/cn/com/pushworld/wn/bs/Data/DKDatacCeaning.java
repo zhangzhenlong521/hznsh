@@ -134,102 +134,104 @@ public class DKDatacCeaning implements WLTJobIFC {
                     dmo.executeUpdateByDS(null,"insert into hzdb.s_user_ave\n" +
                             "select wg.g,sum(ck.ckye),sum(dkye),'"+getQYTTime()+"' from hzdb.GRID_DATA_"+getQYTTime()+" ck left join hzdb.EXCEL_TAB_85 wg on ck.j=wg.c and ck.k=wg.d and ck.deptcode=wg.f\n" +
                             "group by wg.g");
-                    if(getKHDQMonth().equals("01")) {
-                        //zzl 每个月1号创建存款日均表
-                        if(createDate.length>0){
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+" as\n" +
-                                    "select deptcode deptcode,g code,sum(ckye) avgnum,1 daynum from hzdb.GRID_DATA_"+getQYTTime()+" where ckye>0 and ckye is not null group by deptcode,g");
-                        }
-                        //zzl 每个月1号创建贷款日均表
-                        if(createDate.length>0){
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+" as\n" +
-                                    "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
-                                    "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
-                                    "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
-                                    "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
-                        }
-                        //zzl 每个月1号创建部门贷款日均表
-                        if(createDate.length>0){
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+" as\n" +
-                                    "select dept.c deptcode,sum(dk.num) avgnum,1 daynum from(\n" +
-                                    "select * from(\n" +
-                                    "select case when XD_COL85='30100' then '28330100-xd' else '283'||XD_COL85 end code,sum(XD_COL7) num from \n" +
-                                    "hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
-                                    "where XD_COL22<>'05' and biz_dt<='"+getQYTTime()+"' group by XD_COL1) and XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' group by XD_COL85)\n" +
-                                    "union all(\n" +
-                                    "select '28330100-xd' code,sum(LOAN_BALANCE) num from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and CLA<>'05')) dk\n" +
-                                    "left join hzdb.excel_tab_28 dept on dk.code=dept.b group by dept.c");
-                        }
-                    }else{
-                        String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime()+"'");
-                        if(count==null){
-                            //zzl 计算人均日均存款将结果存入库中 如果是1好是不计算的
-                            //zzl 1 ---------2.创建零时表----
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls as\n" +
-                                    "select deptcode deptcode,g code,sum(ckye) avgnum,1 daynum from hzdb.GRID_DATA_"+getQYTTime()+" where ckye>0 and ckye is not null group by deptcode,g");
-                            //------3.零时表是最新的数据根据修改零食表的数据----
-                            dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls a\n" +
-                                    "USING(select * from hzdb.s_user_ckavg_"+getQYDayMonth()+") b\n" +
-                                    "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
-                                    "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
-                            //-----4.删除旧结果表
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_user_ckavg_"+getQYDayMonth()+"");
-                            //----5.将零时的新结果恢复到旧表中
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+" as select * from hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls");
-                            //----6.删除零时表-----
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls");
-
-
-                            //--------------贷款的-------------//
-                            //---------2.创建零时表----
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls as\n" +
-                                    "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
-                                    "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
-                                    "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
-                                    "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
-                            ///------3.零时表是最新的数据根据修改零食表的数据----//
-                            dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls a\n" +
-                                    "USING(select * from hzdb.s_user_dkavg_"+getQYDayMonth()+") b\n" +
-                                    "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
-                                    "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
-                            //-----4.删除旧结果表
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_user_dkavg_"+getQYDayMonth()+"");
-                            //----5.将零时的新结果恢复到旧表中
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+" as select * from hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls");
-                            //----6.删除零时表-----
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls");
-
-                            //-------------------部门日均贷款-----------------------------//
-                            //---------2.创建零时表----
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls as\n" +
-                                    "select dept.c deptcode,sum(dk.num) avgnum,1 daynum from(\n" +
-                                    "select * from(\n" +
-                                    "select case when XD_COL85='30100' then '28330100-xd' else '283'||XD_COL85 end code,sum(XD_COL7) num from \n" +
-                                    "hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
-                                    "where XD_COL22<>'05' and biz_dt<='"+getQYTTime()+"' group by XD_COL1) and XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' group by XD_COL85)\n" +
-                                    "union all(\n" +
-                                    "select '28330100-xd' code,sum(LOAN_BALANCE) num from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and CLA<>'05')) dk\n" +
-                                    "left join hzdb.excel_tab_28 dept on dk.code=dept.b group by dept.c");
-                            ///------3.零时表是最新的数据根据修改零食表的数据----//
-                            dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls a\n" +
-                                    "USING(select * from hzdb.s_dept_dkavg_"+getQYDayMonth()+") b\n" +
-                                    "on(a.deptcode=b.deptcode and a.deptcode=b.deptcode) \n" +
-                                    "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
-                            //-----4.删除旧结果表
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_dept_dkavg_"+getQYDayMonth()+"");
-                            //----5.将零时的新结果恢复到旧表中
-                            dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+" as select * from hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls");
-                            //----6.删除零时表-----
-                            dmo.executeUpdateByDS(null,"drop table hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls");
-
-                            //记录有没有生成人均表，如果有就不在做了
-                            dmo.executeUpdateByDS(null,"insert into count_avg(dates) values('"+getQYTTime()+"')");
-
-                        }
 
                     }
+            }
+            String [] createDate2= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime()+"' and OBJECT_TYPE='TABLE'");
+            if(getKHDQMonth().equals("01")) {
+                //zzl 每个月1号创建存款日均表
+                if(createDate2.length>0){
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+" as\n" +
+                            "select deptcode deptcode,g code,sum(ckye) avgnum,1 daynum from hzdb.GRID_DATA_"+getQYTTime()+" where ckye>0 and ckye is not null group by deptcode,g");
+                }
+                //zzl 每个月1号创建贷款日均表
+                if(createDate2.length>0){
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+" as\n" +
+                            "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
+                            "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
+                            "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
+                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
+                }
+                //zzl 每个月1号创建部门贷款日均表
+                if(createDate2.length>0){
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+" as\n" +
+                            "select dept.c deptcode,sum(dk.num) avgnum,1 daynum from(\n" +
+                            "select * from(\n" +
+                            "select case when XD_COL85='30100' then '28330100-xd' else '283'||XD_COL85 end code,sum(XD_COL7) num from \n" +
+                            "hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
+                            "where XD_COL22<>'05' and biz_dt<='"+getQYTTime()+"' group by XD_COL1) and XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' group by XD_COL85)\n" +
+                            "union all(\n" +
+                            "select '28330100-xd' code,sum(LOAN_BALANCE) num from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and CLA<>'05')) dk\n" +
+                            "left join hzdb.excel_tab_28 dept on dk.code=dept.b group by dept.c");
+                }
+                dmo.executeUpdateByDS(null,"insert into count_avg(dates) values('"+getQYTTime()+"')");
+            }else if(createDate2.length>0){
+                String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime()+"'");
+                if(count==null){
+                    //zzl 计算人均日均存款将结果存入库中 如果是1好是不计算的
+                    //zzl 1 ---------2.创建零时表----
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls as\n" +
+                            "select deptcode deptcode,g code,sum(ckye) avgnum,1 daynum from hzdb.GRID_DATA_"+getQYTTime()+" where ckye>0 and ckye is not null group by deptcode,g");
+                    //------3.零时表是最新的数据根据修改零食表的数据----
+                    dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls a\n" +
+                            "USING(select * from hzdb.s_user_ckavg_"+getQYDayMonth()+") b\n" +
+                            "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                    //-----4.删除旧结果表
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_user_ckavg_"+getQYDayMonth()+"");
+                    //----5.将零时的新结果恢复到旧表中
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_ckavg_"+getQYDayMonth()+" as select * from hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls");
+                    //----6.删除零时表-----
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls");
+
+
+                    //--------------贷款的-------------//
+                    //---------2.创建零时表----
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls as\n" +
+                            "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
+                            "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
+                            "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
+                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
+                    ///------3.零时表是最新的数据根据修改零食表的数据----//
+                    dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls a\n" +
+                            "USING(select * from hzdb.s_user_dkavg_"+getQYDayMonth()+") b\n" +
+                            "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                    //-----4.删除旧结果表
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_user_dkavg_"+getQYDayMonth()+"");
+                    //----5.将零时的新结果恢复到旧表中
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+" as select * from hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls");
+                    //----6.删除零时表-----
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls");
+
+                    //-------------------部门日均贷款-----------------------------//
+                    //---------2.创建零时表----
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls as\n" +
+                            "select dept.c deptcode,sum(dk.num) avgnum,1 daynum from(\n" +
+                            "select * from(\n" +
+                            "select case when XD_COL85='30100' then '28330100-xd' else '283'||XD_COL85 end code,sum(XD_COL7) num from \n" +
+                            "hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
+                            "where XD_COL22<>'05' and biz_dt<='"+getQYTTime()+"' group by XD_COL1) and XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' group by XD_COL85)\n" +
+                            "union all(\n" +
+                            "select '28330100-xd' code,sum(LOAN_BALANCE) num from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and CLA<>'05')) dk\n" +
+                            "left join hzdb.excel_tab_28 dept on dk.code=dept.b group by dept.c");
+                    ///------3.零时表是最新的数据根据修改零食表的数据----//
+                    dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls a\n" +
+                            "USING(select * from hzdb.s_dept_dkavg_"+getQYDayMonth()+") b\n" +
+                            "on(a.deptcode=b.deptcode and a.deptcode=b.deptcode) \n" +
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                    //-----4.删除旧结果表
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_dept_dkavg_"+getQYDayMonth()+"");
+                    //----5.将零时的新结果恢复到旧表中
+                    dmo.executeUpdateByDS(null,"create table hzdb.s_dept_dkavg_"+getQYDayMonth()+" as select * from hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls");
+                    //----6.删除零时表-----
+                    dmo.executeUpdateByDS(null,"drop table hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls");
+
+                    //记录有没有生成人均表，如果有就不在做了
+                    dmo.executeUpdateByDS(null,"insert into count_avg(dates) values('"+getQYTTime()+"')");
 
                 }
+
             }
             return "清洗贷款数据成功";
         }catch (Exception e){
