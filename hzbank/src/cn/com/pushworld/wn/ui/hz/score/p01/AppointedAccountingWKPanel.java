@@ -1,13 +1,16 @@
 package cn.com.pushworld.wn.ui.hz.score.p01;
 
+import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.WLTLogger;
 import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.to.mdata.InsertSQLBuilder;
+import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
 import cn.com.infostrategy.to.mdata.RefItemVO;
 import cn.com.infostrategy.to.mdata.UpdateSQLBuilder;
 import cn.com.infostrategy.ui.common.*;
 import cn.com.infostrategy.ui.mdata.*;
+import cn.com.infostrategy.ui.report.cellcompent.ExcelUtil;
 import cn.com.infostrategy.ui.sysapp.other.BigFileUpload;
 import cn.com.infostrategy.ui.sysapp.other.RefDialog_Month;
 import cn.com.pushworld.wn.ui.WnSalaryServiceIfc;
@@ -15,10 +18,15 @@ import cn.com.pushworld.wn.ui.WnSalaryServiceIfc;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * zzl 2020-9-3 委派会履职考核 select * from v_sal_personinfo where STATIONKIND like
@@ -29,20 +37,30 @@ import java.util.List;
 
 public class AppointedAccountingWKPanel extends AbstractWorkPanel implements
 		ActionListener, BillTreeSelectListener, BillListSelectListener {
+	private UIUtil uiutill = new UIUtil();
 	private BillListPanel listPanel = null;
 	private WLTButton start_btn = null;
+	private WLTButton start_outbtn = null;
+	private WLTButton start_inbtn = null;
 	private String selectDate = "";
 	private BillListPanel userPanel = null;
 	private WLTSplitPane splitPanel_all = null;
 	private BillListPanel listPfPanel = null;
 	private WLTButton save_btn = null;
+    private ExcelUtil excelUtil=new ExcelUtil();
+	private BillListPanel wpkjmodel=new BillListPanel("WPKJ_MODLE_CODE1");
 
 	@Override
 	public void initialize() {
 		listPanel = new BillListPanel("SAL_WPKJ_SCORE_CODE1");
 		start_btn = new WLTButton("开始评分");
 		start_btn.addActionListener(this);
-		listPanel.addBillListButton(start_btn);
+		start_inbtn = new WLTButton("模板下载");
+		start_inbtn.addActionListener(this);
+		start_outbtn = new WLTButton("数据上传");
+		start_outbtn.addActionListener(this);
+//		listPanel.addBillListButton(start_btn);
+		listPanel.addBatchBillListButton(new WLTButton[] {start_btn,start_inbtn,start_outbtn});
 		listPanel.repaintBillListButton();
 		this.add(listPanel);
 	}
@@ -59,8 +77,91 @@ public class AppointedAccountingWKPanel extends AbstractWorkPanel implements
 		} else if (actionEvent.getSource() == save_btn) {
 			save();
 		}
+		if(actionEvent.getSource() == start_inbtn){
+			downModel();
+		}
+		if(actionEvent.getSource() == start_outbtn){
+			upLoadData();
+		}
 
 	}
+
+	private void upLoadData() {
+		List updateList=new ArrayList();
+		JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setDialogTitle("请选择上传文件");
+        chooser.setApproveButtonText("选择");
+        FileFilter filter = new FileNameExtensionFilter("Microsoft Office Excel 工作表", "xls", "xlsx");
+        chooser.setFileFilter(filter);
+        int flag = chooser.showOpenDialog(this);
+        if (flag != JFileChooser.APPROVE_OPTION || chooser.getSelectedFile() == null) {
+            return;
+        }
+        final String str_path = chooser.getSelectedFile().getAbsolutePath();
+        final String [][] data=excelUtil.getExcelFileData(str_path);
+        try {
+//			HashVO[] vos = UIUtil.getHashVoArrayByDS("HZDB","select * from SAL_WPKJ_SCORE where scoredate='"+data[2][21]+"'" );
+        	String[] vos = UIUtil.getStringArrayFirstColByDS(null, "select name from SAL_WPKJ_SCORE where scoredate='"+data[2][21]+"'");
+//			HashMap map = uiutill.getHashMapBySQLByDS("HZDB","select id,userid from SAL_WPKJ_SCORE where scoredate='"+data[1][21]+"'");
+			System.out.println(vos.length+">>>>>>>>>>>>>>>>>>>>>>>>");
+			if(vos.length<=0){
+				MessageBox.show(this,"请先生成考核月会计主管履职考核数据！");
+				return;
+			}
+			UpdateSQLBuilder wpkjUpdate=new UpdateSQLBuilder("SAL_WPKJ_SCORE");
+	        for(int i=1;i<=data.length-1;i++){
+	        	for(int j=2;j<=data[i].length-2;j++){
+	        		if(data[0][j].equals("授权业务")||data[0][j].equals("现金管理")||data[0][j].equals("集中作业")){
+	        			continue;
+	        		}
+	        		wpkjUpdate.setWhereCondition("USERNAME='"+data[i][1]+"' and NAME='"+data[0][j]+"' and scoredate='"+data[1][21]+"'");
+	        		wpkjUpdate.putFieldValue("SCORE",data[i][j]);
+	        		updateList.add(wpkjUpdate.getSQL());
+	        	}
+	        }
+			UIUtil.executeBatchByDS(null,updateList);
+			MessageBox.show(this,"导入成功！请重新查询！");
+			wpkjmodel.refreshData();
+        }catch (Exception e) {
+			MessageBox.show(this,"导入失败！请联系系统开发商！");
+			e.printStackTrace();
+		}
+	}
+
+	private void downModel() {
+		JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setDialogTitle("请选择下载路径");
+        chooser.setApproveButtonText("选择");
+        FileFilter filter = new FileNameExtensionFilter("Microsoft Office Excel 工作表", "xls", "xlsx");
+        chooser.setSelectedFile(new File("会计主管履职考核得分明细模板.xls"));
+        chooser.setFileFilter(filter);
+        int flag = chooser.showOpenDialog(this);
+        if (flag != JFileChooser.APPROVE_OPTION || chooser.getSelectedFile() == null) {
+            return;
+        }
+        final String str_path = chooser.getSelectedFile().getAbsolutePath();
+        List list=new ArrayList();
+        Pub_Templet_1_ItemVO itemVos[] =wpkjmodel.getTempletVO().getItemVos();
+        for(int i=0;i<itemVos.length;i++) {
+            if (itemVos[i].getListisshowable()) {
+                list.add(itemVos[i].getItemname());
+            }
+        }
+        String [][] data=new String[1][list.size()];
+        for(int i=0;i<list.size();i++){
+            data[0][i]=list.get(i).toString();
+        }
+        try{
+            excelUtil.setDataToExcelFile(data,str_path);
+            MessageBox.show(this,"导出成功");
+        }catch (Exception e){
+            MessageBox.show(this,"导出失败");
+            e.printStackTrace();
+        }
+    }
+	
 
 	/**
 	 * zzl 评分保存

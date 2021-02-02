@@ -5871,7 +5871,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 
 			// 授权业务
 			String _sql = "select sal.code, to_char(5-mark.score,'FM9999990.009')  from ( "
-					+ "(select b,case when aw<=2 then 0 when (aw-2)/0.5>5 then 5 else (aw-2)/0.5 end score  from excel_tab_149 where year||'-'|| month ='"
+					+ "(select b,case when aw<=1 then 0 when (aw-1)/0.5>10 then 10 else Trunc(((aw-1)/0.5), 0) end score  from excel_tab_149 where year||'-'|| month ='"
 					+ selectDate
 					+ "') mark "
 					+ " join (select code,name,'贵州赫章农村商业银行股份有限公司'||name fullname from pub_corp_dept pcd  where (CORPTYPE ='乡镇银行' OR CORPTYPE ='城区银行' OR NAME ='营业部') AND  NAME  NOT IN ('城区银行','乡镇银行')) dept on mark.b=dept.fullname"
@@ -5882,11 +5882,9 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					.getHashMapBySQLByDS(null, _sql);
 			result.add(sqMaps);
 			// 现金管理
-			_sql = "select code ,to_char(5-case when sum(num)*1>5 then 5 else sum(num)*1 end,'FM9999990.009')  num  from ("
+			_sql = "select code ,to_char(5-case when sum(num)*1>10 then 10 else sum(num)*1 end,'FM9999990.009')  num  from ("
 					+ "select sal.code, case when  jd.l>kc.kc then 1 else 0 end num from ("
-					+ "(SELECT a,b,(e*10000) l FROM excel_tab_156  where year ||'-'|| month ='"
-					+ selectDate
-					+ "' and  pf_state!='正常') jd"
+					+ "(SELECT a,b,(e*10000) l FROM excel_tab_156  where year ||'-'|| month ='"+ selectDate+"') jd"
 					+ "  join (select b name ,(c+15)*10000 kc  from excel_tab_151) kc on kc.name=jd.a"
 					+ "  join (select code,name,corptype from pub_corp_dept pcd  where (corptype ='乡镇银行' or corptype ='城区银行' or name ='营业部') and  name  not in ('城区银行','乡镇银行')) corp on corp.name=jd.a"
 					+ "  join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=corp.name"
@@ -5895,11 +5893,11 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			HashMap<String, String> xjMap = dmo.getHashMapBySQLByDS(null, _sql);
 			result.add(xjMap);
 			// 集中作业
-			_sql = "select dept.code,to_char(5-case when yw.e<=2 then 0.0 when (yw.e-2)/0.5>=5 then 5 else  (yw.e-2)/0.5*1  end,'FM9999990.009')  score   from ("
+			_sql = "select dept.code,to_char(5-case when yw.e<=2 then 0.0 when (yw.e-2)/0.5>=10 then 10 else  Trunc(((yw.e-2)/0.5), 0) end,'FM9999990.009')  score   from ("
 					+ "("
-					+ "select a,e from excel_tab_152 where b='贵州赫章农村商业银行股份有限公司'"
+					+ "select a,e from excel_tab_152 where b='贵州赫章农村商业银行股份有限公司' and year||'-'|| month ='"+ selectDate+"'" 
 					+ " union all "
-					+ "select a,e from excel_tab_152 where b!='贵州赫章农村商业银行股份有限公司' and a like '283%' "
+					+ "select a,e from excel_tab_152 where b!='贵州赫章农村商业银行股份有限公司' and a like '283%' and year||'-'|| month ='"+ selectDate+"'"
 					+ ") yw join "
 					+ "(select code,deptcode from v_sal_personinfo vsp  where stationkind ='委派会计') dept on yw.a=dept.deptcode"
 					+ ")";
