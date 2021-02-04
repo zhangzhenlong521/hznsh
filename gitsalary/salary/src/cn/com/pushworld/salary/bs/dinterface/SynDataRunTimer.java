@@ -1,5 +1,6 @@
 package cn.com.pushworld.salary.bs.dinterface;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,7 +27,8 @@ public class SynDataRunTimer implements WLTJobIFC {
 	private CommDMO dmo = new CommDMO();
 	private DataInterfaceDMO ifcdmo = new DataInterfaceDMO();
 	Logger logger = WLTLogger.getLogger(SynDataRunTimer.class); //
-
+	TBUtil tbUtil=new TBUtil();
+	String date=tbUtil.getSysOptionStringValue("T+1计算薪酬日期",null);
 	public String run() throws Exception {
 		StringBuffer state=new StringBuffer();
 //		//
@@ -68,7 +70,7 @@ public class SynDataRunTimer implements WLTJobIFC {
 //				}
 //			}
 //		}
-//		dmo.executeBatchByDS(null, loglist);
+//		dmo.executeBatchByDS(null, loglist);A_AGR_DEP_ACCT_ENT_FX_202101
 //		System.gc(); //建议虚拟机释放内存.....
 //		if (!flag) {
 //			logger.error("数据接口同步定时任务执行失败");
@@ -78,8 +80,8 @@ public class SynDataRunTimer implements WLTJobIFC {
 		try{
 			String dates=dmo.getStringValueByDS(null,"select distinct(datadate) from hzdb.sal_person_check_auto_score where datadate='"+getQYTTime("yyyy-MM-dd")+"'");
 			String deptDates=dmo.getStringValueByDS(null,"select distinct(checkdate) from hzdb.sal_person_check_dept_score where checkdate='"+getQYTTime("yyyy-MM-dd")+"'");
-			String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime("yyyyMMdd")+"' and OBJECT_TYPE='TABLE'");
-			String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime("yyyyMMdd")+"'");
+			String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime("yyyy-MM-dd").replace("-","")+"' and OBJECT_TYPE='TABLE'");
+			String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime("yyyy-MM-dd").replace("-","")+"'");
 			if(dates==null){
 				if(createDate.length>0 && count!=null){
 					new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
@@ -111,12 +113,27 @@ public class SynDataRunTimer implements WLTJobIFC {
 	public String getQYTTime(String dates) {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat(dates);
-		Date d = new Date();
-		cal.setTime(d);
-		int day = cal.get(Calendar.DATE);
-		cal.set(Calendar.DATE, day - 1);
+		if(date==null || date.equals("") || date.equals(null)){
+			Date d = new Date();
+			cal.setTime(d);
+			int day = cal.get(Calendar.DATE);
+			cal.set(Calendar.DATE, day - 1);
+		}else{
+			try {
+				Date date1=format.parse(date);
+				cal.setTime(date1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		String lastDate = format.format(cal.getTime());
 		return lastDate;
+	}
+
+	public static void main(String[] args) {
+		SynDataRunTimer synDataRunTimer=new SynDataRunTimer();
+		synDataRunTimer.date="2021-01-31";
+		System.out.println(synDataRunTimer.getQYTTime("yyyy-MM-dd"));
 	}
 	/**
 	 * 执行一次任务。

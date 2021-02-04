@@ -478,11 +478,11 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 						if(dfen>=qzhong && dfen<=0){
 							UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
 							String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
-							String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
-							float f_weights = Float.parseFloat(weights); // 权重分值
-							float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
-							float lastScore = f_weights * (100 - f_checkratio) / 100;
-							updateSql.putFieldValue("checkscore", lastScore + "");
+//							String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+//							float f_weights = Float.parseFloat(weights); // 权重分值
+//							float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+//							float lastScore = f_weights * (100 - f_checkratio) / 100;
+							updateSql.putFieldValue("checkscore", checkdratio);
 							updateSql.putFieldValue("checkdratio", checkdratio);
 							updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
 							updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
@@ -495,11 +495,11 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 					}else{
 						UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
 						String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
-						String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
-						float f_weights = Float.parseFloat(weights); // 权重分值
-						float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
-						float lastScore = f_weights * (100 - f_checkratio) / 100;
-						updateSql.putFieldValue("checkscore", lastScore + "");
+//						String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+//						float f_weights = Float.parseFloat(weights); // 权重分值
+//						float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+//						float lastScore = f_weights * (100 - f_checkratio) / 100;
+						updateSql.putFieldValue("checkscore", checkdratio);
 						updateSql.putFieldValue("checkdratio", checkdratio);
 						updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
 						updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());
@@ -508,11 +508,11 @@ public class DeptTargetScoredWKPanel extends AbstractWorkPanel implements Action
 				}else{
 					UpdateSQLBuilder updateSql = new UpdateSQLBuilder("sal_dept_check_score");
 					String checkdratio = checkItemVos[i].getStringValue("checkdratio"); // 扣分比例
-					String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
-					float f_weights = Float.parseFloat(weights); // 权重分值
-					float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
-					float lastScore = f_weights * (100 - f_checkratio) / 100;
-					updateSql.putFieldValue("checkscore", lastScore + "");
+//					String weights = checkItemVos[i].getStringValue("weights"); // 权重分值
+//					float f_weights = Float.parseFloat(weights); // 权重分值
+//					float f_checkratio = Float.parseFloat(checkdratio); // 扣分比例
+//					float lastScore = f_weights * (100 - f_checkratio) / 100;
+					updateSql.putFieldValue("checkscore", checkdratio);
 					updateSql.putFieldValue("checkdratio", checkdratio);
 					updateSql.putFieldValue("scoredeptname", ClientEnvironment.getLoginUserDeptName());
 					updateSql.setWhereCondition("id=" + checkItemVos[i].getPkValue());

@@ -509,26 +509,26 @@ public class SalaryServiceImpl implements SalaryServiceIfc {
 
 		// 后来定性指标增加了一个是否沿用的字段，就是说这次考核本不应该对这个指标进行打分的话
 		// 就沿用之前最新的结果，即我要将那些本次不应该考核（频率）的指标查出来，直接复制上个月的结果到这次考核中
-		HashVO[] targets_cuse = getDmo().getHashVoArrayByDS(null, "select * from sal_target_list where state='参与考核' and type='部门定性指标' and checkcycle not in(" + getTb().getInCondition(plv) + ") and checkcycle is not null"); // and
+//		HashVO[] targets_cuse = getDmo().getHashVoArrayByDS(null, "select * from sal_target_list where state='参与考核' and type='部门定性指标' and checkcycle not in(" + getTb().getInCondition(plv) + ") and checkcycle is not null"); // and
 		// iscuse='Y'
 		HashMap<String, HashVO> cusetargetid_vo = new HashMap<String, HashVO>();
 		HashMap<String, HashVO> cuseishave = new HashMap<String, HashVO>();
-		if (targets_cuse != null && targets_cuse.length > 0) {
-			for (int t = 0; t < targets_cuse.length; t++) {
-				cusetargetid_vo.put(targets_cuse[t].getStringValue("id"), targets_cuse[t]);
-			}
-			String lastmonth = getBackMonth(month, 1); // 上个月
-			HashVO[] cusevs = getDmo().getHashVoArrayByDS(null, "select * from sal_dept_check_score where checkdate='" + lastmonth + "' and targetid in (" + getTb().getInCondition(cusetargetid_vo.keySet().toArray(new String[0])) + ")");
-			if (cusevs != null && cusevs.length > 0) {
-				for (int v = 0; v < cusevs.length; v++) {
-					cuseishave.put(cusevs[v].getStringValue("checkeddept") + "_" + cusevs[v].getStringValue("scoreuser", "") + "_" + cusevs[v].getStringValue("targetid", "") + "_" + cusevs[v].getStringValue("targettype"), cusevs[v]);
-				}
-			}
-			HashVO[] c = new HashVO[targets.length + targets_cuse.length]; // 就是说沿用的也是要考核的
-			System.arraycopy(targets, 0, c, 0, targets.length);
-			System.arraycopy(targets_cuse, 0, c, targets.length, targets_cuse.length);
-			targets = c;
-		}
+//		if (targets_cuse != null && targets_cuse.length > 0) {
+//			for (int t = 0; t < targets_cuse.length; t++) {
+//				cusetargetid_vo.put(targets_cuse[t].getStringValue("id"), targets_cuse[t]);
+//			}
+//			String lastmonth = getBackMonth(month, 1); // 上个月
+//			HashVO[] cusevs = getDmo().getHashVoArrayByDS(null, "select * from sal_dept_check_score where checkdate='" + lastmonth + "' and targetid in (" + getTb().getInCondition(cusetargetid_vo.keySet().toArray(new String[0])) + ")");
+//			if (cusevs != null && cusevs.length > 0) {
+//				for (int v = 0; v < cusevs.length; v++) {
+//					cuseishave.put(cusevs[v].getStringValue("checkeddept") + "_" + cusevs[v].getStringValue("scoreuser", "") + "_" + cusevs[v].getStringValue("targetid", "") + "_" + cusevs[v].getStringValue("targettype"), cusevs[v]);
+//				}
+//			}
+//			HashVO[] c = new HashVO[targets.length + targets_cuse.length]; // 就是说沿用的也是要考核的
+//			System.arraycopy(targets, 0, c, 0, targets.length);
+//			System.arraycopy(targets_cuse, 0, c, targets.length, targets_cuse.length);
+//			targets = c;
+//		}
 		String checkeddept = null;
 		String rleader = null;
 		String pleader = null;
@@ -4451,8 +4451,8 @@ public class SalaryServiceImpl implements SalaryServiceIfc {
 	/**
 	 * 查询评分详情 根据考核日期、部门、指标、评分类型 排序
 	 * 
-	 * @param sql
-	 * @param templet
+	 * @param
+	 * @param
 	 * @return
 	 */
 
