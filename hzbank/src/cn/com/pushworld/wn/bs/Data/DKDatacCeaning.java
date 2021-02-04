@@ -48,7 +48,7 @@ public class DKDatacCeaning implements WLTJobIFC {
             }
             //zzl 每天创建数据网格数据主要为了提高查询速度
             //dk 贷款表
-            String dk=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.s_loan_dk_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+              String dk=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.s_loan_dk_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
             if(dk==null){
 
             }else{
@@ -183,7 +183,8 @@ public class DKDatacCeaning implements WLTJobIFC {
                     dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_ckavg_"+getQYDayMonth()+"_ls a\n" +
                             "USING(select * from hzdb.s_user_ckavg_"+getQYDayMonth()+") b\n" +
                             "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
-                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=(case when a.avgnum is null then 0 else a.avgnum end)+(case when b.avgnum is null then 0 else b.avgnum end),\n" +
+                            "a.daynum=(case when a.daynum is null then 0 else a.daynum end)+(case when b.daynum is null then 0 else b.daynum end)");
                     //-----4.删除旧结果表
                     dmo.executeUpdateByDS(null,"drop table hzdb.s_user_ckavg_"+getQYDayMonth()+"");
                     //----5.将零时的新结果恢复到旧表中
@@ -208,7 +209,8 @@ public class DKDatacCeaning implements WLTJobIFC {
                     dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls a\n" +
                             "USING(select * from hzdb.s_user_dkavg_"+getQYDayMonth()+") b\n" +
                             "on(a.deptcode=b.deptcode and a.code=b.code) \n" +
-                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=(case when a.avgnum is null then 0 else a.avgnum end)+(case when b.avgnum is null then 0 else b.avgnum end),\n" +
+                            "  a.daynum=(case when a.daynum is null then 0 else a.daynum end)+(case when b.daynum is null then 0 else b.daynum end)");
                     //-----4.删除旧结果表
                     dmo.executeUpdateByDS(null,"drop table hzdb.s_user_dkavg_"+getQYDayMonth()+"");
                     //----5.将零时的新结果恢复到旧表中
@@ -231,7 +233,8 @@ public class DKDatacCeaning implements WLTJobIFC {
                     dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_dept_dkavg_"+getQYDayMonth()+"_ls a\n" +
                             "USING(select * from hzdb.s_dept_dkavg_"+getQYDayMonth()+") b\n" +
                             "on(a.deptcode=b.deptcode) \n" +
-                            "WHEN MATCHED THEN UPDATE SET a.avgnum=a.avgnum+b.avgnum,a.daynum=a.daynum+b.daynum");
+                            "WHEN MATCHED THEN UPDATE SET a.avgnum=(case when a.avgnum is null then 0 else a.avgnum end)+(case when b.avgnum is null then 0 else b.avgnum end),\n" +
+                            "a.daynum=(case when a.daynum is null then 0 else a.daynum end)+(case when b.daynum is null then 0 else b.daynum end)");
                     //-----4.删除旧结果表
                     dmo.executeUpdateByDS(null,"drop table hzdb.s_dept_dkavg_"+getQYDayMonth()+"");
                     //----5.将零时的新结果恢复到旧表中
