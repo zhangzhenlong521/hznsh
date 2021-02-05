@@ -86,25 +86,25 @@ public class CockpitMainPage extends AbstractWorkPanel {
 //            titlepane.setDividerLocation(50);
 //            titlepane.setDividerSize(1);
             //-------new  存款-----///
-//            WLTSplitPane ckpane1=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CkNewJLabel().getJLabel(),new CkBarChart().getJLabel());
-//            ckpane1.setDividerLocation(600);
-//            ckpane1.setDividerSize(1);
-//            WLTSplitPane ckpane2=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,ckpane1,new CkPieChart().getChartPanel());
-//            ckpane2.setDividerLocation(1200);
-//            ckpane2.setDividerSize(1);
-//            WLTSplitPane ckpane3=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CKgzhMbiaoWcQkuang().getChartPanel(),new CKgzhWcQkWKPanel().getJLabel());
-//            ckpane3.setDividerLocation(1200);
-//            ckpane3.setDividerSize(1);
-//            WLTSplitPane titlepane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,new TitleNewJLabel().getJLabel("存款"),ckpane2);
-//            titlepane.setDividerLocation(80);
-//            titlepane.setDividerSize(1);
-//            WLTSplitPane titlepane2=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,titlepane,ckpane3);
-//            titlepane2.setDividerLocation(500);
-//            titlepane2.setDividerSize(1);
-//            jFrame.add(titlepane2);
-//            jFrame.setUndecorated(true);
-//            jFrame.getGraphicsConfiguration().getDevice().setFullScreenWindow(jFrame);
-//            jFrame.setVisible(true);
+            WLTSplitPane ckpane1=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CkNewJLabel().getJLabel(),new CkBarChart().getJLabel());
+            ckpane1.setDividerLocation(600);
+            ckpane1.setDividerSize(1);
+            WLTSplitPane ckpane2=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,ckpane1,new CkPieChart().getChartPanel());
+            ckpane2.setDividerLocation(1200);
+            ckpane2.setDividerSize(1);
+            WLTSplitPane ckpane3=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new CKgzhMbiaoWcQkuang().getChartPanel(),new CKgzhWcQkWKPanel().getJLabel());
+            ckpane3.setDividerLocation(1200);
+            ckpane3.setDividerSize(1);
+            WLTSplitPane titlepane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,new TitleNewJLabel().getJLabel("存款"),ckpane2);
+            titlepane.setDividerLocation(80);
+            titlepane.setDividerSize(1);
+            WLTSplitPane titlepane2=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,titlepane,ckpane3);
+            titlepane2.setDividerLocation(500);
+            titlepane2.setDividerSize(1);
+            jFrame.add(titlepane2);
+            jFrame.setUndecorated(true);
+            jFrame.getGraphicsConfiguration().getDevice().setFullScreenWindow(jFrame);
+            jFrame.setVisible(true);
             //-------new  存款-----///
             /**
              * 总和一下要不没办法交差
@@ -122,16 +122,25 @@ public class CockpitMainPage extends AbstractWorkPanel {
 //            dkpane2.setDividerLocation(1200);
 //            dkpane2.setDividerSize(1);
 //            WLTSplitPane zhPanl=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,ckpane2,dkpane2);
-//            zhPanl.setDividerLocation(500);
+//            zhPanl.setDividerLocation(350);
 //            zhPanl.setDividerSize(1);
-//            WLTSplitPane titlepane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,new TitleNewJLabel().getJLabel(null),zhPanl);
+//            WLTSplitPane blpane1=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,new BadNewJLabel().getJLabel() ,new QnyWKPanel().getJLabel());
+//            blpane1.setDividerLocation(600);
+//            blpane1.setDividerSize(1);
+//            WLTSplitPane blpane2=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,blpane1,new QnyMarketingWKPanel().getJLabel() );
+//            blpane2.setDividerLocation(1200);
+//            blpane2.setDividerSize(1);
+//            WLTSplitPane countPanl=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,zhPanl,blpane2);
+//            countPanl.setDividerLocation(700);
+//            countPanl.setDividerSize(1);
+//            WLTSplitPane titlepane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,new TitleNewJLabel().getJLabel(null),countPanl);
 //            titlepane.setDividerLocation(80);
 //            titlepane.setDividerSize(1);
 //            jFrame.add(titlepane);
 //            jFrame.setUndecorated(true);
 //            jFrame.getGraphicsConfiguration().getDevice().setFullScreenWindow(jFrame);
 //            jFrame.setVisible(true);
-            this.add(new BadNewJLabel().getJLabel());
+//            this.add(new QnyMarketingWKPanel().getJLabel() );
         }catch (Exception e){
             e.printStackTrace();
         }

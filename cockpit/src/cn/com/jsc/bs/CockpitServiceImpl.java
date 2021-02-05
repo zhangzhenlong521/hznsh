@@ -844,19 +844,48 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	public String [] []getBlDKCount(){
 		String [] []data=null;
 		try{
+//			data=dmo.getStringArrayByDS(null,"select to_char(dy.num,'fm999999990.00'),to_char(dy.num-nc.num,'fm999999990.00') from(\n" +
+//					"select '1' code,ROUND(sum(XD_COL7)/100000000,2) num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
+//					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
+//					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0) dy\n" +
+//					"left join\n" +
+//					"(select '1' code,ROUND(sum(XD_COL7)/100000000,2) num from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL1||BIZ_DT in(\n" +
+//					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
+//					"and XD_COL4<'"+getdyYear()+"-01-01 00:00:00' and XD_COL7>0 ) nc on dy.code=nc.code");
 			data=dmo.getStringArrayByDS(null,"select to_char(dy.num,'fm999999990.00'),to_char(dy.num-nc.num,'fm999999990.00') from(\n" +
-					"select '1' code,ROUND(sum(XD_COL7)/100000000,2) num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0) dy\n" +
-					"left join\n" +
-					"(select '1' code,ROUND(sum(XD_COL7)/100000000,2) num from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getdyYear()+"-01-01 00:00:00' and XD_COL7>0 ) nc on dy.code=nc.code");
+					"select '1' code,sum(to_number(replace(K,',','')))/100000000 num from hzdb.s_loan_dk_"+getqytMonth()+" where replace(Q,',','')>60\n" +
+					") dy left join(\n" +
+					"select '1' code,sum(to_number(replace(K,',','')))/100000000  num from hzdb.s_loan_dk_"+getYearYm()+" where replace(Q,',','')>60\n" +
+					") nc on dy.code=nc.code");
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return data;
 	}
+
+	@Override
+	public String[][] getBlDKCount2() {
+		String [] []data=null;
+		try{
+//			data=dmo.getStringArrayByDS(null,"select to_char(dy.num,'fm999999990.00'),to_char(dy.num-nc.num,'fm999999990.00') from(\n" +
+//					"select '1' code,ROUND(sum(XD_COL7)/100000000,2) num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
+//					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
+//					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0) dy\n" +
+//					"left join\n" +
+//					"(select '1' code,ROUND(sum(XD_COL7)/100000000,2) num from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL1||BIZ_DT in(\n" +
+//					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL22 in('03','04')group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
+//					"and XD_COL4<'"+getdyYear()+"-01-01 00:00:00' and XD_COL7>0 ) nc on dy.code=nc.code");
+			data=dmo.getStringArrayByDS(null,"select to_char(dy.num,'fm999999990.00'),to_char(dy.num-nc.num,'fm999999990.00') from(\n" +
+					"select '1' code,sum(to_number(replace(K,',','')))/100000000 num from hzdb.s_loan_dk_"+getqytMonth()+" where replace(Q,',','')>90\n" +
+					") dy left join(\n" +
+					"select '1' code,sum(to_number(replace(K,',','')))/100000000  num from hzdb.s_loan_dk_"+getYearYm()+" where replace(Q,',','')>90\n" +
+					") nc on dy.code=nc.code");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 	public String [][] getBlDKLvCount(){
 		String [] []data=null;
 		try{
@@ -884,13 +913,12 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 		}
 		return data;
 	}
+
 	public String [][] getShBlDKLvCount(){
 		String [] []data=null;
 		try{
-			data=dmo.getStringArrayByDS(null,"select to_char(ROUND(sum(hk.num)/10000,2),'fm999999990.00') from(\n" +
-					"select XD_COL1,sum(XD_COL7) num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where  XD_COL22 in('03','04') group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0 group by XD_COL1) dk\n" +
+			data=dmo.getStringArrayByDS(null,"select to_char(ROUND(sum(hk.num)/10000,2),'fm999999990.00') " +
+					"from(select B XD_COL1 from hzdb.s_loan_dk_"+getqytMonth()+" where replace(Q,',','')>60 group by B) dk\n" +
 					"left join(\n" +
 					"select xd_col1,sum(xd_col5) num from hzbank.s_loan_hk where \n" +
 					"to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')>='"+getDateMonthStart("-")+"' and \n" +
@@ -903,14 +931,12 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	public String [][] getxzBlDKLvCount(){
 		String [] []data=null;
 		try{
-			data=dmo.getStringArrayByDS(null,"select to_char(ROUND(dy.num-nc.num,2),'fm999999990.00') from(\n" +
-					"select '1' code,sum(XD_COL7)/10000 num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where  XD_COL22 in('03','04') group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0) dy\n" +
-					"left join\n" +
-					"(select '1' code,sum(XD_COL7)/10000 num  from hzbank.s_loan_dk_"+getYearYm()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getYearYm()+" where  XD_COL22 in('03','04') group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getdyYear()+"-01-01 00:00:00' and XD_COL7>0) nc on dy.code=nc.code");
+			data=dmo.getStringArrayByDS(null,"select to_char(ROUND(sum(hk.num)/10000,2),'fm999999990.00') " +
+					"from(select B XD_COL1 from hzdb.s_loan_dk_"+getqytMonth()+" where replace(Q,',','')>90 group by B) dk\n" +
+					"left join(\n" +
+					"select xd_col1,sum(xd_col5) num from hzbank.s_loan_hk where \n" +
+					"to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')>='"+getDateMonthStart("-")+"' and \n" +
+					"to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')<='"+getDateMonthEnd("-")+"' group by xd_col1) hk on dk.XD_COL1=hk.XD_COL1");
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -920,9 +946,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 		String [] []data=null;
 		try{
 			data=dmo.getStringArrayByDS(null,"select to_char(ROUND(sum(hk.num)/10000,2),'fm9999990.00') from(\n" +
-					"select XD_COL1,sum(XD_COL7) num  from hzbank.s_loan_dk_"+getqytMonth()+" where XD_COL1||BIZ_DT in(\n" +
-					"select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getqytMonth()+" where  XD_COL22='05' group by XD_COL1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n" +
-					"and XD_COL4<'"+getDayTime(getMonthMaxDay())+"' and XD_COL7>0 group by XD_COL1) dk\n" +
+					"select B xd_col1 from hzdb.s_loan_dkbl_202012) dk\n" +
 					"left join(\n" +
 					"select xd_col1,sum(xd_col5) num from hzbank.s_loan_hk where \n" +
 					"to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')>='"+getDateMonthStart("-")+"' and \n" +

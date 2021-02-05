@@ -127,9 +127,13 @@ public interface CockpitServiceIfc extends WLTRemoteCallServiceIfc {
 	 */
 	public  String [] [] getDKRanking();
 	/**
-	 * zzl 不良贷款总额
+	 * zzl 60不良贷款总额
 	 */
 	public  String [] [] getBlDKCount();
+	/**
+	 * zzl 90不良贷款总额
+	 */
+	public  String [] [] getBlDKCount2();
 	/**
 	 * zzl 不良贷款总额
 	 */

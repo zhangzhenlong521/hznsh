@@ -136,6 +136,7 @@ public class QnEDaiMarketingWKPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        panel.setBackground(new Color(25,25,112));
         return panel;
 
     }

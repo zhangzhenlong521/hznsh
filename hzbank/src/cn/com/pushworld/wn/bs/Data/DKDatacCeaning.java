@@ -52,7 +52,7 @@ public class DKDatacCeaning implements WLTJobIFC {
                 //zzl 根据当前贷款号最新的数据状态修改五级分类
                 dmo.executeUpdateByDS(null,"MERGE INTO hzbank.s_loan_dk_"+getQYDayMonth()+" a\n" +
                         "USING (select XD_COL1,XD_COL22 from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(\n" +
-                        "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where BIZ_DT='"+getXZTime()+"' group by XD_COL1)) b\n" +
+                        "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where BIZ_DT='"+getQYTTime()+"' group by XD_COL1)) b\n" +
                         "ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL22=b.XD_COL22");//BIZ_DT='"+getXZTime()+"' BIZ_DT>'"+getSYMTime(1)+"'
             }
             //dk 还款表
@@ -147,10 +147,14 @@ public class DKDatacCeaning implements WLTJobIFC {
                 //zzl 每个月1号创建贷款日均表
                 if(createDate2.length>0){
                     dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+" as\n" +
-                            "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
+                            "select * from(select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
                             "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
                             "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
-                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
+                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16)" +
+                            " union all (select '30100' deptcode,xx.CERT_CODE code,case when sum(dk.LOAN_BALANCE)>70000 then 70000 else sum(dk.LOAN_BALANCE) end  avgnum,1 daynum from(\n" +
+                            "select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||biz_dt in(\n" +
+                            "select CUS_ID||max(biz_dt) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join\n" +
+                            "hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0 and dk.cla<>'05' group by xx.CERT_CODE)" );
                 }
                 //zzl 每个月1号创建部门贷款日均表
                 if(createDate2.length>0){
@@ -188,10 +192,15 @@ public class DKDatacCeaning implements WLTJobIFC {
                     //--------------贷款的-------------//
                     //---------2.创建零时表----
                     dmo.executeUpdateByDS(null,"create table hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls as\n" +
-                            "select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
+                            "select * from(select XD_COL85 deptcode,XD_COL16 code,sum(XD_COL7) avgnum,1 daynum from(\n" +
                             "select XD_COL1,XD_COL85,case when XD_COL7>=70000 then 70000 else XD_COL7 end XD_COL7,XD_COL22,XD_COL16 from hzbank.s_loan_dk_"+getQYDayMonth()+" \n" +
                             "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL22<>'05'  group by XD_COL1)and \n" +
-                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16");
+                            "XD_COL4<'"+getDownMonth(getQYDayMonth())+" 00:00:00' and XD_COL7>0 and biz_dt<='"+getQYTTime()+"') group by XD_COL85,XD_COL16)" +
+                            "union all\n" +
+                            "(select '30100' deptcode,xx.CERT_CODE code,case when sum(dk.LOAN_BALANCE)>70000 then 70000 else sum(dk.LOAN_BALANCE) end  avgnum,1 daynum from(\n" +
+                            "select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||biz_dt in(\n" +
+                            "select CUS_ID||max(biz_dt) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join\n" +
+                            "hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0 and dk.cla<>'05' group by xx.CERT_CODE)");
                     ///------3.零时表是最新的数据根据修改零食表的数据----//
                     dmo.executeUpdateByDS(null,"MERGE INTO hzdb.s_user_dkavg_"+getQYDayMonth()+"_ls a\n" +
                             "USING(select * from hzdb.s_user_dkavg_"+getQYDayMonth()+") b\n" +
@@ -241,7 +250,7 @@ public class DKDatacCeaning implements WLTJobIFC {
     }
     public static void main(String[] args) {
         DKDatacCeaning a = new DKDatacCeaning();
-        String inputParam = a.getDownMonth("202001");
+        String inputParam = a.getKHDQMonth();
         System.out.println(">>>>>>>>>>>>>>" + inputParam);
     }
     /**

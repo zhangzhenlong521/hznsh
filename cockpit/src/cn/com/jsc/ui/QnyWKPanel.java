@@ -83,7 +83,7 @@ public class QnyWKPanel {
 							backPanel2.setBounds(160,0,150,150);
 							MyPanel backPanel3=new MyPanel(Color.yellow,Color.red,"本年黔农E贷-签约-"+qned+"户");
 							backPanel3.setBounds(0,160,150,150);
-							MyPanel backPanel4=new MyPanel(Color.blue,Color.black,"本年黔农E贷-线上占比-"+qnydxszb);
+							MyPanel backPanel4=new MyPanel(Color.blue,Color.white,"本年黔农E贷-线上占比-"+qnydxszb);
 							backPanel4.setBounds(160,160,150,150);
 							panel.removeAll();
 							panel.add(backPanel);
@@ -105,6 +105,7 @@ public class QnyWKPanel {
 				}
 			}
 		},new Date(),3600*1000*2);//3600*1000*2
+		panel.setBackground(new Color(25,25,112));
     	return panel;
 
     }
@@ -120,6 +121,7 @@ class MyPanel extends JPanel { // 设置内容
 		this.Color=Color;
 		this.test=test;
 		this.Colortxt=Colortxt;
+		this.setBackground(new Color(25,25,112));
 	}
 	public void paint(Graphics g) {
 		rect=new RoundRectangle2D.Double(0,0,150,150,150,150);
