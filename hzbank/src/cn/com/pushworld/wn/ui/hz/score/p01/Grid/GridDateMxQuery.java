@@ -48,6 +48,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private String tablename;
     private String jlMbCode;
     private Boolean flag=false;
+    private Boolean isleader=false;//判断是不是行长
     private BillListPanel wglist=new BillListPanel("S_LOAN_KHXX_202001_CODE1");
     private BillListDialog dialog=null;
 
@@ -65,12 +66,19 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         btn_log.addActionListener(this);
         HashVO[] vos=null;
         HashMap<String,String> roleMap=new HashMap<String, String>();
+        String[] leadervo=null;
         try{
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
+            leadervo=UIUtil.getStringArrayFirstColByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
         }catch (Exception e){
 
         }
+//        if(leadervo[0].equals("支行行长")||ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){//2021年2月7日21:39:17 fj   龙哥判断的岗位不严谨,应该用岗位归类，这里重新写一下
+//        	isleader=true;
+//        }else{
+//        	isleader=false;
+//        	}
         if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
@@ -213,9 +221,9 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             dialog.getBilllistPanel().addBillListButton(btn_xg);
             dialog.getBilllistPanel().addBillListButton(btn_dow);
             dialog.getBilllistPanel().addBillListButton(btn_up);
-            if(flag){
+             if(flag){
                 dialog.getBilllistPanel().addBillListButton(btn_qy);
-            }
+            }//fj20210207  应席总要求，不是行长的，五个按钮全隐藏
             dialog.getBilllistPanel().repaintBillListButton();
             dialog.setBtn_confirmVisible(false);
             dialog.setVisible(true);
