@@ -417,6 +417,11 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                                         khxxUpdate.setWhereCondition("deptcode='"+deptcode+"' and G='"+data[i][j]+"'");
                                         khxxUpdate.putFieldValue("J",xName);
                                         khxxUpdate.putFieldValue("K",wgName);
+                                        if(data[i][0]==null || data[i][0].equals(null) || data[i][0].equals("")){
+                                        }else{
+                                            wgUpdate.putFieldValue("A",data[i][0]);
+                                            khxxUpdate.putFieldValue("A",data[i][0]);
+                                        }
                                         updateList.add(wgUpdate.getSQL());
                                         updateList.add(khxxUpdate.getSQL());
                                     }

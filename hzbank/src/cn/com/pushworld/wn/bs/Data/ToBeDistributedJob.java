@@ -96,7 +96,7 @@ public class ToBeDistributedJob implements WLTJobIFC {
                         "xx on dk.xd_col85=xx.dept and upper(dk.xd_col16)=upper(xx.g) where dk.xd_col85='"+key.toString()+"' and xx.g is null");
                 if(data.length>0){
                     dmo.executeUpdateByDS(null,"insert into  hzdb.s_loan_khxx_202001(A,G,J,K,deptcode)\n" +
-                            "select dk.xd_col2,dk.xd_col16,'待分配网格','待分配网格','"+map.get(key.toString())+"' from(\n" +
+                            "select dk.xd_col2,dk.xd_col16,'其他网格','其他网格','"+map.get(key.toString())+"' from(\n" +
                             "select case when xd_col85='30100' then '28330100-xd' else '283'||xd_col85 end xd_col85,xd_col16,xd_col2,XD_COL144 from hzbank.s_loan_dk_"+getQYDayMonth()+" group by xd_col2,xd_col85,xd_col16,XD_COL144\n" +
                             ") dk\n" +
                             "left join (select xx.*,tab.b dept from hzdb.s_loan_khxx_202001 xx left join hzdb.excel_tab_28 tab on xx.deptcode=tab.c where tab.b='"+key.toString()+"') \n" +
@@ -125,7 +125,7 @@ public class ToBeDistributedJob implements WLTJobIFC {
                         "where xx.G is null");
                 if(data.length>0){
                     dmo.executeUpdateByDS(null,"insert into  hzdb.s_loan_khxx_202001(A,G,H,J,K,deptcode)\n" +
-                            "select ck.NAM_CUST_FULL,ck.EXTERNAL_CUSTOMER_IC,ck.TXT_custadr_ADD1,'待分配网格','待分配网格','"+key.toString()+"' from(\n" +
+                            "select ck.NAM_CUST_FULL,ck.EXTERNAL_CUSTOMER_IC,ck.TXT_custadr_ADD1,'其他网格','其他网格','"+key.toString()+"' from(\n" +
                             "select a.oact_inst_no,a.f,b.NAM_CUST_FULL,b.EXTERNAL_CUSTOMER_IC,b.TXT_custadr_ADD1 from(\n" +
                             "select * from(\n" +
                             "select oact_inst_no,cust_no,sum(f) f from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" group by oact_inst_no,cust_no union all \n" +
