@@ -46,19 +46,7 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 		this.add(listPanel);
 	}
 	private void QuickQuery() throws ParseException {
-		 String[] column;
-		try {
-			column = dmo.getStringArrayFirstColByDS(null,"select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='hzdb.hz_ykt_rate_"+getQYTTime()+"' ORDER BY COLUMN_ID");
-			 if(column.length<=0){
-		 	    	MessageBox.show(getQYTTime()+"日一卡通数据尚未下发或正在处理，请您稍后查询。");
-		 	    }else{
-				listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_"+getQYTTime()+"");
-		 	    }
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
- 	   
+		listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_"+getQYTTime()+"");   
 	}
 	public String getSelTime(String date) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
