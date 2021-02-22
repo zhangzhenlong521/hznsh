@@ -121,7 +121,7 @@ public class DKDatacCeaning implements WLTJobIFC {
                             "(select '2830001-xd' deptcode,xx.CERT_CODE sfz,sum(dk.LOAN_BALANCE)  dgdkye from(\n" +
                             "select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||biz_dt in(\n" +
                             "select CUS_ID||max(biz_dt) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join\n" +
-                            "hzbank.S_CMIS_CUS_BASE_202101 xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0 group by xx.CERT_CODE\n" +
+                            "hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0 group by xx.CERT_CODE\n" +
                             ") dgdk on wg.deptcode=dgdk.deptcode and UPPER(wg.G)=UPPER(dgdk.sfz)");
                     //zzl 更新对公存款余额
                     dmo.executeUpdateByDS(null,"update hzdb.GRID_DATA_"+getQYTTime()+" set ckye=dgck where J='对公存款' and K='对公存款' and ckye is null");
