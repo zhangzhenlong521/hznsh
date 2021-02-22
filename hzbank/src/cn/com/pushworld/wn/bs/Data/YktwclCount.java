@@ -13,7 +13,7 @@ public class YktwclCount implements WLTJobIFC{
 	
 	@Override
 	public String run() throws Exception {
-			HashVO[] vos = dmo.getHashVoArrayByDS(null,"select * from hzbank.t_hnyzt_dis_"+getQYlTTime()+" where load_dates='"+getQYTTime()+"'");
+			HashVO[] vos = dmo.getHashVoArrayByDS(null,"select * from hzbank.t_hnyzt_dis_"+getQYlTTime()+" where load_dates='"+getQYTTime()+"' and rownum<=100");
         	if(vos.length<=0){
         		return getQYTTime()+"一卡通数据没有正常下发或正在处理";
         	}else{
