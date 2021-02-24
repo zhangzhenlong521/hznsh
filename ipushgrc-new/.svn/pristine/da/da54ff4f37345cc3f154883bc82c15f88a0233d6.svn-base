@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 检查模块用到的所有视图，在创建视图时，如果数据源是sqlserver，以前的语句 create or replace 会报错，所以改为了create-->
-<root>
-
-    
-</root>
-
