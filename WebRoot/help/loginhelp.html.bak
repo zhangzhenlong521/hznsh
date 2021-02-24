@@ -1,0 +1,27 @@
+<!doctype html>
+  <html>
+      <head>
+           <meta charset="utf-8"/>
+           <title>登录说明</title> 
+      </head> 
+      <body background="images/34G58PICtkz_1024.jpg">
+	      <h1 style="text-align:center">登录说明：</h1>
+		  <h2>1.点击“Java运行环境” 如图<img src="images/javabteno.png"/></h2>
+		  <h2>2.点击“运行”如图<img src="images/yunxin.png"/></h2>
+		  <h2>3.点击确定如图<img src="images/runtime.png"></h2>
+		  <h2>4.完成上一步骤会看到此界面<img src="images/jixu.png"></h2>   
+		  <h2>5.完成安装后返回<a style="color:red;">本机桌面<a/>会看到此图标<img src="images/pop.png"/>双击此图标</h2>
+		  <h2>6.完成上一步骤会看到此界面点击登录如图<img src="images/login.png"/></h2>
+		  <h2>7.完成上一步骤会看到此界面<img src="images/turelogin.png"/>按照图片提示登录</h2>
+		  <h2 style="color:red;">如果上面流程没有完成安装还提供另一种安装方法如下</h2>
+		 <h2>1.点击“Java运行环境” 如图<img src="images/javabteno.png"/></h2>
+		 <h2>2.点击“保存”如图<img src="images/sav.png"/></h2>
+		 <h2>3.完成上一步骤会看到此界面点击打开文件夹<img src="images/lingsav.png"></h2>
+		 <h2>4.选中<a style="color:red">webpushjre.exe</a>右击会弹出此界面<img src="images/longba.png">点击以<a style="color:red">管理员身份运行<a/></h2>
+          <h2>5.点击确定如图<img src="images/runtime.png"></h2>
+		  <h2>6.完成上一步骤会看到此界面<img src="images/jixu.png"></h2>   
+		  <h2>7.完成安装后返回<a style="color:red;">本机桌面<a/>会看到此图标<img src="images/pop.png"/>双击此图标</h2>
+		  <h2>8.完成上一步骤会看到此界面点击登录如图<img src="images/login.png"/></h2>
+		  <h2>9.完成上一步骤会看到此界面<img src="images/turelogin.png"/>按照图片提示登录</h2>
+      </body>
+  </html>

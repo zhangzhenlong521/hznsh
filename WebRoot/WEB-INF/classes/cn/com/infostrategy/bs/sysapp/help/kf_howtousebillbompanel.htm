@@ -1,0 +1,99 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>BillBomPanel的使用技巧</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+<p class="p_text">
+从类名上来看一些人可能不知道BillBomPanel是干什么用的,长成什么样!简单说就是用一张图片做背景,<br>
+然后在背景上添加热点(可理解为链接、事件),最终效果是,点击图片某一位置弹出相应的界面!<br>
+一般我们系统常用的就是用银行的组织架构图,然后在每一个部门上增加热点,最终效果就是点击某一部门弹出该部门的风险点!<br>
+下面我们就来开发一个简单的BillBomPanel<br>
+1、首先配置Bom模板,进入菜单:模板配置->Bom模板,新建一个模板并上传背景图片。其中初始化后类需要注册一个普通类,<br>
+不需要继承任何抽象类与接口,但构造方法必须是三个参数,第一个是BillBomPanel,第二个是BomItemPanel,第三个是String[],<br>
+如下:public TestBomAfterInint(BillBomPanel _bomPanel,BomItemPanel _itemPanel, String[] _par){}<br>
+其中第三个参数是在注册类名时,在后面添加,比如cn.com.pushworld.ui.TestBomAfterInint("入参1","入参2")<br>
+2、保存模板后,在列表中点击配置按钮,在弹出界面图形上右键,选择新增热点,在弹出界面解释一下相关项目,绑定类型有菜单、bom图、class类,<br>
+选择菜单则需要选择绑定菜单,当点击此热点时会弹出此菜单所对应功能点;选择bom图时需要选择链接的Bom图,当点击此热点时会弹出链接的BOM图;<br>
+选择class类时需要自己动手写一个类,此类需要是JPanel的子类,一般选择继承WLTPanel,将类的全路径名填写在链接的Panel类处。打开下一层<br>
+方式选择下一层,则在点击热点时在本界面打开对应界面,如果选择弹出窗口,则弹出窗口来打开界面。<br><br>
+下面是一个简单例子:有兴趣可以参照com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomWKPanel<br>
+<textarea cols="150" rows="30" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import cn.com.infostrategy.to.workflow.design.RiskVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.workflow.pbom.BillBomPanel;
+public class TestBillBomWKPanel extends AbstractWorkPanel {
+	private BillBomPanel bbp = null;
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		bbp = new BillBomPanel("gps");//此处模板填写已有的编码,或者自己新建一个
+		RiskVO vo1 = new RiskVO();
+		vo1.setColor1_(Color.WHITE);
+		vo1.setShape1(0);
+		vo1.setLevel1RiskCount(10);
+		vo1.setColor2_(Color.GREEN);
+		vo1.setShape2(2);
+		vo1.setLevel2RiskCount(20);
+		vo1.setColor3_(Color.GRAY);
+		vo1.setShape3(3);
+		vo1.setLevel3RiskCount(30);
+		bbp.setRiskVO("合同管理", vo1);//其中第一个参数为热点的key值,
+		//其中上面一段代码设置颜色形状数量,最初衷是为了显示风险点的,即在每个热点可以设置有多少极大风险、
+		//中等风险、低风险画3个圆圈,圆圈中有数量,
+		//后来进行了扩展可以设置颜色和形状,即不光可以表示风险点,也可以表示其他。
+		this.add(bbp, BorderLayout.CENTER);
+	}
+}
+</textarea>
+<br><br>
+下面是一个初始化后类的写法(好像是很少用到),配置为:com.pushdemo.ui.TestBillBomAfterInit(1,2,3)<br>
+<textarea cols="150" rows="25" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+import java.awt.Color;
+import cn.com.infostrategy.to.workflow.design.RiskVO;
+import cn.com.infostrategy.ui.workflow.pbom.BillBomPanel;
+import cn.com.infostrategy.ui.workflow.pbom.BomItemPanel;
+public class TestBillBomAfterInit {
+	public TestBillBomAfterInit(BillBomPanel bomp, BomItemPanel bomip, String[] params) {//必須提供此构造函数
+		//如果在配置的时候有参数则可以通过params来获得参数
+		//获得了BillBomPanel与BomItemPanel对象可以对其进行操作
+		//比如setRiskVO
+		RiskVO vo1 = new RiskVO();
+		vo1.setColor1_(Color.WHITE);
+		vo1.setShape1(0);
+		vo1.setLevel1RiskCount(Integer.parseInt(params[0]));
+		vo1.setColor2_(Color.GREEN);
+		vo1.setShape2(2);
+		vo1.setLevel2RiskCount(Integer.parseInt(params[1]));
+		vo1.setColor3_(Color.GRAY);
+		vo1.setShape3(3);
+		vo1.setLevel3RiskCount(Integer.parseInt(params[2]));
+		bomp.setRiskVO("法律审查", vo1);
+	}
+}
+</textarea><br><br>
+下面是一个热点的自定义类的写法,连接的panel类配置为:com.pushdemo.ui.TestBillBomClickPanel(1,2),<br>
+有兴趣的可以参照com.pushworld.ipushgrc.ui.wfrisk.p050.WFAndRiskBomViewByDeptPanel<br>
+<textarea cols="150" rows="15" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+import java.awt.BorderLayout;
+import cn.com.infostrategy.ui.common.WLTPanel;
+import cn.com.infostrategy.ui.workflow.pbom.BillBomPanel;
+public class TestBillBomClickPanel extends WLTPanel {
+	public TestBillBomClickPanel(String param1, String param2, BillBomPanel bompanel) {
+		this.setLayout(new BorderLayout());//可以添加一个列表等任何面板
+		TestBillBomWKPanel tbbwkp = new TestBillBomWKPanel();//这里只打开自己
+		tbbwkp.initialize();
+		this.add(tbbwkp, BorderLayout.CENTER);
+	}
+}
+</textarea><br>
+</p>
+</body>
+</html>

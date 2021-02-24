@@ -1,0 +1,1979 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 平台所有表的字典,最重要的数据！！！ -->
+<root>
+<table name="pub_menu" pkname="id" descr="菜单表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="64"   descr="菜单编码"/>
+    <col name="name"                          type="varchar"   length="64"   descr="菜单名称"/>
+    <col name="ename"                         type="varchar"   length="64"   descr="英文名"/>
+    <col name="parentmenuid"                  type="decimal"   length="22"   descr="父结点的主键,关联于本表的id"/>
+    <col name="seq"                           type="decimal"   length="22"   descr="排序字段"/>
+    <col name="usecmdtype"                    type="varchar"   length="20"   descr="所启用的命令类型"/>
+    <col name="commandtype"                   type="varchar"   length="2"    descr="命令类型"/>
+    <col name="command"                       type="varchar"   length="2000" descr="命令路径"/>
+    <col name="commandtype2"                  type="varchar"   length="2"    descr="命令类型2"/>
+    <col name="command2"                      type="varchar"   length="1000" descr="命令路径2"/>
+    <col name="commandtype3"                  type="varchar"   length="2"    descr="命令类型3"/>
+    <col name="command3"                      type="varchar"   length="1000" descr="命令路径3"/>
+    <col name="icon"                          type="varchar"   length="100"  descr="图标"/>
+    <col name="isautostart"                   type="char"      length="1"    descr="是否自启动"/>
+    <col name="isextend"                      type="char"      length="1"    descr="是否延展,即高度上可以扩展"/>
+    <col name="extendheight"                  type="decimal"   length="22"   descr="延展高度"/>
+    <col name="opentype"                      type="varchar"   length="10"   descr="打开方式,有:Frame,Tab两种"/>
+    <col name="isinmenubar"                   type="char"      length="1"    descr="是否在菜单条中显示"/>
+    <col name="showintoolbar"                 type="char"      length="1"    descr="是否在工具条显示"/>
+    <col name="toolbarimg"                    type="varchar"   length="30"    descr="在工具条中的图标"/>
+    <col name="opentypeweight"                type="varchar"   length="100"  descr="用Frame方式打开时的宽度"/>
+    <col name="opentypeheight"                type="varchar"   length="100"  descr="用Frame方式打开时的高度"/>
+    <col name="isalwaysopen"                  type="char"      length="1"    descr="是否永远开放"/>
+    <col name="helpfile"                      type="varchar"   length="100"  descr="帮助文件"/>
+    <col name="conf"                          type="varchar"   length="1000" descr="菜单参数"   remark="就是在继续于产品或平台的功能后,可以通过参数来配置" />
+    <col name="comments"                      type="varchar"   length="1000" descr="备注说明"/>
+    <col name="ishid"                         type="char"      length="1"    descr="隐藏"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_menu_1"    cols="code"    descr="菜单编码一定要建索引" />
+     <index  name="in_pub_menu_2"    cols="parentmenuid"   descr="因为经常需要关联出父结点名称,所以要在该字段上建索引"  />
+  </indexs>
+</table>
+
+<table name="pub_user" pkname="id" descr="人员表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="50"   descr="编码"/>
+    <col name="code1"                         type="varchar"   length="30"   descr="人力资源ID"/>
+    <col name="code2"                         type="varchar"   length="30"   descr="NotesID"/>
+    <col name="code3"                         type="varchar"   length="30"   descr="其他登录帐号"/>
+    <col name="name"                          type="varchar"   length="50"   descr="姓名"/>
+    <col name="pwd"                           type="varchar"   length="50"   descr="密码"/>
+    <col name="adminpwd"                      type="varchar"   length="50"   descr="管理密码"/>
+    <col name="islock"                        type="char"      length="1"    descr="是否锁定,后来添加"/>
+    <col name="creator"                       type="varchar"   length="20"   descr="创建者"/>
+    <col name="createdate"                    type="varchar"   length="23"   descr="创建日期"/>
+    <col name="telephone"                     type="varchar"   length="50"   descr="联系电话"/>
+    <col name="iptelephone"                   type="varchar"   length="30"   descr="IP电话"/>
+    <col name="mobile"                        type="varchar"   length="50"   descr="手机"/>
+    <col name="email"                         type="varchar"   length="70"   descr="邮件"/>
+    <col name="status"                        type="varchar"   length="10"   descr="状态"/>
+    <col name="desktopstyle"                  type="varchar"   length="1"    descr="默认登录风格"/>
+    <col name="lookandfeeltype"               type="varchar"   length="4"    descr="默认皮肤"/>
+    <col name="fontrevise"                 	  type="char"      length="2"    descr="字体放大"/>
+    <col name="isfunfilter"                   type="char"      length="1"    descr="是否权限过滤"/>
+    <col name="pk_dept"                       type="decimal"   length="22"   descr="所属机构,将弃用"/>
+    <col name="fax"                           type="varchar"   length="100"  descr="传真"/>
+    <col name="degreen"                       type="varchar"   length="10"   descr="学历"/>
+    <col name="staff"                         type="varchar"   length="100"  descr="职位"/>
+    <col name="iscorru"                       type="varchar"   length="100"  descr=""/>
+    <col name="deptallpath"                   type="varchar"   length="100"  descr="所属部门全路径"/>
+    <col name="isdeveloper"                   type="char"      length="1"    descr="是否系统开发商"/>
+  </columns>
+  <indexs>
+  	<index  name="in_pub_user_code"    cols="code" />
+  	<index  name="in_pub_user_code1"   cols="code1" />
+  	<index  name="in_pub_user_code2"   cols="code2" />
+  	<index  name="in_pub_user_code3"   cols="code3" />
+  </indexs>
+</table>
+
+<table name="pub_role" pkname="id" descr="角色表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="100"  descr="角色编码"/>
+    <col name="name"                          type="varchar"   length="100"  descr="角色名称"/>
+    <col name="roletype"                      type="varchar"   length="50"   descr="角色类型"/>
+    <col name="descr"                         type="varchar"   length="100"  descr="备注"/>
+    <col name="sppwd"                         type="varchar"   length="10"   descr="超级管理员密码"/>
+    <col name="spcorptype"                    type="varchar"   length="100"  descr="只限于哪些机构类型"/>
+    <col name="spdataobjs"                    type="varchar"   length="100"  descr="对应的数据对象"/>
+    <col name="createdept"                    type="decimal"   length="22"   descr="创建机构"/>
+  </columns>
+  <indexs>
+     <index name="in_pub_role_1"   cols="code" />
+  </indexs>
+</table>
+
+<table name="pub_user_role" pkname="id" descr="人员与角色关联">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="userid"                        type="decimal"   length="22"   reffield="pub_user.id"      ismulti="Y" descr="人员主键,关联于pub_user.id"/>
+    <col name="roleid"                        type="decimal"   length="22"   reffield="pub_role.id"      ismulti="N1" descr="角色ID,关联于pub_role.id"/>
+    <col name="userdept"                      type="decimal"   length="22"   reffield="pub_corp_dept.id" ismulti="N1" descr="所属机构,关联于pub_corp_dept.id,即在不同的机构会有不同的角色体现"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_user_role_1"    cols="userid"  />
+     <index  name="in_pub_user_role_2"    cols="roleid"  />
+     <index  name="in_pub_user_role_3"    cols="userdept"  />
+     <index  name="in_pub_user_role_4"    cols="userid,userdept"  />
+     <index  name="in_pub_user_role_5"    cols="userid,roleid"  />
+  </indexs>
+</table>
+
+<table name="pub_user_menu" pkname="id" descr="人员与菜单关联">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="userid"                        type="decimal"   length="22"   reffield="pub_user.id" ismulti="N2" descr="人员主键,关联于pub_user.id"/>
+    <col name="menuid"                        type="decimal"   length="22"   reffield="pub_menu.id" descr="菜单主键,关联于pub_menu.id"/>
+  </columns>
+  <indexs>
+     <index   name="pub_user_menu_1"   cols="userid"  />
+     <index   name="pub_user_menu_2"   cols="menuid"  />
+     <index   name="pub_user_menu_3"   cols="userid,menuid"  />
+  </indexs>
+</table>
+
+<table name="pub_role_menu" pkname="id" descr="角色与菜单关联">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="roleid"                        type="decimal"   length="22"   reffield="pub_role.id" ismulti="N1" descr="角色主键"/>
+    <col name="menuid"                        type="decimal"   length="22"   reffield="pub_menu.id" ismulti="N1" descr="菜单主键"/>
+  </columns>
+  <indexs>
+    <index name="in_pub_role_menu_1"   cols="roleid"  />
+    <index name="in_pub_role_menu_2"   cols="menuid"  />
+    <index name="in_pub_role_menu_3"   cols="roleid,menuid"  />
+  </indexs>
+</table>
+
+
+<table name="pub_user_shortcut" pkname="id" descr="用户常用功能"  remark="本来去掉这个表的,但后来兴业提出常用功能概念,又加上了,而且角色也有常用功能">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="userid"                        type="varchar"   length="100"   reffield=""        descr="人员主键或角色编码"/>
+    <col name="menuid"                        type="decimal"   length="22"   reffield="pub_menu.id" descr="菜单主键"/>
+    <col name="shorttype"                     type="varchar"   length="10"   descr="快捷类型"  remark="即有角色与人员之分,取值是user/role" />
+  </columns>
+  <indexs>
+    <index name="in_pub_user_shortcut_1"   cols="userid"  />
+  </indexs>
+</table>
+
+<table name="pub_corp_dept" pkname="id" descr="机构表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="parentid"                      type="decimal"   length="22"   descr="父ID" reffield="pub_corp_dept.id"/>
+    <col name="seq"                           type="decimal"   length="22"   descr="序号"/>
+    <col name="code"                          type="varchar"   length="100"  descr="机构编码"/>
+    <col name="name"                          type="varchar"   length="100"  descr="机构名称"/>
+    <col name="lawer"                         type="varchar"   length="100"  descr="负责人"/>
+    <col name="tel"                           type="varchar"   length="100"  descr="联系电话"/>
+    <col name="addr"                          type="varchar"   length="100"  descr="地址"/>
+    <col name="createdate"                    type="varchar"   length="23"   descr="创建时间"/>
+    <col name="corptype"                      type="varchar"   length="30"   descr="机构分类"/>
+    <col name="extcorptype"                   type="varchar"   length="200"  descr="扩展机构分类"/>
+    <col name="linkcode"                      type="varchar"   length="100"  descr="关联码"/>
+    <col name="corpdepttype"                  type="varchar"   length="50"   descr="机构类型"/>
+    <col name="corpdepttype_linearea"         type="varchar"   length="15"   descr="机构类型条线范围"/>
+    <col name="reportdept1"                   type="decimal"   length="22"   descr="上报路线1"/>
+    <col name="reportdept2"                   type="decimal"   length="22"   descr="上报路线2"/>
+    <col name="reportdept3"                   type="decimal"   length="22"   descr="上报路线3"/>
+    <col name="reportdept1_name"              type="varchar"   length="100"  descr="上报路线1"/>
+    <col name="reportdept2_name"              type="varchar"   length="100"  descr="上报路线2"/>
+    <col name="reportdept3_name"              type="varchar"   length="100"  descr="上报路线3"/>
+    <col name="bl_zhonghbm"                   type="decimal"   length="22"   descr="所属_总行部门"/>
+    <col name="bl_zhonghbm_name"              type="varchar"   length="100"  descr="所属_总行部门"/>
+    <col name="bl_fengh"                      type="decimal"   length="22"   descr="所属_分行"/>
+    <col name="bl_fengh_name"                 type="varchar"   length="100"  descr="所属_分行"/>
+    <col name="bl_fenghbm"                    type="decimal"   length="22"   descr="所属_分行部门"/>
+    <col name="bl_fenghbm_name"               type="varchar"   length="100"  descr="所属_分行部门"/>
+    <col name="bl_zhih"                       type="decimal"   length="22"   descr="所属_支行"/>
+    <col name="bl_zhih_name"                  type="varchar"   length="100"  descr="所属_支行"/>
+    <col name="bl_shiyb"                      type="decimal"   length="22"   descr="所属_事业部"/>
+    <col name="bl_shiyb_name"                 type="varchar"   length="100"  descr="所属_事业部"/>
+    <col name="bl_shiybfb"                    type="decimal"   length="22"   descr="所属_事业部分部"/>
+    <col name="bl_shiybfb_name"               type="varchar"   length="100"  descr="所属_事业部分部"/>
+    <col name="shortname"                     type="varchar"   length="100"  descr="机构简称"/>
+    <col name="dispatchname"                  type="varchar"   length="100"  descr="发布文号"/>
+    <col name="shortnameen"                   type="varchar"   length="100"  descr="机构英文名称"/>
+    <col name="status"                        type="varchar"   length="30"   descr="状态"/>
+    <col name="corpstyle"                     type="varchar"   length="30"   descr="地区类型"/>
+     <col name="linkname"                     type="varchar"   length="200"  descr="机构名称全路径"/>
+  </columns>
+  <indexs>
+    <index  name="in_pub_corp_dept_1"    cols="code" />
+    <index  name="in_pub_corp_dept_2"    cols="parentid" />
+    <index  name="in_pub_corp_dept_3"    cols="corptype" />
+    <index  name="in_pub_corp_dept_4"    cols="linkcode" />
+  </indexs>
+</table>
+
+<table name="pub_post"    pkname="id" descr="岗位表"  remark="即一个机构有多个岗位,应该还有一个基本岗位表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="deptid"                        type="decimal"   length="22"   reffield="pub_corp_dept.id" ismulti="N1" descr="机构主键"    remark="null 时表示是虚拟岗位, 否则是实际岗位"/>
+    <col name="code"                          type="varchar"   length="400"  descr="岗位编号"/>
+    <col name="name"                          type="varchar"   length="300"  descr="岗位名称"/>
+    <col name="leader"                        type="varchar"   length="50"   descr="直属领导"/>
+    <col name="descr"                         type="varchar"   length="2000" descr="岗位描述"    remark="岗职说明"/>
+    <col name="postlevel"                     type="varchar"   length="20"   descr="岗位级别"    remark="岗位级别，可以为1、2、3或高、中、低"/>
+	<col name="intent"                        type="varchar"   length="4000" descr="设置目的"/>
+	<col name="innercontact"                  type="varchar"   length="4000" descr="内部联系"/>
+	<col name="outcontact"                    type="varchar"   length="4000" descr="外部联系"/>
+	<col name="education"                     type="varchar"   length="2000" descr="教育"/>
+	<col name="skill"                         type="varchar"   length="4000" descr="技能"/>
+	<col name="post_status"                   type="varchar"   length="20"   descr="岗位状态"/>
+	<col name="refpostid"                     type="decimal"   length="22"   descr="所属岗位"  />
+	<col name="seq"                           type="decimal"   length="5"    descr="岗位排序"/>
+	<col name="stationratio"                  type="varchar"   length="100"  descr="岗位系数范围"/>
+	<col name="stationkind"                   type="varchar"   length="100"  descr="岗位归类"/>
+  </columns>
+  <indexs>
+    <index   name="in_pub_post_1"     cols="deptid" />
+  </indexs>
+</table>
+
+<table name="pub_user_post" pkname="id" descr="人员/机构/岗位三者关联表"  remark="因为一个人可以属于多个机构多个岗位,即兼职">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="userid"                        type="decimal"   length="22"   reffield="pub_user.id" ismulti="N1" descr="人员ID"   remark="对应于pub_user.id"/>
+    <col name="postid"                        type="decimal"   length="22"   reffield="pub_post.id" ismulti="N2" descr="岗位id"   remark="对应于pub_post.id"/>
+    <col name="userdept"                      type="varchar"   length="100"  reffield="pub_corp_dept.id" ismulti="N1" descr="机构id"   remark="对应于pub_corpdept.id"/>
+    <col name="isdefault"                     type="char"      length="1"    descr="是否默认岗位"/>
+    <col name="seq"                           type="decimal"   length="5"    descr="人员排序" remark="对于一些客户总经理就是要在经理上面"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_user_post_1"    cols="userid"   />
+     <index  name="in_pub_user_post_2"    cols="postid"   />
+     <index  name="in_pub_user_post_3"    cols="userdept"   />
+     <index  name="in_pub_user_post_4"    cols="userid,userdept"   />
+  </indexs>
+</table>
+
+<table name="pub_templet_1" pkname="pk_pub_templet_1" descr="元原模板主表">
+  <columns>
+    <col name="pk_pub_templet_1"              type="decimal"   length="22"   descr="主键"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="模板编码"/>
+    <col name="templetname"                   type="varchar"   length="200"  descr="模板名称"/>
+    <col name="templetname_e"                 type="varchar"   length="200"  descr="模板英文名字"/>
+    <col name="datasourcename"                type="varchar"   length="100"  descr="数据源名称"/>
+    <col name="tablename"                     type="varchar"   length="100"  descr="查询表名"/>
+    <col name="dataconstraint"                type="varchar"   length="1000" descr="数据约束之过滤条件"/>
+    <col name="pkname"                        type="varchar"   length="50"   descr="主键字段名"/>
+    <col name="pksequencename"                type="varchar"   length="50"   descr="主键对应的序列名"/>
+    <col name="tostringkey"                   type="varchar"   length="50"   descr="Tostring所选用的itemkey,先支持一个,以后可以支持特殊公式,即可能会拼起来"/>
+    <col name="savedtablename"                type="varchar"   length="30"   descr="保存的表名"/>
+    <col name="datapolicy"                    type="varchar"   length="30"   descr="数据权限策略"/>
+    <col name="datapolicymap"                 type="varchar"   length="100"  descr="权限策略映射"   remark="即指定机构字段与人员字段对应本表中的哪个字段,然后用它来拼SQL" />
+    <col name="datasqlandorcondition"         type="varchar"   length="30"   descr="条件与数据权限sql拼接方式"/>
+    <col name="bsdatafilterclass"             type="varchar"   length="100"  descr="BS端数据过滤器类名"/>
+    <col name="bsdatafilterissql"             type="char"      length="1"    descr="BS过滤是否返回SQL"/>
+    <col name="ordercondition"                type="varchar"   length="300"  descr="排序条件"/>
+    <col name="autoloads"                     type="decimal"   length="22"   descr="是否自动加载"/>
+    <col name="autoloadconstraint"            type="varchar"   length="500"  descr="自动加载的条件"/>
+    <col name="cardinitformula"               type="varchar"   length="2000" descr="卡片初始化公式"/>
+    <col name="cardcustpanel"                 type="varchar"   length="100"  descr="卡片自定义板"/>
+    <col name="cardwidth"                     type="decimal"   length="22"   descr="卡片宽度,就是控制在卡片状态下时的最大宽度"/>
+    <col name="isshowcardborder"              type="char"      length="1"    descr="卡片是否显示边框"/>
+    <col name="cardborder"                    type="varchar"   length="10"   descr="卡片边框风格"/>
+    <col name="cardlayout"                    type="varchar"   length="20"   descr="卡片布局,有水平布局与X/Y布局之分"/>
+    <col name="isshowcardcustbtn"             type="char"      length="1"    descr="卡片是否显示自定义按钮"/>
+    <col name="cardcustbtndesc"               type="varchar"   length="300"  descr="卡片自定义按钮"/>
+    <col name="cardsaveselfdesccheck"         type="varchar"   length="100"  descr="卡片自定义检验"/>
+    <col name="cardsaveifcheck"               type="char"      length="1"    descr="卡片保存不做必填验证"/>
+    <col name="mustinputcolor"                type="varchar"   length="20"   descr="必输项颜色"/>
+    <col name="listinitformula"               type="varchar"   length="500"  descr="列表初始化公式"/>
+    <col name="listcustpanel"                 type="varchar"   length="100"  descr="列表自定义面板"/>
+    <col name="isshowlistpagebar"             type="char"      length="1"    descr="列表是否显示分页条"/>
+    <col name="islistpagebarwrap"             type="char"      length="1"    descr="分页条是否换行"/>
+    <col name="isshowlistopebar"              type="char"      length="1"    descr="列表是否显示操作条"/>
+    <col name="iscollapsequickquery"          type="char"      length="1"    descr="是否自动收缩快速查询框"/>
+    <col name="isshowlistquickquery"          type="char"      length="1"    descr="列表时是否显示快速查询"/>
+    <col name="isshowcommquerybtn"            type="char"      length="1"    descr="列表不显示快速查询"/>
+    <col name="isshowlistcustbtn"             type="char"      length="1"    descr="列表时是否显示自定义按钮"/>
+    <col name="listcustbtndesc"               type="varchar"   length="300"  descr="列表状态下的自定义按钮"/>
+    <col name="listbtnorderdesc"              type="varchar"   length="300"  descr="列表状态下按钮排序规则"/>
+    <col name="listrowheight"                 type="varchar"   length="500"  descr="列表状态下的行高"/>
+    <col name="listheaderisgroup"             type="char"      length="1"    descr="表列表头是否分组"/>
+    <col name="islistautorowheight"           type="char"      length="1"    descr="列表状态时是否自动撑高"/>
+    <col name="listheadheight"                type="varchar"   length="100"  descr="列表表头定义"/>
+    <col name="listweidudesc"                 type="varchar"   length="100"  descr="列表多维定义"/>
+    <col name="definerenderer"                type="varchar"   length="100"  descr="自定义绘制器"/>
+    <col name="treepk"                        type="varchar"   length="30"   descr="树型控件的关联pk"/>
+    <col name="treeparentpk"                  type="varchar"   length="30"   descr="树型控件的关联parendpk"/>
+    <col name="treeviewfield"                 type="varchar"   length="30"   descr="树型控件时的显示字段"/>
+    <col name="treeseqfield"                  type="varchar"   length="30"   descr="树型控制时的排序字段,比如seq"/>
+    <col name="treeisshowroot"                type="char"      length="1"    descr="树型控制是否显示根结点"/>
+    <col name="treeisonlyone"                 type="char"      length="1"    descr="树型是否只同时展开一个"/>
+    <col name="treeisshowtoolbar"             type="char"      length="1"    descr="树型控件是否显示工具条"/>
+    <col name="treecustbtndesc"               type="varchar"   length="300"  descr="树型自定义按钮"/>
+    <col name="treeischecked"                 type="char"      length="1"    descr="树型控件是否是勾选框"/>
+    <col name="templetbtns"                   type="varchar"   length="100"  descr="模板按钮"/>
+    <col name="propbeanclassname"             type="varchar"   length="150"  descr="属性面板对应的Class类"/>
+    <col name="wfcustexport"                  type="varchar"   length="1000" descr="工作流自定义导出"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_templet_1"    cols="templetcode"  />
+  </indexs>
+</table>
+
+<table name="pub_templet_1_item" pkname="PK_PUB_TEMPLET_1_ITEM" descr="元原模板子表">
+  <columns>
+    <col name="pk_pub_templet_1_item"         type="decimal"   length="22"   descr="PK_PUB_TEMPLET_1_ITEM"/>
+    <col name="pk_pub_templet_1"              type="decimal"   length="22"   reffield="pub_templet_1.pk_pub_templet_1" ismulti="N1" descr="PK_PUB_TEMPLET_1"/>
+    <col name="itemkey"                       type="varchar"   length="100"  descr="唯一性标识"/>
+    <col name="itemname"                      type="varchar"   length="500"  descr="中文名称"/>
+    <col name="itemname_e"                    type="varchar"   length="100"  descr="英文名称"/>
+    <col name="itemtiptext"                   type="varchar"   length="2000" descr="标签说明,同时起帮助的作用,可以复杂点"/>
+    <col name="itemtype"                      type="varchar"   length="50"   descr="控件类型"/>
+    <col name="comboxdesc"                    type="varchar"   length="2000" descr="下拉框定义"/>
+    <col name="refdesc"                       type="varchar"   length="1000" descr="参照定义"/>
+    <col name="isrefcanedit"                  type="char"      length="1"    descr="参照的文本框是否可编辑"/>
+    <col name="issave"                        type="char"      length="1"    descr="是否参与保存"/>
+    <col name="isencrypt"                     type="char"      length="1"    descr="是否加密存储"   remark="许多项目中出于安全考虑,需要对一些信息进行加密存储,所以要这个" />
+    <col name="ismustinput"                   type="char"      length="1"    descr="是否必输项" remark="Y-必输项,W-警告项,N-自由项" />
+    <col name="isuniquecheck"                 type="char"      length="1"    descr="是否唯一性校验,2010-03-23(李春娟)"/>
+    <col name="loadformula"                   type="varchar"   length="4000" descr="加载公式"/>
+    <col name="editformula"                   type="varchar"   length="4000" descr="编辑公式"/>
+    <col name="defaultvalueformula"           type="varchar"   length="1000" descr="默认值公式"/>
+    <col name="showorder"                     type="decimal"   length="22"   descr="显示顺序"/>
+    <col name="listwidth"                     type="decimal"   length="22"   descr="列表显示时宽度"/>
+    <col name="cardwidth"                     type="varchar"   length="100"  descr="卡片显示时宽度"/>
+    <col name="listisshowable"                type="char"      length="1"    descr="列表状态是否显示"/>
+    <col name="listiseditable"                type="char"      length="1"    descr="列表状态是否可编辑"/>
+    <col name="cardisshowable"                type="char"      length="1"    descr="卡片状态是否显示"/>
+    <col name="cardisexport"                  type="char"      length="1"    descr="卡片是否导出,取值0-不导出,1-半列导出,2-全列导出"/>
+    <col name="listisexport"                  type="char"      length="1"    descr="列表是否导出,下拉列表,取值Y-导出,N-不导出,为空表示默认导出"/>
+    <col name="cardiseditable"                type="char"      length="1"    descr="卡片状态是否编辑"/>
+    <col name="iswrap"                        type="char"      length="1"    descr="是否换行"/>
+    <col name="grouptitle"                    type="varchar"   length="500"  descr="分组标题"/>
+    <col name="propisshowable"                type="char"      length="1"    descr="属性框是否显示"/>
+    <col name="propiseditable"                type="char"      length="1"    descr="属性框是否可编辑"/>
+    <col name="hyperlinkdesc"                 type="varchar"   length="1000" descr="超链接"/>
+    <col name="showbgcolor"                   type="varchar"   length="60"   descr="背景颜色"/>
+    <col name="listishtmlhref"                type="char"      length="1"    descr="列表状态是否Html超链接风格"/>
+    <col name="listiscombine"                 type="char"      length="1"    descr="列表状态是否合并"/>
+    <col name="isquickquerywrap"              type="char"      length="1"    descr="快速查询框是否换行"/>
+    <col name="isquickqueryshowable"          type="char"      length="1"    descr="快速查询框中是否显示"/>
+    <col name="isquickqueryeditable"          type="char"      length="1"    descr="快速查询框中是否可编辑"/>
+    <col name="iscommquerywrap"               type="char"      length="1"    descr="通用查询框中是否换行"/>
+    <col name="iscommqueryshowable"           type="char"      length="1"    descr="通用查询框中是否显示"/>
+    <col name="iscommqueryeditable"           type="char"      length="1"    descr="通用查询框中是否可编辑"/>
+    <col name="queryitemtype"                 type="varchar"   length="50"   descr="查询类型,比如标准,in,like or等,自定义"/>
+    <col name="queryitemdefine"               type="varchar"   length="500"  descr="查询自定义"/>
+    <col name="querycreatetype"               type="varchar"   length="50"   descr="查询器类型"/>
+    <col name="querycreatecustdef"            type="varchar"   length="500"  descr="查询器自己定义"/>
+    <col name="querydefaultformula"           type="varchar"   length="300"  descr="查询框默认值公式"/>
+    <col name="querywidth"                    type="varchar"   length="10"   descr="查询框宽度"/>
+    <col name="isquerymustinput"              type="char"      length="1"    descr="查询框是否必输条件"/>
+    <col name="iskeeptrace"                   type="char"      length="1"    descr="是否保留历史痕迹"/>
+    <col name="workflowiseditable"            type="char"      length="1"    descr="工作流是否可编辑"/>
+   
+  </columns>
+  <indexs>
+     <index  name="in_pub_templet_1_item_1"    cols="pk_pub_templet_1"   />
+     <index  name="in_pub_templet_1_item_2"    cols="pk_pub_templet_1,itemkey"   />
+  </indexs>
+</table>
+
+<table name="pub_billcelltemplet_h" pkname="id" descr="Excel模板的主表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="模板编码"/>
+    <col name="templetname"                   type="varchar"   length="200"  descr="模板名称"/>
+    <col name="billno"                        type="varchar"   length="50"   descr="单据类型"/>
+    <col name="rowlength"                     type="decimal"   length="22"   descr="有几行"/>
+    <col name="collength"                     type="decimal"   length="22"   descr="有几列"/>
+    <col name="seq"                           type="decimal"   length="5"    descr="有几列"/>
+    <col name="descr"                         type="varchar"   length="1000" descr="备注"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_billcelltemplet_h_1"    cols="templetcode"   />
+     <index  name="in_pub_billcelltemplet_h_2"    cols="billno"   />
+     <index  name="in_pub_billcelltemplet_h_3"    cols="templetcode,billno"   />
+  </indexs>
+</table>
+
+<table name="pub_billcelltemplet_d" pkname="id" descr="Excel模板的子表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="templet_h_id"                  type="decimal"   length="22"   reffield="pub_billcelltemplet_h.id" ismulti="N1" descr="主表的主键"/>
+    <col name="cellrow"                       type="decimal"   length="22"   descr="第几行"/>
+    <col name="cellcol"                       type="decimal"   length="22"   descr="第几列"/>
+    <col name="cellkey"                       type="varchar"   length="30"   descr="格子的标识,最重要的属性之一"/>
+    <col name="celltype"                      type="varchar"   length="20"   descr="控件类型,比如文本框,下拉框,参照"/>
+    <col name="cellvalue"                     type="varchar"   length="2500" descr="实际值"/>
+    <col name="span"                          type="varchar"   length="15"   descr="合并的说明,最重要属性之一"/>
+    <col name="celldesc"                      type="varchar"   length="500"  descr="备注"/>
+    <col name="cellhelp"                      type="varchar"   length="2500" descr="帮助说明"/>
+    <col name="foreground"                    type="varchar"   length="15"   descr="前景颜色"/>
+    <col name="background"                    type="varchar"   length="15"   descr="背景颜色"/>
+    <col name="fonttype"                      type="varchar"   length="50"   descr="字体"/>
+    <col name="fontstyle"                     type="varchar"   length="15"   descr="字体风格"/>
+    <col name="fontsize"                      type="varchar"   length="5"    descr="字体大小"/>
+    <col name="rowheight"                     type="varchar"   length="5"    descr="行高"/>
+    <col name="colwidth"                      type="varchar"   length="5"    descr="列宽"/>
+    <col name="iseditable"                    type="char"      length="1"    descr="是否可编辑"/>
+    <col name="ishtmlhref"                    type="char"      length="1"    descr="是否是Html超链接的风格"/>    
+    <col name="valign"                        type="decimal"   length="22"   descr="纵向排列"/>
+    <col name="halign"                        type="decimal"   length="22"   descr="横向排列"/>
+    <col name="loadformula"                   type="varchar"   length="500"  descr="加载公式"/>
+    <col name="editformula"                   type="varchar"   length="500"  descr="编辑公式"/>
+    <col name="validateformula"               type="varchar"   length="500"  descr="校验公式"/>
+    <col name="avgformula"                    type="varchar"   length="500"  descr="平均数风格,高峰后来加的"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_billcelltemplet_d_1"   cols="templet_h_id" />
+  </indexs>
+</table>
+
+<table name="pub_billcelltemplet_data" pkname="id" descr="Excel模板的实例数据表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="templet_h_id"                  type="decimal"   length="22"   reffield="pub_billcelltemplet_h.id" ismulti="N1" descr=""/>
+    <col name="billno"                        type="varchar"   length="100"  descr=""/>
+    <col name="cellkey"                       type="varchar"   length="100"  descr=""/>
+    <col name="cellvalue"                     type="varchar"   length="500"  descr=""/>
+  </columns>
+  <indexs>
+      <index  name="in_pub_billcelltemplet_data_1"   cols="templet_h_id" />
+      <index  name="in_pub_billcelltemplet_data_2"   cols="billno" />
+      <index  name="in_pub_billcelltemplet_data_3"   cols="templet_h_id,billno" />
+  </indexs>
+</table>
+
+<table name="pub_printtemplet" pkname="id" descr="打印模板主表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="templetcode"/>
+    <col name="templetname"                   type="varchar"   length="300"  descr="templetname"/>
+    <col name="descr"                         type="varchar"   length="500"  descr="descr"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_printtemplet_1"  cols="templetcode"  />
+  </indexs>
+</table>
+
+<table name="pub_printtemplet_groupheader" pkname="id" descr="打印模板的分组表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="parentid"                      type="decimal"   length="22"   reffield="pub_printtemplet.id" ismulti="N1" descr=""/>
+    <col name="itemkey"                       type="varchar"   length="300"  descr=""/>
+    <col name="itemname"                      type="varchar"   length="2000" descr=""/>
+    <col name="x"                             type="decimal"   length="22"   descr=""/>
+    <col name="y"                             type="decimal"   length="22"   descr=""/>
+    <col name="width"                         type="decimal"   length="22"   descr=""/>
+    <col name="height"                        type="decimal"   length="22"   descr=""/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_printtemplet_grouphd_1"  cols="parentid"  />
+  </indexs>
+</table>
+
+<table name="pub_printtemplet_itembands" pkname="id" descr="打印模板明细设置表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="parentid"                      type="decimal"   length="22"   reffield="pub_printtemplet.id" ismulti="N1" descr="parentid"/>
+    <col name="itemkey"                       type="varchar"   length="100"  descr="itemkey"/>
+    <col name="itemname"                      type="varchar"   length="300"  descr="itemname"/>
+    <col name="x"                             type="decimal"   length="22"   descr="x"/>
+    <col name="y"                             type="decimal"   length="22"   descr="y"/>
+    <col name="width"                         type="decimal"   length="22"   descr="width"/>
+    <col name="height"                        type="decimal"   length="22"   descr="height"/>
+    <col name="fonttype"                      type="varchar"   length="30"   descr="fonttype"/>
+    <col name="fontsize"                      type="varchar"   length="5"    descr="fontsize"/>
+    <col name="fontstyle"                     type="varchar"   length="30"   descr="fontstyle"/>
+    <col name="halign"                        type="decimal"   length="22"   descr=""/>
+    <col name="valign"                        type="decimal"   length="22"   descr=""/>
+    <col name="layer"                         type="decimal"   length="22"   descr=""/>
+    <col name="foreground"                    type="varchar"   length="6"    descr=""/>
+    <col name="background"                    type="varchar"   length="6"    descr=""/>
+    <col name="isshowborder"                  type="char"      length="1"    descr=""/>
+    <col name="isshowbaseline"                type="char"      length="1"    descr=""/>
+  </columns>
+  <indexs>
+    <index  name="in_pub_printtemplet_itembds_1"  cols="parentid"  />
+  </indexs>
+</table>
+
+<table name="pub_bom" pkname="id" descr="Bom模板表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="code"                          type="varchar"   length="100"  descr="Bom图编码"/>
+    <col name="bgimgname"                     type="varchar"   length="100"  descr="背景图"/>
+    <col name="descr"                         type="varchar"   length="100"  descr="备注"/>
+    <col name="afterinitcls"                  type="varchar"   length="100"  descr="初始化后的拦截器类"  remark="一汽项目中遇到多层Bom图进入,觉得这有有个注册类名更方便,这个类是普通类,但构造方法必须是约定好的,具体说明见模板定义中的帮助"/>
+   </columns>
+  <indexs>
+     <index  name="in_pub_bom_1"   cols="code"  />
+  </indexs>
+</table>
+
+<table name="pub_bom_b" pkname="id" descr="Bom模板子表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="bomid"                         type="decimal"   length="22"   reffield="pub_bom.id" ismulti="N1" descr="父亲主键"/>
+    <col name="x"                             type="decimal"   length="22"   descr="X坐标"/>
+    <col name="y"                             type="decimal"   length="22"   descr="Y坐标"/>
+    <col name="width"                         type="decimal"   length="22"   descr="宽度"/>
+    <col name="height"                        type="decimal"   length="22"   descr="高度"/>
+    <col name="itemkey"                       type="varchar"   length="20"   descr="ItemKey"/>
+    <col name="itemname"                      type="varchar"   length="20"   descr="名称"/>
+    <col name="bindbomcode"                   type="varchar"   length="30"   reffield="pub_bom.code" ismulti="N2" descr="绑定的Bom图"/>
+    <col name="bindclassname"                 type="varchar"   length="100"  descr="绑定的类名"/>
+    <col name="bindtype"                      type="varchar"   length="100"  descr="绑定的类型"/>
+    <col name="bindmenu"                      type="varchar"   length="100"  reffield="pub_menu.id" ismulti="N2" descr="绑定的菜单"/>
+    <col name="loadtype"                      type="varchar"   length="10"  descr="打开下一层方式" remark="王宁后来在财政部项目中遇到想弹出窗口方式打开,取值1/下一层;2-弹出窗口【xch/2012-03-09】"/>
+  </columns>
+  <indexs>
+     <index name="in_pub_bom_b_1"  cols="bomid" />
+  </indexs>
+</table>
+
+<table name="pub_wf_process" pkname="id" descr="工作流配置表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="300"  descr="流程编码"/>
+    <col name="name"                          type="varchar"   length="300"  descr="流程名称"/>
+    <col name="wftype"                        type="varchar"   length="20"   descr="流程类型"/>
+    <col name="cmpfileid"                     type="varchar"   length="200"  descr="流程文件id"/>
+    <col name="wfeguiintercept"               type="varchar"   length="100"  descr="工作流引擎UI端拦截器"  />
+    <col name="wfegbsintercept"               type="varchar"   length="100"  descr="工作流引擎BS端拦截器"  />
+    <col name="userdef01"                     type="varchar"   length="300"  descr="所属机构"      remark="合同中的所属机构"/>
+    <col name="userdef02"                     type="varchar"   length="300"  descr="合同_流程状态" remark="1-有效;2-启用;3-废止"/>
+    <col name="userdef03"                     type="varchar"   length="300"  descr="复制来源"      remark="被复制的流程id"/>
+    <col name="userdef04"                     type="varchar"   length="300"  descr="排序"          remark="流程文件中的流程排序"/>
+    <col name="userdef05"                     type="varchar"   length="300"  descr="userdef05"/>
+    <col name="userdef06"                     type="varchar"   length="50"   descr="userdef06"/>
+    <col name="userdef07"                     type="varchar"   length="50"   descr="userdef07"/>
+    <col name="userdef08"                     type="varchar"   length="50"   descr="userdef08"/>
+    <col name="userdef09"                     type="varchar"   length="50"   descr="userdef09"/>
+    <col name="userdef10"                     type="varchar"   length="50"   descr="userdef10"/>
+    <col name="userdef11"                     type="varchar"   length="50"   descr="userdef11"/>
+    <col name="userdef12"                     type="varchar"   length="50"   descr="userdef12"/>
+    <col name="userdef13"                     type="varchar"   length="50"   descr="userdef13"/>
+    <col name="userdef14"                     type="varchar"   length="50"   descr="userdef14"/>
+    <col name="userdef15"                     type="varchar"   length="50"   descr="userdef15"/>
+    <col name="userdef16"                     type="varchar"   length="50"   descr="userdef16"/>
+    <col name="userdef17"                     type="varchar"   length="50"   descr="userdef17"/>
+    <col name="userdef18"                     type="varchar"   length="50"   descr="userdef18"/>
+    <col name="userdef19"                     type="varchar"   length="50"   descr="userdef19"/>
+    <col name="userdef20"                     type="varchar"   length="50"   descr="userdef20"/>    
+  </columns>
+  <indexs>
+     <index   name="in_pub_wf_process_1"    cols="code"   />
+     <index   name="in_pub_wf_process_2"    cols="wftype"   />
+     <index   name="in_pub_wf_process_3"    cols="cmpfileid"   />
+  </indexs>
+</table>
+
+<!-- 流程环节表,后来陆续增加了自循环,抄送,直接定义机构+角色机制,虚拟环节,子流程等 -->
+<!-- 总之,必须解决提交时的选择人员与机构的界面为最优化,必须解决工作流里的各种统计报表 -->
+<table name="pub_wf_activity" pkname="id" descr="流程环节表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="processid"                     type="decimal"   length="22"   reffield="pub_wf_process.id" ismulti="N1" descr="所属流程的主键,对应于pub_wf_process.id"/>
+    <col name="code"                          type="varchar"   length="300"  descr="节点编码"/>
+    <col name="wfname"                        type="varchar"   length="300"  descr="节点名称"/>
+    <col name="uiname"                        type="varchar"   length="300"  descr="操作名称"/>
+    <col name="x"                             type="decimal"   length="22"   descr="X坐标"/>
+    <col name="y"                             type="decimal"   length="22"   descr="Y坐标"/>
+    <col name="width"                         type="decimal"   length="22"   descr="环节宽度"/>
+    <col name="height"                        type="decimal"   length="22"   descr="环节高度"/>
+    <col name="viewtype"                      type="decimal"   length="22"   descr="显示类型,有方形,圆形,菱形等多种"/>
+    <col name="fonttype"                      type="varchar"   length="30"   descr="字体类型"/>
+    <col name="fontsize"                      type="varchar"   length="30"   descr="字体大小"/>
+    <col name="foreground"                    type="varchar"   length="30"   descr="前景颜色"/>
+    <col name="background"                    type="varchar"   length="30"   descr="背景颜色"/>
+    <col name="imgstr"                        type="varchar"   length="100"  descr="图片"/>
+    <col name="belongdeptgroup"               type="varchar"   length="100"  descr="纵向上属于哪个组"/>
+    <col name="belongstationgroup"            type="varchar"   length="100"  descr="横向上属于哪个组"/>
+    <col name="activitytype"                  type="varchar"   length="10"   descr="节点类型"/>
+    <col name="autocommit"                    type="char"      length="1"    descr="是否自动执行"/>
+    <col name="isassignapprover"              type="char"      length="1"    descr="是否指定审批人"/>
+    <col name="approvemodel"                  type="varchar"   length="20"   descr="审核模式"/>
+    <col name="approvenumber"                 type="decimal"   length="22"   descr="会签数量(%)"/>
+    <col name="childwfcode"                   type="varchar"   length="20"   descr="子流程编码,即当审批模式是子流程时用得到"/>
+    <col name="isselfcycle"                   type="char"      length="1"    descr="是否允许自循环"   remark="如果允许自循环,则仍然可以提交给本环节,即会省去一条线!但可能自循环中也需要定义条件与拦截器" />
+    <col name="selfcyclerolemap"              type="varchar"   length="30"   descr="自循环的角色映射" />
+    <col name="participate_user"              type="varchar"   length="1000" descr="静态参与的人"/>
+    <col name="participate_corp"              type="varchar"   length="500"  descr="参与的机构,可以是支持参数的公式,也可以是一个类名!"/>
+    <col name="participate_group"             type="varchar"   length="1000" reffield="pub_role.id" ismulti="Y"  descr="静态参与的组"/>
+    <col name="participate_dynamic"           type="varchar"   length="1000" descr="动态参与者"/>
+    <col name="ccto_user"                     type="varchar"   length="1000" descr="抄送至的人员"      remark="可以抄送给哪些人员,即像邮件抄送一样,被抄送的人员只能看,不能处理"  />
+    <col name="ccto_corp"                     type="varchar"   length="500"  descr="抄送至的机构"      remark="即哪些机构,可以是支持参数的公式,也可以是一个类名!"/>
+    <col name="ccto_role"                     type="varchar"   length="500"  reffield="pub_role.id" ismulti="Y" descr="抄送至的角色"      remark="如果定义了机构,则必须是其机构范围下的角色,直接多选角色"/>
+    <col name="messageformat"                 type="varchar"   length="4000" descr="邮件格式"/>
+    <col name="messagereceiver"               type="varchar"   length="4000" descr="邮件抄送"/>
+    <col name="iscanlookidea"                 type="varchar"   length="300"  descr="定义可以查看的环节" remark="用于数据权限,即流程中有些环节的意见不能被别的环节浏览"/>
+    <col name="iscanback"                     type="char"      length="1"    descr="是否可以回退"/>
+    <col name="isHideTransSend"               type="char"      length="1"    descr="是否隐藏转办"/>
+    <col name="isneedmsg"                     type="char"      length="1"    descr="是否输入批语"/>
+    <col name="intercept1"                    type="varchar"   length="100"  descr="拦截器1"/>
+    <col name="intercept2"                    type="varchar"   length="100"  descr="拦截器2"/>
+    <col name="extconfmap"                    type="varchar"   length="500"  descr="其他扩展参数"/>
+    <col name="wfeguiintercept"               type="varchar"   length="100"  descr="工作流引擎UI端拦截器"  />
+    <col name="wfegbsintercept"               type="varchar"   length="100"  descr="工作流引擎BS端拦截器"  />
+    <col name="checkuserpanel"                type="varchar"   length="100"  descr="CheckUserPanel"/>
+    <col name="canhalfstart"                  type="char"      length="1"    descr="是否可以半路启动"/>
+    <col name="halfstartrole"                 type="varchar"   length="200"  descr="可以启动的角色"/>
+    <col name="halfstartdepttype"             type="varchar"   length="200"  descr="可以启动的机构类型"/>
+    <col name="canhalfend"                    type="char"      length="1"    descr="是否可以半路结束"/>
+    <col name="canselfaddparticipate"         type="char"      length="1"    descr="是否可以自己添加参与者"/>
+    <col name="showparticimode"               type="varchar"   length="5"    descr="显示参与者方式"/>
+    <col name="isneedreport"                  type="char"      length="1"    descr="是否打印报表"/>
+    <col name="userdef01"                     type="varchar"   length="200"  descr="自定义项1"/>
+    <col name="userdef02"                     type="varchar"   length="200"  descr="自定义项2"/>
+    <col name="userdef03"                     type="varchar"   length="200"  descr="自定义项3"/>
+    <col name="userdef04"                     type="varchar"   length="200"  descr="自定义项4"/>
+    <col name="userdef05"                     type="varchar"   length="200"  descr="自定义项5"/>
+    <col name="userdef06"                     type="varchar"   length="200"  descr="自定义项6"/>
+    <col name="userdef07"                     type="varchar"   length="200"  descr="自定义项7"/>
+    <col name="userdef08"                     type="varchar"   length="200"  descr="自定义项8"/>
+    <col name="userdef09"                     type="varchar"   length="200"  descr="自定义项9"/>
+    <col name="userdef10"                     type="varchar"   length="200"  descr="自定义项10"/>
+    <col name="descr"                         type="varchar"   length="200"  descr="备注"/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_wf_activity_1"    cols="processid"  />
+     <index   name="in_pub_wf_activity_2"    cols="processid,code"  />
+  </indexs>
+</table>
+
+<table name="pub_wf_transition" pkname="id" descr="流程图连线表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="processid"                     type="decimal"   length="22"   reffield="pub_wf_process.id" ismulti="N1" descr="所属流程"/>
+    <col name="code"                          type="varchar"   length="30"   descr="连线的编码"/>
+    <col name="wfname"                        type="varchar"   length="100"   descr="连线名称"/>
+    <col name="uiname"                        type="varchar"   length="30"   descr="连线的显示名称"/>
+    <col name="fromactivity"                  type="decimal"   length="22"   descr="该连线从哪个环节过来的" reffield="pub_wf_activity.id"/>
+    <col name="toactivity"                    type="decimal"   length="22"   descr="该连线指向哪个环节" reffield="pub_wf_activity.id"/>
+    <col name="conditions"                    type="varchar"   length="1000" descr="执行条件"/>
+    <col name="points"                        type="varchar"   length="500" descr="连线上的折点,以逗号分隔"/>
+    <col name="dealtype"                      type="varchar"   length="10"   descr="处理类型"/>
+    <col name="reasoncodesql"                 type="varchar"   length="1000" descr="ReasonCodeSql"/>
+    <col name="mailsubject"                   type="varchar"   length="1000" descr=""/>
+    <col name="mailcontent"                   type="varchar"   length="1000" descr=""/>
+    <col name="intercept"                     type="varchar"   length="300"  descr="拦截器"/>
+    <col name="fonttype"                      type="varchar"   length="100"  descr=""/>
+    <col name="fontsize"                      type="varchar"   length="100"  descr=""/>
+    <col name="foreground"                    type="varchar"   length="100"  descr=""/>
+    <col name="background"                    type="varchar"   length="100"  descr=""/>
+    <col name="linetype"                      type="varchar"   length="10"  descr="箭头类型"/>
+    <col name="issingle"                      type="varchar"   length="10"  descr="箭头是否双向"/>
+  </columns>
+  <indexs>
+    <index   name="in_pub_wf_transition_1"    cols="processid"  />
+    <index   name="in_pub_wf_transition_2"    cols="processid,code"  />
+  </indexs>
+</table>
+
+<table name="pub_wf_group" pkname="id" descr="流程图的纵向与横向矩阵">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="processid"                     type="decimal"   length="22"   reffield="pub_wf_process.id" ismulti="N1" descr=""/>
+    <col name="posts"                         type="varchar"   length="200"  descr="岗位名称串，用英文分号分割"/>
+    <col name="grouptype"                     type="varchar"   length="10"   descr=""/>
+    <col name="code"                          type="varchar"   length="300"  descr=""/>
+    <col name="wfname"                        type="varchar"   length="300"  descr=""/>
+    <col name="uiname"                        type="varchar"   length="300"  descr=""/>
+    <col name="x"                             type="decimal"   length="22"   descr=""/>
+    <col name="y"                             type="decimal"   length="22"   descr=""/>
+    <col name="width"                         type="decimal"   length="22"   descr=""/>
+    <col name="height"                        type="decimal"   length="22"   descr=""/>
+    <col name="descr"                         type="varchar"   length="30"   descr=""/>
+    <col name="fonttype"                      type="varchar"   length="100"  descr=""/>
+    <col name="fontsize"                      type="varchar"   length="100"  descr=""/>
+    <col name="foreground"                    type="varchar"   length="100"  descr=""/>
+    <col name="background"                    type="varchar"   length="100"  descr=""/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_wf_group_1"    cols="processid"  />
+  </indexs>
+</table>
+
+<table name="pub_wf_dypardefines" pkname="id" descr="工作流之动态参与者定义">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="name"                          type="varchar"   length="50"   descr="动态参与者名称"/>
+    <col name="prefixcondition"               type="varchar"   length="100"  descr="机构范围"/>
+	<col name="corptype"                      type="varchar"   length="100"  descr="机构类型"/>
+    <col name="rolename"                      type="varchar"   length="100"  descr="角色名"/>
+    <col name="classname"                     type="varchar"   length="100"  descr="自定义类名"/>
+    <col name="descr"                         type="varchar"   length="100"  descr="说明"/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_wf_dypardefines_1"   cols="name"   />
+  </indexs>
+</table>
+
+<table name="pub_wf_usergroup" pkname="id" descr="群组">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="name"                          type="varchar"   length="100"  descr=""/>
+    <col name="owner"                         type="varchar"   length="100"  descr=""/>
+	<col name="userids"                       type="varchar"   length="4000" descr=""/>
+    <col name="seq"                           type="varchar"   length="10"   descr=""/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_wf_usergroup_2"   cols="owner"   />
+  </indexs>
+</table>
+
+<table name="pub_workflowassign" pkname="id" descr="工作流分配" remark="即什么类型的单据类型与业务类型绑定什么流程">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="billtypecode"                  type="varchar"   length="80"   descr="单据类型编码"/>
+    <col name="busitypecode"                  type="varchar"   length="80"   descr="业务类型编码"/>
+    <col name="processid"                     type="varchar"   length="30"   reffield="pub_wf_process.id" ismulti="N2" descr="分配的流程"/>
+    <col name="accrmodel"                     type="varchar"   length="20"   descr="授权模式,比如法律审查,合规报送等,要与授权配置中的模块对应起来"/>
+    <col name="htmlreport"                    type="varchar"   length="1000"   descr="Html报表模板"/>
+    <col name="wordreport"                    type="varchar"   length="1000"   descr="Word报表模板"/>
+    <col name="openmsgroles"                  type="varchar"   length="300"    descr="对哪些角色不加密意见"/>
+    <col name="viewlastmsgroles"              type="varchar"   length="300"    descr="默认显示最终意见的角色"/>
+    <col name="flowintercept"                 type="varchar"   length="100"  descr="流程拦截器"/>
+    <col name="flowintercept_ui"              type="varchar"   length="100"  descr="流程拦截器UI"/>
+    <!-- 高峰原来还加了两个字段:flowintercept_bs,flowproframeintercept_ui,后来与之讨论,觉得一个还没用,另一个与flowintercept重叠,所以都去掉了! xch(2012-02-23)
+-->
+    <col name="descr"                         type="varchar"   length="100"  descr="备注"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_workflowassign_1"   cols="billtypecode,busitypecode"  />
+     <index  name="in_pub_workflowassign_2"   cols="processid"  />
+  </indexs>
+</table>
+
+
+<table name="pub_workflowassign_dynfilter2" pkname="id" descr="工作流之动态业务二次过滤">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="assignid"                      type="decimal"   length="22"   descr="流程分配表主键"/>
+    <col name="activityid"                    type="varchar"   length="100"  descr="环节名称"/>
+    <col name="itemkey"                       type="varchar"   length="100"  descr="模板列编码"/>
+    <col name="itemvalue"                     type="varchar"   length="100"  descr="模板列的值"/>
+    <col name="roleids"                       type="varchar"   length="100"  descr="角色主键"/>
+    <col name="userids"                       type="varchar"   length="100"  descr="人员主键"/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_workflowassign_df2_1"   cols="assignid"  />
+     <index   name="in_pub_workflowassign_df2_2"   cols="activityid"  />
+     <index   name="in_pub_workflowassign_df2_3"   cols="assignid,activityid"  />
+  </indexs>
+</table>
+
+<table name="pub_workflowaccrproxy" pkname="id" descr="工作流授权代理" remark="即某人因出差或不方便等原因而不能使用系统,而授权给另外一个代理其处理流程,这是非常普遍的一种业务需求">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="accruserid"                    type="decimal"   length="22"   descr="授权人主键"/>
+    <col name="proxyuserid"                   type="decimal"   length="22"   descr="代理人主键,或者说是被授权人的主键"/>
+    <col name="accrmodel"                     type="varchar"   length="15"   descr="流程业务类型,既存在在不同的业务类型下,领导授权给不同的人"/>
+    <col name="accrbegintime"                 type="char"      length="19"   descr="授权起始时间,即授权期限的起始时间"/>
+    <col name="accrendtime"                   type="char"      length="19"   descr="授权结束时间,即授权期限的结束时间"/>
+    <col name="createuser"                    type="decimal"   length="22"   descr="授权创建人,一般就是授权人,但也有可能是第三方授权"/>
+    <col name="createtime"                    type="char"      length="19"   descr="授权创建时间,即这次授权是什么时候创建的"/>
+    <col name="accrreason"                    type="varchar"   length="30"   descr="授权原因"  remark="比例:出差,请假,不" />
+    <col name="descr"                         type="varchar"   length="300"  descr="备注说明"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_wf_prinstance" pkname="id" descr="工作流实例表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+    <col name="processid"                     type="decimal"   length="22"   reffield="pub_wf_process.id" ismulti="N1" descr="流程图主键,关联于pub_wf_process.id"/>
+    <col name="billtempletcode"               type="varchar"   length="100"  descr="业务表的单据模板编码"/>
+    <col name="billtablename"                 type="varchar"   length="30"   descr="对应的业务查询表名"/>
+    <col name="billquerytablename"            type="varchar"   length="30"   descr="对应的查询业务表名,后来觉得查询与保存表名都要有"/>
+    <col name="billpkname"                    type="varchar"   length="30"   descr="对应单据表的主键字段名"/>
+    <col name="billpkvalue"                   type="varchar"   length="30"   descr="对应单据表的主键值"/>
+    <col name="creater"                       type="decimal"   length="22"   descr="流程实际创建者"/>
+    <col name="createtime"                    type="varchar"   length="23"   descr="流程实例创建时间"/>
+    <col name="createactivity"                type="decimal"   length="22"   descr="创建于哪一个环节"/>
+    <col name="endtime"                       type="varchar"   length="23"   descr="流程实例结束时间"/>
+    <col name="lastsubmiter"                  type="decimal"   length="22"   descr="最后提交者"/>
+    <col name="lastsubmitername"              type="varchar"   length="100"  descr="最后提交者名称,招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="lastsubmittime"                type="varchar"   length="23"   descr="最后提交时间"/>
+    <col name="lastsubmitmsg"                 type="varchar"   length="4000" descr="最后提交消息"/>
+    <col name="lastsubmitactivity"            type="decimal"   length="22"   descr="最后提交的环节"/>
+    <col name="lastsubmitresult"              type="char"      length="1"    descr="最后提交的结果"/>
+    <col name="curractivity"                  type="varchar"   length="30"   descr="当前环节"/>
+    <col name="curractivityname"              type="varchar"   length="200"  descr="当前环节名称"/>
+    <col name="currowner"                     type="varchar"   length="100"  descr="当前所属者"/>
+    <col name="submiterhist"                  type="varchar"   length="4000" descr="历史提交人"/>
+    <col name="mylastsubmittime"              type="varchar"   length="4000" descr="我的最后提交时间"/>
+    <col name="mylastsubmitmsg"               type="varchar"   length="4000" descr="我的最后提交意见"/>
+    <col name="status"                        type="varchar"   length="20"   descr="实例状态"/>
+    <col name="currbatchno"                   type="decimal"   length="22"   descr="当前批号"/>
+    <col name="endtype"                       type="varchar"   length="10"   descr="结束类型"/>
+    <col name="endbypoolid"                   type="decimal"   length="22"   descr="是被哪条任务结束掉的"/>
+    <col name="routemark"                     type="varchar"   length="4000" descr="路由标记字段"/>
+    <col name="fromparentactivity"            type="decimal"   length="22"   descr="子流程是从父流程的哪个环节创建的,因为可能在不同的环节创建,也可能在同一环节上创建多次"/>
+    <col name="fromparentdealpoolid"          type="decimal"   length="22"   descr="子流程是从父流程的哪个任务创建的,非常关键,因为子流程结束时,准备为父流程的创建者回写新任务时,必须知道本实例是谁创建的"/>
+    <col name="parentinstanceid"              type="decimal"   length="22"   descr="父亲流程实例主键"/>
+    <col name="rootinstanceid"                type="decimal"   length="22"   descr="根流程实例主键"/>
+    <col name="billsavedtablename"            type="varchar"   length="30"   descr="对应的保存业务表名,后来觉得查询与保存表名都要有"/>
+  </columns>
+  <indexs>
+  	<index name="in_pub_wf_prinstance_1" cols="billtablename" />
+  	<index name="in_pub_wf_prinstance_2" cols="billtablename,billpkvalue" />
+  	<index name="in_pub_wf_prinstance_3" cols="curractivity" />
+  	<index name="in_pub_wf_prinstance_4" cols="creater" />
+  	<index name="in_pub_wf_prinstance_5" cols="currowner" />
+  </indexs>
+</table>
+
+<table name="pub_wf_dealpool" pkname="id" descr="工作流处理记录">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="prinstanceid"                  type="decimal"   length="22"   reffield="pub_wf_prinstance.id" ismulti="N1" descr="实例主键"/>
+    <col name="parentinstanceid"              type="decimal"   length="22"   descr="父亲流程实例主键"/>
+    <col name="rootinstanceid"                type="decimal"   length="22"   reffield="pub_wf_prinstance.id" ismulti="N1" descr="根流程实例主键"/>
+    <col name="processid"                     type="decimal"   length="22"   reffield="pub_wf_process.id" ismulti="N1" descr="流程图主键"/>
+    <col name="batchno"                       type="decimal"   length="22"   descr="批号"/>
+    <col name="createtime"                    type="char"      length="19"   descr="创建时间"/>
+    <col name="creater"                       type="decimal"   length="22"   descr="创建者"/>
+    <col name="creatername"                   type="varchar"   length="100"  descr="创建者名称" remark="招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="createcorp"                    type="decimal"   length="22"   descr="创建机构,即创建人的所属机构"/>
+    <col name="createcorpname"                type="varchar"   length="100"  descr="创建机构名称"/>
+    <col name="createbyid"                    type="decimal"   length="22"   descr="是哪一个处理记录处理的"/>
+    <col name="parentwfcreatebyid"            type="decimal"   length="22"   descr="子流程结束回来时记录发起子流程的那个人的创建人"/>
+    <col name="fromactivity"                  type="decimal"   length="22"   descr="从哪个环节过来的"/>
+    <col name="transition"                    type="decimal"   length="22"   descr="连线,即该任务是经哪根线来的"/>
+    <col name="curractivity"                  type="decimal"   length="22"   descr="当前环节"/>
+    <col name="currapprovemodel"              type="varchar"   length="2"    descr="当前环节的审批模式,用于在监控中显示"/>
+    <col name="participant_user"              type="decimal"   length="22"   descr="提交者/参与者的主键"/>
+    <col name="participant_usercode"          type="varchar"   length="50"   descr="提交者/参与者的编码" remark="太平用邮箱登录，故增加长度"/>
+    <col name="participant_username"          type="varchar"   length="100"  descr="提交者名称" remark="后来有了授权后,需要存储下来了,招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="participant_accruserid"        type="decimal"   length="22"   descr="授权者主键" remark="即可能参与者是被某个领导授权的"/>
+    <col name="participant_accrusercode"      type="varchar"   length="20"   descr="授权者编码"/>
+    <col name="participant_accrusername"      type="varchar"   length="100"  descr="授权者名称" remark="招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="participant_yjbduserid"        type="decimal"   length="22"   descr="意见补登者主键" remark="即可能参与者是被某个领导授权的"/>
+    <col name="participant_yjbdusercode"      type="varchar"   length="20"   descr="意见补登者编码"/>
+    <col name="participant_yjbdusername"      type="varchar"   length="100"  descr="意见补登者名称" remark="招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="participant_userdept"          type="varchar"   length="30"   descr="提交者机构"/>
+    <col name="participant_userdeptname"      type="varchar"   length="100"  descr="提交者机构"/>
+    <col name="participant_userrole"          type="varchar"   length="100"  descr="提交者角色"/>
+    <col name="participant_userrolename"      type="varchar"   length="300"  descr="提交者角色"/>
+    <col name="isccto"                        type="char"      length="1"    descr="是否是抄送模式" remark="即这条消息只是抄送给接收者的"/>
+    <col name="isreceive"                     type="char"      length="1"    descr="是否接受" remark="即接收者是否接收了任务"/>
+    <col name="receivetime"                   type="char"      length="19"   descr="接受时间"/>
+    <col name="isdeal"                        type="char"      length="1"    descr="是否处理,如果动过了则表示处理了"/>
+    <col name="issubmit"                      type="char"      length="1"    descr="是否提交,如果提交了则为Y"/>
+    
+    <col name="isselfcycleclick"              type="char"      length="1"    descr="是否是自循环内部流转的"    remark="邮储项目中对自循环增加了复杂处理" />
+    <col name="selfcycle_fromrolecode"        type="varchar"   length="30"   descr="自循环角色小流程图中的来源编码"/>
+    <col name="selfcycle_fromrolename"        type="varchar"   length="30"   descr="自循环角色小流程图中的来源名称"/>
+    <col name="selfcycle_torolecode"          type="varchar"   length="30"   descr="自循环角色小流程图中的目标编码"/>
+    <col name="selfcycle_torolename"          type="varchar"   length="30"   descr="自循环角色小流程图中的目标名称"/>
+    
+    <col name="realsubmiter"                  type="decimal"   length="22"   descr="实际处理人" remark="因为存在授权问题,所以实际处理人并不一定就等于dealuser,在已办箱中也是根据这个字段来关联的"/>
+    <col name="realsubmitername"              type="varchar"   length="100"  descr="实际处理人的名称" remark="招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="realsubmitcorp"                type="decimal"   length="22"   descr="实际处理人的机构"/>
+    <col name="realsubmitcorpname"            type="varchar"   length="100"  descr="实际处理人的机构名称"/>
+    <col name="submittime"                    type="varchar"   length="23"   descr="提交时间"/>
+    <col name="submitisapprove"               type="char"      length="1"    descr="是否同意"  remark="提交为Y,退回为N"/>
+    <col name="submitmessage"                 type="varchar"   length="4000" descr="处理意见"/>
+    
+    <col name="isprocess"                     type="char"      length="1"    descr="是否已处理过了"/>
+    <col name="isprocesser"                   type="char"      length="1"    descr="是否终结者"/>
+    <col name="ispass"                        type="char"      length="1"    descr="是否通过"/>
+    <col name="submittobatchno"               type="decimal"   length="22"   descr="提交给哪些批号" remark="可以是多个"/>
+    <col name="submittotransition"            type="varchar"   length="100"  descr="提交给哪个连线" remark="即从当前环节上的哪根线出去了"/>
+    <col name="submittoactivity"              type="varchar"   length="100"  descr="提交给哪个环节" remark="因为存在分支,所以可以是多个"/>
+    <col name="submittouser"                  type="varchar"   length="100"  descr="提交给哪些人" remark="可以是多个"/>
+    <col name="submittousername"              type="varchar"   length="300"  descr="提交给哪些人的名称" remark="可以是多个,在查询时需要"/>
+    <col name="submittocorp"                  type="varchar"   length="100"  descr="提交给哪些机构" remark="可以是多个,困为有时不关心人,只关心给了哪些机构"/>
+    <col name="submittocorpname"              type="varchar"   length="300"  descr="提交给哪些机构的名称" remark="可以是多个"/>
+    <col name="submitreasoncode"              type="varchar"   length="30"   descr="提交的原因"/>
+    <col name="submitmessagefile"             type="varchar"   length="1000" descr="提交的附件"/>
+    <col name="routermarkkey"                 type="varchar"   length="100"  descr="路由标记的key"/>
+    <col name="routermarkvalue"               type="varchar"   length="100"  descr="路由标记的value"/>
+    <col name="prioritylevel"                 type="varchar"   length="20"   descr="处理优先级"/>
+    <col name="dealtimelimit"                 type="char"      length="19"   descr="处理时间限制"/>
+    <col name="isrejecteddirup"               type="char"      length="1"    descr="是否直接打回"/>
+    <col name="lifecycle"                     type="varchar"   length="5"    descr="生命周期,取值有C(创建主流程)/CC(创建子流程)/EC(结束子流程)/E(结束主流程)"   remark="大量需求表明,在处理子流程时往往只关心创建与结束这两个关键点的信息,并不关心子流程内部信息,所以最好有个字段明显标识子流程的创建与结束点,所以增加了这个字段" />
+    <col name="userdef01"                     type="varchar"   length="200"  descr=""/>
+    <col name="userdef02"                     type="varchar"   length="200"  descr=""/>
+    <col name="userdef03"                     type="varchar"   length="200"  descr=""/>
+    <col name="userdef04"                     type="varchar"   length="200"  descr=""/>
+    <col name="userdef05"                     type="varchar"   length="200"  descr=""/>
+  </columns>
+  <indexs>
+    <index name="in_pub_wf_dealpool_1"  cols="prinstanceid" />
+    <index name="in_pub_wf_dealpool_2"  cols="participant_user" />
+    <index name="in_pub_wf_dealpool_3"  cols="prinstanceid,participant_user" />
+    <index name="in_pub_wf_dealpool_4"  cols="prinstanceid,participant_user,issubmit" />
+    <index name="in_pub_wf_dealpool_5"  cols="prinstanceid,participant_user,issubmit,isprocess" />
+    <index name="in_pub_wf_dealpool_6"  cols="prinstanceid,participant_user,curractivity" />
+    <index name="in_pub_wf_dealpool_7"  cols="prinstanceid,participant_user,issubmit,isprocess,curractivity" />
+    <index name="in_pub_wf_dealpool_8"  cols="prinstanceid,batchno" />
+    <index name="in_pub_wf_dealpool_9"  cols="prinstanceid,batchno,isdeal" />
+    <index name="in_pub_wf_dealpool_10" cols="prinstanceid,batchno,ispass" />
+    <index name="in_pub_wf_dealpool_11" cols="prinstanceid,batchno,isprocess" />
+  </indexs>
+</table>
+
+<table name="pub_comboboxdict" pkname="pk_pub_comboboxdict" descr="系统下拉字典">
+  <columns>
+    <col name="pk_pub_comboboxdict"           type="decimal"   length="22"   descr="主键"/>
+    <col name="type"                          type="varchar"   length="100"  descr="类型"/>
+    <col name="id"                            type="varchar"   length="100"  descr="编号"/>
+    <col name="code"                          type="varchar"   length="100"  descr=""/>
+    <col name="name"                          type="varchar"   length="500"  descr="名称"/>
+    <col name="descr"                         type="varchar"   length="500"  descr="说明"/>
+    <col name="seq"                           type="decimal"   length="22"   descr="排序"/>
+  </columns>
+  <indexs>
+    <index   name="in_pub_comboboxdict_1"   cols="type"   />
+    <index   name="in_pub_comboboxdict_2"   cols="type,seq"   />
+  </indexs>
+</table>
+
+<table name="pub_regbuttons" pkname="id" descr="系统注册按钮">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="200"  descr="注册码"/>
+    <col name="btntext"                       type="varchar"   length="30"   descr="按钮文字"/>
+    <col name="btntype"                       type="varchar"   length="20"   descr="按钮类型"/>
+    <col name="btnimg"                        type="varchar"   length="30"   descr="按钮图片"/>
+    <col name="btntooltiptext"                type="varchar"   length="100"  descr="按钮描述"/>
+    <col name="btnpars"                       type="varchar"   length="100"  descr="按钮参数"/>
+    <col name="clickingformula"               type="varchar"   length="4000" descr="点击前公式"/>
+    <col name="clickedformula"                type="varchar"   length="4000" descr="点击后公式"/>
+    <col name="allowroles"                    type="varchar"   length="4000" descr="允许角色"/>
+    <col name="allowroletype"                 type="varchar"   length="10"   descr="允许角色类型,有白名单与黑名单之分"/>
+    <col name="allowusers"                    type="varchar"   length="4000" descr="允许人员"/>
+    <col name="allowusertype"                 type="varchar"   length="10"   descr="允许人员类型,有白名单与黑名单之分"/>
+    <col name="allowifcbyinit"                type="varchar"   length="100"  descr="初始化时的校验器"/>
+    <col name="allowifcbyclick"               type="varchar"   length="100"  descr="点击与选择变化时的校验器"/>
+    <col name="btndescr"                      type="varchar"   length="100"  descr="备注说明"/>
+  </columns>
+  <indexs>
+    <index   name="in_pub_regbuttons_1"    cols="code" />
+  </indexs>
+</table>
+
+<table name="pub_regformatpanel" pkname="id" descr="系统注册样板">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="code"                          type="varchar"   length="50"   descr="编码"/>
+    <col name="formatformula"                 type="varchar"   length="4000" descr="样板公式"/>
+    <col name="descr"                         type="varchar"   length="500"  descr="说明"/>
+    <col name="suggestwidth"                  type="decimal"   length="22"   descr="建议宽度"/>
+    <col name="suggestheight"                 type="decimal"   length="22"   descr="建议高度"/>
+    <col name="eventbindformula"              type="varchar"   length="2500" descr="事件公式"/>
+    <col name="regformula1"                   type="varchar"   length="2500" descr="注册公式1"/>
+    <col name="regformula2"                   type="varchar"   length="2500" descr="注册公式2"/>
+    <col name="regformula3"                   type="varchar"   length="2500" descr="注册公式3"/>
+  </columns>
+  <indexs>
+      <index  name="in_pub_regformatpanel_1"   cols="code" descr="注册样板的编码" />
+  </indexs>
+</table>
+
+<table name="pub_refregister" pkname="id" descr="系统注册参照">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="name"                          type="varchar"   length="100"  descr="名称"/>
+    <col name="reftype"                       type="varchar"   length="100"  descr="参照类型"/>
+    <col name="refdefine"                     type="varchar"   length="2000" descr="参照定义"/>
+    <col name="descr"                         type="varchar"   length="200"  descr="说明"/>
+  </columns>
+  <indexs>
+    <index  name="in_pub_refregister_1"  cols="name"  />
+  </indexs>
+</table>
+
+<table name="pub_datapolicy"    pkname="id"    descr="数据权限策略"   remark="" >
+   <columns>
+     <col name="id"                             type="decimal"   length="22"     descr="主键" />
+     <col name="name"                           type="varchar"   length="100"    descr="数据权限策略名称" />
+     <col name="seq"                            type="decimal"   length="10"     descr="排序" />
+     <col name="descr"                          type="varchar"   length="500"    descr="说明" />
+   </columns>
+</table>
+
+<table name="pub_datapolicy_b"  pkname="id"    descr="策略清单"       remark="" >
+   <columns>
+     <col name="id"                             type="decimal"   length="22"     descr="主键" />
+     <col name="datapolicy_id"                  type="varchar"   length="22"     descr="主表主键" reffield="pub_datapolicy.id" remark="对应于pub_datapolicy.id" />
+     <col name="corptypes_m"                    type="varchar"   length="300"    descr="主体机构扩展类型" />
+     <col name="extcorptype_m"                  type="varchar"   length="100"    descr="主体所属机构" />
+     <col name="roles_m"                        type="varchar"   length="300"    ismulti="Y" descr="主体角色"  remark="使用编码,防止删除角色再添加" />
+     <col name="corptype_g1"                    type="varchar"   length="30"     descr="客体机构范围"  remark="机构类型,先沿着自己的父亲路径找,如果找到就退出,否则全机构范围内找" />
+     <col name="corptype_g2"                    type="varchar"   length="100"    descr="范围下的机构类型"      remark="在首次上溯后二次下探的机构类型" />
+     <col name="extcorptype_g2"                 type="varchar"   length="100"    descr="范围下的扩展类型"      remark="在首次上溯后二次下探的扩展机构类型" />
+     <col name="iscontainroot"                  type="char"      length="1"      descr="下探前包含根?" />
+     <col name="iscontainchildren"              type="varchar"   length="1"      descr="下探后包含子孙?" />
+     <col name="uniontype"                      type="varchar"   length="10"     descr="两种下探结果集合" />
+     <col name="roles_g"                        type="varchar"   length="300"    descr="客体人员角色"              remark="在首次上溯后二次下探的的机构结果中的所有人员的角色过滤" />
+     <col name="appendsqlcons"                  type="varchar"   length="100"    descr="附加SQL条件"             remark="有时不光指定人,还可能指定特殊业务字段过滤,比如文件密级,文件类型!最好支持公式,比如根据登录人员角色决定可看什么类型的文件!可以支持or运算!" />
+     <col name="seq"                            type="decimal"   length="10"     descr="排序" />
+   </columns>
+</table>
+
+<table name="pub_option" pkname="id" descr="系统参数">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="modulename"                    type="varchar"   length="50"   descr="模块名称"/>
+    <col name="parkey"                        type="varchar"   length="300"  descr="参数名称"/>
+    <col name="parvalue"                      type="varchar"   length="500"  descr="参数值"/>
+    <col name="pardescr"                      type="varchar"   length="500"  descr="参数说明"/>
+  </columns>
+  <indexs>
+     <index  name="in_pub_option_1"  cols="parkey"  />
+  </indexs>
+</table>
+
+<table name="pub_envvalue" pkname="id" descr="系统环境">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="envkey"                        type="varchar"   length="100"  descr=""/>
+    <col name="envvalue"                      type="varchar"   length="100"  descr=""/>
+    <col name="remark"                        type="varchar"   length="500"  descr=""/>
+  </columns>
+  <indexs>
+      <index  name="in_pub_envvalue_1"  cols="envkey"  />
+  </indexs>
+</table>
+
+<table name="pub_lookandfeel" pkname="id" descr="系统风格皮肤表,即可以有多种风格">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="code"                          type="varchar"   length="30"   descr="编码"/>
+    <col name="name"                          type="varchar"   length="100"  descr="说明"/>
+    <col name="style1"                        type="varchar"   length="30"   descr="风格1"/>
+    <col name="style2"                        type="varchar"   length="30"   descr="风格2"/>
+    <col name="style3"                        type="varchar"   length="30"   descr="风格3"/>
+    <col name="style4"                        type="varchar"   length="30"   descr="风格4"/>
+    <col name="style5"                        type="varchar"   length="30"   descr="风格5"/>
+    <col name="style6"                        type="varchar"   length="30"   descr="风格6"/>
+    <col name="seq"                           type="decimal"   length="22"   descr="seq"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_job" pkname="id" descr="自动任务表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="id"/>
+    <col name="name"                          type="varchar"   length="30"   descr="任务名"/>
+    <col name="classname"                     type="varchar"   length="100"  descr="类名"/>
+    <col name="triggerconf"                   type="varchar"   length="50"   descr="参数"/>
+    <col name="descr"                         type="varchar"   length="100"  descr="备注"/>
+    <col name="activeflag"                    type="char"      length="1"    descr="是否激活"/>
+    <col name="triggertype"                   type="varchar"   length="100"  descr="调度类型"/>
+    <col name="exechist"                      type="varchar"   length="4000" descr="执行历史"/>
+    <col name="lastexectime"                  type="varchar"   length="50" 	 descr="最后执行时间"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_language" pkname="id" descr="多语言定义表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="simplechinese"                 type="varchar"   length="200"  descr=""/>
+    <col name="english"                       type="varchar"   length="200"  descr=""/>
+    <col name="traditionalchinese"            type="varchar"   length="200"  descr=""/>
+    <col name="descr"                         type="varchar"   length="300"  descr=""/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_sequence" pkname="" descr="序列表" remark="模拟Oracle的序列机制生成主键">
+  <columns>
+    <col name="sename"                        type="varchar"   length="100"  descr="序列名称"/>
+    <col name="currvalue"                     type="decimal"   length="22"   descr="当前值"/>
+  </columns>
+  <indexs>
+     <index   name="in_pub_sequence_1"   cols="sename"   />
+  </indexs>
+</table>
+
+
+<table name="pub_task_class" pkname="id"  descr="任务在类表" remark="即流程中心的出发点表,在首页就是直接从这个表出发构建目录树,树里就是各个模块的草稿箱,待办箱,已办箱等,然后各个具体功能点就是根据这个表中的class来构造页面">
+  <columns>
+    <col name="id"                            type="decimal"      length="22"       descr="主键"/>
+    <col name="taskclasscode"                 type="varchar"      length="30"       descr="任务大类编码,用来关联的" />
+    <col name="taskclassname"                 type="varchar"      length="30"       descr="任务大类名称用来显示的" />
+    <col name="bill_tmptcode"                 type="varchar"      length="50"       descr="业务单据模板编码" />
+    <col name="taskdeal_tmptcode"             type="varchar"      length="50"       descr="待办箱模板编码,默认就是pub_task_deal的" />
+    <col name="taskoff_tmptcode"              type="varchar"      length="50"       descr="已办箱模板编码,默认就是pub_task_off的" />
+    <col name="parentid"                      type="decimal"      length="10"       descr="树型结构的父记录的主键,因为到时很可能是树型结构的展示,但最多两层,比如合规,法律,风险" />
+    <col name="seq"                           type="decimal"      length="5"        descr="排序字段,因为到时肯定需要决定哪个排在前面,哪个在后面的" />
+  </columns>
+  
+</table>
+
+<table name="pub_task_draft" pkname="id"  descr="草稿箱任务"  remark="即工作流中的草稿箱,待办箱都是从这里取的,其实就是一个名副其实的任务中心,即有草稿箱,待办箱,已办箱,形成以任务及消息为中心模型,然后某一个任务对应一张单据!" >
+  <columns>
+    <col name="id"                            type="decimal"  length="22"    descr="主键"/>
+    <col name="taskclass"                     type="varchar"  length="30"    descr="任务大类"/>
+    <col name="dealitemname"                  type="varchar"  length="500"   descr="事项名称,一般就是拿单据中的某一个字段(比如name)来用" />
+    <col name="creater"                       type="decimal"   length="22"   descr="创建人,即草稿人Id"/>
+    <col name="creatername"                   type="varchar"   length="10"   descr="创建人名称,即草稿人Name"/>
+    <col name="createtime"                    type="char"      length="19"   descr="创建时间"/>
+  </columns>
+</table>
+
+<table name="pub_task_deal" pkname="id" descr="待办的任务" remark="任务处理中心表,即将来所有的某个人的所有待办任务都在这个表中,任务既可以工作流的,也可以不是工作流的,理论上,只要显示事项名称,提交人,提交机构,提交时间,提交意见这5个关键信息就能满足所有的">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="主键"/>
+    <col name="taskclass"                     type="varchar"   length="30"   descr="任务大类,比如法律审查,合规审核等,将与待办中心左边的树结点名称关联"/>
+    <col name="prinstanceid"                  type="decimal"   length="22"   descr="流程实例主键"/>
+    <col name="parentinstanceid"              type="decimal"   length="22"   descr="父流程实例主键"/>
+    <col name="rootinstanceid"                type="decimal"   length="22"   descr="根流程实例主键"/>
+    <col name="prdealpoolid"                  type="decimal"   length="22"   descr="流程任务主键,如果是工作流的消息,则可以直接通过为个字段来删除,因为这时与pub_wf_dealpool.id是一一关联的"/>
+    <col name="createbydealpoolid"            type="decimal"   length="22"   descr="是由哪条流程任务创建的,因为到时需要使用一种树型展示,就靠这个字段来实现"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="模板编码,很关键,因为打开实际业务表单页面时就靠它了"/>
+	<col name="tabname"                       type="varchar"   length="30"   descr="保存的表名,应该是一个实际物理表"/>
+	<col name="querytabname"                  type="varchar"   length="30"   descr="查询的表名,实际情况可能是一个视图"/>
+	<col name="pkname"                        type="varchar"   length="20"   descr="主键字段名,默认一般就是id,但实际情况中也有人不用id作为主键名的"/>
+    <col name="pkvalue"                       type="varchar"   length="20"   descr="主键值,很关键,打开业务表单时就依靠它来查询出对应的记录"/>
+    <col name="tabitemvalue"                  type="varchar"   length="500"  descr="事项名称,应该每张业务表都有类似于名称的字段,比如审查事项名称,如果将这个字段存进来,则就意味着可以不需要关联业务表了"/>
+    
+    <col name="creater"                       type="decimal"   length="22"   descr="创建人,即提交人,很关键"/>
+    <col name="creatername"                   type="varchar"   length="100"  descr="创建人/提交人名称,招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="createcorp"                    type="decimal"   length="22"   descr="创建/提交机构"/>
+    <col name="createcorpname"                type="varchar"   length="100"  descr="创建/提交机构名称,带路径的"/>
+    <col name="createtime"                    type="char"      length="19"   descr="创建/提交时间"/>
+    <col name="createrdealmsg"                type="varchar"   length="4000" descr="创建/提交人的处理意见"/>
+    <col name="msg"                           type="varchar"   length="500"  descr="任务消息说明,即以前首页,比如某某人提交给你的什么消息,一般是通过公式计算的"/>
+    
+    <col name="dealuser"                      type="decimal"   length="22"   descr="待办人id,最关键的,即这是谁的任务,到时就根据这个字段来查询的" />
+    <col name="dealusername"                  type="varchar"   length="100"  descr="待办人名称,比如张三,如果是授权的,则用张三(李四授权),招行项目中遇到以机构名作为人名的情况,结果宽度不够报错" />
+    <col name="dealusercorp"                  type="decimal"   length="22"   descr="待办人的所属机构" />
+    <col name="dealusercorpname"              type="varchar"   length="100"  descr="待办人所属机构名称" />
+    <col name="accruserid"                    type="decimal"   length="22"   descr="授权人id,到时查询时是授权人与待办人都可以查询与处理" />
+    <col name="isccto"                        type="char"      length="1"    descr="是否是抄送的信息,即弹出后不能处理" />
+    <col name="prioritylevel"                 type="varchar"   length="20"   descr="优先级"/>
+    <col name="dealtimelimit"                 type="char"      length="19"   descr="最后处理期限,用于校验是否超期,如果超期则红色警告"/>
+    
+    <col name="islookat"                      type="char"      length="1"    descr="是否查看过,本来不想要这个字段的,但考虑到有人虽然看过了,但可能不删除,所以还是很有一定意义的,这与邮箱中的阅读标记是一样的"/>
+    <col name="lookattime"                    type="char"      length="19"   descr="查看时间,就是最后一次查看时间,其实也就是迁移到已办箱中的时间"/>
+  </columns>
+  <indexs>
+    <index name="in_pub_task_deal_1"   cols="prinstanceid" />
+    <index name="in_pub_task_deal_2"   cols="prdealpoolid" />
+    <index name="in_pub_task_deal_3"   cols="taskclass,dealuser" />
+  </indexs>
+</table>
+
+<table name="pub_task_off" pkname="id" descr="已完成的任务" remark="其实就是直接从待办箱中搬家过来的(这主要是为了保证待办任务的性能),理论上在已办箱中只需显示:事项名称,处理人,处理时间,处理意见这4个关键信息即可!">
+  <columns>
+	<col name="id"                            type="decimal"   length="22"   descr="主键"/>
+	<col name="taskdealid"                    type="decimal"   length="22"   descr="待处理任务的id,即拷贝过来的id"/>
+    <col name="taskclass"                     type="varchar"   length="30"   descr="任务大类,比如法律审查,合规审核等,将与待办中心左边的树结点名称关联"/>
+    <col name="prinstanceid"                  type="decimal"   length="22"   descr="流程实例主键"/>
+    <col name="parentinstanceid"              type="decimal"   length="22"   descr="父流程实例主键"/>
+    <col name="rootinstanceid"                type="decimal"   length="22"   descr="根流程实例主键"/>
+    <col name="prdealpoolid"                  type="decimal"   length="22"   descr="流程任务主键,如果是工作流的消息,则可以直接通过为个字段来删除,因为这时与pub_wf_dealpool.id是一一关联的"/>
+    <col name="createbydealpoolid"            type="decimal"   length="22"   descr="是由哪条流程任务创建的,因为到时需要使用一种树型展示,就靠这个字段来实现"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="模板编码,很关键,因为打开实际业务表单页面时就靠它了"/>
+	<col name="tabname"                       type="varchar"   length="30"   descr="查询的表名,实际情况可能是一个视图"/>
+	<col name="querytabname"                  type="varchar"   length="30"   descr="保存的表名,应该是一个实际物理表"/>
+	<col name="pkname"                        type="varchar"   length="20"   descr="主键字段名,默认一般就是id,但实际情况中也有人不用id作为主键名的"/>
+    <col name="pkvalue"                       type="varchar"   length="20"   descr="主键值,很关键,打开业务表单时就依靠它来查询出对应的记录"/>
+    <col name="tabitemvalue"                  type="varchar"   length="500"  descr="事项名称,应该每张业务表都有类似于名称的字段,比如审查事项名称,如果将这个字段存进来,则就意味着可以不需要关联业务表了"/>
+    
+    <col name="creater"                       type="decimal"   length="22"   descr="创建人,即提交人,很关键"/>
+    <col name="creatername"                   type="varchar"   length="100"  descr="创建人/提交人名称,招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="createcorp"                    type="decimal"   length="22"   descr="创建/提交机构"/>
+    <col name="createcorpname"                type="varchar"   length="100"  descr="创建/提交机构名称,带路径的"/>
+    <col name="createtime"                    type="char"      length="19"   descr="创建/提交时间"/>
+    <col name="createrdealmsg"                type="varchar"   length="4000" descr="创建/提交人的处理意见"/>
+    <col name="msg"                           type="varchar"   length="500"  descr="任务消息说明,即以前首页,比如某某人提交给你的什么消息,一般是通过公式计算的"/>
+    
+    <col name="dealuser"                      type="decimal"   length="22"   descr="待办人id,最关键的,即这是谁的任务,到时就根据这个字段来查询的" />
+    <col name="dealusername"                  type="varchar"   length="100"  descr="待办人名称,比如张三,如果是授权的,则用张三(李四授权),招行项目中遇到以机构名作为人名的情况,结果宽度不够报错" />
+    <col name="dealusercorp"                  type="decimal"   length="22"   descr="待办人的所属机构" />
+    <col name="dealusercorpname"              type="varchar"   length="100"  descr="待办人所属机构名称" />
+    <col name="accruserid"                    type="decimal"   length="22"   descr="授权人id,到时查询时是授权人与待办人都可以查询与处理" />
+    <col name="isccto"                        type="char"      length="1"    descr="是否是抄送的信息,即弹出后不能处理" />
+    <col name="prioritylevel"                 type="varchar"   length="20"   descr="优先级"/>
+    <col name="dealtimelimit"                 type="char"      length="19"   descr="最后处理期限,用于校验是否超期,如果超期则红色警告"/>
+    
+    <col name="islookat"                      type="char"      length="1"    descr="是否查看过,本来不想要这个字段的,但考虑到有人虽然看过了,但可能不删除,所以还是很有一定意义的,这与邮箱中的阅读标记是一样的"/>
+    <col name="lookattime"                    type="char"      length="19"   descr="查看时间,就是最后一次查看时间,其实也就是迁移到已办箱中的时间"/>
+    
+    <col name="realdealuser"                  type="decimal"   length="22"   descr="实际处理人,因为存在授权问题,所以实际处理人并不一定就等于dealuser,在已办箱中也是根据这个字段来关联的"/>
+    <col name="realdealusername"              type="varchar"   length="100"  descr="实际处理人的名称,招行项目中遇到以机构名作为人名的情况,结果宽度不够报错"/>
+    <col name="dealtime"                      type="char"      length="19"   descr="实际处理时间,如果是处理任务,则在提交后立即回写这个字段,同时迁移到历史表中" />
+    <col name="dealmsg"                       type="varchar"   length="4000" descr="实际处理意见" />
+    
+    <col name="submittouser"                  type="varchar"   length="100"  descr="提交给哪些人,可以是多个"/>
+    <col name="submittousername"              type="varchar"   length="300"  descr="提交给哪些人的名称,可以是多个,在查询时需要"/>
+    <col name="submittocorp"                  type="varchar"   length="100"  descr="提交给哪些机构,可以是多个,困为有时不关心人,只关心给了哪些机构"/>
+    <col name="submittocorpname"              type="varchar"   length="300"  descr="提交给哪些机构的名称,可以是多个"/>
+    
+    <col name="submitorconfirm"               type="varchar"   length="10"   descr="是提交还是确认,即进入已办箱有两种模式,一种是提交时进入,一种是将无效或过期的任务转移进入"/>
+    <col name="confirmreason"                 type="varchar"   length="300"  descr="确认的原因,即这条伤是因为什么原因被确认的,比如是抄送的任务,还是被人抢占了!"/>
+  </columns>
+   <indexs>
+    <index name="in_pub_task_off_1"   cols="prinstanceid" />
+    <index name="in_pub_task_off_2"   cols="prdealpoolid" />
+    <index name="in_pub_task_off_3"   cols="taskclass,realdealuser" />
+    <index name="in_pub_task_off_4"   cols="querytabname" />
+    <index name="in_pub_task_off_5"   cols="realdealuser" />
+    <index name="in_pub_task_off_6"   cols="pkvalue" />
+    
+  </indexs>
+</table>
+
+<table name="pub_bill_keeptrace" pkname="id" descr="模板某项保存修改痕迹表">
+  <columns>
+    <col name="fieldname"                     type="varchar"   length="30"   descr=""/>
+    <col name="fieldvalue"                    type="varchar"   length="500"  descr=""/>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="pkname"                        type="varchar"   length="30"   descr=""/>
+    <col name="pkvalue"                       type="varchar"   length="20"   descr=""/>
+    <col name="tablename"                     type="varchar"   length="30"   descr=""/>
+    <col name="tracer"                        type="varchar"   length="20"   descr=""/>
+    <col name="tracetime"                     type="char"      length="19"   descr=""/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_menu_clicklog" pkname="id" descr="菜单点击日志表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+    <col name="username"                      type="varchar"   length="100"   descr="用户名称"/>
+    <col name="deptid"                        type="decimal"   length="22"   descr="机构id"/>
+    <col name="deptname"                      type="varchar"   length="300"  descr="所在机构"/>   
+    <col name="clicktime"                     type="char"      length="19"   descr="点击时间"/>
+    <col name="menuname"                      type="varchar"   length="100"  descr="菜单名称"/>
+    <col name="menupath"                      type="varchar"   length="2000" descr="菜单路径"/>
+    <col name="wastetime"                     type="varchar"   length="50"   descr="消耗时长,后来还有并发数"/>
+    <col name="clientip"                      type="varchar"   length="40"   descr="客户端的IP,应该有两个"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_regbuttons_clicklog" pkname="id" descr="注册按钮点击日志表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="usercode"                      type="varchar"   length="100"   descr=""/>
+    <col name="username"                      type="varchar"   length="30"   descr=""/>
+    <col name="deptname"                      type="varchar"   length="300"  descr=""/>
+    <col name="clicktime"                     type="char"      length="19"   descr=""/>
+    <col name="billname"                      type="varchar"   length="100"  descr=""/>
+    <col name="btncode"                       type="varchar"   length="30"   descr=""/>
+    <col name="btnname"                       type="varchar"   length="50"   descr=""/>
+    <col name="menupath"                      type="varchar"   length="100"  descr=""/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_sysdeallog" pkname="id" descr="系统处理日志表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+    <col name="dealtype"                      type="varchar"   length="50"   descr="类型"/>
+    <col name="dealuserid"                    type="decimal"   length="22"   descr="人员ID"/>
+    <col name="dealusername"                  type="varchar"   length="30"   descr="人员名称"/>
+    <col name="dealcorpid"                    type="decimal"   length="22"   descr="机构ID"/>
+    <col name="dealcorpname"                  type="varchar"   length="100"  descr="机构名称"/>
+    <col name="dealtime"                      type="char"      length="19"   descr="时间"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_desktop_new" pkname="id" descr="首页消息表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+    <col name="title"                         type="varchar"   length="30"   descr="标题"/>
+    <col name="datatype"                      type="varchar"   length="30"   descr="数据类型" remark="有:文字,柱形图,曲线图,饼图"/>
+    <col name="viewcols"                      type="varchar"   length="30"   descr="显示列数" remark="半列/一列" />
+    <col name="imgicon"                       type="varchar"   length="30"   descr="组图标"/>
+    <col name="logoimg"                       type="varchar"   length="30"   descr="标记图标"/>
+    <col name="capimg"                        type="varchar"   length="30"   descr="帽子图片"/>
+    <col name="titlecolor"                    type="varchar"   length="30"   descr="标题颜色"/>
+    <col name="newcount"                      type="decimal"   length="2"    descr="news图标的数量" remark="如果为空则没有news,如果是2则表示前两个是有图片"/>
+    <col name="databuildername"               type="varchar"   length="100"  descr="数据构造器"/>
+    <col name="templetcode"                   type="varchar"   length="100"  descr="默认模板编码"/>
+    <col name="actionname"                    type="varchar"   length="100"  descr="点击的动作"/>
+    <col name="linkmenu"                      type="varchar"   length="30"   descr="关联菜单"/>
+    <col name="islazyload"                    type="varchar"   length="4"    descr="是否懒装入"/>
+    <col name="showorder"                     type="decimal"   length="3"    descr="显示顺序"/>
+    <col name="uneffect"                      type="char"      length="1"    descr="是否失效"/>
+    <col name="otherconfig"                   type="varchar"   length="300"  descr="其他参数"/>
+    <col name="descr"                         type="varchar"   length="300"  descr="备注"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_desktop_role" pkname="id" descr="首页板块权限分配表">
+  <columns>
+   <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+   <col name="desktopid"                     type="decimal"   length="22"   descr="板块id"/>
+   <col name="roleid"                        type="decimal"   length="22"   descr="角色id"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_desktop_user" pkname="id" descr="首页板块个人定制表">
+  <columns>
+   <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+   <col name="desktopid"                     type="decimal"   length="22"   descr="板块id"/>
+   <col name="userid"                        type="decimal"   length="22"   descr="用户id"/>
+   <col name="seq"                           type="decimal"   length="22"   descr="顺序"/>
+   <col name="viewcols"                      type="varchar"   length="30"   descr="显示列数" remark="半列/一列" />
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_sysboard" pkname="id"  descr="系统公告表"  remark="即首页的滚动新闻">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr="ID"/>
+    <col name="msgtype"                       type="varchar"   length="30"   descr="公告分类"/>
+    <col name="title"                         type="varchar"   length="500"  descr="标题"/>
+    <col name="contentmsg"                    type="varchar"   length="4000"  descr="内容"/>
+    <col name="image"                         type="varchar"   length="100"  descr="图片"/>
+    <col name="attachfile"                    type="varchar"   length="300"  descr="附件"/>
+    <col name="creater"                       type="varchar"   length="300"  descr="创建人"/>
+    <col name="createtime"                    type="char"      length="19"   descr="创建时间"/>
+    <col name="seq"                           type="decimal"   length="5"    descr="排序"/>
+    <col name="iseffect"                      type="char"      length="1"    descr="是否有效"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_loginhref" pkname="id" descr="登录页面的热点表">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"   descr=""/>
+    <col name="href_x"                        type="decimal"   length="22"   descr=""/>
+    <col name="href_y"                        type="decimal"   length="22"   descr=""/>
+    <col name="href_width"                    type="decimal"   length="22"   descr=""/>
+    <col name="href_height"                   type="decimal"   length="22"   descr=""/>
+    <col name="href_alt"                      type="varchar"   length="100"  descr=""/>
+    <col name="href_url"                      type="varchar"   length="100"  descr=""/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="wltdual" pkname="" descr="空表" remark="">
+ <columns>
+    <col name="c1"                            type="decimal"   length="22"   descr="主键"/>
+ </columns>
+</table>
+
+<table name="pub_dbimportpk"   pkname="" descr="数据迁移或导入时的主键映射表" remark="一般导入动作完成后需要清空该表">
+ <columns>
+    <col name="tabname"                        type="varchar"    length="30"   descr="表名" />
+    <col name="pkname"                         type="varchar"    length="30"   descr="主键字段名,一般都叫id" />
+    <col name="oldvalue"                       type="varchar"    length="30"   descr="原来的值,即xml中以前的值" />
+    <col name="newvalue"                       type="varchar"    length="30"   descr="新的值,即在目标系统中生成的新值" />
+ </columns> 
+</table>
+
+<table name="pub_sqlins" pkname=""   descr="大数据量in条件子查询临时表">
+  <columns>
+     <col name="bno"                            type="decimal"   length="20"   descr="批号"/>
+     <col name="createtime"                     type="decimal"   length="12"   descr="创建时间,为了提高性能,使用数字2010050601的格式"/>
+     <col name="id1"                            type="varchar"   length="10"    descr="第1列"/>
+     <col name="id2"                            type="varchar"   length="10"    descr="第2列"/>
+     <col name="id3"                            type="varchar"   length="10"    descr="第3列"/>
+     <col name="id4"                            type="varchar"   length="10"    descr="第4列"/>
+     <col name="id5"                            type="varchar"   length="10"    descr="第5列"/>
+     <col name="id6"                            type="varchar"   length="10"    descr="第6列"/>
+     <col name="id7"                            type="varchar"   length="10"    descr="第7列"/>
+     <col name="id8"                            type="varchar"   length="10"    descr="第8列"/>
+     <col name="id9"                            type="varchar"   length="10"    descr="第9列"/>
+     <col name="id10"                           type="varchar"   length="10"    descr="第10列"/>
+     <col name="id11"                           type="varchar"   length="10"    descr="第11列"/>
+     <col name="id12"                           type="varchar"   length="10"    descr="第12列"/>
+     <col name="id13"                           type="varchar"   length="10"    descr="第13列"/>
+     <col name="id14"                           type="varchar"   length="10"    descr="第14列"/>
+     <col name="id15"                           type="varchar"   length="10"    descr="第15列"/>
+     <col name="id16"                           type="varchar"   length="10"    descr="第16列"/>
+     <col name="id17"                           type="varchar"   length="10"    descr="第17列"/>
+     <col name="id18"                           type="varchar"   length="10"    descr="第18列"/>
+     <col name="id19"                           type="varchar"   length="10"    descr="第19列"/>
+     <col name="id20"                           type="varchar"   length="10"    descr="第20列"/>
+     <col name="id21"                           type="varchar"   length="10"    descr="第21列"/>
+     <col name="id22"                           type="varchar"   length="10"    descr="第22列"/>
+     <col name="id23"                           type="varchar"   length="10"    descr="第23列"/>
+     <col name="id24"                           type="varchar"   length="10"    descr="第24列"/>
+     <col name="id25"                           type="varchar"   length="10"    descr="第25列"/>
+     <col name="id26"                           type="varchar"   length="10"    descr="第26列"/>
+     <col name="id27"                           type="varchar"   length="10"    descr="第27列"/>
+     <col name="id28"                           type="varchar"   length="10"    descr="第28列"/>
+     <col name="id29"                           type="varchar"   length="10"    descr="第29列"/>
+     <col name="id30"                           type="varchar"   length="10"    descr="第30列"/>
+  </columns>
+  <indexs>
+    <index name="in_pub_sqlins_1" cols="bno"        descr="批号建索引"/>
+    <index name="in_pub_sqlins_2" cols="createtime" descr="创建时间建索引"/>
+  </indexs>
+</table>
+
+<table name="pub_upfiles"  pkname="id"   descr="上传附件的主表" remark="以前上传文件都是存在目录下,好是好,但移值与升级时不方便,在许多情况下也需要将文件存在数据库中,但因为BLOB的问题跨数据库非常不方便,所以搞了一个存字符串的方法,依次存储在10个列中,不够就换行继续存,一个1.8M的文件会存30行,一个116K的文件会存1,5行">
+  <columns>
+    <col name="id"                            type="decimal"   length="22"    descr="主键"/>
+    <col name="filename"                      type="varchar"   length="300"   descr="文件名,转换成16进制的"/>
+    <col name="fileinitname"                  type="varchar"   length="300"   descr="客户端原来的文件名,检查时需要"/>
+    <col name="isziped"                       type="char"      length="1"     descr="是否压缩"/>
+    <col name="unzipedbytesize"               type="decimal"   length="10"    descr="压缩前的字节大小"/>
+    <col name="zipedbytesize"                 type="decimal"   length="10"    descr="压缩后的字节大小"/>
+    <col name="zipedscale"                    type="decimal"   length="3"     descr="压缩比,最大100"/>
+    <col name="filecodesize"                  type="decimal"   length="10"    descr="64位码的大小"/>
+    <col name="createtime"                    type="char"      length="19"    descr="创建时间"/>
+  </columns>
+  <indexs>
+  	<index name="in_pub_upfiles_1"    cols="filename"     descr="文件名要建索引"/>
+  	<index name="in_pub_upfiles_2"    cols="fileinitname" descr="客户端文件名"/>
+  	<index name="in_pub_upfiles_3"    cols="createtime"   descr="创建时间建索引"/>
+  </indexs>
+</table>
+
+<table name="pub_upfiles_b"  pkname="id"   descr="上传附件的子表" remark="与上一张主表对应的子表,即实际存储文件内容的">
+   <columns>
+      <col name="id"                            type="decimal"   length="22"     descr="主键"/>
+      <col name="fileid"                        type="decimal"   length="22"     descr="对应父表的主键"/>
+      <col name="seq"                           type="decimal"   length="5"      descr="排序字段"/>
+      <col name="createtime"                    type="char"      length="19"     descr="创建时间"/>
+      <col name="c1"                            type="varchar"   length="4000"   descr="第1列" remark="平台代码中每个字段截取了4000"/>
+      <col name="c2"                            type="varchar"   length="4000"   descr="第2列"/>
+      <col name="c3"                            type="varchar"   length="4000"   descr="第3列"/>
+      <col name="c4"                            type="varchar"   length="4000"   descr="第4列"/>
+      <col name="c5"                            type="varchar"   length="4000"   descr="第5列"/>
+      <col name="c6"                            type="varchar"   length="4000"   descr="第6列"/>
+      <col name="c7"                            type="varchar"   length="4000"   descr="第7列"/>
+      <col name="c8"                            type="varchar"   length="4000"   descr="第8列"/>
+      <col name="c9"                            type="varchar"   length="4000"   descr="第9列"/>
+      <col name="c10"                           type="varchar"   length="4000"   descr="第10列"/>
+   </columns>
+   <indexs>
+  	<index name="in_pub_upfiles_b_1"    cols="fileid"       descr="父亲的主键"/>
+  	<index name="in_pub_upfiles_b_2"    cols="createtime" descr="创建时间"/>
+  </indexs>
+</table>
+
+<table name="pub_rtaction_java"  pkname="id"  descr="动态Java代码表" remark="以前有许多类是直接在系统中编写的,然后在线编译,实现热部署效果,同时省去大量公式" >
+   <columns>
+      <col name="id"                            type="decimal"   length="22"      descr="主键"/>
+      <col name="actionname"                    type="varchar"   length="100"     descr="脚本名称"/>
+      <col name="javacode"                      type="varchar"   length="2000"    descr="Java源码,一行最多存2000个"/>
+      <col name="seq"                           type="decimal"   length="10"      descr="行号"/>
+   </columns>
+   <indexs>
+  	<index name="in_pub_rtaction_java_1" cols="actionname" descr="脚本名称索引"/>
+   </indexs>
+</table>
+
+<table name="pub_rtaction_class"  pkname="id"  descr="动态Java编译结果表" remark="就是对pub_rtaction_java中的源码编译后生成的Class码" >
+   <columns>
+      <col name="id"                            type="decimal"   length="22"      descr="主键"/>
+      <col name="actionname"                    type="varchar"   length="100"     descr="脚本名称"/>
+      <col name="classcode"                     type="varchar"   length="300"     descr="编译后的Class码,以16进制存储,为了迁移方便,并没有设成4000长度"/>
+      <col name="seq"                           type="decimal"   length="10"      descr="行号"/>
+   </columns>
+   <indexs>
+  	<index name="in_pub_rtaction_class_1" cols="actionname"     descr="脚本名建索引"/>
+  	<index name="in_pub_rtaction_class_2" cols="actionname,seq" descr="脚本名与行号建索引"/>
+   </indexs>
+</table>
+
+<table name="pub_threadmonitor" pkname="id" descr="线程监控日志表" remark="以前的线程监控没有存储,结果在死了的情况下无法跟踪,所以需要持久化,同时该表还记录了超时的线程">
+  <columns>
+     <col name="id"                            type="decimal"   length="22"      descr="主键"/>
+     <col name="monitortime"                   type="char"      length="19"      descr="监控时间"/>
+     <col name="clusterport"                   type="varchar"   length="8"       descr="集群端口"/>
+     <col name="serverstarttime"               type="varchar"   length="19"      descr="系统启动时间,如果重启了则线程数会不一样"/>
+     <col name="jvmbusy"                       type="decimal"   length="10"      descr="虚拟机忙"/>
+     <col name="jvmfree"                       type="decimal"   length="10"      descr="虚拟机空闲"/>
+     <col name="jvmtotal"                      type="decimal"   length="10"      descr="虚拟机Total"/>
+     <col name="evermaxjvmtotal"               type="decimal"   length="10"      descr="曾经最大的虚拟机内存数"/>
+     <col name="onlineuserbusys"               type="decimal"   length="6"       descr="在线活动的用户"/>
+     <col name="onlineusertotals"              type="decimal"   length="6"       descr="在线全部用户"/>
+     <col name="evermaxonlineusers"            type="decimal"   length="6"       descr="曾经最大的在线用户数"/>
+     <col name="syncthreadtotals"              type="decimal"   length="22"      descr="同步线程总计"/>
+     <col name="syncthreadcurrs"               type="decimal"   length="10"      descr="同步线程当前并发数"/>
+     <col name="syncthreadmaxs"                type="decimal"   length="10"      descr="同步线程最大并发数"/>
+     <col name="callthreadtotals"              type="decimal"   length="22"      descr="远程访问线程总计"/>
+     <col name="callthreadcurrs"               type="decimal"   length="10"      descr="远程访问线程当前并发数"/>
+     <col name="callthreadmaxs"                type="decimal"   length="10"      descr="远程访问线程最大并发数"/>
+     <col name="blockthreads"                  type="decimal"   length="10"      descr="阻塞线程数(超过10秒无响应)"/>
+     <col name="deferthreads"                  type="decimal"   length="10"      descr="超果线程数(响应时长超过10秒)"/>
+     <col name="weighterthreads"               type="decimal"   length="10"      descr="超重的线程"/>
+     <col name="jvmoverthreads"                type="decimal"   length="10"      descr="JVM耗用超过上限"/>
+     <col name="dspoolbusy"                    type="decimal"   length="10"      descr="数据源连接池中正忙实例数"/>
+     <col name="dspooltotal"                   type="decimal"   length="10"      descr="数据源连接池中所有实例数"/>
+     <col name="dspoolmaxbusy"                 type="decimal"   length="10"      descr="数据源连接池中曾经最大忙碌数"/>
+     <col name="dspoolmaxtotal"                type="decimal"   length="10"      descr="数据源连接池中曾经最大实例数"/>
+  </columns>
+  <indexs>
+  	<index name="in_pub_threadmonitor_1" cols="monitortime" descr="监控时间之索引"/>
+  </indexs>
+</table>
+
+<table name="pub_threadmonitor_b" pkname="id" descr="线程监控日志子表" remark="对应主表,记录了阻塞与超时线程的具体内容">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"      descr="主键"/>
+  	<col name="threadmonitor_id"              type="decimal"   length="22"      descr="对应主表的主键,即pub_threadmonitor.id"/>
+  	<col name="monitortime"                   type="char"      length="19"      descr="监控时间"/>
+  	<col name="threadno"                      type="varchar"   length="30"      descr="线程编号"/>
+  	<col name="begintime"                     type="char"      length="19"      descr="开始调用时间"/>
+  	<col name="iscallend"                     type="char"      length="1"       descr="是否调用已结束"/>
+  	<col name="calluser"                      type="varchar"   length="30"      descr="访问者"/>
+  	<col name="servicename"                   type="varchar"   length="100"     descr="服务名"/>
+  	<col name="methodname"                    type="varchar"   length="50"      descr="方法名"/>
+  	<col name="parameters"                    type="varchar"   length="4000"    descr="所有参数"/>
+  	<col name="overtype"                      type="varchar"   length="10"      descr="超时/超重"/>
+  	<col name="usedsecond"                    type="decimal"   length="22"      descr="耗时毫秒数"/>
+  	<col name="weightersize"                  type="decimal"   length="10"      descr="重量"/>
+  	<col name="weightersqls"                  type="varchar"   length="4000"    descr="所有SQL"/>
+  	<col name="jvm1"                          type="decimal"   length="10"      descr="调用前的虚拟机"/>
+  	<col name="jvm2"                          type="decimal"   length="10"      descr="调用后的虚拟机"/>
+  	<col name="jvmused"                       type="decimal"   length="10"      descr="虚拟机消耗"/>
+  	<col name="callmenuname"                  type="varchar"   length="300"     descr="调用的菜单功能点"/>
+  	<col name="callstack"                     type="varchar"   length="4000"    descr="调用的堆栈"/>
+  	<col name="issucess"                      type="char"      length="1"       descr="是否成功"/>
+  	<col name="errormsg"                      type="varchar"   length="2000"    descr="异常信息"/>
+  	<col name="monitortype"                   type="varchar"   length="50"      descr="类型"/>
+  	<col name="serverinsname"                 type="varchar"   length="50"      descr="类型"/>
+  </columns>
+  <indexs>
+  	<index name="in_pub_threadmonitor_b_1" cols="monitortime" descr="监控时间之索引"/>
+  	<index name="in_pub_threadmonitor_b_2" cols="threadno"    descr="线程编号编索引"/>
+  </indexs>
+</table>
+
+<table name="pub_remotecallsucrate" pkname="id" descr="交易成功率" remark="交易成功率">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"      descr="主键"/>
+  	<col name="serverinsname"                 type="varchar"   length="50"      descr="实例名"/>
+  	<col name="daystr"                        type="varchar"   length="25"      descr="日期"/>
+  	<col name="monitortype"                   type="varchar"   length="50"      descr="模块名"/>
+  	<col name="sc00"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc00"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc01"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc01"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc02"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc02"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc03"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc03"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc04"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc04"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc05"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc05"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc06"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc06"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc07"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc07"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc08"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc08"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc09"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc09"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc10"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc10"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc11"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc11"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc12"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc12"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc13"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc13"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc14"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc14"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc15"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc15"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc16"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc16"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc17"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc17"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc18"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc18"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc19"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc19"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc20"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc20"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc21"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc21"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc22"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc22"                          type="varchar"   length="25"      descr="失败数量"/>
+  	<col name="sc23"                          type="varchar"   length="25"      descr="成功数量"/>
+  	<col name="fc23"                          type="varchar"   length="25"      descr="失败数量"/>
+  </columns>
+  <indexs>
+  	<index name="in_pub_remotecallsucrate_2" cols="daystr"    descr=""/>
+  </indexs>
+</table>
+
+<table name="pub_dbtriggerlog"  pkname="id" descr="数据库操作的日志表" remark="在CommDMO中直接监控一些表的增删除改操作,类似于数据库中的触发器">
+ <columns>
+     <col name="id"                            type="decimal"   length="22"      descr="主键"/>
+     <col name="tabname"                       type="varchar"   length="30"      descr="表名"/>
+     <col name="tabdesc"                       type="varchar"   length="50"      descr="表的说明"/>
+     <col name="opetype"                       type="varchar"   length="10"      descr="操作类型"/>
+     <col name="opeuser"                       type="varchar"   length="100"     descr="操作人员"/>
+     <col name="deptid"                        type="decimal"   length="22"      descr="操作人机构id"/>
+     <col name="deptname"                      type="varchar"   length="100"     descr="操作人机构名称"/>
+     <col name="opetime"                       type="char"      length="19"      descr="操作时间"/>
+     <col name="opesql"                        type="varchar"   length="4000"    descr="操作的SQL"/>
+     <col name="clientip"                      type="varchar"   length="40"      descr="客户端的IP,应该有两个,所以宽度设成了40"/>
+ </columns>
+ <indexs>
+  	<index name="in_pub_dbtriggerlog_1" cols="tabname" descr="对表名建索引"/>
+  </indexs>
+</table>
+
+<table name="pub_dbtriggerlog_b"  pkname="id" descr="数据库操作的日志子表" remark="在CommDMO中直接监控一些表的增删除改操作,类似于数据库中的触发器">
+ <columns>
+     <col name="id"                            type="decimal"   length="22"      descr="主键"/>
+     <col name="triggerlog_id"                 type="decimal"   length="22"      descr="父表主键,对应于pub_dbtriggerlog.id"/>
+     <col name="tabname"                       type="varchar"   length="30"      descr="表名"/>
+     <col name="opetype"                       type="varchar"   length="10"      descr="操作类型"/>
+     <col name="itemname"                      type="varchar"   length="30"      descr="列名"/>
+     <col name="itemdesc"                      type="varchar"   length="50"      descr="列说明"/>
+     <col name="olditemvalue"                  type="varchar"   length="4000"    descr="旧值"/>
+     <col name="newitemvalue"                  type="varchar"   length="4000"    descr="新值"/>
+ </columns>
+ <indexs>
+  	<index name="in_pub_dbtriggerlog_b_1" cols="triggerlog_id" descr="对父表的主键索引"/>
+  </indexs>
+</table>
+
+<table name="pub_reffiledeallog" pkname="id" descr="上传文件附件的处理日志" remark="">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"      descr="主键"/>
+  	<col name="bno"                           type="varchar"   length="200"     descr="需加水印的文件名"/>
+  	<col name="dealtype"                      type="varchar"   length="10"      descr="水印文字，十六进制转码后存储"/>
+  	<col name="filename"                      type="varchar"   length="200"     descr="水印图片名"/>
+  	<col name="username"                      type="varchar"   length="20"      descr="水印图片位置,格式为：x;y"/>
+  	<col name="deptname"                      type="varchar"   length="100"     descr="水印图片位置,格式为：x;y"/>
+  	<col name="dealtime"                      type="varchar"   length="19"      descr="水印图片位置,格式为：x;y"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_filewatermark" pkname="id" descr="Office文件水印" remark="打开文件需显示水印的文件记录表">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"      descr="主键"/>
+  	<col name="filename"                      type="varchar"   length="100"      descr="需加水印的文件名"/>
+  	<col name="textwater"                     type="varchar"   length="100"      descr="水印文字，十六进制转码后存储"/>
+  	<col name="picwater"                      type="varchar"   length="100"      descr="水印图片名"/>
+  	<col name="picposition"                   type="varchar"   length="20"      descr="水印图片位置,格式为：x;y"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_stylepaddoc"   pkname="id" descr="保存富文本框数据" remark="富文本框中的数据是以行形式保存在该平台表中的">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"        descr="主键"/>
+  	<col name="batchid"                       type="decimal"   length="22"        descr="批号"/>
+  	<col name="seq"                           type="decimal"   length="5"         descr="排序字段"/>
+  	<col name="doc0"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc1"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc2"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc3"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc4"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc5"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc6"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc7"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc8"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="doc9"                          type="varchar"   length="2000"      descr="数据列"/>
+  </columns>
+  <indexs>
+     <index name="in_pub_stylepaddoc_1" cols="batchid" descr="批号"/>
+  </indexs>
+</table>
+
+<table name="pub_imgupload"   pkname="id" descr="图片上传存储表" remark="直接将图片存储在数据库中的表,专供图片上传控件使用">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"        descr="主键"/>
+  	<col name="batchid"                       type="decimal"   length="22"        descr="批号"/>
+  	<col name="billtable"                     type="varchar"   length="30"        descr="业务表"/>
+  	<col name="billpkname"                    type="varchar"   length="30"        descr="主键字希名"/>
+  	<col name="billpkvalue"                   type="varchar"   length="30"        descr="主键字段值"/>
+  	<col name="seq"                           type="decimal"   length="5"         descr="排序字段"/>
+  	<col name="img0"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img1"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img2"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img3"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img4"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img5"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img6"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img7"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img8"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="img9"                          type="varchar"   length="2000"      descr="数据列"/>
+  </columns>
+  <indexs>
+     <index name="in_pub_imgupload_1" cols="batchid" descr="批号"/>
+  </indexs>
+</table>
+
+<table name="pub_clob"   pkname="id" descr="大字段处理表" remark="存储时候如果有字段大于4000个字节则存到这个表里，存储需使用SqlBuilderIfc">
+  <columns>
+  	<col name="id"                             type="decimal"    length="22"        descr="主键"/>
+  	<col name="batchid"                        type="decimal"    length="22"        descr="批号"/>
+  	<col name="seq"                            type="decimal"    length="5"         descr="排序字段"/>
+  	<col name="clob0"                          type="varchar"   length="4000"      descr="数据列"/>
+  	<col name="clob1"                          type="varchar"   length="4000"      descr="数据列"/>
+  	<col name="clob2"                          type="varchar"   length="4000"      descr="数据列"/>
+  	<col name="clob3"                          type="varchar"   length="4000"      descr="数据列"/>
+  	<col name="clob4"                          type="varchar"   length="4000"      descr="数据列"/>
+  	<col name="clob5"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="clob6"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="clob7"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="clob8"                          type="varchar"   length="2000"      descr="数据列"/>
+  	<col name="clob9"                          type="varchar"   length="2000"      descr="数据列"/>
+  </columns>
+  <indexs>
+     <index name="in_pub_clob_1" cols="batchid" descr="批号"/>
+  </indexs>
+</table>
+
+<table name="pub_dateoption" pkname="id" descr="计算有效工作日的表" remark="可以维护和查看有效工作日">
+  <columns>
+  	<col name="id"                            type="decimal"   length="22"      descr="主键"/>
+  	<col name="daytime"                       type="char"      length="10"      descr="日期"/>
+  	<col name="week"                          type="varchar"   length="10"      descr="星期"/>
+  	<col name="isfree"                        type="char"      length="1"       descr="节假日"/>
+  	<col name="descr"                         type="varchar"   length="100"     descr="说明"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_msgcenter" pkname="id" descr="消息记录" remark="消息记录">
+  <columns>
+  	<col name="id"                                type="decimal"   length="22"      descr="主键"/>
+  	<col name="msgtype"                           type="varchar"   length="50"      descr="类型"/>
+  	<col name="receiver"                          type="varchar"   length="500"     descr="接收人"/>
+  	<col name="recvcorp"                          type="varchar"   length="500"     descr="接收机构"/>
+  	<col name="recvrole"                          type="varchar"   length="100"     descr="接收角色"/>
+  	<col name="msgtitle"                          type="varchar"   length="100"     descr="标题"/>
+  	<col name="msgcontent"                        type="varchar"   length="3000"    descr="内容"/>
+  	<col name="msgfile"                           type="varchar"   length="500"     descr="附件"/>
+  	<col name="sender"                            type="varchar"   length="100"     descr="发送人"/>
+  	<col name="sendercorp"                        type="varchar"   length="100"     descr="发送机构"/>
+  	<col name="senddate"                          type="varchar"   length="19"      descr="发送时间"/>
+  	<col name="extconfmap"                        type="varchar"   length="100"     descr="扩展参数"/>
+  	<col name="isdelete"                          type="varchar"   length="1"       descr="是否删除"/>
+  	<col name="state"                             type="varchar"   length="100"     descr="状态"/>
+  	<col name="functiontype"                      type="varchar"   length="100"     descr="功能类型"/>
+  	<col name="userdef01"                         type="varchar"   length="100"     descr="备用"/>
+  	<col name="userdef02"                         type="varchar"   length="100"     descr="备用"/>
+  	<col name="userdef03"                         type="varchar"   length="100"     descr="备用"/>
+  	<col name="userdef04"                         type="varchar"   length="100"     descr="备用"/>
+  	<col name="userdef05"                         type="varchar"   length="100"     descr="备用"/>
+  	<col name="billtype"                          type="varchar"   length="100"     descr="工作流"/>
+  	<col name="busitype"                          type="varchar"   length="100"     descr="工作流"/>
+  	<col name="wfprinstanceid"                    type="varchar"   length="100"     descr="工作流"/>
+  	<col name="wf_state"                          type="varchar"   length="100"     descr="工作流"/>
+  	<col name="createtime"                        type="char"      length="19"      descr="创建时间"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_msgcenter_readed" pkname="id" descr="是否察看" remark="是否察看">
+  <columns>
+  	<col name="id"                                type="decimal"   length="22"      descr="主键"/>
+  	<col name="msgid"                             type="char"      length="22"      descr="消息主键"/>
+  	<col name="readtime"                          type="varchar"   length="19"      descr="查看时间"/>
+  	<col name="userid"                            type="varchar"   length="22"      descr="查看人"/>
+  	<col name="isdelete"                          type="varchar"   length="1"       descr="是否删除"/>
+  	<col name="sender"                            type="varchar"   length="22"      descr="发送人"/>
+  	<col name="msgtitle"                          type="varchar"   length="100"     descr="消息标题"/>
+  	<col name="senddate"                          type="varchar"   length="19"      descr="发送时间"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_msgcenter_rule" pkname="id" descr="消息类型" remark="消息类型">
+  <columns>
+  	<col name="id"                                 type="decimal"   length="22"      descr="主键"/>
+  	<col name="name"                               type="varchar"   length="100"     descr="名称"/>
+  	<col name="sendimpl"                           type="varchar"   length="100"     descr="发送实现"/>
+  	<col name="clickimpl"                          type="varchar"   length="100"     descr="点击实现"/>
+  	<col name="seq"                                type="varchar"   length="10"      descr="排序"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_message" pkname="id" descr="消息中心主表" remark="消息中心主表">
+<columns>
+  	<col name="id"                                 type="decimal"   length="22"      descr="主键"/>
+	<col name="msgtype"                            type="varchar"   length="30"      descr="消息类型"/>
+	<col name="receiver"                           type="varchar"   length="500"     descr="接收人"/> 
+	<col name="recvcorp"                           type="varchar"   length="500"     descr="接收机构"/>  
+	<col name="recvrole"                           type="varchar"   length="100"     descr="接收角色"/>  
+	<col name="msgtitle"                           type="varchar"   length="100"     descr="标题"/>  
+	<col name="msgcontent"                         type="varchar"   length="1000"    descr="内容"/>  
+	<col name="msgfile"                            type="varchar"   length="500"     descr="附件"/>  
+	<col name="sender"                             type="varchar"   length="100"     descr="发送人"/>  
+	<col name="sendercorp"                         type="varchar"   length="100"     descr="发送机构"/>  
+	<col name="senddate"                           type="varchar"   length="30"      descr="发送时间"/>  
+	<col name="WF_ID"                              type="varchar"   length="22"      descr="工作流关联id"/>  
+	<col name="isdelete"                           type="varchar"   length="1"       descr="是否删除"/>  
+	<col name="tostr"                              type="varchar"   length="100"     descr="表单tostring值"/>
+	<col name="templetcode"                        type="varchar"   length="100"      descr="表单模板编码"/>
+	<col name="templetname"                        type="varchar"   length="100"     descr="表单模板编码"/>
+	<col name="tablename"                          type="varchar"   length="100"      descr="表单查询表名"/>
+	<col name="pkey"                               type="varchar"   length="30"      descr="表单主键字段"/>
+	<col name="pvalue"                             type="varchar"   length="30"      descr="表单主键字段值"/>
+	<col name="taskid"                             type="varchar"   length="30"      descr="工作流消息任务id"/>
+	<col name="dealpoolid"                         type="varchar"   length="30"      descr="工作流流程任务id"/> 
+	<col name="prinstanceid"                       type="varchar"   length="30"      descr="工作流流程实例id"/> 
+	<col name="creattime"                          type="varchar"   length="30"      descr="创建时间"/>
+	<col name="msgopinion"                         type="varchar"   length="1000"    descr="消息意见"/> 
+	<col name="billtype"                           type="varchar"   length="100"     descr="工作流"/> 
+	<col name="busitype"                           type="varchar"   length="100"     descr="工作流"/> 
+	<col name="wfprinstanceid"                     type="varchar"   length="100"     descr="工作流"/> 
+	<col name="wf_state"                           type="varchar"   length="100"     descr="工作流"/>
+	<col name="ext001"                             type="varchar"   length="100"     descr="扩展字段001"/>
+	<col name="ext002"                             type="varchar"   length="100"     descr="扩展字段002"/>
+	<col name="ext003"                             type="varchar"   length="100"     descr="扩展字段003"/>
+	<col name="ext004"                             type="varchar"   length="100"     descr="扩展字段004"/>
+	<col name="ext005"                             type="varchar"   length="100"     descr="扩展字段005"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_message_readed" pkname="id" descr="消息中心已读消息表" remark="消息中心已读消息表">
+<columns>
+  	<col name="id"                                 type="decimal"   length="22"      descr="主键"/>
+  	<col name="msgid"                              type="varchar"   length="30"      descr="消息ID"/>
+  	<col name="msgtitle"                           type="varchar"   length="100"     descr="消息标题"/> 
+  	<col name="sender"                             type="varchar"   length="30"      descr="发送人"/>
+  	<col name="senddate"                           type="varchar"   length="30"      descr="发送时间"/> 
+  	<col name="userid"                             type="varchar"   length="30"      descr="查看人"/> 
+  	<col name="readtime"                           type="varchar"   length="30"      descr="查看时间"/> 
+  	<col name="isdelete"                           type="varchar"   length="1"       descr="是否删除"/> 
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_message_opinion" pkname="id" descr="消息中心消息意见表" remark="消息中心消息意见表">
+<columns>
+  	<col name="id"                                 type="decimal"   length="22"      descr="主键"/>
+  	<col name="msgid"                              type="varchar"   length="30"      descr="消息ID"/>
+  	<col name="msgopinion"                         type="varchar"   length="1000"    descr="消息意见"/> 
+  	<col name="userid"                             type="varchar"   length="30"      descr="发表人"/> 
+  	<col name="creattime"                          type="varchar"   length="30"      descr="发表时间"/> 
+  	<col name="isdelete"                           type="varchar"   length="1"       descr="是否删除"/> 
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+
+<table name="pub_desktop_btn" pkname="id" descr="首页动态按钮切换配置表" remark="首页动态按钮切换配置表">
+<columns>
+  	<col name="id"                                 type="decimal"   length="22"      descr="主键"/>
+  	<col name="image"                              type="varchar"   length="100"     descr="图片名称"/>
+  	<col name="text"                        	   type="varchar"   length="20"      descr="显示文本"/> 
+  	<col name="seq"                                type="char"      length="2"       descr="排序"/> 
+  	<col name="lostcolor"                          type="varchar"   length="20"      descr="失去焦点颜色"/> 
+  	<col name="action"                             type="varchar"   length="200"     descr="事件，实现I_DeskTopPanelBtnStyleActionIfc"/>
+  	<col name="visible"                            type="char"      length="1"       descr="是否显示"/>
+  	<col name="type"                               type="varchar"   length="50"      descr="分类"/> 
+  	<col name="loadtype"                           type="varchar"   length="10"      descr="加载类型，bom图，自定义面板"/>
+  	<col name="openroles"                          type="varchar"   length="2000"    descr="开放角色"/>
+  </columns>
+  <indexs>
+  </indexs>
+</table>
+<table name="pub_install_update_log" pkname="id" descr="安装升级日志表">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"   descr="主键"/>
+    <col name="moduleName"          type="varchar"   length="100"  descr="模块名称"/>
+    <col name="moduleCode"          type="varchar"   length="100"  descr="模块编码"/>
+    <col name="moduleDescr"         type="varchar"   length="1000" descr="模块描述"/>
+    <col name="operateType"         type="varchar"   length="50"   descr="操作类型" 	remark="install,update,uninstall,validate"/>
+    <col name="log"                 type="varchar"   length="4000" descr="执行日志" />
+    <col name="userid"				type="varchar"   length="50"   descr="执行用户" />
+    <col name="time"				type="char"   	 length="19"   descr="执行时间" />
+    <col name="result"				type="varchar"   length="50"   descr="效验的结果"/>
+    <col name="input"				type="varchar"   length="500"  descr="输入值" remark="授权时输入的内容，校验"/>
+    <col name="version"				type="varchar"   length="50"   descr="版本" />
+  </columns>
+</table>
+
+<table name="pub_module_on_off" pkname="id" descr="系统模块开发开关">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"   descr="主键"/>
+    <col name="modulename"          type="varchar"   length="100"  descr="模块名称"/>
+    <col name="modulecode"          type="varchar"   length="100"  descr="模块编号"/>
+    <col name="type"          		type="varchar"   length="20"   descr="操作类型" remark="表字段开关、模板字段开关、按钮开关"/>
+    <col name="mkey"                type="varchar"   length="50"   descr="配置键" remark="表名.字段，模板.字段"/>
+    <col name="mvalue"              type="char"   	 length="1"    descr="开关"/>
+    <col name="descr"               type="varchar" 	 length="400"  descr="相关描述"/>
+  </columns>
+</table>
+
+<table name="excel_tab" pkname="id" descr="EXCEL导入数据库主表">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"    descr="主键"/>
+    <col name="code" 	            type="varchar"   length="50"    descr="报表编码"/>
+    <col name="excelname"           type="varchar"   length="200"   descr="报表名称"/>
+    <col name="updaterate"          type="varchar"   length="20"    descr="更新频率"/>
+    <col name="tablename"          	type="varchar"   length="100"   descr="数据表名称"/>
+    <col name="updatetime"          type="varchar"   length="20"    descr="数据更新时间"/>
+    <col name="classname"           type="varchar"   length="200"   descr="数据上传完毕后扩展接口"/>
+    
+  </columns>
+</table>
+<table name="pub_import_excel_policy" pkname="id" descr="EXCEL导入策略">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"    descr="主键"/>
+    <col name="excelid"             type="decimal"   length="22"    descr="excelID"/>
+    <col name="start_row"           type="varchar"   length="200"   descr="起始行" remark="非表头行,可以写公式验证"/>
+    <col name="excelcol"            type="varchar"   length="20"   	descr="Excel列" remark="A,B,C..."/>
+    <col name="conditions"          type="varchar"   length="20"   	descr="规则" rerark="必填;数字;日期;序列;正则表达式"/>
+    <col name="checktype"           type="varchar"   length="20"   	descr="校验类型" remark="警告;错误" />
+    <col name="custom_formula"      type="varchar"   length="500"   descr="正则表达式"/>   
+ 	<col name="seq"                 type="decimal"   length="5"   	descr="执行顺序"/>
+    <col name="descr"               type="varchar"   length="500"   descr="描述"/>
+  </columns>
+</table>
+
+<table name="pub_import_excel_child" pkname="id" descr="EXCEL导入策略子表-以前未完全实现，后来改后不用这个表了">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"    descr="主键"/>
+    <col name="policyid" 		    type="decimal"   length="22"    descr="主表ID"/>
+    <col name="excelcol"            type="varchar"   length="20"   	descr="Excel列" remark="A,B,C..."/>
+    <col name="conditions"          type="varchar"   length="20"   	descr="条件" rerark="等于;包含;被包含;纯数字;空值;"/>
+    <col name="sys_check"           type="varchar"   length="20"   	descr="系统校验列" remark="柜员号;登录号;姓名;机构;机构简称" />
+    <col name="checktype"           type="varchar"   length="20"   	descr="校验类型" remark="警告;错误" />
+    <col name="seq"                 type="decimal"   length="5"   	descr="执行顺序"/>
+    <col name="descr"               type="varchar"   length="500"   descr="描述"/>
+  </columns>
+</table>
+
+<table name="pub_gunter" pkname="id" descr="时序网络图">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"    descr="主键"/>
+    <col name="code" 		   		type="varchar"   length="50"    descr="工作编码"/>
+    <col name="name"           		type="varchar"   length="20"   	descr="Excel列" remark="A,B,C..."/>
+    <col name="backs"               type="varchar"   length="200"  descr="后续工作"/>
+    <col name="days"           		type="varchar"   length="20"   	descr="持续天数" remark="柜员号;登录号;姓名;机构;机构简称" />
+    <col name="seq"               	type="varchar"   length="500"   descr="排序"/>
+  </columns>
+</table>
+
+<table name="pub_mail_log" pkname="id" descr="邮件日志">
+  <columns>
+    <col name="id"                  type="decimal"   length="22"    descr="主键"/>
+    <col name="createuser" 		   	type="decimal"   length="22"    descr="创建人"/>
+    <col name="mail_from"           type="varchar"   length="100"   descr="发件人"/>
+    <col name="mail_to"           	type="varchar"   length="2000"   descr="收件人"/>
+    <col name="mail_cc"             type="varchar"   length="1000"  descr="抄送人"/>
+    <col name="title"           	type="varchar"   length="200"   descr="标题" />
+    <col name="content"             type="varchar"   length="2000"  descr="内容"/>
+   	<col name="createtime"          type="varchar"   length="19"    descr="创建日期"/>
+  </columns>
+    <indexs>
+     <index name="in_pub_mail_log_1"   cols="createuser" />
+  </indexs>
+</table>
+
+</root>
+

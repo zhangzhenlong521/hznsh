@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 标准产品的 -->
+<root>
+	
+	<!-- ********************************李春娟 违规积分模块（新）**********************************************  -->
+    <table name="score_standard" pkname="id" descr="积分标准定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="riskrank"            type="varchar"      length="50"     descr="风险等级" />
+            <col name="findrank"            type="varchar"      length="50"     descr="发现渠道" />
+            <col name="score"               type="decimal"      length="5,1"    descr="分值" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+        <index name="in_score_standard_1"   cols="riskrank"     descr="风险等级"  />
+        <index name="in_score_standard_2"   cols="findrank"     descr="发现渠道"  />
+    </table>
+    
+    <table name="score_punish" pkname="id" descr="积分惩罚定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="score"               type="decimal"      length="5,1"    descr="分值" />
+            <col name="warnvalue"           type="decimal"      length="5,1"    descr="预警值" />
+            <col name="punish"              type="varchar"      length="100"    descr="惩罚" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+    </table>
+    
+    <table name="score_templet" pkname="id" descr="通知书模板定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="templettype"         type="varchar"      length="50"     descr="模板类型" remark="认定通知书；减免结果通知书；复议结果通知书" />
+            <col name="attachfile"          type="varchar"      length="1000"   descr="附件" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />        
+        </columns>
+    </table>
+    
+     <table name="score_register" pkname="id" descr="违规积分登记">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="remark"              type="varchar"      length="1000"   descr="违规事实" />
+            <col name="happendate"          type="char"         length="10"     descr="发生日期" />
+            <col name="finddate"            type="char"         length="10"     descr="发现日期" />
+            <col name="scoretypeid"         type="decimal"      length="22"     descr="违规类型" />
+            <col name="scoretype"           type="varchar"      length="100"    descr="违规类型" />
+            <col name="scorestandardid"     type="decimal"      length="22"     descr="违规行为" />
+            <col name="scorestandard2"      type="varchar"      length="500"    descr="违规行为" />
+            <col name="standardscore"       type="varchar"      length="10"     descr="违规分值" />
+            
+            <col name="riskrank"            type="varchar"      length="50"     descr="风险等级" />
+            <col name="findrank"            type="varchar"      length="50"     descr="发现渠道" />
+            <col name="referscore"          type="varchar"      length="10"     descr="标准分值" />
+            
+            <col name="userids"             type="varchar"      length="500"    descr="违规人" />
+            <col name="attachfile"          type="varchar"      length="1000"   descr="附件" />
+            
+            <col name="checkusers"          type="varchar"      length="100"    descr="检查人" />
+            <col name="checkdept"           type="varchar"      length="100"    descr="检查机构" />
+            
+            <col name="state"               type="varchar"      length="20"     descr="状态"  remark="未发布；已发布"/>
+            <col name="createdept"          type="decimal"      length="22"     descr="登记机构" />                           
+            <col name="creator"             type="decimal"      length="22"     descr="登记人" />
+            <col name="createdate"          type="char"         length="10"     descr="登记日期" />
+            <col name="publishdate"         type="char"         length="10"     descr="认定日期" />
+        </columns>
+    </table>
+    <table name="score_user" pkname="id" descr="违规人">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="registerid"          type="decimal"      length="22"     descr="积分登记主键" />
+            <col name="userid"              type="decimal"      length="22"     descr="违规人" />
+            <col name="deptid"              type="decimal"      length="22"     descr="所在机构" />
+            <col name="postid"              type="decimal"      length="22"     descr="所在岗位" />
+            
+            <col name="score"               type="decimal"      length="5,1"    descr="应计分值" />
+            <col name="scoretype"           type="varchar"      length="20"     descr="违规性质" />
+            <col name="money"               type="decimal"      length="22,1"   descr="罚款金额(元)" />
+            <col name="scoredesc"           type="varchar"      length="1000"   descr="积分说明" />
+            
+            <col name="effectdate"          type="char"         length="10"     descr="生效日期" />
+            
+            <col name="reconsider"          type="varchar"      length="2000"   descr="申请复议理由"/>
+            <col name="otherremark"         type="varchar"      length="1000"   descr="复议违规事实" />
+            <col name="opinion"             type="varchar"      length="2000"   descr="复议意见"/>
+            <col name="rescore"             type="decimal"      length="5,1"    descr="复议应计分值"/>
+            <col name="remoney"             type="decimal"      length="22,1"   descr="复议罚款金额(元)" />
+            <col name="rescoredesc"         type="varchar"      length="1000"   descr="复议积分说明" />
+            
+            <col name="reuserid"            type="decimal"      length="22"     descr="复议审核人" />
+            <col name="redeptid"            type="decimal"      length="22"     descr="复议审核机构" />
+            <col name="redate"              type="char"         length="10"     descr="复议日期" />
+            <col name="finalscore"          type="decimal"      length="5,1"    descr="最终分值"/>
+            <col name="finalmoney"          type="decimal"      length="22,1"   descr="最终罚款金额(元)" />
+            
+            <col name="state"               type="varchar"      length="20"     descr="状态"  remark="未复议；复议中；已复议"/>
+           
+            <col name="wgscore"             type="decimal"      length="5,1"    descr="总违规积分" remark="生效时记录本年度的总违规积分"/>
+            <col name="jmscore"             type="decimal"      length="5,1"    descr="总减免积分" remark="生效时记录本年度的总减免积分"/>
+            <col name="totalscore"          type="decimal"      length="5,1"    descr="总积分"     remark="生效时记录本年度的总积分，即总违规积分-总减免积分"/>
+            <col name="punishtype"          type="varchar"      length="50"     descr="惩罚类型"   remark="生效时记录本年度的违规惩罚类型"/>
+            <col name="punishdate"          type="char"         length="10"     descr="惩罚日期"   remark="真正执行惩罚的日期，需要手工录入"/>
+            <col name="dealdesc"            type="varchar"      length="1000"   descr="处理情况"   remark="真正执行惩罚后手工录入"/>
+            <col name="dealfiles"           type="varchar"      length="1000"   descr="处理文件"   remark="真正执行惩罚后手工录入"/>
+            
+            <col name="publishfilepath"     type="varchar"      length="200"   descr="认定通知书路径"   remark="生成认定通知书的服务器端路径"/>
+            
+            <col name="wfprinstanceid"      type="decimal"      length="22"     descr="流程主键" />
+            <col name="billtype"            type="varchar"      length="50"     descr="单据类型" />
+            <col name="busitype"            type="varchar"      length="50"     descr="业务类型" />
+        </columns>
+    </table>
+    
+     <table name="score_reduce" pkname="id" descr="积分减免">
+        <columns>
+            <col name="id"                   type="decimal"      length="22"     descr="主键" />
+            <col name="userid"               type="decimal"      length="22"     descr="申请人" />
+            <col name="corpid"               type="decimal"      length="22"     descr="所在部门" />
+            <col name="reason"               type="varchar"      length="100"    descr="减免事由" />
+            <col name="reasondesc"           type="varchar"      length="4000"   descr="减免事由描述" />
+            <col name="expectscore"          type="decimal"      length="5,1"    descr="申请减免分值" />     
+            <col name="attachfile"           type="varchar"      length="1000"   descr="附件" />
+            
+            <col name="createdate"           type="char"         length="10"     descr="创建日期" />
+            <col name="applydate"            type="char"         length="10"     descr="申请日期"  remark="发起减免流程的日期"/>
+            
+            <col name="dealtype"             type="varchar"      length="20"     descr="处理结果" />
+            <col name="realscore"            type="decimal"      length="5,1"    descr="调减分值" />
+            <col name="dealreason"           type="varchar"      length="4000"   descr="处理依据" />
+            
+            <col name="examineuser"          type="decimal"      length="22"     descr="审核人员" remark="流程结束时的处理人"/>
+            <col name="examinedept"          type="decimal"      length="22"     descr="审核机构" remark="流程结束时的处理人机构"/>
+            <col name="examinedate"          type="char"         length="10"     descr="审核日期" remark="流程结束时的处理日期"/>
+            <col name="noticefile"           type="varchar"      length="500"    descr="减免通知文件名" remark="流程结束后给申请人发的减免通知书路径"/>     
+            
+            <col name="state"                type="varchar"      length="20"     descr="审核状态" remark="未审核；审核中；已审核"/>
+            <!-- 工作流 --> 
+			<col name="wfprinstanceid"       type="decimal"      length="22"     descr="流程实例id"    remark="走工作流时使用" />
+		    <col name="billtype"             type="varchar"   	 length="50"     descr="单据类型" />
+			<col name="busitype"             type="varchar"      length="50"     descr="业务类型" />
+        </columns>
+    </table>
+        
+</root>

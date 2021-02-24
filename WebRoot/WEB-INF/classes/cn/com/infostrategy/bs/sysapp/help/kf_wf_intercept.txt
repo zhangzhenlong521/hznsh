@@ -1,0 +1,28 @@
+★如何进行远程调用?
+有两种办法,一是使用UIUtil中的commMethod(),一种是自己创建一个远程服务接口!
+CommMethod的方法的例码如下：
+客户端的代码：
+HashMap parMap = new HashMap();  // 
+parMap.put("机构类型","总行");  //
+HashMap map = UIUtil.commMethod("cn.com.pushworld.MyBSO","getCorpIds",parMap);
+
+服务器端的代码,即创建类【cn.com.pushworld.MyBSO】,其中有个方法叫【fn_1】
+public class MyBSO {
+  public HashMap getCorpIds(HashMap _parMap){
+     String str_corpType = (String)_parMap.get("机构类型");  //
+     //...进行各种调用!
+  }
+}
+
+public CommDMO() {
+	}
+
+	public String[] getAllSysTables(String _datasourcename, String _tableNamePattern) throws Exception {
+		String[][] str_tabs = getAllSysTableAndDescr(_datasourcename, _tableNamePattern, false, false); //
+		String[] str_return = new String[str_tabs.length]; //
+		for (int i = 0; i < str_return.length; i++) {
+			str_return[i] = str_tabs[i][0]; //
+		}
+		return str_return; //
+	}
+

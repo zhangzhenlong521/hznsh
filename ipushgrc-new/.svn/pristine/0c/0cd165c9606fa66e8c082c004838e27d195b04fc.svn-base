@@ -1,0 +1,3486 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="law_bsact">
+  <col name="ID">1504</col>
+  <col name="NAME">4、贷款服务机构</col>
+  <col name="PARENTID">1499</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0911010205</col>
+</record>
+
+<!--2-->
+<record tabname="law_bsact">
+  <col name="ID">1505</col>
+  <col name="NAME">5、资金保管机构</col>
+  <col name="PARENTID">1499</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0911010206</col>
+</record>
+
+<!--3-->
+<record tabname="law_bsact">
+  <col name="ID">1506</col>
+  <col name="NAME">6、资产支持证券投资机构</col>
+  <col name="PARENTID">1499</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0911010207</col>
+</record>
+
+<!--4-->
+<record tabname="law_bsact">
+  <col name="ID">1507</col>
+  <col name="NAME">（三）业务规则和风险管理</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">09110103</col>
+</record>
+
+<!--5-->
+<record tabname="law_bsact">
+  <col name="ID">1508</col>
+  <col name="NAME">（四）资本要求</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">09110104</col>
+</record>
+
+<!--6-->
+<record tabname="law_bsact">
+  <col name="ID">1509</col>
+  <col name="NAME">（五）会计处理</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">09110105</col>
+</record>
+
+<!--7-->
+<record tabname="law_bsact">
+  <col name="ID">1510</col>
+  <col name="NAME">1、发起机构的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">0911010501</col>
+</record>
+
+<!--8-->
+<record tabname="law_bsact">
+  <col name="ID">1511</col>
+  <col name="NAME">2、特定目的信托的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">0911010502</col>
+</record>
+
+<!--9-->
+<record tabname="law_bsact">
+  <col name="ID">1512</col>
+  <col name="NAME">3、受托机构的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">0911010503</col>
+</record>
+
+<!--10-->
+<record tabname="law_bsact">
+  <col name="ID">1513</col>
+  <col name="NAME">4、资金保管机构的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">0911010504</col>
+</record>
+
+<!--11-->
+<record tabname="law_bsact">
+  <col name="ID">1514</col>
+  <col name="NAME">5、贷款服务机构的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">0911010505</col>
+</record>
+
+<!--12-->
+<record tabname="law_bsact">
+  <col name="ID">1515</col>
+  <col name="NAME">6、投资机构的会计处理</col>
+  <col name="PARENTID">1509</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">0911010506</col>
+</record>
+
+<!--13-->
+<record tabname="law_bsact">
+  <col name="ID">1516</col>
+  <col name="NAME">（六）税收政策</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">09110106</col>
+</record>
+
+<!--14-->
+<record tabname="law_bsact">
+  <col name="ID">1517</col>
+  <col name="NAME">（七）监督管理</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">09110107</col>
+</record>
+
+<!--15-->
+<record tabname="law_bsact">
+  <col name="ID">1518</col>
+  <col name="NAME">（八）法律责任</col>
+  <col name="PARENTID">1497</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE">09110108</col>
+</record>
+
+<!--16-->
+<record tabname="law_bsact">
+  <col name="ID">1519</col>
+  <col name="NAME">二、其他</col>
+  <col name="PARENTID">1496</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">091102</col>
+</record>
+
+<!--17-->
+<record tabname="law_bsact">
+  <col name="ID">1520</col>
+  <col name="NAME"><![CDATA[<十二> 中间业务收费]]></col>
+  <col name="PARENTID">1349</col>
+  <col name="SEQ">12</col>
+  <col name="LINKCODE">0912</col>
+</record>
+
+<!--18-->
+<record tabname="law_bsact">
+  <col name="ID">1521</col>
+  <col name="NAME">一、中间业务收费原则</col>
+  <col name="PARENTID">1520</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">091201</col>
+</record>
+
+<!--19-->
+<record tabname="law_bsact">
+  <col name="ID">1522</col>
+  <col name="NAME">二、服务价格的分类</col>
+  <col name="PARENTID">1520</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">091202</col>
+</record>
+
+<!--20-->
+<record tabname="law_bsact">
+  <col name="ID">1523</col>
+  <col name="NAME">三、中间业务收费的规定</col>
+  <col name="PARENTID">1520</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">091203</col>
+</record>
+
+<!--21-->
+<record tabname="law_bsact">
+  <col name="ID">1524</col>
+  <col name="NAME">（一）收费原则</col>
+  <col name="PARENTID">1523</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09120301</col>
+</record>
+
+<!--22-->
+<record tabname="law_bsact">
+  <col name="ID">1525</col>
+  <col name="NAME">（二）收费管理</col>
+  <col name="PARENTID">1523</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09120302</col>
+</record>
+
+<!--23-->
+<record tabname="law_bsact">
+  <col name="ID">1526</col>
+  <col name="NAME">（三）违规处罚</col>
+  <col name="PARENTID">1523</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09120303</col>
+</record>
+
+<!--24-->
+<record tabname="law_bsact">
+  <col name="ID">1527</col>
+  <col name="NAME"><![CDATA[<十三> 外部营销业务]]></col>
+  <col name="PARENTID">1349</col>
+  <col name="SEQ">13</col>
+  <col name="LINKCODE">0913</col>
+</record>
+
+<!--25-->
+<record tabname="law_bsact">
+  <col name="ID">1528</col>
+  <col name="NAME"><![CDATA[<十四> 离岸银行业务]]></col>
+  <col name="PARENTID">1349</col>
+  <col name="SEQ">14</col>
+  <col name="LINKCODE">0914</col>
+</record>
+
+<!--26-->
+<record tabname="law_bsact">
+  <col name="ID">1529</col>
+  <col name="NAME">4、对外担保的限额规定</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">0904030104</col>
+</record>
+
+<!--27-->
+<record tabname="law_bsact">
+  <col name="ID">1530</col>
+  <col name="NAME">3、信息披露</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">0906050203</col>
+</record>
+
+<!--28-->
+<record tabname="law_bsact">
+  <col name="ID">1531</col>
+  <col name="NAME">4、债券付息或兑付公告</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">0906050204</col>
+</record>
+
+<!--29-->
+<record tabname="law_bsact">
+  <col name="ID">1532</col>
+  <col name="NAME">5、自有债券交易禁止</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">0906050205</col>
+</record>
+
+<!--30-->
+<record tabname="law_bsact">
+  <col name="ID">1533</col>
+  <col name="NAME">6、交易流通终止</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">0906050206</col>
+</record>
+
+<!--31-->
+<record tabname="law_bsact">
+  <col name="ID">1534</col>
+  <col name="NAME">六、金融衍生产品交易</col>
+  <col name="PARENTID">1350</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">090606</col>
+</record>
+
+<!--32-->
+<record tabname="law_bsact">
+  <col name="ID">1535</col>
+  <col name="NAME">（二）市场准入管理</col>
+  <col name="PARENTID">1534</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">09060602</col>
+</record>
+
+<!--33-->
+<record tabname="law_bsact">
+  <col name="ID">1536</col>
+  <col name="NAME">1、申请开办的条件</col>
+  <col name="PARENTID">1535</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060201</col>
+</record>
+
+<!--34-->
+<record tabname="law_bsact">
+  <col name="ID">1537</col>
+  <col name="NAME">2、审批</col>
+  <col name="PARENTID">1535</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060202</col>
+</record>
+
+<!--35-->
+<record tabname="law_bsact">
+  <col name="ID">1538</col>
+  <col name="NAME">3、授权管理</col>
+  <col name="PARENTID">1535</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060203</col>
+</record>
+
+<!--36-->
+<record tabname="law_bsact">
+  <col name="ID">1539</col>
+  <col name="NAME">（三）操作规程</col>
+  <col name="PARENTID">1534</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">09060603</col>
+</record>
+
+<!--37-->
+<record tabname="law_bsact">
+  <col name="ID">1540</col>
+  <col name="NAME">1、利率互换</col>
+  <col name="PARENTID">1539</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">0906060301</col>
+</record>
+
+<!--38-->
+<record tabname="law_bsact">
+  <col name="ID">1541</col>
+  <col name="NAME">2、其他</col>
+  <col name="PARENTID">1539</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">0906060302</col>
+</record>
+
+<!--39-->
+<record tabname="law_bsact">
+  <col name="ID">1542</col>
+  <col name="NAME">（四）风险管理</col>
+  <col name="PARENTID">1534</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">09060604</col>
+</record>
+
+<!--40-->
+<record tabname="law_bsact">
+  <col name="ID">1543</col>
+  <col name="NAME">（五）联系机制</col>
+  <col name="PARENTID">1534</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">09060605</col>
+</record>
+
+<!--41-->
+<record tabname="law_bsact">
+  <col name="ID">1544</col>
+  <col name="NAME">一、概念和分类</col>
+  <col name="PARENTID">1454</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">090701</col>
+</record>
+
+<!--42-->
+<record tabname="law_bsact">
+  <col name="ID">1545</col>
+  <col name="NAME">（一）个人理财的概念</col>
+  <col name="PARENTID">1544</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070101</col>
+</record>
+
+<!--43-->
+<record tabname="law_bsact">
+  <col name="ID">1546</col>
+  <col name="NAME">（二）个人理财的分类</col>
+  <col name="PARENTID">1544</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070102</col>
+</record>
+
+<!--44-->
+<record tabname="law_bsact">
+  <col name="ID">1547</col>
+  <col name="NAME">二、业务管理</col>
+  <col name="PARENTID">1454</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">090702</col>
+</record>
+
+<!--45-->
+<record tabname="law_bsact">
+  <col name="ID">1548</col>
+  <col name="NAME">三、风险管理</col>
+  <col name="PARENTID">1454</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">090703</col>
+</record>
+
+<!--46-->
+<record tabname="law_bsact">
+  <col name="ID">1549</col>
+  <col name="NAME">0、概述</col>
+  <col name="PARENTID">1548</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070301</col>
+</record>
+
+<!--47-->
+<record tabname="law_bsact">
+  <col name="ID">1550</col>
+  <col name="NAME">（一）个人理财顾问服务的风险管理</col>
+  <col name="PARENTID">1548</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070302</col>
+</record>
+
+<!--48-->
+<record tabname="law_bsact">
+  <col name="ID">1551</col>
+  <col name="NAME">（二）综合理财服务的风险管理</col>
+  <col name="PARENTID">1548</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070303</col>
+</record>
+
+<!--49-->
+<record tabname="law_bsact">
+  <col name="ID">1552</col>
+  <col name="NAME">（三）个人理财业务产品的风险管理</col>
+  <col name="PARENTID">1548</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09070304</col>
+</record>
+
+<!--50-->
+<record tabname="law_bsact">
+  <col name="ID">1553</col>
+  <col name="NAME">（一）审批制度</col>
+  <col name="PARENTID">1455</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">09070401</col>
+</record>
+
+<!--51-->
+<record tabname="law_bsact">
+  <col name="ID">1554</col>
+  <col name="NAME">（二）市场准入</col>
+  <col name="PARENTID">1455</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">09070402</col>
+</record>
+
+<!--52-->
+<record tabname="law_bsact">
+  <col name="ID">1555</col>
+  <col name="NAME">5、对外担保的审批权限</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">0904030105</col>
+</record>
+
+<!--53-->
+<record tabname="law_bsact">
+  <col name="ID">1556</col>
+  <col name="NAME">6、对外担保人办理担保手续时应提供的资料</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">0904030106</col>
+</record>
+
+<!--54-->
+<record tabname="law_bsact">
+  <col name="ID">1557</col>
+  <col name="NAME">2、对外担保的管理机关</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">0904030102</col>
+</record>
+
+<!--55-->
+<record tabname="law_bsact">
+  <col name="ID">1558</col>
+  <col name="NAME">3、对外担保的当事人</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">0904030103</col>
+</record>
+
+<!--56-->
+<record tabname="law_bsact">
+  <col name="ID">1559</col>
+  <col name="NAME">7、其他</col>
+  <col name="PARENTID">1355</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">0906050307</col>
+</record>
+
+<!--57-->
+<record tabname="law_bsact">
+  <col name="ID">1560</col>
+  <col name="NAME">（四）自动质押融资业务</col>
+  <col name="PARENTID">1351</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">09060504</col>
+</record>
+
+<!--58-->
+<record tabname="law_bsact">
+  <col name="ID">1561</col>
+  <col name="NAME">1、定义与适用范围</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050401</col>
+</record>
+
+<!--59-->
+<record tabname="law_bsact">
+  <col name="ID">1562</col>
+  <col name="NAME">2、准入</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050402</col>
+</record>
+
+<!--60-->
+<record tabname="law_bsact">
+  <col name="ID">1563</col>
+  <col name="NAME">3、申请受理</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050403</col>
+</record>
+
+<!--61-->
+<record tabname="law_bsact">
+  <col name="ID">1564</col>
+  <col name="NAME">4、额度与质押率</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050404</col>
+</record>
+
+<!--62-->
+<record tabname="law_bsact">
+  <col name="ID">1565</col>
+  <col name="NAME">5、利率与利息</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050405</col>
+</record>
+
+<!--63-->
+<record tabname="law_bsact">
+  <col name="ID">1566</col>
+  <col name="NAME">6、质押融资</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050406</col>
+</record>
+
+<!--64-->
+<record tabname="law_bsact">
+  <col name="ID">1567</col>
+  <col name="NAME">7、检查报告与维护</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050407</col>
+</record>
+
+<!--65-->
+<record tabname="law_bsact">
+  <col name="ID">1568</col>
+  <col name="NAME">8、责任</col>
+  <col name="PARENTID">1560</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050408</col>
+</record>
+
+<!--66-->
+<record tabname="law_bsact">
+  <col name="ID">1569</col>
+  <col name="NAME">（五）债券借贷业务</col>
+  <col name="PARENTID">1351</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">09060505</col>
+</record>
+
+<!--67-->
+<record tabname="law_bsact">
+  <col name="ID">1570</col>
+  <col name="NAME">1、定义</col>
+  <col name="PARENTID">1569</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050501</col>
+</record>
+
+<!--68-->
+<record tabname="law_bsact">
+  <col name="ID">1571</col>
+  <col name="NAME">2、债券借贷</col>
+  <col name="PARENTID">1569</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050502</col>
+</record>
+
+<!--69-->
+<record tabname="law_bsact">
+  <col name="ID">1572</col>
+  <col name="NAME">（六）债券市场做市商</col>
+  <col name="PARENTID">1351</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">09060506</col>
+</record>
+
+<!--70-->
+<record tabname="law_bsact">
+  <col name="ID">1573</col>
+  <col name="NAME">1、定义</col>
+  <col name="PARENTID">1572</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050601</col>
+</record>
+
+<!--71-->
+<record tabname="law_bsact">
+  <col name="ID">1574</col>
+  <col name="NAME">2、准入申请</col>
+  <col name="PARENTID">1572</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050602</col>
+</record>
+
+<!--72-->
+<record tabname="law_bsact">
+  <col name="ID">1575</col>
+  <col name="NAME">3、权利义务</col>
+  <col name="PARENTID">1572</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050603</col>
+</record>
+
+<!--73-->
+<record tabname="law_bsact">
+  <col name="ID">1576</col>
+  <col name="NAME">4、做市</col>
+  <col name="PARENTID">1572</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050604</col>
+</record>
+
+<!--74-->
+<record tabname="law_bsact">
+  <col name="ID">1577</col>
+  <col name="NAME">5、检查处罚</col>
+  <col name="PARENTID">1572</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050605</col>
+</record>
+
+<!--75-->
+<record tabname="law_bsact">
+  <col name="ID">1578</col>
+  <col name="NAME">（一）业务概述</col>
+  <col name="PARENTID">1534</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">09060601</col>
+</record>
+
+<!--76-->
+<record tabname="law_bsact">
+  <col name="ID">1579</col>
+  <col name="NAME">1、可以开展衍生金融工具中间业务的金融机构</col>
+  <col name="PARENTID">1578</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060101</col>
+</record>
+
+<!--77-->
+<record tabname="law_bsact">
+  <col name="ID">1580</col>
+  <col name="NAME">2、衍生产品的概念</col>
+  <col name="PARENTID">1578</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060102</col>
+</record>
+
+<!--78-->
+<record tabname="law_bsact">
+  <col name="ID">1581</col>
+  <col name="NAME">3、业务分类</col>
+  <col name="PARENTID">1578</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906060103</col>
+</record>
+
+<!--79-->
+<record tabname="law_bsact">
+  <col name="ID">1582</col>
+  <col name="NAME">7、对外担保的审批和登记</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE">0904030107</col>
+</record>
+
+<!--80-->
+<record tabname="law_bsact">
+  <col name="ID">1583</col>
+  <col name="NAME">8、对外担保合同无效情形</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">9</col>
+  <col name="LINKCODE">0904030108</col>
+</record>
+
+<!--81-->
+<record tabname="law_bsact">
+  <col name="ID">1584</col>
+  <col name="NAME">9、相关术语的解释</col>
+  <col name="PARENTID">1452</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">0904030109</col>
+</record>
+
+<!--82-->
+<record tabname="law_bsact">
+  <col name="ID">1585</col>
+  <col name="NAME">（二）对外保证</col>
+  <col name="PARENTID">1451</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">09040302</col>
+</record>
+
+<!--83-->
+<record tabname="law_bsact">
+  <col name="ID">1586</col>
+  <col name="NAME">（三）对外抵押</col>
+  <col name="PARENTID">1451</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">09040303</col>
+</record>
+
+<!--84-->
+<record tabname="law_bsact">
+  <col name="ID">1587</col>
+  <col name="NAME">（四）对外质押</col>
+  <col name="PARENTID">1451</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">09040304</col>
+</record>
+
+<!--85-->
+<record tabname="law_bsact">
+  <col name="ID">1588</col>
+  <col name="NAME">（五）履行担保义务的手续及提交的资料</col>
+  <col name="PARENTID">1451</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">09040305</col>
+</record>
+
+<!--86-->
+<record tabname="law_bsact">
+  <col name="ID">1589</col>
+  <col name="NAME">四、上市银行对外担保</col>
+  <col name="PARENTID">1446</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">090404</col>
+</record>
+
+<!--87-->
+<record tabname="law_bsact">
+  <col name="ID">1590</col>
+  <col name="NAME">1、担保风险管理</col>
+  <col name="PARENTID">1589</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09040401</col>
+</record>
+
+<!--88-->
+<record tabname="law_bsact">
+  <col name="ID">1591</col>
+  <col name="NAME">2、责任追求</col>
+  <col name="PARENTID">1589</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">09040402</col>
+</record>
+
+<!--89-->
+<record tabname="law_bsact">
+  <col name="ID">1592</col>
+  <col name="NAME"><![CDATA[<五> 承诺类]]></col>
+  <col name="PARENTID">1349</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">0905</col>
+</record>
+
+<!--90-->
+<record tabname="law_bsact">
+  <col name="ID">1593</col>
+  <col name="NAME">一、一般规定</col>
+  <col name="PARENTID">1350</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">090601</col>
+</record>
+
+<!--91-->
+<record tabname="law_bsact">
+  <col name="ID">1594</col>
+  <col name="NAME">二、外汇交易</col>
+  <col name="PARENTID">1350</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">090602</col>
+</record>
+
+<!--92-->
+<record tabname="law_bsact">
+  <col name="ID">1595</col>
+  <col name="NAME">三、货币交易</col>
+  <col name="PARENTID">1350</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">090603</col>
+</record>
+
+<!--93-->
+<record tabname="law_bsact">
+  <col name="ID">1596</col>
+  <col name="NAME">四、黄金交易</col>
+  <col name="PARENTID">1350</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">090604</col>
+</record>
+
+<!--94-->
+<record tabname="law_bsact">
+  <col name="ID">1597</col>
+  <col name="NAME">（一）银行间债券市场准入与退出</col>
+  <col name="PARENTID">1351</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">09060501</col>
+</record>
+
+<!--95-->
+<record tabname="law_bsact">
+  <col name="ID">1598</col>
+  <col name="NAME">1、主体</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050101</col>
+</record>
+
+<!--96-->
+<record tabname="law_bsact">
+  <col name="ID">1599</col>
+  <col name="NAME">2、申请办理债券交易联网手续</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050102</col>
+</record>
+
+<!--97-->
+<record tabname="law_bsact">
+  <col name="ID">1600</col>
+  <col name="NAME">3、申请开立债券托管账户</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050103</col>
+</record>
+
+<!--98-->
+<record tabname="law_bsact">
+  <col name="ID">1601</col>
+  <col name="NAME">4、审查</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050104</col>
+</record>
+
+<!--99-->
+<record tabname="law_bsact">
+  <col name="ID">1602</col>
+  <col name="NAME">5、义务</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050105</col>
+</record>
+
+<!--100-->
+<record tabname="law_bsact">
+  <col name="ID">1603</col>
+  <col name="NAME">6、退出</col>
+  <col name="PARENTID">1597</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">0906050106</col>
+</record>
+
+<!--101-->
+<record tabname="law_bsact">
+  <col name="ID">1604</col>
+  <col name="NAME">1、债券定义</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">0906050201</col>
+</record>
+
+<!--102-->
+<record tabname="law_bsact">
+  <col name="ID">1605</col>
+  <col name="NAME">2、申请与审核</col>
+  <col name="PARENTID">1352</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">0906050202</col>
+</record>
+
+<!--103-->
+<record tabname="law_bsact">
+  <col name="ID">1606</col>
+  <col name="NAME"> 担保</col>
+  <col name="PARENTID">2202</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">10</col>
+</record>
+
+<!--104-->
+<record tabname="law_bsact">
+  <col name="ID">1607</col>
+  <col name="NAME"><![CDATA[<一> 担保的原则性规定]]></col>
+  <col name="PARENTID">1606</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">1001</col>
+</record>
+
+<!--105-->
+<record tabname="law_bsact">
+  <col name="ID">1608</col>
+  <col name="NAME">一、可以设定担保的经济活动</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100101</col>
+</record>
+
+<!--106-->
+<record tabname="law_bsact">
+  <col name="ID">1609</col>
+  <col name="NAME">二、担保的方式、原则及反担保</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100102</col>
+</record>
+
+<!--107-->
+<record tabname="law_bsact">
+  <col name="ID">1610</col>
+  <col name="NAME">三、经济合同和担保合同的关系及担保合同被确认无效后的情形</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100103</col>
+</record>
+
+<!--108-->
+<record tabname="law_bsact">
+  <col name="ID">1611</col>
+  <col name="NAME">（一）经济合同和担保合同的关系</col>
+  <col name="PARENTID">1610</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10010301</col>
+</record>
+
+<!--109-->
+<record tabname="law_bsact">
+  <col name="ID">1612</col>
+  <col name="NAME">（二）担保合同被确认无效后的情形及责任承担</col>
+  <col name="PARENTID">1610</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10010302</col>
+</record>
+
+<!--110-->
+<record tabname="law_bsact">
+  <col name="ID">1613</col>
+  <col name="NAME">四、担保范围</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100104</col>
+</record>
+
+<!--111-->
+<record tabname="law_bsact">
+  <col name="ID">1614</col>
+  <col name="NAME">五、担保物权实现</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100105</col>
+</record>
+
+<!--112-->
+<record tabname="law_bsact">
+  <col name="ID">1615</col>
+  <col name="NAME">六、担保责任</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100106</col>
+</record>
+
+<!--113-->
+<record tabname="law_bsact">
+  <col name="ID">1616</col>
+  <col name="NAME">七、物的担保与人的担保</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100107</col>
+</record>
+
+<!--114-->
+<record tabname="law_bsact">
+  <col name="ID">1617</col>
+  <col name="NAME">八、担保物权消灭</col>
+  <col name="PARENTID">1607</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">100108</col>
+</record>
+
+<!--115-->
+<record tabname="law_bsact">
+  <col name="ID">1618</col>
+  <col name="NAME"><![CDATA[<二> 保证]]></col>
+  <col name="PARENTID">1606</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">1002</col>
+</record>
+
+<!--116-->
+<record tabname="law_bsact">
+  <col name="ID">1619</col>
+  <col name="NAME">一、保证和保证人</col>
+  <col name="PARENTID">1618</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">100201</col>
+</record>
+
+<!--117-->
+<record tabname="law_bsact">
+  <col name="ID">1620</col>
+  <col name="NAME">（一）保证的概念</col>
+  <col name="PARENTID">1619</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020101</col>
+</record>
+
+<!--118-->
+<record tabname="law_bsact">
+  <col name="ID">1621</col>
+  <col name="NAME">（二）保证人</col>
+  <col name="PARENTID">1619</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020102</col>
+</record>
+
+<!--119-->
+<record tabname="law_bsact">
+  <col name="ID">1622</col>
+  <col name="NAME">1、保证人的一般性规定</col>
+  <col name="PARENTID">1621</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002010201</col>
+</record>
+
+<!--120-->
+<record tabname="law_bsact">
+  <col name="ID">1623</col>
+  <col name="NAME">2、保证人的禁止性规定</col>
+  <col name="PARENTID">1621</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002010202</col>
+</record>
+
+<!--121-->
+<record tabname="law_bsact">
+  <col name="ID">1624</col>
+  <col name="NAME">（三）股东担保</col>
+  <col name="PARENTID">1619</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020103</col>
+</record>
+
+<!--122-->
+<record tabname="law_bsact">
+  <col name="ID">1625</col>
+  <col name="NAME">二、保证合同和保证方式</col>
+  <col name="PARENTID">1618</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">100202</col>
+</record>
+
+<!--123-->
+<record tabname="law_bsact">
+  <col name="ID">1626</col>
+  <col name="NAME">（一）保证合同</col>
+  <col name="PARENTID">1625</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">10020201</col>
+</record>
+
+<!--124-->
+<record tabname="law_bsact">
+  <col name="ID">1627</col>
+  <col name="NAME">1、形式</col>
+  <col name="PARENTID">1626</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">1002020101</col>
+</record>
+
+<!--125-->
+<record tabname="law_bsact">
+  <col name="ID">1628</col>
+  <col name="NAME">2、内容</col>
+  <col name="PARENTID">1626</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">1002020102</col>
+</record>
+
+<!--126-->
+<record tabname="law_bsact">
+  <col name="ID">1629</col>
+  <col name="NAME">（二）保证方式</col>
+  <col name="PARENTID">1625</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">10020202</col>
+</record>
+
+<!--127-->
+<record tabname="law_bsact">
+  <col name="ID">1630</col>
+  <col name="NAME">1、一般规定</col>
+  <col name="PARENTID">1629</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002020201</col>
+</record>
+
+<!--128-->
+<record tabname="law_bsact">
+  <col name="ID">1631</col>
+  <col name="NAME">2、一般保证</col>
+  <col name="PARENTID">1629</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002020202</col>
+</record>
+
+<!--129-->
+<record tabname="law_bsact">
+  <col name="ID">1632</col>
+  <col name="NAME">3、连带责任保证</col>
+  <col name="PARENTID">1629</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002020203</col>
+</record>
+
+<!--130-->
+<record tabname="law_bsact">
+  <col name="ID">1633</col>
+  <col name="NAME">4、保证方式约定不明时的责任承担</col>
+  <col name="PARENTID">1629</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002020204</col>
+</record>
+
+<!--131-->
+<record tabname="law_bsact">
+  <col name="ID">1634</col>
+  <col name="NAME">5、抗辩权的享有及行使</col>
+  <col name="PARENTID">1629</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1002020205</col>
+</record>
+
+<!--132-->
+<record tabname="law_bsact">
+  <col name="ID">1635</col>
+  <col name="NAME">三、保证责任</col>
+  <col name="PARENTID">1618</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">100203</col>
+</record>
+
+<!--133-->
+<record tabname="law_bsact">
+  <col name="ID">1636</col>
+  <col name="NAME">（一）保证范围</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020301</col>
+</record>
+
+<!--134-->
+<record tabname="law_bsact">
+  <col name="ID">1637</col>
+  <col name="NAME">（二）主合同变更及保证责任</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020302</col>
+</record>
+
+<!--135-->
+<record tabname="law_bsact">
+  <col name="ID">1638</col>
+  <col name="NAME">（三）保证期间</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020303</col>
+</record>
+
+<!--136-->
+<record tabname="law_bsact">
+  <col name="ID">1639</col>
+  <col name="NAME">（四）保证合同的诉讼时效</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020304</col>
+</record>
+
+<!--137-->
+<record tabname="law_bsact">
+  <col name="ID">1640</col>
+  <col name="NAME">（五）人保和物保的顺序</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020305</col>
+</record>
+
+<!--138-->
+<record tabname="law_bsact">
+  <col name="ID">1641</col>
+  <col name="NAME">（六）保证责任的免除</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020306</col>
+</record>
+
+<!--139-->
+<record tabname="law_bsact">
+  <col name="ID">1642</col>
+  <col name="NAME">（七）追偿权的行使</col>
+  <col name="PARENTID">1635</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10020307</col>
+</record>
+
+<!--140-->
+<record tabname="law_bsact">
+  <col name="ID">1643</col>
+  <col name="NAME"><![CDATA[<三> 抵押]]></col>
+  <col name="PARENTID">1606</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">1003</col>
+</record>
+
+<!--141-->
+<record tabname="law_bsact">
+  <col name="ID">1644</col>
+  <col name="NAME">一、抵押和抵押物</col>
+  <col name="PARENTID">1643</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">100301</col>
+</record>
+
+<!--142-->
+<record tabname="law_bsact">
+  <col name="ID">1645</col>
+  <col name="NAME">（一)抵押的概念</col>
+  <col name="PARENTID">1644</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10030101</col>
+</record>
+
+<!--143-->
+<record tabname="law_bsact">
+  <col name="ID">1646</col>
+  <col name="NAME">（二)可以设定抵押的财产</col>
+  <col name="PARENTID">1644</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10030102</col>
+</record>
+
+<!--144-->
+<record tabname="law_bsact">
+  <col name="ID">1647</col>
+  <col name="NAME">1、一般规定</col>
+  <col name="PARENTID">1646</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003010201</col>
+</record>
+
+<!--145-->
+<record tabname="law_bsact">
+  <col name="ID">1648</col>
+  <col name="NAME">2、特殊规定</col>
+  <col name="PARENTID">1646</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003010202</col>
+</record>
+
+<!--146-->
+<record tabname="law_bsact">
+  <col name="ID">1649</col>
+  <col name="NAME">（三）不可以设定抵押的财产</col>
+  <col name="PARENTID">1644</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10030103</col>
+</record>
+
+<!--147-->
+<record tabname="law_bsact">
+  <col name="ID">1650</col>
+  <col name="NAME">二、抵押合同</col>
+  <col name="PARENTID">1643</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">100302</col>
+</record>
+
+<!--148-->
+<record tabname="law_bsact">
+  <col name="ID">1651</col>
+  <col name="NAME">（一）一般规定</col>
+  <col name="PARENTID">1650</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10030201</col>
+</record>
+
+<!--149-->
+<record tabname="law_bsact">
+  <col name="ID">1652</col>
+  <col name="NAME">（二）特殊法的规定</col>
+  <col name="PARENTID">1650</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10030202</col>
+</record>
+
+<!--150-->
+<record tabname="law_bsact">
+  <col name="ID">1653</col>
+  <col name="NAME">1、森林、林木和林地使用权</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020201</col>
+</record>
+
+<!--151-->
+<record tabname="law_bsact">
+  <col name="ID">1654</col>
+  <col name="NAME">2、房地产</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020202</col>
+</record>
+
+<!--152-->
+<record tabname="law_bsact">
+  <col name="ID">1655</col>
+  <col name="NAME">3、在建工程</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020203</col>
+</record>
+
+<!--153-->
+<record tabname="law_bsact">
+  <col name="ID">1656</col>
+  <col name="NAME">4、船舶</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020204</col>
+</record>
+
+<!--154-->
+<record tabname="law_bsact">
+  <col name="ID">1657</col>
+  <col name="NAME">5、民用航空器</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020205</col>
+</record>
+
+<!--155-->
+<record tabname="law_bsact">
+  <col name="ID">1658</col>
+  <col name="NAME">6、土地使用权</col>
+  <col name="PARENTID">1652</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003020206</col>
+</record>
+
+<!--156-->
+<record tabname="law_bsact">
+  <col name="ID">1659</col>
+  <col name="NAME">三、抵押登记</col>
+  <col name="PARENTID">1643</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">100303</col>
+</record>
+
+<!--157-->
+<record tabname="law_bsact">
+  <col name="ID">1660</col>
+  <col name="NAME">（一）一般规定</col>
+  <col name="PARENTID">1659</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">10030301</col>
+</record>
+
+<!--158-->
+<record tabname="law_bsact">
+  <col name="ID">1661</col>
+  <col name="NAME">（二）特别规定</col>
+  <col name="PARENTID">1659</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">10030302</col>
+</record>
+
+<!--159-->
+<record tabname="law_bsact">
+  <col name="ID">1662</col>
+  <col name="NAME">1、担保法第43条第2款其他财产的登记</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030201</col>
+</record>
+
+<!--160-->
+<record tabname="law_bsact">
+  <col name="ID">1663</col>
+  <col name="NAME">2、森林、林木和林地使用权</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030202</col>
+</record>
+
+<!--161-->
+<record tabname="law_bsact">
+  <col name="ID">1664</col>
+  <col name="NAME">3、机动车</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030203</col>
+</record>
+
+<!--162-->
+<record tabname="law_bsact">
+  <col name="ID">1665</col>
+  <col name="NAME">4、民用航空器</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030204</col>
+</record>
+
+<!--163-->
+<record tabname="law_bsact">
+  <col name="ID">1666</col>
+  <col name="NAME">5、海域使用权</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030205</col>
+</record>
+
+<!--164-->
+<record tabname="law_bsact">
+  <col name="ID">1667</col>
+  <col name="NAME">6、文物</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030206</col>
+</record>
+
+<!--165-->
+<record tabname="law_bsact">
+  <col name="ID">1668</col>
+  <col name="NAME">7、房地产</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030207</col>
+</record>
+
+<!--166-->
+<record tabname="law_bsact">
+  <col name="ID">1669</col>
+  <col name="NAME">8、土地使用权</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030208</col>
+</record>
+
+<!--167-->
+<record tabname="law_bsact">
+  <col name="ID">1670</col>
+  <col name="NAME">9、企业动产</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030209</col>
+</record>
+
+<!--168-->
+<record tabname="law_bsact">
+  <col name="ID">1671</col>
+  <col name="NAME">10、错误抵押登记的注销</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030210</col>
+</record>
+
+<!--169-->
+<record tabname="law_bsact">
+  <col name="ID">1672</col>
+  <col name="NAME">11、国有划拨土地使用权抵押登记</col>
+  <col name="PARENTID">1661</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030211</col>
+</record>
+
+<!--170-->
+<record tabname="law_bsact">
+  <col name="ID">1673</col>
+  <col name="NAME">（三）抵押登记应提交的资料</col>
+  <col name="PARENTID">1659</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">10030303</col>
+</record>
+
+<!--171-->
+<record tabname="law_bsact">
+  <col name="ID">1674</col>
+  <col name="NAME">1、一般规定</col>
+  <col name="PARENTID">1673</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030301</col>
+</record>
+
+<!--172-->
+<record tabname="law_bsact">
+  <col name="ID">1675</col>
+  <col name="NAME">2、特别规定</col>
+  <col name="PARENTID">1673</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030302</col>
+</record>
+
+<!--173-->
+<record tabname="law_bsact">
+  <col name="ID">1676</col>
+  <col name="NAME">（四）审核</col>
+  <col name="PARENTID">1659</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">10030304</col>
+</record>
+
+<!--174-->
+<record tabname="law_bsact">
+  <col name="ID">1677</col>
+  <col name="NAME">1、机动车</col>
+  <col name="PARENTID">1676</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030401</col>
+</record>
+
+<!--175-->
+<record tabname="law_bsact">
+  <col name="ID">1678</col>
+  <col name="NAME">2、森林、林木和林地使用权</col>
+  <col name="PARENTID">1676</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030402</col>
+</record>
+
+<!--176-->
+<record tabname="law_bsact">
+  <col name="ID">1679</col>
+  <col name="NAME">3、海域使用权</col>
+  <col name="PARENTID">1676</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030403</col>
+</record>
+
+<!--177-->
+<record tabname="law_bsact">
+  <col name="ID">1680</col>
+  <col name="NAME">4、企业动产</col>
+  <col name="PARENTID">1676</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1003030404</col>
+</record>
+
+<!--178-->
+<record tabname="law_bsact">
+  <col name="ID">1681</col>
+  <col name="NAME">四、抵押的效力</col>
+  <col name="PARENTID">1643</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">100304</col>
+</record>
+
+<!--179-->
+<record tabname="law_bsact">
+  <col name="ID">1682</col>
+  <col name="NAME">（一）抵押权的生效</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">10030401</col>
+</record>
+
+<!--180-->
+<record tabname="law_bsact">
+  <col name="ID">1683</col>
+  <col name="NAME">（一）抵押担保的范围</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">10030402</col>
+</record>
+
+<!--181-->
+<record tabname="law_bsact">
+  <col name="ID">1684</col>
+  <col name="NAME">（四）抵押权的保全</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">10030405</col>
+</record>
+
+<!--182-->
+<record tabname="law_bsact">
+  <col name="ID">1685</col>
+  <col name="NAME">（五）抵押权的消灭</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">10030406</col>
+</record>
+
+<!--183-->
+<record tabname="law_bsact">
+  <col name="ID">1686</col>
+  <col name="NAME">（六）最高额抵押的特殊规定</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">10030407</col>
+</record>
+
+<!--184-->
+<record tabname="law_bsact">
+  <col name="ID">1687</col>
+  <col name="NAME">五、登记资料查询</col>
+  <col name="PARENTID">1643</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">100305</col>
+</record>
+
+<!--185-->
+<record tabname="law_bsact">
+  <col name="ID">1688</col>
+  <col name="NAME"><![CDATA[<四> 质押]]></col>
+  <col name="PARENTID">1606</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">1004</col>
+</record>
+
+<!--186-->
+<record tabname="law_bsact">
+  <col name="ID">1689</col>
+  <col name="NAME">一、动产质押</col>
+  <col name="PARENTID">1688</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">100401</col>
+</record>
+
+<!--187-->
+<record tabname="law_bsact">
+  <col name="ID">1690</col>
+  <col name="NAME">（一）动产质押的概念</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">10040101</col>
+</record>
+
+<!--188-->
+<record tabname="law_bsact">
+  <col name="ID">1691</col>
+  <col name="NAME">（二）质押合同、质物的移交</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">10040102</col>
+</record>
+
+<!--189-->
+<record tabname="law_bsact">
+  <col name="ID">1692</col>
+  <col name="NAME">（三）流质的禁止</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">10040103</col>
+</record>
+
+<!--190-->
+<record tabname="law_bsact">
+  <col name="ID">1693</col>
+  <col name="NAME">（四）质权的成立</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">10040104</col>
+</record>
+
+<!--191-->
+<record tabname="law_bsact">
+  <col name="ID">1694</col>
+  <col name="NAME">（四）质押的范围及孳息</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">10040105</col>
+</record>
+
+<!--192-->
+<record tabname="law_bsact">
+  <col name="ID">1695</col>
+  <col name="NAME">（五）质权的保全</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">10040106</col>
+</record>
+
+<!--193-->
+<record tabname="law_bsact">
+  <col name="ID">1696</col>
+  <col name="NAME">（六）质物的相应处理及质权的行使</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">10040107</col>
+</record>
+
+<!--194-->
+<record tabname="law_bsact">
+  <col name="ID">1697</col>
+  <col name="NAME">（八）质权的消灭</col>
+  <col name="PARENTID">1689</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE">10040108</col>
+</record>
+
+<!--195-->
+<record tabname="law_bsact">
+  <col name="ID">1698</col>
+  <col name="NAME">二、权利质押</col>
+  <col name="PARENTID">1688</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">100402</col>
+</record>
+
+<!--196-->
+<record tabname="law_bsact">
+  <col name="ID">1699</col>
+  <col name="NAME">（一）质押物范围的一般规定</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040201</col>
+</record>
+
+<!--197-->
+<record tabname="law_bsact">
+  <col name="ID">1700</col>
+  <col name="NAME">（二）质押物范围的特别规定</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040202</col>
+</record>
+
+<!--198-->
+<record tabname="law_bsact">
+  <col name="ID">1701</col>
+  <col name="NAME">1、公司股票</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020201</col>
+</record>
+
+<!--199-->
+<record tabname="law_bsact">
+  <col name="ID">1702</col>
+  <col name="NAME">2、股权质押</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020202</col>
+</record>
+
+<!--200-->
+<record tabname="law_bsact">
+  <col name="ID">1703</col>
+  <col name="NAME">3、保险单</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020203</col>
+</record>
+
+<!--201-->
+<record tabname="law_bsact">
+  <col name="ID">1704</col>
+  <col name="NAME">4、上市公司国有股权质押</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020204</col>
+</record>
+
+<!--202-->
+<record tabname="law_bsact">
+  <col name="ID">1705</col>
+  <col name="NAME">5、国债</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020205</col>
+</record>
+
+<!--203-->
+<record tabname="law_bsact">
+  <col name="ID">1706</col>
+  <col name="NAME">6、出口退税托管帐户</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020206</col>
+</record>
+
+<!--204-->
+<record tabname="law_bsact">
+  <col name="ID">1707</col>
+  <col name="NAME">7、公路收费权质押</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020207</col>
+</record>
+
+<!--205-->
+<record tabname="law_bsact">
+  <col name="ID">1708</col>
+  <col name="NAME">8、学生公寓收费权</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020208</col>
+</record>
+
+<!--206-->
+<record tabname="law_bsact">
+  <col name="ID">1709</col>
+  <col name="NAME">9、证券公司股票</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020209</col>
+</record>
+
+<!--207-->
+<record tabname="law_bsact">
+  <col name="ID">1710</col>
+  <col name="NAME">10、建设与改造工程电费收益权</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020210</col>
+</record>
+
+<!--208-->
+<record tabname="law_bsact">
+  <col name="ID">1711</col>
+  <col name="NAME">11、矿业权</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020211</col>
+</record>
+
+<!--209-->
+<record tabname="law_bsact">
+  <col name="ID">1712</col>
+  <col name="NAME">12、 存单</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020212</col>
+</record>
+
+<!--210-->
+<record tabname="law_bsact">
+  <col name="ID">1713</col>
+  <col name="NAME">13、著作权中的财产权</col>
+  <col name="PARENTID">1700</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020213</col>
+</record>
+
+<!--211-->
+<record tabname="law_bsact">
+  <col name="ID">1714</col>
+  <col name="NAME">（三）质押的生效、失效及质物的保管</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040203</col>
+</record>
+
+<!--212-->
+<record tabname="law_bsact">
+  <col name="ID">1715</col>
+  <col name="NAME">（四）质押合同</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040204</col>
+</record>
+
+<!--213-->
+<record tabname="law_bsact">
+  <col name="ID">1716</col>
+  <col name="NAME">（五）权利质押应出具的材料</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040205</col>
+</record>
+
+<!--214-->
+<record tabname="law_bsact">
+  <col name="ID">1717</col>
+  <col name="NAME">（六）质权的行使</col>
+  <col name="PARENTID">1698</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">10040206</col>
+</record>
+
+<!--215-->
+<record tabname="law_bsact">
+  <col name="ID">1718</col>
+  <col name="NAME">1、权利质权行使的一般规定</col>
+  <col name="PARENTID">1717</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020601</col>
+</record>
+
+<!--216-->
+<record tabname="law_bsact">
+  <col name="ID">1719</col>
+  <col name="NAME">2、权利质权行使的特别规定</col>
+  <col name="PARENTID">1717</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1004020602</col>
+</record>
+
+<!--217-->
+<record tabname="law_bsact">
+  <col name="ID">1720</col>
+  <col name="NAME">（二）抵押权的行使</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">10030403</col>
+</record>
+
+<!--218-->
+<record tabname="law_bsact">
+  <col name="ID">1721</col>
+  <col name="NAME">（三）抵押和其他权利的关系</col>
+  <col name="PARENTID">1681</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">10030404</col>
+</record>
+
+<!--219-->
+<record tabname="law_bsact">
+  <col name="ID">1722</col>
+  <col name="NAME">1、抵押和租赁的关系</col>
+  <col name="PARENTID">1721</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">1003040401</col>
+</record>
+
+<!--220-->
+<record tabname="law_bsact">
+  <col name="ID">1723</col>
+  <col name="NAME">2、抵押和买卖的关系</col>
+  <col name="PARENTID">1721</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">1003040402</col>
+</record>
+
+<!--221-->
+<record tabname="law_bsact">
+  <col name="ID">1724</col>
+  <col name="NAME">3、抵押和工程款的关系</col>
+  <col name="PARENTID">1721</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">1003040403</col>
+</record>
+
+<!--222-->
+<record tabname="law_bsact">
+  <col name="ID">1725</col>
+  <col name="NAME"> 外汇</col>
+  <col name="PARENTID">2202</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">11</col>
+</record>
+
+<!--223-->
+<record tabname="law_bsact">
+  <col name="ID">1726</col>
+  <col name="NAME"><![CDATA[<一> 综合性规定]]></col>
+  <col name="PARENTID">1725</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">1101</col>
+</record>
+
+<!--224-->
+<record tabname="law_bsact">
+  <col name="ID">1727</col>
+  <col name="NAME">三、结、售汇业务</col>
+  <col name="PARENTID">1726</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">110103</col>
+</record>
+
+<!--225-->
+<record tabname="law_bsact">
+  <col name="ID">1728</col>
+  <col name="NAME">（二）远期结、售汇业务</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11010302</col>
+</record>
+
+<!--226-->
+<record tabname="law_bsact">
+  <col name="ID">1729</col>
+  <col name="NAME">（三）结汇、售汇及付汇的若干具体规定</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">11010303</col>
+</record>
+
+<!--227-->
+<record tabname="law_bsact">
+  <col name="ID">1730</col>
+  <col name="NAME">（四）外汇指定银行办理结、售汇业务管理</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">11010304</col>
+</record>
+
+<!--228-->
+<record tabname="law_bsact">
+  <col name="ID">1731</col>
+  <col name="NAME">1、基本规定</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030401</col>
+</record>
+
+<!--229-->
+<record tabname="law_bsact">
+  <col name="ID">1732</col>
+  <col name="NAME">2、结汇、售汇业务市场准入、退出</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030402</col>
+</record>
+
+<!--230-->
+<record tabname="law_bsact">
+  <col name="ID">1733</col>
+  <col name="NAME">3、结售汇周转头寸管理</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030403</col>
+</record>
+
+<!--231-->
+<record tabname="law_bsact">
+  <col name="ID">1734</col>
+  <col name="NAME">4、自身结汇、售汇业务管理</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030404</col>
+</record>
+
+<!--232-->
+<record tabname="law_bsact">
+  <col name="ID">1735</col>
+  <col name="NAME">5、与客户之间的结汇、售汇业务管理</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030405</col>
+</record>
+
+<!--233-->
+<record tabname="law_bsact">
+  <col name="ID">1736</col>
+  <col name="NAME">6、罚 则</col>
+  <col name="PARENTID">1730</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030406</col>
+</record>
+
+<!--234-->
+<record tabname="law_bsact">
+  <col name="ID">1737</col>
+  <col name="NAME">（五）外币代兑机构管理暂行办法</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">11010305</col>
+</record>
+
+<!--235-->
+<record tabname="law_bsact">
+  <col name="ID">1738</col>
+  <col name="NAME">（六）银行结售汇统计制度</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE">11010306</col>
+</record>
+
+<!--236-->
+<record tabname="law_bsact">
+  <col name="ID">1739</col>
+  <col name="NAME">（七）金融机构办理结售汇业务登记备案</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE">11010307</col>
+</record>
+
+<!--237-->
+<record tabname="law_bsact">
+  <col name="ID">1740</col>
+  <col name="NAME">（八）外汇资金流入和结汇管理</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE">11010308</col>
+</record>
+
+<!--238-->
+<record tabname="law_bsact">
+  <col name="ID">1741</col>
+  <col name="NAME">（九）个人结售汇业务</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">9</col>
+  <col name="LINKCODE">11010309</col>
+</record>
+
+<!--239-->
+<record tabname="law_bsact">
+  <col name="ID">1742</col>
+  <col name="NAME">四、特殊经济区域外汇管理</col>
+  <col name="PARENTID">1726</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">110104</col>
+</record>
+
+<!--240-->
+<record tabname="law_bsact">
+  <col name="ID">1743</col>
+  <col name="NAME">（一）保税监管区域外汇管理</col>
+  <col name="PARENTID">1742</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11010401</col>
+</record>
+
+<!--241-->
+<record tabname="law_bsact">
+  <col name="ID">1744</col>
+  <col name="NAME">（二）边境贸易外汇管理</col>
+  <col name="PARENTID">1742</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11010402</col>
+</record>
+
+<!--242-->
+<record tabname="law_bsact">
+  <col name="ID">1745</col>
+  <col name="NAME">1、基本规定</col>
+  <col name="PARENTID">1744</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">1101040201</col>
+</record>
+
+<!--243-->
+<record tabname="law_bsact">
+  <col name="ID">1746</col>
+  <col name="NAME">2、边境贸易账户管理</col>
+  <col name="PARENTID">1744</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">1101040202</col>
+</record>
+
+<!--244-->
+<record tabname="law_bsact">
+  <col name="ID">1747</col>
+  <col name="NAME">3、边境贸易外汇收支管理</col>
+  <col name="PARENTID">1744</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">1101040203</col>
+</record>
+
+<!--245-->
+<record tabname="law_bsact">
+  <col name="ID">1748</col>
+  <col name="NAME">4、边境贸易收付款核销管理</col>
+  <col name="PARENTID">1744</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">1101040204</col>
+</record>
+
+<!--246-->
+<record tabname="law_bsact">
+  <col name="ID">1749</col>
+  <col name="NAME">5、边境贸易结算及货币兑换管理</col>
+  <col name="PARENTID">1744</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE">1101040205</col>
+</record>
+
+<!--247-->
+<record tabname="law_bsact">
+  <col name="ID">1750</col>
+  <col name="NAME"><![CDATA[<二> 经常项目外汇管理]]></col>
+  <col name="PARENTID">1725</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">1102</col>
+</record>
+
+<!--248-->
+<record tabname="law_bsact">
+  <col name="ID">1751</col>
+  <col name="NAME">一、基本规定</col>
+  <col name="PARENTID">1750</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">110201</col>
+</record>
+
+<!--249-->
+<record tabname="law_bsact">
+  <col name="ID">1752</col>
+  <col name="NAME">（一）调整经常项目外汇管理政策</col>
+  <col name="PARENTID">1751</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">11020101</col>
+</record>
+
+<!--250-->
+<record tabname="law_bsact">
+  <col name="ID">1753</col>
+  <col name="NAME">（二）经常项目外汇账户和境内居民个人购汇操作规程</col>
+  <col name="PARENTID">1751</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">11020102</col>
+</record>
+
+<!--251-->
+<record tabname="law_bsact">
+  <col name="ID">1754</col>
+  <col name="NAME">二、贸易外汇管理</col>
+  <col name="PARENTID">1750</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">110202</col>
+</record>
+
+<!--252-->
+<record tabname="law_bsact">
+  <col name="ID">1755</col>
+  <col name="NAME">（一）进口付汇核销</col>
+  <col name="PARENTID">1754</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11020201</col>
+</record>
+
+<!--253-->
+<record tabname="law_bsact">
+  <col name="ID">1756</col>
+  <col name="NAME">1、进口付汇核销监管</col>
+  <col name="PARENTID">1755</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102020101</col>
+</record>
+
+<!--254-->
+<record tabname="law_bsact">
+  <col name="ID">1757</col>
+  <col name="NAME">2、进口付汇核销贸易真实性审核</col>
+  <col name="PARENTID">1755</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102020102</col>
+</record>
+
+<!--255-->
+<record tabname="law_bsact">
+  <col name="ID">1758</col>
+  <col name="NAME">3、货到付款项下贸易进口付汇自动核销</col>
+  <col name="PARENTID">1755</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102020103</col>
+</record>
+
+<!--256-->
+<record tabname="law_bsact">
+  <col name="ID">1759</col>
+  <col name="NAME">（二）出口收汇核销</col>
+  <col name="PARENTID">1754</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11020202</col>
+</record>
+
+<!--257-->
+<record tabname="law_bsact">
+  <col name="ID">1760</col>
+  <col name="NAME">1、出口收汇核销</col>
+  <col name="PARENTID">1759</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102020201</col>
+</record>
+
+<!--258-->
+<record tabname="law_bsact">
+  <col name="ID">1761</col>
+  <col name="NAME">2、福费廷业务项下出口核销</col>
+  <col name="PARENTID">1759</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102020202</col>
+</record>
+
+<!--259-->
+<record tabname="law_bsact">
+  <col name="ID">1762</col>
+  <col name="NAME">（三）个人对外贸易经营有关外汇管理</col>
+  <col name="PARENTID">1754</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">11020203</col>
+</record>
+
+<!--260-->
+<record tabname="law_bsact">
+  <col name="ID">1763</col>
+  <col name="NAME">（四）贸易外汇收汇与结汇管理</col>
+  <col name="PARENTID">1754</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">11020204</col>
+</record>
+
+<!--261-->
+<record tabname="law_bsact">
+  <col name="ID">1764</col>
+  <col name="NAME">三、非贸易和居民个人外汇管理</col>
+  <col name="PARENTID">1750</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">110203</col>
+</record>
+
+<!--262-->
+<record tabname="law_bsact">
+  <col name="ID">1765</col>
+  <col name="NAME">（一）非贸易非经营性外汇管理</col>
+  <col name="PARENTID">1764</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11020301</col>
+</record>
+
+<!--263-->
+<record tabname="law_bsact">
+  <col name="ID">1766</col>
+  <col name="NAME">1、财务管理</col>
+  <col name="PARENTID">1765</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030101</col>
+</record>
+
+<!--264-->
+<record tabname="law_bsact">
+  <col name="ID">1767</col>
+  <col name="NAME">2、购汇人民币限额管理</col>
+  <col name="PARENTID">1765</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030102</col>
+</record>
+
+<!--265-->
+<record tabname="law_bsact">
+  <col name="ID">1768</col>
+  <col name="NAME">（二）个人外汇管理</col>
+  <col name="PARENTID">1764</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11020302</col>
+</record>
+
+<!--266-->
+<record tabname="law_bsact">
+  <col name="ID">1769</col>
+  <col name="NAME">1、基本规定</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030201</col>
+</record>
+
+<!--267-->
+<record tabname="law_bsact">
+  <col name="ID">1770</col>
+  <col name="NAME">2、经常项目个人外汇管理</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030202</col>
+</record>
+
+<!--268-->
+<record tabname="law_bsact">
+  <col name="ID">1771</col>
+  <col name="NAME">3、资本项目个人外汇管理</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030203</col>
+</record>
+
+<!--269-->
+<record tabname="law_bsact">
+  <col name="ID">1772</col>
+  <col name="NAME">4、个人外汇账户及外币现钞管理</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030204</col>
+</record>
+
+<!--270-->
+<record tabname="law_bsact">
+  <col name="ID">1773</col>
+  <col name="NAME">5、个人结售汇管理信息系统</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030205</col>
+</record>
+
+<!--271-->
+<record tabname="law_bsact">
+  <col name="ID">1774</col>
+  <col name="NAME">6、附则</col>
+  <col name="PARENTID">1768</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1102030206</col>
+</record>
+
+<!--272-->
+<record tabname="law_bsact">
+  <col name="ID">1775</col>
+  <col name="NAME">（三）非贸易及部分资本项目项下售付汇提交税务凭证</col>
+  <col name="PARENTID">1764</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">11020303</col>
+</record>
+
+<!--273-->
+<record tabname="law_bsact">
+  <col name="ID">1776</col>
+  <col name="NAME">（四）出口保付代理业务项下收汇核销管理</col>
+  <col name="PARENTID">1764</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">11020304</col>
+</record>
+
+<!--274-->
+<record tabname="law_bsact">
+  <col name="ID">1777</col>
+  <col name="NAME">四、外币现钞管理</col>
+  <col name="PARENTID">1750</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">110204</col>
+</record>
+
+<!--275-->
+<record tabname="law_bsact">
+  <col name="ID">1778</col>
+  <col name="NAME">（一）境内机构外币现钞收付管理</col>
+  <col name="PARENTID">1777</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11020401</col>
+</record>
+
+<!--276-->
+<record tabname="law_bsact">
+  <col name="ID">1779</col>
+  <col name="NAME">（二）银行调运外币现钞进出境管理</col>
+  <col name="PARENTID">1777</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11020402</col>
+</record>
+
+<!--277-->
+<record tabname="law_bsact">
+  <col name="ID">1780</col>
+  <col name="NAME">（三）外币现钞管理</col>
+  <col name="PARENTID">1777</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">11020403</col>
+</record>
+
+<!--278-->
+<record tabname="law_bsact">
+  <col name="ID">1781</col>
+  <col name="NAME">一、外汇业务准入</col>
+  <col name="PARENTID">1726</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">110101</col>
+</record>
+
+<!--279-->
+<record tabname="law_bsact">
+  <col name="ID">1782</col>
+  <col name="NAME">二、外汇账户管理</col>
+  <col name="PARENTID">1726</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">110102</col>
+</record>
+
+<!--280-->
+<record tabname="law_bsact">
+  <col name="ID">1783</col>
+  <col name="NAME">（一）基本规定</col>
+  <col name="PARENTID">1782</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11010201</col>
+</record>
+
+<!--281-->
+<record tabname="law_bsact">
+  <col name="ID">1784</col>
+  <col name="NAME">（二）经常项目外汇帐户及其开立、使用</col>
+  <col name="PARENTID">1782</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE">11010202</col>
+</record>
+
+<!--282-->
+<record tabname="law_bsact">
+  <col name="ID">1785</col>
+  <col name="NAME">（三）资本项目外汇帐户及其开立、使用</col>
+  <col name="PARENTID">1782</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE">11010203</col>
+</record>
+
+<!--283-->
+<record tabname="law_bsact">
+  <col name="ID">1786</col>
+  <col name="NAME">（四）外汇帐户的监管</col>
+  <col name="PARENTID">1782</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE">11010204</col>
+</record>
+
+<!--284-->
+<record tabname="law_bsact">
+  <col name="ID">1787</col>
+  <col name="NAME">（一）结汇、售汇、付汇管理</col>
+  <col name="PARENTID">1727</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE">11010301</col>
+</record>
+
+<!--285-->
+<record tabname="law_bsact">
+  <col name="ID">1788</col>
+  <col name="NAME">1、基本规定</col>
+  <col name="PARENTID">1787</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030101</col>
+</record>
+
+<!--286-->
+<record tabname="law_bsact">
+  <col name="ID">1789</col>
+  <col name="NAME">2、经常项目下的结汇、售汇与付汇</col>
+  <col name="PARENTID">1787</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030102</col>
+</record>
+
+<!--287-->
+<record tabname="law_bsact">
+  <col name="ID">1790</col>
+  <col name="NAME">3、资本项目下的结汇、售汇与付汇</col>
+  <col name="PARENTID">1787</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030103</col>
+</record>
+
+<!--288-->
+<record tabname="law_bsact">
+  <col name="ID">1791</col>
+  <col name="NAME">4、结汇、售汇及付汇的监管</col>
+  <col name="PARENTID">1787</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE">1101030104</col>
+</record>
+
+<!--289-->
+<record tabname="law_bsact">
+  <col name="ID">2010</col>
+  <col name="NAME">2、非法人机构的 变更</col>
+  <col name="PARENTID">20</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--290-->
+<record tabname="law_bsact">
+  <col name="ID">2011</col>
+  <col name="NAME"> 市场准入与行政许可</col>
+  <col name="PARENTID">2201</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--291-->
+<record tabname="law_bsact">
+  <col name="ID">2022</col>
+  <col name="NAME">三、行政许可</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--292-->
+<record tabname="law_bsact">
+  <col name="ID">2041</col>
+  <col name="NAME">（1）基本规定</col>
+  <col name="PARENTID">72</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--293-->
+<record tabname="law_bsact">
+  <col name="ID">2042</col>
+  <col name="NAME">（2）投资入股的条件与比例</col>
+  <col name="PARENTID">72</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--294-->
+<record tabname="law_bsact">
+  <col name="ID">2043</col>
+  <col name="NAME">（3）投资入股的申请及审批</col>
+  <col name="PARENTID">72</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--295-->
+<record tabname="law_bsact">
+  <col name="ID">2044</col>
+  <col name="NAME">（4）其它规定</col>
+  <col name="PARENTID">72</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--296-->
+<record tabname="law_bsact">
+  <col name="ID">2045</col>
+  <col name="NAME">（1）投资范围和投资原则</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--297-->
+<record tabname="law_bsact">
+  <col name="ID">2046</col>
+  <col name="NAME">（2）投资方式和资金来源</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--298-->
+<record tabname="law_bsact">
+  <col name="ID">2047</col>
+  <col name="NAME">（3）投资比例和核算基数</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--299-->
+<record tabname="law_bsact">
+  <col name="ID">2048</col>
+  <col name="NAME">（4）投资资格和基本要求</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--300-->
+<record tabname="law_bsact">
+  <col name="ID">2049</col>
+  <col name="NAME">（5）选择条件和主要指标</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--301-->
+<record tabname="law_bsact">
+  <col name="ID">2050</col>
+  <col name="NAME">（6）报备程序和审批事项</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--302-->
+<record tabname="law_bsact">
+  <col name="ID">2051</col>
+  <col name="NAME">（7）退出机制和应急处理</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--303-->
+<record tabname="law_bsact">
+  <col name="ID">2052</col>
+  <col name="NAME">（8）风险管理和监督检查</col>
+  <col name="PARENTID">73</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--304-->
+<record tabname="law_bsact">
+  <col name="ID">2061</col>
+  <col name="NAME">（1）分类应考虑的因素</col>
+  <col name="PARENTID">303</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--305-->
+<record tabname="law_bsact">
+  <col name="ID">2062</col>
+  <col name="NAME">（2）分类的基本要求</col>
+  <col name="PARENTID">303</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--306-->
+<record tabname="law_bsact">
+  <col name="ID">2063</col>
+  <col name="NAME">（3）分类的程序与方法</col>
+  <col name="PARENTID">303</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--307-->
+<record tabname="law_bsact">
+  <col name="ID">2064</col>
+  <col name="NAME">（4）对中小企业的特别规定</col>
+  <col name="PARENTID">303</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--308-->
+<record tabname="law_bsact">
+  <col name="ID">2065</col>
+  <col name="NAME">（1）基本要求</col>
+  <col name="PARENTID">310</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--309-->
+<record tabname="law_bsact">
+  <col name="ID">2066</col>
+  <col name="NAME">（2）董事会和高级管理层的职责</col>
+  <col name="PARENTID">310</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--310-->
+<record tabname="law_bsact">
+  <col name="ID">2067</col>
+  <col name="NAME">（3）专门市场风险管理和经营部门的职责</col>
+  <col name="PARENTID">310</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--311-->
+<record tabname="law_bsact">
+  <col name="ID">2068</col>
+  <col name="NAME">（1）基本规定</col>
+  <col name="PARENTID">324</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--312-->
+<record tabname="law_bsact">
+  <col name="ID">2069</col>
+  <col name="NAME">（2）案件报告及受理</col>
+  <col name="PARENTID">324</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--313-->
+<record tabname="law_bsact">
+  <col name="ID">2070</col>
+  <col name="NAME">（3）管辖及办理</col>
+  <col name="PARENTID">324</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--314-->
+<record tabname="law_bsact">
+  <col name="ID">2071</col>
+  <col name="NAME">（4）结 案</col>
+  <col name="PARENTID">324</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--315-->
+<record tabname="law_bsact">
+  <col name="ID">2072</col>
+  <col name="NAME">（5）奖惩与其他</col>
+  <col name="PARENTID">324</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--316-->
+<record tabname="law_bsact">
+  <col name="ID">2073</col>
+  <col name="NAME">（1）风险评级的功能</col>
+  <col name="PARENTID">339</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--317-->
+<record tabname="law_bsact">
+  <col name="ID">2074</col>
+  <col name="NAME">（2）风险评级的适用范围</col>
+  <col name="PARENTID">339</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--318-->
+<record tabname="law_bsact">
+  <col name="ID">2075</col>
+  <col name="NAME">（3）风险评级程序</col>
+  <col name="PARENTID">339</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--319-->
+<record tabname="law_bsact">
+  <col name="ID">2076</col>
+  <col name="NAME">（1）资本充足状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--320-->
+<record tabname="law_bsact">
+  <col name="ID">2077</col>
+  <col name="NAME">（2）资产质量状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--321-->
+<record tabname="law_bsact">
+  <col name="ID">2078</col>
+  <col name="NAME">（3）管理状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--322-->
+<record tabname="law_bsact">
+  <col name="ID">2079</col>
+  <col name="NAME">（4）盈利状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--323-->
+<record tabname="law_bsact">
+  <col name="ID">2080</col>
+  <col name="NAME">（5）流动性状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--324-->
+<record tabname="law_bsact">
+  <col name="ID">2081</col>
+  <col name="NAME">（6）市场风险状况</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--325-->
+<record tabname="law_bsact">
+  <col name="ID">2082</col>
+  <col name="NAME">（7）其他因素</col>
+  <col name="PARENTID">340</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--326-->
+<record tabname="law_bsact">
+  <col name="ID">2083</col>
+  <col name="NAME">（1）定义</col>
+  <col name="PARENTID">359</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--327-->
+<record tabname="law_bsact">
+  <col name="ID">2084</col>
+  <col name="NAME">（2）统一授信管理</col>
+  <col name="PARENTID">359</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--328-->
+<record tabname="law_bsact">
+  <col name="ID">2085</col>
+  <col name="NAME">（3）处罚规定</col>
+  <col name="PARENTID">359</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--329-->
+<record tabname="law_bsact">
+  <col name="ID">2086</col>
+  <col name="NAME">（1）基本原则</col>
+  <col name="PARENTID">427</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--330-->
+<record tabname="law_bsact">
+  <col name="ID">2087</col>
+  <col name="NAME">（2）确定差别存款准备金率的主要依据</col>
+  <col name="PARENTID">427</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--331-->
+<record tabname="law_bsact">
+  <col name="ID">2088</col>
+  <col name="NAME">（3）实施对象</col>
+  <col name="PARENTID">427</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--332-->
+<record tabname="law_bsact">
+  <col name="ID">2089</col>
+  <col name="NAME">（4）确定差别存款准备金率的方法</col>
+  <col name="PARENTID">427</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--333-->
+<record tabname="law_bsact">
+  <col name="ID">2090</col>
+  <col name="NAME">（5）调整存款准备金率的操作</col>
+  <col name="PARENTID">427</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--334-->
+<record tabname="law_bsact">
+  <col name="ID">2101</col>
+  <col name="NAME">六、金融创新</col>
+  <col name="PARENTID">273</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--335-->
+<record tabname="law_bsact">
+  <col name="ID">2103</col>
+  <col name="NAME">（一）总则</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--336-->
+<record tabname="law_bsact">
+  <col name="ID">2104</col>
+  <col name="NAME">（二）基本原则</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--337-->
+<record tabname="law_bsact">
+  <col name="ID">2105</col>
+  <col name="NAME">（三）运行机制</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--338-->
+<record tabname="law_bsact">
+  <col name="ID">2106</col>
+  <col name="NAME">（四）客户利益保护</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--339-->
+<record tabname="law_bsact">
+  <col name="ID">2107</col>
+  <col name="NAME">（五）风险管理</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--340-->
+<record tabname="law_bsact">
+  <col name="ID">2108</col>
+  <col name="NAME">（六）监督管理</col>
+  <col name="PARENTID">2101</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--341-->
+<record tabname="law_bsact">
+  <col name="ID">2111</col>
+  <col name="NAME">（1）概念</col>
+  <col name="PARENTID">478</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--342-->
+<record tabname="law_bsact">
+  <col name="ID">2112</col>
+  <col name="NAME">（2）品种</col>
+  <col name="PARENTID">478</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--343-->
+<record tabname="law_bsact">
+  <col name="ID">2113</col>
+  <col name="NAME">（3）最低起存限额</col>
+  <col name="PARENTID">478</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--344-->
+<record tabname="law_bsact">
+  <col name="ID">2115</col>
+  <col name="NAME">（1）概念</col>
+  <col name="PARENTID">479</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--345-->
+<record tabname="law_bsact">
+  <col name="ID">2116</col>
+  <col name="NAME">（2）适用对象</col>
+  <col name="PARENTID">479</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--346-->
+<record tabname="law_bsact">
+  <col name="ID">2117</col>
+  <col name="NAME">（3）办理</col>
+  <col name="PARENTID">479</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--347-->
+<record tabname="law_bsact">
+  <col name="ID">2118</col>
+  <col name="NAME">（4）其他优惠</col>
+  <col name="PARENTID">479</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--348-->
+<record tabname="law_bsact">
+  <col name="ID">2119</col>
+  <col name="NAME"> 1、存期种类</col>
+  <col name="PARENTID">500</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--349-->
+<record tabname="law_bsact">
+  <col name="ID">2120</col>
+  <col name="NAME">2、金融机构对单位定期存款的管理 </col>
+  <col name="PARENTID">500</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--350-->
+<record tabname="law_bsact">
+  <col name="ID">2121</col>
+  <col name="NAME">3、支取</col>
+  <col name="PARENTID">500</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--351-->
+<record tabname="law_bsact">
+  <col name="ID">2141</col>
+  <col name="NAME">（1）基本规定</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--352-->
+<record tabname="law_bsact">
+  <col name="ID">2142</col>
+  <col name="NAME">（2）QFII专用账户</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--353-->
+<record tabname="law_bsact">
+  <col name="ID">2143</col>
+  <col name="NAME">（3）境外投资者依法受让境内不良债权</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--354-->
+<record tabname="law_bsact">
+  <col name="ID">2144</col>
+  <col name="NAME">（4）国际开发机构依法发行人民币债券</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--355-->
+<record tabname="law_bsact">
+  <col name="ID">2145</col>
+  <col name="NAME">（5）企业年金账户</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--356-->
+<record tabname="law_bsact">
+  <col name="ID">2146</col>
+  <col name="NAME">（6）房地产经纪结算资金专用帐户</col>
+  <col name="PARENTID">1015</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--357-->
+<record tabname="law_bsact">
+  <col name="ID">2147</col>
+  <col name="NAME">（1）基本规定</col>
+  <col name="PARENTID">1016</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--358-->
+<record tabname="law_bsact">
+  <col name="ID">2148</col>
+  <col name="NAME">（2）设立临时机构</col>
+  <col name="PARENTID">1016</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--359-->
+<record tabname="law_bsact">
+  <col name="ID">2149</col>
+  <col name="NAME">（3）异地临时经营活动</col>
+  <col name="PARENTID">1016</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--360-->
+<record tabname="law_bsact">
+  <col name="ID">2150</col>
+  <col name="NAME">（4）注册验资</col>
+  <col name="PARENTID">1016</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--361-->
+<record tabname="law_bsact">
+  <col name="ID">2161</col>
+  <col name="NAME">（1）交易基本规则</col>
+  <col name="PARENTID">1358</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--362-->
+<record tabname="law_bsact">
+  <col name="ID">2162</col>
+  <col name="NAME">（2）交易程序</col>
+  <col name="PARENTID">1358</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--363-->
+<record tabname="law_bsact">
+  <col name="ID">2163</col>
+  <col name="NAME">（3）交易信息</col>
+  <col name="PARENTID">1358</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--364-->
+<record tabname="law_bsact">
+  <col name="ID">2164</col>
+  <col name="NAME">（1）营业日、交割日和运行时间</col>
+  <col name="PARENTID">1360</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--365-->
+<record tabname="law_bsact">
+  <col name="ID">2165</col>
+  <col name="NAME">（2）交易结算</col>
+  <col name="PARENTID">1360</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--366-->
+<record tabname="law_bsact">
+  <col name="ID">2166</col>
+  <col name="NAME">（3）交易结算信息</col>
+  <col name="PARENTID">1360</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--367-->
+<record tabname="law_bsact">
+  <col name="ID">2167</col>
+  <col name="NAME">（1）审批部门</col>
+  <col name="PARENTID">1537</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--368-->
+<record tabname="law_bsact">
+  <col name="ID">2168</col>
+  <col name="NAME">（2）申报材料</col>
+  <col name="PARENTID">1537</col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--369-->
+<record tabname="law_bsact">
+  <col name="ID">2169</col>
+  <col name="NAME">（1）森林、林木和林地使用权</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--370-->
+<record tabname="law_bsact">
+  <col name="ID">2170</col>
+  <col name="NAME">（2）海域使用权</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--371-->
+<record tabname="law_bsact">
+  <col name="ID">2171</col>
+  <col name="NAME">（3）国有工业企业机器设备</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--372-->
+<record tabname="law_bsact">
+  <col name="ID">2172</col>
+  <col name="NAME">（4）外资企业财产、权益</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--373-->
+<record tabname="law_bsact">
+  <col name="ID">2173</col>
+  <col name="NAME">（5）合作企业资产</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--374-->
+<record tabname="law_bsact">
+  <col name="ID">2174</col>
+  <col name="NAME">（6）船舶抵押权</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--375-->
+<record tabname="law_bsact">
+  <col name="ID">2175</col>
+  <col name="NAME">（7）在建工程</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">7</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--376-->
+<record tabname="law_bsact">
+  <col name="ID">2176</col>
+  <col name="NAME">（8）房地产</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">8</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--377-->
+<record tabname="law_bsact">
+  <col name="ID">2177</col>
+  <col name="NAME">（9）预购商品房</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">9</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--378-->
+<record tabname="law_bsact">
+  <col name="ID">2178</col>
+  <col name="NAME">（10）文物</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">10</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--379-->
+<record tabname="law_bsact">
+  <col name="ID">2179</col>
+  <col name="NAME">（11）企业动产</col>
+  <col name="PARENTID">1648</col>
+  <col name="SEQ">11</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--380-->
+<record tabname="law_bsact">
+  <col name="ID">2180</col>
+  <col name="NAME">（1）机动车</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">1</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--381-->
+<record tabname="law_bsact">
+  <col name="ID">2182</col>
+  <col name="NAME">（2）森林、林木和林地使用权</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">2</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--382-->
+<record tabname="law_bsact">
+  <col name="ID">2183</col>
+  <col name="NAME">（3）土地使用权</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">3</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--383-->
+<record tabname="law_bsact">
+  <col name="ID">2184</col>
+  <col name="NAME">（4）海域使用权</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">4</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--384-->
+<record tabname="law_bsact">
+  <col name="ID">2185</col>
+  <col name="NAME">（5）企业动产</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">5</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--385-->
+<record tabname="law_bsact">
+  <col name="ID">2186</col>
+  <col name="NAME">（6）城市房地产</col>
+  <col name="PARENTID">1675</col>
+  <col name="SEQ">6</col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--386-->
+<record tabname="law_bsact">
+  <col name="ID">2201</col>
+  <col name="NAME"> 管理类</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+<!--387-->
+<record tabname="law_bsact">
+  <col name="ID">2202</col>
+  <col name="NAME"> 业务类</col>
+  <col name="PARENTID"></col>
+  <col name="SEQ"></col>
+  <col name="LINKCODE"></col>
+</record>
+
+</root>

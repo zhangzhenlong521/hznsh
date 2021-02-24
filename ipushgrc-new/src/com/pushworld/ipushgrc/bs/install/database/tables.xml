@@ -1,0 +1,2645 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 标准产品的 -->
+<root>
+    
+    <table name="my_favorites" pkname="id" descr="我的收藏夹">
+        <columns>
+            <col name="id"              type="decimal"      length="22"     descr="主键" />
+            <col name="itemtype"        type="varchar"      length="30"     descr="条目类型" />
+            <col name="itemname"        type="varchar"      length="100"    descr="条目名称" />
+            <col name="templetname"     type="varchar"      length="100"    descr="模板名称" />
+            <col name="itemid"          type="varchar"      length="30"     descr="条目ID" />
+            <col name="type"            type="char"         length="1"      descr="参数类型" reamrk="0:原有默认机制，根据类打开.1：根据菜单ID打开。2：根据模板编码" />
+            <col name="classpath"       type="varchar"      length="100"    descr="加载类" />            
+            <col name="createdate"      type="char"         length="10"     descr="创建时间" />
+            <col name="creater"         type="varchar"      length="30"     descr="创建人" />
+            <col name="deptid"          type="decimal"      length="22"     descr="创建机构" />
+            <col name="isfolder"        type="char"         length="1"      descr="是否是文件夹" />
+            <col name="parentid"        type="decimal"      length="22"     descr="父亲节点" />
+            <col name="seq"       	 	type="decimal"      length="22"     descr="排序" />
+        </columns>
+        <indexs>
+            <index name="in_my_favorites_1" cols="creater" descr="创建人" />
+            <index name="in_my_favorites_2" cols="parentid" descr="父亲节点" />
+        </indexs>
+    </table>
+        
+	<!-- ******************************* 【法律法规模块,4张表】 ********************************** -->
+	<table name="law_law" pkname="id" descr="法律主表">
+		<columns>
+			<col name="id"              type="decimal"      length="22"     descr="主键" />
+			<col name="lawname"         type="varchar"      length="400"    descr="法律名称" />
+			<col name="lawtype"         type="varchar"      length="30"     descr="法规类型" />
+			<col name="issuecorp"       type="varchar"      length="200"     descr="发布机构,对应于bsd_lawissuecorp" />
+			<col name="usearea"         type="varchar"      length="50"     descr="适用区域" />
+			<col name="issue_date"      type="char"         length="10"     descr="发布日期" />
+			<col name="state"           type="varchar"      length="30"     descr="状态" />
+			<col name="isnation"        type="char"         length="1"      descr="是否国际" />
+			<col name="envername"       type="varchar"      length="200"    descr="英文译名" />
+			<col name="dispatch_code"   type="varchar"      length="200"    descr="发文字号" />
+			<col name="authorize_dept"  type="varchar"      length="50"     descr="批准部门" />
+			<col name="authorize_date"  type="char"         length="10"     descr="批准日期" />
+			<col name="implement_date"  type="char"         length="10"     descr="实施日期" />
+			<col name="creatername"     type="varchar"      length="30"     descr="记录创建人" />
+			<col name="createtime"      type="char"         length="19"     descr="记录创建时间" />
+			<col name="remark"          type="varchar"      length="4000"   descr="备注" />
+			<col name="textfile"        type="varchar"      length="200"    descr="正文" />
+			<col name="attachfile"      type="varchar"      length="1000"   descr="附件" />
+		    <col name="reflaw"          type="varchar"      length="1000"    descr="修订的法规" />
+			<col name="reflaw2"      	type="varchar"      length="1000"    descr="废止的法规" />
+		</columns>
+		<indexs>
+			<index name="in_law_law_1" cols="lawname" descr="法律名称" />
+		</indexs>
+	</table>
+	
+	<table name="law_law_importlog" pkname="id" descr="法规导入日志表">
+      <columns>
+            <col name="id"                   type="decimal"      length="22"     descr="主键" />
+            <col name="descr"                type="varchar"      length="1000"   descr="本次修改内容" />
+            <col name="deptid"               type="decimal"      length="22"     descr="操作部门"   />
+            <col name="deptname"           	 type="varchar"      length="100"    descr="操作部门"   />
+            <col name="userid"           	 type="decimal"      length="22"     descr="操作人"   />
+            <col name="username"           	 type="varchar"      length="50"     descr="操作人"   />
+            <col name="createdate"           type="varchar"      length="10"     descr="操作日期" />	
+     </columns>
+    </table>
+
+	<table name="law_law_item" pkname="id" descr="法规子表" remark="法律是解析的,所以每一条款是存储在数据库中的一条记录">
+		<columns>
+			<col name="id"               type="decimal"    length="30"      descr="主键" />
+			<col name="lawid"            type="decimal"    length="30"      descr="外规id" />
+			<col name="itemtitle"        type="varchar"    length="400"     descr="法律条款标题" />
+			<col name="itemcontent"      type="varchar"    length="4000"    descr="法律条款内容" />
+			<col name="parentid"         type="decimal"    length="22"      descr="父亲记录的主键" />
+			<col name="linkcode"         type="varchar"    length="60"      descr="关联码,以后考虑多使用该机制,因为parentid没有这个方便" />
+			<col name="seq"              type="decimal"    length="22"      descr="排序字段" />
+			<col name="attachfile"       type="varchar"    length="1000"    descr="附件" />
+			<col name="state"       	 type="varchar"    length="1"    	descr="是否失效" reamrk="取值：Y;N; 如果为N，则链接查看时该条灰色显示"/>
+		</columns>
+		<indexs>
+			<index name="in_law_law_item_1" cols="lawid" descr="外规名称" />
+		</indexs>
+	</table>
+
+	<table name="law_mapping" pkname="id" descr="法规映射表" remark="业务活动与外规映射的,即以前一直提的内外规映射">
+		<columns>
+			<col name="id"              type="decimal"     length="30"      descr="主键" />
+			<col name="bsactid"         type="decimal"     length="30"      descr="业务活动主键" />
+			<col name="lawid"           type="decimal"     length="30"      descr="法律主键,对应于law_law.id,用于点击链接查看外规" />
+			<col name="lawname"         type="varchar"     length="100"     descr="法律名称" />
+			<col name="lawitemid"       type="varchar"     length="30"      descr="法律条文id" />
+			<col name="lawitemtitle"    type="varchar"     length="100"     descr="法律条文标题" />
+			<col name="lawitemcontent"  type="varchar"     length="4000"    descr="法律条文内容" />
+		</columns>
+		<indexs>
+			<index name="in_law_mapping_1" cols="bsactid" descr="外规名称" />
+		</indexs>
+	</table>
+
+	<table name="law_exposit" pkname="id" descr="法规解读">
+		<columns>
+			<col name="id"              type="decimal"      length="22"       descr="主键" />
+			<col name="lawid"           type="varchar"      length="30"       descr="法律id" />
+			<col name="lawname"         type="varchar"      length="100"      descr="法律名称" />
+			<col name="lawitemid"       type="varchar"      length="30"       descr="法律条文id" />
+			<col name="lawitemtitle"    type="varchar"      length="100"      descr="法律条文标题" />
+			<col name="lawitemcontent"  type="varchar"      length="4000"     descr="法律条文内容" />
+			<col name="expositmsg"      type="varchar"      length="4000"     descr="解读内容" />
+			<col name="exposituserid"   type="decimal"      length="22"       descr="解读人员" />
+			<col name="expositusername" type="varchar"      length="30"       descr="解读人员名称" />
+			<col name="exposittime" 	type="char"         length="10"       descr="解读时间" />
+		</columns>
+		<indexs>
+			<index name="in_law_exposit_1" cols="lawname" descr="外规名称" />
+			<index name="in_law_exposit_2" cols="lawid" descr="法律id" />
+		</indexs>
+	</table>
+	<table name="law_bsact" pkname="id" descr="业务活动" remark="法律法规目录树">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+			<col name="name" type="varchar" length="200" descr="名称" />
+			<col name="parentid" type="decimal" length="22" descr="父记录id" />
+			<col name="seq" type="decimal" length="22" descr="排序字段" />
+			<col name="linkcode" type="varchar" length="60" descr="关联字段" remark="以后想更多采用linkcode关联机制" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	<!-- ******************************* 【内部制度模块,7张表】********************************** -->
+      <table name="rule_rule" pkname="id" descr="内规主表" remark="核心对象表之一!!!">
+		<columns>
+			<col name="id"                type="decimal"         length="22"     descr="主键" />
+			<col name="rulecode"          type="varchar"         length="50"     descr="制度文号" />
+			<col name="rulename"          type="varchar"         length="150"    descr="制度名称" />
+			<col name="ruletype"          type="varchar"         length="30"     descr="业务分类,比如:管理办法,操作规程" />
+			<col name="publishdate"       type="char"            length="10"     descr="发布日期" />
+			<col name="busitype"          type="varchar"         length="200"     descr="属于什么业务类型" />
+			<col name="busitype_name"     type="varchar"         length="100"    descr="业务分类名称,为了统计方便与加载性能" />
+			<col name="ictype"            type="decimal"         length="22"     descr="内控分类" />
+			<col name="ictype_name"       type="varchar"         length="100"    descr="内控分类名称,为了统计方便与加载性能" />
+			<col name="producttype"       type="decimal"         length="22"     descr="产品分类" />
+			<col name="producttype_name"  type="varchar"         length="100"    descr="产品分类名称" />
+			<col name="blcorp"            type="decimal"         length="22"     descr="主管部门" />
+			<col name="blcorp_name"       type="varchar"         length="100"    descr="主管部门名称" />
+			<col name="createuser"        type="varchar"         length="200"    descr="创建人员" />
+			<col name="sendtocorp"        type="varchar"         length="100"    descr="主送部门,多选参照" />
+			<col name="sendtocorp_name"   type="varchar"         length="100"    descr="主送部门名称" />
+			<col name="cctocorp"          type="varchar"         length="100"    descr="抄送部门" />
+			<col name="cctocorp_name"     type="varchar"         length="100"    descr="抄送部门名称" />
+			<col name="state"             type="varchar"         length="30"     descr="状态" />
+			<col name="abolishdate"       type="char"            length="10"     descr="作废日期" />
+			<col name="textfile"          type="varchar"         length="500"    descr="正文" />
+			<col name="attachfile"        type="varchar"         length="3000"   descr="附件" />
+			<col name="formids"           type="varchar"         length="500"    descr="表单" />
+			<col name="reflaw"            type="varchar"         length="300"    descr="关联法律" />
+			<col name="refrule"           type="varchar"         length="300"    descr="关联制度" />
+			<col name="evalcount"         type="decimal"         length="10"     descr="评价次数" />
+			<col name="rule_level"        type="varchar"         length="50"     descr="层级(总公司/分子公司)" />
+            <col name="file_system"       type="varchar"         length="50"     descr="文件体系(ISO, HSE)" />
+            <col name="createdate"        type="varchar"         length="10"     descr="创建日期" />			
+		</columns>
+		<indexs>
+			<index name="in_rule_rule_1"   cols="rulecode"     descr="制度文号" />
+			<index name="in_rule_rule_2"   cols="rulename"     descr="制度名称" />
+			<index name="in_rule_rule_3"   cols="publishdate"  descr="发布日期" />
+			<index name="in_rule_rule_4"   cols="blcorp"  descr="主管部门" />
+		</indexs>
+	</table>
+
+	<table name="rule_rule_item" pkname="id" descr="内规子表">
+		<columns>
+			<col name="id"               type="decimal"           length="22"      descr="主键" />
+			<col name="ruleid"           type="decimal"           length="30"      descr="制度id" />
+			<col name="itemtitle"        type="varchar"           length="100"     descr="制度条款标题" />
+			<col name="itemcontent"      type="varchar"           length="4000"    descr="制度条款内容" />
+			<col name="parentid"         type="decimal"           length="22"      descr="父亲记录的主键" />
+			<col name="linkcode"         type="varchar"           length="60"      descr="关联码,以后考虑多使用该机制,因为parentid没有这个方便" />
+			<col name="seq"              type="decimal"           length="22"      descr="排序字段" />
+			<col name="attachfile"       type="varchar"           length="300"     descr="附件" />
+		</columns>
+		<indexs>
+			<index name="in_rule_rule_item_1"    cols="ruleid"      descr="外规id" />
+		</indexs>
+	</table>
+
+	<table name="rule_eval" pkname="id" descr="内规评价">
+		<columns>
+			<col name="id"               type="decimal"          length="22"       descr="主键" />
+			<col name="evaltype"         type="varchar"          length="4000"     descr="评价类型"    reamrk="比如:建议新增制度,修改某制度,废止某制度" />
+			<col name="ruleid"           type="varchar"          length="30"       descr="制度id"      remark="如果是修改或删除制度,则有值,新增类型不需要!" />
+			<col name="rulename"         type="varchar"          length="100"      descr="制度名称" />
+			<col name="evaltitle"        type="varchar"          length="300"      descr="评价的标题" />
+			<col name="evalmsg"          type="varchar"          length="2000"     descr="评价内容"    remark="多行文本框,以后可以使用多风格文本框" />
+			<col name="evaldate"         type="char"             length="10"       descr="评价日期" />
+			<col name="evaluserid"       type="decimal"          length="22"       descr="评价人员" />
+			<col name="evalusername"     type="varchar"          length="30"       descr="评价人员名称" />
+			<col name="attachfile"       type="varchar"          length="300"      descr="附件" />
+		</columns>
+		<indexs>
+			<index name="in_rule_eval_1"          cols="ruleid"        descr="制度id" />
+		</indexs>
+	</table>
+	
+	<table name="rule_eval_b" pkname="id" descr="内规评价子表"  remark="即对某个评价回贴">
+	   <columns>
+			<col name="id"                 type="decimal"          length="22"       descr="主键" />
+			<col name="rule_eval_id"       type="decimal"          length="22"       descr="评价主表"    reamrk="对应于rule_eval.id" />
+			<col name="reverttype"         type="varchar"          length="10"       descr="回复类型"    remark="比如:顶,支持,不同意" />
+			<col name="reverttitle"        type="varchar"          length="300"      descr="回复标题" />
+			<col name="revertmsg"          type="varchar"          length="2000"     descr="回复内容"    remark="多行文本框,以后可以使用多风格文本框" />
+			<col name="revertdate"         type="char"             length="10"       descr="评价日期" />
+			<col name="revertuserid"       type="decimal"          length="22"       descr="评价人员" />
+			<col name="revertusername"     type="varchar"          length="30"       descr="评价人员名称" />
+			<col name="attachfile"         type="varchar"          length="300"      descr="附件" />
+		</columns>
+		<indexs>
+			<index name="in_rule_eval_b_1"   cols="rule_eval_id"        descr="评价主表" />
+			<index name="in_rule_eval_b_2"   cols="revertuserid"        descr="评价人员" />
+		</indexs>
+	</table>
+
+	<table name="rule_relation" pkname="id" descr="制度自身关联表"   remark="即内规是多对多的自链接">
+		<columns>
+			<col name="id"               type="decimal"         length="22"         descr="主键" />
+			<col name="ruleid1"          type="varchar"         length="22"         descr="制度1的主键" />
+			<col name="ruleid2"          type="varchar"         length="22"         descr="制度2的主键" />
+		</columns>
+		<indexs>
+			<index name="int_rule_relation_1" cols="ruleid1" descr="制度1的主键" />
+			<index name="int_rule_relation_2" cols="ruleid2" descr="制度1的主键" />
+		</indexs>
+	</table>
+
+	<table name="rule_apply_wf" pkname="id" descr="制度评审流程表"   remark="创建内规之申请流程,即通过走流程来创建内规,或者叫内规评审流程,招行与兴业都有这个,但兴业做的最复杂,还有子流程">
+		<columns>
+			<col name="id"               type="decimal"         length="22"         descr="主键" />
+			<col name="rulecode"         type="varchar"         length="100"        descr="制度编码" />
+			<col name="rulename"         type="varchar"         length="100"        descr="制度名称" />
+			<col name="applyreason"      type="varchar"         length="500"        descr="申请原因" />
+			<col name="creater"          type="decimal"         length="22"         descr="申请人" />
+			<col name="creater_name"     type="varchar"         length="100"        descr="申请人名称" />
+			<col name="createcorp"       type="decimal"         length="22"         descr="申请机构" />
+			<col name="createcorp_name"  type="varchar"         length="100"        descr="申请机构名称" />
+			<col name="createdate"       type="char"            length="10"         descr="申请日期" />
+			<col name="billtype"              type="varchar"        length="50"        descr="单据类型" />
+		    <col name="busitype"              type="varchar"        length="50"        descr="业务类型" />
+		    <col name="wfprinstanceid"        type="decimal"        length="22"        descr="流程实例id"    remark="走工作流时使用" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="rule_abolish_wf" pkname="id" descr="内规废止申请流程">
+		<columns>
+			<col name="id"               type="decimal"         length="22"         descr="主键" />
+			<col name="ruleid"           type="decimal"         length="22"         descr="制度id"   remark="对应于制度的id,即对哪个制度进行废止!" />
+			<col name="rulecode"         type="varchar"         length="100"        descr="制度编码" />
+			<col name="rulename"         type="varchar"         length="100"        descr="制度名称" />
+			<col name="abolishreason"    type="varchar"         length="500"        descr="废止原因" />
+			<col name="creater"          type="decimal"         length="22"         descr="申请人" />
+			<col name="creater_name"     type="varchar"         length="100"        descr="申请人名称" />
+			<col name="createcorp"       type="decimal"         length="22"         descr="申请机构" />
+			<col name="createcorp_name"  type="varchar"         length="100"        descr="申请机构名称" />
+			<col name="createdate"       type="char"            length="10"         descr="申请日期" />
+			
+			<col name="billtype"              type="varchar"        length="50"        descr="单据类型" />
+		    <col name="busitype"              type="varchar"        length="50"        descr="业务类型" />
+		    <col name="wfprinstanceid"        type="decimal"        length="22"        descr="流程实例id"    remark="走工作流时使用" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="rule_alarm" pkname="id" descr="制度预警" remark="">
+		<columns>
+			<col name="id"               type="decimal"          length="22"        descr="主键" />
+			<col name="ruleid"           type="decimal"          length="22"        descr="主键" />
+			<col name="rulecode"         type="varchar"          length="100"       descr="制度文号" />
+			<col name="rulename"         type="varchar"          length="100"       descr="制度名称" />
+			<col name="alarmreason"      type="varchar"          length="100"       descr="警告原因" />
+			<col name="alarmsource"      type="varchar"          length="100"       descr="警告来源" />
+			<col name="alarmsourcetab"   type="varchar"          length="100"       descr="警告来源表名" />
+			<col name="alarmsourcepk"    type="varchar"          length="100"       descr="警告来源主键值" />
+			<col name="alarmdate"   	 type="char"          	 length="10"        descr="预警时间" />
+			<col name="state"   	     type="varchar"          length="20"        descr="状态" />
+			<col name="alarmtargettab"   type="decimal"         length="22"         descr="警告修改表" />
+			<col name="creator"     	 type="decimal"         length="22"         descr="警告来源人" />
+			<col name="createdept"       type="decimal"         length="22"         descr="警告来源机构" />
+			<col name="manager"  		 type="decimal"         length="22"         descr="警告处理人" />
+			<col name="managedept"       type="decimal"         length="22"         descr="警告处理机构" />
+			<col name="managedate"       type="char"            length="10"         descr="警告处理日期" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="cmp_target" pkname="id" descr="指标" remark="指标">
+		<columns>
+			<col name="id"               type="decimal"          length="22"        descr="主键" />
+			<col name="name"             type="varchar"          length="30"        descr="指标名称" />
+			<col name="descr"            type="varchar"          length="300"       descr="指标说明" />
+			<col name="dstype"           type="varchar"          length="30"        descr="数据来源"    remark="有直接录入/指标因子计算/系统抽取" />
+			<col name="cycletype"        type="varchar"          length="30"        descr="周期类型"    remark="月度指标,季度指标,年度指标" />
+			<col name="computecls"       type="varchar"          length="100"       descr="计算类"      remark="即这个指标是由哪个类来计算的"/>
+			<col name="parentid"         type="decimal"          length="22"        descr="父结点id" />
+			<col name="seq"              type="decimal"          length="22"        descr="排序字段" />
+			<col name="showtype"         type="varchar"          length="30"        descr="展现方式"    remark="报表/仪表盘/雷达图"/>			
+			<col name="avgvalue"         type="varchar"          length="30"        descr="平均值" />
+			<col name="normalvalue"      type="varchar"          length="30"        descr="正常值" />
+			<col name="warnvalue"        type="varchar"          length="30"        descr="预警值" />
+
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="cmp_target_par" pkname="id" descr="指标因子" remark="指标因子维护,即一个指标由多个因子通过某种计算而成的,即函数的参数!!">
+		<columns>
+			<col name="id"               type="decimal"          length="22"        descr="主键" />
+			<col name="target_id"        type="decimal"          length="22"        descr="指标id"   remark="对应于cmp_target" />
+			<col name="parname"          type="varchar"          length="30"        descr="指标因子名称" />
+			<col name="pardesc"          type="varchar"          length="300"       descr="指标因子说明" />
+			<col name="excelcol"         type="varchar"          length="30"        descr="从Excel中的哪一列进行导入的" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="cmp_target_inst" pkname="id" descr="指标实例" remark="即一个月,或一季度的实际指标的值">
+	     <columns>
+	        <col name="id"                type="decimal"          length="22"        descr="主键" />
+	        <col name="corpid"            type="decimal"          length="22"        descr="机构id"       rematk="比如上海分行" />
+	        <col name="corpname"          type="varchar"          length="30"        descr="机构名称"     rematk="" />
+	        <col name="instyear"          type="varchar"          length="10"        descr="年度"     rematk="哪一年度" />
+	        <col name="cyclevalue"        type="varchar"          length="30"        descr="周期值"   remark="1季度" />
+	        <col name="target_id"         type="decimal"          length="22"        descr="指标主键" />
+	        <col name="target_name"       type="varchar"          length="30"        descr="指标名称" />
+	        <col name="targetvalue"       type="varchar"          length="10"        descr="指标值"   remark="" />
+	     </columns>
+	     <indexs></indexs>
+	</table>
+	
+	<table name="cmp_target_instpar" pkname="id" descr="指标实例的因子实际值" remark="即">
+	      <columns>
+	          <col name="id"                type="decimal"          length="22"        descr="主键" />
+	          <col name="target_instid"     type="decimal"          length="22"        descr="指标实例主键" />
+	          <col name="parname"           type="varchar"          length="30"        descr="参数名" />
+	          <col name="parvalue"          type="varchar"          length="20"        descr="参数值" />
+	      </columns>
+	      <indexs></indexs>
+	</table>
+	
+	<!-- ******************************* 【流程与风险,15张表,3个工作流,9个功能点】********************************** -->
+	<table name="cmp_cmpfile" pkname="id" descr="流程/流程文件"   remark="核心对象表之一!!!">
+	<columns>
+		<col name="id"                    type="decimal"        length="22"       descr="主键" />
+		<col name="cmpfilename"           type="varchar"        length="100"      descr="文件名称"  remark="以前还有文件编码,结果因为大多数客户的管理现状是编不了编码的,所以反受其乱!所以去掉"/>
+		<col name="cmpfiletype"           type="varchar"        length="30"       descr="文件分类" />
+		<col name="filestate"             type="varchar"        length="30"       descr="文件状态"    remark="用于决定某个文件是否有效!! 比如:废止,发布" />
+		<col name="publishdate"           type="char"           length="10"       descr="发布日期" />
+		<col name="versionno"             type="decimal"        length="4,2"      descr="版本号" />
+		<col name="cmpfilecode"           type="varchar"        length="100"      descr="文件编码" />
+		<col name="cmpfilesymbol"         type="varchar"        length="100"      descr="文件文号" />
+		
+		
+		<col name="blcorpid"              type="decimal"        length="22"         descr="主管/所属部门id" />
+		<col name="blcorpname"            type="varchar"        length="100"        descr="主管/所属部门名称" />
+		<col name="bsactid"               type="decimal"        length="22"         descr="业务活动分类" />
+		<col name="bsactname"             type="varchar"        length="100"        descr="业务活动分类名称" />
+		<col name="productid"             type="varchar"        length="200"        descr="对应的产品id"  remark="一个流程文件对应多个产品，一个产品可对应多个流程文件"  />
+		<col name="productname"           type="varchar"        length="1000"       descr="对应的产品名称" />
+		<col name="ictypeid"              type="decimal"        length="22"         descr="内控五要素分类" />
+		<col name="ictypename"            type="varchar"        length="100"        descr="内控五要素分类名称" />
+		<col name="reffile"               type="varchar"        length="300"        descr="正文" />
+		<col name="filelevel"             type="varchar"        length="30"         descr="文件级别" />
+		<col name="checkcount"            type="decimal"        length="3"          descr="每季度检查次数" />
+		
+		<col name="item_target"           type="varchar"        length="2000"       descr="流程10条目_目的" />
+		<col name="item_userarea"         type="varchar"        length="2000"       descr="流程10条目_适用范围" />
+		<col name="item_keywords"         type="varchar"        length="2000"       descr="流程10条目_关键字缩写" />
+		<col name="item_duty"             type="varchar"        length="2000"       descr="流程10条目_职责与权限" />
+		<col name="item_bsprcp"           type="varchar"        length="2000"       descr="流程10条目_基础原则" />
+		<col name="item_addenda"          type="varchar"        length="3000"        descr="流程10条目_附件" />
+		<col name="item_formids"          type="varchar"        length="200"        descr="流程10条目_表单" />
+		<col name="item_remark"           type="varchar"        length="2000"       descr="流程10条目_备注" />
+		<col name="evalcount"             type="decimal"        length="10"         descr="评价次数" />
+		<col name="billtype"              type="varchar"        length="50"         descr="单据类型" />
+		<col name="busitype"              type="varchar"        length="50"         descr="业务类型" />
+		<col name="wfprinstanceid"        type="decimal"        length="22"         descr="流程实例id"    remark="走工作流时使用" />
+		<col name="createuser"            type="decimal"        length="22"         descr="创建人" />
+		<col name="riskstate"             type="varchar"        length="20"         descr="风险状态"  remark="风险状态有两种：编辑中；有效。风险识别评估时如果风险状态为编辑中则可以结束编辑，此时状态为有效，流程文件才可以发布"  />		
+     	<col name="filetype"              type="varchar"        length="20"         descr="文件类型"  remark="分为两种：流程文件和内控文件" />
+     	<col name="manageobject"          type="decimal"        length="22"         descr="管理对象id"    remark="内控产品中管理对象icam_manage_object.id" />
+	</columns>
+	<indexs>
+		<index name="in_cmp_cmpfile_1"    cols="cmpfilename"       descr="流程文件名称"  />
+		<index name="in_cmp_cmpfile_2"    cols="blcorpid"          descr="所属机构id"    />
+		<index name="in_cmp_cmpfile_3"    cols="bsactid"           descr="所属业务"      />
+	</indexs>
+    </table>
+	<table name="cmpfile_eval" pkname="id" descr="流程文件评价">
+		<columns>
+			<col name="id"               type="decimal"          length="22"       descr="主键" />
+			<col name="evaltype"         type="varchar"          length="4000"     descr="评价类型"    reamrk="比如:建议新增,修改,废止" />
+			<col name="fileid"           type="varchar"          length="30"       descr="流程文件id"      remark="如果是修改或删除制度,则有值,新增类型不需要!" />
+			<col name="filename"         type="varchar"          length="100"      descr="流程文件名称" />
+			<col name="evaltitle"        type="varchar"          length="300"      descr="评价的标题" />
+			<col name="evalmsg"          type="varchar"          length="2000"     descr="评价内容"    remark="多行文本框,以后可以使用多风格文本框" />
+			<col name="evaldate"         type="char"             length="10"       descr="评价日期" />
+			<col name="evaluserid"       type="decimal"          length="22"       descr="评价人员" />
+			<col name="evalusername"     type="varchar"          length="30"       descr="评价人员名称" />
+			<col name="attachfile"       type="varchar"          length="300"      descr="附件" />
+		</columns>
+	</table>
+	
+	<table name="cmpfile_eval_reply" pkname="id" descr="流程文件评价回复"  remark="即对某个评价回贴">
+	   <columns>
+			<col name="id"                 type="decimal"          length="22"       descr="主键" />
+			<col name="cmpfile_eval_id"    type="decimal"          length="22"       descr="评价主表"    reamrk="对应于cmpfile_eval.id" />
+			<col name="reverttype"         type="varchar"          length="10"       descr="回复类型"    remark="比如:顶,支持,不同意" />
+			<col name="reverttitle"        type="varchar"          length="300"      descr="回复标题" />
+			<col name="revertmsg"          type="varchar"          length="2000"     descr="回复内容"    remark="多行文本框,以后可以使用多风格文本框" />
+			<col name="revertdate"         type="char"             length="10"       descr="评价日期" />
+			<col name="revertuserid"       type="decimal"          length="22"       descr="评价人员" />
+			<col name="revertusername"     type="varchar"          length="30"       descr="评价人员名称" />
+			<col name="attachfile"         type="varchar"          length="300"      descr="附件" />
+		</columns>
+		<indexs>
+		</indexs>
+	</table>
+
+
+    <table name="cmp_cmpfile_hist"        pkname="id" descr="流程文件历史表" remark="以前的历史处理是将一批表都复制了一遍,非常麻烦与不稳定,而且对历史信息进行统计的情况并不多! 所以新的机制是将数据生成html报表存下来,直接存在一张表中! 至于统计某段时间的风险点的历史迁移情况,则通过对风险点表的日志记录来实现!">
+	<columns>
+		<col name="id"                    type="decimal"        length="22"       descr="主键" />
+		<col name="cmpfile_id"            type="decimal"        length="22"       descr="对应的流程文件id" />
+		<col name="cmpfile_name"          type="varchar"        length="100"      descr="文件名称" />
+		<col name="cmpfile_publishdate"   type="char"           length="10"       descr="发布日期" />
+		<col name="cmpfile_versionno"     type="decimal"        length="4,2"      descr="版本号" />
+	</columns>
+	<indexs>
+	</indexs>
+    </table>
+    
+    <table name="cmp_cmpfile_histcontent"     pkname="id" descr="流程文件历史表">
+	  <columns>
+		<col name="id"                    type="decimal"        length="22"       descr="主键" />
+		<col name="cmpfile_id"            type="decimal"        length="22"       descr="体系文件id" />
+		<col name="cmpfile_histid"        type="decimal"        length="22"       descr="历史版本id" />
+		<col name="cmpfile_versionno"     type="decimal"        length="4,2"      descr="版本号" />
+		<col name="contentname"           type="varchar"        length="30"       descr="内容类型"    remark="有doc,html,image1,image2,image3..等,即图片也是先存起来,然后html中引用该图片" />
+		<col name="seq"                   type="decimal"        length="22"       descr="排序"        remark="必须排序,否则拼出来的很可能不对" />
+		<col name="doc0"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc1"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc2"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc3"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc4"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc5"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc6"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc7"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc8"                  type="varchar"        length="2000"     descr="64位编码" />
+		<col name="doc9"                  type="varchar"        length="2000"     descr="64位编码" />
+	  </columns>
+	  <indexs>
+	     <index name="in_cmp_cmpfile_histcontent_1"    cols="cmpfile_histid"       descr="文件历史记录id"  />
+	  </indexs>
+    </table>
+    
+    <table name="cmp_cmpfile_wfdesc" pkname="id" descr="流程概述">
+		<columns>
+		  <col name="id" type="decimal" length="22" descr="主键" />
+		  <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		  <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		  <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		  <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		  <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		  
+		  <col name="wfdesc"              type="varchar"   length="4000"    descr="流程概述"/>
+		</columns>
+		<indexs></indexs>
+	</table>
+    
+    <table name="cmp_cmpfile_wfopereq" pkname="id" descr="流程环节的操作要求">
+		<columns>
+		  <col name="id" type="decimal" length="22" descr="主键" />
+		  <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		  <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		  <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		  <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		  <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		  <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		  <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		  <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		  
+		  <col name="operatedept"         type="varchar"   length="30"    descr="操作部门"/>
+		  <col name="operatepost"         type="varchar"   length="30"    descr="操作岗位"  remark="应该只对应一个,而不是多选参照,即体现专人专岗" />
+		  <col name="task"                type="varchar"   length="200"   descr="工作任务"/>
+		  <col name="operatedesc"         type="varchar"   length="4000"  descr="环节职责"/>
+		  <col name="operatereq"          type="varchar"   length="4000"  descr="操作规范"/>
+		  <col name="operaterefpost"      type="varchar"   length="200"   descr="相关岗位"     remark="即发生多个岗位时,在这体现" />
+		  <col name="opeinput"            type="varchar"   length="1000"  descr="操作输入"/>
+		  <col name="opeoutput"           type="varchar"   length="1000"  descr="操作输出"/>
+		  <col name="formroom"            type="varchar"   length="200"   descr="相关表单库"/>
+		  <col name="unoperatedept"       type="varchar"   length="200"   descr="不相容岗位,多个"/>
+		  <col name="itsystem"            type="varchar"   length="100"   descr="涉及的IT系统"/>
+		</columns>
+		<indexs>
+			<index name="in_cmp_cmpfile_wfopereq_1" cols="cmpfile_id"  descr="流程文件"  />
+			<index name="in_cmp_cmpfile_wfopereq_2" cols="wfprocess_id"  descr="流程ID"  />
+			<index name="in_cmp_cmpfile_wfopereq_3" cols="wfactivity_id"  descr="环节ID"  />
+			<index name="in_cmp_cmpfile_wfopereq_4" cols="operatepost"  descr="操作岗位"  />
+			<index name="in_cmp_cmpfile_wfopereq_5" cols="operaterefpost"  descr="相关岗位"  />
+		</indexs>
+	</table>
+
+	<table name="cmp_cmpfile_law" pkname="id" descr="流程/环节与外规关联">
+	 <columns>
+		  <col name="id"                  type="decimal"     length="22"      descr="主键"/>
+		  <col name="relationtype"        type="varchar"     length="30"      descr="链接类型,"  remark="比如:流程相关,环节相关"/>
+		  <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		  <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		  <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		  <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		  <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		  <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		  <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		  <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		  <col name="law_id"              type="decimal"     length="11"      descr="法规id"/>
+		  <col name="law_name"            type="varchar"     length="300"     descr="法律名称"/>
+		  <col name="lawitem_id"          type="decimal"     length="11"      descr="法规条款id"/>
+		  <col name="lawitem_title"       type="varchar"     length="1000"    descr="法规条款标题"/>
+		  <col name="lawitem_content"     type="varchar"     length="4000"    descr="法规条款内容"/>
+	</columns>
+		<indexs>
+			<index name="in_cmp_cmpfile_law_1" cols="cmpfile_id"  descr="流程文件"  />
+			<index name="in_cmp_cmpfile_law_2" cols="wfprocess_id"  descr="流程ID"  />
+			<index name="in_cmp_cmpfile_law_3" cols="wfactivity_id"  descr="环节ID"  />
+			<index name="in_cmp_cmpfile_law_4" cols="law_id"  descr="法规ID"  />
+		</indexs>
+	</table>
+
+	<table name="cmp_cmpfile_rule" pkname="id" descr="流程/环节与内规关联">
+		<columns>
+	      <col name="id"                  type="decimal"     length="22"      descr="主键"/>
+	      <col name="relationtype"        type="varchar"     length="30"      descr="链接类型,"  remark="比如:流程相关,环节相关"/>
+		  <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		  <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		  <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		  <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		  <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		  <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		  <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		  <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+	    
+		  <col name="rule_id"             type="decimal"     length="22"      descr="制度的id"/>
+		  <col name="rule_name"           type="varchar"     length="100"     descr="制度名称"/>
+		  <col name="ruleitem_id"         type="decimal"     length="11"      descr="制度条款id"/>
+		  <col name="ruleitem_title"      type="varchar"     length="1000"    descr="制度条款标题"/>
+		  <col name="ruleitem_content"    type="varchar"     length="4000"    descr="制度条款内容"/>
+	    </columns>
+		<indexs>
+			<index name="in_cmp_cmpfile_rule_1" cols="cmpfile_id"  descr="流程文件"  />
+			<index name="in_cmp_cmpfile_rule_2" cols="wfprocess_id"  descr="流程id"  />
+			<index name="in_cmp_cmpfile_rule_3" cols="wfactivity_id"  descr="环节id"  />
+			<index name="in_cmp_cmpfile_rule_4" cols="rule_id"  descr="制度id"  />
+		</indexs>
+	</table>
+
+	<table name="cmp_cmpfile_checkpoint" pkname="id" descr="流程/环节与检查要点关联">
+		<columns>
+			<col name="id"               type="decimal" length="22" descr="主键" />
+			<col name="relationtype"        type="varchar"     length="30"      descr="链接类型,"  remark="比如:流程相关,环节相关"/>
+		    <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		    <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		    <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		    <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		    <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		    <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		    <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		    <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		    <col name="checkpoint_id"                 type="decimal"   length="22"   descr="检查要点id"/>
+		    <col name="checktype_id"                  type="decimal"   length="11"   descr="检查要点分类id"/>
+		    <col name="checktype_name"                type="varchar"   length="100"  descr="检查分类名称"/>
+		    <col name="checkitem_project"             type="varchar"   length="4000" descr="检查项目说明"/>
+		    <col name="checkitem_point"               type="varchar"   length="4000" descr="检查要点说明"/>
+		    <col name="checkitem_method"              type="varchar"   length="4000" descr="抽象方法"/>
+		    <col name="checkitem_sampleplan"          type="varchar"   length="4000" descr="例子"/>
+		</columns>
+		<indexs>
+			<index name="in_cmpfile_checkpoint_1" cols="cmpfile_id"  descr="文件ID"  />
+			<index name="in_cmpfile_checkpoint_2" cols="wfprocess_id"  descr="流程ID"  />
+			<index name="in_cmpfile_checkpoint_3" cols="wfactivity_id"  descr="环节ID"  />
+		</indexs>
+	</table>
+
+    <table name="cmp_cmpfile_punish" pkname="id" descr="流程/环节与相关罚则关联">
+        <columns>
+            <col name="id"                  type="decimal" length="22" descr="主键" />
+            <col name="relationtype"        type="varchar"     length="30"      descr="链接类型"  remark="比如:流程相关,环节相关"/>
+            <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+            <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+            <col name="wfprocess_id"        type="decimal"     length="22"      descr="对应的流程id"/>
+            <col name="wfprocess_code"      type="varchar"     length="300"     descr="流程编码"/>
+            <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+            <col name="wfactivity_id"       type="decimal"     length="22"      descr="环节id"/>
+            <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+            <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+            <col name="stand_id"            type="decimal"     length="22"      descr="违规标准id" remark="SCORE_STANDARD2.id"/>
+            <col name="stand_pointcode"     type="varchar"     length="50"     descr="违规编号"/>
+            <col name="stand_point"         type="varchar"     length="500"     descr="违规行为"/>
+            <col name="stand_score"         type="varchar"     length="10"      descr="分值"/>
+            <col name="stand_scoretype"     type="decimal"     length="22"     descr="违规类型"/>
+        </columns>
+        <indexs>
+            <index name="in_cmpfile_punish_1" cols="cmpfile_id"     descr="文件ID"  />
+            <index name="in_cmpfile_punish_2" cols="wfprocess_id"   descr="流程ID"  />
+            <index name="in_cmpfile_punish_3" cols="wfactivity_id"  descr="环节ID"  />
+        </indexs>
+    </table>
+    
+	<table name="cmp_cmpfile_refwf" pkname="id" descr="相关流程">
+		<columns>
+			<col name="id"               type="decimal" length="22" descr="主键" />
+			<col name="relationtype"        type="varchar"     length="30"      descr="链接类型,"  remark="比如:流程相关,环节相关"/>
+		    <col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		    <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		    <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		    <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		    <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		    <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		    <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		    <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		    
+		    <col name="ref_cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"/>
+		    <col name="ref_cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		    <col name="ref_wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"/>
+		    <col name="ref_wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		    <col name="ref_wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		    <col name="ref_wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		    <col name="ref_wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		    <col name="ref_wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	
+	<table name="cmp_cmpfileabolish" pkname="id" descr="流程文件废止申请表" remark="有时废止一个文件也是要走流程的,但大多数情况是不需要的" >
+	<columns>
+		<col name="id"                    type="decimal"        length="22"       descr="主键" />
+		<col name="cmpfilename"           type="varchar"        length="100"      descr="文件名称" />
+		<col name="abolishreason"         type="varchar"        length="100"      descr="废止原因" />
+		<col name="applydate"             type="varchar"        length="10"       descr="申请日期" />
+		<col name="applyuser"             type="varchar"        length="30"       descr="申请人" />
+		<col name="billtype"              type="varchar"        length="50"         descr="单据类型" />
+		<col name="busitype"              type="varchar"        length="50"         descr="业务类型" />
+		<col name="wfprinstanceid"        type="decimal"        length="22"         descr="流程实例id"    remark="走工作流时使用" />
+	</columns>
+	<indexs>
+	</indexs>
+    </table>
+	
+	 <table name="cmp_riskdict" pkname="id" descr="风险字典" remark="风险字典,从信用风险,操作风险等角度分类">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"    descr="主键" />
+			<col name="name"                          type="varchar"    length="30"    descr="名称" />
+			<col name="parentid"                      type="decimal"    length="22"    descr="父记录id" />
+			<col name="seq"                           type="decimal"    length="22"    descr="排序字段" />
+			<col name="linkcode"                      type="varchar"    length="60"    descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="descr"                         type="varchar"    length="4000"  descr="说明" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_riskdict_1" cols="parentid"  descr="父亲ID"  />
+		</indexs>
+	</table>
+	
+	<table name="cmp_ctrldict" pkname="id" descr="控制措施字典" remark="控制措施字典">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"    descr="主键" />
+			<col name="code"                          type="varchar"    length="20"    descr="编码" />
+			<col name="name"                          type="varchar"    length="50"    descr="名称" />
+			<col name="parentid"                      type="decimal"    length="22"    descr="父记录id" />
+			<col name="seq"                           type="decimal"    length="22"    descr="排序字段" />
+			<col name="linkcode"                      type="varchar"    length="60"    descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="descr"                         type="varchar"    length="4000"  descr="说明" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_risk" pkname="id" descr="风险点"   remark="核心对象表之一!一种是公司层面的风险点,一种是流程层面的风险点,所以名称不叫cmp_cmpfile_risk! 风险评估必须从文件出发进行,但可以有流程,也可以没有流程!">
+	<!--
+       A.风险点既可以直接绑定文件,也可以绑定流程! 即所谓的公司层面风险与流程风险!
+       B.风险评估其实就是直接描风险点的过程,且必须通过先选文件来进行!! 但有两种情况来驱动,一种是上来就描,一种是走流程描,即先提交一个风险评估申请表(cmp_riskeval),然后走完流程后来驱动描流程! 是否走流程由一个系统参数决定!!
+       C.风险点本身没有历史版本与临时库的概念,只有流程文件才有,选中一个文件可以看到1.0版本有3个风险点,2.0版本有5个风险点! 两个都是从历史表中直接查出!
+       D.在描风险点时,需要对风险点表(cmp_risk)的增删改进行日志记录,因为后来需要统计在一段时间内新增了多少风险点,修改了多少风险点!还要知道其中高风险是几个! 
+    -->
+		<columns>
+			<col name="id"                  type="decimal"     length="22"     descr="主键" />
+			<col name="parentid"            type="decimal"     length="22"     descr="父节点主键" />
+			<col name="riskcode"            type="varchar"     length="100"     descr="风险点编码" />
+			<col name="riskname"            type="varchar"     length="300"    descr="风险点名称" />
+			<col name="riskdescr"           type="varchar"     length="1000"   descr="风险点描述" />
+			<col name="risktype"            type="varchar"     length="100"    descr="风险点分类"   remark="同样是资料不全,需要作为一种横向的统计" />
+			<col name="findchannel"         type="varchar"     length="30"     descr="发现渠道" />
+			<col name="identify_date"       type="char"        length="10"     descr="识别日期" />
+			<col name="evaluate_date"       type="char"        length="10"     descr="评估日期" />
+			<col name="possible"            type="varchar"     length="30"     descr="可能性" />
+			<col name="finalost"            type="varchar"     length="30"     descr="可能造成的财务损失" />
+			<col name="cmplost"             type="varchar"     length="30"     descr="可能造成的合规损失" />
+			<col name="honorlost"           type="varchar"     length="30"     descr="可能造成的声誉损失" />
+			<col name="serious"             type="varchar"     length="30"     descr="影响程度" />
+			<col name="rank"                type="varchar"     length="30"     descr="风险等级" />
+			<col name="permonthcount"       type="varchar"     length="30"     descr="正常每月发生次数"    remark="用于与风险事件实际发生的次数进行对比,产生各种管理报表" />
+			<col name="scorelost"           type="decimal"     length="10,1"      descr="违规扣分" />
+			
+			<col name="riskreftype"         type="varchar"     length="30"      descr="风险点关联类型"      remark="有四种:关联业务活动的风险,关联文件的风险,关联流程的风险,关联环节的风险" />
+			<col name="blcorpid"            type="decimal"     length="22"      descr="主管/所属部门id"     remark="从文件中冗余过来的,应该是必输项" />
+		    <col name="blcorpname"          type="varchar"     length="100"     descr="主管/所属部门名称"   remark="从文件中冗余过来的,应该是必输项" />
+			<col name="bsactid"             type="decimal"     length="22"      descr="业务活动分类"        remark="从文件中冗余过来的,应该是必输项" />
+		    <col name="bsactname"           type="varchar"     length="100"     descr="业务活动分类名称"    remark="从文件中冗余过来的"  />
+			<col name="cmpfile_id"          type="decimal"     length="22"      descr="对应的流程文件id"    remark="应该是必输项,即一个风险点不可能凭空存在的!" />
+		    <col name="cmpfile_name"        type="varchar"     length="100"     descr="流程文件名称"/>
+		    <col name="wfprocess_id"        type="decimal"     length="11"      descr="对应的流程id"        remark="流程主键,可以为空,即有的风险点直接对应文件而没有什么流程" />
+		    <col name="wfprocess_code"      type="varchar"     length="300"     descr="编码编码"/>
+		    <col name="wfprocess_name"      type="varchar"     length="300"     descr="流程名称"/>
+		    <col name="wfactivity_id"       type="decimal"     length="11"      descr="环节id"/>
+		    <col name="wfactivity_code"     type="varchar"     length="100"     descr="环节编码"/>
+		    <col name="wfactivity_name"     type="varchar"     length="100"     descr="环节名称"/>
+		    
+			<col name="ctrltarget"          type="varchar"     length="100"      descr="控制目标"              remark="" />
+			<col name="ctrlfnstype"         type="varchar"     length="100"      descr="控制措施分类"          remark="控制措施库必须有一个分类库,即经常需要从分类来统计! 比如管理不善" />
+			<col name="ctrlfn"              type="varchar"     length="1000"     descr="流程内控制措施"        remark="" />
+			<col name="ctrlfn2"             type="varchar"     length="1000"     descr="流程外控制措施"        remark="" />
+			<col name="ctrlfn3"             type="varchar"     length="1000"     descr="关键控制措施"          remark="" />
+			<col name="ctrlfneffect"        type="varchar"     length="30"       descr="控制措施有效性"        remark="比如:控制过度,控制得当等" />
+			<col name="ctrldept"            type="varchar"     length="100"      descr="控制部门"              remark="关键属性" />
+			<col name="ctrlpost"            type="varchar"     length="100"      descr="控制岗位"              remark="关键属性" />
+			
+			<col name="resdpossible"        type="varchar"     length="100"      descr="剩余风险的可能性"      remark="" />
+			<col name="resdserious"         type="varchar"     length="100"      descr="剩余风险的影响程度"    remark="" />
+			<col name="resdrank"            type="varchar"     length="100"      descr="剩余风险的风险等级"    remark="" />
+			
+			<col name="relaxctrlfn"         type="varchar"     length="100"      descr="风险缓释-流程内控制措施"        remark="" />
+			<col name="relaxctrlfn2"        type="varchar"     length="100"      descr="风险缓释-流程外控制措施"        remark="" />
+			<col name="relaxctrlfn3"        type="varchar"     length="100"      descr="风险缓释-关键控制措施"          remark="" />
+			<col name="relaxctrldept"       type="varchar"     length="100"      descr="风险缓释-控制部门"              remark="关键属性" />
+			<col name="relaxctrlpost"       type="varchar"     length="100"      descr="风险缓释-控制岗位"              remark="关键属性" />
+			<col name="createuser"          type="decimal"     length="22"       descr="创建人" />
+			<col name="bsd_riskid"          type="decimal"     length="22"       descr="复制风险id"  remark="内控产品中有复制风险功能，需要记录风险来源" />
+			<col name="ctrlids"        		type="varchar"     length="200"      descr="控制措施"          remark="流程外风险关联的控制措施" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_risk_1" cols="parentid"  descr="父亲ID"  />
+			<index name="in_cmp_risk_2" cols="blcorpid"  descr="主管机构ID"  />
+			<index name="in_cmp_risk_3" cols="bsactid"  descr="业务类型"  />
+			<index name="in_cmp_risk_4" cols="cmpfile_id" descr="文件" />
+			<index name="in_cmp_risk_5" cols="wfprocess_id" descr="流程" />
+			<index name="in_cmp_risk_6" cols="wfactivity_id" descr="环节" />
+		</indexs>
+	</table>
+	
+	<table name="cmp_risk_editlog" pkname="id" descr="风险点编辑日志"   remark="即记录下cmp_risk的操作日志,理论上所有表都需要监控从而实现历史迁移统计,但因为大多数表没管理意义,而该表的管理意义太大,所以必须要有!">
+		<columns>
+		   <col name="id"                 type="decimal"     length="22"      descr="主键" />
+		   <col name="edittype"           type="varchar"     length="30"      descr="编辑类型"    remark="只有三种取值:新增风险点,修改风险点,删除风险点" />
+		   <col name="edittime"           type="char"        length="19"      descr="编辑的时间"  remark="就靠这个字段来进行基于时间的统计,比如在一定时间段内新增了多少风险点,修改了多少风险点" />
+		   
+		   <col name="cmpfile_id"         type="decimal"     length="22"      descr="对应的流程文件id" />
+		   <col name="cmpfile_name"       type="varchar"     length="100"     descr="文件名称" />
+		   <col name="filestate"          type="varchar"     length="22"      descr="文件状态" />
+		   
+		   <col name="blcorpid"           type="decimal"     length="22"      descr="主管/所属部门id" />
+		   <col name="blcorpname"         type="varchar"     length="100"     descr="主管/所属部门名称" />
+		   <col name="bsactid"            type="decimal"     length="22"      descr="业务活动分类" />
+		   <col name="bsactname"          type="varchar"     length="100"     descr="业务活动分类名称" />
+		   
+           <col name="possible"           type="varchar"     length="30"      descr="可能性"      remark="编辑后的" />
+		   <col name="serious"            type="varchar"     length="30"      descr="严重程度"    remark="" />
+		   <col name="rank"               type="varchar"     length="30"      descr="风险等级"    remark="" />
+		   <col name="ctrlfneffect"       type="varchar"     length="30"      descr="控制措施有效性" remark=""/>
+		   
+		   <col name="resdpossible"       type="varchar"     length="30"      descr="剩余风险的可能性"      remark="" />
+		   <col name="resdserious"        type="varchar"     length="30"      descr="剩余风险的影响程度"    remark="" />
+		   <col name="resdrank"           type="varchar"     length="30"      descr="剩余风险的风险等级"    remark="" />
+			
+		   <col name="possible2"          type="varchar"     length="30"      descr="可能性"      remark="编辑前的" />
+		   <col name="serious2"           type="varchar"     length="30"      descr="严重程度"    remark="" />
+		   <col name="rank2"              type="varchar"     length="30"      descr="风险等级"    remark="" />
+		   <col name="ctrlfneffect2"      type="varchar"     length="30"      descr="控制措施有效性" remark=""/>
+		   
+		   <col name="resdpossible2"      type="varchar"     length="30"      descr="剩余风险的可能性"      remark="" />
+		   <col name="resdserious2"       type="varchar"     length="30"      descr="剩余风险的影响程度"    remark="" />
+		   <col name="resdrank2"          type="varchar"     length="30"      descr="剩余风险的风险等级"    remark="" />
+		   <col name="createuser"         type="varchar"     length="100"     descr="创建人" />
+		</columns>
+	</table>
+		<table name="cmp_cmpfile_clicklog" pkname="id" descr="流程文件查看日志"   remark="即记录下cmp_cmpfile的查看日志，点击查看流程时触发，并且一个小时内只记录一次">
+		<columns>
+		   <col name="id"                 type="decimal"     length="22"      descr="主键" />
+		   <col name="cmpfile_id"         type="decimal"     length="22"      descr="查看的流程文件id" />
+		   <col name="cmpfile_name"       type="varchar"     length="100"     descr="文件名称" />		   
+		   
+		   <col name="userid"             type="decimal"     length="22"      descr="用户id" />
+		   <col name="usercode"           type="varchar"     length="50"      descr="登录名" />
+		   <col name="username"           type="varchar"     length="50"      descr="姓名" />
+		   <col name="userblcorpid"       type="decimal"     length="22"      descr="人员所属部门id" />
+		   <col name="userblcorpname"     type="varchar"     length="100"     descr="人员所属部门名称" />	
+		   
+		   <col name="clicktime"          type="varchar"     length="19"      descr="查看日期" />
+		   <col name="islookfile"         type="char"        length="1"       descr="是否查看了流程文件" />
+		   <col name="islookwf"           type="char"        length="1"       descr="是否查看了流程图" />
+		   <col name="islookrisk"         type="char"        length="1"       descr="是否查看了风险点" />
+		   <col name="islookopereq"       type="char"        length="1"       descr="是否查看了操作要求" />
+		   <col name="islookother"        type="char"        length="1"       descr="是否查看了其他" />
+		</columns>
+	</table>
+
+	<table name="cmp_cmpfile_viewpermit" pkname="id" descr="流程/流程文件查看权限">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_cmpfile_editpermit" pkname="id" descr="流程/流程文件编辑权限">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="cmp_riskeval" pkname="id" descr="风险评估申请表" remark="核心表之一!!!即申请需要对风险点进行评估,然后可以(不)走流程决定真正调整风险点">
+	<!--
+	   A.风评表就是相当于以前的临时库的概念!! 它其实是一张建议修改哪个流程的哪个风险点的申请表单!! 而在临时申请时并不需要精确匹配,只需要多行文本框说明即可!!!
+	   B.这张表单可以申请走流程,流程走完后,通过这张表单来调动实际的编辑界面! 但也可能该表不走流程,即当发生内规变化往该表插入数据时,直接通过该记录来编辑风险点!
+	   C.内规变动或事件发生时会自动往该表来插入数据,也可手工往该表插入数据!
+	   D.如果流程文件创建要走流程,风险点修改也要走流程,那么一个对cmp_cmpfile走流程,一个是对cmp_riskeval走流程,前者表示是否需要创建新/废止的流程与文件!! 后者是对已有文件的修正!! 从业务角度讲两者是清晰的两件事!! 没有歧义的!!!
+	   E.该表有个状态标记state,即是否关闭,当文件编辑完成后,自动关闭该任务状态! 而流程风险的编辑过程可能是多次完成的,所以是手工完成文件修改状态标记的!
+	-->
+		<columns>
+			<col name="id"                    type="decimal"    length="22"     descr="主键" />
+			<col name="evaldate"              type="char"       length="10"     descr="评估日期" />
+			<col name="evaltype"              type="varchar"    length="30"     descr="评估类型"  remark="建议新增,修改,删除" />
+			<col name="evalreason"            type="varchar"    length="100"    descr="评估的原因"  remark="比如:内规变动了,发生了事件等" />
+			<col name="fromtable"             type="varchar"    length="50"     descr="哪个表来的"  remark="比如:事件(cmp_event), 成功防范(cmp_ward)" />
+			<col name="fromid"                type="varchar"    length="22"     descr="哪个ID"     />
+			<col name="evaldescr"             type="varchar"    length="500"    descr="评估说明" />
+			
+			<col name="cmpfile_id"            type="decimal"    length="22"     descr="评估绑定的的流程文件id"   remark="通过这个最后去修改流程文件,即取得修改的令牌" />
+		    <col name="cmpfile_name"          type="varchar"    length="100"    descr="文件名称" />
+		    
+		    <col name="sug_adjwfact"          type="varchar"    length="2000"   descr="建议修改流程与环节"  remark="如果外规与内规变化了,则建议调整这个"  />
+			<col name="sug_adjopereq"         type="varchar"    length="300"    descr="建议调整的操作要求"  remark="如果岗位变动了,则建议调整这个"  />
+			
+			<col name="sug_addrisks"          type="varchar"    length="2000"   descr="建议新增的风险点"    remark="由这个来自动创建风险评估申请表!先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_editrisks"         type="varchar"    length="2000"   descr="建议修改的风险点"    remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_delrisks"          type="varchar"    length="2000"   descr="建议删除的风险点"    remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="iseval"        	      type="char"       length="1"      descr="是否已评估"          remark="是否已评估" />
+			
+		    <col name="billtype"              type="varchar"    length="50"     descr="单据类型" />
+			<col name="busitype"              type="varchar"    length="50"     descr="业务类型" />
+			<col name="create_userid"         type="decimal"    length="22"     descr="创建人id"            remark="走工作流时使用" />
+			<col name="wfprinstanceid"        type="decimal"    length="22"     descr="流程实例id"          remark="走工作流时使用" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_riskalarm" pkname="id" descr="风险预警表" remark="即发生了事情,内规修改了,提醒相关流程中的风险点可能要变化!!">
+		<columns>
+			<col name="id"                    type="decimal"        length="22"       descr="主键" />
+			 <col name="cmpfile_id"           type="decimal"        length="22"       descr="评估绑定的的流程文件id" />
+		     <col name="cmpfile_name"         type="varchar"        length="100"      descr="文件名称" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<!-- ******************************* 【合规检查与事件-10张表,7个功能点,4个工作流】********************************** -->
+	<table name="cmp_checkplan" pkname="id" descr="合规检查计划表" remark="计划发起一次检查,需指定什么机构" >
+		<columns>
+			<col name="id"                         type="decimal"     length="22"      descr="主键" />
+			<col name="planname"                   type="varchar"     length="100"     descr="计划名称" />
+			<col name="plandescr"                  type="varchar"     length="4000"     descr="计划描述" />
+			<col name="plantype"                   type="varchar"     length="30"      descr="计划类型"        remark="取值:一次性,周期性" />
+			<col name="checkedcorp"                type="varchar"     length="1000"    descr="被检查单位"      remark="多个" />
+			<col name="planbegindate"              type="char"        length="10"      descr="计划开始日期"     remark="" />
+			<col name="planenddate"                type="char"        length="10"      descr="计划结束日期"    remark="" />
+			<col name="createdate"                 type="char"        length="10"      descr="创建时间"        remark="" />
+			<col name="creater"                    type="varchar"     length="30"      descr="创建人"          remark="" />
+			<col name="deptid"                     type="decimal"     length="22"      descr="创建机构"        remark="" />			
+		</columns>
+		<indexs>
+			<index name="in_cmp_checkplan_1" cols="deptid"  descr="机构"  />
+		</indexs>
+	</table>	
+	
+	<table name="cmp_check" pkname="id" descr="合规检查活动表" remark="" >
+		<columns>
+			<col name="id"                         type="decimal"     length="22"     descr="主键" />
+			<col name="cmp_checkplan_id"           type="decimal"     length="22"     descr="检查计划的id， 弱关联" />
+			<col name="planname"                   type="varchar"     length="100"    descr="计划名称" />
+			<col name="checkname"                  type="varchar"     length="100"    descr="检查名称" />
+			<col name="checkdescr"                 type="varchar"     length="4000"    descr="检查活动简介"        remark="[计划描述]带过来,但可修改" />			
+			<col name="checkcorp"                  type="varchar"     length="30"     descr="检查单位"           remark="当前人员的单位" />
+			<col name="checkedcorp"                type="varchar"     length="1000"    descr="被检查单位"          remark="分解后只有一个" />
+			<col name="checkbegindate"             type="char"        length="10"     descr="检查实际开始日期"     remark="以后需要与计划开始日期比较" />
+			<col name="checkenddate"               type="char"        length="10"     descr="检查实际结束日期"     remark="以后需要与计划结束日期比较"/>			
+			<col name="teamleader"                 type="decimal"     length="22"     descr="检查组长"            remark="一个" />
+			<col name="teamusers"                  type="varchar"     length="100"    descr="检查组成员"          remark="多个" />			
+            <col name="createdate"                 type="char"        length="10"     descr="创建时间"        remark="" />
+            <col name="creater"                    type="varchar"     length="30"     descr="创建人"          remark="" />
+            <col name="deptid"                     type="decimal"     length="22"     descr="创建机构"        remark="" />
+            <col name="status"                     type="varchar"     length="30"     descr="状态"           remark="1-未实施, 2-实施中, 3-实施完成, 4-结束" />
+            <col name="checkideasum"               type="varchar"     length="4000"   descr="检查意见总结"     remark="" />
+            <col name="attachfile"                 type="varchar"     length="1000"   descr="附件"                   remark="" />
+            <col name="checkpoints"                type="varchar"     length="4000"   descr="检查要点说明"                   remark="" />       
+		</columns>
+		<indexs>
+          <index name="in_cmp_check_1" cols="cmp_checkplan_id" descr="检查计划id" />
+        </indexs>
+	</table>
+
+	<table name="cmp_check_item" pkname="id" descr="合规检查活动子表" remark="检查活动的过程信息录入,即为每个检查项录入检查内容">
+		<columns>
+			<col name="id"                         type="decimal"     length="22"     descr="主键" />
+			<col name="cmp_check_id"               type="decimal"     length="22"     descr="检查活动主键" />
+			<col name="checkitem_descr"            type="varchar"     length="4000"   descr="检查项说明"              remark="手工录入" />
+			<col name="cmp_cmpfile_id"             type="decimal"     length="22"     descr="流程文件id"              remark="单选参照" />
+			<col name="cmp_cmpfile_name"           type="varchar"     length="100"     descr="流程文件名称"             remark="带过来,不可修改" />
+			<col name="checkuser"                  type="decimal"     length="22"     descr="检查人"                  remark="" />
+            <col name="checkdate"                  type="char"        length="10"     descr="检查时间"                remark="" />			
+			<col name="cmp_risk_ids"               type="varchar"     length="100"    descr="被检查风险点id"           remark="多选参照" />
+            <col name="cmp_risk_names"             type="varchar"     length="500"    descr="被检查风险点名称"         remark="多选参照冗余"  />
+			<col name="checklog"                   type="varchar"     length="4000"   descr="检查记录"                remark="" />
+			<col name="checkidea"                  type="varchar"     length="4000"   descr="检查意见"                remark="" />
+			<col name="attachfile"                 type="varchar"     length="1000"   descr="附件"                   remark="" />								
+			
+		</columns>
+        <indexs>
+          <index name="in_cmp_check_item_1" cols="cmp_check_id" descr="检查活动id" />
+        </indexs>
+	</table>
+	
+    <table name="cmp_issue" pkname="id" descr="合规问题" remark="合规检查中发现的问题">
+        <columns>
+            <col name="id"                                type="decimal"   length="22"    descr="主键" />            
+            <col name="issuename"                         type="varchar"   length="100"   descr="问题名称" />
+            <col name="issuedescr"                        type="varchar"   length="4000"  descr="问题说明" />
+            <col name="issuebaseid"                       type="decimal"   length="22"    descr="问题库ID"          remark="体现问题基于问题库的思想"/>
+            <col name="sourcetype"                        type="varchar"   length="30"    descr="事件来源"          remark="有检查发现,直接录入两种" />
+            <col name="cmp_check_id"                      type="decimal"   length="22"    descr="对应的检查id" />
+            <col name="cmp_check_name"                    type="varchar"   length="100"   descr="对应的检查名称" />
+            <col name="cmp_check_item_id"                 type="decimal"   length="22"    descr="对应的检查项的id" />
+            <col name="eventcorpid"                       type="varchar"   length="200"   descr="发生机构" />
+            <col name="findchannel"                       type="varchar"   length="30"    descr="发现渠道" />
+            <col name="finddate"                          type="char"      length="10"    descr="发现日期" />
+            <col name="reportdate"                        type="char"      length="10"    descr="报送日期" />           
+            <col name="reportcorp"                        type="decimal"   length="22"    descr="报送机构"          remark="对应于pub_corp_dept.id" />            
+            <col name="cmp_cmpfile_id"                    type="decimal"   length="30"   descr="流程文件id"         remark="极其重要,新的思路的重要体现之处,就靠这个来关联"/>
+            <col name="cmp_cmpfile_name"                  type="varchar"   length="100"  descr="流程文件名称"    />            
+            
+            <col name="billtype"                          type="varchar"   length="50"    descr="单据类型" />
+            <col name="busitype"                          type="varchar"   length="50"    descr="业务类型" />
+            <col name="wfprinstanceid"                    type="decimal"   length="22"    descr="流程实例id"        remark="走工作流时使用" />
+            <col name="create_userid"                     type="varchar"   length="30"    descr="制单人" />
+        </columns>
+        <indexs>
+        	<index name="in_cmp_issue_1" cols="cmp_check_id"  descr="对应的检查id"  />
+        </indexs>
+    </table>	
+	
+	<table name="cmp_ward" pkname="id" descr="合规成功防范" remark="即正面合规的事情,不光只说违规,也要说成功防范的内容! 既可以直接录入,也可以在检查界面中录入,要支持走工作流,是新的思想体现之一!因为正常应该是成功防范多于违规事件">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"    descr="主键" />
+			<col name="wardname"                          type="varchar"   length="100"   descr="成功防范名称" />
+			<col name="warddescr"                         type="varchar"   length="4000"   descr="成功防范说明" />
+			
+			<col name="sourcetype"                        type="varchar"   length="30"    descr="事件来源"          remark="有检查发现,直接录入两种" />
+			<col name="cmp_check_id"                      type="decimal"   length="22"    descr="对应的检查id" />
+			<col name="cmp_check_name"                    type="varchar"   length="100"    descr="对应的检查名称" />
+			<col name="cmp_check_item_id"                 type="decimal"   length="22"    descr="对应的检查项的id" />
+			
+			<col name="findchannel"                       type="varchar"   length="30"    descr="发现渠道" />
+			<col name="eventcorpid"                       type="varchar"   length="200"    descr="发生机构" />
+			<col name="finddate"                          type="char"      length="10"    descr="发现日期" />
+			<col name="reportdate"                        type="char"      length="10"    descr="报送日期" />			
+			<col name="reportcorp"                        type="decimal"   length="22"    descr="报送机构"   remark="对应于pub_corp_dept.id" />
+			<col name="bsactid"           				  type="decimal"   length="22"    descr="业务活动分类" />
+		   	<col name="bsactname"        				  type="varchar"   length="100"   descr="业务活动分类名称" />
+			<col name="appitsystype"                      type="varchar"   length="30"    descr="应用IT系统分类" />
+			<col name="appitsyscode"                      type="varchar"   length="30"    descr="应用IT系统的编码"  remark="至关重要,最后就根据这个编码来判断是否是同一件事情,从而知道一件事被发现了多少回" />
+			
+			<col name="cmp_cmpfile_id"                    type="decimal"   length="30"   descr="流程文件id"         remark="极其重要,新的思路的重要体现之处,就靠这个来关联"/>
+			<col name="cmp_cmpfile_name"                  type="varchar"   length="100"  descr="流程文件名称"    />
+			
+			<col name="refrisks"                          type="varchar"   length="100"   descr="验证了哪些风险点"  remark="引用子表,关联cmp_wardevent_risk,极其关键,风险点与事件关联的连接点处!!!!"  />
+			<col name="sug_addrisks"                      type="varchar"   length="4000"   descr="建议新增的风险点"  remark="由这个来自动创建风险评估申请表!先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_editrisks"                     type="varchar"   length="4000"   descr="建议修改的风险点"  remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_delrisks"                      type="varchar"   length="4000"   descr="建议删除的风险点"  remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			
+			<col name="wardcust"                          type="varchar"   length="100"   descr="涉及的客户"        remark="引用子表,关联cmp_wardevent_cust" />
+			<col name="warduser"                          type="varchar"   length="100"   descr="涉及的员工"        remark="引用子表,关联cmp_wardevent_user" />
+			
+			<col name="finaaccount"                       type="decimal"   length="20"    descr="涉及财务金额"      remark="" />
+			<col name="redeemlost"                        type="decimal"   length="20"    descr="挽回损失"          remark="统计用" />
+			
+			<col name="reasontype"                        type="varchar"   length="30"    descr="成功防范原因类型" />
+			<col name="reasonanalyse"                     type="varchar"   length="4000"    descr="成功防范原因分析" />
+			
+			<col name="billtype"                          type="varchar"   length="50"    descr="单据类型" />
+			<col name="busitype"                          type="varchar"   length="50"    descr="业务类型" />
+			<col name="wfprinstanceid"                    type="decimal"   length="22"    descr="流程实例id"        remark="走工作流时使用" />
+			<col name="create_userid"                     type="varchar"   length="30"    descr="制单人" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_ward_1" cols="cmp_check_id"  descr="对应的检查id"  />
+		</indexs>
+	</table>
+
+	<table name="cmp_event" pkname="id" descr="合规事件表" remark="即违规事件,要支持走工作流">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"   descr="主键" />
+			<col name="eventname"                         type="varchar"   length="100"  descr="事件名称" />
+			<col name="eventdescr"                        type="varchar"   length="2000"  descr="事件描述" />
+			
+			<col name="sourcetype"                        type="varchar"   length="30"   descr="事件来源"           remark="有检查发现,直接录入两种" />
+			<col name="cmp_check_id"                      type="decimal"   length="22"   descr="对应的检查活动id" />
+			<col name="cmp_check_name"                    type="varchar"   length="100"   descr="对应的检查活动名称" />
+			<col name="cmp_check_item_id"                 type="decimal"   length="22"   descr="对应的检查项的id" />
+			<col name="issueid"             			  type="decimal"   length="22"   descr="对应的问题ID" />
+			<col name="findchannel"                       type="varchar"   length="30"   descr="发现渠道" />
+			<col name="happendate"                        type="char"      length="10"   descr="发生日期"  remark="" />
+			<col name="finddate"                          type="char"      length="10"   descr="发现日期"  remark="" />
+			<col name="reportdate"                        type="char"      length="10"   descr="报告日期"  remark="" />
+		    <col name="reportcorp"                        type="decimal"   length="22"   descr="报送机构"   remark="对应于pub_corp_dept.id" />
+			<col name="eventcorpid"                       type="varchar"   length="200"   descr="发生机构" />
+			<col name="reportcorpname"                    type="varchar"   length="200"   descr="报送机构"   remark="对应于pub_corp_dept.name" />
+			<col name="attachfile"                        type="varchar"   length="300"  descr="附件"  remark="" />
+			<col name="eventtypename"       			  type="varchar"   length="200"  descr="损失事件类型"/>
+			<col name="appitsystype"                      type="varchar"   length="30"   descr="应用IT系统分类" />
+			<col name="appitsyscode"                      type="varchar"   length="30"   descr="应用IT系统的编码"  remark="至关重要,最后就根据这个编码来判断是否是同一件事情,从而知道一件事被发现了多少回" />
+		
+			<col name="bsactid"           				  type="varchar"   length="200"    descr="业务活动分类" />
+		   	<col name="bsactname"        				  type="varchar"   length="100"   descr="业务活动分类名称" />
+		   	<col name="eventtypeid"        				  type="decimal"   length="22"    descr="损失事件类型" />
+			<col name="eventcust"                         type="varchar"   length="100"   descr="涉及的客户"   remark="引用子表" />
+			<col name="eventuser"                         type="varchar"   length="100"   descr="涉及的员工"   remark="引用子表" />
+			
+			<col name="cmp_cmpfile_id"                    type="decimal"   length="30"   descr="流程文件id"         remark="极其重要,新的思路的重要体现之处,就靠这个来关联"/>
+			<col name="cmp_cmpfile_name"                  type="varchar"   length="100"  descr="流程文件名称"    />
+			<col name="refrisks"                          type="varchar"   length="100"  descr="验证了哪些风险点"  remark="引用子表,极其关键,风险点与事件关联的连接点处!!!!"  />
+			<col name="sug_addrisks"                      type="varchar"   length="2000"  descr="建议新增的风险点"  remark="由这个来自动创建风险评估申请表!先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_editrisks"                     type="varchar"   length="2000"  descr="建议修改的风险点"  remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+			<col name="sug_delrisks"                      type="varchar"   length="2000"  descr="建议删除的风险点"  remark="先是文本框,以后可能做一个复杂的参照(比如HashVO序列化的文本)"  />
+				
+			<col name="loststate"                         type="varchar"   length="30"   descr="损失状态"   remark="已发生损失,可能会发生损失,可能不会发生损失,不会发生损失" />
+			<col name="serious"                           type="varchar"   length="30"   descr="损失程度"   remark="就是与风险点的风险等级一样,比如:较小,重大等" />
+			
+			<col name="finalost"                          type="varchar"   length="30"   descr="财务损失"   remark="" />
+			<col name="finalost_fund"                     type="varchar"   length="30"   descr="损失-资金金额" />
+			<col name="finalost_salva"                    type="varchar"   length="30"   descr="损失-救助金额" />
+			<col name="finalost_loss"                     type="varchar"   length="30"   descr="损失-赔偿金额" />
+			<col name="finalost_info"                     type="varchar"   length="2000"  descr="财务损失说明" />
+			
+			<col name="honorlost_type"                    type="varchar"   length="30"   descr="声誉损失分类"   remark="比如重大声誉损失,一般损失" />
+			<col name="honorlost_info"                    type="varchar"   length="2000"  descr="声誉损失说明"   remark="下拉框,与风险点中一样" />
+			
+			<col name="crbcpunish_type"                   type="varchar"   length="30"   descr="监管处罚类型" />
+			<col name="crbcpunish_info"                   type="varchar"   length="2000"  descr="监管处罚说明" />
+			
+			<col name="lawcrack_type"                     type="varchar"   length="30"   descr="法律制裁类型" />
+			<col name="lawcrack_info"                     type="varchar"   length="2000"  descr="制裁内容" />
+			
+			<col name="reasontype"                        type="varchar"   length="30"   descr="原因类型" />
+			<col name="reasonanalyse"                     type="varchar"   length="2000"   descr="原因分析" />
+			
+			<col name="adjustadvicetype"                  type="varchar"   length="30"   descr="整改建议分类" />
+			<col name="adjustadvice"                      type="varchar"   length="2000"   descr="整改建议" />
+			<col name="adjustlimitdate"                   type="varchar"   length="30"   descr="整改期限" />
+			<col name="adjustresulttype"                  type="varchar"   length="30"   descr="整改结果状态分类" />
+			<col name="adjustresult"                      type="varchar"   length="2000"   descr="整改结果" />
+			<col name="adjustresultdate"                  type="varchar"   length="30"   descr="整改结果时间" />
+			
+			<col name="billtype"                          type="varchar"   length="50"   descr="单据类型" />
+			<col name="busitype"                          type="varchar"   length="50"   descr="业务类型" />
+			<col name="wfprinstanceid"                    type="decimal"   length="22"   descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid"                     type="varchar"   length="30"   descr="制单人" />
+			<col name="operateevalid"                     type="decimal"   length="22"   descr="运营评价的缺陷id"    remark="内控产品中ICAM_OPERATE_EVAL.id" />
+			
+			<col name="problemid"                     	  type="decimal"   length="22"   descr="关联问题外键" remark="ck_problem_info.id" />
+			<col name="schemeid"                     	  type="decimal"   length="22"   descr="检查方案"     remark="ck_scheme.id" />
+			<col name="deptid"                     	  	  type="decimal"   length="22"   descr="被检查单位"   remark="配合昌吉新的检查模块" />
+		    <col name="implid"                     	  	  type="decimal"   length="22"   descr="实施主表"     remark="配合昌吉新的检查模块ck_scheme_impl.id" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_event_1" cols="cmp_check_id"  descr="对应的检查id"  />
+		</indexs>
+	</table>
+	
+	<table name="cmp_event_adjustproject"   pkname="id" descr="整改方案表" remark="">
+		  <columns>
+		  	<col name="id"                            type="decimal"   length="22"        descr="主键"/>
+		  	<col name="projectname"                   type="varchar"   length="200"       descr="方案名称"/>
+		  	<col name="trackpeopleid"                 type="decimal"   length="22"        descr="跟踪人"/>
+		  	<col name="creatorid"                     type="decimal"   length="22"        descr="创建人"/>
+		  	<col name="createdeptid"                  type="decimal"   length="22"        descr="创建人机构"/>
+		  	<col name="createdate"                    type="char"      length="10"        descr="创建日期"/>
+		  	<col name="status"                        type="varchar"   length="20"        descr="整改状态"/>
+		  	<col name="eventid"                       type="decimal"   length="22"        descr="事件ID"/>
+		  	<col name="eventname"                     type="varchar"   length="100"       descr="事件名称"/>
+		  	<col name="adjust"                        type="varchar"   length="1000"      descr="整改控制措施"/>
+		  	<col name="result"                        type="varchar"   length="2000"      descr="落实结果"/>
+		  </columns>
+	 	<indexs>
+			<index name="in_event_adjustproject_1" cols="createdeptid"  descr="创建人机构"  />
+			<index name="in_event_adjustproject_2" cols="eventid"  descr="事件ID"  />
+		</indexs>
+	</table>
+
+
+	<table name="cmp_event_adjuststep"   pkname="id" descr="整改措施表" remark="">
+		  <columns>
+		  	<col name="id"                            type="decimal"   length="22"        descr="主键"/>
+		  	<col name="projectid"                     type="decimal"   length="22"        descr="方案ID"/>
+		  	<col name="adjuststep"                    type="varchar"   length="2000"      descr="整改措施"/>
+		  	<col name="adjustdate"                    type="char"      length="10"        descr="整改时限"/>
+		  	<col name="fulfilpeopleid"                type="decimal"   length="22"        descr="落实人"/>
+		  	<col name="responsibilitydept"            type="varchar"   length="200"       descr="责任部门"/>
+		  	<col name="status"                        type="varchar"   length="30"        descr="落实状态"/>
+		  	<col name="fulfilresult"                  type="varchar"   length="2000"      descr="落实结果"/>
+		  	<col name="attachfile"                    type="varchar"   length="1000"      descr="附件"/>
+		  </columns>
+		  <indexs>
+		  	<index name="in_event_adjuststep_1" cols="projectid"  descr="方案ID"  />
+		  </indexs>
+	</table>
+	
+	<table name="cmp_event_track" pkname="id" descr="违规事件跟踪"    remark="对违规事件进行跟踪信息维护">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"    descr="主键" />
+			<col name="cmp_event_id"                      type="decimal"   length="22"    descr="事件ID" />
+			<col name="projectid"                         type="decimal"   length="22"    descr="方案名称"  remark="对应于cmp_event_adjustproject.id"/>
+			<col name="projectname"                       type="varchar"   length="200"   descr="方案名称"  remark="对应于cmp_event_adjustproject.projectname"/>
+			<col name="trackdate"                         type="char"      length="10"    descr="跟踪日期" />
+			<col name="trackuserid"                       type="decimal"   length="22"    descr="跟踪人员" />
+			<col name="trackusername"                     type="varchar"   length="30"    descr="跟踪人员名称" />			
+			<col name="trackdeptid"                       type="decimal"   length="22"    descr="跟踪机构" />
+			<col name="trackdeptname"                     type="varchar"   length="50"    descr="跟踪机构名称" />
+			<col name="trackinfo"                         type="varchar"   length="4000"  descr="跟踪说明" />
+			<col name="nexttrackdate"                     type="char"      length="10"    descr="下次跟踪时间" />
+			<col name="result"                            type="varchar"   length="30"    descr="整改结果" />
+		</columns>
+		<indexs>
+		  <index name="in_cmp_event_track_1" cols="trackuserid"  descr="跟踪人员"/>
+		</indexs>
+	</table>
+	
+	<table name="cmp_wardevent_risk" pkname="id" descr="合规事件/成功防范关联的风险点" remark="极其重要的核心表,即风险点事件就是在这里关联的!!!!">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"   descr="主键" />
+			<col name="wardorevent"                       type="varchar"   length="30"   descr="成功防范还是事件" />
+			<col name="cmp_wardevent_id"                  type="decimal"   length="22"   descr="对应的合规事件的id,即cmp_event.id" />
+			<col name="cmp_risk_id"                       type="decimal"   length="22"   descr="对应的风险点id,即cmp_risk.id" />
+			<col name="riskcode"                          type="varchar"   length="50"   descr="风险点编码" />
+			<col name="riskname"                          type="varchar"   length="50"   descr="风险点名称" />
+			<col name="riskrank"                          type="varchar"   length="50"   descr="风险点风险等级" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="cmp_wardevent_cust" pkname="id" descr="合规事件关联的涉及客户" remark="">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"   descr="主键" />
+			<col name="wardorevent"                       type="varchar"   length="30"   descr="成功防范还是事件" />
+			<col name="cmp_wardevent_id"                  type="decimal"   length="22"   descr="对应的合规事件的id" />
+			<col name="custname"                          type="varchar"   length="100"  descr="客户名称" />
+			<col name="custfield"                         type="varchar"   length="50"   descr="客户行业" />
+			<col name="custscale"                         type="varchar"   length="50"   descr="客户规模" />
+			<col name="custcreditlevel"                   type="varchar"   length="30"   descr="客户信用评级" />
+			<col name="custkind"                          type="varchar"   length="30"   descr="企业性质" />
+			<col name="state"                             type="varchar"   length="30"   descr="违规状态" />			
+		</columns>
+		<indexs>
+		  <index name="in_cmp_wardevent_cust_1" cols="cmp_wardevent_id"  descr="合规事件的id"/>
+		</indexs>
+	</table>
+	
+	<table name="cmp_wardevent_user" pkname="id" descr="合规事件关联的涉及员工" remark="">
+		<columns>
+			<col name="id"                                type="decimal"   length="22"    descr="主键" />
+			<col name="wardorevent"                       type="varchar"   length="30"    descr="成功防范还是事件" />
+			<col name="cmp_wardevent_id"                  type="decimal"   length="22"    descr="对应的合规事件的id" />
+			<col name="usercode"                          type="varchar"   length="100"   descr="员工编码" />
+			<col name="username"                          type="varchar"   length="50"    descr="员工名称" />
+			<col name="usersex"                           type="varchar"   length="50"    descr="员工性别" />
+			<col name="userdegreen"                       type="varchar"   length="50"    descr="员工学历" />
+			<col name="userage"                           type="varchar"   length="50"    descr="员工年龄段" />
+			<col name="userworkage"                       type="varchar"   length="50"    descr="员工工龄段" />
+			<col name="userstate"                         type="varchar"   length="50"    descr="违规状态"         remark="主动违规与被动涉及" />
+			<col name="userdept"                          type="varchar"   length="100"   descr="所属机构" /> <!-- added by yinliang  -->
+			<col name="relstate"                          type="varchar"   length="50"    descr="处理状态" /> <!-- added by yinliang  -->
+		</columns>
+		<indexs>
+			<index name="in_cmp_wardevent_user_1" cols="cmp_wardevent_id"  descr="合规事件的id"/>
+		</indexs>
+	</table>
+	
+   <table name="cmp_check_alarm" pkname="id" descr="合规检查预警" remark="对检查的预警信息">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+    <!--  **************************************** 【合规报告与评价】 **************************************************** -->
+	<table name="cmp_report" pkname="id" descr="合规报告(综合)" remark="合规报告">
+	    <!--
+	    A.合规报告有三种,第一种是从合规角度上报的综合报告,即我们以前的标准综合报告! 第二种是重大事项报告,即以合规事件进行上报!  第三种是内控报告,即从内控五要素角度进行上报!
+	    B.但合规报告基本就是直接走工作流即可! 没有太多业务逻辑  
+	    -->
+		<columns>
+			<col name="id"                           type="decimal"    length="22"    descr="主键" />
+			<col name="reportyear"                   type="varchar"    length="30"    descr="报告年度"   remark="默认当前年度"  />
+			<col name="reporttype"                   type="varchar"    length="30"    descr="报告类型"   remark="比如:月报(01),月报(02),季报(1),季度-2,年报,等" />
+			<col name="reportname"                   type="varchar"    length="100"   descr="报告名称"   remark="" />
+			<col name="reportdate"                   type="varchar"    length="100"   descr="报告名称"   remark="" />
+			<col name="reportcorp"                   type="decimal"    length="22"    descr="报告机构"   remark="" />
+			
+			<col name="rule_build"                   type="varchar"    length="2000"  descr="制度建设情况"   remark="" />
+			<col name="rile_manager"                 type="varchar"    length="2000"  descr="制度管理情况"   remark="" />
+			
+			<col name="cmp_educ"                     type="varchar"    length="2000"  descr="合规培训情况"   remark="" />
+			<col name="cmp_check"                    type="varchar"    length="2000"  descr="合规检查情况"   remark="" />
+			
+			<col name="cmp_riskeval"                 type="varchar"    length="2000"  descr="识别的风险与缓释措施"   remark="" />
+			<col name="cmp_event"                    type="varchar"    length="2000"  descr="发生的违规事件与整改"   remark="" />
+			
+			<col name="cmp_report"                   type="varchar"    length="2000"  descr="合规报告执行情况"   remark="" />
+			<col name="cmp_unwashmoney"              type="varchar"    length="2000"  descr="反洗钱"   remark="" />
+			<col name="check_enforce"                type="varchar"    length="2000"  descr="合规官一票否决权行使情况"   remark="" />
+			
+			<col name="commu_monitor"                type="varchar"    length="2000"  descr="与监管机构沟通情况"   remark="" />
+			<col name="commu_law"                    type="varchar"    length="2000"  descr="本区域外规变动情况"   remark="" />
+			<col name="commu_track"                  type="varchar"    length="2000"  descr="跟踪监管意见与监管要求落实情况"   remark="" />
+			
+			<col name="attachfile"                   type="varchar"    length="500"  descr="附件"   remark="" />
+			
+			<col name="billtype"                     type="varchar"    length="50"    descr="单据类型" />
+			<col name="busitype"                     type="varchar"    length="50"    descr="业务类型" />
+			<col name="wfprinstanceid"               type="decimal"    length="22"    descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid"                type="varchar"    length="30"    descr="制单人" />
+			
+			<col name="state"  	                	 type="varchar"    length="10"    descr="状态" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_report2" pkname="id" descr="合规报告(专项)" remark="以重大事件为主的报告">
+		<columns>
+			<col name="id"                           type="decimal"    length="22"    descr="主键" />
+			<col name="reportyear"                   type="varchar"    length="30"    descr="报告年度"   remark="默认当前年度"  />
+			<col name="reporttype"                   type="varchar"    length="30"    descr="报告类型"   remark="比如:月报(01),月报(02),季报(1),季度-2,年报,等" />
+			<col name="reportname"                   type="varchar"    length="100"   descr="报告名称"   remark="" />
+			<col name="reportdate"                   type="char"       length="10"    descr="报告日期"   remark="" />
+			<col name="reportcorp"                   type="decimal"    length="22"    descr="报告机构"   remark="" />
+			<col name="rebdate"                      type="char"       length="10"    descr="上报覆盖开始时间"   remark="" />
+			<col name="reedate"                      type="char"       length="10"    descr="上报覆盖结束时间"   remark="" />
+			<col name="retype"                       type="varchar"    length="10"    descr="类型"               remark="下拉框,比如:一般,重大" />
+			<col name="redetail"                     type="varchar"    length="4000"    descr="事项说明"           remark="" />
+			<col name="suggest"                      type="varchar"    length="4000"   descr="建议"               remark="" />
+			<col name="attachfile"                   type="varchar"    length="500"   descr="附件"               remark="" />
+	
+			<col name="billtype"                     type="varchar"    length="50"    descr="单据类型" />
+			<col name="busitype"                     type="varchar"    length="50"    descr="业务类型" />
+			<col name="wfprinstanceid"               type="decimal"    length="22"    descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid"                type="varchar"    length="30"    descr="制单人" />
+			<col name="state"  	                	 type="varchar"    length="10"    descr="状态" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	
+	<table name="cmp_report3" pkname="id" descr="内控报告" remark="从内控角度填写的报告,以后内控模块要用">
+		<columns>
+			<col name="id"                           type="decimal"    length="22"    descr="主键" />
+			<col name="reportyear"                   type="varchar"    length="30"    descr="报告年度"   remark="默认当前年度"  />
+			<col name="reporttype"                   type="varchar"    length="30"    descr="报告类型"   remark="比如:月报(01),月报(02),季报(1),季度-2,年报,等" />
+			<col name="reportname"                   type="varchar"    length="100"   descr="报告名称"   remark="" />
+			<col name="reportdate"                   type="varchar"    length="100"   descr="报告日期"   remark="" />
+			<col name="reportcorp"                   type="decimal"    length="22"    descr="报告机构"   remark="" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_report_alarm" pkname="id" descr="综合报告预警" remark="合规报告预警">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+			<col name="alarmperson"   type="varchar"    length="100"   descr="需要预警的人员" />
+			<col name="alarmdept"     type="varchar"    length="100"   descr="需要预警的部门" />
+			<col name="alarmreason"   type="varchar"    length="100"   descr="预警内容" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_kpi" pkname="id" descr="合规考核" remark="合规考核,即每月进行自己评分上报,走工作流!就是民生做的合规标准! 我们建议报告是月报制度,考核是季度报送! 且考核有自评与复核,以后应该考核指标与事件有关联!! 考核与Excel表单的结合可以做很强很适用与通用的功能! 应该好好大力设计一把!">
+		<columns>
+			<col name="id"                        type="decimal"    length="22"    descr="主键" />
+			<col name="kpiyear"                   type="varchar"    length="30"    descr="考核年度"        remark="默认当前年度"  />
+			<col name="kpicycle"                  type="varchar"    length="30"    descr="考核周期"        remark="比如:月报(01),月报(02),季报(1),季度-2,年报,等" />
+			<col name="kpiname"                   type="varchar"    length="100"   descr="考核名称"        remark="" />
+			<col name="kpidate"                   type="char"       length="10"    descr="考核日期"        remark="" />
+			<col name="kpicorp"                   type="decimal"    length="22"    descr="考核机构"        remark="" />
+			<col name="itemtype"                  type="varchar"    length="30"    descr="考核项分类"      remark="比如:合规,人力资源,计财,电子银行等" />
+			<col name="itemexcel"                 type="varchar"    length="100"   descr="考核项的Excel"   remark="" />
+			<col name="state"                     type="varchar"    length="30"    descr="状态"            remark="" />
+			<col name="descr"                     type="varchar"    length="500"   descr="备注"            remark="" />
+			<col name="t1"                        type="varchar"    length="30"   descr="自评分"           remark="" />
+			<col name="t2"                        type="varchar"    length="30"   descr="复合分"           remark="" />
+			
+			<col name="billtype"                     type="varchar"    length="50"    descr="单据类型" />
+			<col name="busitype"                     type="varchar"    length="50"    descr="业务类型" />
+			<col name="wfprinstanceid"               type="decimal"    length="22"    descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid"                type="varchar"    length="30"    descr="制单人" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="cmp_kpi_alarm" pkname="id" descr="合规考核预警" remark="合规考核预警">
+		<columns>
+			<col name="id"   type="decimal"    length="22"   descr="主键" />
+			<col name="alarmperson"   type="varchar"    length="100"   descr="需要预警的人员" />
+			<col name="alarmdept"     type="varchar"    length="100"   descr="需要预警的部门" />
+			<col name="alarmreason"   type="varchar"    length="100"   descr="预警内容" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	
+	<!--  **************************************** 【违规积分模块】 **************************************************** -->
+		
+    <!-- 定义不同分值的惩罚方法  -->
+    <table name="cmp_score_rule" pkname="id" descr="违规积分处理方法定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="score"               type="decimal"      length="3"      descr="分值" />
+            <col name="punish"              type="varchar"      length="50"     descr="惩罚" />
+            <col name="warnvalue"           type="decimal"      length="3"      descr="预警值" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+    </table>
+    	
+	<!-- 分2种情况, A直接录入, B导入违规事件
+	             如果是B方式则带入事件的相关信息, 如关联的流程文件, 风险点, 事件摘要. 
+                       以上信息只要关联上了风险点就把风险点中的扣分值也带过来做为扣分的参照值
+    -->
+	<table name="cmp_score_lost" pkname="id" descr="违规扣分记录">
+        <columns>
+            <col name="id"                      type="decimal"      length="22"     descr="主键" />
+            <col name="scoredate"    			type="char"         length="10"     descr="扣分时间" />
+			<col name="userid"                  type="decimal"      length="22"     descr="违规人员ID" />
+			<col name="username"                type="varchar"      length="30"     descr="违规人员" />
+			<col name="deptid"             	    type="decimal"      length="22"     descr="违规人员机构ID" />
+			<col name="deptname"                type="varchar"      length="50"     descr="违规人员机构名称" />
+			<col name="cmp_cmpfile_id"        	type="decimal"      length="22"     descr="流程文件ID"               remark="单选参照" />
+			<col name="cmp_cmpfile_name"        type="varchar"      length="50"     descr="流程文件名称"             remark="带过来,不可修改" />
+			<col name="cmp_risk_ids"            type="varchar"      length="100"    descr="风险点ID"           remark="多选参照" />
+            <col name="cmp_risk_names"          type="varchar"      length="500"    descr="风险点名称"         remark="多选参照冗余"  />			
+			<col name="busitype"                type="varchar"      length="50"     descr="业务类型" />
+			<col name="findchannel"             type="varchar"      length="30"     descr="发现渠道" />
+			<col name="scorelost_ref"           type="decimal"      length="3,1"    descr="违规扣分, 参考值" />
+			<col name="scorelost"               type="decimal"      length="3,1"    descr="违规扣分" />
+			<col name="eventid"                 type="varchar"      length="100"    descr="事件ID"   />
+			<col name="eventname"               type="varchar"      length="100"    descr="事件名称" />
+			<col name="eventdescr"              type="varchar"      length="500"    descr="事件描述" />
+			<col name="attachfile"              type="varchar"      length="300"    descr="附件" />
+			<col name="state"           type="varchar"      length="30"     descr="状态"    remart="已处理" />			         
+            <col name="createdate"      type="char"         length="10"     descr="创建时间" />
+            <col name="creater"         type="varchar"      length="30"     descr="创建人" />
+        </columns>
+        <indexs>
+        	<index name="in_cmp_score_lost_1" cols="scoredate" descr="年度" />
+        	<index name="in_cmp_score_lost_2" cols="userid" descr="人员" />
+        	<index name="in_cmp_score_lost_3" cols="deptid" descr="机构" />
+        </indexs>
+    </table>
+    
+	<!-- 分析以上2个数据, 对积分累计到达要处理的分值的员工进行处理
+	查询的SQL:
+ 需要处理的违规积分记录, 条件: 1.没有处理过的, 2. 已达到要处理的分值
+select * from (
+select username, scorenow, score as scorenext, punish from (select username, sum(scorelost)as scorenow from cmp_score_lost where scoredate like '2011%' group by username)a, cmp_score_rule b
+where a.scorenow >= b.score) a
+left join (select username, max(scoretotal)as lastscore from cmp_score_punish where punishdate like '2011%' group by username) b
+on a.username = b.username
+where (b.lastscore is null or a.scorenext > b.lastscore)
+	  -->
+	<table name="cmp_score_punish" pkname="id" descr="违规惩罚处理">
+        <columns>
+            <col name="id"                      type="decimal"      length="22"     descr="主键" />
+            <col name="userid"                  type="decimal"      length="22"     descr="违规人员ID" />
+            <col name="username"                type="varchar"      length="30"     descr="违规人员" />
+            <col name="deptid"                  type="decimal"      length="22"     descr="违规人员部门ID" />
+            <col name="deptname"                type="varchar"      length="30"     descr="违规人员部门" />
+            <col name="postname"                type="varchar"      length="30"     descr="违规人员岗位" />
+			<col name="scoretotal"    			type="decimal"      length="3,1"      descr="分值"     remark="被处理时的积分"/>			
+			<col name="punish"                  type="varchar"      length="50"     descr="惩罚"     remark="生成时带过来"/>
+			<col name="punishdate"              type="char"         length="10"     descr="惩罚时间"  remark="处理时选择"/>
+			<col name="remark"                  type="varchar"      length="500"    descr="备注"     remark="处理时填入"/>
+            <col name="state"        		    type="varchar"      length="30"     descr="状态"    remart="未处理/已处理" />			
+			<col name="createdate"   			type="char"         length="10"     descr="创建时间" />
+            <col name="creater"     		    type="varchar"      length="30"     descr="创建人" />	
+			<col name="lastdate"     		    type="varchar"      length="10"     descr="最后扣分时间" />            		         
+        </columns>
+        <indexs>
+        	<index name="in_cmp_score_punish_1" cols="userid" descr="违规人员" />
+        </indexs>
+    </table>   
+     <!-- *********************************************** 【违规积分-尹亮-yinliang】 *************************************************************** -->
+    <table name="cmp_score_stand" pkname="id" descr="违规积分维护">
+		<columns>
+			<col name="id"             type="decimal" length="20"  descr="id"/>
+			<col name="code"           type="varchar" length="100"  descr="标准编号"/>
+			<col name="content"        type="varchar" length="500"  descr="条目内容"/>
+			<col name="busitype"       type="varchar" length="100"  descr="业务类型"/>
+			<col name="score"          type="varchar" length="20"  descr="参考分值"/>
+			<col name="amount"         type="varchar" length="20"  descr="罚款金额"/>
+			<col name="author"         type="varchar" length="100"  descr="责任人"/>
+			<col name="udate"          type="varchar" length="50"  descr="修正日期"/>
+			<col name="parent_id"      type="varchar" length="20"  descr="父ID"/>
+			<col name="seq"            type="varchar" length="20"	descr="排序"/>
+		</columns>
+	</table>
+	
+	<table name="cmp_score_record" pkname="id" descr="违规扣分记录">
+        <columns>
+            <col name="id"                      type="decimal"      length="22"     descr="主键" />
+            <col name="code"                    type="varchar"      length="100"     descr="事件确认单编号" />
+            <col name="scoredate"    			type="char"         length="10"     descr="扣分时间" />
+			<col name="userid"                  type="decimal"      length="22"     descr="违规人员ID" />
+			<col name="username"                type="varchar"      length="30"     descr="违规人员" />
+			<col name="deptid"             	    type="decimal"      length="22"     descr="违规人员机构ID" />
+			<col name="deptname"                type="varchar"      length="50"     descr="违规人员机构名称" />
+			<col name="scorestand"              type="varchar"      length="100"     descr="标准条目"/> <!-- added -->
+			<col name="discovery"               type="varchar"      length="30"     descr="发现渠道"/> <!-- added -->
+			<col name="cmp_cmpfile_id"        	type="decimal"      length="22"     descr="流程文件ID"               remark="单选参照" />
+			<col name="cmp_cmpfile_name"        type="varchar"      length="80"     descr="流程文件名称"             remark="带过来,不可修改" />
+			<col name="cmp_risk_ids"            type="varchar"      length="100"    descr="风险点ID"           remark="多选参照" />
+            <col name="cmp_risk_names"          type="varchar"      length="500"    descr="风险点名称"         remark="多选参照冗余"  />			
+			<col name="findchannel"             type="varchar"      length="30"     descr="发现渠道" />
+			<col name="scorelost_ref"           type="decimal"      length="3"    descr="违规扣分, 参考值" />
+			<col name="scorelost"               type="decimal"      length="3"    descr="违规扣分" />
+			<col name="pricelost_ref"           type="varchar"      length="20"    descr="违规罚款, 参考值" /> <!-- added -->
+			<col name="pricelost"               type="varchar"      length="20"    descr="违规罚款" />        <!-- added --> 
+			<col name="eventid"                 type="varchar"      length="100"    descr="事件ID"   />
+			<col name="eventname"               type="varchar"      length="100"    descr="事件名称" />
+			<col name="eventdescr"              type="varchar"      length="500"    descr="事件描述" />
+			<col name="attachfile"              type="varchar"      length="300"    descr="附件" />
+			<col name="state"           		type="varchar"      length="30"     descr="状态"    remart="已处理" />			         
+            <col name="createdate"     		    type="char"         length="10"     descr="创建时间" />
+            <col name="creater"         		type="varchar"      length="30"     descr="创建人" />
+            <col name="createorg"         		type="varchar"      length="30"     descr="创建机构" />
+            <col name="sendstate"       	    type="varchar"      length="20"     descr="通知状态" />
+            
+            <!-- added -->
+            <col name="billtype"                     type="varchar"    length="50"    descr="单据类型" />
+			<col name="busitype"                     type="varchar"    length="50"    descr="业务类型" />
+			<col name="wfprinstanceid"               type="decimal"    length="22"    descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid"                type="varchar"    length="30"    descr="制单人" />
+            
+            <col name="applymsg"                     type="varchar"    length="500"    descr="申请复议理由" />
+            <col name="applyuser"                    type="decimal"    length="22"     descr="申请人" />
+            <col name="applydate"                    type="char"       length="10"     descr="申请时间" />
+            
+            <col name="resultmsg"                     type="varchar"    length="500"    descr="复议裁定意见" />
+            <col name="resultgroup"                   type="decimal"    length="22"     descr="裁定委员会" />
+            <col name="resultdate"                    type="char"       length="10"     descr="裁定时间" />
+            <col name="resultuser"                    type="varchar"    length="100"     descr="录入人" />
+            <col name="resultscore"                   type="varchar"    length="20"     descr="裁定扣分" />
+            
+            <col name="totalscore"                    type="varchar"    length="20"    descr="累计扣分" />
+            
+            <col name="applyendtime"                 type="varchar"    length="20"     descr="申请复议截止时间" />
+            
+            
+        </columns>
+        <indexs>
+        	<index name="in_cmp_score_record_1" cols="scoredate" descr="年度" />
+        	<index name="in_cmp_score_record_2" cols="userid" descr="人员" />
+        	<index name="in_cmp_score_record_3" cols="deptid" descr="机构" />
+        </indexs>
+    </table>
+    
+    <table name="cmp_punish_record" pkname="id"	descr="违规积分处理 （新建的）" remark="违规积分处理">
+		<columns>
+			<col name="id"				type="decimal"			length="20"		    descr="主键" 				reamrk="重要"></col>
+			<col name="confirm_id"		type="varchar"			length="100"		descr="事实确认单编号"		reamrk="重要"></col>
+			<col name="record_id"		type="varchar"			length="20"			descr="所属记录"			reamrk="重要"/>
+			<col name="punish_user"		type="varchar"			length="100"		descr="被惩罚人"			reamrk="id重要"></col>
+			<col name="user_dept"		type="varchar"			length="100"		descr="所属部门"			reamrk="id"/>
+			<col name="refer_score"		type="varchar"			length="20"			descr="参考扣分">						</col>
+			<col name="real_score"		type="varchar"			length="20"			descr="实际扣分"			reamrk="重要"/>
+			<col name="score_date"		type="varchar"			length="50"			descr="扣分日期"/>
+			<col name="punish_date"		type="varchar"			length="50"			descr="处理日期"/>
+			<col name="total_score"		type="varchar"			length="20"			descr="累计扣分"			reamrk="重要"/>
+			<col name="deal_type"		type="varchar"			length="50"			descr="处理情况"			reamrk="重要"/>
+			<col name="descripe"		type="varchar"			length="1000"		descr="备注"				reamrk="重要"/>
+			<col name="create_user"		type="varchar"			length="100"		descr="登记人"			reamrk="重要"/>
+			<col name="create_dept"		type="varchar"			length="100"		descr="创建机构"			reamrk="重要"/>
+			<col name="create_date"		type="varchar"			length="100"		descr="登记日期"			reamrk="重要"/>
+			
+		</columns>
+	</table>
+    <!-- *********************************************** 【岗职管理】 *************************************************************** -->
+	<table name="cmp_deptduty" pkname="id" descr="部门岗责" remark="部门岗责">
+		<columns>
+			<col name="id"                        type="decimal"    length="22"     descr="主键" />
+			<col name="deptid"                    type="decimal"    length="22"     descr="机构主键"    remark="对应于pub_corp_dept.id" />
+			<col name="dutyname"                  type="varchar"    length="100"    descr="职责名称" />
+			<col name="dutydescr"                 type="varchar"    length="2000"   descr="职责描述" />
+			<col name="seq"            	          type="decimal"    length="3"      descr="序号" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_deptduty_1" cols="deptid" descr="机构主键" />
+		</indexs>
+	</table>
+
+	<table name="cmp_postduty" pkname="id" descr="岗位岗责" remark="岗位岗责,即某一个岗位的岗责">
+		<columns>
+			<col name="id"                        type="decimal"    length="22"     descr="主键" />
+			<col name="deptid"                    type="decimal"    length="22"     descr="机构主键"     remark="对应于pub_corp_dept.id" />
+			<col name="postid"                    type="decimal"    length="22"     descr="岗位主键"     remark="对应于pub_post.id" />
+			<col name="dutyname"                  type="varchar"    length="200"    descr="职责名称" />
+			<col name="dutydescr"                 type="varchar"    length="4000"   descr="职责描述" />
+			<col name="task"                      type="varchar"    length="2000"   descr="工作任务" />
+			<col name="frequency"                 type="varchar"    length="20"     descr="工作频率" />
+			<col name="usetime"                   type="varchar"    length="20"     descr="每次用时" />
+			<col name="wprocessrequire"           type="varchar"    length="2000"   descr="工作流程与要求" />
+			<col name="operateids"                type="varchar"    length="200"    descr="操作指南索引" />
+			<col name="practiceids"               type="varchar"    length="200"    descr="最佳实践案例索引" />
+			<col name="seq"            	          type="decimal"    length="3"      descr="序号" />
+		</columns>
+		<indexs>
+			<index name="in_cmp_postduty_1" cols="deptid" descr="机构主键" />
+			<index name="in_cmp_postduty_2" cols="postid" descr="岗位主键" />
+		</indexs>
+	</table>
+
+	<table name="cmp_dutyalarm" pkname="id" descr="岗责预警" remark="岗责预警">
+		<columns>
+			<col name="id" type="decimal" length="22" descr="主键" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+
+    <!-- *********************************************** 【基础数据】 *************************************************************** -->
+	<table name="bsd_bsact" pkname="id" descr="业务活动" remark="业务活动分类,最重要的分类">
+		<columns>
+			<col name="id"                            type="decimal"   length="22"   descr="主键" />
+			<col name="name"                          type="varchar"   length="30"   descr="名称" />
+			<col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+			<col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+			<col name="linkcode"                      type="varchar"   length="60"   descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="descr"                         type="varchar"   length="300"  descr="说明" />
+		</columns>
+		<indexs></indexs>
+	</table>
+
+	<table name="bsd_product" pkname="id" descr="产品" remark="产品大类,也将是非常重要的分类">
+		<columns>
+			<col name="id"                            type="decimal"   length="22"   descr="主键" />
+			<col name="code"                          type="varchar"   length="50"   descr="产品编号" />
+			<col name="name"                          type="varchar"   length="100"  descr="产品名称" />
+			<col name="define"                        type="varchar"   length="2000" descr="产品定义" />
+			<col name="client"                        type="varchar"   length="100"  descr="适用客户" />
+			<col name="deptid"              	      type="decimal"   length="22"   descr="管理部门" />
+			<col name="status"                        type="varchar"   length="30"   descr="产品状态" />
+			<col name="function"                      type="varchar"   length="2000" descr="功能及特点" />
+			<col name="safety"                        type="varchar"   length="100"  descr="安全性" />
+			<col name="kind"                          type="varchar"   length="100"  descr="细分种类" />
+			<col name="price"                         type="varchar"   length="50"   descr="产品价格" />
+			<col name="ServiceChannel"                type="varchar"   length="100"  descr="服务渠道" />
+			<col name="usedate"                       type="char"      length="10"   descr="启用日期" />
+			<col name="c_process"                     type="varchar"   length="2000" descr="客户流程" />
+			<col name="ProcessSchema"                 type="varchar"   length="2000" descr="流程概要" />
+			<col name="riskcontrol"                   type="varchar"   length="2000" descr="风险控制要点" />
+			<col name="Annex"                         type="varchar"   length="1000" descr="相关附件" />
+			<col name="Datatype"                      type="varchar"   length="30"   descr="数据类型"  remark="产品表单的前几层是产品的类型，只有最后一层才可能是产品。" />
+			<col name="descr"                         type="varchar"   length="300"  descr="说明" />
+			<col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+			<col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+			<col name="linkcode"                      type="varchar"   length="60"   descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			
+			<col name="createdate"     			      type="char"      length="10"     descr="创建时间" />
+            <col name="creater"        			      type="decimal"   length="22"     descr="创建人" />
+            <col name="createdept"          		  type="decimal"   length="22"     descr="创建机构" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="bsd_icsys" pkname="id" descr="内控体系" remark="内控五要素分类">
+		<columns>
+			<col name="id"                            type="decimal"   length="22"   descr="主键" />
+			<col name="name"                          type="varchar"   length="30"   descr="名称" />
+			<col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+			<col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+			<col name="linkcode"                      type="varchar"   length="60"   descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="descr"                         type="varchar"   length="300"  descr="说明" />
+		</columns>
+		<indexs>
+			<index name="in_bsd_icsys_1" cols="parentid" descr="父记录id" />
+		</indexs>
+	</table>
+	
+	<table name="bsd_icstand" pkname="id" descr="内控基本规范" remark="内控基本规范之18号指引">
+		<columns>
+			<col name="id"                            type="decimal"   length="22"   descr="主键" />
+			<col name="name"                          type="varchar"   length="30"   descr="名称" />
+			<col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+			<col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+			<col name="linkcode"                      type="varchar"   length="60"   descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="descr"                         type="varchar"   length="4000"  descr="说明" />
+		</columns>
+		<indexs>
+		</indexs>
+	</table>
+	
+	<table name="bsd_gagedeptpost"       pkname="id" descr="标准部门岗位库" remark="就是咨询成果中重要内容-组织架构,必须形成一个标准参考库!">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"    descr="主键" />
+			<col name="name"                          type="varchar"    length="30"    descr="名称" />
+			<col name="parentid"                      type="decimal"    length="22"    descr="父记录id" />
+			<col name="seq"                           type="decimal"    length="22"    descr="排序字段" />
+			<col name="linkcode"                      type="varchar"    length="60"    descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="dutydesc"                      type="varchar"    length="500"   descr="职责说明" />
+			<col name="requiredesc"                   type="varchar"    length="500"   descr="岗位要求" />
+			<col name="userconfdesc"                  type="varchar"    length="500"   descr="人员配置" />
+			<col name="remark"                        type="varchar"    length="500"   descr="备注" />
+		</columns>
+		<indexs>
+			<index name="in_bsd_gagedeptpost_1" cols="parentid" descr="父记录id" />
+		</indexs>
+	</table>
+	
+	<table name="bsd_gagewfact"       pkname="id" descr="标准流程库" remark="就是在录入流程环节时,我们预先提供100个标准流程环节库给以参考,让客户或咨询师有所依据,一级菜单应该是:银行业,保险业,证券业,财务公司,国企(海洋运输),国企(铁建),国企(航天产业),国企(电力行业),国企(港务行业)">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"    descr="主键" />
+			<col name="name"                          type="varchar"    length="30"    descr="名称" />
+			<col name="parentid"                      type="decimal"    length="22"    descr="父记录id" />
+			<col name="seq"                           type="decimal"    length="22"    descr="排序字段" />
+			<col name="linkcode"                      type="varchar"    length="60"    descr="关联字段"     remark="以后想更多采用linkcode关联机制" />
+			<col name="opedescr"                      type="varchar"    length="500"   descr="操作说明" />
+			<col name="postdesc"                      type="varchar"    length="1000"  descr="岗位说明" />
+			<col name="riskdesc"                      type="varchar"    length="1000"  descr="风险说明" />
+			<col name="otherdesc"                     type="varchar"    length="1000"  descr="其他说明" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="bsd_gagerisk"         pkname="id"   descr="标准风险点库"     remark="风险点参考库,就是录入实际风险点时可以参考普信提供的标准银行的,一级菜单应该是:银行业,保险业,证券业,财务公司,国企(海洋运输),国企(铁建),国企(航天产业),国企(电力行业),国企(港务行业)">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"     descr="主键" />
+			<col name="gagewfact_id"                  type="decimal"    length="22"     descr="对应标准流程环节库id" />
+			<col name="riskname"                      type="varchar"    length="300"    descr="风险点名称" />
+			<col name="riskdescr"                     type="varchar"    length="500"    descr="风险点说明" />
+			<col name="possible"                      type="varchar"    length="30"     descr="可能性" />
+			<col name="serious"                       type="varchar"    length="30"     descr="严重程度" />
+			<col name="rank"                          type="varchar"    length="30"     descr="风险等级" />
+			<col name="finalost"                      type="varchar"    length="500"    descr="财务损失" />
+			<col name="honorlost"                     type="varchar"    length="500"    descr="声誉损失" />
+			<col name="crbcpunish"                    type="varchar"    length="500"    descr="监管处罚" />
+			<col name="ctrlfns"                       type="varchar"    length="500"    descr="控制措施" />
+			<col name="remark"                        type="varchar"    length="500"    descr="备注" />
+		</columns>
+		<indexs></indexs>
+	</table>
+		
+	<table name="bsd_gagecheckpoint"   pkname="id"   descr="标准检查要点库"   remark="检查要点">
+		<columns>
+			<col name="id"                            type="decimal"    length="22"     descr="主键" />
+			<col name="gagewfact_id"                  type="decimal"    length="22"     descr="对应标准流程环节库id" />
+			<col name="itemtype"                      type="varchar"    length="300"    descr="检查项目分类" />
+			<col name="itemname"                      type="varchar"    length="300"    descr="检查项目名称" />
+			<col name="checkcontent"                  type="varchar"    length="2000"   descr="检查内容" />
+			<col name="checkpointcontent"             type="varchar"    length="2000"   descr="检查要点" />
+			<col name="checkmethod"                   type="varchar"    length="2000"   descr="检查方法" />
+			<col name="sampleplan"                    type="varchar"    length="2000"   descr="抽样方案" />
+			<col name="remark"                        type="varchar"    length="500"    descr="备注" />
+		</columns>
+		<indexs></indexs>
+	</table>
+	
+	<table name="bsd_gageissue" pkname="id" descr="合规问题库" remark="问题的基础库, 发现的问题和基础库做关联,后面方便出统计报表, 同类问题不重复统计">
+        <columns>            
+            <col name="id"                            type="decimal"   length="22"   descr="主键" />
+            <col name="name"                          type="varchar"   length="30"   descr="名称" />
+            <col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+            <col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+            <col name="linkcode"                      type="varchar"   length="60"   descr="关联字段" />
+            <col name="descr"                         type="varchar"   length="1000" descr="问题说明" />           
+        </columns>
+        <indexs></indexs>
+    </table>
+	<table name="bsd_lawissuecorp" pkname="id" descr="发布机构">
+	<columns>
+		<col name="id"              type="decimal"      length="22"       descr="主键" />
+		<col name="code"            type="varchar"      length="100"      descr="编码" />
+		<col name="name"            type="varchar"	    length="100"      descr="名称" />
+		<col name="parentid"        type="decimal"	    length="22"       descr="父ID" />
+		<col name="seq"       		type="decimal"	    length="22"       descr="排序字段" />
+	</columns>
+	<indexs>
+		<index name="in_bsd_lawissuecorp_1" cols="name" descr="机构名称" />
+	</indexs>
+	</table>
+	
+	
+    <table name="bsd_checktype"   pkname="id"   descr="检查要点类型"   remark="检查要点类型">
+        <columns>            
+            <col name="id"                            type="decimal"   length="22"   descr="主键" />
+            <col name="name"                          type="varchar"   length="100"  descr="名称" />
+            <col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+            <col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+            <col name="linkcode"                      type="varchar"   length="60"   descr="关联字段" />
+            <col name="descr"                         type="varchar"   length="1000" descr="问题说明" />           
+        </columns>
+        <indexs></indexs>
+    </table>	
+	
+    <table name="bsd_checkitem"   pkname="id"   descr="检查要点"   remark="检查要点">
+        <columns>            
+            <col name="id"                            type="decimal"   length="22"   descr="主键" />
+            <col name="checktype_id"                  type="decimal"   length="22"   descr="检查要点类型" />            
+            <col name="checkproject"                  type="varchar"   length="2000" descr="检查项目" />
+            <col name="checkpointcontent"             type="varchar"   length="4000" descr="检查要点" />
+            <col name="checkmethod"                   type="varchar"   length="4000" descr="检查方法" />                       
+        </columns>
+        <indexs></indexs>
+    </table>
+    	
+    <table name="bsd_form"   pkname="id"   descr="表单库"   remark="表单库">
+        <columns>            
+            <col name="id"                            type="decimal"   length="22"   descr="主键" />
+            <col name="code"                		  type="varchar"   length="100"  descr="表单编号" />            
+            <col name="name"                		  type="varchar"   length="100"	 descr="表单名称" />
+            <col name="type"      				      type="varchar"   length="30"   descr="表单类别" />
+            <col name="version"        		          type="varchar"   length="30"	 descr="版本" />                       
+            <col name="managedeptid"        		  type="decimal"   length="22"	 descr="管理部门" />
+            <col name="designdept"        		      type="varchar"   length="100"	 descr="设计机构" />
+            <col name="busitype"        		      type="varchar"   length="30"	 descr="业务类别" />
+            <col name="status"        		          type="varchar"   length="30"	 descr="状态" />
+            <col name="startdate"        		      type="varchar"   length="10"	 descr="启用日期" />
+            <col name="annex"        	    	      type="varchar"   length="1000" descr="附件" />
+            <col name="remark"        		          type="varchar"   length="30"	 descr="备注" />
+            <col name="createdept"      			  type="decimal"   length="22"  descr="创建机构" />
+            <col name="ictype"                        type="varchar"   length="200"  descr="内控体系" />
+        </columns>
+        <indexs></indexs>
+    </table>	
+    
+    <table name="or_event_type"   pkname="id"   descr="操作风险损失事件类型"   remark="操作风险损失事件类型">
+        <columns>            
+            <col name="id"                            type="decimal"   length="22"   descr="主键" />
+            <col name="code"                		  type="varchar"   length="100"  descr="表单编号" />            
+            <col name="name"                		  type="varchar"   length="100"	 descr="表单名称" />
+            <col name="descr"                		  type="varchar"   length="1000" descr="描述" />
+     		<col name="parentid"                      type="decimal"   length="22"   descr="父记录id" />
+            <col name="seq"                           type="decimal"   length="22"   descr="排序字段" />
+            <col name="linkcode"                      type="varchar"   length="60"   descr="关联字段" />     
+        </columns>
+        <indexs></indexs>
+    </table>	
+    <table name="cmp_operate_practice_guide" pkname="id" descr="操作指引库-案例实践库" remark="岗责任务对应引用的操作指引和案例实践">
+		<columns>
+			<col name="id"                        type="decimal"    length="22"     descr="主键" />
+			<col name="filename"                  type="varchar"    length="200"    descr="文件名" />
+			<col name="type"                  	  type="varchar"    length="50"    descr="类型" />
+			<col name="descr"                 	  type="varchar"    length="2000"   descr="文件说明" />
+			<col name="annex"                 	  type="varchar"    length="100"   descr="附件" />
+		</columns>
+		<indexs></indexs>
+	</table>
+    
+	
+    <table name="db_ver" pkname="version" descr="数据库版本">
+    <columns>
+      <col name="version"       type="varchar"      length="20"     descr="主键" />       
+    </columns>    
+    </table>
+    
+	<table name="print_template" pkname="id" descr="关键字替换word模板设置" remark="table_name为的是查找相应模板，当模板没有对应特定表时，可以自定义，只作为查找模板的key">
+    <columns>
+      <col name="id"             		 type="decimal"   length="22"   descr="主键" />
+      <col name="pk_name"             type="varchar"   length="22"   descr="表名或自定义的模板key" />
+      <col name="xml_name"               type="varchar"   length="300"   descr="xml模板" />
+      <col name="mht_name"               type="varchar"   length="300"   descr="mht模板" />
+      <col name="template_desc"          type="varchar"   length="300"   descr="模板说明" />
+    </columns>    
+    </table>
+	
+	<table name="msg_alert" pkname="id" descr="消息提醒">
+		<columns>
+			<col name="id"              	     type="decimal"    length="22"      descr="主键" />
+			<col name="descr"             	     type="varchar"    length="2000"     descr="描述" />
+            <col name="billtype"                 type="varchar"    length="50"    descr="单据类型" />
+            <col name="busitype"                 type="varchar"    length="50"    descr="业务类型" />
+			<col name="createdate"               type="varchar"    length="10"      descr="创建时间" />
+			<col name="linkurl"                  type="varchar"    length="200"      descr="链节地址" />
+			<col name="dataids"                  type="varchar"    length="200"      descr="数据IDS串" />
+			<col name="receivdept"                  type="varchar"    length="200"      descr="接收部门" />
+			<col name="receivrole"                  type="varchar"    length="200"      descr="接收角色" />
+			<col name="receivuser"                  type="varchar"    length="200"      descr="接收人员" />
+		</columns>
+	</table>
+	<table name="msg_alert_looked" pkname="id" descr="已查看的提醒">
+		<columns>
+			<col name="id"              	     type="decimal"    length="22"      descr="主键" />
+			<col name="alertid"              	 type="decimal"    length="22"      descr="提醒ID" />
+			<col name="lookeduser"               type="varchar"    length="50"      descr="查看人" />
+			<col name="lookdate"           	     type="varchar"    length="10"      descr="查看时间" />
+		</columns>
+		 <indexs>
+            <index name="in_msg_alert_looked_1" cols="alertid" descr="消息ID" />
+            <index name="in_msg_alert_looked_2" cols="lookeduser" descr="查看人" />
+        </indexs>
+	</table>
+	<table name="msg_alert_filter" pkname="id" descr="提醒数据过滤">
+		<columns>
+			<col name="id"              	     type="decimal"    length="22"      descr="主键" />
+			<col name="billtype"                 type="varchar"    length="50"    descr="单据类型" />
+            <col name="busitype"                 type="varchar"    length="50"    descr="业务类型" />
+            <col name="datastrategy"              type="varchar"    length="50"    descr="数据策略" />
+		</columns>
+	</table>
+	
+    <table name="bsd_issue" pkname="id" descr="银行业问题" remark="银行业问题目录树">
+        <columns>
+            <col name="id" type="decimal" length="22" descr="主键" />
+            <col name="name" type="varchar" length="200" descr="名称" />
+            <col name="parentid" type="decimal" length="22" descr="父记录id" />
+            <col name="seq" type="decimal" length="22" descr="排序字段" />
+            <col name="linkcode" type="varchar" length="60" descr="关联字段" remark="以后想更多采用linkcode关联机制" />
+        </columns>
+        <indexs></indexs>
+    </table>
+
+    <table name="bad_issue_law_mapping" pkname="id" descr="银行业问题与法规映射" remark="注意:只对应到问题的第2层">
+        <columns>
+            <col name="id"              type="decimal"     length="30"      descr="主键" />
+            <col name="issueid"         type="decimal"     length="30"      descr="问题主键" />
+            <col name="lawid"           type="decimal"     length="30"      descr="法律主键,对应于law_law.id,用于点击链接查看外规" />
+            <col name="lawname"         type="varchar"     length="100"     descr="法律名称" />
+            <col name="lawitemid"       type="varchar"     length="30"      descr="法律条文id" />
+            <col name="lawitemtitle"    type="varchar"     length="100"     descr="法律条文标题" />
+            <col name="lawitemcontent"  type="varchar"     length="4000"    descr="法律条文内容" />
+            <col name="mappingtype"     type="varchar"     length="30"      descr="映射类型(定性依据, 处理依据)" />
+        </columns>
+        <indexs>
+            <index name="in_issue_law_mapping_1" cols="issueid" descr="问题主键" />
+        </indexs>
+    </table>	
+    
+      	<!-- 合同  yinliang start  -->
+	
+	<table name="contractbusi" pkname="id" descr="合同业务分类">
+		<columns>
+			<col name="id"         type="decimal" length="22" descr="主键"/>
+			<col name="parentid"   type="varchar" length="11" descr="父节点"/>
+			<col name="code"   	   type="varchar" length="11" descr="编码"/>
+			<col name="name"       type="varchar" length="50" descr="名称"/>
+			<col name="seq"        type="varchar" length="11" descr="seq"/>
+			<col name="pushuser"   type="varchar" length="50" descr="user"/>
+		</columns>
+	</table>
+	<table name="lbs_stdfile_type" pkname="id" descr="合同库分类(属性)">
+		<columns>
+			<col name="id"           type="decimal" length="22" descr="主键"/>
+			<col name="code"         type="varchar" length="20" descr="编码"/>
+			<col name="name"         type="varchar" length="20" descr="名称"/>
+			<col name="parentid"     type="decimal" length="20" descr="父节点"/>
+			<col name="seq"          type="decimal" length="22" descr="seq"/>
+			<col name="pushuser"     type="varchar" length="50" descr="user"/>
+		</columns>
+	</table>
+	<table name="lbs_stdfile" pkname="id" descr="格式合同文本库">
+		<columns>
+			<col name="Id"             type="decimal" length="22"   descr="主键"/>
+			<col name="Code"           type="varchar" length="100"   descr="文本编码_1"/> 
+			<col name="Name"           type="varchar" length="100" descr="文本名称"/>
+			<col name="Createorg"      type="varchar" length="100"  descr="创建机构"/>
+			<col name="creater"        type="varchar" length="100"   descr="创建人"/>
+			<col name="property"       type="varchar" length="20"   descr="合同性质"/>
+			<col name="Type"           type="varchar" length="100"  descr="业务类型"/>
+			<col name="busiid"         type="decimal" length="22"   descr="合同属性"/>
+			<col name="useway"         type="varchar" length="100"   descr="适用范围"/>
+			<col name="effect"         type="varchar" length="20"   descr="是否有效"/>
+			<col name="secret"         type="varchar" length="20"   descr="密级"/>
+			<col name="fortruth"       type="varchar" length="20"   descr="是否授信"/>
+			<col name="waigui"         type="varchar" length="500"   descr="关联外规"/>
+			<col name="neigui"         type="varchar" length="500"   descr="关联内规"/>
+			<col name="Createdate"     type="varchar" length="23"   descr="创建日期"/>
+			<col name="Reldate"        type="varchar" length="23"   descr="发布日期"/>
+			<col name="phone"          type="varchar" length="100"   descr="联系电话"/>
+			<col name="faxes"          type="varchar" length="100"   descr="传真"/>
+			<col name="isforeign"      type="char"    length="2"  descr="是否外文"/>
+			<col name="testfile"       type="varchar" length="4000"   descr="合同正文"/>
+			<col name="filedis"        type="varchar" length="500"   descr="合同描述"/>
+			<col name="adjunct"        type="varchar" length="3000" descr="附件选择"/>
+			<col name="editon"         type="decimal" length="22,1"   descr="版本号"/> <!-- 版本号用数字型，便于比较 -->
+			<col name="filestate"      type="varchar" length="100"   descr="文件状态"/>
+		</columns>
+	</table>
+	<table name="lbs_standhistfile" pkname="id" descr="格式合同文本库修改历史">
+		<columns>
+			<col name="Id"             type="decimal" length="22"   descr="主键"/>
+			<col name="Code"           type="varchar" length="100" descr="文本编码_1"/>
+			<col name="Name"           type="varchar" length="100" descr="文本名称"/>
+			<col name="Createorg"      type="varchar" length="100"  descr="创建机构"/>
+			<col name="creater"        type="varchar" length="100"   descr="创建人"/>
+			<col name="property"       type="varchar" length="20"   descr="合同性质"/>
+			<col name="Type"           type="varchar" length="100"  descr="业务类型"/>
+			<col name="busiid"         type="decimal" length="22"   descr="合同属性"/>
+			<col name="useway"         type="varchar" length="100"   descr="适用范围"/>
+			<col name="effect"         type="varchar" length="20"   descr="是否有效"/>
+			<col name="secret"         type="varchar" length="20"   descr="密级"/>
+			<col name="fortruth"       type="varchar" length="20"   descr="是否授信"/>
+			<col name="waigui"         type="varchar" length="500"   descr="关联外规"/>
+			<col name="neigui"         type="varchar" length="500"   descr="关联内规"/>
+			<col name="Reldate"        type="varchar" length="23"   descr="发布日期"/>
+			<col name="phone"          type="varchar" length="100"   descr="联系电话"/>
+			<col name="faxes"          type="varchar" length="100"   descr="传真"/>
+			<col name="isforeign"      type="varchar"    length="2"  descr="是否外文"/>
+			<col name="testfile"       type="varchar" length="4000"   descr="合同正文"/>
+			<col name="filedis"        type="varchar" length="500"   descr="合同描述"/>
+			<col name="adjunct"        type="varchar" length="3000" descr="附件选择"/>
+			<col name="filestate"      type="varchar" length="100"   descr="文件状态"/>
+			<col name="editon"         type="decimal" length="22,1" descr="版本号"/>
+			<col name="fileid"         type="decimal" length="22" descr="文件ID"/>
+		</columns>
+	</table>
+
+	<table name="lbs_unstdfile" pkname="id" descr="非格式文本合同">
+		<columns>
+			<col name="id"             type="decimal" length="22" descr="id"/>
+			<col name="Code"           type="varchar" length="100" descr="文本编码"/>
+			<col name="Name"           type="varchar" length="100" descr="文本名称"/>	
+			<col name="Createorg"      type="varchar" length="100" descr="创建机构"/>
+			<col name="creater"        type="varchar" length="100" descr="创建人"/>
+			<col name="property"       type="varchar" length="20"   descr="合同性质"/>
+			<col name="Type"           type="varchar" length="100"  descr="业务类型"/>
+			<col name="busiid"         type="decimal" length="22"   descr="合同属性"/>
+			<col name="useway"         type="varchar" length="100"   descr="适用范围"/>
+			<col name="effect"         type="varchar" length="20"   descr="是否有效"/>
+			<col name="secret"         type="varchar" length="20"   descr="密级"/>
+			<col name="fortruth"       type="varchar" length="20"   descr="是否授信"/>
+			<col name="waigui"         type="varchar" length="500"   descr="关联外规"/>
+			<col name="neigui"         type="varchar" length="500"   descr="关联内规"/>
+			<col name="Createdate"     type="varchar" length="23"   descr="创建日期"/>
+			<col name="phone"          type="varchar" length="100"   descr="联系电话"/>
+			<col name="faxes"          type="varchar" length="100"   descr="传真"/>
+			<col name="isforeign"      type="varchar"    length="2"  descr="是否外文"/>
+			<col name="testfile"       type="varchar" length="4000"   descr="合同正文"/>
+			<col name="filedis"        type="varchar" length="500"   descr="合同描述"/>
+			<col name="adjunct"        type="varchar" length="3000" descr="附件选择"/>
+		</columns>
+	</table>
+	<table name="lbs_powermanage" pkname="id" descr="授权管理">
+		<columns>
+			<col name="id"             type="decimal" length="22"  descr="id"/>
+			<col name="Code"           type="varchar" length="100" descr="授权书编码"/>
+			<col name="authordept"     type="varchar" length="100" descr="授权机构"/>
+			<col name="author"         type="varchar" length="100" descr="授权人"/>
+			<col name="acceptdept"     type="varchar" length="100" descr="受权机构"/>	
+			<col name="accepter"       type="varchar" length="100" descr="受权负责人"/>
+			<col name="authordate"     type="varchar" length="100" descr="授权日期"/>
+			<col name="enddate"        type="varchar" length="100" descr="授权到期日期"/>
+			<col name="Type"           type="varchar" length="100"  descr="授权类型"/>
+			<col name="object"         type="varchar" length="500"   descr="授权事项"/>
+			<col name="state"          type="varchar" length="20"   descr="授权状态"/>
+			<col name="document"       type="varchar" length="4000"   descr="授权书"/>
+			<col name="register"       type="varchar" length="100"   descr="经办人"/>
+			<col name="registerdate"   type="varchar" length="100" descr="录入日期" />
+			<col name="flowstate"      type="varchar" length="100"  descr="工作流状态"/>	
+			<col name="commitstate"    type="varchar" length="50"   descr="提交状态"/>
+			<col name="refapply"       type="varchar" length="100"  descr="引用申请编码"/>
+				<!--工作流 -->
+			<col name="billtype" 		type="varchar"		length="100"	descr="账单类型"></col>
+			<col name="busitype"		type="varchar"		length="100"	descr="业务类型"></col>
+			<col name="wfprinstanceid"	type="decimal"		length="22"	descr="流程实例id"></col>
+			<col name="create_userid"	type="varchar"		length="20"	descr="流程创建人id"/>
+			<col name="endtype" 		type="varchar"		length="50"	descr="结束方式，正常结束，非正常结束"></col>
+			<col name="status"			type="varchar"		length="50"	descr="流程状态，run,end"></col>
+		</columns>
+	</table>
+	<table name="lbs_powerapply" pkname="id" descr="授权申请">
+		<columns>
+			<col name="id"             type="decimal" length="22"  descr="id"/>
+			<col name="code"           type="varchar" length="100"  descr="申请编码"/>
+			<col name="applier"        type="varchar" length="100" descr="申请人"/>
+			<col name="applydate"      type="varchar" length="100" descr="申请日期"/>
+			<col name="type"           type="varchar" length="100" descr="申请类型"/>
+			<col name="object"         type="varchar" length="500" descr="申请事项"/>	
+			<col name="applyaim"       type="varchar" length="500" descr="申请目的"/>
+			<col name="applydept"      type="varchar" length="100" descr="申请机构"/>
+			<col name="applywork"      type="varchar" length="100" descr="申请人岗位"/>
+			<col name="powertype"      type="varchar" length="100"  descr="授权类型"/>
+			<col name="emergency"      type="varchar" length="100"   descr="紧急程度" />
+			<col name="btime"          type="varchar" length="23"   descr="授权日期"/>
+			<col name="endtime"        type="varchar" length="23"   descr="授权到期日期"/>
+			<col name="adjunt"         type="varchar" length="3000"   descr="附件"/>
+			<col name="flowstate"      type="varchar" length="100"  descr="工作流状态"/>
+			<col name="releasestate"   type="varchar" length="100"  descr="发布状态"/>
+			
+			<!--工作流 -->
+			<col name="billtype" 		type="varchar"		length="100"	descr="账单类型"></col>
+			<col name="busitype"		type="varchar"		length="100"	descr="业务类型"></col>
+			<col name="wfprinstanceid"	type="decimal"		length="22"	descr="流程实例id"></col>
+			<col name="create_userid"	type="varchar"		length="20"	descr="流程创建人id"/>
+			<col name="endtype" 		type="varchar"		length="50"	descr="结束方式，正常结束，非正常结束"></col>
+			<col name="status"			type="varchar"		length="50"	descr="流程状态，run,end"></col>
+		</columns>
+	</table>
+	<table name="lbs_dept_print_contact" >
+		<columns>
+			<col name="id"             type="varchar" length="20" descr="Id"/>
+			<col name="dept_id"        type="varchar" length="20"  descr="部门ID"/>
+			<col name="contact_id"     type="varchar" length="20"  descr="合同ID"/>
+			<col name="type"           type="varchar" length="50"   descr="合同性质(格式、非格式)"/>
+			<col name="pdate"           type="varchar" length="50"   descr="打印时间"/>
+			<col name="pcount"         type="varchar" length="20"   descr="打印张数"/>
+		</columns>
+	</table>
+	
+	<!-- 非合同审查部分新建表 -->
+		<table	name="unformat_deal_check" pkname="id"	descr="非格式文本合同审查">
+		<columns>
+			<col name="id"				type="decimal"		length="22"		descr="主键"></col>
+			<col name="deal_id"			type="decimal"		length="30"		descr="合同范本ID"></col>
+			<col name="sendorg"			type="varchar"		length="100"	descr="送审机构"></col>
+			<col name="passpeople"		type="varchar"		length="100"	descr="经办人"></col>
+			<col name="phone"			type="varchar"		length="50"		descr="联系电话"></col>
+			<col name="chek_type"		type="varchar"		length="100"	descr="审查类型"></col>
+			<col name="property"        type="varchar" 		length="20"  	 descr="合同性质"/>
+			<col name="Type"            type="varchar" 		length="100" 	 descr="业务类型"/>
+			<col name="busiid"          type="decimal" 		length="22"  	 descr="合同属性"/>
+			<col name="dealdoc_name"	type="varchar"		length="100"	descr="合同文本名称"></col>
+			<col name="deal_code" 		type="varchar"		length="100"	descr="合同编码"/>
+			<col name="deal_content"	type="varchar"		length="150"	descr="合同正文"></col>
+			<col name="ddescription"	type="varchar"		length="1000"	descr="送审事项描述"></col>
+			<col name="applydate"		type="varchar"		length="50"		descr="送审日期"></col>
+			<col name="files"			type="varchar"		length="100"	descr="附件"/>
+			<col name="print_times"		type="decimal"		length="22"	descr="允许打印份数"></col>
+			<col name="print"			type="varchar"		length="10"	descr="已打印次数"></col>
+			<col name="process_code"    type="varchar"      length="100" desrc="流程审查号"/>
+			
+			<!--工作流 -->
+			<col name="billtype" 		type="varchar"		length="100"	descr="账单类型"></col>
+			<col name="busitype"		type="varchar"		length="100"	descr="业务类型"></col>
+			<col name="wfprinstanceid"	type="decimal"		length="22"	descr="流程实例id"></col>
+			<col name="create_userid"	type="varchar"		length="20"	descr="流程创建人id"/>
+			<col name="endtype" 		type="varchar"		length="50"	descr="结束方式，正常结束，非正常结束"></col>
+			<col name="status"			type="varchar"		length="50"	descr="流程状态，run,end"></col>
+		</columns>
+	</table>
+	
+	 <!-- 增加一个律师库 -->
+	 <table name="lbs_lawyer_info" pkname="id" descr="律师库维护">
+		<columns>
+			<col name="id"              type="decimal"		 length="22" 	 descr="id"/>
+			<col name="hire_type"       type="decimal"		 length="22"  	 descr="选聘方式"/>
+			<col name="code"            type="varchar"		 length="100"    descr="代理编码"/>
+			<col name="name"            type="varchar"		 length="50"     descr="代理律师"/>
+			<col name="proxy_dept"      type="varchar" 		 length="100"    descr="代理机构"/>
+			<col name="proxy_aim"       type="varchar" 		 length="500"    descr="代理目标"/>
+			<col name="charge_type"     type="varchar" 		 length="100"    descr="收费方式"/>
+			<col name="evaluation"      type="decimal" 		 length="22"     descr="合作评价"/>
+			<col name="descript"        type="varchar" 		 length="500"    descr="描述"/>
+			<col name="files"		    type="varchar" 		 length="1000"	 descr="附件"/>
+		</columns>
+	</table>
+	 <table name="lbs_lawyer_dept" pkname="id" descr="律师行维护">
+		<columns>
+			<col name="id"              type="decimal" 		 length="22"    descr="id"/>
+			<col name="code"            type="varchar"		 length="100"   descr="行编码"/>
+			<col name="name"            type="varchar" 		 length="50"    descr="机构名称"/>
+			<col name="Reg_address"     type="varchar" 		 length="100"   descr="注册地址"/>
+			<col name="con_address"     type="varchar" 		 length="100"   descr="联系地址"/>
+			<col name="telphone"        type="varchar" 	  	 length="50"    descr="联系电话"/>
+			<col name="faxes"           type="varchar" 		 length="50"    descr="传真"/>
+			<col name="plevel"          type="varchar" 		 length="100"   descr="资质级别"/>
+			<col name="feature"         type="varchar"		 length="200"   descr="优势与特色"/>
+			<col name="parentid"        type="decimal"		 length="22"    descr="parentid"/>
+			<col name="seq"             type="varchar"		 length="20"    descr="序号"/>
+		</columns>
+	</table>
+	
+	<table name="lbs_process_id" pkname="" descr="流程审查最大号记录">
+		<columns>
+			<col name="type"           type="varchar" length="1"   descr="1-格式 2-非格式"/>
+			<col name="year"           type="varchar" length="10"  descr="年"/>
+			<col name="maxcode"        type="varchar" length="20"  descr="当前年最大号"/>
+		</columns>
+	</table>
+	
+	
+	<!-- 合同 yinliang end -->
+	
+	<!-- *************主诉案件************** -->
+	<table name="lbs_case_self" pkname="id" descr="主诉案件表" remark="案件管理模块">
+		<columns>
+			<col name="iscopyright" 		type="varchar" 		length="10" 		descr="是否是知识产权"></col>
+			<col name="actionmode"			type="varchar" 		length="100"		descr="主动/被动"></col>
+			<col name="ivr_copyright_id"	type="varchar"		length="100"		descr="关联创新编码"></col>
+			<col name="ivr_copyright_name"	type="varchar"		length="100"		descr="创新项目名称"></col>
+			<col name="id"					type="decimal"		length="22" 		descr="主键" ></col>
+			<!-- 基本信息 -->
+			<col name="code"				type="varchar"		length="30" 		descr="编码" ></col>
+			<col name="sendproceeding"		type="varchar"		length="30" 		descr="案件名称" ></col>
+			<col name="area_other"			type="varchar"		length="10" 		descr="是否境外诉讼" ></col>
+			<col name="createyear"			type="varchar"		length="10" 		descr="创建年份" ></col>
+			<col name="season" 				type="varchar"		length="50"			descr="创建季度"/>
+			<col name="createdate"			type="varchar"		length="10" 		descr="创建日期" ></col>
+			<col name="sendorg"				type="varchar"		length="30" 		descr="填写机构 关联pub_corp_dept.id" ></col>
+			<col name="jpeople"				type="varchar"		length="100" 		descr="填写人" ></col>
+			<col name="phone"				type="varchar"		length="100" 		descr="联系人电话" ></col>
+			<col name="fax"					type="varchar"		length="100" 		descr="联系人传真" ></col>
+			<col name="lawsuitmain"			type="varchar"		length="100" 		descr="实际诉讼主体" ></col>
+			<col name="peoplename"			type="varchar"		length="100" 		descr="被告人" ></col>
+			<col name="party"				type="varchar"		length="30" 		descr="第三人" ></col>
+			<col name="busitypename"		type="varchar"		length="100" 		descr="涉及业务类型" ></col>
+			<col name="other"				type="varchar"		length="1000" 		descr="担保或其它情况" ></col>
+			<col name="casetype"			type="varchar"		length="100" 		descr="风险分类" ></col>
+			<col name="case_property"		type="varchar"		length="100" 		descr="诉讼性质" ></col>
+			<col name="lawsuittype"			type="varchar"		length="100" 		descr="诉讼类型" ></col>
+			<col name="res"					type="decimal"		length="22" 		descr="标的" ></col>
+			<col name="money"				type="varchar"		length="30" 		descr="币种" ></col>
+			<col name="bargain_money"		type="varchar"		length="100" 		descr="合同实际发生金额" ></col>
+			<col name="save_charge"			type="varchar"		length="100" 		descr="保全费" ></col>
+			<col name="save_merit"			type="varchar"		length="100" 		descr="保全财产金额" ></col>
+			<col name="save_explain"		type="varchar"		length="1000" 		descr="保全财产说明" ></col>
+			<col name="analyse"				type="varchar"		length="1000" 		descr="其他说明" ></col>
+			<col name="lawyers"  		    type="varchar"      length="100"        desrc="律师信息"/>
+			<col name="files"				type="varchar"		length="100" 		descr="附件 路劲" ></col>
+			<col name="lawtype"				type="varchar"		length="100"		descr="起诉/被诉"></col>
+			
+			<!-- 工作流 --> 
+		    <col name="billtype"            type="varchar"   	length="50"    		descr="单据类型" />
+			<col name="busitype"            type="varchar"      length="50"    		descr="业务类型" />
+			<col name="wfprinstanceid"      type="decimal"      length="22"    		descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid" 		type="decimal"      length="22"    		descr="流程创建人id"></col>
+			<col name="endtype"				type="varchar"		length="50"			descr="结束状态，正常结束，非正常结束"></col>
+			<col name="status"				type="varchar"		length="50"			descr="流程状态,RUN,END"></col>
+			<col name="state"               type="varchar"      length="5"          descr=""></col>
+		</columns>
+	</table>
+	
+	<!-- 案件性质   -->
+	<table name="lbs_case_property" pkname="id" descr="案件性质参照">
+		<columns>
+			<col name="id" 				type="decimal" 			length="22"			 descr="主键"></col>
+			<col name="code" 			type="varchar" 			length="50" 		descr="编码"></col>
+			<col name="name" 			type="varchar" 			length="100" 		descr="名称"/>
+			<col name="type" 			type="varchar" 			length="100" 		descr="下拉参照类型"></col>
+			<col name="pusher" 			type="varchar" 			length="100" 		descr=""></col>
+		</columns>
+	</table>
+	
+	<!-- 案子被告人/原告人 -->
+	<table name="lbs_case_ischarged" pkname="id" descr="被告人/原告人">
+		<columns>
+			<col name="id" 				type="decimal" 			length="22"			 descr="主键"></col>
+			<col name="case_id" 		type="decimal" 			length="22" 		 descr="案件ID"></col>
+			<col name="charged_name" 	type="varchar" 			length="100" 		 descr="姓名"></col>
+			<col name="pusher" 			type="varchar" 			length="100"></col>
+		</columns>
+	</table>
+	
+	<!-- 第三参与者 -->
+	<table name="lbs_case_third" pkname="id" descr="第三人">
+		<columns>
+			<col name="id" 				type="decimal" 			length="22" 		descr="主键"></col>
+			<col name="case_id" 		type="varchar" 			length="30"		 	descr="哪一个案件"></col>
+			<col name="third_name" 		type="varchar" 			length="100" 		descr="第三人姓名"></col>
+			<col name="pusher" 			type="varchar" 			length="100"></col>
+		</columns>
+	</table>
+	
+	<!-- 案件立案 追踪-->
+	<table name="lbs_case_filing" pkname="id"	descr="立案追踪">
+		<columns>
+			<col name="id" 				type="decimal" 			length="22"			descr="主键"></col>
+			<col name="case_id"			type="varchar"			length="20"			descr="案件id"></col>
+			<col name="stage"			type="varchar"			length="50"			descr="请选择跟踪方式"></col>
+			<!-- 立案信息 -->
+			<col name="is_regist"		type="varchar"			length="10"			descr="是否立案"></col>
+			<col name="regist_time"		type="varchar"			length="50"			descr="立案时间"></col>
+			<col name="is_reclaim" 		type="varchar"			length="10"			descr="是否反诉"></col>
+			<col name="regist_num"		type="varchar"			length="100"		descr="司法案号"></col>
+			<col name="accept_dept"		type="varchar"			length="20"			descr="受理机构"></col>
+			<col name="accept_time"		type="varchar"			length="100"		descr="冗余字段"></col>
+			<col name="accept_money"	type="varchar"			length="100"		descr="受理费用"></col>
+			<col name="court_date"		type="varchar"			length="50"			descr="开庭日期"></col>
+			<col name="court_place"		type="varchar"			length="150"		descr="开庭地点"></col>
+			<col name="court_desc"		type="varchar"			length="1000"		descr="开庭情况说明"></col>
+			<col name="court_linkman"	type="varchar"			length="200"		descr="法院/诉讼联系人"></col>
+			<col name="reason"			type="varchar"			length="500"		descr="未立案原因"/>
+			<col name="create_user"		type="varchar"			length="20"			descr="创建人"/>
+			<col name="create_time"		type="varchar"			length="50"			descr="创建时间"></col>
+			<col name="case_type" 		type="char" 			length="1" 			desrc="案件类型"/>
+		</columns>
+	</table>
+	
+	<!-- 判决追踪 -->
+	<table name="lbs_case_judgment" pkname="id"	descr="判决追踪">
+		<columns>
+			<col name="id" 				type="decimal" 			length="22"			descr="主键"></col>
+			<col name="case_id"			type="varchar"			length="20"			descr="案件id"></col>
+			<col name="stage"			type="varchar"			length="50"			descr="请选择跟踪方式"></col>
+			
+			<!-- 裁/判决信息 -->
+			<col name="trace_stage"		type="varchar"			length="50"			descr="跟踪阶段"></col>
+			<col name="stage_desc"		type="varchar"			length="500"		descr="阶段描述"></col>
+			<col name="is_judged"		type="varchar"			length="10"			descr="是否判决"></col>
+			<col name="judg_date"		type="varchar"			length="50"			descr="判决日期"></col>
+			<col name="judg_num"		type="varchar"			length="100"		descr="判决编号"></col>
+			<col name="result"			type="varchar"			length="20"			descr="案件结果"/>
+			<col name="end_type"		type="varchar"			length="20"			descr="结案方式"></col>
+			<col name="lawers"			type="varchar"			length="100"		descr="律师"></col>
+			<col name="judg_content"	type="varchar"			length="1000"		descr="判决书主要内容"></col>
+			<col name="judg_file"		type="varchar"			length="150"		descr="判决书附件"></col>
+			<col name="create_user"		type="varchar"			length="20"			descr="创建人"/>
+			<col name="create_time"		type="varchar"			length="50"			descr="创建时间"></col>
+			<col name="case_type"		type="char" 			length="1" 			desrc="案件类型"/>
+		</columns>
+	</table>
+	
+	<!-- 案件执行追踪 -->
+	<table name="lbs_case_execute" pkname="id" descr="案件执行追踪">
+		<columns>
+			<col name="id"				type="decimal"			length="22"			descr="主键"></col>
+			<col name="ex_num"			type="varchar"			length="100"		descr="执行编号"></col>
+			<col name="case_id"			type="varchar"			length="30"			descr="案件id"></col>
+			<col name="ex_basis"		type="varchar"			length="150"		descr="执行依据"></col>
+			<col name="ex_area"			type="varchar"			length="150"		descr="执行地区"></col>
+			<col name="ex_court"		type="varchar"			length="150"		descr="执行法院"></col>
+			<col name="ex_people"		type="varchar"			length="100"		descr="申请执行人名称"></col>
+			<col name="start_date"		type="varchar"			length="50"			descr="申请执行日期"></col>
+			<col name="end_date"		type="varchar"			length="50"			descr="执行结束日期"></col>
+			<col name="people_info"		type="varchar"			length="1000"		descr="被执行人信息"></col>
+			<col name="ex_desc"			type="varchar"			length="1000"		descr="执行描述"></col>
+			<col name="ex_state"		type="varchar"			length="50"			descr="执行状态"></col><!-- 执行状态，参考execute_state表 -->
+			
+			<col name="ex_process"		type="varchar"			length="100"		descr="执行进展情况"></col>
+			<col name="ex_file"			type="varchar"			length="150"		descr="执行书附件"></col>
+			<col name="create_user"		type="varchar"			length="20"			descr="创建人"/>
+			<col name="create_time"		type="varchar"			length="50"			descr="创建时间"></col>
+			<col name="lawers"			type="varchar"			length="100"		descr="律师"/>
+			<col name="case_type" 	    type="char" 		 	length="1"		    desrc="案件类型"/>
+		</columns>
+	</table>
+	
+	<table	name="execute_state"	pkname="id"		descr="案件执行状态">
+		<columns>
+			<col name="id" 			type="decimal"		length="22"			descr="主键"></col>
+			<col name="code"		type="varchar"		length="50"			descr="编码"></col>
+			<col name="state"		type="varchar"		length="50"			descr="执行状态"></col>
+			<col name="situation"	type="varchar"		length="100"		descr="执行进展情况"></col>
+			<col name="execute_id"	type="varchar"		length="30"			descr=""></col>
+		</columns>
+	</table>
+	
+	<!-- 结案报告 -->
+	<table name="lbs_case_end" pkname="id"	descr="结案报告">
+		<columns>
+			<!-- 审理报告 -->
+			<col name="id"				type="decimal"			length="22"			descr="主键"></col>
+			<col name="case_id"			type="varchar"			length="30"			descr="案件id"></col>
+			<col name="result"			type="varchar"			length="30"			descr="诉讼结果"></col>
+			<col name="proplem"			type="varchar"			length="700"		descr="案件存在的主要问题"></col>
+			<col name="situation"		type="varchar"			length="700"		descr="案件审理情况及总结"></col>
+			<col name="evaluate"		type="varchar"			length="500"		descr="具体评价"></col>
+			<col name="sumary"			type="varchar"			length="1000"		descr="案件总结反思"></col>
+			<col name="sum_risk"		type="varchar"			length="100"		descr="法律/合规风险点"></col>
+			<col name="sum_files"		type="varchar"			length="200"		descr="结案附件"></col>
+			
+			<!-- 执行报告 -->
+			<col name="ex_situation"	type="varchar"			length="500"		descr="案件执行情况"></col>
+			<col name="ex_reflect"		type="varchar"			length="500"		descr="执行过程反思总结"></col>
+			<col name="ex_risk"			type="varchar"			length="100"		descr="法律/合规风险点"></col>
+			<col name="ex_files"		type="varchar"			length="150"		descr="执行附件"></col>
+			<col name="create_user"		type="varchar"			length="20"			descr="创建人"/>
+			<col name="create_time"		type="varchar"			length="50"			descr="创建时间"></col>
+			<col name="case_type" 		type="char" 			length="1" 			desrc="案件类型"/>
+		</columns>
+	</table>
+		
+	<!-- *****************被诉案件********************** -->
+	<table name="lbs_case_decase" pkname="id" descr="被诉案件表" remark="案件管理模块">
+		<columns>
+			<col name="iscopyright" 		type="varchar" 		length="10" 		descr="是否是知识产权"></col>
+			<col name="actionmode"			type="varchar" 		length="100"		descr="主动/被动"></col>
+			<col name="ivr_copyright_id"	type="varchar"		length="100"		descr="关联创新编码"></col>
+			<col name="ivr_copyright_name"	type="varchar"		length="100"		descr="创新项目名称"></col>
+			<col name="id"					type="decimal"		length="22" 		descr="主键" ></col>
+			<!-- 基本信息 -->
+			<col name="code"				type="varchar"		length="30" 		descr="编码" ></col>
+			<col name="sendproceeding"		type="varchar"		length="30" 		descr="案件名称" ></col>
+			<col name="area_other"			type="varchar"		length="10" 		descr="是否境外诉讼" ></col>
+			<col name="createyear"			type="varchar"		length="10" 		descr="创建年份" ></col>
+			<col name="season" 				type="varchar"		length="50"			descr="创建季度"/>
+			<col name="createdate"			type="varchar"		length="10" 		descr="创建日期" ></col>
+			<col name="sendorg"				type="varchar"		length="30" 		descr="填写机构 关联pub_corp_dept.id" ></col>
+			<col name="jpeople"				type="varchar"		length="100" 		descr="填写人" ></col>
+			<col name="phone"				type="varchar"		length="100" 		descr="联系人电话" ></col>
+			<col name="fax"					type="varchar"		length="100" 		descr="联系人传真" ></col>
+			<col name="charged_entity"		type="varchar"		length="100" 		descr="实际被诉讼主体" ></col>
+			<col name="charged_people"		type="varchar"		length="100" 		descr="原告人" ></col>
+			<col name="party"				type="varchar"		length="30" 		descr="第三人" ></col>
+			<col name="busitypename"		type="varchar"		length="100" 		descr="涉及业务类型" ></col>
+			<col name="other"				type="varchar"		length="1000" 		descr="担保或其它情况" ></col>
+			<col name="casetype"			type="varchar"		length="100" 		descr="风险分类" ></col>
+			<col name="case_property"		type="varchar"		length="100" 		descr="诉讼性质" ></col>
+			<col name="lawsuittype"			type="varchar"		length="100" 		descr="诉讼类型" ></col>
+			<col name="res"					type="decimal"		length="22" 		descr="标的" ></col>
+			<col name="money"				type="varchar"		length="30" 		descr="币种" ></col>
+			<col name="bargain_money"		type="varchar"		length="100" 		descr="合同实际发生金额" ></col>
+			<col name="save_charge"			type="varchar"		length="100" 		descr="保全费" ></col>
+			<col name="save_merit"			type="varchar"		length="100" 		descr="保全财产金额" ></col>
+			<col name="save_explain"		type="varchar"		length="1000" 		descr="保全财产说明" ></col>
+			<col name="analyse"				type="varchar"		length="1000" 		descr="其他说明" ></col>
+			<col name="lawyers"  		    type="varchar" 		length="100" 		desrc="律师信息"/>
+			<col name="files"				type="varchar"		length="100" 		descr="附件" ></col>
+			<col name="lawtype"				type="varchar"		length="100"		descr="起诉/被诉"></col>
+			
+			<!-- 工作流 --> 
+	        <col name="billtype"                 type="varchar"    length="50"    descr="单据类型" />
+	        <col name="busitype"                 type="varchar"    length="50"    descr="业务类型" />
+	        <col name="wfprinstanceid"           type="decimal"    length="22"    descr="流程实例id"    remark="走工作流时使用" />
+			<col name="create_userid" 			 type="decimal"    length="22"    descr="流程创建人id"></col>
+			<col name="endtype"					 type="varchar"		length="50"		descr="结束状态，正常结束，非正常结束"></col>
+			<col name="status"					 type="varchar"		length="50"	    descr="流程状态,RUN,END"></col>
+			<col name="state"                    type="varchar"     length="5"     descr=""></col>
+		</columns>
+	</table>
+	
+
+	<!-- *************************法律咨询模块 ******************************-->
+	<!-- 咨询记录表 -->
+	<table name="law_consult" pkname="id"	descr="法律咨询">
+		<columns>
+			<col name="id"			type="decimal"		length="22"			descr="主键"></col>
+			<col name="title"		type="varchar"		length="100"		descr="标题"/>
+			<col name="detail"		type="varchar"		length="1000"		descr="详细描述"></col>
+			<col name="busitype"	type="varchar"		length="100"		descr="业务类别"></col>
+			<col name="connect_law"	type="varchar"		length="100"		descr="相关法律"></col>
+			<col name="files"		type="varchar"		length="100"		descr="附件"></col>
+			<col name="create_date"	type="varchar"		length="50"			descr="录入日期"/>
+			<col name="create_user"	type="varchar"		length="50"			descr="咨询人"/>
+			<col name="create_user_dept" type="varchar"	length="100"		descr="咨询人所属机构"></col>
+			<col name="is_common"	type="varchar"		length="10"			descr="是否是常见问题"></col>
+			
+		</columns>
+	</table>
+	
+	<!-- 咨询回复表 -->
+	<table name="consult_reply" pkname="id"	descr="咨询回复">
+		<columns>
+			<col name="id"				type="decimal"		length="22"		descr="主键"></col>
+			<col name="consult_id"		type="varchar"		length="20"		descr="所属问题"></col>
+			<col name="re_title"		type="varchar"		length="100"	descr="回复标题"></col>
+			<col name="re_detail"		type="varchar"		length="1000"	descr="详细回复"></col>
+			<col name="re_conn_law"		type="varchar"		length="100"		descr="回复相关的法律"></col>
+			<col name="re_files" 		type="varchar"		length="100"	descr="回复附件"></col>
+			<col name="re_time"			type="varchar"		length="50"		descr="回复时间"/>
+			<col name="re_person"		type="varchar"		length="50"		descr="答复人"></col>
+			<col name="re_person_dept"	type="varchar"		length="100"	descr="答复人所属机构"></col>
+			<col name="is_standard"		type="varchar"		length="10"		descr="是否标准答案"></col>
+		</columns>
+	</table>
+	
+	<!-- 常见问题库 -->
+	<table name="comm_quesstion"	pkname="id"	descr="常见问题库">
+		<columns>
+			<col name="id"				type="decimal"		length="22"		descr="主键"></col>
+			<col name="quesstion_id"	type="varchar"		length="30"		descr="关联的咨询问题"></col>
+			<col name="title"			type="varchar"		length="100"	descr="标题"></col>
+			<col name="detail"			type="varchar"		length="1000"	descr="详细信息"></col>
+			<col name="busitype"		type="varchar"		length="50"		descr="业务类型"></col>
+			<col name="create_people"	type="varchar"		length="50"		descr="创建人"></col>
+			<col name="create_dept"		type="varchar"		length="50"		descr="所属机构"></col>
+			<col name="create_time"		type="varchar"		length="50"		descr="发布时间"></col>
+			<col name="query_file"		type="varchar"		length="100"		descr="提问的附件"></col>
+			<col name="reply"			type="varchar"		length="1000"	descr="回复"></col>
+			<col name="re_file"			type="varchar"		length="100"		descr="回复附件"></col>
+			<col name="re_people"		type="varchar"		length="50"		descr="回复人"></col>
+			<col name="re_time"			type="varchar"		length="50"		descr="回复时间"></col>
+			<col name="re_dept"			type="varchar"		length="50"		descr="回复机构"></col>
+		</columns>
+	</table>
+	
+	<!-- **************************合同法律审查************************************ -->
+	
+	<table	name="format_deal_check" pkname="id"	descr="格式文本合同审查">
+		<columns>
+			<col name="id"				type="decimal"		length="22"		descr="主键"></col>
+			<col name="sendorg"			type="varchar"		length="100"	descr="送审机构"></col>
+			<col name="passpeople"		type="varchar"		length="100"	descr="经办人"></col>
+			<col name="phone"			type="varchar"		length="50"		descr="联系电话"></col>
+			<col name="chek_type"		type="varchar"		length="100"	descr="审查类型"></col>
+			<col name="dealdoc_name"	type="varchar"		length="100"	descr="合同文本名称"></col>
+			<col name="deal_code" 		type="varchar"		length="100"	descr="合同编码"/>
+			<col name="deal_content"	type="varchar"		length="150"	descr="合同正文"></col>
+			<col name="ddescription"	type="varchar"		length="1000"	descr="送审事项描述"></col>
+			<col name="applydate"		type="varchar"		length="50"		descr="送审日期"></col>
+			<col name="files"			type="varchar"		length="100"	descr="附件"/>
+			<col name="print_times"		type="decimal"		length="22"		descr="允许打印份数"></col>
+			<col name="print"			type="varchar"		length="10"		descr="已打印次数"></col>
+			<col name="process_code" type="varchar" length="100" desrc="流程审查号"/>
+			
+			<!--工作流 -->
+			<col name="billtype" 		type="varchar"		length="100"	descr="账单类型"></col>
+			<col name="busitype"		type="varchar"		length="100"	descr="业务类型"></col>
+			<col name="wfprinstanceid"	type="decimal"		length="22"		descr="流程实例id"></col>
+			<col name="create_userid"	type="varchar"		length="20"		descr="流程创建人id"/>
+			<col name="endtype" 		type="varchar"		length="50"		descr="结束方式，正常结束，非正常结束"></col>
+			<col name="status"			type="varchar"		length="50"		descr="流程状态，run,end"></col>
+		</columns>
+	</table>
+	
+	<!-- ********************************李春娟 违规积分模块（新）**********************************************  -->
+	  <table name="score_type" pkname="id" descr="违规类型定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="typecode"            type="varchar"      length="50"     descr="类型编码" />
+            <col name="typename"            type="varchar"      length="100"    descr="类型名称" />
+            <col name="remark"              type="varchar"      length="500"    descr="说明" />
+            <col name="parentid"            type="decimal"      length="22"     descr="父亲记录的主键" />
+            <col name="linkcode"            type="varchar"      length="60"     descr="关联码" />
+            <col name="seq"                 type="decimal"      length="22"     descr="排序字段" />                            
+        </columns> 
+    </table>
+    
+    <table name="score_standard" pkname="id" descr="积分标准定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="riskrank"            type="varchar"      length="50"     descr="风险等级" />
+            <col name="findrank"            type="varchar"      length="50"     descr="发现渠道" />
+            <col name="score"               type="varchar"      length="10"     descr="分值" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+        <index name="in_score_standard_1"   cols="riskrank"     descr="风险等级"  />
+        <index name="in_score_standard_2"   cols="findrank"     descr="发现渠道"  />
+    </table>
+    
+    <table name="score_standard2" pkname="id" descr="积分标准定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="scoretype"           type="decimal"      length="22"     descr="违规类型" />
+            <col name="pointcode"           type="varchar"      length="50"     descr="违规编号" />
+            <col name="point"               type="varchar"      length="500"    descr="违规行为" />
+            <col name="score"               type="varchar"      length="10"     descr="分值" />
+            
+            <col name="state"               type="varchar"      length="20"     descr="状态"  remark="有效；废止"/>
+            <col name="createdept"          type="decimal"      length="22"     descr="创建机构" />                           
+            <col name="creator"             type="decimal"      length="22"     descr="创建人" />
+            <col name="createdate"          type="char"         length="10"     descr="创建日期" />
+            <col name="seq"                 type="decimal"      length="10"     descr="排序" />    
+        </columns>
+    </table>
+    
+    <table name="score_punish" pkname="id" descr="个人积分惩罚定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="score"               type="decimal"      length="5,1"    descr="分值" />
+            <col name="warnvalue"           type="decimal"      length="5,1"    descr="预警值" />
+            <col name="punish"              type="varchar"      length="100"    descr="惩罚" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+    </table>
+    
+    <table name="score_punish2" pkname="id" descr="单位积分惩罚定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="score"               type="decimal"      length="5,1"    descr="分值" />
+            <col name="warnvalue"           type="decimal"      length="5,1"    descr="预警值" />
+            <col name="punish"              type="varchar"      length="100"    descr="惩罚" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />                                
+        </columns>
+    </table>
+    
+    <table name="score_templet" pkname="id" descr="通知书模板定义">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="templettype"         type="varchar"      length="50"     descr="模板类型" remark="认定通知书；减免结果通知书；复议结果通知书" />
+            <col name="attachfile"          type="varchar"      length="1000"   descr="附件" />
+            <col name="remark"              type="varchar"      length="500"    descr="备注" />        
+        </columns>
+    </table>
+    
+    <table name="score_register" pkname="id" descr="违规积分登记">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="eventid"             type="decimal"      length="22"   	descr="违规事件" />
+            <col name="remark"              type="varchar"      length="1000"   descr="违规事实" />
+            <col name="happendate"          type="char"         length="10"     descr="发生日期" />
+            <col name="finddate"            type="char"         length="10"     descr="发现日期" />
+            <col name="scoretypeid"         type="decimal"      length="22"     descr="违规类型" />
+            <col name="scoretype"           type="varchar"      length="100"    descr="违规类型" />
+            <col name="scorestandardid"     type="decimal"      length="22"     descr="违规行为" />
+            <col name="scorestandard2"      type="varchar"      length="500"    descr="违规行为" />
+            <col name="standardscore"       type="varchar"      length="10"     descr="违规分值" />
+            
+            <col name="riskrank"            type="varchar"      length="50"     descr="风险等级" />
+            <col name="findrank"            type="varchar"      length="50"     descr="发现渠道" />
+            <col name="referscore"          type="varchar"      length="10"     descr="标准分值" />
+            
+            <col name="userids"             type="varchar"      length="500"    descr="违规人" />
+            <col name="attachfile"          type="varchar"      length="1000"   descr="附件" />
+            
+            <col name="checkusers"          type="varchar"      length="100"    descr="检查人" />
+            <col name="checkdept"           type="varchar"      length="100"    descr="检查机构" />
+            
+            <col name="state"               type="varchar"      length="20"     descr="状态"  remark="未发布；已发布"/>
+            <col name="createdept"          type="decimal"      length="22"     descr="登记机构" />                           
+            <col name="creator"             type="decimal"      length="22"     descr="登记人" />
+            <col name="createdate"          type="char"         length="10"     descr="登记日期" />
+            <col name="publishdate"         type="char"         length="10"     descr="认定日期" />
+            <col name="effectdate"          type="char"         length="10"     descr="复议截止日期" remark="复议截止日期即预计的生效日期"/>
+        </columns>
+    </table>
+    
+    <table name="score_user" pkname="id" descr="违规人">
+        <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="registerid"          type="decimal"      length="22"     descr="积分登记主键" />
+            <col name="userid"              type="decimal"      length="22"     descr="违规人" />
+            <col name="deptid"              type="decimal"      length="22"     descr="所在机构" />
+            <col name="postid"              type="decimal"      length="22"     descr="所在岗位" />
+            
+            <col name="score"               type="decimal"      length="5,1"    descr="应计分值" />
+            <col name="scorekind"           type="varchar"      length="20"     descr="违规性质" />
+            <col name="money"               type="decimal"      length="22,1"   descr="罚款金额(元)" />
+            <col name="scoredesc"           type="varchar"      length="1000"   descr="积分说明" />
+            
+            <col name="effectdate"          type="char"         length="10"     descr="生效日期" />
+            
+            <col name="reconsider"          type="varchar"      length="2000"   descr="申请复议理由"/>
+            <col name="otherremark"         type="varchar"      length="1000"   descr="复议违规事实" />
+            <col name="opinion"             type="varchar"      length="2000"   descr="复议意见"/>
+            <col name="rescore"             type="decimal"      length="5,1"    descr="复议应计分值"/>
+            <col name="remoney"             type="decimal"      length="22,1"   descr="复议罚款金额(元)" />
+            <col name="rescoredesc"         type="varchar"      length="1000"   descr="复议积分说明" />
+            
+            <col name="reuserid"            type="decimal"      length="22"     descr="复议审核人" />
+            <col name="redeptid"            type="decimal"      length="22"     descr="复议审核机构" />
+            <col name="redate"              type="char"         length="10"     descr="复议日期" />
+            <col name="finalscore"          type="decimal"      length="5,1"    descr="最终分值"/>
+            <col name="finalmoney"          type="decimal"      length="22,1"   descr="最终罚款金额(元)" />
+            
+            <col name="state"               type="varchar"      length="20"     descr="状态"  remark="未复议；复议中；已复议"/>
+           
+            <col name="wgscore"             type="decimal"      length="5,1"    descr="总违规积分" remark="生效时记录本年度的总违规积分"/>
+            <col name="jmscore"             type="decimal"      length="5,1"    descr="总减免积分" remark="生效时记录本年度的总减免积分"/>
+            <col name="totalscore"          type="decimal"      length="5,1"    descr="总积分"     remark="生效时记录本年度的总积分，即总违规积分-总减免积分"/>
+            <col name="punishtype"          type="varchar"      length="50"     descr="惩罚类型"   remark="生效时记录本年度的违规惩罚类型"/>
+          
+            <col name="ispunished"          type="varchar"      length="10"     descr="执行状态"   remark="未执行;执行中;已执行"/>
+            <col name="punishstep"          type="varchar"      length="500"    descr="违规惩罚"   />
+            
+            <col name="publishfilepath"     type="varchar"      length="200"    descr="认定通知书路径"   remark="生成认定通知书的服务器端路径"/>
+            <col name="punishfilepath"      type="varchar"      length="200"    descr="惩罚通知书路径"   remark="生效时生成惩罚通知书的服务器端路径"/>
+            
+            <col name="wfprinstanceid"      type="decimal"      length="22"     descr="流程主键" />
+            <col name="billtype"            type="varchar"      length="50"     descr="单据类型" />
+            <col name="busitype"            type="varchar"      length="50"     descr="业务类型" />
+        </columns>
+    </table>
+    
+    <table name="score_dealpunish" pkname="id" descr="违规惩罚">
+      <columns>
+            <col name="id"                  type="decimal"      length="22"     descr="主键" />
+            <col name="scoreuserid"         type="decimal"      length="22"     descr="违规人主表主键" />
+            <col name="punishdate"          type="char"         length="10"     descr="惩罚日期"   remark="真正执行惩罚的日期，需要手工录入"/>
+            <col name="dealdesc"            type="varchar"      length="1000"   descr="处理情况"   remark="真正执行惩罚后手工录入"/>
+            <col name="dealfiles"           type="varchar"      length="1000"   descr="处理文件"   remark="真正执行惩罚后手工录入"/>
+     </columns>
+    </table>
+     <table name="score_reduce" pkname="id" descr="积分减免">
+        <columns>
+            <col name="id"                   type="decimal"      length="22"     descr="主键" />
+            <col name="userid"               type="decimal"      length="22"     descr="申请人" />
+            <col name="corpid"               type="decimal"      length="22"     descr="所在部门" />
+            <col name="reason"               type="varchar"      length="100"    descr="减免事由" />
+            <col name="reasondesc"           type="varchar"      length="4000"   descr="减免事由描述" />
+            <col name="expectscore"          type="decimal"      length="5,1"    descr="申请减免分值" />     
+            <col name="attachfile"           type="varchar"      length="1000"   descr="附件" />
+            
+            <col name="createdate"           type="char"         length="10"     descr="创建日期" />
+            <col name="applydate"            type="char"         length="10"     descr="申请日期"  remark="发起减免流程的日期"/>
+            
+            <col name="dealtype"             type="varchar"      length="20"     descr="处理结果" />
+            <col name="realscore"            type="decimal"      length="5,1"    descr="调减分值" />
+            <col name="dealreason"           type="varchar"      length="4000"   descr="处理依据" />
+            
+            <col name="examineuser"          type="decimal"      length="22"     descr="审核人员" remark="流程结束时的处理人"/>
+            <col name="examinedept"          type="decimal"      length="22"     descr="审核机构" remark="流程结束时的处理人机构"/>
+            <col name="examinedate"          type="char"         length="10"     descr="审核日期" remark="流程结束时的处理日期"/>
+            <col name="noticefile"           type="varchar"      length="500"    descr="减免通知文件名" remark="流程结束后给申请人发的减免通知书路径"/>     
+            
+            <col name="state"                type="varchar"      length="20"     descr="审核状态" remark="未审核；审核中；已审核"/>
+            <!-- 工作流 --> 
+			<col name="wfprinstanceid"       type="decimal"      length="22"     descr="流程实例id"    remark="走工作流时使用" />
+		    <col name="billtype"             type="varchar"   	 length="50"     descr="单据类型" />
+			<col name="busitype"             type="varchar"      length="50"     descr="业务类型" />
+        </columns>
+    </table>
+    
+    <table name="pub_deptloginData" pkname="id" descr="部门登录数据统计表">
+      <columns>
+            <col name="id"                   type="decimal"      length="22"     descr="主键" />
+            <col name="logincount"           type="decimal"      length="22"     descr="登录次数" />
+            <col name="num_judge"            type="varchar"      length="10"     descr="登录次数评判" />
+            <col name="online_hour"          type="varchar"      length="20"     descr="在线时长(小时)"/>
+            <col name="onlinehours"          type="varchar"      length="20"     descr="在线时长" />
+            <col name="online_judge"         type="varchar"      length="10"     descr="在线时长评判"/>
+            <col name="online_millisecond"   type="decimal"      length="22"     descr="在线时长毫秒数"   />
+            <col name="weekofyear"           type="varchar"      length="100"    descr="第几周"   />
+            <col name="departid"             type="decimal"      length="22"     descr="部门ID"   />
+            <col name="departname"           type="varchar"      length="200"    descr="部门名称"   />
+            <col name="dayofweek"            type="varchar"      length="200"    descr="本周的7天"   />
+            <col name="lowerdeptids"         type="varchar"      length="1000"   descr="支行下的部门ID"   />
+     </columns>
+    </table>
+    
+    <table name="userlogin" pkname="id" descr="用户登录数据统计表">
+      <columns>
+            <col name="id"                   type="decimal"      length="22"     descr="主键" />
+            <col name="userid"               type="decimal"      length="22"     descr="用户ID" />
+            <col name="username"             type="varchar"      length="50"     descr="用户名称" />
+            <col name="timedetail"           type="varchar"      length="4000"     descr="用户名称" />
+            <col name="logincount"           type="decimal"      length="22"     descr="登录次数" />
+            <col name="num_judge"            type="varchar"      length="10"     descr="登录次数评判" />
+            <col name="onlinehours"          type="varchar"      length="20"     descr="在线时长" />
+            <col name="online_judge"         type="varchar"      length="10"     descr="在线时长评判"/>
+            <col name="online_millisecond"   type="decimal"      length="22"     descr="在线时长毫秒数"   />
+            <col name="weekofyear"           type="varchar"      length="100"    descr="第几周"   />
+            <col name="departid"             type="decimal"      length="22"     descr="部门ID"   />
+            <col name="departname"           type="varchar"      length="200"    descr="部门名称"   />
+            <col name="dayofweek"            type="varchar"      length="200"    descr="本人本周登录的日期"   />
+     </columns>
+    </table>
+        
+</root>

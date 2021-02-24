@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 平台注册的功能点 -->
+<root>
+	<menu name="平台配置.权限管理.菜单维护" command="cn.com.infostrategy.ui.sysapp.userrole.MenuManagerWPanel" descr="菜单管理" conf='"是否可维护","Y","机构是否过滤","N"' />
+	<menu name="平台配置.权限管理.用户维护" command="cn.com.infostrategy.ui.sysapp.userrole.UserManagerWPanel" descr="" />
+	<menu name="平台配置.权限管理.角色维护" command="cn.com.infostrategy.ui.sysapp.userrole.RoleManagerWPanel" descr="" />
+	<menu name="平台配置.权限管理.用户分配权限" command="cn.com.infostrategy.ui.sysapp.userrole.UserAssignMenuWPanel" descr="" />
+	<menu name="平台配置.权限管理.角色分配权限" command="cn.com.infostrategy.ui.sysapp.userrole.RoleAssignMenuWPanel" descr="" />
+	<menu name="平台配置.权限管理.用户绑定角色" command="cn.com.infostrategy.ui.sysapp.userrole.UserAssignRoleWPanel" descr="" />
+	<menu name="平台配置.权限管理.机构维护" command="cn.com.infostrategy.ui.sysapp.corpdept.CorpDeptManagerWFPanel" descr="" />
+	<menu name="平台配置.权限管理.机构_岗位维护" command="cn.com.infostrategy.ui.sysapp.corpdept.DeptPostUserManagerWFPanel" conf='"页面布局","1","是否可以扁平查看","N"' descr="1.页面布局，有五种：1-机构、岗位;2-机构、岗位、人员;3-机构、人员;4-机构、人员、角色;5-机构、岗位、人员、角色;默认是第五种2.是否可以扁平查看，默认是可以查看" />
+	<menu name="平台配置.权限管理.机构_岗位_人员维护" command="cn.com.infostrategy.ui.sysapp.corpdept.DeptPostUserManagerWFPanel" conf='"页面布局","2","是否可以扁平查看","N"' descr="1.页面布局，有五种：1-机构、岗位;2-机构、岗位、人员;3-机构、人员;4-机构、人员、角色;5-机构、岗位、人员、角色;默认是第五种2.是否可以扁平查看，默认是可以查看" />
+	<menu name="平台配置.权限管理.机构_人员维护" command="cn.com.infostrategy.ui.sysapp.corpdept.DeptPostUserManagerWFPanel" conf='"页面布局","3","是否可以扁平查看","N"' descr="1.页面布局，有五种：1-机构、岗位;2-机构、岗位、人员;3-机构、人员;4-机构、人员、角色;5-机构、岗位、人员、角色;默认是第五种2.是否可以扁平查看，默认是可以查看" />
+	<menu name="平台配置.权限管理.机构_人员_角色维护" command="cn.com.infostrategy.ui.sysapp.corpdept.DeptPostUserManagerWFPanel" conf='"页面布局","4","是否可以扁平查看","N"' descr="1.页面布局，有五种：1-机构、岗位;2-机构、岗位、人员;3-机构、人员;4-机构、人员、角色;5-机构、岗位、人员、角色;默认是第五种2.是否可以扁平查看，默认是可以查看" />
+	<menu name="平台配置.权限管理.机构_岗位_人员_角色维护" command="cn.com.infostrategy.ui.sysapp.corpdept.DeptPostUserManagerWFPanel" conf='"页面布局","5","是否可以扁平查看","N"' descr="1.页面布局，有五种：1-机构、岗位;2-机构、岗位、人员;3-机构、人员;4-机构、人员、角色;5-机构、岗位、人员、角色;默认是第五种2.是否可以扁平查看，默认是可以查看" />
+	<menu name="平台配置.权限管理.人员_机构_角色批量导入" command="cn.com.infostrategy.ui.sysapp.corpdept.UsersImportWKPanel" descr="" />
+
+	<menu name="平台配置.模板配置.单据模板"         command="cn.com.infostrategy.ui.mdata.MetaTempletConfigPanel"     descr="开发人员的单据模板模板配置" conf='"是否实施配置","N"' />
+	<menu name="平台配置.模板配置.单据模板(实施)"   command="cn.com.infostrategy.ui.mdata.MetaTempletConfigPanel2"    descr="实施人员编辑单据模板"   />
+	<menu name="平台配置.模板配置.注册按钮" command="cn.com.infostrategy.ui.mdata.styletemplet.PubRegistButtonWKPanel" descr="所有注册的按钮,它与元原模板是最主要的配置数据" />
+	<menu name="平台配置.模板配置.注册样板" command="cn.com.infostrategy.ui.mdata.styletemplet.PubRegistFormatPanelWKPanel" descr="注册样板" />
+	<menu name="平台配置.模板配置.注册参照" command="cn.com.infostrategy.ui.mdata.styletemplet.PubRegistRefPanelWKPanel" descr="注册的参照" />
+	<menu name="平台配置.模板配置.报表模板" command="cn.com.infostrategy.ui.mdata.DemoBillCellPanel" descr="就是Excel模板,做报表最关键的" />
+	<menu name="平台配置.模板配置.打印模板" command="cn.com.infostrategy.ui.print.PrintTempletManagerWFPanel" descr="打印模板" />
+	<menu name="平台配置.模板配置.Bom模板" command="cn.com.infostrategy.ui.workflow.pbom.PBomWKPanel" descr="图形进入方式的模板" />
+
+	<menu name="平台配置.工作流.流程图设计" command="cn.com.infostrategy.ui.workflow.design.WMFPanel_WorkFlow" descr="工作流设计器" />
+	<menu name="平台配置.工作流.流程分配" command="cn.com.infostrategy.ui.workflow.PubWorkflowAssignWPanel" descr="对不同的单据类型与业务类型分配流程" />
+	<menu name="平台配置.工作流.动态参与者定义" command="cn.com.infostrategy.ui.workflow.WorkFlowDynPartiDefineWKPanel" descr="动态参与者定义" />
+	<menu name="平台配置.工作流.参与者二次过滤" command="cn.com.infostrategy.ui.workflow.WorkFlowBusi2FilterWKPanel" descr="在流程处理中根据单据中的某个字段的业务值二次过滤参与者" />
+	<menu name="平台配置.工作流.工作流授权" command="cn.com.infostrategy.ui.workflow.WorkFlowAccrWKPanel" descr="将本人的流程处理权限授权给另一个人来代理" />
+	<menu name="平台配置.工作流.导出工作流" command="" descr="" />
+
+	<menu name="平台配置.数据权限.权限策略" command="cn.com.infostrategy.ui.sysapp.dataaccess.DataPolicyWKPanel"          descr="数据权限策略" />
+	<menu name="平台配置.数据权限.策略配置" command="cn.com.infostrategy.ui.sysapp.dataaccess.DataPolicyConfigWKPanel"    descr="数据权限策略实际配置" />
+	
+	<menu name="平台配置.数据源工具.表结构查看" command="cn.com.infostrategy.ui.sysapp.dictmanager.TableStructWKPanel" descr="直接对某个数据源或xml进行查看,然后可以生成create脚本" />
+	<menu name="平台配置.数据源工具.表结构比较" command="cn.com.infostrategy.ui.sysapp.database.compare.DatabaseCompare" descr="对数据源之间或与xml之间进行表结构比较,可以生成alter脚本" />
+	<menu name="平台配置.数据源工具.数据导出" command="cn.com.infostrategy.ui.sysapp.exportdata.ExportDBTableToXml" descr="将数据源中的某表的数据导出至xml或sql" />
+	<menu name="平台配置.数据源工具.数据迁移" command="cn.com.infostrategy.ui.sysapp.transferdb.MWPanel_TransferDB" descr="选择两个数据源,直接在其间进行对导与迁移" />
+	<menu name="平台配置.数据源工具.数据比较迁移" command="cn.com.infostrategy.ui.sysapp.database.transfer.CMPPanel" descr="选择两个数据源,直接在其间进行对导与迁移" />
+
+	<menu name="平台配置.系统设置.下拉字典维护" command="cn.com.infostrategy.ui.sysapp.dictmanager.ComboxDictManagerWKPanel" descr="下拉字典维护" />
+	<menu name="平台配置.系统设置.系统参数设置" command="cn.com.infostrategy.ui.sysapp.other.PlatformOptionConfigPanel"      descr="系统参数" />
+	<menu name="平台配置.系统设置.首页布局"     command="cn.com.infostrategy.ui.sysapp.login.click2.MWFPanel_Pub_Desktop_New"       descr="首页布局" />
+	<menu name="平台配置.系统设置.系统皮肤定义" command="cn.com.infostrategy.ui.sysapp.lookandfeel.PubLookAndFeelWKPanel"    descr="" />
+	<menu name="平台配置.系统设置.系统任务定义" command="cn.com.infostrategy.ui.sysapp.job.PubJobWKPanel" descr="" />
+	<menu name="平台配置.系统设置.登录界面热点" command="cn.com.infostrategy.ui.sysapp.loginhref.PubLoginHrefWKPanel" descr="登录界面上需要的热点定义" />
+	<menu name="平台配置.系统设置.首页消息配置" command="cn.com.infostrategy.ui.sysapp.login.PubDesktopNewsConfigWKPanel" descr="首页消息配置" />
+	<menu name="平台配置.系统设置.多语言配置" command="cn.com.infostrategy.ui.sysapp.other.LanguageConfigWPanel" descr="多语言维护" />
+	<menu name="平台配置.系统设置.休息日设置" command="cn.com.infostrategy.ui.sysapp.other.WorkdayConfigPanel" descr="" />
+	<menu name="平台配置.系统设置.系统公告维护" command="cn.com.infostrategy.ui.sysapp.sysboard.PubSysBoardWKPanel" descr="系统公告,即头版头条,可滚动" />
+
+	<menu name="平台配置.其他功能.修改密码" command="cn.com.infostrategy.ui.sysapp.login.click2.ResetPwdWFPanel" descr='修改密码,经典的系统功能' conf='"宽度","8-15"' />
+	<menu name="平台配置.其他功能.注册菜单查看" command="cn.com.infostrategy.ui.sysapp.registmenu.RegistMenuWKPanel" descr="" />
+	<menu name="平台配置.其他功能.在线人员查看" command="" descr="" />
+	<menu name="平台配置.其他功能.登录系统日志" command="" descr="" />
+	<menu name="平台配置.其他功能.系统访问日志" command="cn.com.infostrategy.ui.sysapp.sysmonitor.MenuClickLogWKPanel" descr="" />
+	<menu name="平台配置.其他功能.按钮访问日志" command="" descr="" />
+	<menu name="平台配置.其他功能.机构访问统计" command="" descr="" />
+	<menu name="平台配置.其他功能.Bug管理" command="cn.com.infostrategy.ui.sysapp.bug.PubBugRecordWKPanel" descr="" />
+	<menu name="平台配置.其他功能.Bug统计" command="cn.com.infostrategy.ui.sysapp.bug.PubBugStatisWKPanel" descr="" />
+	<menu name="平台配置.其他功能.系统模块升级" command="cn.com.infostrategy.ui.sysapp.install.ModuleStatusWKPanel" descr="" icon="[][][office_191.gif]"  />
+	<menu name="平台配置.其他功能.模块导出管理" command="cn.com.infostrategy.ui.sysapp.install.ModuleManageWKPanel" descr="" icon="[][][zt_053.gif]"  />
+	<menu name="平台配置.其他功能.工具箱" command="com.pushworld.ipushgrc.ui.tools.ToosBoxPanel" descr="" icon="[][][zt_053.gif]"  />
+</root>
+

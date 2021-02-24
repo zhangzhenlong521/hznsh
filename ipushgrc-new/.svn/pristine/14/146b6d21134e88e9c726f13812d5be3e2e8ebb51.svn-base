@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 检查模块用到的所有视图，在创建视图时，如果数据源是sqlserver，以前的语句 create or replace 会报错，所以改为了create-->
+<root>
+	 <view name="V_CK_SCHEME_IMPLEMENT" descr="实施底稿">
+       <sql>
+		create or replace view v_ck_scheme_implement as
+    	select implement.id as id ,
+    	implement.implid ,
+    	implement.planid as planid,
+    	implement.schemeid as schemeid,
+    	implement.deptid as deptid,
+    	implement.control control,
+    	implement.result result,
+		implement.descr as descr,
+		implement.parentid as parentid,
+		implement.tagrule,
+		desi.importtype ,desi.code,
+		desi.firstname,desi.secondname,
+		desi.thirdname,desi.checkpoints,
+		desi.checkbase,desi.checkmethod,
+		desi.firstid,desi.secondid,
+		desi.thirdid,
+		desi.tag_law,desi.tag_rule,
+		desi.tag_risk,desi.tag_flow,
+		desi.tag_ctrldict,desi.seq,
+		desi.checkMode,
+		desi.important,
+		desi.dictid,
+		desi.dictname
+ 		from ck_scheme_implement implement 
+ 		left join ck_manuscript_design desi on implement.parentid = desi.id
+       </sql>
+    </view>	
+    
+     <view name="V_CK_SCHEME_IMPL" descr="实施底稿">
+       <sql>
+		create or replace view v_ck_scheme_impl as
+    	select planid as id,
+    	planid,
+    	schemeid,
+    	code,
+    	name,
+    	deptid,
+    	leader,
+    	referee,
+    	leader2,
+    	teamusers  
+    	from ck_scheme_impl 
+    	group by planid,schemeid,code,name,deptid,leader,referee,leader2,teamusers 
+       </sql>
+    </view>	
+    
+    <view name="V_CK_SCHEME" descr="实施方案">
+       <sql>
+		create view V_CK_SCHEME as 
+		select imp.id,imp.schemeid,
+		imp.deptid,imp.control,
+		imp.result,imp.tagrule,
+		imp.descr,imp.parentid,
+		imp.memberid,imp.teamusers,
+		imp.leader2 as leader2,
+		sch.code,sch.planname,
+		sch.checkgist,sch.goal,
+		sch.ckscope,sch.leader,
+		sch.referee,sch.memberwork,
+		sch.sitetime,sch.contentmethod,
+		sch.manageopinion,sch.attachfile,
+		sch.status,sch.createdate,
+		sch.creater,sch.createdept,sch.name,concat(deptid,schemeid) as f
+ 		from  ck_scheme_implement imp 
+		left join CK_SCHEME sch on imp.schemeid= sch.id group by f
+       </sql>
+    </view>	
+    
+</root>
+

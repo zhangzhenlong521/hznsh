@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<record tabname="pub_templet_1" pkname="pk_pub_templet_1" sename="S_PUB_TEMPLET_1">
+  <col name="PK_PUB_TEMPLET_1">12334</col>
+  <col name="TEMPLETCODE">CP_PROJECTAPPROVAL_AUDIT_CODE2</col>
+  <col name="TEMPLETNAME">排查立项</col>
+  <col name="TEMPLETNAME_E">排查立项</col>
+  <col name="DATASOURCENAME"></col>
+  <col name="TABLENAME">cp_projectapproval_audit</col>
+  <col name="DATACONSTRAINT">"channels='案防排查' and state='已下发'"</col>
+  <col name="PKNAME">id</col>
+  <col name="PKSEQUENCENAME">S_CP_PROJECTAPPROVAL_AUDIT</col>
+  <col name="TOSTRINGKEY"></col>
+  <col name="SAVEDTABLENAME">cp_projectapproval_audit</col>
+  <col name="DATAPOLICY"></col>
+  <col name="DATAPOLICYMAP"></col>
+  <col name="BSDATAFILTERCLASS"></col>
+  <col name="BSDATAFILTERISSQL">N</col>
+  <col name="ORDERCONDITION"></col>
+  <col name="AUTOLOADS"></col>
+  <col name="AUTOLOADCONSTRAINT">"channels='案防排查' and state='已下发'"</col>
+  <col name="CARDINITFORMULA"></col>
+  <col name="CARDCUSTPANEL"></col>
+  <col name="CARDWIDTH">777</col>
+  <col name="ISSHOWCARDBORDER">N</col>
+  <col name="CARDBORDER">BORDER</col>
+  <col name="CARDLAYOUT">FLOWLAYOUT</col>
+  <col name="ISSHOWCARDCUSTBTN">N</col>
+  <col name="CARDCUSTBTNDESC"></col>
+  <col name="CARDSAVESELFDESCCHECK"></col>
+  <col name="CARDSAVEIFCHECK">N</col>
+  <col name="MUSTINPUTCOLOR"></col>
+  <col name="LISTINITFORMULA"></col>
+  <col name="LISTCUSTPANEL"></col>
+  <col name="ISSHOWLISTPAGEBAR">Y</col>
+  <col name="ISLISTPAGEBARWRAP">N</col>
+  <col name="ISSHOWLISTOPEBAR">N</col>
+  <col name="ISCOLLAPSEQUICKQUERY">N</col>
+  <col name="ISSHOWLISTQUICKQUERY">Y</col>
+  <col name="ISSHOWCOMMQUERYBTN">N</col>
+  <col name="ISSHOWLISTCUSTBTN">Y</col>
+  <col name="LISTCUSTBTNDESC">$列表查看;</col>
+  <col name="LISTBTNORDERDESC"></col>
+  <col name="LISTROWHEIGHT"></col>
+  <col name="LISTHEADERISGROUP">Y</col>
+  <col name="ISLISTAUTOROWHEIGHT">N</col>
+  <col name="LISTHEADHEIGHT">40</col>
+  <col name="LISTWEIDUDESC"></col>
+  <col name="DEFINERENDERER"></col>
+  <col name="TREEPK">id</col>
+  <col name="TREEPARENTPK">parentid</col>
+  <col name="TREEVIEWFIELD">name</col>
+  <col name="TREESEQFIELD">seq</col>
+  <col name="TREEISSHOWROOT">Y</col>
+  <col name="TREEISONLYONE">N</col>
+  <col name="TREEISSHOWTOOLBAR">N</col>
+  <col name="TREECUSTBTNDESC"></col>
+  <col name="TREEISCHECKED">N</col>
+  <col name="TEMPLETBTNS"></col>
+  <col name="PROPBEANCLASSNAME"></col>
+  <col name="WFCUSTEXPORT"></col>
+  <col name="PUSHUSER"></col>
+  <col name="BSDATAFILTERFORMULA"></col>
+  <col name="DATASQLANDORCONDITION"></col>
+  <col name="USESOURCENAME">排查实施</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53896</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">ID</col>
+  <col name="ITEMNAME_E">ID</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">数字框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT"></col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK"></col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">1</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">200</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">N</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF"></col>
+  <col name="ISQUICKQUERYWRAP"></col>
+  <col name="ISQUICKQUERYSHOWABLE"></col>
+  <col name="ISQUICKQUERYEDITABLE"></col>
+  <col name="ISCOMMQUERYWRAP"></col>
+  <col name="ISCOMMQUERYSHOWABLE"></col>
+  <col name="ISCOMMQUERYEDITABLE"></col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE"></col>
+  <col name="WORKFLOWISEDITABLE"></col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">ID</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">69644</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">发现渠道</col>
+  <col name="ITEMNAME_E">channels</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">文本框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT"></col>
+  <col name="ISMUSTINPUT"></col>
+  <col name="ISUNIQUECHECK"></col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">2</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">1</col>
+  <col name="CARDISSHOWABLE">N</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT"></col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">N</col>
+  <col name="PROPISEDITABLE">N</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF"></col>
+  <col name="ISQUICKQUERYWRAP"></col>
+  <col name="ISQUICKQUERYSHOWABLE"></col>
+  <col name="ISQUICKQUERYEDITABLE"></col>
+  <col name="ISCOMMQUERYWRAP"></col>
+  <col name="ISCOMMQUERYSHOWABLE"></col>
+  <col name="ISCOMMQUERYEDITABLE"></col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE"></col>
+  <col name="WORKFLOWISEDITABLE"></col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">channels</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53897</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">排查立项名称</col>
+  <col name="ITEMNAME_E">schemeapplyforname</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">文本框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">3</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,415</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">schemeapplyforname</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53898</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">立项编号</col>
+  <col name="ITEMNAME_E">projectapprovalnumber</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">文本框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT"></col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK"></col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">4</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF"></col>
+  <col name="ISQUICKQUERYWRAP"></col>
+  <col name="ISQUICKQUERYSHOWABLE"></col>
+  <col name="ISQUICKQUERYEDITABLE"></col>
+  <col name="ISCOMMQUERYWRAP"></col>
+  <col name="ISCOMMQUERYSHOWABLE"></col>
+  <col name="ISCOMMQUERYEDITABLE"></col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE"></col>
+  <col name="WORKFLOWISEDITABLE"></col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">projectapprovalnumber</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53899</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">项目类型</col>
+  <col name="ITEMNAME_E">projectype</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">下拉框</col>
+  <col name="COMBOXDESC">getCommUC("下拉框",
+"直接值","重点账户异常交易;案件排查/自查;内部举报;外部举报",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">5</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">Y</col>
+  <col name="ISQUICKQUERYEDITABLE">Y</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">projectype</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53900</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">是否为计划内项目</col>
+  <col name="ITEMNAME_E">isplancontent</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">下拉框</col>
+  <col name="COMBOXDESC">getCommUC("下拉框",
+"直接值","是;否;",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">6</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">isplancontent</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53901</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">关联计划</col>
+  <col name="ITEMNAME_E">relevanceplannumber</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">列表模板参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC">getCommUC("列表模板参照",
+"模板编码","CP_INVESTIGATION_PLAN_CODE2",
+"ID字段","id",
+"NAME字段","planname"
+);</col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA">setRefItemName("relevanceplannumber",getColValue("CP_INVESTIGATION_PLAN","planname","id",getItemValue("relevanceplannumber")))</col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">7</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,415</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">relevanceplannumber</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53902</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">业务类型</col>
+  <col name="ITEMNAME_E">businesstype</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">下拉框</col>
+  <col name="COMBOXDESC">getCommUC("下拉框",
+"直接值","信贷类业务;票据类业务;跨合作类业务;柜台、会计结算业务;员工异常行为排查;其他类",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">8</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">Y</col>
+  <col name="ISQUICKQUERYEDITABLE">Y</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">businesstype</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53903</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">排查方式</col>
+  <col name="ITEMNAME_E">checkingway</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">下拉框</col>
+  <col name="COMBOXDESC">getCommUC("下拉框",
+"直接值","现场;非现场;",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">9</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">checkingway</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">70924</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">协查单位</col>
+  <col name="ITEMNAME_E">assistance_dept</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA">setRefItemName("assistance_dept",getMultiRefName("pub_corp_dept","name","id",getItemValue("assistance_dept")))</col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">10</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">1</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">N</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">N</col>
+  <col name="PROPISEDITABLE">N</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">assistance_dept</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53904</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">被检查机构</col>
+  <col name="ITEMNAME_E">byexaminedept</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">树型模板参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC">getCommUC("树型模板参照",
+"模板编码","pub_corp_dept_CODE1",
+"ID字段","id",
+"NAME字段","name",
+"附加SQL条件","",
+"可以多选","Y",
+"只能选叶子","N"
+);</col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA">setRefItemName("byexaminedept",getMultiRefName("pub_corp_dept","name","id",getItemValue("byexaminedept")))</col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">11</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,415</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">byexaminedept</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53905</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">方案开始时间</col>
+  <col name="ITEMNAME_E">schemestarttime</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">日历</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">12</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">schemestarttime</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53906</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">方案结束时间</col>
+  <col name="ITEMNAME_E">schemeendtime</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">日历</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">13</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">schemeendtime</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53907</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">排查项目内容</col>
+  <col name="ITEMNAME_E">checkingprojectmatter</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">多行文本框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">14</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,415</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">checkingprojectmatter</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53908</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">上传附件</col>
+  <col name="ITEMNAME_E">affix</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">文件选择框</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">15</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,415</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">affix</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53909</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">发起机构</col>
+  <col name="ITEMNAME_E">schemeapplyfordept</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA">setRefItemName("schemeapplyfordept",getColValue("pub_corp_dept","name","id",getItemValue("schemeapplyfordept")))</col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA">setItemValue("schemeapplyfordept",getLoginUserDeptId());
+setRefItemName("schemeapplyfordept",getLoginUserDeptName());</col>
+  <col name="SHOWORDER">16</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">4</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">schemeapplyfordept</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53910</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">发起人</col>
+  <col name="ITEMNAME_E">schemeapplyforpeople</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA">setRefItemName("schemeapplyforpeople",getColValue("pub_user","name","id",getItemValue("schemeapplyforpeople")))</col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA">setItemValue("schemeapplyforpeople",getLoginUserId());
+setRefItemName("schemeapplyforpeople",getLoginUserName());</col>
+  <col name="SHOWORDER">17</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">4</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">schemeapplyforpeople</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">53911</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">12334</col>
+  <col name="ITEMNAME">立项申请日期</col>
+  <col name="ITEMNAME_E">applyfordate</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">日历</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC"></col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">Y</col>
+  <col name="ISENCRYPT">N</col>
+  <col name="ISMUSTINPUT">Y</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA">getCurrDate()</col>
+  <col name="SHOWORDER">18</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">115,150</col>
+  <col name="LISTISSHOWABLE">N</col>
+  <col name="LISTISEDITABLE">4</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="LISTISEXPORT">Y</col>
+  <col name="CARDISEDITABLE">4</col>
+  <col name="ISWRAP">Y</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">Y</col>
+  <col name="PROPISEDITABLE">Y</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR">000000,ACD6FF</col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">N</col>
+  <col name="ISQUICKQUERYEDITABLE">N</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="PUSHUSER"></col>
+  <col name="LISTISCOMBINE"></col>
+  <col name="ITEMKEY">applyfordate</col>
+</record>
+
+</root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_wf_transition">
+  <col name="id">1</col>
+  <col name="processid">21</col>
+  <col name="code">WFT</col>
+  <col name="wfname"></col>
+  <col name="uiname"></col>
+  <col name="fromactivity">21</col>
+  <col name="toactivity">23</col>
+  <col name="conditions"></col>
+  <col name="points">108.0,252.0</col>
+  <col name="dealtype">SUBMIT</col>
+  <col name="reasoncodesql"></col>
+  <col name="mailsubject"></col>
+  <col name="mailcontent"></col>
+  <col name="intercept"></col>
+  <col name="fonttype">System</col>
+  <col name="fontsize">12</col>
+  <col name="foreground">0,0,0</col>
+  <col name="background">70,119,191</col>
+  <col name="linetype">2</col>
+  <col name="issingle">true</col>
+</record>
+
+<!--2-->
+<record tabname="pub_wf_transition">
+  <col name="id">2</col>
+  <col name="processid">21</col>
+  <col name="code">WFT</col>
+  <col name="wfname"></col>
+  <col name="uiname"></col>
+  <col name="fromactivity">23</col>
+  <col name="toactivity">22</col>
+  <col name="conditions"></col>
+  <col name="points">216.0,360.0</col>
+  <col name="dealtype">SUBMIT</col>
+  <col name="reasoncodesql"></col>
+  <col name="mailsubject"></col>
+  <col name="mailcontent"></col>
+  <col name="intercept"></col>
+  <col name="fonttype">System</col>
+  <col name="fontsize">12</col>
+  <col name="foreground">0,0,0</col>
+  <col name="background">70,119,191</col>
+  <col name="linetype">2</col>
+  <col name="issingle">true</col>
+</record>
+
+</root>

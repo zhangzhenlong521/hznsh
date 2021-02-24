@@ -1,0 +1,101 @@
+package com.pushworld.ipushgrc.ui.cmpcheck.p060;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillCardDialog;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListMouseDoubleClickedEvent;
+import cn.com.infostrategy.ui.mdata.BillListMouseDoubleClickedListener;
+import cn.com.infostrategy.ui.report.BillReportDrillActionIfc;
+
+/**
+ * 合规检查-检查活动统计，钻取详细类
+ * 根据不同事件类型，查看显示不同模板
+ * @author YangQing/2013-09-17
+ *
+ */
+public class CheckReportDrill implements BillReportDrillActionIfc, ActionListener {
+	private BillListDialog billListDialog;
+	private WLTButton btn_show;
+
+	public void drillAction(String ids, Object _itemvo, Container _parent) {
+		if (ids == null || ids.equals("")) {
+			return;
+		}
+		String checkid[] = null;//风险id
+		if (ids.contains(";")) {//有多条
+			checkid = ids.split(";");
+		} else {//如果就一条
+			checkid = new String[1];
+			checkid[0] = ids;
+		}
+
+		StringBuilder checkids = new StringBuilder("");
+		for (int j = 0; j < checkid.length; j++) {
+			if (j == checkid.length - 1) {
+				checkids.append(checkid[j]);
+			} else {
+				checkids.append(checkid[j]);
+				checkids.append(",");
+			}
+		}
+		billListDialog = new BillListDialog(_parent, "查看", "V_REPORT_CHECK2_YQ_Q01", "id in (" + checkids + ")", 900, 600);
+		billListDialog.getBilllistPanel().queryDataByCondition("id in (" + checkids + ")", "eventtype");
+		billListDialog.getBilllistPanel().setQuickQueryPanelVisiable(false);
+		billListDialog.getBtn_confirm().setVisible(false);
+		//去掉双击列表弹卡片
+		billListDialog.getBilllistPanel().addBillListMouseDoubleClickedListener(new BillListMouseDoubleClickedListener() {
+			public void onMouseDoubleClicked(BillListMouseDoubleClickedEvent billlistmousedoubleclickedevent) {
+				return;
+			}
+		});
+		//浏览按钮重写
+		btn_show = billListDialog.getBilllistPanel().getBillListBtn("comm_listselect");
+		btn_show.setPreferredSize(new Dimension(82, 26));
+		btn_show.setIcon(UIUtil.getImage("zt_011.gif"));
+		btn_show.setText("查看详细");
+		btn_show.setToolTipText("查看详细");
+		btn_show.addActionListener(this);
+		billListDialog.getBilllistPanel().setCanShowCardInfo(false);
+		billListDialog.setVisible(true);
+	}
+
+	//“查看详细”按钮点击事件
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_show) {
+			BillVO selectVO = billListDialog.getBilllistPanel().getSelectedBillVO();
+			if (selectVO == null) {
+				MessageBox.showSelectOne(billListDialog);
+				return;
+			}
+			BillCardPanel cardPanel = null;
+			String eventtype = selectVO.getStringValue("eventtype");//事件类型
+			if (eventtype.equals("发现问题")) {
+				cardPanel = new BillCardPanel("CMP_ISSUE_CODE1");
+			} else if (eventtype.equals("违规事件")) {
+				cardPanel = new BillCardPanel("CMP_EVENT_CODE1");
+			} else if (eventtype.equals("成功防范")) {
+				cardPanel = new BillCardPanel("CMP_WARD_CODE1");
+			}
+			String id = selectVO.getStringValue("id", "");
+			if (!TBUtil.isEmpty(id)) {
+				id = id.substring(2);
+			}
+			cardPanel.queryDataByCondition(" id = " + id);
+			BillCardDialog cardDialog = new BillCardDialog(billListDialog, "查看", cardPanel, WLTConstants.BILLDATAEDITSTATE_INIT);
+			cardDialog.getBtn_save().setVisible(false);
+			cardDialog.setVisible(true);
+		}
+	}
+
+}

@@ -1,0 +1,69 @@
+package com.pushworld.ipushgrc.ui.law.p070;
+
+import java.awt.Container;
+import java.util.HashMap;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefEvent;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefListener;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.report.BillReportDrillActionIfc;
+import cn.com.infostrategy.ui.report.BillReportPanel;
+
+import com.pushworld.ipushgrc.ui.law.LawShowHtmlDialog;
+
+/**
+ * 外规统计! 即网络,图表,html等统计都放在一起! 以下拉框或多页签方式为向导! 使用一个功能点实现所有统计功能!!
+ * 事实上只要把最常用的网络与图表报表伏好就可以了! 把[机构][时间][业务分类]等关键维度都摆在最前面就成功一大半了!
+ * @author xch
+ *
+ */
+public class LawStatisWKPanel extends AbstractWorkPanel implements BillReportDrillActionIfc, BillListHtmlHrefListener {
+	private BillListPanel billListPanel;
+
+	public void initialize() {
+		BillReportPanel reportPanel = new BillReportPanel("LAW_LAW_REPORT", "com.pushworld.ipushgrc.bs.law.p070.LawReportBuilderAdapter");
+		this.add(reportPanel); //
+	}
+
+	public void drillAction(String ids, Object _itemvo, Container _parent) {
+		// TODO Auto-generated method stub
+		String id[] = new String[] { "-99999" };
+		if (!"".equals(ids) && ids != null) {
+			id = ids.split(";");
+		}
+		StringBuilder idbuild = new StringBuilder();
+		for (int j = 0; j < id.length; j++) {
+			if (j == id.length - 1) {
+				idbuild.append(id[j]);
+			} else {
+				idbuild.append(id[j]);
+				idbuild.append(",");
+			}
+		}
+		BillListDialog billListDialog = new BillListDialog(_parent, "查看", "LAW_LAW_CODE3", " id in (" + idbuild + ")", 1000, 700);
+		billListDialog.getBilllistPanel().setQuickQueryPanelVisiable(false);
+		billListPanel = billListDialog.getBilllistPanel();
+		billListPanel.addBillListHtmlHrefListener(this);
+		billListDialog.getBilllistPanel().addBatchBillListButton(new WLTButton[] { WLTButton.createButtonByType(WLTButton.LIST_SHOWCARD) });
+		billListDialog.getBilllistPanel().repaintBillListButton();
+		billListDialog.getBtn_confirm().setVisible(false);
+		billListDialog.setVisible(true);
+
+	}
+
+	public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+		// TODO Auto-generated method stub
+		new LawShowHtmlDialog(billListPanel);
+	}
+
+	@Override
+	public void drillAction(String ids, Object itemVO, Container parent,
+			HashMap<String, String> query) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

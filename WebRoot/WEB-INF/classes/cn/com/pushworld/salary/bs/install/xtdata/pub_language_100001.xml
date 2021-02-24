@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_language">
+  <col name="id">1</col>
+  <col name="simplechinese">查看客户端环境变量</col>
+  <col name="english">Look Client Env</col>
+  <col name="traditionalchinese">查看客户端环境变量</col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="pub_language">
+  <col name="id">2</col>
+  <col name="simplechinese">查看服务器环境变量</col>
+  <col name="english">查看服务器环境变量</col>
+  <col name="traditionalchinese">查看服务器环境变量</col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="pub_language">
+  <col name="id">3</col>
+  <col name="simplechinese">查看服务器控制台</col>
+  <col name="english">查看服务器控制台</col>
+  <col name="traditionalchinese">查看服务器控制台</col>
+  <col name="descr"></col>
+</record>
+
+<!--4-->
+<record tabname="pub_language">
+  <col name="id">4</col>
+  <col name="simplechinese">查看服务器日志</col>
+  <col name="english">查看服务器日志</col>
+  <col name="traditionalchinese">查看服务器日志</col>
+  <col name="descr"></col>
+</record>
+
+<!--5-->
+<record tabname="pub_language">
+  <col name="id">5</col>
+  <col name="simplechinese">抓取服务器屏幕</col>
+  <col name="english">抓取服务器屏幕</col>
+  <col name="traditionalchinese">抓取服务器屏幕</col>
+  <col name="descr"></col>
+</record>
+
+<!--6-->
+<record tabname="pub_language">
+  <col name="id">6</col>
+  <col name="simplechinese">查看服务器文件系统</col>
+  <col name="english">查看服务器文件系统</col>
+  <col name="traditionalchinese">查看服务器文件系统</col>
+  <col name="descr"></col>
+</record>
+
+<!--7-->
+<record tabname="pub_language">
+  <col name="id">7</col>
+  <col name="simplechinese">SQL查询分析器</col>
+  <col name="english">SQL查询分析器</col>
+  <col name="traditionalchinese">SQL查询分析器</col>
+  <col name="descr"></col>
+</record>
+
+<!--8-->
+<record tabname="pub_language">
+  <col name="id">8</col>
+  <col name="simplechinese">跟踪SQL执行</col>
+  <col name="english">跟踪SQL执行</col>
+  <col name="traditionalchinese">跟踪SQL执行</col>
+  <col name="descr"></col>
+</record>
+
+<!--9-->
+<record tabname="pub_language">
+  <col name="id">9</col>
+  <col name="simplechinese">SQL补丁更新</col>
+  <col name="english">SQL补丁更新</col>
+  <col name="traditionalchinese">SQL补丁更新</col>
+  <col name="descr"></col>
+</record>
+
+<!--10-->
+<record tabname="pub_language">
+  <col name="id">10</col>
+  <col name="simplechinese">新增</col>
+  <col name="english">新增</col>
+  <col name="traditionalchinese">新增</col>
+  <col name="descr"></col>
+</record>
+
+<!--11-->
+<record tabname="pub_language">
+  <col name="id">11</col>
+  <col name="simplechinese">删除</col>
+  <col name="english">删除</col>
+  <col name="traditionalchinese">删除</col>
+  <col name="descr"></col>
+</record>
+
+<!--12-->
+<record tabname="pub_language">
+  <col name="id">12</col>
+  <col name="simplechinese">是否菜单条</col>
+  <col name="english">是否菜单条</col>
+  <col name="traditionalchinese">是否菜单条</col>
+  <col name="descr"></col>
+</record>
+
+<!--13-->
+<record tabname="pub_language">
+  <col name="id">13</col>
+  <col name="simplechinese">导出Html</col>
+  <col name="english">导出Html</col>
+  <col name="traditionalchinese">导出Html</col>
+  <col name="descr"></col>
+</record>
+
+<!--14-->
+<record tabname="pub_language">
+  <col name="id">14</col>
+  <col name="simplechinese">刷新</col>
+  <col name="english">刷新</col>
+  <col name="traditionalchinese">刷新</col>
+  <col name="descr"></col>
+</record>
+
+<!--15-->
+<record tabname="pub_language">
+  <col name="id">15</col>
+  <col name="simplechinese">保存</col>
+  <col name="english">保存</col>
+  <col name="traditionalchinese">保存</col>
+  <col name="descr"></col>
+</record>
+
+<!--16-->
+<record tabname="pub_language">
+  <col name="id">16</col>
+  <col name="simplechinese">导出</col>
+  <col name="english">导出</col>
+  <col name="traditionalchinese">导出</col>
+  <col name="descr"></col>
+</record>
+
+<!--17-->
+<record tabname="pub_language">
+  <col name="id">17</col>
+  <col name="simplechinese">结果中查找</col>
+  <col name="english">结果中查找</col>
+  <col name="traditionalchinese">结果中查找</col>
+  <col name="descr"></col>
+</record>
+
+<!--18-->
+<record tabname="pub_language">
+  <col name="id">18</col>
+  <col name="simplechinese">全部展开</col>
+  <col name="english">全部展开</col>
+  <col name="traditionalchinese">全部展开</col>
+  <col name="descr"></col>
+</record>
+
+<!--19-->
+<record tabname="pub_language">
+  <col name="id">19</col>
+  <col name="simplechinese">全部收缩</col>
+  <col name="english">全部收缩</col>
+  <col name="traditionalchinese">全部收缩</col>
+  <col name="descr"></col>
+</record>
+
+<!--20-->
+<record tabname="pub_language">
+  <col name="id">20</col>
+  <col name="simplechinese">重置LinkCode</col>
+  <col name="english">重置LinkCode</col>
+  <col name="traditionalchinese">重置LinkCode</col>
+  <col name="descr"></col>
+</record>
+
+<!--21-->
+<record tabname="pub_language">
+  <col name="id">21</col>
+  <col name="simplechinese">显示直系路径</col>
+  <col name="english">显示直系路径</col>
+  <col name="traditionalchinese">显示直系路径</col>
+  <col name="descr"></col>
+</record>
+
+<!--22-->
+<record tabname="pub_language">
+  <col name="id">22</col>
+  <col name="simplechinese">统计子结点数量</col>
+  <col name="english">统计子结点数量</col>
+  <col name="traditionalchinese">统计子结点数量</col>
+  <col name="descr"></col>
+</record>
+
+<!--23-->
+<record tabname="pub_language">
+  <col name="id">23</col>
+  <col name="simplechinese">模板编辑</col>
+  <col name="english">模板编辑</col>
+  <col name="traditionalchinese">模板编辑</col>
+  <col name="descr"></col>
+</record>
+
+<!--24-->
+<record tabname="pub_language">
+  <col name="id">24</col>
+  <col name="simplechinese">查看结点信息</col>
+  <col name="english">查看结点信息</col>
+  <col name="traditionalchinese">查看结点信息</col>
+  <col name="descr"></col>
+</record>
+
+<!--25-->
+<record tabname="pub_language">
+  <col name="id">25</col>
+  <col name="simplechinese">增加结点</col>
+  <col name="english">增加结点</col>
+  <col name="traditionalchinese">增加结点</col>
+  <col name="descr"></col>
+</record>
+
+<!--26-->
+<record tabname="pub_language">
+  <col name="id">26</col>
+  <col name="simplechinese">删除结点</col>
+  <col name="english">删除结点</col>
+  <col name="traditionalchinese">删除结点</col>
+  <col name="descr"></col>
+</record>
+
+<!--27-->
+<record tabname="pub_language">
+  <col name="id">27</col>
+  <col name="simplechinese">保存菜单数据成功!!</col>
+  <col name="english">保存菜单数据成功!!</col>
+  <col name="traditionalchinese">保存菜单数据成功!!</col>
+  <col name="descr"></col>
+</record>
+
+<!--28-->
+<record tabname="pub_language">
+  <col name="id">28</col>
+  <col name="simplechinese">新建</col>
+  <col name="english">新建</col>
+  <col name="traditionalchinese">新建</col>
+  <col name="descr"></col>
+</record>
+
+<!--29-->
+<record tabname="pub_language">
+  <col name="id">29</col>
+  <col name="simplechinese">修改</col>
+  <col name="english">修改</col>
+  <col name="traditionalchinese">修改</col>
+  <col name="descr"></col>
+</record>
+
+<!--30-->
+<record tabname="pub_language">
+  <col name="id">30</col>
+  <col name="simplechinese">保存返回</col>
+  <col name="english">保存返回</col>
+  <col name="traditionalchinese">保存返回</col>
+  <col name="descr"></col>
+</record>
+
+<!--31-->
+<record tabname="pub_language">
+  <col name="id">31</col>
+  <col name="simplechinese">取消返回</col>
+  <col name="english">取消返回</col>
+  <col name="traditionalchinese">取消返回</col>
+  <col name="descr"></col>
+</record>
+
+<!--32-->
+<record tabname="pub_language">
+  <col name="id">32</col>
+  <col name="simplechinese">查询</col>
+  <col name="english">查询</col>
+  <col name="traditionalchinese">查询</col>
+  <col name="descr"></col>
+</record>
+
+<!--33-->
+<record tabname="pub_language">
+  <col name="id">33</col>
+  <col name="simplechinese">返回</col>
+  <col name="english">返回</col>
+  <col name="traditionalchinese">返回</col>
+  <col name="descr"></col>
+</record>
+
+<!--34-->
+<record tabname="pub_language">
+  <col name="id">34</col>
+  <col name="simplechinese">浏览</col>
+  <col name="english">浏览</col>
+  <col name="traditionalchinese">浏览</col>
+  <col name="descr"></col>
+</record>
+
+<!--35-->
+<record tabname="pub_language">
+  <col name="id">35</col>
+  <col name="simplechinese">快速查询</col>
+  <col name="english">快速查询</col>
+  <col name="traditionalchinese">快速查询</col>
+  <col name="descr"></col>
+</record>
+
+<!--36-->
+<record tabname="pub_language">
+  <col name="id">36</col>
+  <col name="simplechinese">打印</col>
+  <col name="english">打印</col>
+  <col name="traditionalchinese">打印</col>
+  <col name="descr"></col>
+</record>
+
+<!--37-->
+<record tabname="pub_language">
+  <col name="id">37</col>
+  <col name="simplechinese">提交</col>
+  <col name="english">提交</col>
+  <col name="traditionalchinese">提交</col>
+  <col name="descr"></col>
+</record>
+
+<!--38-->
+<record tabname="pub_language">
+  <col name="id">38</col>
+  <col name="simplechinese">拒绝</col>
+  <col name="english">拒绝</col>
+  <col name="traditionalchinese">拒绝</col>
+  <col name="descr"></col>
+</record>
+
+<!--39-->
+<record tabname="pub_language">
+  <col name="id">39</col>
+  <col name="simplechinese">退回</col>
+  <col name="english">退回</col>
+  <col name="traditionalchinese">退回</col>
+  <col name="descr"></col>
+</record>
+
+<!--40-->
+<record tabname="pub_language">
+  <col name="id">40</col>
+  <col name="simplechinese">取消</col>
+  <col name="english">取消</col>
+  <col name="traditionalchinese">取消</col>
+  <col name="descr"></col>
+</record>
+
+<!--41-->
+<record tabname="pub_language">
+  <col name="id">41</col>
+  <col name="simplechinese">暂停</col>
+  <col name="english">暂停</col>
+  <col name="traditionalchinese">暂停</col>
+  <col name="descr"></col>
+</record>
+
+<!--42-->
+<record tabname="pub_language">
+  <col name="id">42</col>
+  <col name="simplechinese">继续</col>
+  <col name="english">继续</col>
+  <col name="traditionalchinese">继续</col>
+  <col name="descr"></col>
+</record>
+
+<!--43-->
+<record tabname="pub_language">
+  <col name="id">43</col>
+  <col name="simplechinese">流程监控</col>
+  <col name="english">流程监控</col>
+  <col name="traditionalchinese">流程监控</col>
+  <col name="descr"></col>
+</record>
+
+<!--44-->
+<record tabname="pub_language">
+  <col name="id">61</col>
+  <col name="simplechinese">通用查询</col>
+  <col name="english">通用查询</col>
+  <col name="traditionalchinese">通用查询</col>
+  <col name="descr"></col>
+</record>
+
+<!--45-->
+<record tabname="pub_language">
+  <col name="id">62</col>
+  <col name="simplechinese">高级查询</col>
+  <col name="english">高级查询</col>
+  <col name="traditionalchinese">高级查询</col>
+  <col name="descr"></col>
+</record>
+
+<!--46-->
+<record tabname="pub_language">
+  <col name="id">63</col>
+  <col name="simplechinese">导出条件</col>
+  <col name="english">导出条件</col>
+  <col name="traditionalchinese">导出条件</col>
+  <col name="descr"></col>
+</record>
+
+<!--47-->
+<record tabname="pub_language">
+  <col name="id">81</col>
+  <col name="simplechinese">确定</col>
+  <col name="english">确定</col>
+  <col name="traditionalchinese">确定</col>
+  <col name="descr"></col>
+</record>
+
+<!--48-->
+<record tabname="pub_language">
+  <col name="id">101</col>
+  <col name="simplechinese">保存当前各列的宽度与位置顺序成功!!</col>
+  <col name="english">保存当前各列的宽度与位置顺序成功!!</col>
+  <col name="traditionalchinese">保存当前各列的宽度与位置顺序成功!!</col>
+  <col name="descr"></col>
+</record>
+
+<!--49-->
+<record tabname="pub_language">
+  <col name="id">121</col>
+  <col name="simplechinese">你真的想删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="english">你真的想删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="traditionalchinese">你真的想删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="descr"></col>
+</record>
+
+<!--50-->
+<record tabname="pub_language">
+  <col name="id">122</col>
+  <col name="simplechinese">提示</col>
+  <col name="english">提示</col>
+  <col name="traditionalchinese">提示</col>
+  <col name="descr"></col>
+</record>
+
+<!--51-->
+<record tabname="pub_language">
+  <col name="id">141</col>
+  <col name="simplechinese">今天</col>
+  <col name="english">今天</col>
+  <col name="traditionalchinese">今天</col>
+  <col name="descr"></col>
+</record>
+
+<!--52-->
+<record tabname="pub_language">
+  <col name="id">161</col>
+  <col name="simplechinese">当前时间</col>
+  <col name="english">当前时间</col>
+  <col name="traditionalchinese">当前时间</col>
+  <col name="descr"></col>
+</record>
+
+<!--53-->
+<record tabname="pub_language">
+  <col name="id">162</col>
+  <col name="simplechinese">当前</col>
+  <col name="english">当前</col>
+  <col name="traditionalchinese">当前</col>
+  <col name="descr"></col>
+</record>
+
+<!--54-->
+<record tabname="pub_language">
+  <col name="id">181</col>
+  <col name="simplechinese">处理</col>
+  <col name="english">处理</col>
+  <col name="traditionalchinese">处理</col>
+  <col name="descr"></col>
+</record>
+
+<!--55-->
+<record tabname="pub_language">
+  <col name="id">182</col>
+  <col name="simplechinese">接收</col>
+  <col name="english">接收</col>
+  <col name="traditionalchinese">接收</col>
+  <col name="descr"></col>
+</record>
+
+<!--56-->
+<record tabname="pub_language">
+  <col name="id">183</col>
+  <col name="simplechinese">撤回</col>
+  <col name="english">撤回</col>
+  <col name="traditionalchinese">撤回</col>
+  <col name="descr"></col>
+</record>
+
+<!--57-->
+<record tabname="pub_language">
+  <col name="id">184</col>
+  <col name="simplechinese">流程浏览</col>
+  <col name="english">流程浏览</col>
+  <col name="traditionalchinese">流程浏览</col>
+  <col name="descr"></col>
+</record>
+
+<!--58-->
+<record tabname="pub_language">
+  <col name="id">201</col>
+  <col name="simplechinese">全部审批意见</col>
+  <col name="english">全部审批意见</col>
+  <col name="traditionalchinese">全部审批意见</col>
+  <col name="descr"></col>
+</record>
+
+<!--59-->
+<record tabname="pub_language">
+  <col name="id">202</col>
+  <col name="simplechinese">审批意见历史版本</col>
+  <col name="english">审批意见历史版本</col>
+  <col name="traditionalchinese">审批意见历史版本</col>
+  <col name="descr"></col>
+</record>
+
+<!--60-->
+<record tabname="pub_language">
+  <col name="id">203</col>
+  <col name="simplechinese">导出报表</col>
+  <col name="english">导出报表</col>
+  <col name="traditionalchinese">导出报表</col>
+  <col name="descr"></col>
+</record>
+
+<!--61-->
+<record tabname="pub_language">
+  <col name="id">221</col>
+  <col name="simplechinese">Save Data success!</col>
+  <col name="english">Save Data success!</col>
+  <col name="traditionalchinese">Save Data success!</col>
+  <col name="descr"></col>
+</record>
+
+<!--62-->
+<record tabname="pub_language">
+  <col name="id">241</col>
+  <col name="simplechinese">关闭</col>
+  <col name="english">关闭</col>
+  <col name="traditionalchinese">关闭</col>
+  <col name="descr"></col>
+</record>
+
+<!--63-->
+<record tabname="pub_language">
+  <col name="id">261</col>
+  <col name="simplechinese">隐藏直系路径</col>
+  <col name="english">隐藏直系路径</col>
+  <col name="traditionalchinese">隐藏直系路径</col>
+  <col name="descr"></col>
+</record>
+
+<!--64-->
+<record tabname="pub_language">
+  <col name="id">272</col>
+  <col name="simplechinese"> 查 询</col>
+  <col name="english"> 查 询</col>
+  <col name="traditionalchinese"> 查 询</col>
+  <col name="descr"></col>
+</record>
+
+<!--65-->
+<record tabname="pub_language">
+  <col name="id">273</col>
+  <col name="simplechinese">查看服务器State</col>
+  <col name="english">查看服务器State</col>
+  <col name="traditionalchinese">查看服务器State</col>
+  <col name="descr"></col>
+</record>
+
+<!--66-->
+<record tabname="pub_language">
+  <col name="id">292</col>
+  <col name="simplechinese">快速穿透查询</col>
+  <col name="english">快速穿透查询</col>
+  <col name="traditionalchinese">快速穿透查询</col>
+  <col name="descr"></col>
+</record>
+
+<!--67-->
+<record tabname="pub_language">
+  <col name="id">293</col>
+  <col name="simplechinese">重置LinkName</col>
+  <col name="english">重置LinkName</col>
+  <col name="traditionalchinese">重置LinkName</col>
+  <col name="descr"></col>
+</record>
+
+<!--68-->
+<record tabname="pub_language">
+  <col name="id">294</col>
+  <col name="simplechinese">重置Parentid</col>
+  <col name="english">重置Parentid</col>
+  <col name="traditionalchinese">重置Parentid</col>
+  <col name="descr"></col>
+</record>
+
+<!--69-->
+<record tabname="pub_language">
+  <col name="id">312</col>
+  <col name="simplechinese">您确定要删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="english">您确定要删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="traditionalchinese">您确定要删除该菜单吗?这将删除其所有子结点以及与之关联的所有权限数据!</col>
+  <col name="descr"></col>
+</record>
+
+<!--70-->
+<record tabname="pub_language">
+  <col name="id">332</col>
+  <col name="simplechinese">导出本页</col>
+  <col name="english">导出本页</col>
+  <col name="traditionalchinese">导出本页</col>
+  <col name="descr"></col>
+</record>
+
+<!--71-->
+<record tabname="pub_language">
+  <col name="id">333</col>
+  <col name="simplechinese">催督办</col>
+  <col name="english">催督办</col>
+  <col name="traditionalchinese">催督办</col>
+  <col name="descr"></col>
+</record>
+
+<!--72-->
+<record tabname="pub_language">
+  <col name="id">334</col>
+  <col name="simplechinese">传阅</col>
+  <col name="english">传阅</col>
+  <col name="traditionalchinese">传阅</col>
+  <col name="descr"></col>
+</record>
+
+<!--73-->
+<record tabname="pub_language">
+  <col name="id">335</col>
+  <col name="simplechinese">意见补登</col>
+  <col name="english">意见补登</col>
+  <col name="traditionalchinese">意见补登</col>
+  <col name="descr"></col>
+</record>
+
+<!--74-->
+<record tabname="pub_language">
+  <col name="id">352</col>
+  <col name="simplechinese">·机构与人员</col>
+  <col name="english">·机构与人员</col>
+  <col name="traditionalchinese">·机构与人员</col>
+  <col name="descr"></col>
+</record>
+
+<!--75-->
+<record tabname="pub_language">
+  <col name="id">353</col>
+  <col name="simplechinese">·考核对象分类</col>
+  <col name="english">·考核对象分类</col>
+  <col name="traditionalchinese">·考核对象分类</col>
+  <col name="descr"></col>
+</record>
+
+<!--76-->
+<record tabname="pub_language">
+  <col name="id">354</col>
+  <col name="simplechinese">·部门定性指标</col>
+  <col name="english">·部门定性指标</col>
+  <col name="traditionalchinese">·部门定性指标</col>
+  <col name="descr"></col>
+</record>
+
+<!--77-->
+<record tabname="pub_language">
+  <col name="id">372</col>
+  <col name="simplechinese">·员工考核方案</col>
+  <col name="english">·员工考核方案</col>
+  <col name="traditionalchinese">·员工考核方案</col>
+  <col name="descr"></col>
+</record>
+
+<!--78-->
+<record tabname="pub_language">
+  <col name="id">392</col>
+  <col name="simplechinese">·员工定量指标</col>
+  <col name="english">·员工定量指标</col>
+  <col name="traditionalchinese">·员工定量指标</col>
+  <col name="descr"></col>
+</record>
+
+<!--79-->
+<record tabname="pub_language">
+  <col name="id">393</col>
+  <col name="simplechinese">·部门定量指标</col>
+  <col name="english">·部门定量指标</col>
+  <col name="traditionalchinese">·部门定量指标</col>
+  <col name="descr"></col>
+</record>
+
+<!--80-->
+<record tabname="pub_language">
+  <col name="id">394</col>
+  <col name="simplechinese">·高管定性指标</col>
+  <col name="english">·高管定性指标</col>
+  <col name="traditionalchinese">·高管定性指标</col>
+  <col name="descr"></col>
+</record>
+
+<!--81-->
+<record tabname="pub_language">
+  <col name="id">412</col>
+  <col name="simplechinese">·薪酬计算</col>
+  <col name="english">·薪酬计算</col>
+  <col name="traditionalchinese">·薪酬计算</col>
+  <col name="descr"></col>
+</record>
+
+<!--82-->
+<record tabname="pub_language">
+  <col name="id">432</col>
+  <col name="simplechinese">·公式定义</col>
+  <col name="english">·公式定义</col>
+  <col name="traditionalchinese">·公式定义</col>
+  <col name="descr"></col>
+</record>
+
+<!--83-->
+<record tabname="pub_language">
+  <col name="id">452</col>
+  <col name="simplechinese">·评分表管理</col>
+  <col name="english">·评分表管理</col>
+  <col name="traditionalchinese">·评分表管理</col>
+  <col name="descr"></col>
+</record>
+
+<!--84-->
+<record tabname="pub_language">
+  <col name="id">472</col>
+  <col name="simplechinese">·员工绩效统计</col>
+  <col name="english">·员工绩效统计</col>
+  <col name="traditionalchinese">·员工绩效统计</col>
+  <col name="descr"></col>
+</record>
+
+<!--85-->
+<record tabname="pub_language">
+  <col name="id">492</col>
+  <col name="simplechinese">·得分统计</col>
+  <col name="english">·得分统计</col>
+  <col name="traditionalchinese">·得分统计</col>
+  <col name="descr"></col>
+</record>
+
+<!--86-->
+<record tabname="pub_language">
+  <col name="id">493</col>
+  <col name="simplechinese">·个人信息</col>
+  <col name="english">·个人信息</col>
+  <col name="traditionalchinese">·个人信息</col>
+  <col name="descr"></col>
+</record>
+
+</root>

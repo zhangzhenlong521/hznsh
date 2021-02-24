@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_check">
+  <col name="id">1</col>
+  <col name="cmp_checkplan_id">1</col>
+  <col name="planname">2012年第一季度合规大检查</col>
+  <col name="checkname">2012年第一季度合规大检查</col>
+  <col name="checkdescr">一季度统一合规检查</col>
+  <col name="checkcorp">2</col>
+  <col name="checkedcorp">;31;45;57;</col>
+  <col name="checkbegindate">2012-01-01</col>
+  <col name="checkenddate">2012-03-30</col>
+  <col name="teamleader">1</col>
+  <col name="teamusers">;13;14;</col>
+  <col name="createdate">2012-02-24</col>
+  <col name="creater">总行系统管理员</col>
+  <col name="deptid">2</col>
+  <col name="status">3</col>
+  <col name="checkideasum"></col>
+  <col name="attachfile"></col>
+  <col name="checkpoints">1.检查操作步骤
+2.检查对应环节的岗位与不相容岗位
+3.检查操作人员素质</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_check">
+  <col name="id">3</col>
+  <col name="cmp_checkplan_id">3</col>
+  <col name="planname">关于二手房房款业务合规检查</col>
+  <col name="checkname">关于二手房房款业务合规检查</col>
+  <col name="checkdescr">针对目前二手房购买有大量不合规的情况,银监会要求各家银行进行专门检查</col>
+  <col name="checkcorp">2</col>
+  <col name="checkedcorp">;57;</col>
+  <col name="checkbegindate">2012-02-01</col>
+  <col name="checkenddate">2012-02-29</col>
+  <col name="teamleader">4</col>
+  <col name="teamusers">;1;12;13;</col>
+  <col name="createdate">2012-02-24</col>
+  <col name="creater">总行系统管理员</col>
+  <col name="deptid">2</col>
+  <col name="status">2</col>
+  <col name="checkideasum">基本正常！！！</col>
+  <col name="attachfile"></col>
+  <col name="checkpoints">同检查项目</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_check">
+  <col name="id">5</col>
+  <col name="cmp_checkplan_id"></col>
+  <col name="planname"></col>
+  <col name="checkname">北京分行直接发起的授信业务的合规检查</col>
+  <col name="checkdescr">检查授信业务是否规范,目前国内其他银行发生类似违规事件非常多</col>
+  <col name="checkcorp">2</col>
+  <col name="checkedcorp">;31;</col>
+  <col name="checkbegindate">2012-02-01</col>
+  <col name="checkenddate">2012-06-29</col>
+  <col name="teamleader">2</col>
+  <col name="teamusers">;8;7;</col>
+  <col name="createdate">2012-02-24</col>
+  <col name="creater">总行系统管理员</col>
+  <col name="deptid">2</col>
+  <col name="status">1</col>
+  <col name="checkideasum"></col>
+  <col name="attachfile"></col>
+  <col name="checkpoints">同检查项目</col>
+</record>
+
+</root>

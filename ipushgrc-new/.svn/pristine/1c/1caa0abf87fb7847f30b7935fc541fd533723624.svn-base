@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 标准产品的 -->
+<root>
+	<!--lcj-begain-->
+
+	<table name="ck_plan" pkname="id" descr="检查计划表" remark="" >
+		<columns>
+	
+		</columns>
+		<indexs>
+            <index name="in_ck_plan_1"      cols="creater" 		descr="创建人" />
+            <index name="in_ck_plan_2"      cols="createdept" 	descr="创建机构" />
+        </indexs>
+	</table>	
+	
+	<!--zzl-end-->
+</root>

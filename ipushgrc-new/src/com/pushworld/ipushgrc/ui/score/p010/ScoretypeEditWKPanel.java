@@ -1,0 +1,88 @@
+package com.pushworld.ipushgrc.ui.score.p010;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillTreePanel;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectListener;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectionEvent;
+
+/**
+ * 违规积分-》基础信息-》违规类型定义【李春娟/2013-05-28】
+ * @author lcj
+ *
+ */
+public class ScoretypeEditWKPanel extends AbstractWorkPanel implements ActionListener, BillTreeSelectListener {
+
+	private BillTreePanel treePanel;
+	private BillCardPanel cardPanel;
+	private WLTButton btn_delete;
+
+	@Override
+	public void initialize() {
+		treePanel = new BillTreePanel("SCORE_TYPE_LCJ_E01");
+		btn_delete = new WLTButton("删除");
+		btn_delete.addActionListener(this);
+		WLTButton btn_edit = WLTButton.createButtonByType(WLTButton.TREE_EDIT);
+		btn_edit.setText("修改");
+		btn_edit.setToolTipText("修改");
+		treePanel.addBatchBillTreeButton(new WLTButton[] { WLTButton.createButtonByType(WLTButton.TREE_INSERT), btn_edit, btn_delete });
+		treePanel.repaintBillTreeButton();
+		treePanel.queryDataByCondition(null);
+		treePanel.addBillTreeSelectListener(this);
+		cardPanel = new BillCardPanel(treePanel.getTempletVO());
+		WLTSplitPane splitPane = new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT, treePanel, cardPanel);
+		this.add(splitPane);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_delete) {
+			onDelete();
+		}
+	}
+
+	private void onDelete() {
+		if (treePanel.getSelectedNode() == null || !treePanel.getSelectedNode().isLeaf()) {
+			MessageBox.show(this, "请选择一个末级结点进行删除操作!"); //
+			return;
+		}
+		BillVO billVO = treePanel.getSelectedVO();
+		try {
+			int model = TBUtil.getTBUtil().getSysOptionIntegerValue("违规积分扣分模式", 1);
+			if (model != 1) {//如果不使用风险等级，则需要判断在标准列表中是否使用了该类型
+				String count = UIUtil.getStringValueByDS(null, "select count(id) from score_standard2 where scoretype=" + billVO.getStringValue("id"));
+				if (!"0".equals(count)) {
+					MessageBox.show(this, "该类型已在标准定义中使用,不能删除!"); //
+					return;
+				}
+			}
+			if (!MessageBox.confirm(this, "您确定要删除该记录吗?")) {
+				return;
+			}
+			UIUtil.executeUpdateByDS(null, "delete from " + treePanel.getTempletVO().getSavedtablename() + " where  id=" + billVO.getStringValue("id"));
+			treePanel.delCurrNode(); //
+			treePanel.updateUI();
+		} catch (Exception e) {
+			e.printStackTrace();
+			MessageBox.showException(this, e);
+		}
+	}
+
+	public void onBillTreeSelectChanged(BillTreeSelectionEvent _event) {
+		if (_event.getCurrSelectedNode().isRoot() || _event.getCurrSelectedVO() == null) {
+			cardPanel.clear();
+			return;
+		}
+		BillVO billVO = _event.getCurrSelectedVO();
+		cardPanel.queryDataByCondition("id=" + billVO.getStringValue("id"));
+	}
+
+}

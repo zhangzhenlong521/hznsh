@@ -1,0 +1,150 @@
+package com.pushworld.ipushgrc.ui.score.p020;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.RefItemVO;
+import cn.com.infostrategy.ui.common.BillDialog;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTPanel;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillListSelectListener;
+import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+import cn.com.infostrategy.ui.mdata.BillPanel;
+import cn.com.infostrategy.ui.mdata.BillTreePanel;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectListener;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectionEvent;
+import cn.com.infostrategy.ui.mdata.cardcomp.AbstractRefDialog;
+
+public class ChooseUserRefDialog extends AbstractRefDialog implements ActionListener, BillListSelectListener, BillTreeSelectListener {
+	private BillCardPanel mainCardPanel;
+	private BillTreePanel deptTreePanel;
+	private BillListPanel postListPanel, userListPanel;
+	private WLTButton btn_confirm, btn_cancel;
+	private RefItemVO returnItemVO;
+
+	public ChooseUserRefDialog(Container _parent, String _title, RefItemVO refItemVO, BillPanel panel) {
+		super(_parent, _title, refItemVO, panel);
+		mainCardPanel = (BillCardPanel) panel;
+	}
+
+	@Override
+	public RefItemVO getReturnRefItemVO() {
+
+		return returnItemVO;
+	}
+
+	@Override
+	public void initialize() {
+		deptTreePanel = new BillTreePanel("PUB_CORP_DEPT_1");
+		deptTreePanel.queryDataByCondition(null);
+		deptTreePanel.addBillTreeSelectListener(this);
+
+		postListPanel = new BillListPanel("PUB_POST_CODE1"); //岗位
+		postListPanel.setItemVisible("refpostid", true);//在此显示岗位组信息
+		postListPanel.addBillListSelectListener(this); //岗位选择变化时.
+		postListPanel.setItemVisible("post_status",false);
+		
+		userListPanel = new BillListPanel("PUB_USER_POST_DEFAULT"); //人员_岗位的关联表!
+
+		WLTSplitPane splitPanel_post_user = new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT, postListPanel, userListPanel); //
+		splitPanel_post_user.setDividerLocation(175); //
+
+		WLTSplitPane splitPanel_all = new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT, deptTreePanel, splitPanel_post_user); //
+		splitPanel_all.setDividerLocation(200); //
+
+		this.setLayout(new BorderLayout());
+		this.add(splitPanel_all, BorderLayout.CENTER);
+		this.add(getSouthPanel(), BorderLayout.SOUTH); //
+	}
+
+	private JPanel getSouthPanel() {
+		JPanel panel = WLTPanel.createDefaultPanel(new FlowLayout());
+		btn_confirm = new WLTButton("确定");
+		btn_cancel = new WLTButton("取消");
+		btn_cancel.addActionListener(this); //
+		btn_confirm.addActionListener(this); //
+		panel.add(btn_confirm); //
+		panel.add(btn_cancel); //
+		return panel;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_confirm) {
+			onConfirm();
+		} else if (e.getSource() == btn_cancel) {
+			onCancel();
+		}
+
+	}
+
+	private void onConfirm() {
+		BillVO billvo = userListPanel.getSelectedBillVO();
+		if (billvo == null) {
+			MessageBox.show(this, "请选择一个人员!");
+			return;
+		}
+		returnItemVO = new RefItemVO(billvo.getStringValue("userid"), "", billvo.getStringValue("username"));
+
+		billvo = deptTreePanel.getSelectedVO();
+		if (billvo != null) {
+			mainCardPanel.setValueAt("deptid", new RefItemVO(billvo.getStringValue("id"), "", billvo.getStringValue("name")));
+		}
+		billvo = postListPanel.getSelectedBillVO();
+		if (billvo != null) {
+			mainCardPanel.setValueAt("postid", new RefItemVO(billvo.getStringValue("id"), "", billvo.getStringValue("name")));
+		}
+		this.setCloseType(BillDialog.CONFIRM);
+		this.dispose();
+	}
+
+	private void onCancel() {
+		returnItemVO = null;
+		this.setCloseType(BillDialog.CANCEL);
+		this.dispose();
+
+	}
+
+	/* * 机构树的选择事件
+	 */
+	public void onBillTreeSelectChanged(BillTreeSelectionEvent _event) {
+		String str_deptid = _event.getCurrSelectedVO().getStringValue("id"); //
+
+		postListPanel.queryDataByCondition("deptid='" + str_deptid + "'", "seq"); //
+		userListPanel.queryDataByCondition("deptid='" + str_deptid + "'", "seq"); //
+	}
+
+	public void onBillListSelectChanged(BillListSelectionEvent _event) {
+		if (_event.getBillListPanel() == postListPanel) {
+			BillVO billVO = postListPanel.getSelectedBillVO();
+			if (billVO == null) {
+				return;
+			}
+			userListPanel.queryDataByCondition("postid='" + billVO.getStringValue("id") + "'", "seq"); //
+		}
+	}
+
+	/**
+	 * 初始宽度
+	 * @return
+	 */
+	public int getInitWidth() {
+		return 700;
+	}
+
+	public int getInitHeight() {
+		return 600;
+	}
+
+}

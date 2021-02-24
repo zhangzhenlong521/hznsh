@@ -1,0 +1,438 @@
+package com.pushworld.ipushgrc.ui.score.p060;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
+import java.util.LinkedHashMap;
+
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.common.WLTLogger;
+import cn.com.infostrategy.to.common.WLTRemoteException;
+import cn.com.infostrategy.to.mdata.BillCellVO;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.OfficeCompentControlVO;
+import cn.com.infostrategy.to.mdata.Pub_Templet_1VO;
+import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.BillDialog;
+import cn.com.infostrategy.ui.common.ClientEnvironment;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTTabbedPane;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillOfficeDialog;
+import cn.com.infostrategy.ui.report.BillCellPanel;
+
+import com.pushworld.ipushgrc.ui.IPushGRCServiceIfc;
+import com.pushworld.ipushgrc.ui.score.ScoreUIUtil;
+import com.pushworld.ipushgrc.ui.score.p020.PrintBillOfficeIntercept;
+import com.pushworld.ipushgrc.ui.score.p020.RegisterEditWKPanel;
+
+/**
+ * 违规积分-》我的积分【李春娟/2013-05-09】
+ * @author lcj
+ *
+ */
+public class MyScoreLookWKPanel extends AbstractWorkPanel implements ActionListener {
+
+	private BillListPanel listPanel;
+	private BillListPanel punishListPanel;
+	private WLTButton btn_apply, btn_showscore, btn_Registerword, btn_showPunish, btn_effect;
+
+	@Override
+	public void initialize() {
+		JTabbedPane tabpane = new JTabbedPane();
+		listPanel = new BillListPanel("SCORE_USER_LCJ_Q01");
+		//增加"积分确认", 对没有问题的积分直接确认生效 Gwang 2014-11-26
+		btn_effect = new WLTButton("积分确认", "office_175.gif");
+		btn_apply = new WLTButton("复议申请", "office_044.gif");
+		btn_showscore = new WLTButton("我的总积分", "refsearch.gif");
+		btn_Registerword = new WLTButton("查看通知书", "files.png");
+
+		btn_effect.addActionListener(this);
+		btn_Registerword.addActionListener(this);
+		btn_apply.addActionListener(this);
+		btn_showscore.addActionListener(this);
+		listPanel.addBatchBillListButton(new WLTButton[] { btn_effect, btn_apply, btn_showscore, btn_Registerword });
+		listPanel.repaintBillListButton();
+
+		String curryear = TBUtil.getTBUtil().getCurrDate().substring(0, 4);
+		listPanel.QueryDataByCondition("EFFECTDATE like '" + curryear + "%'");//查询本年度的记录
+
+		punishListPanel = new BillListPanel("SCORE_USER_LCJ_Q04");
+		btn_showPunish = new WLTButton("惩罚单查看");
+		btn_showPunish.addActionListener(this);
+		punishListPanel.addBillListButton(btn_showPunish);
+		punishListPanel.repaintBillListButton();
+		punishListPanel.QueryDataByCondition("EFFECTDATE like '" + curryear + "%'");//查询本年度的记录
+
+		tabpane.addTab("个人积分", listPanel);
+		tabpane.addTab("个人惩罚", punishListPanel);
+		this.setLayout(new BorderLayout());
+		this.add(tabpane);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_apply) {
+			onApply();
+		} else if (e.getSource() == btn_showscore) {
+			onShowScore();
+		} else if (e.getSource() == btn_Registerword) {
+			onShowRegisterWorld(listPanel, "认定");
+		} else if (e.getSource() == btn_showPunish) {
+			onShowRegisterWorld(punishListPanel, "惩罚");
+		} else if (e.getSource() == btn_effect) {
+			onEffect();
+		}
+	}
+
+	/**
+	 * 积分确认
+	 */
+	private void onEffect() {
+
+		BillVO billVO = listPanel.getSelectedBillVO();
+		if (billVO == null) {
+			MessageBox.showSelectOne(this);
+			return;
+		}
+		String state = billVO.getStringValue("state");
+
+		if ("未复议".equals(state)) {
+			if (!MessageBox.confirm("积分确认后将不可以复议,是否继续?")) {
+				return;
+			}
+		} else {
+			MessageBox.show(this, "该记录" + state + ",不能执行此操作!");
+			return;
+		}
+		try {
+			IPushGRCServiceIfc server = (IPushGRCServiceIfc) UIUtil.lookUpRemoteService(IPushGRCServiceIfc.class);
+			server.effectScoreById((billVO.getStringValue("id")));
+			listPanel.refreshCurrSelectedRow();
+		} catch (WLTRemoteException e) {
+			e.printStackTrace();
+			MessageBox.showException(this, e);
+		} catch (Exception e) {
+			e.printStackTrace();
+			MessageBox.showException(this, e);
+		}
+	}
+
+	/**
+	 * 复议申请逻辑
+	 * 发起申请流程、查看流程处理意见等信息【李春娟/2013-06-03】
+	 */
+	private void onApply() {
+		BillVO billVO = listPanel.getSelectedBillVO(); //	
+		if (billVO == null) {
+			MessageBox.showSelectOne(this); //
+			return; //
+		}
+		String str_wfprinstanceid = billVO.getStringValue("wfprinstanceid"); //
+		if ("已生效".equals(billVO.getStringValue("state")) && (str_wfprinstanceid == null || str_wfprinstanceid.trim().equals(""))) {
+			MessageBox.show(this, "该积分已生效,不能发起复议申请!");
+			return;
+		}
+		if (!billVO.containsKey("wfprinstanceid")) {
+			MessageBox.show(listPanel, "选中的记录中没有定义工作流字段(wfprinstanceid)!"); //
+			return; //
+		}
+
+		if (str_wfprinstanceid == null || str_wfprinstanceid.trim().equals("")) {//如果流程未发起，则发起流程，否则监控流程
+			new cn.com.infostrategy.ui.workflow.WorkFlowDealActionFactory().dealAction("deal", listPanel, null); //处理动作!
+		} else {
+			cn.com.infostrategy.ui.workflow.engine.WorkflowMonitorDialog wfMonitorDialog = new cn.com.infostrategy.ui.workflow.engine.WorkflowMonitorDialog(listPanel, str_wfprinstanceid, billVO); //
+			wfMonitorDialog.setMaxWindowMenuBar();
+			wfMonitorDialog.setVisible(true); //
+		}
+	}
+
+	/**
+	 * 查看本人总积分
+	 */
+	private void onShowScore() {
+		String userid = ClientEnvironment.getInstance().getLoginUserID();
+		String username = ClientEnvironment.getInstance().getLoginUserName();
+		new ScoreUIUtil().showOneUserScore(this, null, null, userid, username);
+	}
+
+	//查看认定通知书.
+	private void viewRD() {
+		final BillVO billVO = listPanel.getSelectedBillVO();
+		if (billVO == null) {
+			MessageBox.showSelectOne(this);
+			return;
+		}
+		BillCellVO cellvo = null;
+		try {
+			cellvo = UIUtil.getMetaDataService().getBillCellVO("违规积分认定通知书模板", null, null);
+		} catch (Exception ex) {
+			WLTLogger.getLogger(RegisterEditWKPanel.class).error("没有找到[违规积分认定通知书模板]模版.");
+		}
+		try {
+			if (cellvo == null) {
+				BillListPanel listpanel = new BillListPanel(new cn.com.infostrategy.ui.report.cellcompent.CellTMO());
+				listpanel.QueryDataByCondition(" templetcode like '%认定%'");
+				BillListDialog listdialog = new BillListDialog(this, "请选择想对应的模版", listpanel);
+				listdialog.setVisible(true);
+				if (listdialog.getCloseType() != 1) {
+					return;
+				}
+				BillVO rtvos[] = listdialog.getReturnBillVOs();
+				if (rtvos.length > 0) {
+					cellvo = UIUtil.getMetaDataService().getBillCellVO(rtvos[0].getStringValue("templetcode"), null, null);
+				} else {
+					return;
+				}
+			}
+			HashVO hvo = new HashVO();
+			String keys[] = billVO.getKeys();
+			String names[] = billVO.getNames();
+			for (int i = 0; i < keys.length; i++) {
+				hvo.setAttributeValue(names[i].trim(), billVO.getStringViewValue(keys[i]));
+				hvo.setAttributeValue(keys[i], billVO.getStringViewValue(keys[i]));
+			}
+			BillCellVO cellvo_new = UIUtil.getCommonService().parseCellTempetToWord(cellvo, hvo);
+			BillCellPanel cellPanel = new BillCellPanel(cellvo_new, true, false);
+			TBUtil tbUtil = new TBUtil();
+			int daycount = tbUtil.getSysOptionIntegerValue("违规积分自动生效时间", 5);
+			final BillDialog dialog = new BillDialog(this, "预览", 1000, 800);
+			BillVO vo = listPanel.getSelectedBillVO();
+			String currdate = UIUtil.getServerCurrDate();
+			hvo.setAttributeValue("认定日期", currdate);
+			dialog.add(cellPanel, BorderLayout.CENTER);
+			dialog.setVisible(true);
+		} catch (Exception ex) {
+			MessageBox.showException(this, ex);
+		}
+	}
+
+	private String viewtype = TBUtil.getTBUtil().getSysOptionStringValue("违规积分通知单查看方式", "WORD");
+
+	/**
+	 * 查看认定通知书
+	 **/
+	private void onShowRegisterWorld(BillListPanel billListPanel, String type) {
+		BillVO billVO = billListPanel.getSelectedBillVO();
+		if (billVO == null) {
+			MessageBox.showSelectOne(billListPanel);
+			return;
+		}
+		String filename = "";
+		if (type.equals("认定")) {
+			if ("WORD".equals(viewtype)) {
+				filename = billVO.getStringValue("PUBLISHFILEPATH");
+				if (filename == null) {//以前必须通过认定通知，肯定有认定通知书，后增加了直接生效功能，故需要判断一下【李春娟/2014-11-04】
+					MessageBox.show(billListPanel, "该记录没有认定通知书");
+					return;
+				}
+			} else {
+				viewRDByCellPanel();
+				return;
+			}
+		} else if (type.equals("惩罚")) {
+			if(!"WORD".equalsIgnoreCase(viewtype)){
+				viewCFByCellPanel();
+				return;
+			}
+			filename = billVO.getStringValue("punishfilepath");
+			if (filename == null) {
+				MessageBox.show(billListPanel, "该记录没有惩罚通知书");
+				return;
+			}
+		}
+		if (filename.contains("/")) {
+			filename = filename.substring(filename.lastIndexOf("/") + 1);
+		}
+		OfficeCompentControlVO officeVO = new OfficeCompentControlVO(false, false, false, null); //
+		officeVO.setIfshowsave(false);
+		officeVO.setIfshowprint_all(false);
+		officeVO.setIfshowprint_fen(false);
+		officeVO.setIfshowprint_tao(false);
+		officeVO.setIfshowedit(false);
+		officeVO.setToolbar(false);
+		officeVO.setIfshowclose(false);
+		officeVO.setPrintable(true);
+		officeVO.setMenubar(false);
+		officeVO.setMenutoolbar(false);
+		officeVO.setIfshowhidecomment(false);
+		officeVO.setTitlebar(false);
+		officeVO.setIfshowprint(false);
+		officeVO.setIfshowhidecomment(false);
+		officeVO.setIfshowshowcomment(false);
+		officeVO.setIfshowacceptedit(false);
+		officeVO.setIfshowshowedit(false);
+		officeVO.setIfshowhideedit(false);
+		officeVO.setIfshowwater(false);
+		officeVO.setIfShowResult(false); //不显示结果区域显示。
+		officeVO.setIfselfdesc(true); //关键
+		officeVO.setSubdir("/upload/score");//subdir=/upload/score
+		try {
+			final BillOfficeDialog officeDialog = new BillOfficeDialog(this, filename, officeVO);
+			officeDialog.addSomeActionListener(new PrintBillOfficeIntercept(officeDialog));
+			JPanel southpanel = new JPanel(new FlowLayout());//dialog下方的按钮面板
+			WLTButton btn_confirm = new WLTButton("打印", "zt_014.gif"); //
+			btn_confirm.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					officeDialog.callSwingFunctionByWebBrowse("button_printall_click");
+				}
+			});
+
+			WLTButton btn_close = new WLTButton("关闭"); //
+			btn_close.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					officeDialog.setCloseType(BillDialog.CANCEL);
+					officeDialog.callWebBrowseJavaScriptFunction("closedoc"); //
+					officeDialog.dispose(); //
+				}
+			});
+
+			southpanel.add(btn_confirm);
+			southpanel.add(btn_close);
+			officeDialog.getContentPane().add(southpanel, BorderLayout.SOUTH);
+			officeDialog.maxToScreenSizeBy1280AndLocationCenter();
+			officeDialog.setTitle("我的" + type + "通知书");
+			officeDialog.setVisible(true);
+		} catch (Exception e) {
+			MessageBox.showException(billListPanel, e);
+		}
+	}
+
+	//查看认定通知单
+	private void viewRDByCellPanel() {
+		final BillVO billVO = listPanel.getSelectedBillVO();
+		if (billVO == null) {
+			MessageBox.showSelectOne(this);
+			return;
+		}
+		BillCellVO cellvo = null;
+		try {
+			cellvo = UIUtil.getMetaDataService().getBillCellVO("违规积分认定通知书模板", null, null);
+		} catch (Exception ex) {
+			WLTLogger.getLogger(RegisterEditWKPanel.class).error("没有找到[违规积分认定通知书模板]模版.");
+		}
+		try {
+			if (cellvo == null) {
+				BillListPanel listpanel = new BillListPanel(new cn.com.infostrategy.ui.report.cellcompent.CellTMO());
+				listpanel.QueryDataByCondition(" templetcode like '%认定%'");
+				BillListDialog listdialog = new BillListDialog(this, "请选择想对应的模版", listpanel);
+				listdialog.setVisible(true);
+				if (listdialog.getCloseType() != 1) {
+					return;
+				}
+				BillVO rtvos[] = listdialog.getReturnBillVOs();
+				if (rtvos.length > 0) {
+					cellvo = UIUtil.getMetaDataService().getBillCellVO(rtvos[0].getStringValue("templetcode"), null, null);
+				} else {
+					return;
+				}
+			}
+			final BillDialog dialog = new BillDialog(this, "预览", 800, 800);
+			BillVO vo = listPanel.getSelectedBillVO();
+
+			HashVO hvo = new HashVO();
+			String keys[] = vo.getKeys();
+			String names[] = vo.getNames();
+			String currdate = UIUtil.getServerCurrDate();
+			hvo.setAttributeValue("认定日期", currdate);
+			for (int i = 0; i < keys.length; i++) {
+				hvo.setAttributeValue(keys[i], vo.getStringViewValue(keys[i]));
+				if ("PUBLISHDATE".equals(keys[i])) {
+					String date = vo.getStringViewValue(keys[i]);
+					if (!TBUtil.isEmpty(date)) {
+						hvo.setAttributeValue(names[i].trim(), vo.getStringViewValue(keys[i]));
+					}
+				} else {
+					hvo.setAttributeValue(names[i].trim(), vo.getStringViewValue(keys[i]));
+				}
+			}
+			Pub_Templet_1VO templet_1VO = UIUtil.getPub_Templet_1VO("SCORE_USER_LCJ_E01");//子模板
+			LinkedHashMap hashmap = new LinkedHashMap();
+			BillCellVO cellvo_new = UIUtil.getCommonService().parseCellTempetToWord(cellvo, hvo);
+			BillCellPanel cellPanel = new BillCellPanel(cellvo_new, true, false);
+			dialog.add(cellPanel, BorderLayout.CENTER);
+			JPanel southpanel = new JPanel(new FlowLayout());//dialog下方的按钮面板
+			WLTButton btn_close = new WLTButton("关闭"); //
+			btn_close.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dialog.setCloseType(BillDialog.CANCEL);
+					dialog.dispose(); //
+				}
+			});
+			southpanel.add(btn_close);
+			dialog.add(southpanel, BorderLayout.SOUTH);
+			dialog.setVisible(true);
+		} catch (Exception ex) {
+			MessageBox.show(this, ex);
+		}
+	}
+
+	//查看惩罚通知单
+	private void viewCFByCellPanel() {
+		final BillVO billVO = punishListPanel.getSelectedBillVO();
+		if (billVO == null) {
+			MessageBox.showSelectOne(this);
+			return;
+		}
+		BillCellVO cellvo = null;
+		try {
+			cellvo = UIUtil.getMetaDataService().getBillCellVO("违规积分惩罚通知书模板", null, null);
+		} catch (Exception ex) {
+			WLTLogger.getLogger(RegisterEditWKPanel.class).error("没有找到[违规积分惩罚通知书模板]模版.");
+		}
+		try {
+			if (cellvo == null) {
+				BillListPanel listpanel = new BillListPanel(new cn.com.infostrategy.ui.report.cellcompent.CellTMO());
+				listpanel.QueryDataByCondition(" templetcode like '%认定%'");
+				BillListDialog listdialog = new BillListDialog(this, "请选择想对应的模版", listpanel);
+				listdialog.setVisible(true);
+				if (listdialog.getCloseType() != 1) {
+					return;
+				}
+				BillVO rtvos[] = listdialog.getReturnBillVOs();
+				if (rtvos.length > 0) {
+					cellvo = UIUtil.getMetaDataService().getBillCellVO(rtvos[0].getStringValue("templetcode"), null, null);
+				} else {
+					return;
+				}
+			}
+			final BillDialog dialog = new BillDialog(this, "预览", 650, 450);
+			BillVO vo = punishListPanel.getSelectedBillVO();
+
+			HashVO hvo = new HashVO();
+			String keys[] = vo.getKeys();
+			String names[] = vo.getNames();
+			String currdate = UIUtil.getServerCurrDate();
+			hvo.setAttributeValue("", currdate);
+			for (int i = 0; i < keys.length; i++) {
+				hvo.setAttributeValue(keys[i], vo.getStringViewValue(keys[i]));
+				hvo.setAttributeValue(names[i].trim(), vo.getStringViewValue(keys[i]));
+			}
+			BillCellVO cellvo_new = UIUtil.getCommonService().parseCellTempetToWord(cellvo, hvo);
+			BillCellPanel cellPanel = new BillCellPanel(cellvo_new, true, false);
+			dialog.add(cellPanel, BorderLayout.CENTER);
+			JPanel southpanel = new JPanel(new FlowLayout());//dialog下方的按钮面板
+			WLTButton btn_close = new WLTButton("关闭"); //
+			btn_close.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dialog.setCloseType(BillDialog.CANCEL);
+					dialog.dispose(); //
+				}
+			});
+			southpanel.add(btn_close);
+			dialog.add(southpanel, BorderLayout.SOUTH);
+			dialog.setVisible(true);
+		} catch (Exception ex) {
+			MessageBox.show(this, ex);
+		}
+	}
+}

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_deptduty">
+  <col name="id">21</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">01)计划管理</col>
+  <col name="dutydescr">依据年度工作计划，制订办公室年度工作计划并组织实施。</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_deptduty">
+  <col name="id">23</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">02)沟通协调</col>
+  <col name="dutydescr">协助领导进行各部门之间的综合协调、上下沟通。</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_deptduty">
+  <col name="id">25</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">03)制度建设</col>
+  <col name="dutydescr">研究制订综合文秘与后勤服务的具体管理制度并组织实施。</col>
+</record>
+
+<!--4-->
+<record tabname="cmp_deptduty">
+  <col name="id">27</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">04)OA管理</col>
+  <col name="dutydescr">负责办公自动化系统的日常使用管理、监督检查。</col>
+</record>
+
+<!--5-->
+<record tabname="cmp_deptduty">
+  <col name="id">29</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">05)调研工作</col>
+  <col name="dutydescr">根据联社领导的指示，组织相关调查研究，撰写专题调研报告。</col>
+</record>
+
+<!--6-->
+<record tabname="cmp_deptduty">
+  <col name="id">31</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">06)督办管理</col>
+  <col name="dutydescr">督促检查上级及联社领导重要批示的贯彻执行情况。</col>
+</record>
+
+<!--7-->
+<record tabname="cmp_deptduty">
+  <col name="id">33</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">07)高层会议记录</col>
+  <col name="dutydescr">负责主任办公会议、社务会议的记录工作。</col>
+</record>
+
+<!--8-->
+<record tabname="cmp_deptduty">
+  <col name="id">35</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">08)收文管理</col>
+  <col name="dutydescr">负责文件的签收、登记、审核、传阅、拟办、催办、保管、清退等工作。</col>
+</record>
+
+<!--9-->
+<record tabname="cmp_deptduty">
+  <col name="id">37</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">09)发文管理</col>
+  <col name="dutydescr">文件的核稿、排版、用印、登记、印制、分发等工作。</col>
+</record>
+
+<!--10-->
+<record tabname="cmp_deptduty">
+  <col name="id">39</col>
+  <col name="deptid">3</col>
+  <col name="dutyname">10)文书材料起草</col>
+  <col name="dutydescr">起草、整理全社总结等重要综合性文书材料。</col>
+</record>
+
+<!--11-->
+<record tabname="cmp_deptduty">
+  <col name="id">41</col>
+  <col name="deptid">7</col>
+  <col name="dutyname">01)合规政策管理</col>
+  <col name="dutydescr">负责协助高级管理层制定、推动和执行联社的合规政策，负责合规政策的实施。</col>
+</record>
+
+<!--12-->
+<record tabname="cmp_deptduty">
+  <col name="id">43</col>
+  <col name="deptid">7</col>
+  <col name="dutyname">02)合规风险管理</col>
+  <col name="dutydescr">负责联社内部主动识别、量化、评估、监测、咨询和报告全社的合规风险，对全社经营管理活动进行事前、事中的合规咨询、指导，组织开展合规检查，确定合规风险的事前、事中防范措施，解决处理存在的合规问题与不足，切实控制合规风险。</col>
+</record>
+
+<!--13-->
+<record tabname="cmp_deptduty">
+  <col name="id">45</col>
+  <col name="deptid">7</col>
+  <col name="dutyname">03)制度规程管理</col>
+  <col name="dutydescr">根据相关监管法律、法规、条例、指引、市场规则与惯例、行业准则，负责组织、协调和督促联社各职能部门梳理、整合和修订各项规章制度和操作规程，对全社的组织架构和业务流程再造进行审核和评价，提供法律意见和合规建议，并持续关注、跟踪法律、规则与准则的最新发展，督促业务部门对规章制度的合规性进行持续修订并监督执行。</col>
+</record>
+
+<!--14-->
+<record tabname="cmp_deptduty">
+  <col name="id">47</col>
+  <col name="deptid">7</col>
+  <col name="dutyname">04)合规评审建议</col>
+  <col name="dutydescr">负责各业务线经营管理、新产品开发、重大项目的合规评审、支持和合规性测试，并提供法律意见和合规建议。</col>
+</record>
+
+<!--15-->
+<record tabname="cmp_deptduty">
+  <col name="id">49</col>
+  <col name="deptid">7</col>
+  <col name="dutyname">13)其他</col>
+  <col name="dutydescr">完成联社领导交办的其它工作。</col>
+</record>
+
+<!--16-->
+<record tabname="cmp_deptduty">
+  <col name="id">51</col>
+  <col name="deptid">15</col>
+  <col name="dutyname">01）完善制度</col>
+  <col name="dutydescr">根据有关法律、法规及相关政策，结合联社的实际情况，制定、完善并组织实施全辖联社的财务管理制度、办法、规定，规范全辖联社的财务管理行为</col>
+</record>
+
+<!--17-->
+<record tabname="cmp_deptduty">
+  <col name="id">53</col>
+  <col name="deptid">15</col>
+  <col name="dutyname">02）预算管理</col>
+  <col name="dutydescr">负责组织落实全面预算管理工作，制定当年的财务工作目标，编制、分解、落实全社的财务目标计划，按季进行财务分析，组织实施年终会计决算，并完成决算分析报告</col>
+</record>
+
+<!--18-->
+<record tabname="cmp_deptduty">
+  <col name="id">55</col>
+  <col name="deptid">15</col>
+  <col name="dutyname">03）财务处理</col>
+  <col name="dutydescr">负责统筹、组织及指导联社报账中心的日常管理、核算工作，推进联社财务处理体系建设</col>
+</record>
+
+<!--19-->
+<record tabname="cmp_deptduty">
+  <col name="id">57</col>
+  <col name="deptid">15</col>
+  <col name="dutyname">04）财务分配与保障</col>
+  <col name="dutydescr">负责组织落实全社的可持续分配制度，编制财务分配方案，落实财务资源保障工作</col>
+</record>
+
+<!--20-->
+<record tabname="cmp_deptduty">
+  <col name="id">59</col>
+  <col name="deptid">15</col>
+  <col name="dutyname">05）撰写分析报告</col>
+  <col name="dutydescr">负责各项计划、财务会计报表的汇并、审核和分析工作，并有针对性提出合理化建议，为联社领导及有关部门提供决策依据</col>
+</record>
+
+</root>

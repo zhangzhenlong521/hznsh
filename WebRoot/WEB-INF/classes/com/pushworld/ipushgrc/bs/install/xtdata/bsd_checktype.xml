@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="bsd_checktype">
+  <col name="id">25</col>
+  <col name="name">投资业务的检查</col>
+  <col name="parentid">209</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="bsd_checktype">
+  <col name="id">85</col>
+  <col name="name">机构准入检查</col>
+  <col name="parentid">201</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="bsd_checktype">
+  <col name="id">87</col>
+  <col name="name">业务准入的检查</col>
+  <col name="parentid">201</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--4-->
+<record tabname="bsd_checktype">
+  <col name="id">88</col>
+  <col name="name">高级管理人员准入的检查</col>
+  <col name="parentid">201</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--5-->
+<record tabname="bsd_checktype">
+  <col name="id">89</col>
+  <col name="name"> 违规问题及处理</col>
+  <col name="parentid">240</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--6-->
+<record tabname="bsd_checktype">
+  <col name="id">94</col>
+  <col name="name">资本充足率的检查</col>
+  <col name="parentid">203</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--7-->
+<record tabname="bsd_checktype">
+  <col name="id">95</col>
+  <col name="name">资本充足率水平分类及监管措施</col>
+  <col name="parentid">203</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--8-->
+<record tabname="bsd_checktype">
+  <col name="id">96</col>
+  <col name="name">附录：检查依据、相关法规摘录</col>
+  <col name="parentid">204</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--9-->
+<record tabname="bsd_checktype">
+  <col name="id">98</col>
+  <col name="name">单位存款业务的检查</col>
+  <col name="parentid">204</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--10-->
+<record tabname="bsd_checktype">
+  <col name="id">99</col>
+  <col name="name">储蓄存款业务的检查</col>
+  <col name="parentid">204</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--11-->
+<record tabname="bsd_checktype">
+  <col name="id">100</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">209</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--12-->
+<record tabname="bsd_checktype">
+  <col name="id">101</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">209</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--13-->
+<record tabname="bsd_checktype">
+  <col name="id">103</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">209</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--14-->
+<record tabname="bsd_checktype">
+  <col name="id">105</col>
+  <col name="name">贷款内部控制的检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--15-->
+<record tabname="bsd_checktype">
+  <col name="id">106</col>
+  <col name="name">贷款真实性的检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--16-->
+<record tabname="bsd_checktype">
+  <col name="id">107</col>
+  <col name="name"> 贷款业务合规性检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--17-->
+<record tabname="bsd_checktype">
+  <col name="id">108</col>
+  <col name="name">贷款风险性的检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--18-->
+<record tabname="bsd_checktype">
+  <col name="id">109</col>
+  <col name="name">贷款流动性的检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--19-->
+<record tabname="bsd_checktype">
+  <col name="id">110</col>
+  <col name="name">贷款风险管理的检查</col>
+  <col name="parentid">207</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--20-->
+<record tabname="bsd_checktype">
+  <col name="id">111</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">207</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--21-->
+<record tabname="bsd_checktype">
+  <col name="id">112</col>
+  <col name="name"> 案例分析</col>
+  <col name="parentid">207</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--22-->
+<record tabname="bsd_checktype">
+  <col name="id">113</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">207</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--23-->
+<record tabname="bsd_checktype">
+  <col name="id">114</col>
+  <col name="name">票据融资业务的检查</col>
+  <col name="parentid">209</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--24-->
+<record tabname="bsd_checktype">
+  <col name="id">115</col>
+  <col name="name">同业拆借业务的检查</col>
+  <col name="parentid">209</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--25-->
+<record tabname="bsd_checktype">
+  <col name="id">116</col>
+  <col name="name">外汇买卖业务的检查</col>
+  <col name="parentid">209</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--26-->
+<record tabname="bsd_checktype">
+  <col name="id">117</col>
+  <col name="name">银行信贷资金流入股市的检查</col>
+  <col name="parentid">209</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--27-->
+<record tabname="bsd_checktype">
+  <col name="id">119</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">240</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--28-->
+<record tabname="bsd_checktype">
+  <col name="id">140</col>
+  <col name="name">存贷款业务核算的检查-存款业务核算的检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--29-->
+<record tabname="bsd_checktype">
+  <col name="id">142</col>
+  <col name="name">支付结算业务检查-支票结算业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--30-->
+<record tabname="bsd_checktype">
+  <col name="id">143</col>
+  <col name="name">支付结算业务检查-汇兑结算业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">13</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--31-->
+<record tabname="bsd_checktype">
+  <col name="id">144</col>
+  <col name="name">支付结算业务检查-商业汇票结算业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">15</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--32-->
+<record tabname="bsd_checktype">
+  <col name="id">145</col>
+  <col name="name">支付结算业务检查-结算纪律执行情况检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">16</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--33-->
+<record tabname="bsd_checktype">
+  <col name="id">146</col>
+  <col name="name">联行往来业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">17</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--34-->
+<record tabname="bsd_checktype">
+  <col name="id">147</col>
+  <col name="name">会计报表的检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">18</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--35-->
+<record tabname="bsd_checktype">
+  <col name="id">148</col>
+  <col name="name">出纳业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">19</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--36-->
+<record tabname="bsd_checktype">
+  <col name="id">149</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">221</col>
+  <col name="seq">20</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--37-->
+<record tabname="bsd_checktype">
+  <col name="id">154</col>
+  <col name="name">国际贸易结算业务的检查-进口信用证结算业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--38-->
+<record tabname="bsd_checktype">
+  <col name="id">157</col>
+  <col name="name">国际贸易结算业务的检查-出口信用证结算业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--39-->
+<record tabname="bsd_checktype">
+  <col name="id">158</col>
+  <col name="name">国际贸易结算业务的检查-国际汇款业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--40-->
+<record tabname="bsd_checktype">
+  <col name="id">159</col>
+  <col name="name">国际贸易结算业务的检查-国际托收业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--41-->
+<record tabname="bsd_checktype">
+  <col name="id">160</col>
+  <col name="name">贸易融资业务的检查-出口押汇业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--42-->
+<record tabname="bsd_checktype">
+  <col name="id">164</col>
+  <col name="name">贸易融资业务的检查-提货担保业务</col>
+  <col name="parentid">235</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--43-->
+<record tabname="bsd_checktype">
+  <col name="id">166</col>
+  <col name="name">外汇贷款业务的检查-外汇转贷款业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--44-->
+<record tabname="bsd_checktype">
+  <col name="id">168</col>
+  <col name="name">外汇贷款业务的检查-现汇贷款业务检查</col>
+  <col name="parentid">235</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--45-->
+<record tabname="bsd_checktype">
+  <col name="id">169</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">201</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--46-->
+<record tabname="bsd_checktype">
+  <col name="id">170</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">201</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--47-->
+<record tabname="bsd_checktype">
+  <col name="id">171</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">235</col>
+  <col name="seq">12</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--48-->
+<record tabname="bsd_checktype">
+  <col name="id">174</col>
+  <col name="name">账外经营表现形式</col>
+  <col name="parentid">240</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--49-->
+<record tabname="bsd_checktype">
+  <col name="id">175</col>
+  <col name="name">账外经营的检查</col>
+  <col name="parentid">240</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--50-->
+<record tabname="bsd_checktype">
+  <col name="id">176</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">204</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--51-->
+<record tabname="bsd_checktype">
+  <col name="id">178</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">204</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--52-->
+<record tabname="bsd_checktype">
+  <col name="id">179</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">203</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--53-->
+<record tabname="bsd_checktype">
+  <col name="id">181</col>
+  <col name="name">财务内部控制的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--54-->
+<record tabname="bsd_checktype">
+  <col name="id">182</col>
+  <col name="name">财务计划的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--55-->
+<record tabname="bsd_checktype">
+  <col name="id">184</col>
+  <col name="name">财务收入的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--56-->
+<record tabname="bsd_checktype">
+  <col name="id">185</col>
+  <col name="name">财务支出的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--57-->
+<record tabname="bsd_checktype">
+  <col name="id">186</col>
+  <col name="name">固定资产管理的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--58-->
+<record tabname="bsd_checktype">
+  <col name="id">187</col>
+  <col name="name">过渡性资金的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--59-->
+<record tabname="bsd_checktype">
+  <col name="id">188</col>
+  <col name="name">经营成果的检查</col>
+  <col name="parentid">242</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--60-->
+<record tabname="bsd_checktype">
+  <col name="id">189</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">242</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--61-->
+<record tabname="bsd_checktype">
+  <col name="id">190</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">203</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--62-->
+<record tabname="bsd_checktype">
+  <col name="id">201</col>
+  <col name="name">市场准入的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--63-->
+<record tabname="bsd_checktype">
+  <col name="id">202</col>
+  <col name="name">概要</col>
+  <col name="parentid">201</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--64-->
+<record tabname="bsd_checktype">
+  <col name="id">203</col>
+  <col name="name">资本充足率检查</col>
+  <col name="parentid"></col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--65-->
+<record tabname="bsd_checktype">
+  <col name="id">204</col>
+  <col name="name">存款业务的现场检查</col>
+  <col name="parentid"></col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--66-->
+<record tabname="bsd_checktype">
+  <col name="id">205</col>
+  <col name="name">概要</col>
+  <col name="parentid">204</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--67-->
+<record tabname="bsd_checktype">
+  <col name="id">207</col>
+  <col name="name">贷款业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--68-->
+<record tabname="bsd_checktype">
+  <col name="id">208</col>
+  <col name="name">概要</col>
+  <col name="parentid">207</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--69-->
+<record tabname="bsd_checktype">
+  <col name="id">209</col>
+  <col name="name">资金业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--70-->
+<record tabname="bsd_checktype">
+  <col name="id">210</col>
+  <col name="name">概要</col>
+  <col name="parentid">209</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--71-->
+<record tabname="bsd_checktype">
+  <col name="id">211</col>
+  <col name="name">中间业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--72-->
+<record tabname="bsd_checktype">
+  <col name="id">212</col>
+  <col name="name">概要</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--73-->
+<record tabname="bsd_checktype">
+  <col name="id">213</col>
+  <col name="name">中间业务管理的检查</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--74-->
+<record tabname="bsd_checktype">
+  <col name="id">215</col>
+  <col name="name">信用卡业务的检查</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--75-->
+<record tabname="bsd_checktype">
+  <col name="id">216</col>
+  <col name="name"> 代理业务的检查</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--76-->
+<record tabname="bsd_checktype">
+  <col name="id">217</col>
+  <col name="name">咨询顾问类业务的检查</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--77-->
+<record tabname="bsd_checktype">
+  <col name="id">218</col>
+  <col name="name"> 违规问题及处理</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--78-->
+<record tabname="bsd_checktype">
+  <col name="id">219</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--79-->
+<record tabname="bsd_checktype">
+  <col name="id">220</col>
+  <col name="name"> 附录：检查依据、有关法规摘录</col>
+  <col name="parentid">211</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--80-->
+<record tabname="bsd_checktype">
+  <col name="id">221</col>
+  <col name="name">会计结算业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--81-->
+<record tabname="bsd_checktype">
+  <col name="id">222</col>
+  <col name="name">概要</col>
+  <col name="parentid">221</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--82-->
+<record tabname="bsd_checktype">
+  <col name="id">223</col>
+  <col name="name">会计基础管理的检查-会计科目检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--83-->
+<record tabname="bsd_checktype">
+  <col name="id">224</col>
+  <col name="name">会计基础管理的检查-会计凭证检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--84-->
+<record tabname="bsd_checktype">
+  <col name="id">225</col>
+  <col name="name">会计基础管理的检查-账务组织检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--85-->
+<record tabname="bsd_checktype">
+  <col name="id">226</col>
+  <col name="name">会计基础管理的检查-印章管理检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--86-->
+<record tabname="bsd_checktype">
+  <col name="id">227</col>
+  <col name="name">会计基础管理的检查-会计事后监督检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--87-->
+<record tabname="bsd_checktype">
+  <col name="id">228</col>
+  <col name="name">会计基础管理的检查-有价单证及重要空白凭证检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--88-->
+<record tabname="bsd_checktype">
+  <col name="id">229</col>
+  <col name="name">会计基础管理的检查-对会计档案管理的检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--89-->
+<record tabname="bsd_checktype">
+  <col name="id">230</col>
+  <col name="name">存贷款业务核算的检查-贷款业务核算的检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--90-->
+<record tabname="bsd_checktype">
+  <col name="id">231</col>
+  <col name="name">案件分析</col>
+  <col name="parentid">221</col>
+  <col name="seq">21</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--91-->
+<record tabname="bsd_checktype">
+  <col name="id">232</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">221</col>
+  <col name="seq">22</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--92-->
+<record tabname="bsd_checktype">
+  <col name="id">233</col>
+  <col name="name">支付结算业务检查-银行本票结算业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">12</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--93-->
+<record tabname="bsd_checktype">
+  <col name="id">234</col>
+  <col name="name">支付结算业务检查-银行汇票结算业务检查</col>
+  <col name="parentid">221</col>
+  <col name="seq">14</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--94-->
+<record tabname="bsd_checktype">
+  <col name="id">235</col>
+  <col name="name">国际业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--95-->
+<record tabname="bsd_checktype">
+  <col name="id">236</col>
+  <col name="name">概要</col>
+  <col name="parentid">235</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--96-->
+<record tabname="bsd_checktype">
+  <col name="id">238</col>
+  <col name="name">案件分析</col>
+  <col name="parentid">235</col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--97-->
+<record tabname="bsd_checktype">
+  <col name="id">239</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">235</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--98-->
+<record tabname="bsd_checktype">
+  <col name="id">240</col>
+  <col name="name">账外经营的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--99-->
+<record tabname="bsd_checktype">
+  <col name="id">241</col>
+  <col name="name">概要</col>
+  <col name="parentid">240</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--100-->
+<record tabname="bsd_checktype">
+  <col name="id">242</col>
+  <col name="name">财务管理检查</col>
+  <col name="parentid"></col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--101-->
+<record tabname="bsd_checktype">
+  <col name="id">243</col>
+  <col name="name">概要</col>
+  <col name="parentid">242</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--102-->
+<record tabname="bsd_checktype">
+  <col name="id">244</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">242</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--103-->
+<record tabname="bsd_checktype">
+  <col name="id">245</col>
+  <col name="name">非信贷资产业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--104-->
+<record tabname="bsd_checktype">
+  <col name="id">246</col>
+  <col name="name">概要</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--105-->
+<record tabname="bsd_checktype">
+  <col name="id">247</col>
+  <col name="name">非信贷资产管理的检查-对非信贷资产基本情况的检查</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--106-->
+<record tabname="bsd_checktype">
+  <col name="id">248</col>
+  <col name="name">非信贷资产管理的检查-对非信贷资产管理的检查</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--107-->
+<record tabname="bsd_checktype">
+  <col name="id">250</col>
+  <col name="name">风险性非信贷资产的检查</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--108-->
+<record tabname="bsd_checktype">
+  <col name="id">251</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--109-->
+<record tabname="bsd_checktype">
+  <col name="id">252</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--110-->
+<record tabname="bsd_checktype">
+  <col name="id">253</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">245</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--111-->
+<record tabname="bsd_checktype">
+  <col name="id">255</col>
+  <col name="name">表外业务的检查</col>
+  <col name="parentid"></col>
+  <col name="seq">12</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--112-->
+<record tabname="bsd_checktype">
+  <col name="id">256</col>
+  <col name="name">概要</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--113-->
+<record tabname="bsd_checktype">
+  <col name="id">257</col>
+  <col name="name">银行承兑汇票业务的检查</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--114-->
+<record tabname="bsd_checktype">
+  <col name="id">258</col>
+  <col name="name">信用证业务的检查</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--115-->
+<record tabname="bsd_checktype">
+  <col name="id">259</col>
+  <col name="name">保函业务的检查</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--116-->
+<record tabname="bsd_checktype">
+  <col name="id">260</col>
+  <col name="name"> 金融衍生产品业务的检查</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--117-->
+<record tabname="bsd_checktype">
+  <col name="id">261</col>
+  <col name="name">违规问题及处理</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--118-->
+<record tabname="bsd_checktype">
+  <col name="id">262</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--119-->
+<record tabname="bsd_checktype">
+  <col name="id">263</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">255</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--120-->
+<record tabname="bsd_checktype">
+  <col name="id">264</col>
+  <col name="name">内控制度的检查评价</col>
+  <col name="parentid"></col>
+  <col name="seq">13</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--121-->
+<record tabname="bsd_checktype">
+  <col name="id">265</col>
+  <col name="name">概要</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--122-->
+<record tabname="bsd_checktype">
+  <col name="id">266</col>
+  <col name="name">内部控制状况的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--123-->
+<record tabname="bsd_checktype">
+  <col name="id">267</col>
+  <col name="name">授信业务内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--124-->
+<record tabname="bsd_checktype">
+  <col name="id">268</col>
+  <col name="name"> 资金业务内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--125-->
+<record tabname="bsd_checktype">
+  <col name="id">269</col>
+  <col name="name">存款及柜台业务内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--126-->
+<record tabname="bsd_checktype">
+  <col name="id">270</col>
+  <col name="name">中间业务内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--127-->
+<record tabname="bsd_checktype">
+  <col name="id">271</col>
+  <col name="name">会计业务内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--128-->
+<record tabname="bsd_checktype">
+  <col name="id">272</col>
+  <col name="name">计算机系统内部控制的检查</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--129-->
+<record tabname="bsd_checktype">
+  <col name="id">273</col>
+  <col name="name">内部控制评价程序及标准</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--130-->
+<record tabname="bsd_checktype">
+  <col name="id">274</col>
+  <col name="name">案例分析</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--131-->
+<record tabname="bsd_checktype">
+  <col name="id">275</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">264</col>
+  <col name="seq"></col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--132-->
+<record tabname="bsd_checktype">
+  <col name="id">277</col>
+  <col name="name">网上银行业务检查</col>
+  <col name="parentid"></col>
+  <col name="seq">14</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--133-->
+<record tabname="bsd_checktype">
+  <col name="id">278</col>
+  <col name="name">概要</col>
+  <col name="parentid">277</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--134-->
+<record tabname="bsd_checktype">
+  <col name="id">279</col>
+  <col name="name">网上银行业务检查</col>
+  <col name="parentid">277</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--135-->
+<record tabname="bsd_checktype">
+  <col name="id">281</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">277</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--136-->
+<record tabname="bsd_checktype">
+  <col name="id">301</col>
+  <col name="name">附录：检查依据、有关法规摘录</col>
+  <col name="parentid">201</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+</root>
