@@ -459,13 +459,14 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 						"select '10' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K))/10000 rwnum from hzdb.excel_tab_18 where year='"+times[i][3]+"' union all\n" +
 						"select '11' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L))/10000 rwnum from hzdb.excel_tab_18 where year='"+times[i][3]+"' union all\n" +
 						"select '12' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L)+sum(M))/10000 rwnum from hzdb.excel_tab_18 where year='"+times[i][3]+"'\n" +
-						")union all (select Round(sum(r)/10000,2) zj,'实际完成' name,month||'月' code from hzdb.excel_tab_9 \n" +
+						")union all (select Round(sum(f)/10000,2) zj,'实际完成' name,month||'月' code from hzdb.excel_tab_9 \n" +
 						"where year='"+times[i][3]+"' and A not in('合计') group by month)) where code='"+times[i][2]+"月')");
 				if(i==1){
 				}else{
 					sb.append(" union all ");
 				}
 			}
+			System.out.println(">>>>>>>>>>"+sb.toString());
 			data=dmo.getStringArrayByDS(null,sb.toString());
 		}catch (Exception e){
 			e.printStackTrace();

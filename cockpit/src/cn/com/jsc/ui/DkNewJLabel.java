@@ -48,7 +48,7 @@ public class DkNewJLabel {
             label_7= new JLabel("<html><font color='FFFF00' size=5>(较年初新增："+bmdk[0][1]+"户)</font></html>");
             label_8= new JLabel("<html><font color='#7CFC00' size=5>个体工商户："+gtdk[0][0]+"户</font></html>");//
             label_9= new JLabel("<html><font color='#7CFC00' size=5>(较年初新增："+gtdk[0][1]+"户)</font></html>");
-            label_10= new JLabel("<html><font color='#DC143C' size=5>新动力："+xdldk[0][0]+"户</font></html>");//
+            label_10= new JLabel("<html><font color='#DC143C' size=5>薪动力："+xdldk[0][0]+"户</font></html>");//
             label_11= new JLabel("<html><font color='#DC143C' size=5>(较年初新增："+xdldk[0][1]+"户)</font></html>");
             label_12= new JLabel("<html><font color='Lime' size=5>农户："+nhdk[0][0]+"户</font></html>");//
             label_13= new JLabel("<html><font color='Lime' size=5>(较年初新增："+nhdk[0][1]+"户)</font></html>");
