@@ -30,7 +30,9 @@ import cn.com.infostrategy.ui.sysapp.other.RefDialog_Month;
 import cn.com.pushworld.wn.ui.WnSalaryServiceIfc;
 
 public class DeptYearSurplusPerformanceWKPanel extends AbstractWorkPanel implements ActionListener {
-
+	/**
+	 * 是不是很拉缸
+	 */
 	private BillListPanel listPanel;
 	private WLTButton accountBtn;
 	private String selectDate="";

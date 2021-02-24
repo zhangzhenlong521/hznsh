@@ -5,12 +5,13 @@
       <artifact name="hznsh" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/score/p02/ChargeWKPanel.java" line="113" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ad8f4c48-1eee-498b-8468-a95a8c236592" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/conf/weblight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/weblight.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryFormulaDMO.java" beforeDir="false" afterPath="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryFormulaDMO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/paymanage/Salary_FactorFormulaWKPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/paymanage/Salary_FactorFormulaWKPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/hznsh.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hznsh.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,77 +24,190 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageWkPanel.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="74" column="53" selection-start-line="74" selection-start-column="53" selection-end-line="74" selection-end-column="53" />
+            <state relative-caret-position="344">
+              <caret line="169" column="41" selection-start-line="169" selection-start-column="41" selection-end-line="169" selection-end-column="41" />
               <folding>
-                <element signature="e#8890#9018#0" expanded="true" />
-                <element signature="e#9017#9018#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageDKWkPanel.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CockpitMainPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-              <folding>
-                <element signature="e#11397#12793#0" expanded="true" />
-                <element signature="e#12792#12793#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkBarChart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="138" selection-start-line="138" selection-end-line="138" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkPieChart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="145" column="39" lean-forward="true" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/bs/CockpitServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1000">
+              <caret line="461" column="55" selection-start-line="461" selection-start-column="55" selection-end-line="461" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>V_wg_info</find>
-      <find>v_wg_inf</find>
-      <find>v_wg_info</find>
-      <find>zpy</find>
-      <find>Html`</find>
-      <find>jComboBox_onePageRecords</find>
-      <find>quickQueryPanel</find>
-      <find>500</find>
-      <find>li_onepagerecords</find>
-      <find>2000</find>
-      <find>insert</find>
-      <find>isAd</find>
-      <find>name</find>
-      <find>btn_save</find>
-      <find>网格</find>
-      <find>行</find>
-      <find>刷新行</find>
+      <find>ma</find>
+      <find>factors</find>
+      <find>process</find>
+      <find>网格概况</find>
+      <find>s_loan_dk</find>
+      <find>key</find>
+      <find>dept</find>
+      <find>dept_dk</find>
+      <find>dkye</find>
+      <find>区间</find>
+      <find>getDayYear()</find>
+      <find>2020</find>
+      <find>DkNumberWKPaenl</find>
+      <find>CkNewJLabel</find>
+      <find>#800080</find>
+      <find>Black</find>
+      <find>#2F4F4F</find>
+      <find>#4682B4</find>
+      <find>不良贷款总额</find>
+      <find>薪酬_月度考核频率</find>
+      <find>grid_data</find>
+      <find>main</find>
+      <find>前一天</find>
+      <find>SAL_DEPT_CHECK_SCORE_CODE1</find>
+      <find>保存</find>
+      <find>待分配网格</find>
+      <find>上传</find>
+      <find>存款</find>
+      <find>final</find>
+      <find>贷款</find>
     </findStrings>
     <replaceStrings>
       <replace>excel_tab_85</replace>
+      <replace>hzdb.excel_tab_18 where year='&quot;+getSmonthtYear()+&quot;'</replace>
+      <replace>year='&quot;+getSmonthtYear()+&quot;'</replace>
+      <replace>getJLabel()</replace>
+      <replace>#556B2F</replace>
+      <replace>贵州赫章农商银行</replace>
+      <replace>贵州</replace>
+      <replace>#F8F8FF</replace>
+      <replace>#008000</replace>
+      <replace>#00FF00</replace>
+      <replace>dept</replace>
+      <replace>newcol[col.length]</replace>
+      <replace>itemVO</replace>
+      <replace>cgprocess</replace>
+      <replace>key.toString()</replace>
+      <replace>times[i][3]</replace>
+      <replace>&quot;+times[i][3]+&quot;</replace>
+      <replace>#7CFC00</replace>
+      <replace>#FFFFFF</replace>
+      <replace>FFFF00</replace>
+      <replace>#DC143C</replace>
+      <replace>60天以上不良贷款总额</replace>
+      <replace>其他网格</replace>
+      <replace>贷款</replace>
+      <replace>存款</replace>
+      <replace>不良贷款</replace>
     </replaceStrings>
     <dirStrings>
+      <dir>E:\IDEACode\hznsh\test</dir>
       <dir>E:\IDEACode\hznsh</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hzbank/hzbank" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListPanel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryServiceImpl.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryFormulaDMO.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/score/p02/ChargeWKPanel.java" />
+        <option value="$PROJECT_DIR$/test/饼图.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkBarChart.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkNewJLabel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/柱状图.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CKgzhWcQkWKPanel.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/to/AbstractFomulaParse.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/to/BshFomulaParse.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/to/SalaryFomulaParseUtil.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/to/mdata/jepfunctions/ToString.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/ui/common/ClientEnvironment.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/sysapp/cn/com/infostrategy/to/sysapp/login/CurrLoginUserVO.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/p040/PersonAndDeptCheckWKPanel.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/Grid/DayAvgPanel.java" />
         <option value="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListPanel.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/to/mdata/Pub_Templet_1_ItemVO.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CKgzhMbiaoWcQkuang.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/SecurityUtils.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/DESKeyTool.java" />
+        <option value="$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/to/mdata/Pub_Templet_1VO.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/score/p02/DeptCompleteWKPanel.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/QuantifyTargetListWKPanel.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/DeptCompleteWKPanel.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/IndicatorsCompleteWKPanel.java" />
+        <option value="$PROJECT_DIR$/test/WgDataUpdate.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/WnSalaryServiceIfc.java" />
+        <option value="$PROJECT_DIR$/ipushgrc-new/src/com/pushworld/ipushgrc/ui/tools/ToosBoxPanel.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/WnSalaryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryFormulaDMO.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkPieChart.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkBarChart.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkFarmersChart.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkNumberWKPaenl.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CockpitServiceIfc.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/BadNewJLabel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnyWKPanel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnEDaiMarketingWKPanel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnyMarketingWKPanel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/TitleNewJLabel.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SynDataRunTimer.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/p040/DeptTargetScoredWKPanel.java" />
         <option value="$PROJECT_DIR$/test/test.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/Data/ToBeDistributedJob.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/Grid/GridDateMxQuery.java" />
         <option value="$PROJECT_DIR$/conf/weblight.xml" />
-        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/paymanage/Salary_FactorFormulaWKPanel.java" />
-        <option value="$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageDKWkPanel.java" />
-        <option value="$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageWkPanel.java" />
+        <option value="$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/Data/DKDatacCeaning.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkNewJLabel.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/bs/CockpitServiceImpl.java" />
+        <option value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java" />
+        <option value="$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CockpitMainPage.java" />
       </list>
     </option>
   </component>
@@ -110,24 +224,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/hznsh.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/artifacts/hznsh.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/jsp_api.xml" />
-        <option value="$PROJECT_DIR$/.idea/encodings.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="231" />
-    <option name="y" value="18" />
-    <option name="width" value="1659" />
-    <option name="height" value="957" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="264" />
+    <option name="y" value="264" />
+    <option name="width" value="1617" />
+    <option name="height" value="717" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -135,6 +236,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,18 +249,31 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/apache-tomcat-7.0.103-windows-x64/apache-tomcat-7.0.103/webapps/hznsh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/install/templetdata" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23033708" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.com.jsc.ui" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEACode\hznsh\gitsalary\salary\src\cn\com\pushworld\salary\bs\install\templetdata" />
+      <recent name="E:\IDEACode\hznsh\WebRoot\WEB-INF\lib" />
+      <recent name="E:\IDEACode\hznsh\WebRoot\help" />
+      <recent name="E:\IDEACode\hznsh\WebRoot\applet" />
+      <recent name="E:\IDEACode\hznsh\test" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -173,6 +288,52 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.hznsh">
+    <configuration name="CockpitServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.jsc.bs.CockpitServiceImpl" />
+      <module name="hznsh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.jsc.bs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DKDatacCeaning" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.pushworld.wn.bs.Data.DKDatacCeaning" />
+      <module name="hznsh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.pushworld.wn.bs.Data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SynDataRunTimer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.pushworld.salary.bs.dinterface.SynDataRunTimer" />
+      <module name="hznsh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.pushworld.salary.bs.dinterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WgDataUpdate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WgDataUpdate" />
+      <module name="hznsh" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="hznsh" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cn.com.infostrategy.ui.common.DebugApplet" />
       <module name="hznsh" />
@@ -186,7 +347,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="cn.com.infostrategy.ui.common.DebugApplet" />
       <module name="hznsh" />
-      <option name="PROGRAM_PARAMETERS" value="http://localhost:8080/hznsh/login?admin=y&amp;usercode=admin&amp;pwd=1&amp;adminpwd=000" />
+      <option name="PROGRAM_PARAMETERS" value="http://localhost:8080/hznsh/login?admin=y&amp;usercode=126849&amp;pwd=xixu860907&amp;adminpwd=1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -281,11 +442,19 @@
       <item itemvalue="Application.hznsh" />
       <item itemvalue="Application.hznshtest1" />
       <item itemvalue="Application.test" />
+      <item itemvalue="Application.CockpitServiceImpl" />
+      <item itemvalue="Application.WgDataUpdate" />
+      <item itemvalue="Application.SynDataRunTimer" />
+      <item itemvalue="Application.DKDatacCeaning" />
       <item itemvalue="Tomcat Server.hznshTomcat" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.test" />
+        <item itemvalue="Application.DKDatacCeaning" />
+        <item itemvalue="Application.SynDataRunTimer" />
+        <item itemvalue="Application.CockpitServiceImpl" />
+        <item itemvalue="Application.WgDataUpdate" />
       </list>
     </recent_temporary>
   </component>
@@ -302,40 +471,101 @@
       <workItem from="1602406231542" duration="921000" />
       <workItem from="1602468452985" duration="34481000" />
       <workItem from="1602722656336" duration="8885000" />
+      <workItem from="1607042923911" duration="1286000" />
+      <workItem from="1607142952565" duration="16906000" />
+      <workItem from="1607230917084" duration="14006000" />
+      <workItem from="1607301937735" duration="87981000" />
+      <workItem from="1607587363723" duration="11953000" />
+      <workItem from="1607657862826" duration="2558000" />
+      <workItem from="1607672575783" duration="666000" />
+      <workItem from="1607737442545" duration="440000" />
+      <workItem from="1607908524166" duration="29032000" />
+      <workItem from="1608087527056" duration="29815000" />
+      <workItem from="1608252559081" duration="1087000" />
+      <workItem from="1608258176710" duration="21769000" />
+      <workItem from="1608512038734" duration="56178000" />
+      <workItem from="1608772323470" duration="4373000" />
+      <workItem from="1608777536674" duration="2045000" />
+      <workItem from="1608797759187" duration="13560000" />
+      <workItem from="1608893753505" duration="853000" />
+      <workItem from="1609121505631" duration="2277000" />
+      <workItem from="1609147670580" duration="9732000" />
+      <workItem from="1609231968758" duration="3793000" />
+      <workItem from="1609384081220" duration="11000" />
+      <workItem from="1609465545554" duration="511000" />
+      <workItem from="1609807340129" duration="46722000" />
+      <workItem from="1610162341318" duration="162000" />
+      <workItem from="1610162742512" duration="4992000" />
+      <workItem from="1610256069042" duration="27869000" />
+      <workItem from="1610357798297" duration="40631000" />
+      <workItem from="1610532489609" duration="2391000" />
+      <workItem from="1610585328550" duration="13066000" />
+      <workItem from="1609931499174" duration="1772000" />
+      <workItem from="1610671946408" duration="10637000" />
+      <workItem from="1610766410557" duration="15430000" />
+      <workItem from="1610855830304" duration="2733000" />
+      <workItem from="1610869802187" duration="6270000" />
+      <workItem from="1610884571559" duration="11101000" />
+      <workItem from="1611017615518" duration="38136000" />
+      <workItem from="1611278166445" duration="7453000" />
+      <workItem from="1611301195778" duration="13294000" />
+      <workItem from="1611378194806" duration="10081000" />
+      <workItem from="1611481452103" duration="27865000" />
+      <workItem from="1611623039785" duration="127009000" />
+      <workItem from="1612316925906" duration="659000" />
+      <workItem from="1612325018216" duration="9934000" />
+      <workItem from="1612402009513" duration="8038000" />
+      <workItem from="1612436896568" duration="13285000" />
+      <workItem from="1612753600532" duration="835000" />
+      <workItem from="1613783032588" duration="16825000" />
+      <workItem from="1613876626844" duration="938000" />
+      <workItem from="1613885858140" duration="1925000" />
+      <workItem from="1613955143428" duration="2328000" />
+      <workItem from="1613987682891" duration="794000" />
+      <workItem from="1614047299296" duration="22154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44287000" />
+    <option name="totallyTimeSpent" value="862416000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123686336" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="7" visible="true" weight="0.15278901" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995958" weight="0.23978686" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4995958" weight="0.39964476" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5004042" side_tool="true" weight="0.53641206" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995958" weight="0.3250444" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Java Enterprise" order="5" sideWeight="0.4987874" weight="0.3285968" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.497979" weight="0.64298403" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3285968" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3285968" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502021" side_tool="true" weight="0.61989343" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.4831261" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.3285968" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.41918296" />
+      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.40497336" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3428064" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.2497979" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497979" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -346,31 +576,31 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16168149" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="7" weight="0.15278901" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995958" weight="0.23978686" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4995958" visible="true" weight="0.39964476" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5004042" side_tool="true" weight="0.53641206" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995958" weight="0.3250444" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Java Enterprise" order="5" sideWeight="0.4987874" weight="0.3285968" />
+      <window_info active="true" anchor="bottom" id="Debug" order="6" sideWeight="0.497979" visible="true" weight="0.64298403" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3285968" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3285968" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502021" side_tool="true" weight="0.61989343" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.4831261" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.3285968" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.41918296" />
+      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.40497336" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3428064" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.2497979" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497979" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -384,280 +614,472 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/gitweblight/weblight/src/sysapp/cn/com/infostrategy/bs/sysapp/ServerStateServlet.java</url>
+          <line>168</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryServiceImpl.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java</url>
+          <line>101</line>
+          <properties />
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java</url>
+          <line>148</line>
+          <properties />
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/HashVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+          <folding>
+            <element signature="e#1495#1496#0" expanded="true" />
+            <element signature="e#1539#1540#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/VectorMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/DrawString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/ui/common/MessageBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CKgzhMbiaoWcQkuang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/WgDataUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="12" selection-start-line="12" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/WnSalaryServiceIfc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ipushgrc-new/src/com/pushworld/ipushgrc/ui/tools/ToosBoxPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="193" column="39" lean-forward="true" selection-start-line="193" selection-start-column="39" selection-end-line="193" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/WnSalaryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="6074" column="78" selection-start-line="6074" selection-start-column="78" selection-end-line="6074" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryFormulaDMO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="154" column="446" selection-start-line="154" selection-start-column="446" selection-end-line="154" selection-end-column="446" />
+        <state relative-caret-position="1679">
+          <caret line="2078" column="65" selection-start-line="2078" selection-start-column="65" selection-end-line="2078" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/report/cn/com/infostrategy/ui/report/BillCellHtmlHrefListener.java">
+    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/util/List.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="63" />
+        <state relative-caret-position="80">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ipushgrc-new/src/com/pushworld/ipushgrc/ui/law/p010/LawEditWKPanel.java">
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/ui/common/SplashWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="78" column="67" lean-forward="true" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="67" />
+        <state relative-caret-position="79">
+          <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/util/Vector.class">
+    <entry file="file://$PROJECT_DIR$/test/饼图.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        <state relative-caret-position="840">
+          <caret line="58" column="37" lean-forward="true" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillPanel.java">
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkNumberWKPaenl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-710">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        <state relative-caret-position="380">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/awt/event/ItemEvent.class">
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CockpitServiceIfc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <caret line="155" column="25" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/javax/swing/JComboBox.class">
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnyWKPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="241" column="18" selection-start-line="241" selection-start-column="18" selection-end-line="241" selection-end-column="18" />
+        <state relative-caret-position="291">
+          <caret line="107" selection-start-line="107" selection-end-line="107" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnEDaiMarketingWKPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/QnyMarketingWKPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1499">
+          <caret line="142" column="50" selection-start-line="142" selection-start-column="50" selection-end-line="142" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/TitleNewJLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/sysapp/cn/com/infostrategy/bs/sysapp/ServerStateServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="1519" column="12" lean-forward="true" selection-start-line="1519" selection-start-column="12" selection-end-line="1519" selection-end-column="12" />
           <folding>
-            <element signature="e#7547#7548#0" expanded="true" />
-            <element signature="e#7602#7603#0" expanded="true" />
+            <element signature="e#78282#78307#0" expanded="true" />
+            <element signature="e#78504#78520#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/to/mdata/RowNumberItemVO.java">
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/Data/DataFinishing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="173">
+          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="127" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/to/mdata/Pub_Templet_1VO.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/tools/CheckTableUpdateWKPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="67" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="67" />
+        <state relative-caret-position="-189">
+          <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/bs/mdata/MetaDataDMO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="82" column="62" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/bs/mdata/FrameWorkMetaDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="144" column="40" lean-forward="true" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/FrameWorkMetaDataServiceIfc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="67" column="31" lean-forward="true" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/awt/Component.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="2102" column="38" selection-start-line="2102" selection-start-column="38" selection-end-line="2102" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListDialog.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/SalaryServiceIfc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="37" column="43" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="43" />
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/SalaryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14080">
+          <caret line="746" column="113" selection-start-line="746" selection-start-column="93" selection-end-line="746" selection-end-column="113" />
           <folding>
-            <element signature="e#4430#4431#0" expanded="true" />
-            <element signature="e#4457#4458#0" expanded="true" />
-            <element signature="e#4955#4956#0" expanded="true" />
-            <element signature="e#4989#4990#0" expanded="true" />
+            <element signature="e#3001#3002#0" expanded="true" />
+            <element signature="e#3047#3048#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/cardcomp/CardCPanel_TextField.java">
+    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/text/DateFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="491" column="43" lean-forward="true" selection-start-line="491" selection-start-column="43" selection-end-line="491" selection-end-column="43" />
+        <state relative-caret-position="1000">
+          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/ui/common/WLTButton.java">
+    <entry file="jar://E:/jdk1.6.0_26/jre/lib/rt.jar!/java/util/Calendar.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="1755" selection-start-line="1755" selection-end-line="1755" />
-          <folding>
-            <element signature="e#63986#63987#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2780">
+          <caret line="164" column="22" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/dinterface/p010/DataInterfaceConfigWKPanel.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/p040/PersonAndDeptCheckWKPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="96" column="38" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="38" />
+        <state relative-caret-position="3160">
+          <caret line="189" column="66" selection-start-line="189" selection-start-column="66" selection-end-line="189" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/sysapp/cn/com/infostrategy/to/sysapp/login/CurrLoginUserVO.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/install/templetdata/SAL_DEPT_CHECK_SCORE_CODE1.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="294" column="29" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="29" />
-          <folding>
-            <element signature="e#6244#6245#0" expanded="true" />
-            <element signature="e#6275#6276#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="80">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/ui/common/ClientEnvironment.java">
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/bs/common/WLTJobTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-          <folding>
-            <element signature="e#6122#6123#0" expanded="true" />
-            <element signature="e#6171#6172#0" expanded="true" />
-            <element signature="e#7258#7259#0" expanded="true" />
-            <element signature="e#7313#7314#0" expanded="true" />
-            <element signature="e#11045#11046#0" expanded="true" />
-            <element signature="e#11072#11073#0" expanded="true" />
-            <element signature="e#12744#12745#0" expanded="true" />
-            <element signature="e#12795#12796#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="7340">
+          <caret line="390" selection-start-line="390" selection-end-line="390" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/CurrSessionVO.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/p040/DeptTargetScoredWKPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="e#2254#2255#0" expanded="true" />
-            <element signature="e#2281#2282#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="9300">
+          <caret line="515" column="56" selection-start-line="515" selection-start-column="45" selection-end-line="515" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/NumberFormatdocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1880">
+          <caret line="101" column="14" selection-start-line="101" selection-start-column="14" selection-end-line="101" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/weblight.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="251" column="27" selection-start-line="251" selection-start-column="27" selection-end-line="251" selection-end-column="27" />
+        <state relative-caret-position="5640">
+          <caret line="282" selection-start-line="282" selection-end-line="282" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/to/common/WLTConstants.java">
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/Data/ToBeDistributedJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
+        <state relative-caret-position="2380">
+          <caret line="127" column="110" selection-start-line="127" selection-start-column="110" selection-end-line="127" selection-end-column="110" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/sysapp/cn/com/infostrategy/ui/sysapp/job/PubJobWKPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="47" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="47" />
+        <state relative-caret-position="120">
+          <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/bs/common/FrameWorkCommServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/ui/hz/score/p01/Grid/GridDateMxQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13200">
-          <caret line="722" column="23" selection-start-line="722" selection-start-column="23" selection-end-line="722" selection-end-column="23" />
+        <state relative-caret-position="7700">
+          <caret line="413" column="89" selection-start-line="413" selection-start-column="89" selection-end-line="413" selection-end-column="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/bs/common/RemoteCallServlet.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/target/p010/TargetCheckPlanWKPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1060">
-          <caret line="92" column="12" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
+        <state relative-caret-position="14240">
+          <caret line="746" column="24" selection-start-line="746" selection-start-column="24" selection-end-line="746" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/ui/paymanage/Salary_FactorFormulaWKPanel.java">
+    <entry file="file://$PROJECT_DIR$/hzbank/src/cn/com/pushworld/wn/bs/Data/DKDatacCeaning.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="483" column="93" selection-start-line="483" selection-start-column="93" selection-end-line="483" selection-end-column="93" />
+        <state relative-caret-position="274">
+          <caret line="385" selection-start-line="385" selection-end-line="385" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillCardPanel.java">
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SynDataRunTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="1051" column="10" selection-start-line="1051" selection-start-column="10" selection-end-line="1051" selection-end-column="10" />
+        <state relative-caret-position="113">
+          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkNewJLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="54" column="89" selection-start-line="54" selection-start-column="67" selection-end-line="54" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/common/cn/com/infostrategy/bs/common/CommDMO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="533" column="15" selection-start-line="533" selection-start-column="15" selection-end-line="533" selection-end-column="15" />
+        <state relative-caret-position="179">
+          <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillListPanel.java">
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkNewJLabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1021">
-          <caret line="326" column="11" selection-start-line="326" selection-start-column="11" selection-end-line="326" selection-end-column="11" />
+        <state relative-caret-position="179">
+          <caret line="90" selection-start-line="89" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkFarmersChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkBarChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/BadNewJLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="47" column="95" selection-start-line="47" selection-start-column="68" selection-end-line="47" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DateUIUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/DkBarChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="138" selection-start-line="138" selection-end-line="138" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CkPieChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="145" column="39" lean-forward="true" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/bs/CockpitServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="461" column="55" selection-start-line="461" selection-start-column="55" selection-end-line="461" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gitsalary/salary/src/cn/com/pushworld/salary/bs/dinterface/SalaryAppDataJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="169" column="41" selection-start-line="169" selection-start-column="41" selection-end-line="169" selection-end-column="41" />
           <folding>
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14528#14529#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitweblight/weblight/src/mdata/cn/com/infostrategy/ui/mdata/BillCardDialog.java">
+    <entry file="file://$PROJECT_DIR$/cockpit/src/cn/com/jsc/ui/CockpitMainPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="57" column="43" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="43" />
-          <folding>
-            <element signature="e#21294#21295#0" expanded="true" />
-            <element signature="e#21316#21317#0" expanded="true" />
-            <element signature="e#21604#21605#0" expanded="true" />
-            <element signature="e#21631#21632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageDKWkPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-          <folding>
-            <element signature="e#11397#12793#0" expanded="true" />
-            <element signature="e#12792#12793#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hzbank/hzbank/src/cn/com/pushworld/wn/ui/GridDataManageWkPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="74" column="53" selection-start-line="74" selection-start-column="53" selection-end-line="74" selection-end-column="53" />
-          <folding>
-            <element signature="e#8890#9018#0" expanded="true" />
-            <element signature="e#9017#9018#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="80">
+          <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -672,7 +1094,6 @@
             <option name="proportions">
               <list>
                 <option value="0.23033708" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -719,7 +1140,6 @@
             <option name="proportions">
               <list>
                 <option value="0.23033708" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
