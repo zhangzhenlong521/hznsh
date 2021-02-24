@@ -1,0 +1,265 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>万维报表开发</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+ 
+<p class="p_text">
+万维交叉报表就对一个表格数据进行分组统计！<br><br>
+
+它有两个关键概念：<br>
+·<font color="blue">数据维（维数据）</font> <br>
+维数据用于定义数据统计的条件。比如，如果我们要对销售业绩进行统计分析，我们可以把年度、月份、产品、渠道作为维数据。<br>
+
+<br>
+·<font color="blue">分析数据（计量/计算数据）</font><br> 
+度量数据用于定义统计的具体数据对象。如上述的例子，我们可以把销量、销售金额作为计量数据。<br>
+
+<br>
+行与列上者可以有维度,而且可以有多个维度叠加!<br>
+
+<br>
+它本质上等价于SQL:<br>
+
+select 发生机构,发生时间,业务类型,count(*) 记录数,sum(损失金额) 损失金额 from 风险事件表 group by 发生机构,发生时间,业务类型
+<br><br>
+
+下面是原始明细表:
+<br>
+<table border=1 class="p_text">
+<tr><td align="center" bgcolor="#E8FFF3">事情名称</td><td align="center" bgcolor="#E8FFF3">发生时间</td><td align="center" bgcolor="#E8FFF3">风险等级</td><td align="center" bgcolor="#E8FFF3">发生机构</td><td align="center" bgcolor="#E8FFF3">业务类型</td><td align="center" bgcolor="#E8FFF3">损失金额(万元)</td></tr>
+
+<tr><td>上海XX客户骗贷</td><td>2012-01-17</td><td>高风险</td><td>上海分行</td><td>个人业务</td><td>25</td></tr>
+<tr><td>上海XX客户失踪,钱无法追回</td><td>2012-02-12</td><td>高风险</td><td>上海分行</td><td>个人业务</td><td>30</td></tr>
+<tr><td>广州分行人员携巨款外逃</td><td>2012-02-18</td><td>中等风险</td><td>广州分行</td><td>公司业务</td><td>38</td></tr>
+<tr><td>XX客户借钱不还</td><td>2012-04-05</td><td>低风险</td><td>南京分行</td><td>个人业务</td><td>15</td></tr>
+<tr><td>XX分行金库被盗</td><td>2012-06-09</td><td>极大风险</td><td>上海分行</td><td>公司业务</td><td>10</td></tr>
+<tr><td>XX运钞车被劫持</td><td>2012-08-01</td><td>极大等级</td><td>南京分行</td><td>公司业务</td><td>150</td></tr>
+</table>
+
+<br>
+因为这里的发生时间是每一天，而统计时需要将他们“折算”成月份或季度，这时平如的原理是,再增加一列，将原来的日期算成对应的季度!具体的方法是：<br>
+<font color="red">reportUtil.leftOuterJoin_YSMDFromDateTime(hvs, "提交时间", "Question_Commit_Time", "季"); //折算成季</font><br><br>
+
+同样,机构,状态等也要分别折算成中文或者是更高一层级的范围，比如“发生机构”可能存储的是某一个部门,比如是“上海分行-法律合规部”但统计时并不关心是哪 个部门，只想知道是哪个分行发生的！比如上海分行!<br><br>
+
+当该折算的都算好后这里就对折算后的列进行分组统计！<br><br>
+
+如果是只对“发生机构”与“业务类型”这两个维度进行统计,则结果如下：
+<table  border=1 class="p_text">
+<tr><td>发生机构</td><td>业务类型</td><td>损失金额</td></tr>
+<tr><td>广州分行</td><td>公司业务</td><td>38</td></tr>
+<tr><td>南京分行</td><td>个人业务</td><td>15</td></tr>
+<tr><td>南京分行</td><td>公司业务</td><td>150</td></tr>
+<tr><td>上海分行</td><td>个人业务</td><td>55</td></tr>
+<tr><td>上海分行</td><td>公司业务</td><td>10</td></tr>
+</table>
+
+<br>
+将“业务类型”提取到上表头后，就是下面的“交叉报表”效果！！
+<br>
+<table width="339"  border=1 class="p_text">
+  <tr>
+    <td width="87">&nbsp;</td>
+    <td width="98" bgcolor="#99FFFF"><div align="center">公司业务</div></td>
+    <td width="116" bgcolor="#99FFFF"><div align="center">个人业务</div></td>
+  </tr>
+  <tr><td bgcolor="#FFFFCC">广州分行</td><td>38</td><td>&nbsp;</td></tr>
+  <tr><td bgcolor="#FFFFCC">南京分行</td><td>150</td><td>15</td></tr>
+  <tr><td bgcolor="#FFFFCC">上海分行</td><td>10</td><td>55</td>
+  </tr>
+</table>
+
+<br>
+再见复杂一点,如果对“发生机构”,“发生时间”,“业务类型”这三个维度进行统计，则结果应该如下：
+<table  border=1 class="p_text">
+<tr><td align="center" bgcolor="#E8FFF3">发生机构</td><td align="center" bgcolor="#E8FFF3">发生时间</td><td align="center" bgcolor="#E8FFF3">业务类型</td><td align="center" bgcolor="#E8FFF3">损失金额</td></tr>
+<tr><td>广州分行</td><td>2012年1季度</td><td>公司业务</td><td>38</td></tr>
+<tr><td>南京分行</td><td>2012年2季度</td><td>个人业务</td><td>15</td></tr>
+<tr><td>南京分行</td><td>2012年3季度</td><td>公司业务</td><td>150</td></tr>
+<tr><td>上海分行</td><td>2012年1季度</td><td>个人业务</td><td>55</td></tr>
+<tr><td>上海分行</td><td>2012年2季度</td><td>公司业务</td><td>10</td></tr>
+</table>
+
+<br>将“业务类型”提取到“上表头”后就会呈现下面效果!<br>
+<table width="381"  border=1 class="p_text">
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td width="78" bgcolor="#66CCFF">公司业务</td>
+    <td width="78" bgcolor="#66CCFF">个人业务</td>
+  </tr>
+  <tr>
+    <td width="72" bgcolor="#FFFFCC">广州分行</td>
+    <td width="104" bgcolor="#CCFFFF">2012年1季度</td>
+    <td>38</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="2" bgcolor="#FFFFCC"> 南京分行 </td>
+    <td bgcolor="#CCFFFF">2012年2季度</td>
+    <td>&nbsp;</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCFFFF">2012年3季度</td>
+    <td>150</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="2" bgcolor="#FFFFCC">上海分行</td>
+    <td bgcolor="#CCFFFF">2012年1季度</td>
+    <td>55</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCFFFF">2012年2季度</td>
+    <td>10</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<br>依次类推，可以选择更多维度进行各种组合！！！<br>
+
+<font color="red">
+所以平台的思想就是，二次开发人员只需要将明细查询出来，然后将精确到天的日期折算成“月份”与“季度”，将机构折算成更高层级，将状态等id折算成中文Name,即可。。。<br>
+而如何组合,组合本身的计算则由平台去搞定！这就是万维报表组件的思路！<br>
+</font>
+
+具体开发分UI端与BS端逻辑，UI端非常简单,只需直接配置,无需写代码，在菜单中选择“Format公式面板”,然后定义公式如下：<br>
+getMultiReport("WLTDUAL","com.pushdemo.bs.p050.TestReportDataBuilder")<br>
+其中第一个参数是查询面板的编码,第二个参数是BS端的数据构造器类名！<br>
+BS端要写一个类,且必须继承于抽象类<font color="red">cn.com.infostrategy.bs.report.MultiLevelReportDataBuilderAdapter</font>,然后实现其中的一些关键方法:<br>
+buildReportData(),构造数据的方法<br>
+getGroupFieldNames(),指定哪些是组维度,这维度必须存在于数据的列中！<br>
+getSumFiledNames(),有哪些计算列,比如损失金额,销售数量等,也必须存在于数据的列中！<br>
+getGroupFieldOrderConfig(),有些数据显示时要按照特定的顺序排列,比如发生机构,喜欢按“总行,北京分行,上海分行”排，而风险级别是按“极大风险,高风险,中等风险...”排列！<br>
+getBeforehandGroupType_Grid(),预置的一些维度,即虽然组合很多,但肯定有最常用的维度,可以预先定义好,这样查询时选择更快!<br>
+
+<textarea cols="150" rows="125" wrap="OFF" style="color:blue">
+package com.pushdemo.bs.p050;
+
+import java.util.HashMap;
+
+import cn.com.infostrategy.bs.common.CommDMO;
+import cn.com.infostrategy.bs.report.MultiLevelReportDataBuilderAdapter;
+import cn.com.infostrategy.bs.report.ReportDMO;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.report.BeforeHandGroupTypeVO;
+import cn.com.infostrategy.to.report.ReportUtil;
+
+/**
+ * 测试报表BS端的代码！
+ */
+public class TestReportDataBuilder extends MultiLevelReportDataBuilderAdapter {
+
+  public static boolean isCreateData = false; //
+
+  @Override
+  public HashVO[] buildReportData(HashMap consMap) throws Exception {
+    //inserDemoData();  //★★★插入Demo数据,报表测试需要大量数据,所以第一次先插入1000条记录!
+      
+    String str_sql = (String) consMap.get("$SQL"); //★★★从查询面板中得要查询条件!不要自己再去一个个的拼SQL了！！
+    StringBuilder sb_sql = new StringBuilder(); //
+    sb_sql.append("select id,"); //
+    sb_sql.append("id 事件数量,"); //
+    sb_sql.append("corpid,"); //发生部门
+    sb_sql.append("busitype,"); //业务类型
+    sb_sql.append("happendate,"); //发生时间
+    sb_sql.append("risktype 风险级别,"); //风险级别
+    sb_sql.append("eventstatu 事件状态,"); //
+    sb_sql.append("lostaccount 损失金额 "); //
+    sb_sql.append("from test_riskevent "); //
+    sb_sql.append("where 1=1 "); //
+    sb_sql.append(str_sql); //加上前台查询面板上传过来的条件！
+
+    CommDMO commDMO = new CommDMO(); //
+    ReportDMO reportDMO = new ReportDMO(); //
+    ReportUtil reportUtil = new ReportUtil(); //
+
+    HashVO[] hvs = commDMO.getHashVoArrayByDS(null, sb_sql.toString()); //查询数据
+  TBUtil.getTBUtil().writeHashToHtmlTableFile(hvs, "C:/zzz_1.htm"); //★★★输出文件看下处理后的样子到底是什么!!非常有用,可以一眼清看明白数据到底是什么样子！！
+  
+    reportDMO.addOneFieldFromOtherTree(hvs, "发生机构", "corpid", "select id,shortname,parentid from pub_corp_dept", 3, false, 2); //根据id从机构表中计算出机构的某一层级的名称!即“折算”机构
+    reportDMO.addOneFieldFromOtherTree(hvs, "业务类型", "busitype", "select id,name,parentid from bd_busitype", 1, true, 1); //从业务类型表中折算名称
+    reportUtil.leftOuterJoin_YSMDFromDateTime(hvs, "发生时间", "happendate", "季"); //将精确到天的日期折算成季
+    reportUtil.replaceAllHashVOsItemValue(hvs, "事件状态", new String[][] { { "0", "未审核" },{ "1", "已审核" } }); //将状态id折算成中文名称
+    
+    TBUtil.getTBUtil().writeHashToHtmlTableFile(hvs, "C:/zzz_2.htm"); //★★★输出文件看下处理后的样子到底是什么!!通过与前一个文件比较,更清楚看到到底发生了什么！
+    return hvs;
+  }
+
+  @Override
+  public String[] getGroupFieldNames() {
+    return new String[] { "发生机构", "发生时间", "风险级别", "事件状态"};  //定义哪些维度
+  }
+
+  @Override
+  public String[] getSumFiledNames() {
+    return new String[] { "事件数量","损失金额" };  //可以参与统计的计算列
+  }
+
+  /**
+   * 定义预置维度,即会在界面左上角的下拉框中出现!它等价于人工选择维度！只不过是存储下来了！
+   */
+  public BeforeHandGroupTypeVO[] getBeforehandGroupType_Grid() {
+    BeforeHandGroupTypeVO[] bhGroupVOs = new BeforeHandGroupTypeVO[2]; //
+    hGroupVOs[0] = new BeforeHandGroupTypeVO(); //
+    bhGroupVOs[0].setName("1.默认维度组合"); //
+    bhGroupVOs[0].setRowHeaderGroupFields(new String[] { "发生机构"}); //
+    bhGroupVOs[0].setColHeaderGroupFields(new String[] { "业务类型" }); //
+    bhGroupVOs[0].setComputeGroupFields(new String[][] { { "事件数量", "count" } }); //
+    bhGroupVOs[0].setRowGroupTiled(true); //
+    bhGroupVOs[0].setRowGroupTiled(true);//
+    bhGroupVOs[0].setColGroupSubTotal(false);
+    bhGroupVOs[0].setRowGroupSubTotal(false);
+    
+    bhGroupVOs[1] = new BeforeHandGroupTypeVO(); //
+    bhGroupVOs[1].setName("2.复杂点的组合"); //
+    bhGroupVOs[1].setRowHeaderGroupFields(new String[] { "发生机构", "发生时间" }); //
+    bhGroupVOs[1].setColHeaderGroupFields(new String[] { "业务类型", "风险级别" }); //
+    bhGroupVOs[1].setComputeGroupFields(new String[][] { { "损失金额", "sum" } }); //
+    bhGroupVOs[1].setRowGroupTiled(true); //
+    bhGroupVOs[1].setRowGroupTiled(true);//
+    bhGroupVOs[1].setColGroupSubTotal(false);
+    bhGroupVOs[1].setRowGroupSubTotal(false);
+    
+    return bhGroupVOs; //
+  }
+  
+  //★★★构造Demo数据,做报表有个问题就是必须有大量的数据,报表效果才能测试出来,所以必须程序造数据!
+  //既可以使用CommDMO中的insertDemoData方法,也可以在表格上右键，选择数据库处理,插入批量demo数据,通过界面操作!
+  private void inserDemoData() {
+    try {
+      HashMap dataMap = new HashMap(); //
+      dataMap.put("corpid", new String[] { "2001", "1999", "1756", "1759", "1742", "1746", "1747" }); //
+      dataMap.put("happendate", new String[] { "2012-01-15", "2012-01-20", "2012-04-15", "2012-05-20", "2012-07-15", "2012-08-20", "2012-10-15", "2012-11-20" }); //
+      dataMap.put("eventstatu", "0;1;"); //
+      dataMap.put("risktype", "极大风险;高风险;低风险;"); //
+      dataMap.put("lostaccount", "125;35;17;28;59;"); //
+      new CommDMO().insertDemoData("test_riskevent", "id", dataMap, 1000); //往测试事件表中插入
+    } catch (Exception ex) {
+      ex.printStackTrace(); //
+    }
+  }
+  
+  @Override
+  //★★★★定义排序条件,经常遇到有些维度值出来后的顺序必须符合一定的顺序,比如风险等级,必须是“高风险,中等风险,低风险”的顺序
+  public HashMap getGroupFieldOrderConfig() {
+    HashMap map = new HashMap();
+    map.put("发生机构", new String[]{"总行","北京分行","上海分行"}); //
+    map.put("风险级别", new String[]{"极大风险","高风险","中等风险","低风险","极小风险" }); //
+    return map;
+  }
+
+}
+</textarea>
+<br><br>
+还有其他更多方法，在Eclipse中选择重构父类方法即可看到！比如两个维度之间默认钻取绑定，钻取时触发的事件！
+<br><br>
+
+</body>
+</html>

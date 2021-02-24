@@ -1,0 +1,25 @@
+为了最大可能保证大家创建包名,类名，表名,字段名统一与规范，现列出常用汉字的中英文对照,以后创建时查一下!!!
+以后会不断的扩充,估计最终将会有500个左右!
+
+创建人-creater        创建日期-createdate          题目-subject            主动-forwardly           被动-passivity          岗位-post            岗责-duty  
+案件-case             主要-master                  风格-style              方式-fashion             赔偿-compensate         注册-regist          注册资本-registcapital  
+注册码-registcode     注册公式-registformula       注册地址-registaddr     专题/专项-special        业务-busi               技术-technic         兼职-plurality  
+专业-professional     事项-item                    资产/资本-capital       金额-account             总额-sumaccount         采集/收集-gather     简介-brief  
+类型-type             资料-datum                   提醒-remind             审核/审查-audit          自评-selfeval           说明-descr           总结/综述/概述-sumup  
+性别-sex              年龄-age                     工龄-workage            地址-addr                手机-mb                 联系电话-tel         简历-resume  
+重复-repeat           复核-repeataudit             得分/分数-score         总分-wholescore          满意-well               满意度-welllevel     部门-dept  
+评价-eval             总体-whole                   矩阵-matrix             影响-infect              变化-change             结构-struct          环节/步骤-step  
+组织-organize         组织者-organizer             学历/学位-degree        建议-suggest             意见-idea               附件-attachfile      说明-descr
+提交意见submitidea    提交-submit                  提交者-submiter         提交时间-submittime      最后-last               期限-timelimit       结果-result  
+最终-finally          损失-loss                    解决-resolve            作废时间-abolishdate     作者-author             检查-check           状态-status     
+合同-bargain          发布机构-publishcorp         批准-approve            批准机构-approvecorp     批准日期-approvedate    备注-remark          版本-version
+报告-report           周期-cycle                   跟踪-track              可能性-possible          严重/严重程度-serious   级别/风险级别-rank   惩罚-punish  
+措施-act              代理-proxy                   贷款-lend               单据-bill                导入-import             导出-export          控制-control  
+发现-find             发生-happen                  实例-instance           发布/公布-publish        反馈-feedback           费用-expense         方案-scheme  
+分析-analyse          纠纷-dissension              付款-pay                单位-corp                帐号-accounts           黑名单-blacklist     考核-exam  
+领导-leaer            流程-process                 申请-apply              事件-event               地区/范围-area          原因-reason          指标-target  
+涉及/关联-ref         币种-currencytype            紧急-hurry              程度-level               问题-question           权限-permit          解读-exposit
+法律事务模块-lbs_     内外规模块-law_              体系文件模块-cmf_       合规模块-cmp_            风险模块-risk_          有效-effect          无效-uneffect
+正文-textfile         链接-relation                标准-gage               渠道-channel             承办-undertake
+
+
