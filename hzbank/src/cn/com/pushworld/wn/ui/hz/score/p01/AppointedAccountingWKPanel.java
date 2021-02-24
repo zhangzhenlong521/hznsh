@@ -261,7 +261,7 @@ public class AppointedAccountingWKPanel extends AbstractWorkPanel implements
 		try {
 			HashVO[] vos = UIUtil
 					.getHashVoArrayByDS(null,
-							"select * from v_sal_personinfo where STATIONKIND like '%委派会计'");
+							"select * from v_sal_personinfo where STATIONKIND like '%会计主管'");
 			HashVO[] zbvos = UIUtil
 					.getHashVoArrayByDS(
 							null,
