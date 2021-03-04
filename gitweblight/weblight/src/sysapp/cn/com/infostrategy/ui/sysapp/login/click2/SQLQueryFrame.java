@@ -1,0 +1,41 @@
+package cn.com.infostrategy.ui.sysapp.login.click2;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
+/**
+ * SQL²éÑ¯·ÖÎöÆ÷..
+ * @author xch
+ *
+ */
+public class SQLQueryFrame extends JFrame {
+
+	private static final long serialVersionUID = 7612475787826401397L;
+
+	public SQLQueryFrame() {
+		this.setTitle("SQL Query ToolKit"); //
+		this.setSize(1000, 700);  //
+		this.setLocation(0, 0);
+
+		JTabbedPane tabbed = new JTabbedPane(); //
+		tabbed.setFocusable(false); //
+		tabbed.addTab("²éÑ¯¿ò1", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò2", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò3", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò4", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò5", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò6", new SQLQueryPanel()); //
+		tabbed.addTab("²éÑ¯¿ò7", new SQLQueryPanel()); //
+		this.getContentPane().setLayout(new BorderLayout()); //
+		this.getContentPane().add(tabbed); //
+	}
+	
+	public static void openMe(java.awt.Container _parent, String _tile, String _type) {
+		SQLQueryFrame frame = new SQLQueryFrame(); //
+		frame.setVisible(true);
+		frame.toFront();
+	}
+
+}

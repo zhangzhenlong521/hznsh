@@ -1,0 +1,205 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>平台工作流</title>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+.table {  border-collapse:   collapse; font-size: 12px; };
+.td    {  border:   solid   1px   #888888; font-size: 12px; };
+</style>
+</head>
+
+<body>
+工 作 流 核 心  功 能<br>
+<span style="font-size: 12px;">普信WebPush平台工作流实现的功能清单,基于这些功能需求的前提下都是可配置的!!</span><br>
+<table width="80%" align="left" class="table" cellspacing=0 cellpadding=6>
+  <tr bgcolor="#DCFAC8">
+    <td class="td" align="center">&nbsp;</td>
+    <td class="td" align="center">需求要点</td>
+    <td class="td" align="center">说明</td>
+  </tr>
+  <tr>
+    <td class="td">1</td>
+    <td class="td">图形配置</td>
+    <td class="td">即可以使用图形配置的方式来快速实现工作流程,从而非常形象快速的构建应用,这也是一个工作流产品的必备功能 !
+        图形支持彩色,形状,图标,边框,字体,等多种设置</td>
+  </tr>
+  <tr>
+    <td class="td">2</td>
+    <td class="td">根据单据类型与业务类型自动选择流程,与单据绑定</td>
+    <td class="td">为了重用工作流，可以指定抽象的单据类型与业务类型,然后与表单绑定,通过表单的录入项自动动态的计算出指定的流程 ! 比如请假流程,如果是病假走某个流程,如果是事假则又走另一个流程</td>
+  </tr>
+  <tr>
+    <td class="td">3</td>
+    <td class="td">多路 / 半路启动</td>
+    <td class="td">一般一个流程只有一个启动环节,但有的流程会根据登录人员的角色而自动决定从哪个环节启动,即可以从个环节开始启动</td>
+  </tr>
+  <tr>
+    <td class="td">4</td>
+    <td class="td">约束指定的角色启动</td>
+    <td class="td">启动环节上可以指定角色,即只有这些角色才能从这个环节启动</td>
+  </tr>
+  <tr>
+    <td class="td">5</td>
+    <td class="td">抢占 / 会签(会签数量)</td>
+    <td class="td">提交给某一个环节时,可以是一批人,而这些人可以抢占模式处理,也可以是会签模式,而会签模式则又支持百分比与绝对数约定</td>
+  </tr>
+  <tr>
+    <td class="td">6</td>
+    <td class="td">退回(可退回发起者 / 提交者 / 任意一人) </td>
+    <td class="td">可以退回给某个人,比如流程发起者,上游提交人,曾经走过的任意人员 !</td>
+  </tr>
+  <tr>
+    <td class="td">7</td>
+    <td class="td">指定退回者直接提交(乒乓式退回)</td>
+    <td class="td">退回给某个人后,指定那个人必须直接提交给我,而不是可以再次选择人员 ! 即像乒乓球一样直接“弹回来”</td>
+  </tr>
+  <tr>
+    <td class="td">8</td>
+    <td class="td">接收</td>
+    <td class="td">因为有的人没时间处理,但已经知道这事,为了证明其接收效率,需要先接收下,即接收与处理可以分两步进行,就像收邮件很及时,但不一定马上回复,在管理上计算其工作效率是以接收时间为准的</td>
+  </tr>
+  <tr>
+    <td class="td">9</td>
+    <td class="td">撤回</td>
+    <td class="td">即流程提交错了,可以撤回来,但如果下游人员已处理了,则不能撤回</td>
+  </tr>
+  <tr>
+    <td class="td">10</td>
+    <td class="td">半路结束</td>
+    <td class="td">一般来说,流程只在最后一步结束,但有的分行领导可以直接在半路结束流程 ! 同时需要支持拦截器定义,在一定的条件下才可以半路结束,宁波银行就提出当金额大于 500 万时是不能半路结束,而小于 500 万就可以半路结束 !!! </td>
+  </tr>
+  <tr>
+    <td class="td">11</td>
+    <td class="td">指定参与人 / 角色 / 机构(支持公式与自定义类)</td>
+    <td class="td">某环节上的参与者(接收者) 定义,可以指定直接某些人,或某些机构与角色,可以使用公式或自定义类</td>
+  </tr>
+  <tr>
+    <td class="td">12</td>
+    <td class="td">动态参与者</td>
+    <td class="td">如果配置不出来,可以使用动态参与者定义</td>
+  </tr>
+  <tr>
+    <td class="td">13</td>
+    <td class="td">抄送</td>
+    <td class="td">即有些处理需要告知某些人,而不需要其处理</td>
+  </tr>
+  <tr>
+    <td class="td">14</td>
+    <td class="td">兵分多路走流程(即分支)</td>
+    <td class="td">即可以同时给多个环节提交,即兵分多路,如果分出去后不再聚拢,则可以自行结束,如果还需聚拢,则会出现合并情况 !</td>
+  </tr>
+  <tr>
+    <td class="td">15</td>
+    <td class="td">分出去的多路必须到达才能继续走(即合并)</td>
+    <td class="td">在某一环节必须等待指向他的多个连线到达后,才能继续往后走,即合并</td>
+  </tr>
+  <tr>
+    <td class="td">16</td>
+    <td class="td">根据连线上的条件自动选择分支</td>
+    <td class="td">连线上可以设置条件,如果条件满足才走这条线,比如金额 &lt;100 万则处长审核,而 &gt;100 万则需要经理审核</td>
+  </tr>
+  <tr>
+    <td class="td">17</td>
+    <td class="td">自循环</td>
+    <td class="td">某些环节可以自已提交给自已,即原地转圈</td>
+  </tr>
+  <tr>
+    <td class="td">18</td>
+    <td class="td">虚拟环节</td>
+    <td class="td">为了使流程图更清晰,少画一些线,需要将一些环节克隆一下,放在另一个位置上,即虚拟环节,这样图形会清爽些,但这个虚拟环节就相当于其实体环节</td>
+  </tr>
+  <tr>
+    <td class="td">19</td>
+    <td class="td">自由添加参与者与抄送者(可选)</td>
+    <td class="td">一个环节上指定了特定角色与人员后,往往还需要自由添加新的人员,即所谓“自由流程”的思想,也就是像发邮件一样随便选人</td>
+  </tr>
+  <tr>
+    <td class="td">20</td>
+    <td class="td">指定是否必须有审批意见,提供可参与的审批意见,<br>将前人的所有审批列出参考 ! 可以上传附件。</td>
+    <td class="td">审批意见可以指定必填或可填可不填,可以将常用的审批意见列出来作为参考,也可以将前人填过的审批意见列出来参考</td>
+  </tr>
+  <tr>
+    <td class="td">21</td>
+    <td class="td">审批意见加密,即有些部门的意见其他人不能看</td>
+    <td class="td">可以设置有些环节上的审批意见不能被其他部门的人看到,比如法律部领导的意见,其他人不能看</td>
+  </tr>
+  <tr>
+    <td class="td">22</td>
+    <td class="td">在特定环节对附件盖章,加水印</td>
+    <td class="td">在一些环节需要对附件加盖水印,凡是盖水印的,其他人就不可编辑了</td>
+  </tr>
+  <tr>
+    <td class="td">23</td>
+    <td class="td">发邮件</td>
+    <td class="td">提交后,同时发送邮件给接收者,只需设置邮箱参数即可 </td>
+  </tr>
+  <tr>
+    <td class="td">24</td>
+    <td class="td">首页消息提醒</td>
+    <td class="td">提交后,同时在首页提醒,即送入消息中心,这个消息同时也将用来与其他系统接口</td>
+  </tr>
+  <tr>
+    <td class="td">25</td>
+    <td class="td">在特定环节指定表单部分内容可编辑,可保存</td>
+    <td class="td">即有些角色在有些环节可以修改表单中的内容,或者重新上传附件</td>
+  </tr>
+  <tr>
+    <td class="td">26</td>
+    <td class="td">特定字段保留修改痕迹</td>
+    <td class="td">即在工作流提交全过程中,需要记录下有些字段的修改痕迹,这与流程自己的意见历史不是一回事,这是对表单字段的保存</td>
+  </tr>
+  <tr>
+    <td class="td">27</td>
+    <td class="td">业务拦截器(连线与环节都可有,前台与后台都有)</td>
+    <td class="td">可以提供接口,在指定的环节或连线上定义拦截器</td>
+  </tr>
+  <tr>
+    <td class="td">28</td>
+    <td class="td">流程提交过程的历史跟踪,可图形监控与动态模拟</td>
+    <td class="td">流程监控可以显示当前流程走到了哪一步(在图形中标出), 列出流程提交历史步骤的所有意见,即每一步提交的人,提交意见,提交时间等</td>
+  </tr>
+  <tr>
+    <td class="td">29</td>
+    <td class="td">指定格式输出报表</td>
+    <td class="td">将特定环节的意见,以特定格式报表输出</td>
+  </tr>
+  <tr>
+    <td class="td">30</td>
+    <td class="td">子流程</td>
+    <td class="td">一个环节可以指定启用另一个流程,且必须等子流程结束后才返回主流程,因为许多流程到某一部门内后,又存在一个小的流程 !</td>
+  </tr>
+  <tr>
+    <td class="td">31</td>
+    <td class="td">代理 / 授权</td>
+    <td class="td">有的领导因为出差等原因,可以授权给另一个人,让另一个人代理他进行流程提交</td>
+  </tr>
+  <tr>
+    <td class="td">32</td>
+    <td class="td">暂停 / 继续</td>
+    <td class="td">有时流程走到某一步时,因为某些客观原因不能处理,但又不想把这段滞留时间计算成你的消耗时间,所以需要暂停,这样在统计工作效率时就会准确</td>
+  </tr>
+  <tr>
+    <td class="td">33</td>
+    <td class="td">流程瓶颈统计,基于时间与处理意见分类的对<br>工作效率与工作质量进行深度挖掘与统计分析</td>
+    <td class="td">即能提供方便的 API 快速找出某些环节之间的消耗时间,或者说哪些环节滞留的时间最长,即流程瓶颈,或者说是统计工作效率。
+        同时能根据处理意见类型统计出,哪些是因为对意见表达不满意退回的,哪些是满意的,即能统计工作质量。</td>
+  </tr>
+  <tr>
+    <td class="td">34</td>
+    <td class="td">与 OA 等第三方系统接口</td>
+    <td class="td">需要方便的将流程中的消息 Push 到 OA 中,或者在 OA 中方便的调用流程中的待办任务进行显示,然后点击后能直接进入系统处理</td>
+  </tr>
+  <tr>
+    <td class="td">35</td>
+    <td class="td">提供 API 批量下发任务,同时启动多个流程</td>
+    <td class="td">一般来说发起流程任务是由创建人一条条进行的,但经常有的工作模式是则管理员一下子批量发起多个流程,然后每个流程实例再依次逐级提交,即批量创建流程并启动 .</td>
+  </tr>
+  <tr>
+    <td class="td">36</td>
+    <td class="td">批量提交</td>
+    <td class="td">处理任务太多的情况下,而且又是同一种类型的单据，且接收人与处理意见又实际相同,为了提高效率,可以同时选中这些记录一起提交,即批量提交</td>
+  </tr>
+</table>
+</body>
+</html>

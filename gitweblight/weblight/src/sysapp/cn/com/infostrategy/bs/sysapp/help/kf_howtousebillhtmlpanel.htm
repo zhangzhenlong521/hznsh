@@ -1,0 +1,129 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>BillHtmlPanel面板的使用</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+<p class="p_text">
+故名思议BillHtmlPanel就是在swing面板中显示html界面。<br>
+常常用于做html风格的报表。<br>
+下面介绍其常用方法你就能熟练使用BillHtmlPanel!<br><br>
+1、构造函数public BillHtmlPanel(boolean _isCanExport),参数为是否可导出。<br><br>
+2、/**<br>
+	 * 加载一个HTML<br>
+	 * @param _classname,实际在服务器端生成HTML的类名,反射用,必须实现cn.com.infostrategy.bs.common.WebCallBeanIfc 接口<br>
+	 * @param _map 送给服务器端的参数,即从实现类的getHtmlContent(HashMap _map)中就能得到该数据!!<br>
+	 */<br>
+	 public void loadhtml(final String _classname, final HashMap _map)<br><br>
+3、/**<br>
+	 * 直接送一段Html直接显示!<br>
+	 */<br>
+	public void loadHtml(String _html)<br><br>
+4、/**<br>
+	 * 直接根据一个url加载内容<br>
+	 * @param _url<br>
+	 */<br>
+	public void loadWebContentByURL(java.net.URL _url)<br><br>
+方法2的例子代码<br>
+<textarea cols="150" rows="23" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.BorderLayout;
+import java.util.HashMap;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.report.BillHtmlPanel;
+
+public class TestBillHtmlWKPanel_2 extends AbstractWorkPanel {
+	private BillHtmlPanel bhp = null;
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		bhp = new BillHtmlPanel(true);
+		HashMap _map = new HashMap();
+		_map.put("who", "world");
+		bhp.loadhtml("com.pushdemo.bs.TestBillHtmlCreate", _map);//此处填写类的全路径,
+		//此类需实现WebCallBeanIfc接口且写在bs端
+		this.add(bhp);
+	}
+}
+</textarea>	<br>
+<textarea cols="150" rows="20" wrap="OFF" style="color:blue">
+package com.pushdemo.bs;
+import java.util.HashMap;
+import cn.com.infostrategy.bs.common.WebCallBeanIfc;
+public class TestBillHtmlCreate implements WebCallBeanIfc {
+	public String getHtmlContent(HashMap map) throws Exception {
+		return "<html>" +
+		"<head>" +
+		"<META http-equiv=Content-Type content=\"text/html; charset=GBK\">" +
+		"<TITLE>BillHtmlPanel面板的使用</TITLE>" +
+		"<style type=\"text/css\"> " +
+		".p_text  { font-size: 12px;};" +
+		"</style>" +
+		"</head>" +
+		"<body>" +
+		"<p class=\"p_text\"> hello " + map.get("who") + "!<p></body></html>";
+	}
+}
+</textarea><br><br>
+方法3的例子代码<br>
+<textarea cols="150" rows="27" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.BorderLayout;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.report.BillHtmlPanel;
+
+public class TestBillHtmlWKPanel_1 extends AbstractWorkPanel {
+	private BillHtmlPanel bhp = null;
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		bhp = new BillHtmlPanel(true);
+		bhp.loadHtml("<html>" +
+				"<head>" +
+				"<META http-equiv=Content-Type content=\"text/html; charset=GBK\">" +
+				"<TITLE>BillHtmlPanel面板的使用</TITLE>" +
+				"<style type=\"text/css\"> " +
+				".p_text  { font-size: 12px;};" +
+				"</style>" +
+				"</head>" +
+				"<body>" +
+				"<p class=\"p_text\"> hello world!<p></body></html>");
+		this.add(bhp);
+	}
+}
+</textarea>	<br><br>
+方法4的例子代码<br>
+<textarea cols="150" rows="25" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.BorderLayout;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.report.BillHtmlPanel;
+
+public class TestBillHtmlWKPanel_3 extends AbstractWorkPanel {
+	private BillHtmlPanel bhp = null;
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		bhp = new BillHtmlPanel(true);
+		try {
+			bhp.loadWebContentByURL(new URL("http://127.0.0.1:9001/weblight/WebCallServlet?StrParCallClassName=" +
+					"cn.com.infostrategy.bs.sysapp.help.HelpWebCallBean&file=kf_howtousebillhtmlpanel.htm"));
+					//此处需要相应的换成你的项目访问地址
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		this.add(bhp);
+	}
+}
+</textarea>		
+</p>
+</body>
+</html>

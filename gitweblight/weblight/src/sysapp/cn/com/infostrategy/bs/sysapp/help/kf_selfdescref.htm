@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<TITLE>自定义参照开发</TITLE>
+		<style type="text/css">
+.p_text {
+	font-size: 12px;
+}
+
+;
+.tabstyle {
+	border-collapse: collapse;
+	font-size: 12px;
+	border: 1px;
+}
+
+;
+.tdstyle {
+	border: solid 1px #888888;
+	font-size: 12px;
+}
+;
+</style>
+	</head>
+	<body>
+		<p class="p_text">
+		平台已经封装了很多参照,如树形参照、列表参照、多选参照等等,但有时候这些参照不能满足我们的需求,这时我们<br>
+		就可以自己动手定义一个参照。<br>
+		其实自定义参照,就是自己写点击按钮弹出的窗口。<br>
+		自定义参照公式:<br>
+		getCommUC("自定义参照","自定义类名","cn.com.pushworld.TestRefDialog","参数","2");<br>
+		第三个参数填写自己写的全路径类名,一般情况下只需三个参数就够了,但如果你想传一些参数的化可以继续增加参数,<br>
+		如: <span style="color: red">,"参数","2","参数2","2","参数3","2" </span>,参数数量不限制。<br>
+		自定义类写法:<br>
+		1、需要继承AbstractRefDialog<br>
+		2、如果公式中无多余参数只需提供有Container _parent, String _title, RefItemVO _initRefItemVO, <br>
+		BillPanel _billPanel这4个参数类型的构造函数。<br>
+		如果有多的参数则需要提供多几个参数增加几个String类型参数的构造函数<br>
+		3、需要实现public RefItemVO getReturnRefItemVO()方法,此方法用于在确认关闭窗口后返回数值。<br>
+		4、需要实现public void initialize()方法,此方法用于初始化页面。<br>
+		<span style="color: red">例子:</span><br>
+		<textarea cols="150" rows="35" style="color: blue">
+package ui;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import cn.com.infostrategy.to.mdata.RefItemVO;
+import cn.com.infostrategy.ui.common.BillDialog;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillPanel;
+import cn.com.infostrategy.ui.mdata.cardcomp.AbstractRefDialog;
+
+public class BigAreaRefDialog extends AbstractRefDialog implements ActionListener {
+
+	private BillCardPanel billCardPanel = null;
+	private RefItemVO returnRefItemVO = null;
+	private JTextArea jt = null;
+	private WLTButton btn_c, btn_s = null;
+
+	public BigAreaRefDialog(Container _parent, String _title, RefItemVO refItemVO, BillPanel panel) {
+		//_parent为当前参照面板,类型为UIRefPanel
+		//_title为子项的名称
+		//refItemVO为当前参照值
+		//panel为当前的BillCardPanel或BillListPanel
+		super(_parent, _title, refItemVO, panel);
+		billCardPanel = (BillCardPanel) panel;
+	}
+
+	//如果公式里新增了2个参数则需要提供相应构造函数
+	public BigAreaRefDialog(Container _parent, String _title, RefItemVO refItemVO, BillPanel panel, String param1, String param2) {
+		super(_parent, _title, refItemVO, panel);
+		MessageBox.show(_parent, "参数1:" + param1 + ",参数2:" + param2);
+		billCardPanel = (BillCardPanel) panel;
+	}
+
+	public RefItemVO getReturnRefItemVO() {
+		return returnRefItemVO;
+	}
+
+	public void initialize() {
+		this.setLayout(new BorderLayout());
+		jt = new JTextArea();
+		this.add(new JScrollPane(jt), BorderLayout.CENTER);
+		this.add(getBtnPanel(), BorderLayout.SOUTH);
+	}
+
+	private JPanel getBtnPanel() {
+		JPanel jp = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		btn_c = WLTButton.createButtonByType(WLTButton.COMM, "取消");
+		btn_c.addActionListener(this);
+		btn_s = WLTButton.createButtonByType(WLTButton.COMM, "确定");
+		btn_s.addActionListener(this);
+		jp.add(btn_s);
+		jp.add(btn_c);
+		return jp;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btn_c) {
+			this.setCloseType(BillDialog.CANCEL);
+			returnRefItemVO = null;
+			this.dispose();
+		}else if(e.getSource() == btn_s) {
+			this.setCloseType(BillDialog.CONFIRM);
+			System.out.println(jt.getText());
+			returnRefItemVO = new RefItemVO(jt.getText(), jt.getText(), jt.getText());
+			this.dispose();
+		}
+	}
+
+}
+		</textarea>
+		<br>
+		<span style="color: red">
+		自定义公式为:<br>
+		getCommUC("自定义参照","自定义类名","ui.BigAreaRefDialog","参数1","1","参数2","2");<br>
+		或者<br>
+		getCommUC("自定义参照","自定义类名","ui.BigAreaRefDialog");<br>
+		</span><br>
+		</p>
+	</body>
+</html>
