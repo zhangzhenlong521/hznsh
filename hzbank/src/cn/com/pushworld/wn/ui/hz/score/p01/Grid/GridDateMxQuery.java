@@ -217,13 +217,13 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     dialog.getBilllistPanel().refreshData();
                 }
             });
-            dialog.getBilllistPanel().addBillListButton(btn_dr);
+        	dialog.getBilllistPanel().addBillListButton(btn_dr);
             dialog.getBilllistPanel().addBillListButton(btn_xg);
-            dialog.getBilllistPanel().addBillListButton(btn_dow);
-            dialog.getBilllistPanel().addBillListButton(btn_up);
              if(flag){
+                dialog.getBilllistPanel().addBillListButton(btn_dow);
+                dialog.getBilllistPanel().addBillListButton(btn_up);
                 dialog.getBilllistPanel().addBillListButton(btn_qy);
-            }//fj20210207  应席总要求，不是行长的，五个按钮全隐藏
+            }//fj20210207  应席总要求，不是行长的，三个按钮全隐藏
             dialog.getBilllistPanel().repaintBillListButton();
             dialog.setBtn_confirmVisible(false);
             dialog.setVisible(true);

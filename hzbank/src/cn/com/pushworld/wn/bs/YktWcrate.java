@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.mdata.BillVO;
@@ -31,7 +33,6 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 			try {
 				QuickQuery();
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -46,7 +47,8 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 		this.add(listPanel);
 	}
 	private void QuickQuery() throws ParseException {
-		listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_"+getQYTTime()+"");   
+			listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_"+getQYTTime()+"");
+			
 	}
 	public String getSelTime(String date) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -71,11 +73,8 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 			final BillVO vo=listPanel.getSelectedBillVO();
 	        deptname=vo.getStringValue("name");
 	        dialog=new BillListDialog(listPanel,"一卡通明细查看","HZ_YKT_RATE_20210127_CODE1",2000,800);
-	        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime()+" where  name='"+deptname+"'");
-//	        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_20210204 where  name='"+deptname+"'");
 	        dialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
-
-					@Override
+	        		@Override
 					public void actionPerformed(ActionEvent e) {
 						StringBuffer sb=new StringBuffer();
 						String name=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("NAME");
@@ -86,6 +85,7 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 	                    String A021=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A021");
 	                    String A003=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A003");
 	                    String A004=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A004");
+	                    String A034=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("A034");
 	                    String NEW_SF_YKT=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("NEW_SF_YKT");
 	                    String H=dialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("H");
 	                    if(name==null || name.equals("") || name.equals(null) || name.equals(" ")){
@@ -122,6 +122,10 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 	                    if(A004==null || A004.equals("") || A004.equals(null) || A004.equals(" ")){
 	                    }else{
 	                        sb.append(" and A004='"+A004+"'");
+	                    }
+	                    if(A034==null || A034.equals("") || A034.equals(null) || A034.equals(" ")){
+	                    }else{
+	                        sb.append(" and A034='"+A034+"'");
 	                    }
 	                    if(sb.toString()==null){
 	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime()+"");
