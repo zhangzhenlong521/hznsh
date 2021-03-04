@@ -6,6 +6,7 @@ import com.ibm.db2.jcc.t2zos.e;
 
 import javax.xml.crypto.Data;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -173,7 +174,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 		Date d = new Date();
 		cal.setTime(d);
 		int day = cal.get(Calendar.DATE);
-		cal.set(Calendar.DATE, day - 0);
+		cal.set(Calendar.DATE, day - 1);
 		String lastDate = format.format(cal.getTime());
 		return lastDate;
 	}
@@ -208,8 +209,9 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
         String lastDate = format.format(cal.getTime());
         return lastDate;
     }
+
 	/**
-	 * 得到年初月份
+	 * 得到年初月份 前一天的
 	 *
 	 * @return
 	 */
@@ -218,8 +220,10 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
 		Date d = new Date();
 		cal.setTime(d);
+		cal.add(Calendar.DATE, -1);
+		cal.setTime(cal.getTime());
 		cal.add(Calendar.YEAR, -1);
-		cal.add(Calendar.MONTH,cal.getActualMaximum(Calendar.MONTH));
+		cal.set(Calendar.MONTH,cal.getActualMaximum(Calendar.MONTH));
 		String lastDate = format.format(cal.getTime());
 		return lastDate;
 	}
@@ -270,11 +274,11 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	}
 	public static void main(String[] args) {
         CockpitServiceImpl cp=new CockpitServiceImpl();
-		String [] []data=cp.getqjData(3);
-		for(int i=0;i<data.length;i++){
-			System.out.println(">>>>>>>>>"+data[i][0]);
-		}
-        System.out.print(cp.getYearYm());
+//		String [] []data=cp.getqjData(3);
+//		for(int i=0;i<data.length;i++){
+//			System.out.println(">>>>>>>>>"+data[i][0]);
+//		}
+		System.out.println(">>>>>>>>>>>>>>>"+cp.getMonthTime("202101"));
     }
 
 	@Override
@@ -482,7 +486,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 		String [][] data=null;
 		try{
 			data=dmo.getStringArrayByDS(null,"select * from(\n" +
-					"select rwnum num,'目标任务' name,code||'月' code from(\n" +
+					"select to_char(rwnum,'fm99999990.00') num,'目标任务' name,code||'月' code from(\n" +
 					"select '01' code,sum(B)/10000 rwnum from hzdb.excel_tab_18 where year='"+getDayYear()+"' union all\n" +
 					"select '02' code,(sum(B)+sum(C))/10000 rwnum from hzdb.excel_tab_18 where year='"+getDayYear()+"' union all\n" +
 					"select '03' code,(sum(B)+sum(C)+sum(D))/10000 rwnum from hzdb.excel_tab_18 where year='"+getDayYear()+"' union all\n" +
@@ -496,7 +500,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 					"select '11' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L))/10000 rwnum from hzdb.excel_tab_18 where year='"+getDayYear()+"' union all\n" +
 					"select '12' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L)+sum(M))/10000 rwnum from hzdb.excel_tab_18 where year='"+getDayYear()+"')\n" +
 					"where code='"+getdytMonth()+"') union all\n" +
-					"(select dyck.dy-ncck.nc num,'实际完成' name,'"+getdytMonth()+"月' code from(\n" +
+					"(select to_char(dyck.dy-ncck.nc,'fm99999990.00') num,'实际完成' name,'"+getdytMonth()+"月' code from(\n" +
 					"select '1' a,ROUND(sum(F)/100000000,2) dy from(\n" +
 					"select sum(f) f \n" +
 					"from hzbank.a_agr_dep_acct_psn_sv_"+getqytMonth()+" where biz_dt='"+getQYTTime()+"' and f>0 \n" +
@@ -587,18 +591,18 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 						"and xd_col4<'"+getDayTime(time[i][1])+"' AND xd_col7>0 group by xd_col85) dk union all (select INPUT_BR_ID a,sum(LOAN_BALANCE) num \n" +
 						"from hzbank.S_CMIS_ACC_LOAN_"+time[i][0]+" where biz_dt='"+time[i][1]+"'and CLA<>'05'  group by INPUT_BR_ID)) dk left join (select a,b from hzdb.excel_tab_28) \n" +
 						"xx on xx.b=dk.a group by xx.a) dk) wc left join(select ROUND(rw.rwnum,2),'目标任务' name,rw.code from(\n" +
-						"select '01月' code,(sum(B)+sum(C))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '02月' code,(sum(B)+sum(C)+sum(D))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '03月' code,(sum(B)+sum(C)+sum(D)+sum(E))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '04月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '05月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '06月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '07月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '08月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '09月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '10月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '11月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L)+sum(M))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
-						"select '12月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L)+sum(M)+sum(N))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"' \n" +
+						"select '01月' code,(sum(B))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '02月' code,(sum(B)+sum(C))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '03月' code,(sum(B)+sum(C)+sum(D))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '04月' code,(sum(B)+sum(C)+sum(D)+sum(E))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '05月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '06月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '07月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '08月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '09月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '10月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '11月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"'  union all\n" +
+						"select '12月' code,(sum(B)+sum(C)+sum(D)+sum(E)+sum(F)+sum(G)+sum(H)+sum(I)+sum(J)+sum(K)+sum(L)+sum(M))/10000 rwnum from hzdb.excel_tab_21 where year='"+time[i][0].substring(0,4)+"' \n" +
 						") rw) rw on wc.code=rw.code");
 			}else{
 				sb.append("select ROUND(sum(dk.money)/10000,2) num,'实际完成' name,'"+time[i][2]+"月' code from(\n" +
@@ -614,6 +618,18 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 
 		try{
 			data=dmo.getStringArrayByDS(null,sb.toString());
+			//zzl 得到年初的总数
+			String yearData=dmo.getStringValueByDS(null,"select ROUND(sum(dk.money)/10000,2) num from(\n" +
+					"select xx.a name,sum(dk.num)/10000 money from \n" +
+					"(select * from(select  '283'||xd_col85 a,sum(xd_col7) num from hzbank.s_loan_dk_"+getYearYm()+" \n" +
+					"where xd_col1||biz_dt in (select xd_col1||max(biz_dt) from hzbank.s_loan_dk_"+getYearYm()+" where xd_col22<>'05'group by xd_col1) \n" +
+					"and xd_col4<'"+getMonthTime(getYearYm())+"' AND xd_col7>0 group by xd_col85) dk union all (select INPUT_BR_ID a,sum(LOAN_BALANCE) num \n" +
+					"from hzbank.S_CMIS_ACC_LOAN_"+getYearYm()+" where biz_dt='"+getYearYm()+"31'and CLA<>'05'  group by INPUT_BR_ID)) dk left join (select a,b from hzdb.excel_tab_28) \n" +
+					"xx on xx.b=dk.a group by xx.a) dk");
+			DecimalFormat df= new DecimalFormat("######0.00");
+			for(int i=0;i<data.length;i++){
+				data[i][3]=df.format(Double.parseDouble(data[i][3])+Double.parseDouble(yearData));
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -679,7 +695,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	public String[][] getDkStatistical() {
 		String [] [] data=null;
 		try{
-			data=dmo.getStringArrayByDS(null,"select dk.num,dk.num-ncdk.num from(\n" +
+			data=dmo.getStringArrayByDS(null,"select dk.num,to_char(dk.num-ncdk.num,'fm9999999990.00') from(\n" +
 					"select '1' code,ROUND(sum(dk.money)/10000,2) num from(\n" +
 					"select xx.a name,sum(dk.num)/10000 money from \n" +
 					"(select * from(select  '283'||xd_col85 a,sum(xd_col7) num from hzbank.s_loan_dk_"+getqytMonth()+" \n" +
@@ -714,6 +730,8 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 			SimpleDateFormat format4 = new SimpleDateFormat("yyyy");
 			Date d = new Date();
 			cal.setTime(d);
+			cal.add(Calendar.DATE, - 1);
+			cal.setTime(cal.getTime());
 			cal.add(Calendar.MONTH, -i);
 			cal.set(Calendar.DATE,cal.getActualMaximum(Calendar.DAY_OF_MONTH));//最后一天
 			date[i][0] = format.format(cal.getTime());
@@ -726,7 +744,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	}
 	/**
 	 * zzl
-	 * 得到指定日期的加天数
+	 * 得到指定日期的加天数 getYearYm
 	 */
 	public String getDayTime(String date){
 		String lastDate=null;
@@ -738,6 +756,26 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 			int day = cal.get(Calendar.DATE);
 			cal.set(Calendar.DATE, day + 1);
 			SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+			lastDate = format2.format(cal.getTime());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return lastDate;
+	}
+
+	/**
+	 * zzl
+	 * 得到指定日期月份+1
+	 */
+	public String getMonthTime(String date){
+		String lastDate=null;
+		try{
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
+			Date d = format.parse(date);
+			cal.setTime(d);
+			cal.add(Calendar.MONTH, +1);
+			SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-01 00:00:00");
 			lastDate = format2.format(cal.getTime());
 		}catch (Exception e){
 			e.printStackTrace();
