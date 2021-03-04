@@ -38,9 +38,12 @@ public class DKDatacCeaning implements WLTJobIFC {
             if(getKHDQMonth().equals("01")) {
                 String count[]=dmo.getStringArrayFirstColByDS(null,"select biz_dt from hzbank.s_loan_dk_"+getKHMonthTime(0)+" where biz_dt<'"+getYCTime(0)+"' and rownum=1");
                 if(count.length==0){
-                    dmo.executeUpdateByDS(null, "insert into hzbank.s_loan_dk_" + getKHMonthTime(0) + " " +
-                            "(" + sb.toString() + ") select " + sb.toString() + " from hzbank.s_loan_dk_" + getKHMonthTime(1) + " where XD_COL1||BIZ_DT in(\n" +
-                            "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_" + getKHMonthTime(1) + " where XD_COL7>0 group by XD_COL1)");
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>"+"insert into hzbank.s_loan_dk_"+getKHMonthTime(0) +" \n" +
+                            "select * from hzbank.s_loan_dk_"+getKHMonthTime(1)+" \n" +
+                            "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getKHMonthTime(1)+" group by XD_COL1)");
+                    dmo.executeUpdateByDS(null, "insert into hzbank.s_loan_dk_"+getKHMonthTime(0) +" \n" +
+                            "select * from hzbank.s_loan_dk_"+getKHMonthTime(1)+" \n" +
+                            "where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getKHMonthTime(1)+" group by XD_COL1)");
                 }
             }
             //zzl 每天创建数据网格数据主要为了提高查询速度
@@ -66,10 +69,10 @@ public class DKDatacCeaning implements WLTJobIFC {
 //                        "and to_char(cast (cast (XD_COL4 as timestamp) as date),'yyyy-mm-dd')<='"+getDQymTime()+"' group by XD_COL1) \n" +
 //                        "b ON (a.XD_COL1=b.XD_COL1) WHEN MATCHED THEN UPDATE SET a.XD_COL7=a.XD_COL7-b.khye");
             }
-//            String dkstate=dmo.getStringValueByDS(null,"select dkdates from hzdb.s_count_cdk where dkdates='"+getQYTTime()+"' and ckdates='"+getQYTTime()+"'");
-//            if(dkstate==null){
-//                return "OK";
-//            }
+            String dkstate=dmo.getStringValueByDS(null,"select dkdates from hzdb.s_count_cdk where dkdates='"+getQYTTime()+"' and ckdates='"+getQYTTime()+"'");
+            if(dkstate==null){
+                return "OK";
+            }
             String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime()+"' and OBJECT_TYPE='TABLE'");
             if(createDate.length>0){
 
@@ -250,7 +253,7 @@ public class DKDatacCeaning implements WLTJobIFC {
     }
     public static void main(String[] args) {
         DKDatacCeaning a = new DKDatacCeaning();
-        String inputParam = a.getKHDQMonth();
+        String inputParam = a.getKHMonthTime(0);
         System.out.println(">>>>>>>>>>>>>>" + inputParam);
     }
     /**

@@ -36,6 +36,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
             billCellPanel.setValueAt("dates","数据日期:"+dates);
             getCkDate();
             getLoanDate();
+            getQnELoanDate();
             getQnyDate();
         }catch (Exception e){
 
@@ -46,6 +47,45 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
+    }
+    public void getQnELoanDate(){
+        try{
+            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
+                    "select * from(\n" +
+                    "select sy.code,sy.hs syhs,to_char(sy.hs/zj.hs,'fm9999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(dy.hs/zj.hs,'fm9999990.00') dyfgm,\n" +
+                    "to_char((dy.hs/zj.hs)-(sy.hs/zj.hs),'fm9999990.00') jsyfgm,to_char((dy.hs/zj.hs)-(nc.hs/zj.hs),'fm9999990.00') jncfgm from(\n" +
+                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) sy\n" +
+                    "left join\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) dy on sy.code=dy.code\n" +
+                    "left join\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) nc on sy.code=nc.code\n" +
+                    "left join\n" +
+                    "(select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by to_number(dyfgm) desc)\n" +
+                    "union all\n" +
+                    "(select '',sum(sy.hs) syhs,to_char(sum(sy.hs)/sum(zj.hs),'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.hs)/sum(zj.hs),'fm9999990.00') dyfgm,\n" +
+                    "to_char((sum(dy.hs)/sum(zj.hs))-(sum(sy.hs)/sum(zj.hs)),'fm9999990.00') jsyfgm,to_char((sum(dy.hs)/sum(zj.hs))-(sum(nc.hs)/sum(zj.hs)),'fm9999990.00') jncfgm from(\n" +
+                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) sy\n" +
+                    "left join\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) dy on sy.code=dy.code\n" +
+                    "left join\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.c)\n" +
+                    "where wg.c is not null group by ry.c) nc on sy.code=nc.code\n" +
+                    "left join\n" +
+                    "(select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code)");
+            for(int i=0;i<date.length;i++){
+                for(int j=0;j<date[i].length;j++){
+                    billCellPanel.setValueAt(date[i][j],i+4,j+31);
+                    billCellPanel.setBackground("255,51,255",i+4,37);
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
     public void getQnyDate(){
         try{
@@ -63,7 +103,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "left join (\n" +
                     "select ry.c code,count(ry.c) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" qny on upper(ry.a)=upper(qny.f) \n" +
                     "where qny.f is not null group by ry.c) nc on sy.code=nc.code\n" +
-                    ") order by byfgm desc)\n" +
+                    ") order by to_number(byfgm) desc)\n" +
                     "union all(\n" +
                     "select '',sum(sy.hs) syhs,to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm9999990.00') byfgm,\n" +
                     "to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(sy.hs)/sum(zj.hs)*100,2),'fm9999990.00') jsyfgm,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm9999990.00') jncfgm from(\n" +
@@ -84,6 +124,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                         billCellPanel.setValueAt(df.format(Double.parseDouble(date[i][j])-Double.parseDouble(map.get(date[i][0]))),i+4,j+40);
                     }else{
                         billCellPanel.setValueAt(date[i][j],i+4,j+40);
+                        billCellPanel.setBackground("0,204,204",i+4,46);
                     }
                 }
             }
@@ -127,6 +168,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                         billCellPanel.setValueAt(df.format(Double.parseDouble(date[i][j])-Double.parseDouble(map.get(date[i][0]))),i+4,j+18);
                     }else{
                         billCellPanel.setValueAt(date[i][j],i+4,j+18);
+                        billCellPanel.setBackground("39,236,73",i+4,28);
                     }
                 }
             }
@@ -149,7 +191,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "(select ry.c code,count(wg.g) hs,round(sum(wg.ckye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(ry.a)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by ry.c) nc on sy.code=nc.code\n" +
                     "left join(\n" +
-                    "select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by fgm desc)\n" +
+                    "select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by to_number(fgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),sum(sy.num),to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm999999990.00') dyfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) hsjsy,sum(dy.hs)-sum(nc.hs) hsjnc,sum(dy.num) dynum,to_char(sum(dy.num)-sum(sy.num),'fm9999999990.00') yejsy,\n" +
                     "to_char(sum(dy.num)-sum(nc.num),'fm99999999990.00') ysjnc,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm9999999990.00') fgm,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(sy.hs)/sum(zj.hs)*100,2),'fm99999999990.00') fgmjsy,round(sum(dy.hs)/sum(zj.hs)*100,2) fgmjnc from(\n" +
@@ -170,6 +212,7 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                         billCellPanel.setValueAt(df.format(Double.parseDouble(date[i][j])-Double.parseDouble(map.get(date[i][0]))),i+4,j+5);
                     }else{
                         billCellPanel.setValueAt(date[i][j],i+4,j+5);
+                        billCellPanel.setBackground("0,140,255",i+4,15);
                     }
                 }
             }
