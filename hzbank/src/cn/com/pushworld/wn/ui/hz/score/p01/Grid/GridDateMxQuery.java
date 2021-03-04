@@ -2,6 +2,7 @@ package cn.com.pushworld.wn.ui.hz.score.p01.Grid;
 
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.to.common.WLTRemoteException;
 import cn.com.infostrategy.to.mdata.*;
 import cn.com.infostrategy.ui.common.*;
 import cn.com.infostrategy.ui.mdata.*;
@@ -35,6 +36,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             .getCode();
     private final String USERNAME = ClientEnvironment.getCurrSessionVO()
             .getLoginUserName();
+    private final String DEPTCODE = ClientEnvironment.getCurrLoginUserVO()
+    		.getDeptcode();
     private BillListPanel list;
     private WLTButton btn_dr=new WLTButton("导入");//zzl[2020-9-18] 添加导入功能\
     private WLTButton btn_xg=new WLTButton("修改");//zzl[2020-9-18] 添加修改功能\
@@ -571,14 +574,24 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             dialog.getBillcardPanel().setRealValueAt("QK","网格概况");
             dialog.setSaveBtnVisiable(false);
             dialog.setVisible(true);
-            if(dialog.getBillcardPanel().getBillVO().getStringValue("D").equals("") ||
-                    dialog.getBillcardPanel().getBillVO().getStringValue("D")==null ||
-                    dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(null) ||
-                    dialog.getBillcardPanel().getBillVO().getStringValue("D").equals(" ")
-            ){
+            String deptcode = dialog.getBillcardPanel().getBillVO().getStringValue("F");
+            String wgname = dialog.getBillcardPanel().getBillVO().getStringValue("D");
+            if(wgname.equals("") ||wgname==null ||wgname.equals(null) ||wgname.equals(" ")){
             }else{
                 if(dialog.getCloseType()==1){
-                    listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+                	try {
+						HashVO[] hashvo = UIUtil.getHashVoArrayByDS(null, "select * from EXCEL_TAB_85 where F='"+deptcode+"' and D='"+wgname+"'");
+						if(hashvo.length>0){
+							MessageBox.show("您当前输入的网格名称"+wgname+"在您所在的机构"+deptcode+"已经存在，请您重新命名。");
+							return;
+						}else{
+		                    listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
                 }
             }
         }else if(actionEvent.getSource() == btn_update){
