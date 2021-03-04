@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_option">
+  <col name="id">-8</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">风险识别评估中处理申请时申请和流程图是否分开显示</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr">Y-分2个窗口显示, N-在1个窗口中显示，默认为Y</col>
+</record>
+
+<!--2-->
+<record tabname="pub_option">
+  <col name="id">-7</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">流程文件发布是否走流程</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr">N-不走工作流, Y-走工作流发布，默认为N</col>
+</record>
+
+<!--3-->
+<record tabname="pub_option">
+  <col name="id">-6</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">JACOB工作方式</col>
+  <col name="parvalue">2</col>
+  <col name="pardescr">[查看正文]正文和流程图合并方式 0-不启用, 1-客户端, 2-服务器端</col>
+</record>
+
+<!--4-->
+<record tabname="pub_option">
+  <col name="id">-5</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">制度是否分条目</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr">[制度维护][编辑流程]时制度是否按条进行管理</col>
+</record>
+
+<!--5-->
+<record tabname="pub_option">
+  <col name="id">-4</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">法规导入导出数据源</col>
+  <col name="parvalue">null;null</col>
+  <col name="pardescr">可以配置法规维护面板中导入全部和导出全部的数据源。第一个参数是把数据导入到某个数据源,第二个参数是从某数据源把数据导出。如果配置都为null,默认是weblight.xml中的第一个数据源。</col>
+</record>
+
+<!--6-->
+<record tabname="pub_option">
+  <col name="id">-3</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">是否显示法规导入导出按钮</col>
+  <col name="parvalue">Y;Y;N</col>
+  <col name="pardescr">可以配置法规维护面板三个按钮是否显示。第一个参数是导入所有按钮是否显示，第二个参数是导出全部按钮，第三个是格式化是否显示。</col>
+</record>
+
+<!--7-->
+<record tabname="pub_option">
+  <col name="id">-2</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">流程文件维护时文件状态是否可编辑</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr">[新建文件][编辑文件] 文件状态是否可以人工选择</col>
+</record>
+
+<!--8-->
+<record tabname="pub_option">
+  <col name="id">-1</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">流程导出word时页眉显示的内容</col>
+  <col name="parvalue">北京普信管理咨询有限公司</col>
+  <col name="pardescr">[流程导出word] 页眉显示的内容, 一般设置为公司名称, 也可以为空</col>
+</record>
+
+<!--9-->
+<record tabname="pub_option">
+  <col name="id">1</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">环节编码相等时是否允许保存</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--10-->
+<record tabname="pub_option">
+  <col name="id">107</col>
+  <col name="modulename"></col>
+  <col name="parkey">NTKO_Version</col>
+  <col name="parvalue">5,0,1,6</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--11-->
+<record tabname="pub_option">
+  <col name="id">108</col>
+  <col name="modulename"></col>
+  <col name="parkey">NTKO_ProductCaption</col>
+  <col name="parvalue">北京银丰新融科技开发有限公司演示系统</col>
+  <col name="pardescr">普信咨询</col>
+</record>
+
+<!--12-->
+<record tabname="pub_option">
+  <col name="id">109</col>
+  <col name="modulename"></col>
+  <col name="parkey">NTKO_ProductKey</col>
+  <col name="parvalue">394B5A6B94416B967CD867F5081FBE7C5057E8DD</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--13-->
+<record tabname="pub_option">
+  <col name="id">110</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_clsid</col>
+  <col name="parvalue">C9BC4DFF-4248-4a3c-8A49-63A7D317F404</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--14-->
+<record tabname="pub_option">
+  <col name="id">112</col>
+  <col name="modulename"></col>
+  <col name="parkey">NTKO_MakerKey</col>
+  <col name="parvalue">69644A38A2AF180DE977C691CA728E9A2FD4902C</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--15-->
+<record tabname="pub_option">
+  <col name="id">113</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">DownloadFileFromInterceptUrl</col>
+  <col name="parvalue"></col>
+  <col name="pardescr"></col>
+</record>
+
+<!--16-->
+<record tabname="pub_option">
+  <col name="id">114</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">是否显示多语言项</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--17-->
+<record tabname="pub_option">
+  <col name="id">115</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">是否可用抽屉风格</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--18-->
+<record tabname="pub_option">
+  <col name="id">116</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">是否可用菜单树风格</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--19-->
+<record tabname="pub_option">
+  <col name="id">117</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">是否可用菜单条风格</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--20-->
+<record tabname="pub_option">
+  <col name="id">118</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">是否可用BOM方式</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--21-->
+<record tabname="pub_option">
+  <col name="id">120</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有保存按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--22-->
+<record tabname="pub_option">
+  <col name="id">121</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有打印按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--23-->
+<record tabname="pub_option">
+  <col name="id">122</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有水印按钮</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--24-->
+<record tabname="pub_option">
+  <col name="id">123</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有显示批注按钮</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--25-->
+<record tabname="pub_option">
+  <col name="id">124</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有隐藏批注按钮</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--26-->
+<record tabname="pub_option">
+  <col name="id">125</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有关闭按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--27-->
+<record tabname="pub_option">
+  <col name="id">126</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_NeedMaker</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--28-->
+<record tabname="pub_option">
+  <col name="id">127</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理页面中是否显示最后处理期限</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--29-->
+<record tabname="pub_option">
+  <col name="id">128</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理页面中是否显示保存按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--30-->
+<record tabname="pub_option">
+  <col name="id">166</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">流程处理中提交时处理意见是否必填</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--31-->
+<record tabname="pub_option">
+  <col name="id">167</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">流程处理中退回时处理意见是否必填</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--32-->
+<record tabname="pub_option">
+  <col name="id">201</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">法规制度查看时是否显示附件</col>
+  <col name="parvalue">true</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--33-->
+<record tabname="pub_option">
+  <col name="id">206</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">日历选择的开始年份</col>
+  <col name="parvalue">1949</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--34-->
+<record tabname="pub_option">
+  <col name="id">207</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">日历选择的年份范围</col>
+  <col name="parvalue">100</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--35-->
+<record tabname="pub_option">
+  <col name="id">241</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">体系流程_流程文件子项的显示</col>
+  <col name="parvalue">Y;Y;Y;Y;Y;Y</col>
+  <col name="pardescr">正文生成Word为-N 时有效! 生成Word是否显示: 目的;适用范围;定义、缩写和分类;职责与权限;基本原则;相关文件、附录</col>
+</record>
+
+<!--36-->
+<record tabname="pub_option">
+  <col name="id">281</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">流程文件是否由正文生成word</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr">Y-出现[正文]可上传文件, 用文件中内容生成Word. N-出现: [目的;适用范围;定义...等], 用填入内容生成Word</col>
+</record>
+
+<!--37-->
+<record tabname="pub_option">
+  <col name="id">301</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">是否显示滚动消息</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--38-->
+<record tabname="pub_option">
+  <col name="id">309</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理页面中是否显示紧急程度</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--39-->
+<record tabname="pub_option">
+  <col name="id">310</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理页面中是否显示最后处理期限</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--40-->
+<record tabname="pub_option">
+  <col name="id">311</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理页面中是否显示保存按钮</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--41-->
+<record tabname="pub_option">
+  <col name="id">312</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流中流程结束时是否要执行后台拦截器</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--42-->
+<record tabname="pub_option">
+  <col name="id">321</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">开发人员模式</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--43-->
+<record tabname="pub_option">
+  <col name="id">341</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">流程文件生成word时环节表格是否为简约风格</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr">Y-生成Word时, 部门岗位、职责和操作规范合并为一列. 否则将其分为三列显示。</col>
+</record>
+
+<!--44-->
+<record tabname="pub_option">
+  <col name="id">361</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">自定义流程图增加部门和岗位按钮的点击事件</col>
+  <col name="parvalue">com.pushworld.ipushgrc.ui.wfrisk.ChooseDeptOrPostDialog.show()</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--45-->
+<record tabname="pub_option">
+  <col name="id">381</col>
+  <col name="modulename">产品_风险评估</col>
+  <col name="parkey">风险评估员角色名</col>
+  <col name="parvalue">风评官</col>
+  <col name="pardescr">标准角色和系统中的实际角色对应关系</col>
+</record>
+
+<!--46-->
+<record tabname="pub_option">
+  <col name="id">394</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流退回发起人是否可以修改</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--47-->
+<record tabname="pub_option">
+  <col name="id">402</col>
+  <col name="modulename">产品_合规管理</col>
+  <col name="parkey">合规事件流程</col>
+  <col name="parvalue">合规事件;检查事件</col>
+  <col name="pardescr">新增成功防范和违规事件时，默认走工作流配置的单据类型和业务类型</col>
+</record>
+
+<!--48-->
+<record tabname="pub_option">
+  <col name="id">406</col>
+  <col name="modulename">合规管理</col>
+  <col name="parkey">邮箱连接接口地址</col>
+  <col name="parvalue">2</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--49-->
+<record tabname="pub_option">
+  <col name="id">407</col>
+  <col name="modulename">合规管理</col>
+  <col name="parkey">发送邮件的系统名称</col>
+  <col name="parvalue">2</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--50-->
+<record tabname="pub_option">
+  <col name="id">416</col>
+  <col name="modulename">合规管理</col>
+  <col name="parkey">发送邮件的系统密码</col>
+  <col name="parvalue">3</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--51-->
+<record tabname="pub_option">
+  <col name="id">417</col>
+  <col name="modulename">合规管理</col>
+  <col name="parkey">邮件接受者的地址</col>
+  <col name="parvalue">2</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--52-->
+<record tabname="pub_option">
+  <col name="id">446</col>
+  <col name="modulename">合规管理</col>
+  <col name="parkey">license</col>
+  <col name="parvalue">323031302D30332D3038</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--53-->
+<record tabname="pub_option">
+  <col name="id">581</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">是否为演示系统</col>
+  <col name="parvalue">强制启动</col>
+  <col name="pardescr">参数值可以为[强制启动]:强制设置本系统为演示系统，功能最全面，如一图两表界面的【相关罚则】、【相关案苑】和【检查要点】按钮肯定会显示出来;
+参数值为[强制禁用]:强制系统中某些功能不显示，如上面说到的三个按钮;
+参数值为[弃权]:表示该参数不干预本系统功能的显示;
+默认为[弃权]！</col>
+</record>
+
+<!--54-->
+<record tabname="pub_option">
+  <col name="id">621</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">触发器方式监听的表</col>
+  <col name="parvalue">pub_user/用户;sal_personinfo/人员信息;sal_target_list/部门指标;sal_person_check_list/员工指标;sal_factor_def/公式因子;</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--55-->
+<record tabname="pub_option">
+  <col name="id">663</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">体系流程_流程相关</col>
+  <col name="parvalue">Y;Y;Y;Y;Y;Y;Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--56-->
+<record tabname="pub_option">
+  <col name="id">665</col>
+  <col name="modulename">体系流程</col>
+  <col name="parkey">体系流程_环节相关</col>
+  <col name="parvalue">Y;Y;Y;Y;Y;Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--57-->
+<record tabname="pub_option">
+  <col name="id">692</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流处理按钮的面板中是否显示接收按钮</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--58-->
+<record tabname="pub_option">
+  <col name="id">701</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流提交时选择人员是否是勾选框</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--59-->
+<record tabname="pub_option">
+  <col name="id">706</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">平台中按钮的边框是否凸出显示</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--60-->
+<record tabname="pub_option">
+  <col name="id">734</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">是否显示登陆号</col>
+  <col name="parvalue">0</col>
+  <col name="pardescr">有些系统登陆账号是身份证，不能显示在首页或者日志中，只能显示姓名。默认0为登录号+姓名，1为只显示人员姓名</col>
+</record>
+
+<!--61-->
+<record tabname="pub_option">
+  <col name="id">736</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">是否可以注销</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr">是否可以注销，重新登陆</col>
+</record>
+
+<!--62-->
+<record tabname="pub_option">
+  <col name="id">761</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">是否启用预编译</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--63-->
+<record tabname="pub_option">
+  <col name="id">781</col>
+  <col name="modulename">平台_平台显示</col>
+  <col name="parkey">是否用列名查询</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--64-->
+<record tabname="pub_option">
+  <col name="id">818</col>
+  <col name="modulename"></col>
+  <col name="parkey">NTKO_MakerCaption</col>
+  <col name="parvalue">北京普信管理咨询有限公司</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--65-->
+<record tabname="pub_option">
+  <col name="id">903</col>
+  <col name="modulename">产品_法律事务管理</col>
+  <col name="parkey">立案是否走流程</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--66-->
+<record tabname="pub_option">
+  <col name="id">910</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">自定义邮件发送器</col>
+  <col name="parvalue"></col>
+  <col name="pardescr"></col>
+</record>
+
+<!--67-->
+<record tabname="pub_option">
+  <col name="id">911</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">邮件配置</col>
+  <col name="parvalue">192.168.0.10;pushworldgrc@192.168.0.10;1</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--68-->
+<record tabname="pub_option">
+  <col name="id">912</col>
+  <col name="modulename">平台显示</col>
+  <col name="parkey">首页醒目图片</col>
+  <col name="parvalue">new.gif</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--69-->
+<record tabname="pub_option">
+  <col name="id">913</col>
+  <col name="modulename">平台显示</col>
+  <col name="parkey">首页信息时间字段Key</col>
+  <col name="parvalue">send_time</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--70-->
+<record tabname="pub_option">
+  <col name="id">914</col>
+  <col name="modulename">平台显示</col>
+  <col name="parkey">首页信息</col>
+  <col name="parvalue">2</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--71-->
+<record tabname="pub_option">
+  <col name="id">915</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有修订按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--72-->
+<record tabname="pub_option">
+  <col name="id">916</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有显示痕迹按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--73-->
+<record tabname="pub_option">
+  <col name="id">917</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有隐藏痕迹按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--74-->
+<record tabname="pub_option">
+  <col name="id">918</col>
+  <col name="modulename">千航Office文档</col>
+  <col name="parkey">NTKO_有接受修订按钮</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--75-->
+<record tabname="pub_option">
+  <col name="id">919</col>
+  <col name="modulename">平台配置</col>
+  <col name="parkey">导出是否转行列</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--76-->
+<record tabname="pub_option">
+  <col name="id">920</col>
+  <col name="modulename">工作流</col>
+  <col name="parkey">工作流是否显示发送邮件选项</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--77-->
+<record tabname="pub_option">
+  <col name="id">921</col>
+  <col name="modulename">工作流</col>
+  <col name="parkey">工作流处理页面中处理意见是否显示为最后提交者意见</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--78-->
+<record tabname="pub_option">
+  <col name="id">922</col>
+  <col name="modulename">工作流</col>
+  <col name="parkey">工作流是否可以修改历史附件</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--79-->
+<record tabname="pub_option">
+  <col name="id">923</col>
+  <col name="modulename">工作流</col>
+  <col name="parkey">工作流结束时是否选择正常与否</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--80-->
+<record tabname="pub_option">
+  <col name="id">924</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">流程历史提交记录中是否显示提交人联系方式</col>
+  <col name="parvalue"></col>
+  <col name="pardescr"></col>
+</record>
+
+<!--81-->
+<record tabname="pub_option">
+  <col name="id">942</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">首页是否显示管理导航图</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--82-->
+<record tabname="pub_option">
+  <col name="id">981</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流添加人员是否购物车风格</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--83-->
+<record tabname="pub_option">
+  <col name="id">994</col>
+  <col name="modulename">薪酬模块</col>
+  <col name="parkey">个人所得税起征点</col>
+  <col name="parvalue">3500</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--84-->
+<record tabname="pub_option">
+  <col name="id">1052</col>
+  <col name="modulename">平台_其他</col>
+  <col name="parkey">查询是否去箭头</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--85-->
+<record tabname="pub_option">
+  <col name="id">1072</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流半路结束时的正常结束按钮名称</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--86-->
+<record tabname="pub_option">
+  <col name="id">1074</col>
+  <col name="modulename">平台_工作流</col>
+  <col name="parkey">工作流半路结束时的非正常结束按钮名称</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--87-->
+<record tabname="pub_option">
+  <col name="id">1092</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">applet登录界面控件的起始位置</col>
+  <col name="parvalue">650,350</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--88-->
+<record tabname="pub_option">
+  <col name="id">1113</col>
+  <col name="modulename">薪酬模块</col>
+  <col name="parkey">薪酬模块人员打分区间</col>
+  <col name="parvalue">0-10</col>
+  <col name="pardescr">设定给普通员工、中层打分的填写区间</col>
+</record>
+
+<!--89-->
+<record tabname="pub_option">
+  <col name="id">1133</col>
+  <col name="modulename">薪酬模块</col>
+  <col name="parkey">部门考核权重配置</col>
+  <col name="parvalue">垂直=60;平行=40;垂直R=60;垂直P=40;平行R=60;平行P=40;</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--90-->
+<record tabname="pub_option">
+  <col name="id">1152</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">首页是否显示快捷访问</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--91-->
+<record tabname="pub_option">
+  <col name="id">1154</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">日期控件是否标上默认值</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--92-->
+<record tabname="pub_option">
+  <col name="id">1172</col>
+  <col name="modulename">平台_主界面风格</col>
+  <col name="parkey">首页是否显示公告消息</col>
+  <col name="parvalue">N</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--93-->
+<record tabname="pub_option">
+  <col name="id">1192</col>
+  <col name="modulename">项目</col>
+  <col name="parkey">查询框清空条件按钮是否放在下拉菜单中</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--94-->
+<record tabname="pub_option">
+  <col name="id">1202</col>
+  <col name="modulename">平台_其他</col>
+  <col name="parkey">人员密码修改宽度</col>
+  <col name="parvalue">6-10</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--95-->
+<record tabname="pub_option">
+  <col name="id">1212</col>
+  <col name="modulename">薪酬模块</col>
+  <col name="parkey">打分界面是否隐藏总计</col>
+  <col name="parvalue">Y</col>
+  <col name="pardescr"></col>
+</record>
+
+<!--96-->
+<record tabname="pub_option">
+  <col name="id">1232</col>
+  <col name="modulename">薪酬模块</col>
+  <col name="parkey">综合报表工资统计帐套</col>
+  <col name="parvalue">月工资账套</col>
+  <col name="pardescr"></col>
+</record>
+
+</root>

@@ -1,0 +1,2392 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="sal_factor_def">
+  <col name="id">1</col>
+  <col name="code">sys-01</col>
+  <col name="name">人员信息</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">v_sal_personinfo</col>
+  <col name="conditions">tellerno</col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-26 21:17:13</col>
+</record>
+
+<!--2-->
+<record tabname="sal_factor_def">
+  <col name="id">42</col>
+  <col name="code">sys-02</col>
+  <col name="name">当前日期</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">getCurrDate()</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--3-->
+<record tabname="sal_factor_def">
+  <col name="id">65</col>
+  <col name="code">base-07</col>
+  <col name="name">身份证</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.身份证号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--4-->
+<record tabname="sal_factor_def">
+  <col name="id">91</col>
+  <col name="code">base-01</col>
+  <col name="name">姓名</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.姓名]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--5-->
+<record tabname="sal_factor_def">
+  <col name="id">102</col>
+  <col name="code">base-09</col>
+  <col name="name">学历</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.degree]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--6-->
+<record tabname="sal_factor_def">
+  <col name="id">121</col>
+  <col name="code">cal-1-1</col>
+  <col name="name">基本工资小计</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[年功工资]+[保障工资]+[学历工资]+[职称工资]+[地域工资]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:42:40</col>
+</record>
+
+<!--7-->
+<record tabname="sal_factor_def">
+  <col name="id">123</col>
+  <col name="code">val-01</col>
+  <col name="name">保障工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">if([人员信息.统筹方式]=="返聘",0,930)</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-20 10:21:43</col>
+</record>
+
+<!--8-->
+<record tabname="sal_factor_def">
+  <col name="id">125</col>
+  <col name="code">cal-02</col>
+  <col name="name">年功工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">if([统筹方式]=="返聘",0,[行龄单位工资]*[行龄]+[非行龄单位工资]*[非行龄])</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-05 15:33:41</col>
+</record>
+
+<!--9-->
+<record tabname="sal_factor_def">
+  <col name="id">127</col>
+  <col name="code">base-13</col>
+  <col name="name">行龄</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+import cn.com.infostrategy.to.common.HashVO;
+FormulaTool tool = new FormulaTool();
+outputParam=tool.getWorkAgeByWorkDate((((HashVO[])inputParam)[0]).getStringValue("joinselfbankdate"));</col>
+  <col name="conditions">[人员信息]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--10-->
+<record tabname="sal_factor_def">
+  <col name="id">132</col>
+  <col name="code">val-04</col>
+  <col name="name">行龄单位工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">20</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-20 10:21:43</col>
+</record>
+
+<!--11-->
+<record tabname="sal_factor_def">
+  <col name="id">134</col>
+  <col name="code">val-05</col>
+  <col name="name">非行龄单位工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">10</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-20 10:21:43</col>
+</record>
+
+<!--12-->
+<record tabname="sal_factor_def">
+  <col name="id">136</col>
+  <col name="code">cal-05</col>
+  <col name="name">学历工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[学历],
+"匹配源",[学历集合]
+)
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--13-->
+<record tabname="sal_factor_def">
+  <col name="id">138</col>
+  <col name="code">cal-06</col>
+  <col name="name">职称工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[职称],
+"匹配源",[职称集合]
+)
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--14-->
+<record tabname="sal_factor_def">
+  <col name="id">140</col>
+  <col name="code">base-08</col>
+  <col name="name">职称</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.posttitle]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--15-->
+<record tabname="sal_factor_def">
+  <col name="id">182</col>
+  <col name="code">sys-04</col>
+  <col name="name">机构</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">pub_corp_dept</col>
+  <col name="conditions">id=maindeptid</col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--16-->
+<record tabname="sal_factor_def">
+  <col name="id">202</col>
+  <col name="code">base-05</col>
+  <col name="name">年龄</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+FormulaTool tool = new FormulaTool();
+outputParam=tool.getAgeByIdCard(inputParam);</col>
+  <col name="conditions">[身份证]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--17-->
+<record tabname="sal_factor_def">
+  <col name="id">221</col>
+  <col name="code">sys-03</col>
+  <col name="name">学历集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select id,code from pub_comboboxdict where type = '薪酬_学历'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--18-->
+<record tabname="sal_factor_def">
+  <col name="id">241</col>
+  <col name="code">sys-07</col>
+  <col name="name">职称集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select id,code from pub_comboboxdict where type = '薪酬_职称'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--19-->
+<record tabname="sal_factor_def">
+  <col name="id">301</col>
+  <col name="code">base-10</col>
+  <col name="name">参加工作时间</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.参加工作日期]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--20-->
+<record tabname="sal_factor_def">
+  <col name="id">304</col>
+  <col name="code">base-11</col>
+  <col name="name">加入本行时间</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.加入本行日期]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--21-->
+<record tabname="sal_factor_def">
+  <col name="id">306</col>
+  <col name="code">base-14</col>
+  <col name="name">非行龄</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+import cn.com.infostrategy.to.common.HashVO;
+FormulaTool tool = new FormulaTool();
+outputParam=(tool.getWorkAgeByWorkDate((((HashVO[])inputParam)[0]).getStringValue("joinworkdate")) - tool.getWorkAgeByWorkDate((((HashVO[])inputParam)[0]).getStringValue("joinselfbankdate")));</col>
+  <col name="conditions">[人员信息]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--22-->
+<record tabname="sal_factor_def">
+  <col name="id">363</col>
+  <col name="code">base-02</col>
+  <col name="name">所属部门</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[机构.机构名称]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--23-->
+<record tabname="sal_factor_def">
+  <col name="id">371</col>
+  <col name="code">val-06</col>
+  <col name="name">试用工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">930</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-20 10:21:43</col>
+</record>
+
+<!--24-->
+<record tabname="sal_factor_def">
+  <col name="id">391</col>
+  <col name="code">base-03</col>
+  <col name="name">主要岗位</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.mainstation]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--25-->
+<record tabname="sal_factor_def">
+  <col name="id">619</col>
+  <col name="code">base-12</col>
+  <col name="name">统筹方式</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.统筹方式]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--26-->
+<record tabname="sal_factor_def">
+  <col name="id">621</col>
+  <col name="code">val-03</col>
+  <col name="name">岗位工资基数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">1858.38</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-20 10:21:43</col>
+</record>
+
+<!--27-->
+<record tabname="sal_factor_def">
+  <col name="id">626</col>
+  <col name="code">base-10</col>
+  <col name="name">身份系数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[统筹方式],
+"匹配源",[统筹方式集合])</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--28-->
+<record tabname="sal_factor_def">
+  <col name="id">628</col>
+  <col name="code">sys-11</col>
+  <col name="name">统筹方式集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select id,code from pub_comboboxdict where type = '薪酬_统筹类别'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--29-->
+<record tabname="sal_factor_def">
+  <col name="id">631</col>
+  <col name="code">cal-14-1</col>
+  <col name="name">全行部门考核平均分</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value"><![CDATA[import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.WLTRemoteException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.util.Map.Entry;
+import cn.com.pushworld.salary.to.SalaryTBUtil;
+String logid = inputParam;
+SalaryTBUtil util = new SalaryTBUtil();
+HashVO []vos = util.getHashVoArrayByDS(null, "select *from sal_target_check_result where logid ='"+logid+"'");
+HashMap dx = util.getHashMapBySQLByDS(null, "select deptid,qualitativeweights from sal_targetsort_weight_ratio where postsortid is null"); 
+HashMap dl = util.getHashMapBySQLByDS(null, "select deptid,quantifyweights from sal_targetsort_weight_ratio where postsortid is null");
+String beforeDeptId = null;
+HashMap map = new HashMap();
+for (int i = 0; i < vos.length; i++) {
+String deptID = vos[i].getStringValue("checkeddeptid");
+if (map.containsKey(deptID)) {
+List list = (List) map.get(deptID);
+list.add(vos[i]);
+map.put(deptID, list);
+} else {
+List list = new ArrayList();
+list.add(vos[i]);
+map.put(deptID, list);
+}
+}
+float alldeptscoresum = 0;
+for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext();) {
+Entry en = (Entry) iterator.next();
+String deptid = (String) en.getKey();
+List list = (List) en.getValue();
+float oneDeptValue = 0;
+float qzh = 0;
+for (int i = 0; i < list.size(); i++) {
+HashVO vo = (HashVO) list.get(i);
+String type = vo.getStringValue("targetType");
+String value = vo.getStringValue("finalres", "0");
+float curvalue = Float.parseFloat(value);
+if (curvalue == 0) { 
+continue;
+}
+float qz = 0;
+if ("部门定量指标".equals(type)) {
+if (dl.containsKey(deptid)) {
+qz = Float.parseFloat(String.valueOf(dl.get(deptid)));
+} else {
+throw new WLTRemoteException("报错了>>>部门-" + deptid + " " + vo.getStringValue("checkeddeptname") + "没有得分没有配置权重");
+}
+} else if ("部门定性指标".equals(type)) {
+if (dx.containsKey(deptid)) {
+qz = Float.parseFloat(String.valueOf(dx.get(deptid)));
+} else {
+throw new WLTRemoteException("报错了,机构ID:" + deptid + " 名称:" + vo.getStringValue("checkeddeptname") + " 没有得分没有配置权重");
+}
+} else {
+System.out.println("报错了");
+}
+oneDeptValue += curvalue * qz;
+qzh += qz;
+}
+alldeptscoresum += oneDeptValue / qzh;
+}
+if(map.size() != 0){
+outputParam =  alldeptscoresum / map.size();
+}else{
+System.out.println("没有找到全行的部门考核得分结果!!!");
+outputParam = 0;
+}
+]]></col>
+  <col name="conditions">[考核计划主键]</col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--30-->
+<record tabname="sal_factor_def">
+  <col name="id">633</col>
+  <col name="code">cal-13-3</col>
+  <col name="name">部门考核得分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[([部门考核定性得分]*[部门考核得分定性指标权重和]+[部门考核定量得分]*[部门考核得分定量指标权重和])/if([部门考核得分定性指标权重和]+[部门考核得分定量指标权重和]>0,[部门考核得分定性指标权重和]+[部门考核得分定量指标权重和],1)
+]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend">2位小数</col>
+  <col name="descr">调整前的，直接加权平均的。代码中用到，不能删。</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-05 23:40:22</col>
+</record>
+
+<!--31-->
+<record tabname="sal_factor_def">
+  <col name="id">637</col>
+  <col name="code">base-06</col>
+  <col name="name">岗位系数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[人员信息.岗位系数]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">1位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--32-->
+<record tabname="sal_factor_def">
+  <col name="id">763</col>
+  <col name="code">sys-08</col>
+  <col name="name">指标考核机构</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">pub_corp_dept</col>
+  <col name="conditions">id=checkeddept</col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--33-->
+<record tabname="sal_factor_def">
+  <col name="id">781</col>
+  <col name="code">par-03</col>
+  <col name="name">指标考核时间</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[传入数据.checkdate]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--34-->
+<record tabname="sal_factor_def">
+  <col name="id">824</col>
+  <col name="code">sys-08</col>
+  <col name="name">指标考核人员</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">v_sal_personinfo</col>
+  <col name="conditions">id=checkeduser</col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-26 21:17:13</col>
+</record>
+
+<!--35-->
+<record tabname="sal_factor_def">
+  <col name="id">826</col>
+  <col name="code">par-04</col>
+  <col name="name">指标柜员号</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[指标考核人员.柜员号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--36-->
+<record tabname="sal_factor_def">
+  <col name="id">851</col>
+  <col name="code">par-02</col>
+  <col name="name">考核人岗位</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[指标考核人员.主岗位]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--37-->
+<record tabname="sal_factor_def">
+  <col name="id">861</col>
+  <col name="code">par-01</col>
+  <col name="name">考核人员岗位归类</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[指标考核人员.岗位归类]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--38-->
+<record tabname="sal_factor_def">
+  <col name="id">911</col>
+  <col name="code">sys-08</col>
+  <col name="name">姓名与主机构Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([全部人员集合],"name","maindeptid")</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--39-->
+<record tabname="sal_factor_def">
+  <col name="id">913</col>
+  <col name="code">sys-09</col>
+  <col name="name">全部人员集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from v_sal_personinfo</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--40-->
+<record tabname="sal_factor_def">
+  <col name="id">942</col>
+  <col name="code">base-04</col>
+  <col name="name">柜员号</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.柜员号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--41-->
+<record tabname="sal_factor_def">
+  <col name="id">974</col>
+  <col name="code">cal-08</col>
+  <col name="name">岗位责任工资全额</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">if([人员信息.统筹方式]=="返聘",0,
+[人员信息.岗位归类]=="待岗" || [职务]=="待岗",[岗位工资基数]*[岗位系数]/2*[身份系数],
+[人员信息.岗位归类]=="高管",[岗位工资基数]*[岗位系数]*[身份系数]*[高管垂直指标与条线加权最终分]/100,
+[岗位工资基数]*[岗位系数]*[身份系数]*if([部门考核分数调整后]==0,1,[部门考核分数调整后]/[同一部门类型考核最高分]))</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr">未判断行龄前</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-11 20:58:15</col>
+</record>
+
+<!--42-->
+<record tabname="sal_factor_def">
+  <col name="id">978</col>
+  <col name="code">cal-09</col>
+  <col name="name">医疗补助全额</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([性别]=="男" && [年龄]>=45,150,
+[性别]=="女" && [年龄]>=45,150,
+[工龄]>=2,100,
+[工龄]<2,50)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr">未判断工龄</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 14:21:34</col>
+</record>
+
+<!--43-->
+<record tabname="sal_factor_def">
+  <col name="id">981</col>
+  <col name="code">base-15</col>
+  <col name="name">工龄</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+import cn.com.infostrategy.to.common.HashVO;
+FormulaTool tool = new FormulaTool();
+outputParam=(tool.getWorkAgeByWorkDate((((HashVO[])inputParam)[0]).getStringValue("joinworkdate")));</col>
+  <col name="conditions">[人员信息]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 09:43:34</col>
+</record>
+
+<!--44-->
+<record tabname="sal_factor_def">
+  <col name="id">1001</col>
+  <col name="code">base-16</col>
+  <col name="name">性别</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.性别]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--45-->
+<record tabname="sal_factor_def">
+  <col name="id">1004</col>
+  <col name="code">base-17</col>
+  <col name="name">职务</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.职务]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--46-->
+<record tabname="sal_factor_def">
+  <col name="id">1006</col>
+  <col name="code">base-18</col>
+  <col name="name">政治面貌</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.政治面貌]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--47-->
+<record tabname="sal_factor_def">
+  <col name="id">1008</col>
+  <col name="code">base-19</col>
+  <col name="name">合同期限</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.合同到期日期]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--48-->
+<record tabname="sal_factor_def">
+  <col name="id">1010</col>
+  <col name="code">base-20</col>
+  <col name="name">毕业学校</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.毕业学校]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--49-->
+<record tabname="sal_factor_def">
+  <col name="id">1012</col>
+  <col name="code">base-21</col>
+  <col name="name">专业</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.专业]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--50-->
+<record tabname="sal_factor_def">
+  <col name="id">1015</col>
+  <col name="code">base-22</col>
+  <col name="name">子女出生</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.独生子女出生日期]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--51-->
+<record tabname="sal_factor_def">
+  <col name="id">1018</col>
+  <col name="code">sys-12</col>
+  <col name="name">地区集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select id,code from pub_comboboxdict where type = '薪酬_地区'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--52-->
+<record tabname="sal_factor_def">
+  <col name="id">1020</col>
+  <col name="code">cal-06</col>
+  <col name="name">地域工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.机构简称],
+"匹配源",[地区集合])</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--53-->
+<record tabname="sal_factor_def">
+  <col name="id">1022</col>
+  <col name="code">base-23</col>
+  <col name="name">养老金</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[人员信息.每月交纳养老金]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-08 22:25:43</col>
+</record>
+
+<!--54-->
+<record tabname="sal_factor_def">
+  <col name="id">1024</col>
+  <col name="code">base-24</col>
+  <col name="name">住房公积金</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[人员信息.每月交纳住房公积金]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-02 22:41:08</col>
+</record>
+
+<!--55-->
+<record tabname="sal_factor_def">
+  <col name="id">1042</col>
+  <col name="code">base-25</col>
+  <col name="name">子女年龄</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+import cn.com.infostrategy.to.common.HashVO;
+FormulaTool tool = new FormulaTool();
+outputParam=tool.getWorkAgeByWorkDate((((HashVO[])inputParam)[0]).getStringValue("onlychildrenbthday",""));</col>
+  <col name="conditions">[人员信息]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--56-->
+<record tabname="sal_factor_def">
+  <col name="id">1052</col>
+  <col name="code">cal-10</col>
+  <col name="name">独生子女补贴</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([子女年龄]>0 && [子女年龄]<=16,10,0)
+]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--57-->
+<record tabname="sal_factor_def">
+  <col name="id">1054</col>
+  <col name="code">cal-11-2</col>
+  <col name="name">亲情工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[人员信息.主键],
+"匹配源",[亲情工资集合],
+"匹配字段","checkeduserid",
+"返回字段","money")
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr">工资中用到</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 14:27:29</col>
+</record>
+
+<!--58-->
+<record tabname="sal_factor_def">
+  <col name="id">1056</col>
+  <col name="code">sys-13-1</col>
+  <col name="name">部门考核定性得分集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from sal_target_check_result where logid='[考核计划主键]' and targettype='部门定性指标'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--59-->
+<record tabname="sal_factor_def">
+  <col name="id">1058</col>
+  <col name="code">par-13</col>
+  <col name="name">计算工资年月</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[传入数据.checkdate]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--60-->
+<record tabname="sal_factor_def">
+  <col name="id">1063</col>
+  <col name="code">sys-27</col>
+  <col name="name">考核计划集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">sal_target_check_log</col>
+  <col name="conditions">checkdate=[计算工资年月]</col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--61-->
+<record tabname="sal_factor_def">
+  <col name="id">1065</col>
+  <col name="code">sys-28</col>
+  <col name="name">考核计划主键</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[考核计划集合.id]</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--62-->
+<record tabname="sal_factor_def">
+  <col name="id">1067</col>
+  <col name="code">sys-13-2</col>
+  <col name="name">部门考核定性得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([部门考核定性得分集合],"checkeddeptid","finalres")</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-02 01:59:52</col>
+</record>
+
+<!--63-->
+<record tabname="sal_factor_def">
+  <col name="id">1089</col>
+  <col name="code">sys-15-1</col>
+  <col name="name">员工考核定性得分集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from sal_person_check_result where logid='[考核计划主键]' and targettype='员工定性指标'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--64-->
+<record tabname="sal_factor_def">
+  <col name="id">1101</col>
+  <col name="code">sys-15-2</col>
+  <col name="name">员工考核定性得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([员工考核定性得分集合],"checkeduserid","finalres3")</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-03 10:40:46</col>
+</record>
+
+<!--65-->
+<record tabname="sal_factor_def">
+  <col name="id">1104</col>
+  <col name="code">sys-15-3</col>
+  <col name="name">员工考核定量得分集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from sal_person_check_result where logid='[考核计划主键]' and targettype='员工定量指标'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--66-->
+<record tabname="sal_factor_def">
+  <col name="id">1106</col>
+  <col name="code">sys-15-4</col>
+  <col name="name">员工考核定量得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([员工考核定量得分集合],"checkeduserid","finalres")</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--67-->
+<record tabname="sal_factor_def">
+  <col name="id">1111</col>
+  <col name="code">sys-13-3</col>
+  <col name="name">部门考核定量得分集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from sal_target_check_result where logid='[考核计划主键]' and targettype='部门定量指标'</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--68-->
+<record tabname="sal_factor_def">
+  <col name="id">1113</col>
+  <col name="code">sys-13-4</col>
+  <col name="name">部门考核定量得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([部门考核定量得分集合],"checkeddeptid","finalres")</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--69-->
+<record tabname="sal_factor_def">
+  <col name="id">1123</col>
+  <col name="code">cal-13-1</col>
+  <col name="name">部门考核定性得分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.主键],
+"匹配源",[部门考核定性得分Map]
+)</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--70-->
+<record tabname="sal_factor_def">
+  <col name="id">1125</col>
+  <col name="code">cal-13-2</col>
+  <col name="name">部门考核定量得分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.主键],
+"匹配源",[部门考核定量得分Map])</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--71-->
+<record tabname="sal_factor_def">
+  <col name="id">1127</col>
+  <col name="code">cal-15-1</col>
+  <col name="name">员工考核定量得分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[人员信息.主键],
+"匹配源",[员工考核定量得分Map])</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--72-->
+<record tabname="sal_factor_def">
+  <col name="id">1129</col>
+  <col name="code">cal-15-2</col>
+  <col name="name">员工考核定性得分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[指标考核人员.主键],
+"匹配源",if([指标考核人员.岗位归类]=="高管",[非一般人员考核定性得分Map],
+[指标考核人员.岗位归类]=="中层管理",[非一般人员考核定性得分Map],
+[指标考核人员.岗位归类]=="支行行长",[非一般人员考核定性得分Map],
+[指标考核人员.岗位归类]=="客户总经理",[非一般人员考核定性得分Map],
+[一般人员考核定性得分Map]))
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-05 16:10:11</col>
+</record>
+
+<!--73-->
+<record tabname="sal_factor_def">
+  <col name="id">1133</col>
+  <col name="code">cal-16-1</col>
+  <col name="name">个人考核分数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([考核人员岗位归类]=="高管",[员工考核定性得分],[员工考核定性得分]/100*if([部门考核分数调整后]>0,[部门考核分数调整后]/100,1)*100)
+]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr">员工定性分数和部门考核得分是百分制。所以得除以100。
+然后在转换为百分制。
+高管没有部门得分。</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 12:45:19</col>
+</record>
+
+<!--74-->
+<record tabname="sal_factor_def">
+  <col name="id">1181</col>
+  <col name="code">cal-25-2</col>
+  <col name="name">加班/缺勤绩效</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([岗位归类]=="待岗" && [加班天数]>0,0,[岗位归类]=="待岗" && [加班天数]<0,(([中间岗位责任工资]/2+[效益工资]*0.75)/22.5*[加班天数])/2,
+[岗位归类]=="待岗" && [加班天数]>0, [保障工资]/22.5*2*[加班天数],
+[岗位归类]=="待岗" && [加班天数]<0, 0,
+indexOf("支行行长/信贷员/柜员/客户经理/客户总经理",[岗位归类])>0 && [加班天数]<0,[中间岗位责任工资]*0.75/22.5*[加班天数], [加班天数]<0,([中间岗位责任工资]/2+[效益工资]*0.75)/22.5*[加班天数],[加班天数]>0,[保障工资]/22.5*2*[加班天数],0)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:36:57</col>
+</record>
+
+<!--75-->
+<record tabname="sal_factor_def">
+  <col name="id">1184</col>
+  <col name="code">base-30</col>
+  <col name="name">岗位归类</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.岗位归类]
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--76-->
+<record tabname="sal_factor_def">
+  <col name="id">1186</col>
+  <col name="code">base-31</col>
+  <col name="name">本月公休天数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[计算工资月份],
+"匹配源",getHashVOByTable("select id,code from pub_comboboxdict where type='薪酬_月公休日'"))
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--77-->
+<record tabname="sal_factor_def">
+  <col name="id">1211</col>
+  <col name="code">cal-25-1</col>
+  <col name="name">加班天数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">if([岗位归类]=="柜员",[实际出勤天数]-[本月天数]/2-1,[实际出勤天数]-([本月天数]-[本月公休天数]))</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-16 20:03:48</col>
+</record>
+
+<!--78-->
+<record tabname="sal_factor_def">
+  <col name="id">1213</col>
+  <col name="code">base-32</col>
+  <col name="name">计算工资月份</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">subString(getMonthByDateTime([计算工资年月]),5,length(getMonthByDateTime([计算工资年月])))</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">先把2013-10转换成2013年10月。然后截取10月</col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--79-->
+<record tabname="sal_factor_def">
+  <col name="id">1215</col>
+  <col name="code">base-33</col>
+  <col name="name">本月天数</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import java.util.Calendar;
+import java.text.SimpleDateFormat;
+Calendar cal = Calendar.getInstance();
+SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+cal.setTime(format.parse(inputParam));
+outputParam = cal.getActualMaximum(Calendar.DATE);
+
+  </col>
+  <col name="conditions">[计算工资年月]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--80-->
+<record tabname="sal_factor_def">
+  <col name="id">1221</col>
+  <col name="code">cal-16-10</col>
+  <col name="name">效益工资全额</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([中间计算效益工资]<0,0,[中间计算效益工资])]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-15 11:55:26</col>
+</record>
+
+<!--81-->
+<record tabname="sal_factor_def">
+  <col name="id">1251</col>
+  <col name="code">cal-16-3</col>
+  <col name="name">岗位群计划完成率集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select t2.stationkind as A,sum(if(t1.checkscore is null ,0,t1.checkscore)/t1.planedvalue*t1.weights)/sum(t1.weights) as B from  sal_person_check_score t1 left join v_sal_personinfo t2 on t1.checkeduser = t2.id where t1.targettype='员工定量指标' and t1.logid = [考核计划主键] group by t2.stationkind</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr">通过sql计算出每个岗位群的完成率。</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--82-->
+<record tabname="sal_factor_def">
+  <col name="id">1253</col>
+  <col name="code">cal-16-2</col>
+  <col name="name">员工考核定量定性得分集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select t1.checkeduserid  A, t2.finalres B, t3.finalres C ,t4.name D,t4.stationkind E from (select distinct checkeduserid from sal_person_check_result where logid = [考核计划主键]) t1 left join (select checkeduserid, finalres from sal_person_check_result where logid = [考核计划主键] and targettype = '员工定性指标') t2 on t1.checkeduserid = t2.checkeduserid  left join  (select checkeduserid, finalres from sal_person_check_result where logid = [考核计划主键] and targettype = '员工定量指标') t3 on t1.checkeduserid = t3.checkeduserid  left join v_sal_personinfo t4 on t1.checkeduserid = t4.id</col>
+  <col name="conditions"></col>
+  <col name="managetype">系统对象</col>
+  <col name="extend"></col>
+  <col name="descr">数据库中每个人的定量得分和定性得分是单独存的两条记录。
+用sql把每个员工的定量的定性得分绑定到一起。成为一行记录。</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-05 16:12:36</col>
+</record>
+
+<!--83-->
+<record tabname="sal_factor_def">
+  <col name="id">1261</col>
+  <col name="code">base-34</col>
+  <col name="name">效益工资基数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">2000</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-22 21:34:20</col>
+</record>
+
+<!--84-->
+<record tabname="sal_factor_def">
+  <col name="id">1263</col>
+  <col name="code">cal-16-5</col>
+  <col name="name">群计发效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[效益工资基数]*[岗位系数之和]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--85-->
+<record tabname="sal_factor_def">
+  <col name="id">1265</col>
+  <col name="code">base-35</col>
+  <col name="name">岗位系数之和</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[岗位归类],
+"匹配源",[岗位群系数和集合])
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--86-->
+<record tabname="sal_factor_def">
+  <col name="id">1267</col>
+  <col name="code">base-34</col>
+  <col name="name">岗位群系数和集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select stationkind A,sum(stationratio) B from v_sal_personinfo group by stationkind</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--87-->
+<record tabname="sal_factor_def">
+  <col name="id">1269</col>
+  <col name="code">cal-16-6</col>
+  <col name="name">群应发效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[群计发效益工资]*[群计划完成率]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--88-->
+<record tabname="sal_factor_def">
+  <col name="id">1271</col>
+  <col name="code">cal-16-7</col>
+  <col name="name">群计划完成率</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[岗位归类],
+"匹配源",[岗位群计划完成率集合])</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">4位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--89-->
+<record tabname="sal_factor_def">
+  <col name="id">1281</col>
+  <col name="code">cal-28</col>
+  <col name="name">其他扣款</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if(indexOf("支行行长/客户经理/信贷员",[岗位归类])!=-1 && [应发工资]>8000,([应发工资]-8000)*0.2,((indexOf("中层管理/一般管理/业务/信贷会计/会计主管/柜员",[岗位归类])!=-1 ||[主要岗位]=="董事会秘书" || [主要岗位]=="行长助理岗")) && ([本人揽存算工资用]-[非信贷岗人均维护存款])>500,(([本人揽存算工资用]-[非信贷岗人均维护存款])*3-500)*0.5,0)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--90-->
+<record tabname="sal_factor_def">
+  <col name="id">1283</col>
+  <col name="code">cal-1-4</col>
+  <col name="name">应发工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[基本工资小计]+[岗位责任工资]+[绩效工资小计]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:45:52</col>
+</record>
+
+<!--91-->
+<record tabname="sal_factor_def">
+  <col name="id">1286</col>
+  <col name="code">cal-1-2</col>
+  <col name="name">岗位责任工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[中间岗位责任工资]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:39:44</col>
+</record>
+
+<!--92-->
+<record tabname="sal_factor_def">
+  <col name="id">1288</col>
+  <col name="code">cal-1-3</col>
+  <col name="name">绩效工资小计</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[效益工资全额]+[加班/缺勤绩效]+[亲情工资]</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-15 11:54:39</col>
+</record>
+
+<!--93-->
+<record tabname="sal_factor_def">
+  <col name="id">1363</col>
+  <col name="code">base-33</col>
+  <col name="name">考核机构人数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">select count(*) from v_sal_personinfo where   deptid='[指标考核机构.主键]' and (isuncheck='N' or isuncheck is null )</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-12 10:35:30</col>
+</record>
+
+<!--94-->
+<record tabname="sal_factor_def">
+  <col name="id">1423</col>
+  <col name="code">sys-16-2</col>
+  <col name="name">员工定量指标计算工资Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap([员工定量指标应发工资],"checkeduser","money")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">计算工资用</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--95-->
+<record tabname="sal_factor_def">
+  <col name="id">1425</col>
+  <col name="code">cal-16-8</col>
+  <col name="name">中间计算效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[人员信息.主键],
+"匹配源",[员工定量指标计算工资Map],
+"匹配字段","checkeduser",
+"返回字段","money")</col>
+  <col name="conditions"></col>
+  <col name="managetype">参数计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 21:09:28</col>
+</record>
+
+<!--96-->
+<record tabname="sal_factor_def">
+  <col name="id">1427</col>
+  <col name="code">cal-16-9</col>
+  <col name="name">某员工计发效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[岗位系数]*[效益工资基数]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache"></col>
+  <col name="lastdate"></col>
+</record>
+
+<!--97-->
+<record tabname="sal_factor_def">
+  <col name="id">1441</col>
+  <col name="code">sys-16-1</col>
+  <col name="name">员工定量指标应发工资</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select checkeduser ,sum(money) money  from sal_person_check_score where  logid='[考核计划主键]' and targettype='员工定量指标' group by checkeduser</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--98-->
+<record tabname="sal_factor_def">
+  <col name="id">1461</col>
+  <col name="code">cal-11-1</col>
+  <col name="name">亲情工资集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select *from sal_person_check_result  where targettype='员工考核分数' and logid=[考核计划主键]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--99-->
+<record tabname="sal_factor_def">
+  <col name="id">1465</col>
+  <col name="code">cal-18</col>
+  <col name="name">统筹基金</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[养老金]+[住房公积金]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--100-->
+<record tabname="sal_factor_def">
+  <col name="id">1467</col>
+  <col name="code">cal-19</col>
+  <col name="name">实发工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[应发工资]-[统筹基金]-[亲人补贴]+[医疗补助]+[独生子女补贴]-[延期支付金额]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-16 11:17:32</col>
+</record>
+
+<!--101-->
+<record tabname="sal_factor_def">
+  <col name="id">1485</col>
+  <col name="code">cal-35-3</col>
+  <col name="name">某部门定量指标涉及的所有部门总人数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">select count(t1.id) from v_pub_user_post_2 t1 left join sal_dept_check_score t2 on t1.deptid = t2.checkeddept where t2.targetid =[传入数据.targetid] and t2.logid=[考核计划主键] and t1.isdefault='Y'</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate"></col>
+</record>
+
+<!--102-->
+<record tabname="sal_factor_def">
+  <col name="id">1493</col>
+  <col name="code">cal-13-4</col>
+  <col name="name">全行部门考核最高分</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value"><![CDATA[import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.WLTRemoteException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.util.Map.Entry;
+import cn.com.pushworld.salary.to.SalaryTBUtil;
+String logid = inputParam;
+SalaryTBUtil util = new SalaryTBUtil();
+HashVO []vos = util.getHashVoArrayByDS(null, "select *from sal_target_check_result where logid ='"+logid+"'");
+HashMap dx = util.getHashMapBySQLByDS(null, "select checkeddept,sum(weights) weights from sal_dept_check_score where targettype='部门定性指标' and logid='"+logid+"' group by checkeddept"); 
+HashMap dl = util.getHashMapBySQLByDS(null, "select checkeddept,sum(weights) weights from sal_dept_check_score where targettype='部门定量指标' and logid='"+logid+"' group by checkeddept"); 
+String beforeDeptId = null;
+HashMap map = new HashMap();
+for (int i = 0; i < vos.length; i++) {
+String deptID = vos[i].getStringValue("checkeddeptid");
+if (map.containsKey(deptID)) {
+List list = (List) map.get(deptID);
+list.add(vos[i]);
+map.put(deptID, list);
+} else {
+List list = new ArrayList();
+list.add(vos[i]);
+map.put(deptID, list);
+}
+}
+float maxdeptscore = 0;
+String maxDeptID = "";
+for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext();) {
+	Entry en = (Entry) iterator.next();
+	String deptid = (String) en.getKey();
+	List list = (List) en.getValue();
+	float oneDeptValue = 0;
+	float qzh = 0;
+	for (int i = 0; i < list.size(); i++) {
+	HashVO vo = (HashVO) list.get(i);
+	String type = vo.getStringValue("targetType");
+	String deptname = vo.getStringValue("checkeddeptname");
+	String value = vo.getStringValue("finalres", "0");
+	float curvalue = Float.parseFloat(value);
+	if (curvalue == 0) { 
+		continue;
+	}
+	float qz = 0;
+	if ("部门定量指标".equals(type)) {
+		if (dl.containsKey(deptid)) {
+		qz = Float.parseFloat(String.valueOf(dl.get(deptid)));
+		} else {
+		throw new WLTRemoteException("报错了>>>部门-" + deptid + " " + vo.getStringValue("checkeddeptname") + "没有得分没有配置权重");
+		}
+	} else if ("部门定性指标".equals(type)) {
+		if (dx.containsKey(deptid)) {
+		qz = Float.parseFloat(String.valueOf(dx.get(deptid)));
+		} else {
+		throw new WLTRemoteException("报错了,机构ID:" + deptid + " 名称:" + vo.getStringValue("checkeddeptname") + " 没有得分没有配置权重");
+		}
+	} else {
+		System.out.println("报错了");
+	}
+		oneDeptValue += curvalue * qz;
+		qzh += qz;
+	}
+	float value =  oneDeptValue / qzh; //某部门得分
+	if(value >maxdeptscore){
+		maxdeptscore = value;
+		maxDeptID=deptid;
+	}
+}
+	System.out.println("全行部门考核最高分:"+maxDeptID);
+outputParam = maxdeptscore;
+]]></col>
+  <col name="conditions">[考核计划主键]</col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-02 10:03:59</col>
+</record>
+
+<!--103-->
+<record tabname="sal_factor_def">
+  <col name="id">1522</col>
+  <col name="code">val-07</col>
+  <col name="name">存款人数调节</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">0</col>
+  <col name="conditions"></col>
+  <col name="managetype">固定值</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:22:43</col>
+</record>
+
+<!--104-->
+<record tabname="sal_factor_def">
+  <col name="id">1543</col>
+  <col name="code">cal-14-2</col>
+  <col name="name">全行余额人均数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">([全行部门存款总余额]+[全行日均存款总额])/2/([某部门定量指标涉及的所有部门总人数]+[存款人数调节])</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">4位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-10-17 16:32:35</col>
+</record>
+
+<!--105-->
+<record tabname="sal_factor_def">
+  <col name="id">1571</col>
+  <col name="code">base-36-1</col>
+  <col name="name">部门考核得分定性指标权重和的Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select checkeddept,sum(weights) weights from sal_dept_check_score where targettype='部门定性指标' and logid=[考核计划主键] group by checkeddept","checkeddept","weights")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-02 01:07:59</col>
+</record>
+
+<!--106-->
+<record tabname="sal_factor_def">
+  <col name="id">1581</col>
+  <col name="code">base-36-2</col>
+  <col name="name">部门考核得分定量指标权重和的Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select checkeddept,sum(weights) weights from sal_dept_check_score where targettype='部门定量指标' and logid=[考核计划主键] group by checkeddept","checkeddept","weights")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-02 01:08:17</col>
+</record>
+
+<!--107-->
+<record tabname="sal_factor_def">
+  <col name="id">1583</col>
+  <col name="code">base-36-3</col>
+  <col name="name">部门考核得分定性指标权重和</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.主键],
+"匹配源",[部门考核得分定性指标权重和的Map],
+"匹配字段","checkeddept",
+"返回字段","weights")
+
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">1位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-02 01:08:38</col>
+</record>
+
+<!--108-->
+<record tabname="sal_factor_def">
+  <col name="id">1585</col>
+  <col name="code">base-36-4</col>
+  <col name="name">部门考核得分定量指标权重和</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.主键],
+"匹配源",[部门考核得分定量指标权重和的Map],
+"匹配字段","checkeddept",
+"返回字段","weights")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">1位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-02 01:09:04</col>
+</record>
+
+<!--109-->
+<record tabname="sal_factor_def">
+  <col name="id">1601</col>
+  <col name="code">cal-11-3</col>
+  <col name="name">亲人补贴</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[亲情工资]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-02 22:11:14</col>
+</record>
+
+<!--110-->
+<record tabname="sal_factor_def">
+  <col name="id">1622</col>
+  <col name="code">base-37-1</col>
+  <col name="name">高管所有定量指标权重和</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">select sum(t2.weights) B from sal_person_check_list t1 left join sal_person_check_post t2 on   t1.id = t2.targetid where t2.postid like '%;高管;%' and t1.state='参与考核' and t1.valuetype!='直接' </col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-02 22:47:59</col>
+</record>
+
+<!--111-->
+<record tabname="sal_factor_def">
+  <col name="id">1663</col>
+  <col name="code">base-33-1</col>
+  <col name="name">考核的月末日期</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+Calendar cal = Calendar.getInstance();
+SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+cal.setTime(format.parse(inputParam));
+cal.set(Calendar.DAY_OF_MONTH,cal.getActualMaximum(Calendar.DATE));
+Date otherDate = cal.getTime();
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+outputParam=dateFormat.format(otherDate);</col>
+  <col name="conditions">[指标考核时间]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">如果考核2013-08，那么值等于20130831</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-03 16:42:08</col>
+</record>
+
+<!--112-->
+<record tabname="sal_factor_def">
+  <col name="id">1685</col>
+  <col name="code">sys-08</col>
+  <col name="name">指标考核人员岗位系数</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[指标考核人员.岗位系数]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">1位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-03 14:45:12</col>
+</record>
+
+<!--113-->
+<record tabname="sal_factor_def">
+  <col name="id">1687</col>
+  <col name="code">par-04</col>
+  <col name="name">指标考核年份</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">subString([指标考核时间],0,4)</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-03 14:45:44</col>
+</record>
+
+<!--114-->
+<record tabname="sal_factor_def">
+  <col name="id">1701</col>
+  <col name="code">sys-09</col>
+  <col name="name">考核人姓名</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[指标考核人员.姓名]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-03 15:28:57</col>
+</record>
+
+<!--115-->
+<record tabname="sal_factor_def">
+  <col name="id">1778</col>
+  <col name="code">sys-15-6</col>
+  <col name="name">非一般人员考核定性得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select * from sal_person_check_result where logid='[考核计划主键]' and targettype='员工定性指标' and stationkind!='一般人员'","checkeduserid","finalres2")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-05 16:07:26</col>
+</record>
+
+<!--116-->
+<record tabname="sal_factor_def">
+  <col name="id">1780</col>
+  <col name="code">sys-15-5</col>
+  <col name="name">一般人员考核定性得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select * from sal_person_check_result where logid='[考核计划主键]' and targettype='员工定性指标' and stationkind='一般人员'","checkeduserid","finalres3")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">finalres3是以最高分为满分调节，finalres2实际分</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-10-09 19:34:54</col>
+</record>
+
+<!--117-->
+<record tabname="sal_factor_def">
+  <col name="id">1802</col>
+  <col name="code">cal-13-4</col>
+  <col name="name">部门考核分数调整后</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.主键],
+"匹配源",[部门考核分数调整后Map],
+"匹配字段","checkeddeptid",
+"返回字段","NUM")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-06 08:54:43</col>
+</record>
+
+<!--118-->
+<record tabname="sal_factor_def">
+  <col name="id">1804</col>
+  <col name="code">base-43</col>
+  <col name="name">部门考核分数调整后Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select checkeddeptid,currscore+revisescore NUM from sal_target_check_revise_result where logid=[考核计划主键]","checkeddeptid","NUM")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-05 23:31:21</col>
+</record>
+
+<!--119-->
+<record tabname="sal_factor_def">
+  <col name="id">1821</col>
+  <col name="code">base-43-1</col>
+  <col name="name">手工上报部门指标数据Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select * from sal_quantifytargetdate where checkdate = '[指标考核时间]' and targettype='部门定量指标'","targetid","finavalue")
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">在系统录入的数据</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-06 17:19:21</col>
+</record>
+
+<!--120-->
+<record tabname="sal_factor_def">
+  <col name="id">1823</col>
+  <col name="code">base-43-2</col>
+  <col name="name">手工上报员工指标数据Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select * from sal_quantifytargetdate where checkdate = '[指标考核时间]' and targettype='员工定量指标'","targetid","finavalue")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">手动录入的员工定量指标数据</col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-06 17:27:57</col>
+</record>
+
+<!--121-->
+<record tabname="sal_factor_def">
+  <col name="id">1841</col>
+  <col name="code">base-44-1</col>
+  <col name="name">同一个部门分类最高分Map</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
+import cn.com.infostrategy.to.common.HashVO;
+SalaryFormulaDMO tool = new SalaryFormulaDMO();
+outputParam=tool.getDeptTypeMaxScore(inputParam);</col>
+  <col name="conditions">[考核计划主键]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-09-07 10:42:34</col>
+</record>
+
+<!--122-->
+<record tabname="sal_factor_def">
+  <col name="id">1861</col>
+  <col name="code">cal-13-4</col>
+  <col name="name">同一部门类型考核最高分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[机构.机构分类],
+"匹配源",[同一个部门分类最高分Map])
+
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-07 10:48:46</col>
+</record>
+
+<!--123-->
+<record tabname="sal_factor_def">
+  <col name="id">1923</col>
+  <col name="code">cal-42</col>
+  <col name="name">行龄_月</col>
+  <col name="sourcetype">代码计算</col>
+  <col name="value">import cn.com.pushworld.salary.to.baseinfo.FormulaTool;
+import cn.com.infostrategy.to.common.HashVO;
+FormulaTool tool = new FormulaTool();
+outputParam=(tool.getWorkMonth((((HashVO[])inputParam)[0]).getStringValue("joinselfbankdate")));</col>
+  <col name="conditions">[人员信息]</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 14:13:00</col>
+</record>
+
+<!--124-->
+<record tabname="sal_factor_def">
+  <col name="id">1961</col>
+  <col name="code">cal-08</col>
+  <col name="name">中间岗位责任工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([行龄_月]<=3,0,
+[行龄_月]<=6,[岗位责任工资全额]/2,
+[岗位责任工资全额])]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr">行龄：大于3个月，小于等于6个月，岗位工资和效益工资减半。</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-17 17:33:31</col>
+</record>
+
+<!--125-->
+<record tabname="sal_factor_def">
+  <col name="id">1963</col>
+  <col name="code">cal-16-10</col>
+  <col name="name">效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([岗位归类]=="待岗" ||[职务]=="待岗",0,[行龄_月]<=3,0,
+[行龄_月]<=6,[效益工资全额]/2,[效益工资全额])]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-16 16:12:01</col>
+</record>
+
+<!--126-->
+<record tabname="sal_factor_def">
+  <col name="id">1971</col>
+  <col name="code">cal-09</col>
+  <col name="name">医疗补助</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([行龄_月]<=3,0,
+[行龄_月]<=6,[医疗补助全额]/2,[医疗补助全额])]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">1位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-09 14:25:43</col>
+</record>
+
+<!--127-->
+<record tabname="sal_factor_def">
+  <col name="id">1973</col>
+  <col name="code">cal-11-3</col>
+  <col name="name">亲情工资计算</col>
+  <col name="sourcetype">数字</col>
+  <col name="value"><![CDATA[if([传入数据.排名]<=0.15,300,
+[传入数据.排名]>0.15 && [传入数据.排名]<=0.4,200,
+[传入数据.排名]>0.4 && [传入数据.排名]<=0.9,100,0)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">整数</col>
+  <col name="descr">后台代码中用到，只可修改不可删除。
+传入的是一个小数比例</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-29 21:11:02</col>
+</record>
+
+<!--128-->
+<record tabname="sal_factor_def">
+  <col name="id">2095</col>
+  <col name="code">base-3-1</col>
+  <col name="name">员工定量指标各岗位组权重总和</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select t3.id posttype,sum(t2.weights) weights from sal_person_check_list t1 left join sal_person_check_post t2 on   t1.id = t2.targetid  left join pub_comboboxdict t3 on t2.postid like concat('%;',t3.id,';%') and t3.type ='薪酬_岗位归类' where t1.state='参与考核' group by t3.id","posttype","weights")</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-10-11 20:52:29</col>
+</record>
+
+<!--129-->
+<record tabname="sal_factor_def">
+  <col name="id">2097</col>
+  <col name="code">cal-37-2</col>
+  <col name="name">某员工所有定量指标权重总和</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[考核人员岗位归类],
+"匹配源",[员工定量指标各岗位组权重总和])</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-17 14:56:19</col>
+</record>
+
+<!--130-->
+<record tabname="sal_factor_def">
+  <col name="id">2099</col>
+  <col name="code">cal-37-1</col>
+  <col name="name">某员工某定量指标应发效益工资</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">[效益工资基数]*[指标考核人员岗位系数]*[传入数据.weights]/[某员工所有定量指标权重总和]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-09-17 14:56:37</col>
+</record>
+
+<!--131-->
+<record tabname="sal_factor_def">
+  <col name="id">2102</col>
+  <col name="code">cal-43</col>
+  <col name="name">员工排名算优良</col>
+  <col name="sourcetype">文本</col>
+  <col name="value"><![CDATA[if([传入数据.排名]<=0.2,优秀,
+[传入数据.排名]>0.2 && [传入数据.排名]<=0.55,较好,
+[传入数据.排名]>0.55 && [传入数据.排名]<=0.9,一般,较差)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr">因子名称不可修改.在计算亲情工资时用到</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-29 17:53:13</col>
+</record>
+
+<!--132-->
+<record tabname="sal_factor_def">
+  <col name="id">2121</col>
+  <col name="code">cal-46-1</col>
+  <col name="name">高管垂直指标与条线加权考核得分Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select * from sal_person_check_result where logid='[考核计划主键]' and targettype='高管垂直指标'","checkeduserid","finalres2")
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-10-11 20:08:25</col>
+</record>
+
+<!--133-->
+<record tabname="sal_factor_def">
+  <col name="id">2123</col>
+  <col name="code">cal-46-2</col>
+  <col name="name">高管垂直指标与条线加权最终分</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[指标考核人员.主键],
+"匹配源",[高管垂直指标与条线加权考核得分Map])
+
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">2位小数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-11 20:08:39</col>
+</record>
+
+<!--134-->
+<record tabname="sal_factor_def">
+  <col name="id">2141</col>
+  <col name="code">base-46</col>
+  <col name="name">亲情工资账号</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.亲情账号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-12 16:03:39</col>
+</record>
+
+<!--135-->
+<record tabname="sal_factor_def">
+  <col name="id">2152</col>
+  <col name="code">base-47</col>
+  <col name="name">本行工资账号</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.本行账号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-13 09:58:36</col>
+</record>
+
+<!--136-->
+<record tabname="sal_factor_def">
+  <col name="id">2154</col>
+  <col name="code">base-48</col>
+  <col name="name">他行账户</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">[人员信息.他行账号]</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-13 09:59:52</col>
+</record>
+
+<!--137-->
+<record tabname="sal_factor_def">
+  <col name="id">2172</col>
+  <col name="code">cal-48</col>
+  <col name="name">高管中层年度综合评价</col>
+  <col name="sourcetype">文本</col>
+  <col name="value"><![CDATA[if([传入数据.排名]<=0.2,优秀,
+[传入数据.排名]>0.2 && [传入数据.排名]<=0.6,称职,
+[传入数据.排名]>0.6 && [传入数据.排名]<=0.9,基本称职,不称职)]]></col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-22 11:07:39</col>
+</record>
+
+<!--138-->
+<record tabname="sal_factor_def">
+  <col name="id">2174</col>
+  <col name="code">cal-48-1</col>
+  <col name="name">员工年度综合评价</col>
+  <col name="sourcetype">文本</col>
+  <col name="value">if([指标考核人员.岗位归类]=="高管" || [指标考核人员.岗位归类]=="中层管理" || [指标考核人员.岗位归类]=="支行行长" || [指标考核人员.岗位归类]=="客户总经理",[高管中层年度综合评价],[员工排名算优良])</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr">名称不能改,在年终统计中,代码会调用此公式.</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-15 11:14:17</col>
+</record>
+
+<!--139-->
+<record tabname="sal_factor_def">
+  <col name="id">2183</col>
+  <col name="code">base-49</col>
+  <col name="name">延期支付Map</col>
+  <col name="sourcetype">Map</col>
+  <col name="value">createMap("select *from sal_person_fund_account  where formtype='延期支付基金' and busitype ='延期支付' and logid=[考核计划主键]","userid","money")
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend"></col>
+  <col name="descr"></col>
+  <col name="iscache">Y</col>
+  <col name="lastdate">2013-10-16 11:13:36</col>
+</record>
+
+<!--140-->
+<record tabname="sal_factor_def">
+  <col name="id">2185</col>
+  <col name="code">cal-49</col>
+  <col name="name">延期支付金额</col>
+  <col name="sourcetype">数字</col>
+  <col name="value">匹配("匹配入参",[人员信息.主键],
+"匹配源",[延期支付Map])
+
+</col>
+  <col name="conditions"></col>
+  <col name="managetype">因子计算</col>
+  <col name="extend">整数</col>
+  <col name="descr"></col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-16 11:15:48</col>
+</record>
+
+<!--141-->
+<record tabname="sal_factor_def">
+  <col name="id">2241</col>
+  <col name="code">base-60</col>
+  <col name="name">个人履历集合</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">select * from sal_personduties_his where userid=[传入数据.id]</col>
+  <col name="conditions"></col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">sal_personduties_his</col>
+  <col name="descr">在个人履历导出word中用到,不可删除</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-29 17:56:40</col>
+</record>
+
+<!--142-->
+<record tabname="sal_factor_def">
+  <col name="id">2243</col>
+  <col name="code">base-60-1</col>
+  <col name="name">单条履历</col>
+  <col name="sourcetype">系统对象</col>
+  <col name="value">sal_personduties_his</col>
+  <col name="conditions">id</col>
+  <col name="managetype">基础信息</col>
+  <col name="extend">sal_personduties_his</col>
+  <col name="descr">此因子在个人履历导出Word中用到,是一个被强行赋值的对象.并没有查询数据库.还有一个功能是可以通过此因子匹配中文名称.</col>
+  <col name="iscache">N</col>
+  <col name="lastdate">2013-10-29 17:58:37</col>
+</record>
+
+</root>
