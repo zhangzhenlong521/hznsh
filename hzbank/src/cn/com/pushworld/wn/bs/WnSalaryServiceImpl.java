@@ -5875,7 +5875,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					+ selectDate
 					+ "') mark "
 					+ " join (select code,name,'贵州赫章农村商业银行股份有限公司'||name fullname from pub_corp_dept pcd  where (CORPTYPE ='乡镇银行' OR CORPTYPE ='城区银行' OR NAME ='营业部') AND  NAME  NOT IN ('城区银行','乡镇银行')) dept on mark.b=dept.fullname"
-					+ " join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=dept.name"
+					+ " join (select code,deptname from v_sal_personinfo vsp  where stationkind ='会计主管') sal on sal.deptname=dept.name"
 					+ " )";
 			System.out.println("授权业务执行SQL:"+_sql);
 			HashMap<String, String> sqMaps = dmo
@@ -5887,7 +5887,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					+ "(SELECT a,b,(e*10000) l FROM excel_tab_156  where year ||'-'|| month ='"+ selectDate+"') jd"
 					+ "  join (select b name ,(c+15)*10000 kc  from excel_tab_151) kc on kc.name=jd.a"
 					+ "  join (select code,name,corptype from pub_corp_dept pcd  where (corptype ='乡镇银行' or corptype ='城区银行' or name ='营业部') and  name  not in ('城区银行','乡镇银行')) corp on corp.name=jd.a"
-					+ "  join (select code,deptname from v_sal_personinfo vsp  where stationkind ='委派会计') sal on sal.deptname=corp.name"
+					+ "  join (select code,deptname from v_sal_personinfo vsp  where stationkind ='会计主管') sal on sal.deptname=corp.name"
 					+ ")) group by code";
 			System.out.println("现金管理执行SQL:"+_sql);
 			HashMap<String, String> xjMap = dmo.getHashMapBySQLByDS(null, _sql);
@@ -5899,7 +5899,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 					+ " union all "
 					+ "select a,e from excel_tab_152 where b!='贵州赫章农村商业银行股份有限公司' and a like '283%' and year||'-'|| month ='"+ selectDate+"'"
 					+ ") yw join "
-					+ "(select code,deptcode from v_sal_personinfo vsp  where stationkind ='委派会计') dept on yw.a=dept.deptcode"
+					+ "(select code,deptcode from v_sal_personinfo vsp  where stationkind ='会计主管') dept on yw.a=dept.deptcode"
 					+ ")";
 			System.out.println("集中作业执行SQL:"+_sql);
 			HashMap<String, String> jzMap = dmo.getHashMapBySQLByDS(null, _sql);

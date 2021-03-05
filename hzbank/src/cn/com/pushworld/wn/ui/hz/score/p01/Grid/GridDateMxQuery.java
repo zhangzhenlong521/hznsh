@@ -809,15 +809,21 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                             insertSql(dialog,vos[0],null);
                             cardDialog.dispose();
                         }else{
-                            //zzl 已存在并划入网格
-                            boolean fag= MessageBox.confirm(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内,是否强制导入！");
-                            if(fag){
-                                updateSql(cardDialog,vo);
-                                MessageBox.show(cardDialog,"修改成功重新查询即可");
-                                cardDialog.dispose();
-                            }else{
+                        	if(flag){
+                        		boolean fag= MessageBox.confirm(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内,您确定要强制导入吗？");
+                                if(fag){
+                                    updateSql(cardDialog,vo);
+                                    MessageBox.show(cardDialog,"修改成功重新查询即可");
+                                    cardDialog.dispose();
+                                }else{
+                                    return;
+                                }
+                        	}else{
+                                MessageBox.show(cardDialog,""+count+"为【"+vos[0].getStringValue("G")+"】的客户已存在并划入到【"+vos[0].getStringValue("J")+"-"+vos[0].getStringValue("K")+"】网格内,如需强制导入，请联系您所在支行行长！");
                                 return;
-                            }
+                        	}
+                            //zzl 已存在并划入网格
+                            
                         }
                     }else{
                         if(cardDialog.getBillcardPanel().getRealValueAt("G")==null ||
