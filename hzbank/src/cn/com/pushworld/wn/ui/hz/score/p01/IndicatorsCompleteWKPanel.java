@@ -8,11 +8,11 @@ import cn.com.infostrategy.ui.common.AbstractWorkPanel;
 import cn.com.infostrategy.ui.common.ClientEnvironment;
 import cn.com.infostrategy.ui.common.UIUtil;
 import cn.com.infostrategy.ui.common.WLTSplitPane;
-import cn.com.infostrategy.ui.mdata.BillListPanel;
-import cn.com.infostrategy.ui.mdata.BillListSelectListener;
-import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+import cn.com.infostrategy.ui.mdata.*;
 import cn.com.pushworld.wn.ui.hz.score.p01.Grid.DayAvgPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -23,7 +23,7 @@ import java.util.LinkedHashMap;
  * @author Dragon
  * @date 2021/1/11
  */
-public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements BillListSelectListener {
+public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements BillListSelectListener{
     private BillListPanel listPanel;
     private WLTSplitPane wltSplitPane;
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
@@ -32,37 +32,49 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             .getId();
     private StringBuffer sbSql=new StringBuffer();
     private HashMap<String,String> deptMap=new HashMap();
+    private String datadate=null;
+    private BillQueryPanel billQueryPanel=null;
     @Override
     public void initialize() {
         listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
-        listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score group by targetid,targetname");
-        listPanel.addBillListSelectListener(this);
-        wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
-        wltSplitPane.setDividerLocation(500);
-        wltSplitPane.setDividerSize(1);
-        HashVO[] vos=null;
-        HashMap<String,String> roleMap=new HashMap<String, String>();
-        try{
-            deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
-            vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
-            roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
-            if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
-                sbSql.append("where 1=1");
-            }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
-                String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
-                StringBuffer dis=new StringBuffer();
-                for(int i=0;i<userids.length;i++){
-                    if(i==userids.length-1){
-                        dis.append("'"+userids[i]+"'");
-                    }else{
-                        dis.append("'"+userids[i]+"',");
-                    }
+        try {
+            datadate=UIUtil.getStringValueByDS(null,"select max(datadate) from hzdb.sal_person_check_auto_score");
+            listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' group by targetid,targetname");
+            listPanel.addBillListSelectListener(this);
+            billQueryPanel=listPanel.getQuickQueryPanel();
+            billQueryPanel.setRealValueAt("datadate",datadate);
+            billQueryPanel.addBillQuickActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    datadate=billQueryPanel.getRealValueAt("datadate");
+                    listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' group by targetid,targetname");
                 }
-                sbSql.append("where checkeduser in("+dis.toString()+")");
-            }else{
-                sbSql.append("where checkeduser='"+userId+"'");
-            }
-        }catch (Exception e){
+            });
+            wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
+            wltSplitPane.setDividerLocation(500);
+            wltSplitPane.setDividerSize(1);
+            HashVO[] vos=null;
+            HashMap<String,String> roleMap=new HashMap<String, String>();
+                deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
+                vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
+                roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
+                if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
+                    sbSql.append("where 1=1");
+                }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
+                    String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
+                    StringBuffer dis=new StringBuffer();
+                    for(int i=0;i<userids.length;i++){
+                        if(i==userids.length-1){
+                            dis.append("'"+userids[i]+"'");
+                        }else{
+                            dis.append("'"+userids[i]+"',");
+                        }
+                    }
+                    sbSql.append("where checkeduser in("+dis.toString()+")");
+                }else{
+                    sbSql.append("where checkeduser='"+userId+"'");
+                }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         this.add(wltSplitPane);
@@ -82,7 +94,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             String [] keyvos =billListPanel.getTempletVO().getItemKeys();
             String [] keyNamevos=billListPanel.getTempletVO().getItemNames();
-            String processfactors=UIUtil.getStringValueByDS(null,"select processfactors from hzdb.sal_person_check_auto_score where targetid='"+vo.getStringValue("TARGETID")+"' and rownum<=1 ");
+            String processfactors=UIUtil.getStringValueByDS(null,"select processfactors from hzdb.sal_person_check_auto_score where targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"' and rownum<=1 ");
             String [] gcyz=processfactors.split(";");
             LinkedHashMap<String,Integer> map=new LinkedHashMap();//zzl 装下过程中得因子
             int mapint=gcyz.length;
@@ -148,7 +160,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             templetVO.setItemVos(templetItemVOs);
             list = new BillListPanel(templetVO);
-            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
+            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"'");
             for(int i=0;i<vos.length;i++){
                 if(vos[i].getStringValue("processfactors")==null){
 
@@ -179,4 +191,5 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
         wltSplitPane.updateUI();
 
     }
+
 }

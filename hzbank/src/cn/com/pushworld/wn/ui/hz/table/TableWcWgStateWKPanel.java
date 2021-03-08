@@ -54,27 +54,27 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "select * from(\n" +
                     "select sy.code,sy.hs syhs,to_char(sy.hs/zj.hs,'fm9999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(dy.hs/zj.hs,'fm9999990.00') dyfgm,\n" +
                     "to_char((dy.hs/zj.hs)-(sy.hs/zj.hs),'fm9999990.00') jsyfgm,to_char((dy.hs/zj.hs)-(nc.hs/zj.hs),'fm9999990.00') jncfgm from(\n" +
-                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) sy\n" +
+                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) sy\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) dy on sy.code=dy.code\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) nc on sy.code=nc.code\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) nc on sy.code=nc.code\n" +
                     "left join\n" +
                     "(select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs) syhs,to_char(sum(sy.hs)/sum(zj.hs),'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.hs)/sum(zj.hs),'fm9999990.00') dyfgm,\n" +
                     "to_char((sum(dy.hs)/sum(zj.hs))-(sum(sy.hs)/sum(zj.hs)),'fm9999990.00') jsyfgm,to_char((sum(dy.hs)/sum(zj.hs))-(sum(nc.hs)/sum(zj.hs)),'fm9999990.00') jncfgm from(\n" +
-                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) sy\n" +
+                    "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) sy\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) dy on sy.code=dy.code\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.c)\n" +
-                    "where wg.c is not null group by ry.c) nc on sy.code=nc.code\n" +
+                    "(select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.f)\n" +
+                    "where wg.f is not null group by ry.c) nc on sy.code=nc.code\n" +
                     "left join\n" +
                     "(select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code)");
             for(int i=0;i<date.length;i++){

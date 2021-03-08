@@ -11,7 +11,10 @@ import cn.com.infostrategy.ui.common.WLTSplitPane;
 import cn.com.infostrategy.ui.mdata.BillListPanel;
 import cn.com.infostrategy.ui.mdata.BillListSelectListener;
 import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+import cn.com.infostrategy.ui.mdata.BillQueryPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -32,17 +35,29 @@ public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSe
     private final String deptid = ClientEnvironment.getCurrLoginUserVO().getBlDeptId();
     private StringBuffer sbSql=new StringBuffer();
     private HashMap<String,String> deptMap=new HashMap();
+    private String checkdate=null;
+    private BillQueryPanel billQueryPanel=null;
     @Override
     public void initialize() {
-        listPanel=new BillListPanel("SAL_PERSON_CHECK_DEPT_SCORE_CODE1");
-        listPanel.QueryData("select targetid,targetname from hzdb.SAL_PERSON_CHECK_DEPT_SCORE group by targetid,targetname");
-        listPanel.addBillListSelectListener(this);
-        wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
-        wltSplitPane.setDividerLocation(500);
-        wltSplitPane.setDividerSize(1);
-        HashVO[] vos=null;
-        HashMap<String,String> roleMap=new HashMap<String, String>();
         try{
+            checkdate=UIUtil.getStringValueByDS(null,"select max(checkdate) from hzdb.SAL_PERSON_CHECK_DEPT_SCORE");
+            listPanel=new BillListPanel("SAL_PERSON_CHECK_DEPT_SCORE_CODE1");
+            listPanel.QueryData("select targetid,targetname from hzdb.SAL_PERSON_CHECK_DEPT_SCORE where checkdate='"+checkdate+"' group by targetid,targetname");
+            listPanel.addBillListSelectListener(this);
+            billQueryPanel=listPanel.getQuickQueryPanel();
+            billQueryPanel.setRealValueAt("checkdate",checkdate);
+            billQueryPanel.addBillQuickActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    checkdate=billQueryPanel.getRealValueAt("checkdate");
+                    listPanel.QueryData("select targetid,targetname from hzdb.SAL_PERSON_CHECK_DEPT_SCORE where checkdate='"+checkdate+"' group by targetid,targetname");
+                }
+            });
+            wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
+            wltSplitPane.setDividerLocation(500);
+            wltSplitPane.setDividerSize(1);
+            HashVO[] vos=null;
+            HashMap<String,String> roleMap=new HashMap<String, String>();
             deptMap= UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
@@ -71,7 +86,7 @@ public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSe
             }
             String [] keyvos =billListPanel.getTempletVO().getItemKeys();
             String [] keyNamevos=billListPanel.getTempletVO().getItemNames();
-            String cgprocessfactors=UIUtil.getStringValueByDS(null,"select cgprocess from hzdb.SAL_PERSON_CHECK_DEPT_SCORE where targetid='"+vo.getStringValue("TARGETID")+"' and rownum<=1 ");
+            String cgprocessfactors=UIUtil.getStringValueByDS(null,"select cgprocess from hzdb.SAL_PERSON_CHECK_DEPT_SCORE where targetid='"+vo.getStringValue("TARGETID")+"' and checkdate='"+checkdate+"' and rownum<=1 ");
             String [] gcyz=cgprocessfactors.split("&");
             LinkedHashMap<String,Integer> map=new LinkedHashMap();//zzl 装下过程中得因子
             int mapint=gcyz.length;
@@ -136,7 +151,7 @@ public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSe
             }
             templetVO.setItemVos(templetItemVOs);
             list = new BillListPanel(templetVO);
-            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_dept_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"'");
+            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_dept_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"' and checkdate='"+checkdate+"'");
             for(int i=0;i<vos.length;i++){
                 if(vos[i].getStringValue("cgprocess")==null){
 
