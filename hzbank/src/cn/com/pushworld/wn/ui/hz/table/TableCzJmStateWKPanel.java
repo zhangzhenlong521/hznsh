@@ -57,41 +57,41 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "select dept.name,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
@@ -114,41 +114,41 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "select dept.name,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
@@ -171,43 +171,43 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "select dept.name,sy.hs,sy.ye,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
                     "dy.ye dyye,to_char(dy.ye-sy.ye,'fm9999990.00') jsyye,to_char(dy.ye-nc.ye,'fm9999990.00') jncye,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
-                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
+                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
+                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
+                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),sum(sy.ye),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "sum(dy.ye) dyye,to_char(sum(dy.ye)-sum(sy.ye),'fm9999990.00') jsyye,to_char(sum(dy.ye)-sum(nc.ye),'fm9999990.00') jncye,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
-                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) sy\n" +
+                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) sy\n" +
                     "left join \n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
+                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(nh.g)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
+                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
+                    "left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
@@ -231,42 +231,42 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "dy.ye dyye,to_char(dy.ye-sy.ye,'fm9999990.00') jsyye,to_char(dy.ye-nc.ye,'fm9999990.00') jncye,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),sum(sy.ye),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "sum(dy.ye) dyye,to_char(sum(dy.ye)-sum(sy.ye),'fm9999990.00') jsyye,to_char(sum(dy.ye)-sum(nc.ye),'fm9999990.00') jncye,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
-                    "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
+                    "select deptcode,G from hzdb.s_qwyt_czjm_202012) nh\n" +
                     "left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode) zj\n" +
+                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_czjm_202012 group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
@@ -323,7 +323,7 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
     public void getCount(){
         try{
             String [][]data=UIUtil.getStringArrayByDS(null,"select b.name,a.num from(\n" +
-                    "select deptcode,round(count(deptcode)/4) num from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织' group by deptcode\n" +
+                    "select deptcode,round(count(deptcode)/4) num from hzdb.s_qwyt_czjm_202012 group by deptcode\n" +
                     ") a left join hzdb.pub_corp_dept b on a.deptcode=b.code where a.num>0 order by a.num ");
             for(int i=0;i<data.length;i++){
                 for(int j=0;j<data[i].length;j++){
