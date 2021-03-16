@@ -240,7 +240,7 @@ public class TableGtGshStateWKPanel extends AbstractWorkPanel implements ActionL
                     "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.c)=upper(wg.AP)\n" +
                     "where replace(wg.k,',','')>0 group by ry.d) sy\n" +
                     "left join(\n" +
-                    "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.c)=upper(wg.AP)\n" +
+                    "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.c)=upper(wg.AP)\n" +
                     "where replace(wg.k,',','')>0 group by ry.d) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(ry.c)=upper(wg.AP)\n" +
@@ -254,7 +254,7 @@ public class TableGtGshStateWKPanel extends AbstractWorkPanel implements ActionL
                     "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.c)=upper(wg.AP)\n" +
                     "where replace(wg.k,',','')>0 group by ry.d) sy\n" +
                     "left join(\n" +
-                    "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.c)=upper(wg.AP)\n" +
+                    "select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.c)=upper(wg.AP)\n" +
                     "where replace(wg.k,',','')>0 group by ry.d) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select ry.d code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.s_qwyt_gtgsh_202012 ry left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(ry.c)=upper(wg.AP)\n" +
