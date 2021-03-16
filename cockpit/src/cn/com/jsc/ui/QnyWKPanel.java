@@ -31,7 +31,7 @@ public class QnyWKPanel {
 		    int qned=  service.getCurrYearQned();
 		    //  计算本年黔农e贷线上占比
 		    String qnydxszb= service.getCurrYearQnedXszb();
-		    MyPanel backPanel=new MyPanel(Color.CYAN,Color.black,"本年新增-黔农云户数-"+qnyhs+"户");
+		    MyPanel backPanel=new MyPanel(Color.CYAN,Color.black,"本年黔农云-户数-"+qnyhs+"户");
 		    backPanel.setBounds(0,0,150,150);
 		    MyPanel backPanel2=new MyPanel(Color.green,Color.blue,"本年黔农云-活跃率-"+qnyhyl);
 		    backPanel2.setBounds(160,0,150,150);
@@ -77,7 +77,7 @@ public class QnyWKPanel {
 							int qned=  service.getCurrYearQned();
 							//  计算本年黔农e贷线上占比
 							String qnydxszb= service.getCurrYearQnedXszb();
-							MyPanel backPanel=new MyPanel(Color.CYAN,Color.black,"本年新增-黔农云户数-"+qnyhs+"户");
+							MyPanel backPanel=new MyPanel(Color.CYAN,Color.black,"本年黔农云-户数-"+qnyhs+"户");
 							backPanel.setBounds(0,0,150,150);
 							MyPanel backPanel2=new MyPanel(Color.green,Color.blue,"本年黔农云-活跃率-"+qnyhyl);
 							backPanel2.setBounds(160,0,150,150);

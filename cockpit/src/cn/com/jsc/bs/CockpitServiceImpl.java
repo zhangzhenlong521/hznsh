@@ -322,20 +322,24 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 	public String getCurrYearQnyhyl() {
 		String result="";
 		try {
-			result=dmo.getStringValueByDS(null,"select to_char(ROUND(yx.num/zj.num*100,2),'fm9999990.00')||'%' from(\n" +
-					"select '1' code,sum(num) num from(\n" +
-					"select F,count(F) num from hzdb.s_loan_qnyyx_"+getDateZdy("yyyyMM")+" where I>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and I<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by F\n" +
-					"  having sum(REPLACE(N,',',''))+sum(REPLACE(O,',',''))+sum(REPLACE(P,',',''))+sum(REPLACE(Q,',',''))+sum(REPLACE(R,',',''))+\n" +
-					"  sum(REPLACE(S,',',''))+sum(REPLACE(T,',',''))+sum(REPLACE(U,',',''))+sum(REPLACE(V,',',''))+sum(REPLACE(W,',',''))+sum(REPLACE(X,',',''))+\n" +
-					"  sum(REPLACE(Y,',',''))+sum(REPLACE(Z,',',''))+sum(REPLACE(AA,',',''))+sum(REPLACE(AB,',',''))+sum(REPLACE(AC,',',''))+sum(REPLACE(AD,',',''))>0\n" +
-					")) yx\n" +
-					"left join(\n" +
-					"select '1' code,sum(num) num from(\n" +
-					"select count(*) num from(\n" +
-					"select f from hzdb.s_loan_qnyyx_"+getDateZdy("yyyyMM")+" where I>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and I<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by F)\n" +
-					"union all\n" +
-					"select count(*) num from(\n" +
-					"select g from hzdb.s_loan_qnywx_"+getDateZdy("yyyyMM")+" where J>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and J<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by G))) zj on yx.code=zj.code");
+//			result=dmo.getStringValueByDS(null,"select to_char(ROUND(yx.num/zj.num*100,2),'fm9999990.00')||'%' from(\n" +
+//					"select '1' code,sum(num) num from(\n" +
+//					"select F,count(F) num from hzdb.s_loan_qnyyx_"+getDateZdy("yyyyMM")+" where I>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and I<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by F\n" +
+//					"  having sum(REPLACE(N,',',''))+sum(REPLACE(O,',',''))+sum(REPLACE(P,',',''))+sum(REPLACE(Q,',',''))+sum(REPLACE(R,',',''))+\n" +
+//					"  sum(REPLACE(S,',',''))+sum(REPLACE(T,',',''))+sum(REPLACE(U,',',''))+sum(REPLACE(V,',',''))+sum(REPLACE(W,',',''))+sum(REPLACE(X,',',''))+\n" +
+//					"  sum(REPLACE(Y,',',''))+sum(REPLACE(Z,',',''))+sum(REPLACE(AA,',',''))+sum(REPLACE(AB,',',''))+sum(REPLACE(AC,',',''))+sum(REPLACE(AD,',',''))>0\n" +
+//					")) yx\n" +
+//					"left join(\n" +
+//					"select '1' code,sum(num) num from(\n" +
+//					"select count(*) num from(\n" +
+//					"select f from hzdb.s_loan_qnyyx_"+getDateZdy("yyyyMM")+" where I>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and I<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by F)\n" +
+//					"union all\n" +
+//					"select count(*) num from(\n" +
+//					"select g from hzdb.s_loan_qnywx_"+getDateZdy("yyyyMM")+" where J>='"+getDateZdy("yyyy")+"-01-01 00:00:00' and J<='"+getDateZdy("yyyy")+"-12-31 00:00:00' group by G))) zj on yx.code=zj.code");
+			result=dmo.getStringValueByDS(null,"select round(a.num/b.num*100,2)||'%' from(\n" +
+					"select '1' code,count(*) num from hzdb.s_loan_qnyyx_"+getqytMonth()+")a\n" +
+					"left join\n" +
+					"(select '1' code,sum(B) num from hzdb.excel_tab_146) b on a.code=b.code");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

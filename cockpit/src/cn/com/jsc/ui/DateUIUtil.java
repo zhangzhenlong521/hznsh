@@ -84,6 +84,30 @@ public class DateUIUtil implements Serializable {
 
     }
     /**
+     * zzl 输入一个人时间 返回该时间的月末日期
+     * @time      时间
+     * @pattern  格式
+     * @a       是否减月
+     */
+    public static String getymDateMonth(String time,String pattern,int a){
+        String lastDate=null;
+        try {
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+            Date d = format.parse(time);
+            cal.setTime(d);
+            cal.add(Calendar.MONTH,-a);
+            cal.set(Calendar.DATE,cal.getActualMaximum(Calendar.DATE));//最后一天
+            SimpleDateFormat format2 = new SimpleDateFormat(pattern);
+            lastDate = format2.format(cal.getTime());
+            return lastDate;
+        }catch (Exception e){
+            e.printStackTrace();
+            return lastDate;
+        }
+
+    }
+    /**
      * zzl 得到前一天的月份
      * @return
      */
@@ -143,7 +167,7 @@ public class DateUIUtil implements Serializable {
         return lastDate;
     }
     public static void main(String[] args) {
-        String str=DateUIUtil.getSDateMonth(0,"yyyyMM");
+        String str=DateUIUtil.getymDateMonth("2021-02","yyyyMMdd",1);
         System.out.print(str);
     }
 }

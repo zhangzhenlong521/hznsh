@@ -140,7 +140,7 @@ public class CockpitMainPage extends AbstractWorkPanel {
             jFrame.setUndecorated(true);
             jFrame.getGraphicsConfiguration().getDevice().setFullScreenWindow(jFrame);
             jFrame.setVisible(true);
-//            this.add(new DkBarChart().getChartPanel());
+//            this.add(new QnyWKPanel().getJLabel());
         }catch (Exception e){
             e.printStackTrace();
         }
