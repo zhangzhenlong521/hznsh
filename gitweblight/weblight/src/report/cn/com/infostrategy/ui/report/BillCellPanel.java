@@ -1,16 +1,6 @@
 package cn.com.infostrategy.ui.report;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -32,31 +22,7 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JColorChooser;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JToolBar;
-import javax.swing.JViewport;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -67,6 +33,11 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+import cn.com.infostrategy.to.common.WLTLogger;
+import cn.com.infostrategy.ui.common.*;
+import cn.com.infostrategy.ui.common.LookAndFeel;
+import cn.com.infostrategy.ui.sysapp.other.BigFileUpload;
+import cn.com.infostrategy.ui.sysapp.other.RefDialog_Month;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -84,13 +55,6 @@ import cn.com.infostrategy.to.mdata.BillCellItemVO;
 import cn.com.infostrategy.to.mdata.BillCellVO;
 import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.to.mdata.RefItemVO;
-import cn.com.infostrategy.ui.common.BillDialog;
-import cn.com.infostrategy.ui.common.ClientEnvironment;
-import cn.com.infostrategy.ui.common.LookAndFeel;
-import cn.com.infostrategy.ui.common.MessageBox;
-import cn.com.infostrategy.ui.common.RemoteServiceFactory;
-import cn.com.infostrategy.ui.common.UIUtil;
-import cn.com.infostrategy.ui.common.WLTButton;
 import cn.com.infostrategy.ui.mdata.BillCardDialog;
 import cn.com.infostrategy.ui.mdata.BillCardPanel;
 import cn.com.infostrategy.ui.mdata.BillPanel;
@@ -183,6 +147,7 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 	private JButton btn_inputExcel = null; // 导入Excel按扭
 	private JButton btn_exportXML = null; // 导出XML
 	private JButton btn_importXML = null; // 导入XML
+	private JButton btn_selectData = null;//zzl 20210311添加按实际查询按钮 个性
 	private HashVO[] excelHash = null;
 	private HashVO[] cellHash = null;
 	private JTextArea textArea = null;
@@ -202,8 +167,29 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 
 	private int currMouseOverRow = -1, currMouseOverCol = -1; //当前鼠标移上去时的行号
 	private JTableLockManager jtm = null;
-	private boolean isLocked = false;
 
+	private String selectDate = null;
+	private boolean isLocked = false;
+	private boolean _isshowSelectDate=false;//zzl 是否显示查询按钮
+
+
+
+
+
+	public void setSelectDate(String selectDate) {
+		this.selectDate = selectDate;
+	}
+
+	public String getSelectDate() {
+		return selectDate;
+	}
+	public JButton getBtn_selectData() {
+		return btn_selectData;
+	}
+
+	public void setBtn_selectData(JButton btn_selectData) {
+		this.btn_selectData = btn_selectData;
+	}
 	/**
 	 * 默认
 	 */
@@ -322,6 +308,17 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 		this.bo_isshowline = _showline;
 		this.bo_isshowtoolbar = _showtoolbar; //
 		this.bo_isshowheader = _isShowHeader; //
+		initialize(8, 8); //
+	}
+	//zzl 添加查询按照
+	public BillCellPanel(String _templetCode, String _billNo, String _descr, boolean _showline, boolean _showtoolbar, boolean _isShowHeader,boolean _isshowSelectDate) {
+		this.templetcode = _templetCode; //
+		this.billNo = _billNo; //
+		this.descr = _descr; //
+		this.bo_isshowline = _showline;
+		this.bo_isshowtoolbar = _showtoolbar; //
+		this.bo_isshowheader = _isShowHeader; //
+		this._isshowSelectDate =_isshowSelectDate;
 		initialize(8, 8); //
 	}
 
@@ -735,12 +732,15 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 			btn_save = new WLTButton("保存"); //
 			btn_exportExcel = new WLTButton("导出Excel");
 			btn_inputExcel = new WLTButton("导入Excel");
+			btn_selectData = new WLTButton("查询");
 			btn_save.addActionListener(this);
 			btn_exportExcel.addActionListener(this);
 			btn_inputExcel.addActionListener(this);
+			btn_selectData.addActionListener(this);
 			panel_1.add(btn_save);
 			panel_1.add(btn_exportExcel);
 			panel_1.add(btn_inputExcel);
+			panel_1.add(btn_selectData);
 			toolbar.add(panel_1, BorderLayout.NORTH);
 		}else if (toolbar == null) {
 			JPanel panel_1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 2, 0)); //
@@ -1011,6 +1011,9 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 			} else if (e.getSource() == btn_importXML) {
 				// 执行XML的导出
 				importXML();
+			}else if(e.getSource() == btn_selectData){
+				// zzl 按实际查询需要重新监听，自定义逻辑
+
 			}
 
 		} catch (Exception ex) {
@@ -1018,7 +1021,6 @@ public class BillCellPanel extends BillPanel implements ActionListener {
 			MessageBox.showException(this, ex); //
 		}
 	}
-
 	private void importXML() {
 		textArea = new JTextArea();
 		dialog = new BillDialog(this, "导入XML", 1000, 700);

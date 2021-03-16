@@ -86,7 +86,7 @@ public class BigFileUpload extends AbstractWorkPanel implements BillListHtmlHref
             cardDialog.setVisible(true);
             if (cardDialog.getCloseType() == 1) {
                 tableName = cardDialog.getBillcardPanel().getRealValueAt("tableName");
-                tableName = UIUtil.getStringValueByDS(null, "select code from PUB_COMBOBOXDICT where 1=1  and (id='"+tableName+"' and type='薪酬_大文件数据上传')  ");
+                tableName = UIUtil.getStringValueByDS(null, "select code from PUB_COMBOBOXDICT where 1=1  and (id='"+tableName+"' and type='薪酬_大文件数据上传')");
                 fileType = cardDialog.getBillcardPanel().getRealValueAt("fileType");
                 colLength = cardDialog.getBillcardPanel().getRealValueAt("colLength");
                 strFg = cardDialog.getBillcardPanel().getRealValueAt("strFg");
