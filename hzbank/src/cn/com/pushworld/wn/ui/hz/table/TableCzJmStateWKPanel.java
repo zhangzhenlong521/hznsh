@@ -1,10 +1,17 @@
 package cn.com.pushworld.wn.ui.hz.table;
 
+import cn.com.infostrategy.to.common.WLTLogger;
+import cn.com.infostrategy.to.mdata.RefItemVO;
 import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.SplashWindow;
 import cn.com.infostrategy.ui.common.UIUtil;
 import cn.com.infostrategy.ui.report.BillCellPanel;
+import cn.com.infostrategy.ui.sysapp.other.BigFileUpload;
+import cn.com.infostrategy.ui.sysapp.other.RefDialog_Month;
 import cn.com.jsc.ui.DateUIUtil;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -23,6 +30,8 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
     private BillCellPanel billCellPanel=null;
     private String tablename;
     private String dates=null;
+    private JButton btn=null;
+    private String selectDate = null;
     @Override
     public void initialize() {
         billCellPanel=new BillCellPanel("s_table_czjm" ,null, null,true, false,true);
@@ -34,6 +43,8 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
             getLoanDate();
             getQnELoanDate();
             getQnyDate();
+            btn=billCellPanel.getBtn_selectData();
+            btn.addActionListener(this);
         }catch (Exception e){
 
         }
@@ -47,12 +58,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
@@ -67,12 +78,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
@@ -104,12 +115,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(0,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
@@ -124,12 +135,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.s_loan_esign_"+DateUIUtil.getSDateMonth(1,"yyyyMM")+" wg on upper(nh.g)=upper(wg.f)\n" +
+                    "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
@@ -162,12 +173,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getSymDateMonth()+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.dkye>0 group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+tablename+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.dkye>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
@@ -183,12 +194,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getSymDateMonth()+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.dkye>0 group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+tablename+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.dkye>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.dkye)/10000,2) ye from(\n" +
@@ -221,12 +232,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getSymDateMonth()+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+tablename+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
@@ -242,12 +253,12 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join hzdb.Grid_Data_"+DateUIUtil.getSymDateMonth()+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
                     "select deptcode,G from hzdb.s_loan_khxx_202001 where B<>'农业集体户口' and B <>'农村农业户口' and B <>'农户' and B <>'农村农业户口' and B<>'农业家庭户口' and B<>'农村经济组织') nh\n" +
-                    "left join "+tablename+" wg on upper(nh.g)=upper(wg.g)\n" +
+                    "left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(nh.g)=upper(wg.g)\n" +
                     "where wg.ckye>1000 group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(wg.ckye)/10000,2) ye from(\n" +
@@ -269,7 +280,41 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
     }
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
+        if(actionEvent.getSource()==btn){
+            String [] datas=getDate(this);
+            if(datas.toString().equals("1") || Integer.parseInt(datas[1].toString())==1){
+                selectDate=datas[0].toString();
+                new SplashWindow(this, new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        billCellPanel.setValueAt("dates","数据日期:"+DateUIUtil.getymDateMonth(selectDate,"yyyy-MM-dd",0));
+                        getCkDate();
+                        getLoanDate();
+                        getQnELoanDate();
+                        getQnyDate();
+                        billCellPanel.repaint();
+                    }
+                });
+            }else{
+                return;
+            }
+        }
+    }
+    private String [] getDate(Container _parent) {
+        String [] str=null;
+        int a=0;
+        try {
+            RefDialog_Month chooseMonth = new RefDialog_Month(_parent, "请选择查询的月份默认是查询月份月末数据", new RefItemVO("", "", ""), null);
+            chooseMonth.initialize();
+            chooseMonth.setVisible(true);
+            String selectDate = chooseMonth.getReturnRefItemVO().getName();
+            a=chooseMonth.getCloseType();
+            str=new String[]{selectDate,String.valueOf(a)};
+            return str;
+        } catch (Exception e) {
+            WLTLogger.getLogger(BigFileUpload.class).error(e);
+        }
+        return new String[]{"2013-08",String.valueOf(a)};
     }
     /**
      * zzl

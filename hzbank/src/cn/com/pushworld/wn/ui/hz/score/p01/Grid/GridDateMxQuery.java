@@ -49,6 +49,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private String selectDate = "";
     private String deptcode;
     private String tablename;
+    private String bltablename;
+    private String dgbltablename;
     private String jlMbCode;
     private Boolean flag=false;
     private Boolean isleader=false;//判断是不是行长
@@ -69,11 +71,11 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         btn_log.addActionListener(this);
         HashVO[] vos=null;
         HashMap<String,String> roleMap=new HashMap<String, String>();
-        String[] leadervo=null;
+        String leadervo=null;
         try{
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
-            leadervo=UIUtil.getStringArrayFirstColByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
+            leadervo=UIUtil.getStringValueByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
         }catch (Exception e){
 
         }
@@ -87,7 +89,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
-        }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
+        }else if(leadervo.contains("支行行长")){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
@@ -243,16 +245,20 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 String ckhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye>0");
 //                sb.append("已有存款客户：【"+ckhs+"】户      待开发存款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"】户");
 //                sb.append(System.getProperty("line.separator"));
+                String ckye=UIUtil.getStringValueByDS(null,"select sum(ckye) ckye from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and ckye>0");
                 vos[0]=new HashVO();
                 vos[0].setAttributeValue("yikf","已有存款客户："+ckhs+"户");
                 vos[0].setAttributeValue("dkf","待开发存款客户："+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"户");
+                vos[0].setAttributeValue("yetj","存款余额："+ckye);
                 // zzl 贷款客户
                 String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye>0");
 //                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
 //                sb.append(System.getProperty("line.separator"));
+                String dkye=UIUtil.getStringValueByDS(null,"select sum(dkye) dkye from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye>0");
                 vos[1]=new HashVO();
                 vos[1].setAttributeValue("yikf","已有贷款客户："+dkhs+"户");
                 vos[1].setAttributeValue("dkf","待开发贷款客户："+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"户");
+                vos[1].setAttributeValue("yetj","贷款余额："+dkye);
                 //zzl 建档户数
                 String jdhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and jdxx='已建档'");
 //                sb.append("已有建档客户：【"+jdhs+"】户      待开发建档客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"】户");
@@ -269,8 +275,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 vos[3].setAttributeValue("dkf","待开发黔农云客户："+(Integer.parseInt(zhs)-Integer.parseInt(qnyhs))+"户");
                 Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
                 templetVO.setTempletname(sb.toString());
-                String [] columns = new String[]{"yikf","dkf"};
-                String [] columnNames=new String[]{"已开发总计","待开发总计"};
+                String [] columns = new String[]{"yikf","dkf","yetj"};
+                String [] columnNames=new String[]{"已开发总计","待开发总计","余额统计(元)"};
                 templetVO.setRealViewColumns(columns);
                 templetVO.setIsshowlistpagebar(false);
                 templetVO.setIsshowlistopebar(false);
@@ -279,7 +285,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 templetVO.setIsshowlistquickquery(false);
                 templetVO.setIscollapsequickquery(true);
                 templetVO.setIslistautorowheight(true);
-                Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[2];
+                Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[columns.length];
                 for(int i=0;i<columns.length;i++){
                     templetItemVOs[i]=new Pub_Templet_1_ItemVO();
                     templetItemVOs[i].setListisshowable(true);
@@ -293,14 +299,69 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 templetVO.setItemVos(templetItemVOs);
                 BillListPanel list=new BillListPanel(templetVO);
                 list.putValue(vos);
-                BillListDialog dialog=new BillListDialog(listPanel,sb.toString(),list,600,400,true);
+                BillListDialog dialog=new BillListDialog(listPanel,sb.toString(),list,700,400,true);
                 dialog.getBtn_confirm().setVisible(false);
                 dialog.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        else if(_event.getItemkey().equals("blloan")){
+            getViewBlLoan(listPanel,vo);
+        }
 
+    }
+
+    /**
+     * zzl 不良贷款展示
+     *
+     */
+    private void getViewBlLoan(BillListPanel listPanel,BillVO vo) {
+        try{
+            HashVO [] vos=UIUtil.getHashVoArrayByDS(null,"select bl.*,wg.c xzname,wg.d wgname from(\n" +
+                    "select * from(\n" +
+                    "select B,case when BH='30100' then '28330100-xd' else '283'||BH end code,C,bi,D,E,F,to_number(replace(j,',','')) dkye,to_number(replace(K,',','')) jqje,AP name,replace(Q,',','') yqday from "+bltablename+" where replace(Q,',','')>60)\n" +
+                    "union all\n" +
+                    "select * from (\n" +
+                    "select C B,'28330100-xd' code,B C,'信贷部' bi,'' D,DG E,DH F,to_number(replace(DE,',','')) dkye,to_number(replace(DF,',','')) jqje,E name,EA yqday from "+dgbltablename+" where replace(EA,',','')>60)\n" +
+                    ") bl\n" +
+                    "left join(\n" +
+                    "select wg.code,xx.G name,wg.id,wg.g,wg.c,wg.d,wg.a,xx.deptcode from(select deptcode,G,j,k from  hzdb.s_loan_khxx_202001 group by deptcode,G,j,k) xx \n" +
+                    "left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg \n" +
+                    "on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg on UPPER(bl.name) = UPPER(wg.name) and bl.code=wg.code \n" +
+                    "where wg.deptcode='"+vo.getStringValue("F")+"' and wg.c='"+vo.getStringValue("C")+"' and wg.d='"+vo.getStringValue("D")+"'");
+            Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
+            templetVO.setTempletname("不良贷款明细查看");
+            String [] columns = new String[]{"b","code","c","bi","d","e","f","dkye","jqje","name","yqday","xzname","wgname"};
+            String [] columnNames=new String[]{"贷款号","机构号","客户名称","网点名称","手机号码","贷款日期","到期日期","贷款金额","结欠金额","证件号码","五级分类逾期天数","乡-镇","网格名称"};
+            templetVO.setRealViewColumns(columns);
+            templetVO.setIsshowlistpagebar(false);
+            templetVO.setIsshowlistopebar(false);
+            templetVO.setListheaderisgroup(false);
+            templetVO.setIslistpagebarwrap(false);
+            templetVO.setIsshowlistquickquery(false);
+            templetVO.setIscollapsequickquery(true);
+            templetVO.setIslistautorowheight(true);
+            Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[columns.length];
+            for(int i=0;i<columns.length;i++){
+                templetItemVOs[i]=new Pub_Templet_1_ItemVO();
+                templetItemVOs[i].setListisshowable(true);
+                templetItemVOs[i].setPub_Templet_1VO(templetVO);
+                templetItemVOs[i].setListwidth(100);
+                templetItemVOs[i].setItemtype("文本框");
+                templetItemVOs[i].setListiseditable("4");
+                templetItemVOs[i].setItemkey(columns[i].toString());
+                templetItemVOs[i].setItemname(columnNames[i].toString());
+            }
+            templetVO.setItemVos(templetItemVOs);
+            BillListPanel list=new BillListPanel(templetVO);
+            list.putValue(vos);
+            BillListDialog dialog=new BillListDialog(listPanel,"不良贷款明细查看",list,1500,800,true);
+            dialog.getBtn_confirm().setVisible(false);
+            dialog.setVisible(true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -567,33 +628,36 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btn_add) {// 新增按钮
-            BillCardDialog dialog=new BillCardDialog(listPanel,"新增","EXCEL_TAB_85_EDIT_CODE",900,300);
+            final BillCardDialog dialog=new BillCardDialog(listPanel,"新增","EXCEL_TAB_85_EDIT_CODE",900,300);
             dialog.getBillcardPanel().setEditable("PARENTID",false);
             dialog.getBillcardPanel().setRealValueAt("PARENTID","2");
-            dialog.getBillcardPanel().setEditable("QK",false);
             dialog.getBillcardPanel().setRealValueAt("QK","网格概况");
+            dialog.getBillcardPanel().setEditable("QK",false);
+            dialog.getBillcardPanel().setRealValueAt("blloan","不良贷款");
+            dialog.getBillcardPanel().setEditable("blloan",false);
+            dialog.getBtn_confirm().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    try {
+                         String deptcode = dialog.getBillcardPanel().getBillVO().getStringValue("F");
+                         String wgname = dialog.getBillcardPanel().getBillVO().getStringValue("D");
+                        HashVO[] hashvo = UIUtil.getHashVoArrayByDS(null, "select * from EXCEL_TAB_85 where F='"+deptcode+"' and D='"+wgname+"'");
+                        if(hashvo.length>0){
+                            MessageBox.show(dialog,"您当前输入的网格名称"+wgname+"在您所在的机构"+deptcode+"已经存在，请您重新命名。");
+                            return;
+                        }else{
+                            dialog.getBillcardPanel().updateData();
+                            listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+                            dialog.dispose();
+                        }
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            });
             dialog.setSaveBtnVisiable(false);
             dialog.setVisible(true);
-            String deptcode = dialog.getBillcardPanel().getBillVO().getStringValue("F");
-            String wgname = dialog.getBillcardPanel().getBillVO().getStringValue("D");
-            if(wgname.equals("") ||wgname==null ||wgname.equals(null) ||wgname.equals(" ")){
-            }else{
-                if(dialog.getCloseType()==1){
-                	try {
-						HashVO[] hashvo = UIUtil.getHashVoArrayByDS(null, "select * from EXCEL_TAB_85 where F='"+deptcode+"' and D='"+wgname+"'");
-						if(hashvo.length>0){
-							MessageBox.show("您当前输入的网格名称"+wgname+"在您所在的机构"+deptcode+"已经存在，请您重新命名。");
-							return;
-						}else{
-		                    listPanel.addRow(dialog.getBillcardPanel().getBillVO());
-						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-                }
-            }
         }else if(actionEvent.getSource() == btn_update){
             final BillVO vo=listPanel.getSelectedBillVO();
             if (vo == null) {
@@ -919,6 +983,29 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         return lastDate;
     }
     /**
+     * 得到前一天上月月份
+     *cal.getActualMinimum(Calendar.DATE)
+     * @return
+     */
+    public String getQYDaySMonth() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
+        Date d = new Date();
+        cal.setTime(d);
+        int day = cal.get(Calendar.DATE);
+        cal.set(Calendar.DATE, day - 1);
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.MONTH,-1);
+        String lastDate = format.format(cal.getTime());
+        return lastDate;
+    }
+
+    public static void main(String[] args) {
+        GridDateMxQuery c=new GridDateMxQuery();
+        System.out.println(">>>>>>>>>>>>>>>>"+c.getQYDaySMonth());
+    }
+
+    /**
      * 得到前一天的日期
      *
      * @return
@@ -955,11 +1042,25 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         SimpleDateFormat formatTemp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date1= null;
         String createDate=null;
+        String blcreateDate=null;
+        String dgblcreateDate=null;
         try {
 //            date1 = formatTemp.parse(""+getKHDQMonth()+" 10:30:00");
             createDate=UIUtil.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime()+"' and OBJECT_TYPE='TABLE'");
+            blcreateDate=UIUtil.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_DK_"+getQYDayMonth()+"' and OBJECT_TYPE='TABLE'");
+            dgblcreateDate=UIUtil.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_DK_DG_"+getQYDayMonth()+"' and OBJECT_TYPE='TABLE'");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if(blcreateDate==null || blcreateDate.equals("") || blcreateDate.equals(null)){
+            bltablename="S_LOAN_DK_"+getQYDaySMonth();
+        }else{
+            bltablename="S_LOAN_DK_"+getQYDayMonth();
+        }
+        if(dgblcreateDate==null || dgblcreateDate.equals("") || dgblcreateDate.equals(null)){
+            dgbltablename="s_loan_dk_dg_"+getQYDaySMonth();
+        }else{
+            dgbltablename="s_loan_dk_dg_"+getQYDayMonth();
         }
         if(createDate==null || createDate.equals("") || createDate.equals(null)){
             tablename="grid_data_"+getQYTTime2();

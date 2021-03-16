@@ -4,10 +4,7 @@ import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1VO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
-import cn.com.infostrategy.ui.common.AbstractWorkPanel;
-import cn.com.infostrategy.ui.common.ClientEnvironment;
-import cn.com.infostrategy.ui.common.UIUtil;
-import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.common.*;
 import cn.com.infostrategy.ui.mdata.*;
 import cn.com.pushworld.wn.ui.hz.score.p01.Grid.DayAvgPanel;
 
@@ -47,7 +44,16 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
                     datadate=billQueryPanel.getRealValueAt("datadate");
-                    listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' group by targetid,targetname");
+                    try {
+                        String[][] data=UIUtil.getStringArrayByDS(null,"select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' group by targetid,targetname");
+                        if(data==null || data.length==0){
+                            MessageBox.show(listPanel,"没有此时间的数据");
+                            return;
+                        }
+                        listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' group by targetid,targetname");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
