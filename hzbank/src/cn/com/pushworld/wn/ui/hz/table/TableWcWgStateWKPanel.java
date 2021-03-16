@@ -82,8 +82,8 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
         try{
             String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
                     "select * from(\n" +
-                    "select sy.code,sy.hs syhs,to_char(sy.hs/zj.hs,'fm9999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(dy.hs/zj.hs,'fm9999990.00') dyfgm,\n" +
-                    "to_char((dy.hs/zj.hs)-(sy.hs/zj.hs),'fm9999990.00') jsyfgm,to_char((dy.hs/zj.hs)-(nc.hs/zj.hs),'fm9999990.00') jncfgm from(\n" +
+                    "select sy.code,sy.hs syhs,to_char(sy.hs/zj.hs*100,'fm9999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,\n" +
+                    "to_char((dy.hs/zj.hs*100)-(sy.hs/zj.hs*100),'fm9999990.00') jsyfgm,to_char((dy.hs/zj.hs*100)-(nc.hs/zj.hs*100),'fm9999990.00') jncfgm from(\n" +
                     "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.a)=upper(wg.f)\n" +
                     "where wg.f is not null group by ry.c) sy\n" +
                     "left join\n" +
@@ -95,8 +95,8 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "left join\n" +
                     "(select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
-                    "(select '',sum(sy.hs) syhs,to_char(sum(sy.hs)/sum(zj.hs),'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.hs)/sum(zj.hs),'fm9999990.00') dyfgm,\n" +
-                    "to_char((sum(dy.hs)/sum(zj.hs))-(sum(sy.hs)/sum(zj.hs)),'fm9999990.00') jsyfgm,to_char((sum(dy.hs)/sum(zj.hs))-(sum(nc.hs)/sum(zj.hs)),'fm9999990.00') jncfgm from(\n" +
+                    "(select '',sum(sy.hs) syhs,to_char(sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,\n" +
+                    "to_char((sum(dy.hs)/sum(zj.hs)*100)-(sum(sy.hs)/sum(zj.hs)*100),'fm9999990.00') jsyfgm,to_char((sum(dy.hs)/sum(zj.hs)*100)-(sum(nc.hs)/sum(zj.hs)*100),'fm9999990.00') jncfgm from(\n" +
                     "select ry.c code,count(wg.g) hs from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.a)=upper(wg.f)\n" +
                     "where wg.f is not null group by ry.c) sy\n" +
                     "left join\n" +
@@ -168,27 +168,27 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "select * from(\n" +
                     "select sy.code,sy.hs,sy.num,to_char(round(sy.hs/zj.hs*100,2),'fm999999990.00') dyfgm,dy.hs dyhs,dy.hs-sy.hs hsjsy,dy.hs-nc.hs hsjnc,dy.num dynum,to_char(dy.num-sy.num,'fm999999990.00') yejsy,to_char(dy.num-nc.num,'fm99999990.00') ysjnc,\n" +
                     "to_char(round(dy.hs/zj.hs*100,2),'fm999999990.00') fgm,to_char(round(dy.hs/zj.hs*100,2)-round(sy.hs/zj.hs*100,2),'fm9999999990.00') fgmjsy,round(dy.hs/zj.hs*100,2) fgmjnc from(\n" +
-                    "select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) sy\n" +
+                    "select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) sy\n" +
                     "left join(\n" +
-                    "select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) dy on sy.code=dy.code\n" +
+                    "select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) nc on sy.code=nc.code\n" +
+                    "(select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) nc on sy.code=nc.code\n" +
                     "left join(\n" +
                     "select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code) order by to_number(fgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),sum(sy.num),to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm999999990.00') dyfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) hsjsy,sum(dy.hs)-sum(nc.hs) hsjnc,sum(dy.num) dynum,to_char(sum(dy.num)-sum(sy.num),'fm9999999990.00') yejsy,\n" +
                     "to_char(sum(dy.num)-sum(nc.num),'fm99999999990.00') ysjnc,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm9999999990.00') fgm,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(sy.hs)/sum(zj.hs)*100,2),'fm99999999990.00') fgmjsy,round(sum(dy.hs)/sum(zj.hs)*100,2) fgmjnc from(\n" +
-                    "select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) sy\n" +
+                    "select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) sy\n" +
                     "left join(\n" +
-                    "select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) dy on sy.code=dy.code\n" +
+                    "select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.g) hs,round(sum(wg.dkye)/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(ry.a)=upper(wg.g)\n" +
-                    "where wg.dkye>0 group by ry.c) nc on sy.code=nc.code\n" +
+                    "(select ry.c code,count(wg.g) hs,round(sum(replace(wg.k,',',''))/10000,2) num from hzdb.hz_wcnmg_info_202012 ry left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(ry.a)=upper(wg.AP)\n" +
+                    "where replace(wg.k,',','')>0 group by ry.c) nc on sy.code=nc.code\n" +
                     "left join(\n" +
                     "select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on sy.code=zj.code)");
             DecimalFormat df= new DecimalFormat("######0.00");
