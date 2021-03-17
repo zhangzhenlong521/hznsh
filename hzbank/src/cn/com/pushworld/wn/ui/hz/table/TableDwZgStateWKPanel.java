@@ -200,48 +200,34 @@ public class TableDwZgStateWKPanel extends AbstractWorkPanel implements ActionLi
     public void getLoanDate(){
         try{
             String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
-                    "select replace(code,'支行',''),sum(hs) hs,sum(ye) ye,to_char(sum(syfgm),'fm999990.00') syfgm,sum(dyhs) dyhs,sum(jsyhs) jsyhs,sum(jnchs) jnchs,sum(dyye) dyye,to_char(sum(jsyye),'fm99990.00') jsyye,to_char(sum(jncye),'fm99990.00') jncye,to_char(sum(dyfgm),'fm999990.00') dyfgm,to_char(sum(jsyfgm),'fm9990.00') jsyfgm,to_char(sum(jncfgm),'fm99990.00') jncfgm from(\n" +
-                    "select dept.a code,sy.hs,sy.ye,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
-                    "dy.ye dyye,to_char(dy.ye-sy.ye,'fm9999990.00') jsyye,to_char(dy.ye-nc.ye,'fm9999990.00') jncye,\n" +
-                    "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
-                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) sy left join hzdb.excel_tab_28 dept on sy.code=dept.b\n" +
-                    "left join \n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
-                    "left join\n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
-                    "left join\n" +
-                    "(select b.b code,count(a.f) hs from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a group by b.b) zj\n" +
-                    "on sy.code=zj.code where sy.code is not null) group by code order by to_number(dyfgm) desc)\n" +
-                    "union all\n" +
-                    "(select '',sum(sy.hs),sum(sy.ye),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
-                    "sum(dy.ye) dyye,to_char(sum(dy.ye)-sum(sy.ye),'fm9999990.00') jsyye,to_char(sum(dy.ye)-sum(nc.ye),'fm9999990.00') jncye,\n" +
-                    "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
-                    "select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) sy\n" +
-                    "left join \n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) dy on sy.code=dy.code\n" +
-                    "left join\n" +
-                    "(select nh.deptcode code,round(count(nh.deptcode)/4) hs,round(sum(replace(wg.k,',',''))/10000,2) ye from(\n" +
-                    "select b.b deptcode,a.f g from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a) nh\n" +
-                    "left join hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.AP) and nh.deptcode=(case when bh='30100' then '28330100-xd' else '283'||bh end)\n" +
-                    "where replace(wg.k,',','')>0 group by nh.deptcode) nc on sy.code=nc.code\n" +
-                    "left join\n" +
-                    "(select b.b code,count(a.f) hs from hzdb.s_qwyt_dwzg_202012 a left join hzdb.excel_tab_28 b on a.g||'支行'=b.a group by b.b) zj\n" +
-                    "on sy.code=zj.code where sy.code is not null)");
+            			"select * from(\n" +
+            			"select sy.code code,sy.hs hs,sy.ye ye,to_char(sy.hs/zj.hs*100,'fm99990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(dy.ye,'fm999999990.00') dyye,\n" +
+            			"to_char(dy.ye-sy.ye,'fm99999990.00') jsyye,to_char(dy.ye-nc.ye,'fm999999990.00') jncye,to_char(dy.hs/zj.hs*100,'fm99990.00') dyfgm,\n" +
+            			"to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm99990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99990.00') jncfgm from \n" +
+            			"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+            			"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g \n" +
+            			") sy left join \n" +
+            			"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+            			"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g) \n" +
+            			"dy on sy.code=dy.code left join \n" +
+            			"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+            			"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g) \n" +
+            			"nc on sy.code=nc.code left join \n" +
+            			"(select a.g code,count(a.f) hs from hzdb.s_qwyt_dwzg_202012 a group by a.g ) zj on sy.code=zj.code) order by to_number(dyfgm) desc) \n" +
+            			"union all \n" +
+            			"(select '',sum(sy.hs),sum(sy.ye),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm99990.00') syfgm,sum(dy.hs),sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.ye),'fm99999990.00') dyye,\n" +
+            			"to_char(sum(dy.ye)-sum(sy.ye),'fm9999990.00') jsyye,to_char(sum(dy.ye)-sum(nc.ye),'fm99999990.00') jncye,to_char(sum(dy.hs)/sum(zj.hs)*100,'fm99990.00') dyfgm,\n" +
+            			"to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm99990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99990.00') jncfgm from \n" +
+            			"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+            			"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g \n" +
+            			") sy left join \n" +
+            			"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+            			"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g) \n" +
+						"dy on sy.code=dy.code left join \n" +
+						"(select a.g code,count(a.f) hs,sum(b.num)/10000 ye from hzdb.s_qwyt_dwzg_202012 a left join( \n" +
+						"select AP,sum(replace(k,',','')) num from  hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" group by AP) b on upper(a.f)=upper(b.AP) where b.AP is not null group by a.g) \n" +
+						"nc on sy.code=nc.code left join  \n" +
+						"(select a.g code,count(a.f) hs from hzdb.s_qwyt_dwzg_202012 a group by a.g) zj on sy.code=zj.code)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+16);
