@@ -99,45 +99,46 @@ public class TableNhStateWKPanel extends AbstractWorkPanel implements ActionList
         try{
             String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
                     "select * from(\n" +
-                    "select dept.name,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
+                    "select code,sum(hs),to_char(sum(syfgm),'fm9990.00'),sum(dyhs),sum(jsyhs),sum(jnchs),to_char(sum(dyfgm),'fm99990.00') dyfgm,to_char(sum(jsyfgm),'fm9990.00'),to_char(sum(jncfgm),'fm99990.00') from(\n" +
+                    "select dept.name code,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
-                    "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
+                    "(select case when deptcode='2830018' then '2830017' else deptcode end code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
+                    "on sy.code=zj.code where sy.code is not null) group by code )order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select '',sum(sy.hs),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
-                    "on sy.code=zj.code where sy.code is not null)");
+                    "(select case when deptcode='2830018' then '2830017' else deptcode end code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
+                    "on sy.code=zj.code where sy.code is not null)\n");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+38);
@@ -154,46 +155,46 @@ public class TableNhStateWKPanel extends AbstractWorkPanel implements ActionList
      */
     public void getQnELoanDate(){
         try{
-            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
-                    "select * from(\n" +
-                    "select dept.name,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
+            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(select * from(\n" +
+                    "select code,sum(hs),to_char(sum(syfgm),'fm9990.00'),sum(dyhs),sum(jsyhs),sum(jnchs),to_char(sum(dyfgm),'fm99990.00') dyfgm,to_char(sum(jsyfgm),'fm9990.00'),to_char(sum(jncfgm),'fm99990.00') from(\n" +
+                    "select dept.name code,sy.hs,to_char(sy.hs/zj.hs*100,'fm999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,\n" +
                     "to_char(dy.hs/zj.hs*100,'fm9999990.00') dyfgm,to_char(dy.hs/zj.hs*100-sy.hs/zj.hs*100,'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy left join hzdb.pub_corp_dept dept on sy.code=dept.code\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
-                    "on sy.code=zj.code where sy.code is not null) order by to_number(dyfgm) desc)\n" +
+                    "(select case when deptcode='2830018' then '2830017' else deptcode end code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
+                    "on sy.code=zj.code where sy.code is not null) group by code) order by to_number(dyfgm) desc)" +
                     "union all\n" +
                     "(select '',sum(sy.hs),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "to_char(sum(dy.hs)/sum(zj.hs)*100,'fm9999990.00') dyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(sy.hs)/sum(zj.hs)*100,'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99999990.00') jncfgm from(\n" +
                     "select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) sy\n" +
                     "left join \n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) dy on sy.code=dy.code\n" +
                     "left join\n" +
                     "(select nh.deptcode code,round(count(nh.deptcode)/4) hs from(\n" +
-                    "select deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
+                    "select case when deptcode='2830018' then '2830017' else deptcode end deptcode,G  from hzdb.s_qwyt_nhjr_202012 ) nh\n" +
                     "left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.g)=upper(wg.f)\n" +
                     "where wg.f is not null group by nh.deptcode) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select deptcode code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
+                    "(select case when deptcode='2830018' then '2830017' else deptcode end code,round(count(deptcode)/4) hs from hzdb.s_qwyt_nhjr_202012  group by deptcode) zj\n" +
                     "on sy.code=zj.code where sy.code is not null)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
