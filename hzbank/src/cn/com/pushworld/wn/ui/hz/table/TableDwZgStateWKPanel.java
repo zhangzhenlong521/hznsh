@@ -143,7 +143,7 @@ public class TableDwZgStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+38);
-                    billCellPanel.setBackground("255,153,153",i+4,44);
+                    billCellPanel.setBackground("255,153,153",i+4,38);
                 }
             }
         }catch (Exception e){
@@ -186,7 +186,7 @@ public class TableDwZgStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+29);
-                    billCellPanel.setBackground("0,255,153",i+4,35);
+                    billCellPanel.setBackground("0,255,153",i+4,29);
                 }
             }
         }catch (Exception e){
@@ -256,7 +256,7 @@ public class TableDwZgStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+16);
-                    billCellPanel.setBackground("204,102,255",i+4,26);
+                    billCellPanel.setBackground("204,102,255",i+4,16);
                 }
             }
         }catch (Exception e){
@@ -301,7 +301,7 @@ public class TableDwZgStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+3);
-                    billCellPanel.setBackground("255,102,102",i+4,13);
+                    billCellPanel.setBackground("255,102,102",i+4,3);
                 }
             }
         }catch (Exception e){
