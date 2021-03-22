@@ -79,7 +79,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+5,j+13);
-                    billCellPanel.setBackground("0,204,204",i+5,14);
+                    billCellPanel.setBackground("51,204,255",i+5,13);
 
                 }
             }
@@ -147,7 +147,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+5,j+3);
-                    billCellPanel.setBackground("0,204,204",i+5,10);
+                    billCellPanel.setBackground("255,204,0",i+5,3);
 
                 }
             }
