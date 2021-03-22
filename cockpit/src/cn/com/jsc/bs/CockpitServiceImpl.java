@@ -435,7 +435,7 @@ public class CockpitServiceImpl implements CockpitServiceIfc {
 					"ck left join (select wg.f||xx.G name,wg.id id,wg.g g from(select deptcode,G,j,k from  hzdb.s_loan_khxx_202001 group by deptcode,G,j,k) xx \n" +
 					"left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg \n" +
 					"on xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D) wg on UPPER(ck.name)=UPPER(wg.name) group by wg.g) nc on dy.id=nc.id) zj \n" +
-					"left join (select * from hzdb.v_sal_personinfo where stationkind='客户经理') dept on zj.id=dept.code where dept.name is not null order by zj.num desc");
+					"left join (select * from hzdb.v_sal_personinfo where stationkind='客户经理' and name <>'待分配') dept on zj.id=dept.code where dept.name is not null order by zj.num desc");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
