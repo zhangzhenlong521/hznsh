@@ -1,12 +1,14 @@
-package cn.com.pushworld.wn.ui.hz.score.p01;
+package cn.com.pushworld.wn.ui.hz.score.p01.score.p02;
 
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1VO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
 import cn.com.infostrategy.ui.common.*;
-import cn.com.infostrategy.ui.mdata.*;
-import cn.com.pushworld.wn.ui.hz.score.p01.Grid.DayAvgPanel;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillListSelectListener;
+import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+import cn.com.infostrategy.ui.mdata.BillQueryPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,13 +16,13 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
- * IndicatorsCompleteWKPanel
+ * GridZbSelectWKPanel
  * zzl
- * 个人指标查看T+1
+ * 网格指标查看
  * @author Dragon
- * @date 2021/1/11
+ * @date 2021/3/24
  */
-public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements BillListSelectListener{
+public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSelectListener {
     private BillListPanel listPanel;
     private WLTSplitPane wltSplitPane;
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
@@ -33,60 +35,60 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
     private BillQueryPanel billQueryPanel=null;
     @Override
     public void initialize() {
-        listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
+    listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
         try {
-            datadate=UIUtil.getStringValueByDS(null,"select max(datadate) from hzdb.sal_person_check_auto_score");
-            listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname not like '网格%' group by targetid,targetname");
-            listPanel.addBillListSelectListener(this);
-            billQueryPanel=listPanel.getQuickQueryPanel();
-            billQueryPanel.setRealValueAt("datadate",datadate);
-            billQueryPanel.addBillQuickActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    datadate=billQueryPanel.getRealValueAt("datadate");
-                    try {
-                        String[][] data=UIUtil.getStringArrayByDS(null,"select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname not like '网格%' group by targetid,targetname");
-                        if(data==null || data.length==0){
-                            MessageBox.show(listPanel,"没有此时间的数据");
-                            return;
-                        }
-                        listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname not like '网格%' group by targetid,targetname");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+        datadate= UIUtil.getStringValueByDS(null,"select max(datadate) from hzdb.sal_person_check_auto_score");
+        listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname like '网格%' group by targetid,targetname");
+        listPanel.addBillListSelectListener(this);
+        billQueryPanel=listPanel.getQuickQueryPanel();
+        billQueryPanel.setRealValueAt("datadate",datadate);
+        billQueryPanel.addBillQuickActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                datadate=billQueryPanel.getRealValueAt("datadate");
+                try {
+                    String[][] data=UIUtil.getStringArrayByDS(null,"select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname like '网格%' group by targetid,targetname");
+                    if(data==null || data.length==0){
+                        MessageBox.show(listPanel,"没有此时间的数据");
+                        return;
                     }
+                    listPanel.QueryData("select targetid,targetname from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname like '网格%' group by targetid,targetname");
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
-            wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
-            wltSplitPane.setDividerLocation(500);
-            wltSplitPane.setDividerSize(1);
-            HashVO[] vos=null;
-            String leadervo=null;
-            HashMap<String,String> roleMap=new HashMap<String, String>();
-                deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
-                vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
-                roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
-                leadervo=UIUtil.getStringValueByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
-                if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
-                    sbSql.append("where 1=1");
-                }else if(leadervo.equals("支行行长")){
-                    String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
-                    StringBuffer dis=new StringBuffer();
-                    for(int i=0;i<userids.length;i++){
-                        if(i==userids.length-1){
-                            dis.append("'"+userids[i]+"'");
-                        }else{
-                            dis.append("'"+userids[i]+"',");
-                        }
-                    }
-                    sbSql.append("where checkeduser in("+dis.toString()+")");
+            }
+        });
+        wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
+        wltSplitPane.setDividerLocation(500);
+        wltSplitPane.setDividerSize(1);
+        HashVO[] vos=null;
+        String leadervo=null;
+        HashMap<String,String> roleMap=new HashMap<String, String>();
+        deptMap=UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
+        vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
+        roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
+        leadervo=UIUtil.getStringValueByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
+        if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
+            sbSql.append("where 1=1");
+        }else if(leadervo.equals("支行行长")){
+            String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
+            StringBuffer dis=new StringBuffer();
+            for(int i=0;i<userids.length;i++){
+                if(i==userids.length-1){
+                    dis.append("'"+userids[i]+"'");
                 }else{
-                    sbSql.append("where checkeduser='"+userId+"'");
+                    dis.append("'"+userids[i]+"',");
                 }
-        } catch (Exception e) {
-            e.printStackTrace();
+            }
+            sbSql.append("where checkeduser in("+dis.toString()+")");
+        }else{
+            sbSql.append("where checkeduser='"+userId+"'");
         }
-        this.add(wltSplitPane);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+        this.add(wltSplitPane);
+}
 
     /**
      * 某个指标展示的值
@@ -94,7 +96,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
     private BillListPanel viewIndicators(BillVO vo){
         BillListPanel list=null;
         try{
-            BillListPanel billListPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE2");
+            BillListPanel billListPanel=new BillListPanel("V_GRID_SELECT_CODE1");
             Pub_Templet_1_ItemVO[] itemVO=billListPanel.getTempletVO().getItemVos();
             HashMap<String,Pub_Templet_1_ItemVO> viewcolMap=new HashMap();
             for(int i=0;i<itemVO.length;i++){
@@ -102,7 +104,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             String [] keyvos =billListPanel.getTempletVO().getItemKeys();
             String [] keyNamevos=billListPanel.getTempletVO().getItemNames();
-            String processfactors=UIUtil.getStringValueByDS(null,"select processfactors from hzdb.sal_person_check_auto_score where targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"' and targetname not like '网格%' and rownum<=1 ");
+            String processfactors=UIUtil.getStringValueByDS(null,"select processfactors from hzdb.sal_person_check_auto_score where targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"' and targetname like '网格%' and rownum<=1 ");
             String [] gcyz=processfactors.split(";");
             LinkedHashMap<String,Integer> map=new LinkedHashMap();//zzl 装下过程中得因子
             int mapint=gcyz.length;
@@ -111,7 +113,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 map.put(str[0],mapint);
                 mapint--;
             }
-            map.put("机构名称",10);
+//            map.put("机构名称",10);
             String [] columns=new String [keyvos.length+map.size()];
             String [] columnNames=new String[keyNamevos.length+map.size()];
             //添加 key
@@ -133,7 +135,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                 namexj++;
             }
             Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
-            templetVO.setTempletname("个人业绩查看");
+            templetVO.setTempletname("网格业绩查看");
             templetVO.setRealViewColumns(columns);
             templetVO.setIsshowlistpagebar(false);
             templetVO.setIsshowlistopebar(false);
@@ -168,7 +170,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
             }
             templetVO.setItemVos(templetItemVOs);
             list = new BillListPanel(templetVO);
-            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"' and targetname not like '网格%'");
+            HashVO[] vos =UIUtil.getHashVoArrayByDS(null,"select * from hzdb.V_GRID_SELECT "+ sbSql.toString()+" and targetid='"+vo.getStringValue("TARGETID")+"' and datadate='"+datadate+"' and targetname like '网格%'");
             for(int i=0;i<vos.length;i++){
                 if(vos[i].getStringValue("processfactors")==null){
 
@@ -179,7 +181,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
                         vos[i].setAttributeValue(col[0],(col[1].equals("null") || col[1]==null)?"0":col[1]);
 
                     }
-                    vos[i].setAttributeValue("机构名称",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
+//                    vos[i].setAttributeValue("机构名称",deptMap.get(vos[i].getStringValue("CHECKEDUSER")));
                 }
             }
             list.putValue(vos);

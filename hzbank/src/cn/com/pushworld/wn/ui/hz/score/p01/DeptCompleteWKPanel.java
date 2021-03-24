@@ -63,13 +63,15 @@ public class DeptCompleteWKPanel extends AbstractWorkPanel implements BillListSe
             wltSplitPane.setDividerLocation(500);
             wltSplitPane.setDividerSize(1);
             HashVO[] vos=null;
+            String leadervo=null;
             HashMap<String,String> roleMap=new HashMap<String, String>();
             deptMap= UIUtil.getHashMapBySQLByDS(null,"select userid,deptname from hzdb.v_pub_user_post_1");
             vos= UIUtil.getHashVoArrayByDS(null,"select * from v_pub_user_post_1 where usercode='"+USERCODE+"'");
             roleMap=UIUtil.getHashMapBySQLByDS(null,"select ROLENAME,ROLENAME from v_pub_user_role_1 where usercode='"+USERCODE+"'");
+            leadervo=UIUtil.getStringValueByDS(null, "select stationkind from v_sal_personinfo where code='"+USERCODE+"'");
             if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
                 sbSql.append("where 1=1");
-            }else if(vos[0].getStringValue("POSTNAME").contains("行长")){
+            }else if(leadervo.equals("支行行长")){
                 sbSql.append("where checkeddept='"+deptid+"'");
             }
         }catch (Exception e){
