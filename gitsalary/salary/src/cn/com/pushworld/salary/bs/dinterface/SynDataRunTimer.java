@@ -23,7 +23,7 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
  * @author zzl
  * create by 2021-01-19
  */
-public class SynDataRunTimer implements WLTJobIFC {
+	public class SynDataRunTimer implements WLTJobIFC {
 	private CommDMO dmo = new CommDMO();
 	private DataInterfaceDMO ifcdmo = new DataInterfaceDMO();
 	Logger logger = WLTLogger.getLogger(SynDataRunTimer.class); //

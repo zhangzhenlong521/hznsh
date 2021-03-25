@@ -1347,7 +1347,7 @@ public class SalaryFormulaDMO extends AbstractDMO {
 					scorevo[i] = new HashVO();
 					scorevo[i].setAttributeValue("wgid", allCheckedUsers[i].getStringValue("wgid"));//
 					scorevo[i].setAttributeValue("targetid", _targetID);
-					scorevo[i].setAttributeValue("checkeduser", allCheckedUsers[i].getStringValue("id"));
+					scorevo[i].setAttributeValue("checkeduser", allCheckedUsers[i].getStringValue("wgid"));
 					scorevo[i].setAttributeValue("getvalue", target[0].getStringValue("getvalue"));
 					scorevo[i].setAttributeValue("partvalue", target[0].getStringValue("partvalue"));
 					scorevo[i].setAttributeValue("targetdefine", target[0].getStringValue("define"));
@@ -2004,7 +2004,8 @@ public class SalaryFormulaDMO extends AbstractDMO {
 		List list = new ArrayList();
 //		DeleteSQLBuilder delsql = new DeleteSQLBuilder("sal_person_check_auto_score"); //
 //		delsql.setWhereCondition(" checkdate='" + checkdate + "' and datadate='" + datadate + "'");
-		list.add("truncate table sal_person_check_auto_score");//如果改日期已经执行过,先删除掉。
+//		list.add("truncate table sal_person_check_auto_score");//如果改日期已经执行过,先删除掉。
+		list.add("delete from sal_person_check_auto_score where datadate='"+datadate+"'");
 		for (int i = 0; i < autoCalcTargetIDs.length; i++) {
 			HashVO[] rtvos = calcOnePersonTarget_P_Money(autoCalcTargetIDs[i], checkdate); //计算返回的值
 			for (int j = 0; j < rtvos.length; j++) {
@@ -2064,7 +2065,8 @@ public class SalaryFormulaDMO extends AbstractDMO {
 		}
 		List <HashVO []>list = new ArrayList();
 		List listSql = new ArrayList();
-		listSql.add("truncate table sal_person_check_dept_score");//如果改日期已经执行过,先删除掉。
+//		listSql.add("truncate table sal_person_check_dept_score");//如果改日期已经执行过,先删除掉。
+		listSql.add("delete from sal_person_check_dept_score where checkdate='"+datadate+"'");
 		for(int i=0;i<vos.length;i++){
 			list.add(calcOneDeptTargetDL2(vos[i],datadate));
 		}
