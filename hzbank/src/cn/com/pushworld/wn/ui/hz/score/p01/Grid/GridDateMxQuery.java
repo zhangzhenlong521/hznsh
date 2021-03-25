@@ -249,7 +249,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 vos[0]=new HashVO();
                 vos[0].setAttributeValue("yikf","已有存款客户："+ckhs+"户");
                 vos[0].setAttributeValue("dkf","待开发存款客户："+(Integer.parseInt(zhs)-Integer.parseInt(ckhs))+"户");
-                vos[0].setAttributeValue("yetj","存款余额："+ckye);
+                vos[0].setAttributeValue("yetj","存款余额："+(ckye==null || ckye.equals("") || ckye.equals(null)?"0":ckye));
                 // zzl 贷款客户
                 String dkhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and dkye>0");
 //                sb.append("已有贷款客户：【"+dkhs+"】户      待开发贷款客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"】户");
@@ -258,7 +258,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 vos[1]=new HashVO();
                 vos[1].setAttributeValue("yikf","已有贷款客户："+dkhs+"户");
                 vos[1].setAttributeValue("dkf","待开发贷款客户："+(Integer.parseInt(zhs)-Integer.parseInt(dkhs))+"户");
-                vos[1].setAttributeValue("yetj","贷款余额："+dkye);
+                vos[1].setAttributeValue("yetj","贷款余额："+(dkye==null || dkye.equals("") || dkye.equals(null)?"0":dkye));
                 //zzl 建档户数
                 String jdhs=UIUtil.getStringValueByDS(null,"select count(*) from "+tablename+" where J='"+vo.getStringValue("C")+"' and K='"+vo.getStringValue("D")+"' and deptcode='"+deptcode+"' and jdxx='已建档'");
 //                sb.append("已有建档客户：【"+jdhs+"】户      待开发建档客户：【"+(Integer.parseInt(zhs)-Integer.parseInt(jdhs))+"】户");
