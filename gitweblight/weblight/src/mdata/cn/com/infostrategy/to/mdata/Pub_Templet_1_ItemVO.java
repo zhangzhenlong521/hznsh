@@ -40,7 +40,7 @@ public class Pub_Templet_1_ItemVO implements Serializable {
 	private int saveScale = -1; //袁江晓 20140127添加  表示字符小数点后保留的位数
 	private boolean isuniquecheck;//是否校验唯一性
 
-	private String ismustinput;
+	private String ismustinput;//是否是必输项 zzl 2021/3/25
 	private Boolean iskeeptrace; //是否保留痕迹
 	private String showbgcolor;
 	private String loadformula;
