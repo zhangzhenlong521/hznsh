@@ -635,6 +635,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             dialog.getBillcardPanel().setEditable("QK",false);
             dialog.getBillcardPanel().setRealValueAt("blloan","不良贷款");
             dialog.getBillcardPanel().setEditable("blloan",false);
+            Pub_Templet_1VO itemVO=dialog.getBillcardPanel().getTempletVO();
+            final Pub_Templet_1_ItemVO [] itemVOS=itemVO.getItemVos();
             dialog.getBtn_confirm().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
@@ -646,9 +648,24 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                             MessageBox.show(dialog,"您当前输入的网格名称"+wgname+"在您所在的机构"+deptcode+"已经存在，请您重新命名。");
                             return;
                         }else{
-                            dialog.getBillcardPanel().updateData();
-                            listPanel.addRow(dialog.getBillcardPanel().getBillVO());
-                            dialog.dispose();
+                            StringBuffer sb=new StringBuffer();
+                            for(int i=0;i<itemVOS.length;i++){
+                               Boolean falg= itemVOS[i].getIsmustinput();
+                               if(falg){
+                                   String code=dialog.getBillcardPanel().getRealValueAt(itemVOS[i].getItemkey());
+                                   if(code==null || code.equals("") || code.equals(null)){
+                                       sb.append(itemVOS[i].getItemname()+"不可以为空"+System.getProperty("line.separator"));
+                                   }
+                               }
+                            }
+                            if(sb.length()>0){
+                                MessageBox.show(dialog,sb.toString());
+                                return;
+                            }else{
+                                dialog.getBillcardPanel().updateData();
+                                listPanel.addRow(dialog.getBillcardPanel().getBillVO());
+                                dialog.dispose();
+                            }
                         }
                     } catch (Exception e) {
                         // TODO Auto-generated catch block

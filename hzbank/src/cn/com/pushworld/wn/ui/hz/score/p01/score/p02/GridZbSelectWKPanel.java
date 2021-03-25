@@ -71,7 +71,7 @@ public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSe
         if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
             sbSql.append("where 1=1");
         }else if(leadervo.equals("支行行长")){
-            String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select userid from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
+            String [] userids=UIUtil.getStringArrayFirstColByDS(null,"select usercode from hzdb.v_pub_user_post_1  where deptid='"+vos[0].getStringValue("deptid")+"'");
             StringBuffer dis=new StringBuffer();
             for(int i=0;i<userids.length;i++){
                 if(i==userids.length-1){
@@ -80,9 +80,9 @@ public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSe
                     dis.append("'"+userids[i]+"',");
                 }
             }
-            sbSql.append("where checkeduser in("+dis.toString()+")");
+            sbSql.append("where g in("+dis.toString()+")");
         }else{
-            sbSql.append("where checkeduser='"+userId+"'");
+            sbSql.append("where g='"+USERCODE+"'");
         }
     } catch (Exception e) {
         e.printStackTrace();
