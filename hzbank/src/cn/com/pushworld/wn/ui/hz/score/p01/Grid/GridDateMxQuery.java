@@ -1,6 +1,7 @@
 package cn.com.pushworld.wn.ui.hz.score.p01.Grid;
 
 import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.TBUtil;
 import cn.com.infostrategy.to.common.WLTConstants;
 import cn.com.infostrategy.to.common.WLTRemoteException;
 import cn.com.infostrategy.to.mdata.*;
@@ -9,6 +10,7 @@ import cn.com.infostrategy.ui.mdata.*;
 import cn.com.infostrategy.ui.report.cellcompent.ExcelUtil;
 import cn.com.jsc.ui.CkBarChart;
 import cn.com.jsc.ui.CkNewJLabel;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -56,6 +58,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private Boolean isleader=false;//判断是不是行长
     private BillListPanel wglist=new BillListPanel("S_LOAN_KHXX_202001_CODE1");
     private BillListDialog dialog=null;
+    private WLTSplitPane wltSplitPane=null;
+    private Boolean wgfalg= TBUtil.getTBUtil().getSysOptionBooleanValue("网格概况是否开启可视化",false);
 
     @Override
     public void initialize() {
@@ -297,10 +301,41 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     templetItemVOs[i].setItemname(columnNames[i].toString());
                 }
                 templetVO.setItemVos(templetItemVOs);
-                BillListPanel list=new BillListPanel(templetVO);
+                final BillListPanel list=new BillListPanel(templetVO);
                 list.putValue(vos);
-                BillListDialog dialog=new BillListDialog(listPanel,sb.toString(),list,700,400,true);
-                dialog.getBtn_confirm().setVisible(false);
+                list.addBillListSelectListener(new BillListSelectListener() {
+                    @Override
+                    public void onBillListSelectChanged(BillListSelectionEvent _event) {
+                        BillVO vo=list.getSelectedBillVO();
+                        String [] yikf=vo.getStringValue("yikf").split("：");
+                        String [] dkf=vo.getStringValue("dkf").split("：");
+                        String titie=null;
+                        DefaultPieDataset data=new DefaultPieDataset();
+                        data.setValue(yikf[0],Integer.parseInt(yikf[1].replace("户","")));
+                        data.setValue(dkf[0],Integer.parseInt(dkf[1].replace("户","")));
+                         if(yikf[0].contains("存款")){
+                             titie="存款";
+                         }else if(yikf[0].contains("贷款")){
+                             titie="贷款";
+                         }else if(yikf[0].contains("建档")){
+                             titie="建档";
+                         }else if(yikf[0].contains("黔农云")){
+                             titie="黔农云";
+                         }
+                        wltSplitPane.removeAll();
+                        wltSplitPane.add(list);
+                        wltSplitPane.add(new PieChart(titie,data).getChartPanel());
+                        wltSplitPane.setDividerLocation(200);
+                        wltSplitPane.updateUI();
+                    }
+                });
+                if(wgfalg){
+                    wltSplitPane=new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT,list,null);
+                    wltSplitPane.setDividerLocation(200);
+                    wltSplitPane.setDividerSize(1);
+                }
+                BillDialog dialog=new BillDialog(listPanel,700,(wltSplitPane==null?300:700));
+                dialog.add(wltSplitPane==null?list:wltSplitPane);
                 dialog.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();

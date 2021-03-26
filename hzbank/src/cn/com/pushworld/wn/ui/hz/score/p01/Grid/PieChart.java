@@ -1,8 +1,6 @@
 package cn.com.pushworld.wn.ui.hz.score.p01.Grid;
 
-import cn.com.infostrategy.ui.common.UIUtil;
-import cn.com.jsc.ui.CockpitServiceIfc;
-import cn.com.jsc.ui.DateUIUtil;
+
 import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -14,9 +12,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimerTask;
+
 
 /**
  * PieChart
@@ -31,16 +27,22 @@ public class PieChart {
     JFreeChart chart;
     public DefaultPieDataset dataset=null;
     public String str=null;
-    public PieChart(){
+    public PieChart(String str,DefaultPieDataset dataset){
+        this.str=str;
+        this.dataset=dataset;
         DefaultPieDataset data = getDataSet();
         chart = ChartFactory.createPieChart3D(str+"覆盖面",data,true,false,false);
-        chart.setBackgroundPaint(new ChartColor(25,25,112));
+        chart.setBorderVisible(false);
+        chart.setBackgroundPaint(null);
+        chart.setBackgroundImageAlpha(0.0f);
+
         // 设置标题颜色
-        chart.getTitle().setPaint(ChartColor.yellow);
+        chart.getTitle().setPaint(ChartColor.BLACK);
 
         //设置百分比
         pieplot = (PiePlot) chart.getPlot();
-        pieplot.setBackgroundPaint(new ChartColor(25,25,112));
+        pieplot.setBackgroundPaint(null);//zzl 设置饼图的背景
+        pieplot.setBackgroundImageAlpha(0.0f);
         DecimalFormat df = new DecimalFormat("0.00%");//获得一个DecimalFormat对象，主要是设置小数问题
         NumberFormat nf = NumberFormat.getNumberInstance();//获得一个NumberFormat对象
         StandardPieSectionLabelGenerator sp1 = new StandardPieSectionLabelGenerator("{0}  {2}", nf, df);//获得StandardPieSectionLabelGenerator对象
@@ -50,6 +52,10 @@ public class PieChart {
         pieplot.setNoDataMessage("无数据显示");
         pieplot.setCircular(false);
         pieplot.setLabelGap(0.02D);
+//        // 背景色 透明度
+//        pieplot.setBackgroundAlpha(0.5f);
+//        // 前景色 透明度
+//        pieplot.setForegroundAlpha(0.5f);
 
         pieplot.setIgnoreNullValues(true);//设置不显示空值
         pieplot.setIgnoreZeroValues(true);//设置不显示负值
@@ -72,9 +78,7 @@ public class PieChart {
     public DefaultPieDataset getDataSet() {
         return dataset;
     }
-    public ChartPanel getChartPanel(String str,DefaultPieDataset dataset){
-        this.str=str;
-        this.dataset=dataset;
+    public ChartPanel getChartPanel(){
         return frame1;
 
     }
