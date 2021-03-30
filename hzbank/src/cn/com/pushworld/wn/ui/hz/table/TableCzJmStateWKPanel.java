@@ -322,8 +322,7 @@ public class TableCzJmStateWKPanel extends AbstractWorkPanel implements ActionLi
      */
     public void getCount(){
         try{
-            String [][]data=UIUtil.getStringArrayByDS(null,"select * from (select case when deptcode='营业部支行' then '营业部' else deptcode end as deptcode,c from (select deptcode||'支行' deptcode,round(count(deptcode)) c from hzdb.s_qwyt_czjm_202012 group by deptcode) order by c) \n" +
-            									"union all select '',sum(c) from  (select deptcode||'支行' deptcode,round(count(deptcode)) c from hzdb.s_qwyt_czjm_202012 group by deptcode)");
+            String [][]data=UIUtil.getStringArrayByDS(null,"select deptcode,round(count(deptcode)) from hzdb.s_qwyt_czjm_202012 group by deptcode union all select '',count(*) from hzdb.s_qwyt_czjm_202012");
             for(int i=0;i<data.length;i++){
                 for(int j=0;j<data[i].length;j++){
                     billCellPanel.setValueAt(data[i][j],i+4,j+1);
