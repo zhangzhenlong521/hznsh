@@ -44,10 +44,59 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
             getCount();
             getKkNumCount();
             getYeCount();
+            getQnyCount();
         }catch (Exception e){
 
         }
         this.add(billCellPanel);
+    }
+
+    /**
+     * 255 153 153
+     * (selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))
+     * DateUIUtil.getYearMonth()
+     */
+    private void getQnyCount(){
+        try{
+            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
+                    "select * from(\n" +
+                    "select sy.code,sy.hs syhs,to_char(round(sy.hs/zj.hs*100,2),'fm9999990.00') syfgm,dy.hs dyhs,dy.hs-sy.hs jsyhs,dy.hs-nc.hs jnchs,to_char(round(dy.hs/zj.hs*100,2),'fm9999990.00') byfgm,\n" +
+                    "to_char(round(dy.hs/zj.hs*100,2)-round(sy.hs/zj.hs*100,2),'fm9999990.00') jsyfgm,to_char(dy.hs/zj.hs*100-nc.hs/zj.hs*100,'fm9999990.00') jncfgm from(\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    "group by ry.d) sy\n" +
+                    "left join(\n" +
+                    "select d code,count(c) hs from hzdb.s_qwyt_xskh_202012 group by d) zj on sy.code=zj.code\n" +
+                    "left join(\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    " group by ry.d) dy on sy.code=dy.code\n" +
+                    "left join (\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    " group by ry.d) nc on sy.code=nc.code\n" +
+                    ") order by byfgm desc)\n" +
+                    "union all(\n" +
+                    "select 'ºÏ¼Æ',sum(sy.hs) syhs,to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm9999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm9999990.00') byfgm,\n" +
+                    "to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(sy.hs)/sum(zj.hs)*100,2),'fm9999990.00') jsyfgm,to_char(sum(dy.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm9999990.00') jncfgm from(\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    "group by ry.d) sy\n" +
+                    "left join(\n" +
+                    "select d code,count(c) hs from hzdb.s_qwyt_xskh_202012 group by d) zj on sy.code=zj.code\n" +
+                    "left join(\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    " group by ry.d) dy on sy.code=dy.code\n" +
+                    "left join (\n" +
+                    "select ry.d code,count(qny.f) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.s_loan_qnyyx_"+DateUIUtil.getYearMonth()+" qny on upper(ry.c)=upper(qny.f) \n" +
+                    "group by ry.d) nc on sy.code=nc.code)");
+            for(int i=0;i<date.length;i++){
+                for(int j=0;j<date[i].length;j++){
+                    billCellPanel.setValueAt(date[i][j],i+5,j+17);
+                    billCellPanel.setBackground("255,153,153",i+5,17);
+
+                }
+            }
+        }catch (Exception e){
+
+        }
+
     }
     private void getCount() {
         try{
@@ -183,6 +232,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
                         getCount();
                         getKkNumCount();
                         getYeCount();
+                        getQnyCount();
                         billCellPanel.repaint();
                     }
                 });

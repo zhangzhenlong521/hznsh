@@ -60,6 +60,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private BillListDialog dialog=null;
     private WLTSplitPane wltSplitPane=null;
     private Boolean wgfalg= TBUtil.getTBUtil().getSysOptionBooleanValue("网格概况是否开启可视化",false);
+    private StringBuffer sbsql=new StringBuffer();
 
     @Override
     public void initialize() {
@@ -95,15 +96,18 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
+            sbsql.append("1=1");
         }else if(leadervo.contains("支行行长")){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");
+            sbsql.append("deptcode='"+vos[0].getStringValue("DEPTCODE")+"'");
         }else{
             listPanel.QueryDataByCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");
+            sbsql.append("deptcode='"+vos[0].getStringValue("DEPTCODE")+"'");
         }
         list = new BillListPanel("WN_WGINFOUPDATE_LOG_CODE");
         listPanel.repaintBillListButton();// 刷新按钮
@@ -746,11 +750,25 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             });
             dialog.setVisible(true);
         }else if(actionEvent.getSource() == btn_card){
-            BillListDialog billListDialog=new BillListDialog(listPanel,"身份证查询","HZ_DK_WGMX_CODE4",2000,800);
+            final BillListDialog billListDialog=new BillListDialog(listPanel,"身份证查询","HZ_DK_WGMX_CODE4",2000,800);
             billListDialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-
+                    String card=billListDialog.getBilllistPanel().getQuickQueryPanel().getRealValueAt("G");
+                    billListDialog.getBilllistPanel().queryDataByDS(null,"select * from "+tablename+" where "+sbsql.toString()+" and upper(G)=upper("+card+")");
+                }
+            });
+            billListDialog.getBilllistPanel().addBillListHtmlHrefListener(new BillListHtmlHrefListener() {
+                @Override
+                public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+                    BillVO vo = dialog.getBilllistPanel().getSelectedBillVO();
+                    if (_event.getItemkey().equals("dkye")) {
+                        getDkDialog(dialog, vo);
+                    } else if (_event.getItemkey().equals("ckye")) {
+                        getCkDialog(dialog, vo);
+                    } else if (_event.getItemkey().equals("num")) {
+                        getJtDialog(dialog, vo);
+                    }
                 }
             });
             billListDialog.setBtn_confirmVisible(false);
