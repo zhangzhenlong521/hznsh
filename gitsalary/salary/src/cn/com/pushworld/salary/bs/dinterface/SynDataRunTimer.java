@@ -110,22 +110,17 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 			if(hxdg==null){
 				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_hxdg_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_hxdg_"+getSMonth("yyyyMM")+"");
 			}
-			if(dates==null){
-				if(createDate.length>0 && count!=null){
-					new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
-					state.append("个人指标计算成功");
-				}
+			if(createDate.length>0 && count!=null){
+				new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
+				state.append("个人指标计算成功");
 			}else{
-				state.append(getQYTTime("yyyy-MM-dd")+"个人指标已经生成");
+				state.append("没有数据");
 			}
-            //zzl 添加部门指标计算
-			if(deptDates==null){
-				if(createDate.length>0 && count!=null){
-					new SalaryFormulaDMO().countDeptScore("", getQYTTime("yyyy-MM-dd"));
-					state.append("部门指标计算成功");
-				}
+			if(createDate.length>0 && count!=null){
+				new SalaryFormulaDMO().countDeptScore("", getQYTTime("yyyy-MM-dd"));
+				state.append("部门指标计算成功");
 			}else{
-				state.append(getQYTTime("yyyy-MM-dd")+"部门指标数据已经生成");
+				state.append("没有数据");
 			}
 		}catch (Exception e){
 			state.append("失败"+e.toString());
