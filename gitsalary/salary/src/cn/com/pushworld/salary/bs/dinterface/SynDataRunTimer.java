@@ -82,6 +82,34 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 			String deptDates=dmo.getStringValueByDS(null,"select distinct(checkdate) from hzdb.sal_person_check_dept_score where checkdate='"+getQYTTime("yyyy-MM-dd")+"'");
 			String [] createDate= dmo.getStringArrayFirstColByDS(null,"select CREATED from dba_objects where object_name = 'GRID_DATA_"+getQYTTime("yyyy-MM-dd").replace("-","")+"' and OBJECT_TYPE='TABLE'");
 			String count=dmo.getStringValueByDS(null,"select dates from hzdb.count_avg where dates='"+getQYTTime("yyyy-MM-dd").replace("-","")+"'");
+			String qny=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_QNY_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(qny==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.S_LOAN_QNY_"+getQYTTime("yyyyMM")+" as select * from hzdb.S_LOAN_QNY_"+getSMonth("yyyyMM")+"");
+			}
+			String dk=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_DK_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(dk==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_dk_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_dk_"+getSMonth("yyyyMM")+"");
+			}
+			String dgdk=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_DK_DG_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(dgdk==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_dk_dg_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_dk_dg_"+getSMonth("yyyyMM")+"");
+			}
+			String xygc=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_XYGC_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(xygc==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_xygc_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_xygc_"+getSMonth("yyyyMM")+"");
+			}
+			String qnyyx=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_QNYYX_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(qnyyx==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_qnyyx_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_qnyyx_"+getSMonth("yyyyMM")+"");
+			}
+			String eloan=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_ESIGN_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(eloan==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.S_LOAN_ESIGN_"+getQYTTime("yyyyMM")+" as select * from hzdb.S_LOAN_ESIGN_"+getSMonth("yyyyMM")+"");
+			}
+			String hxdg=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_HXDG_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
+			if(hxdg==null){
+				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_hxdg_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_hxdg_"+getSMonth("yyyyMM")+"");
+			}
 			if(dates==null){
 				if(createDate.length>0 && count!=null){
 					new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
@@ -129,11 +157,64 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 		String lastDate = format.format(cal.getTime());
 		return lastDate;
 	}
-
+	/**
+	 * 得到前一天的月份
+	 *
+	 * @return
+	 */
+	public String getQYTMonth(String dates) {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat(dates);
+		if(date==null || date.equals("") || date.equals(null)){
+			Date d = new Date();
+			cal.setTime(d);
+			int day = cal.get(Calendar.DATE);
+			cal.set(Calendar.DATE, day - 1);
+		}else{
+			try {
+				SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+				Date date1=format2.parse(date);
+				cal.setTime(date1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		String lastDate = format.format(cal.getTime());
+		return lastDate;
+	}
+	/**
+	 * 得到前一天上月的月份
+	 *
+	 * @return
+	 */
+	public String getSMonth(String dates) {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat(dates);
+		if(date==null || date.equals("") || date.equals(null)){
+			Date d = new Date();
+			cal.setTime(d);
+			int day = cal.get(Calendar.DATE);
+			cal.set(Calendar.DATE, day - 1);
+			cal.setTime(cal.getTime());
+			cal.add(Calendar.MONTH,- 1);
+		}else{
+			try {
+				SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+				Date date1=format2.parse(date);
+				cal.setTime(date1);
+				cal.setTime(cal.getTime());
+				cal.add(Calendar.MONTH,- 1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		String lastDate = format.format(cal.getTime());
+		return lastDate;
+	}
 	public static void main(String[] args) {
 		SynDataRunTimer synDataRunTimer=new SynDataRunTimer();
 		synDataRunTimer.date="2021-01-31";
-		System.out.println(synDataRunTimer.getQYTTime("yyyy-MM-dd"));
+		System.out.println(synDataRunTimer.getSMonth("yyyyMM"));
 	}
 	/**
 	 * 执行一次任务。
