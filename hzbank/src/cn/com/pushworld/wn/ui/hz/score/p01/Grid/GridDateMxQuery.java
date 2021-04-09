@@ -33,7 +33,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         ActionListener, BillListHtmlHrefListener {
     private String code = "EXCEL_TAB_85_CODE";
     private BillListPanel listPanel = null;
-    private WLTButton btn_add, btn_update, btn_delete, btn_log,btn_query;// 新增 修改 删除
+    private WLTButton btn_add, btn_update, btn_delete, btn_log,btn_query,btn_card;// 新增 修改 删除
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
             .getCode();
     private final String USERNAME = ClientEnvironment.getCurrSessionVO()
@@ -65,6 +65,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     public void initialize() {
         listPanel = new BillListPanel(code);
         btn_query=new WLTButton("查询");
+        btn_card=new WLTButton("身份证查询");
+        btn_card.addActionListener(this);
         btn_add = new WLTButton("新增");
         btn_add.addActionListener(this);
         btn_update = new WLTButton("修改");
@@ -91,16 +93,16 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
-            listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
+            listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
         }else if(leadervo.contains("支行行长")){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
-            listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update});
+            listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");
         }else{
             listPanel.QueryDataByCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");//zzl[20201012]
-            listPanel.addBatchBillListButton(new WLTButton[] {btn_update});
+            listPanel.addBatchBillListButton(new WLTButton[] {btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");
         }
         list = new BillListPanel("WN_WGINFOUPDATE_LOG_CODE");
@@ -743,6 +745,18 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 }
             });
             dialog.setVisible(true);
+        }else if(actionEvent.getSource() == btn_card){
+            BillListDialog billListDialog=new BillListDialog(listPanel,"身份证查询","HZ_DK_WGMX_CODE4",2000,800);
+            billListDialog.getBilllistPanel().getQuickQueryPanel().addBillQuickActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+
+                }
+            });
+            billListDialog.setBtn_confirmVisible(false);
+            billListDialog.getBtn_confirm().setVisible(false);
+            billListDialog.setVisible(true);
+
         }
 
 

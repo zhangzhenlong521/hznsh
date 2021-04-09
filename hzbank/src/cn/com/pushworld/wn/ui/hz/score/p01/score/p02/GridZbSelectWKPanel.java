@@ -5,10 +5,7 @@ import cn.com.infostrategy.to.mdata.BillVO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1VO;
 import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
 import cn.com.infostrategy.ui.common.*;
-import cn.com.infostrategy.ui.mdata.BillListPanel;
-import cn.com.infostrategy.ui.mdata.BillListSelectListener;
-import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
-import cn.com.infostrategy.ui.mdata.BillQueryPanel;
+import cn.com.infostrategy.ui.mdata.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +30,7 @@ public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSe
     private HashMap<String,String> deptMap=new HashMap();
     private String datadate=null;
     private BillQueryPanel billQueryPanel=null;
+    private WLTButton count_btn=new WLTButton("汇总");
     @Override
     public void initialize() {
     listPanel=new BillListPanel("SAL_PERSON_CHECK_AUTO_SCORE_CODE1");
@@ -58,9 +56,14 @@ public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSe
                 }
             }
         });
-        wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
-        wltSplitPane.setDividerLocation(500);
-        wltSplitPane.setDividerSize(1);
+            listPanel.addBillListButton(count_btn);
+            count_btn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    CountDate(listPanel);
+                }
+            });
+            listPanel.repaintBillListButton();
         HashVO[] vos=null;
         String leadervo=null;
         HashMap<String,String> roleMap=new HashMap<String, String>();
@@ -87,9 +90,97 @@ public class GridZbSelectWKPanel extends AbstractWorkPanel implements BillListSe
     } catch (Exception e) {
         e.printStackTrace();
     }
+        wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,null);
+        wltSplitPane.setDividerLocation(500);
+        wltSplitPane.setDividerSize(1);
         this.add(wltSplitPane);
 }
+    private void CountDate(BillListPanel listPanel) {
+        try{
+            String [] col=UIUtil.getStringArrayFirstColByDS(null ,"select targetname from  hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname like '网格%' group by targetname");
+            StringBuffer colsb=new StringBuffer();
+            StringBuffer zdsb=new StringBuffer();
+            LinkedHashMap<String,String> map=new LinkedHashMap();
+            map.put("checkeduser","ID");
+            map.put("a","网点名称");
+            map.put("checkedusername","人员名称");
+            map.put("c","乡-镇");
+            map.put("d","网格名称");
+            for(int i=0;i<col.length;i++){
+                String colstr=null;
+                if(col[i].length()>15){
+                    colstr=col[i].replace("(","").
+                            replace(")","").
+                            replace("+","").substring(0,10);
+                }else{
+                    colstr=col[i].replace("(","").
+                            replace(")","").
+                            replace("+","");
+                }
+                if(i==col.length-1){
+                    colsb.append(" case when "+colstr+" is null then 0 else "+colstr+" end "+colstr+" ");
+                }else{
+                    colsb.append(" case when "+colstr+" is null then 0 else "+colstr+" end "+colstr+",");
+                }
+                if(i==col.length-1){
+                    zdsb.append("'"+col[i]+"' as "+colstr+"");
+                }else{
+                    zdsb.append("'"+col[i]+"' as "+colstr+",");
+                }
+                map.put(colstr,col[i]);
+            }
+            map.put("money","合计");
+            HashVO [] vos=UIUtil.getHashVoArrayByDS(null,"select a.*,b.money from(SELECT checkeduser,a,c,d,checkedusername, "+colsb.toString()+"" +
+                    "  FROM (select b.a,b.c,b.d,a.* from(select checkeduser,checkedusername,targetname,money from " +
+                    "hzdb.sal_person_check_auto_score "+sbSql.toString()+" and datadate='"+datadate+"' and targetname like '网格%')a left join hzdb.excel_tab_85 b on a.checkeduser=b.id)\n" +
+                    "  PIVOT(SUM(money)\n" +
+                    "   FOR targetname IN("+zdsb.toString()+"))) a left join (select checkeduser,sum(money) money from hzdb.sal_person_check_auto_score where datadate='"+datadate+"' and targetname like '网格%' group by checkeduser)\n" +
+                    "b on a.checkeduser=b.checkeduser");
+            String [] columns=new String [map.size()];
+            String [] columnNames=new String[map.size()];
+            int a=0;
+            for(Object str:map.keySet()){
+                columns[a]=str.toString();
+                columnNames[a]=map.get(str);
+                a++;
+            }
+            Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
+            templetVO.setTempletname("网格指标汇总");
+            templetVO.setRealViewColumns(columns);
+            templetVO.setIsshowlistpagebar(false);
+            templetVO.setIsshowlistopebar(false);
+            templetVO.setListheaderisgroup(false);
+            templetVO.setIslistpagebarwrap(false);
+            templetVO.setIsshowlistquickquery(false);
+            templetVO.setIscollapsequickquery(true);
+            templetVO.setIslistautorowheight(true);
+            Pub_Templet_1_ItemVO[] templetItemVOs = new Pub_Templet_1_ItemVO[columns.length];
+            for(int i=0;i<columns.length;i++){
+                templetItemVOs[i]=new Pub_Templet_1_ItemVO();
+                if(columns[i].equals("checkeduser")){
+                    templetItemVOs[i].setListisshowable(false);
 
+                }else{
+                    templetItemVOs[i].setListisshowable(true);
+                }
+                templetItemVOs[i].setPub_Templet_1VO(templetVO);
+                templetItemVOs[i].setListwidth(150);
+                templetItemVOs[i].setItemtype("文本框");
+                templetItemVOs[i].setListiseditable("4");
+                templetItemVOs[i].setItemkey(columns[i].toString());
+                templetItemVOs[i].setItemname(columnNames[i].toString());
+            }
+            templetVO.setItemVos(templetItemVOs);
+            BillListPanel list = new BillListPanel(templetVO);
+            list.putValue(vos);
+            BillListDialog billListDialog=new BillListDialog(listPanel,"",list,1000,800,true);
+            billListDialog.setBtn_confirmVisible(false);
+            billListDialog.getBtn_confirm().setVisible(false);
+            billListDialog.setVisible(true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     /**
      * 某个指标展示的值
      */

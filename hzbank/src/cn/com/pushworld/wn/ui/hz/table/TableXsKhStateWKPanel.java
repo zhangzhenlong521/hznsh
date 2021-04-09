@@ -41,6 +41,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
             billCellPanel.setValueAt("dates","数据日期:"+dates);
             btn=billCellPanel.getBtn_selectData();
             btn.addActionListener(this);
+            getCount();
             getKkNumCount();
             getYeCount();
         }catch (Exception e){
@@ -48,7 +49,20 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
         }
         this.add(billCellPanel);
     }
+    private void getCount() {
+        try{
+            String date[][]=UIUtil.getStringArrayByDS(null,"select d,count(C) from hzdb.s_qwyt_xskh_202012 group by d");
+            for(int i=0;i<date.length;i++){
+                for(int j=0;j<date[i].length;j++){
+                    billCellPanel.setValueAt(date[i][j],i+5,j+1);
+                    billCellPanel.setBackground("0,255,51",i+5,1);
 
+                }
+            }
+        }catch (Exception e){
+
+        }
+    }
     /**
      * zzl
      * 学生余额情况
@@ -67,7 +81,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "(select ry.d code,round(sum(wg.ckye)/10000,2) num from hzdb.s_qwyt_xskh_202012 ry left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(ry.c)=upper(wg.g)\n" +
                     "where wg.ckye is not null group by ry.d) nc on dy.code=nc.code) order by to_number(dyye) desc)\n" +
                     "union all\n" +
-                    "(select '',to_char(sum(dy.num),'fm99999990.00') dyye,to_char(sum(dy.num)-sum(sy.num),'fm9999999990.00') jsyye,to_char(sum(dy.num)-sum(nc.num),'fm999999990.00') jncye from(\n" +
+                    "(select '合计',to_char(sum(dy.num),'fm99999990.00') dyye,to_char(sum(dy.num)-sum(sy.num),'fm9999999990.00') jsyye,to_char(sum(dy.num)-sum(nc.num),'fm999999990.00') jncye from(\n" +
                     "select ry.d code,round(sum(wg.ckye)/10000,2) num from hzdb.s_qwyt_xskh_202012 ry left join "+(selectDate==null?tablename:"hzdb.Grid_Data_"+DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",0))+" wg on upper(ry.c)=upper(wg.g)\n" +
                     "where wg.ckye is not null group by ry.d) dy\n" +
                     "left join\n" +
@@ -131,7 +145,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "(select ry.d code,count(wg.g) hs from hzdb.s_qwyt_xskh_202012 ry left join hzdb.Grid_Data_"+DateUIUtil.getYearYmTime()+" wg on upper(ry.c)=upper(wg.g)\n" +
                     "where wg.ckye is not null group by ry.d) nc on nc.code=dy.code) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
-                    "(select '',sum(sy.hs),sum(sy.num),to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm999999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
+                    "(select '合计',sum(sy.hs),sum(sy.num),to_char(round(sum(sy.hs)/sum(zj.hs)*100,2),'fm999999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
                     "to_char(round(sum(dy.hs)/sum(zj.hs)*100,2),'fm999999990.00') dyfgm,to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(sy.hs)/sum(zj.hs)*100,2),'fm99999990.00') jsyfgm,\n" +
                     "to_char(round(sum(dy.hs)/sum(zj.hs)*100,2)-round(sum(nc.hs)/sum(zj.hs)*100,2),'fm99999990.00') jncfgm from(\n" +
                     "select ry.d code,count(wg.g) hs,round(sum(wg.ckye)/10000,2) num from hzdb.s_qwyt_xskh_202012 ry left join hzdb.Grid_Data_"+(selectDate==null?DateUIUtil.getSymDateMonth():DateUIUtil.getymDateMonth(selectDate,"yyyyMMdd",1))+" wg on upper(ry.c)=upper(wg.g)\n" +
@@ -166,6 +180,7 @@ public class TableXsKhStateWKPanel extends AbstractWorkPanel implements ActionLi
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
                         billCellPanel.setValueAt("dates","数据日期:"+DateUIUtil.getymDateMonth(selectDate,"yyyy-MM-dd",0));
+                        getCount();
                         getKkNumCount();
                         getYeCount();
                         billCellPanel.repaint();
