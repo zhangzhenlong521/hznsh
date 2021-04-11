@@ -17,7 +17,7 @@ public class YktwclCount implements WLTJobIFC{
         	if(vos.length<=0){
         		return getQYTTime()+"一卡通数据没有正常下发或正在处理";
         	}else{
-        	    String [] column=dmo.getStringArrayFirstColByDS(null,"select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='hzdb.hz_ykt_rate_"+getQYTTime()+"' ORDER BY COLUMN_ID");
+        	    String [] column=dmo.getStringArrayFirstColByDS(null,"select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='HZ_YKT_RATE_"+getQYTTime()+"' ORDER BY COLUMN_ID");
         	    if(column.length>0){
         	    	return getQYTTime()+"数据已存在于库中";
         	    }else{

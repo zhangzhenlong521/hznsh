@@ -34,6 +34,7 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 				QuickQuery();
 			} catch (ParseException e1) {
 				e1.printStackTrace();
+				MessageBox.show(this, "上一日的一卡通数据尚未下发或正在处理，请稍后查询。");
 			}
 		}
 		
