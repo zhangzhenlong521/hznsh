@@ -113,7 +113,7 @@ public class DKDatacCeaning implements WLTJobIFC {
                             "and  XD_COL10 in ('特优','特惠级','一般','优秀','较好') group by XD_COL2,XD_COL7) jd on wg.code=jd.XD_COL2 and UPPER(wg.G)=UPPER(jd.XD_COL7)\n" +
                             "left join (select C,F,'是' sf  from hzdb.s_loan_qnyyx_"+getSMonth(xj)+" group by C,F\n) qny\n" +
                             "on wg.deptcode=qny.c and UPPER(wg.G)=UPPER(qny.f) left join(\n" +
-                            "select a.deptcode,b.EXTERNAL_CUSTOMER_IC g,sum(a.ckye) ckye from(\n" +
+                            "select a.deptcode deptcode,b.EXTERNAL_CUSTOMER_IC g,sum(a.ckye) ckye from(\n" +
                             "select cust_no g,oact_inst_no deptcode,sum(f )ckye from(\n" +
                             "select cust_no,oact_inst_no,acct_bal f from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"' and acct_bal>0\n" +
                             "union all\n" +
@@ -127,7 +127,7 @@ public class DKDatacCeaning implements WLTJobIFC {
                             "hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0 group by xx.CERT_CODE\n" +
                             ") dgdk on wg.deptcode=dgdk.deptcode and UPPER(wg.G)=UPPER(dgdk.sfz)");
                     //zzl 更新对公存款余额
-                    dmo.executeUpdateByDS(null,"update hzdb.GRID_DATA_"+getQYTTime()+" set ckye=dgck where J='对公存款' and K='对公存款' and ckye is null");
+                    dmo.executeUpdateByDS(null,"update hzdb.GRID_DATA_"+getQYTTime()+" set ckye=dgck where J='对公存款' and K='对公存款'");
                     //zzl 更新对公存款余额
                     dmo.executeUpdateByDS(null,"update hzdb.GRID_DATA_"+getQYTTime()+" set dkye=dgdkye where deptcode='2830001-xd' and dkye is null");
                     //zzl 把每天的机构存款余额插入用来计算机构存款日均

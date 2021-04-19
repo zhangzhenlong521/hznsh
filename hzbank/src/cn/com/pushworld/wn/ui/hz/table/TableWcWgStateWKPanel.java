@@ -63,12 +63,74 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
      *51 255 255
      */
     private void getSbkDate() {
+        try{
+            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
+                    "select * from(\n" +
+                    "select nc.code,nc.hs,nc.hs-sn.hs,to_char(nc.hs/zj.hs*100,'fm99990.00') fgm,to_char(nc.hs/zj.hs*100-nc.hs/zj.hs*100,'fm99990.00') jsnfgm from(\n" +
+                    "select ry.c code,count(wg.c) hs from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) group by ry.c)\n" +
+                    "nc left join\n" +
+                    "(select ry.c code,count(wg.c) hs from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(2,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) group by ry.c)\n" +
+                    "sn on nc.code=sn.code\n" +
+                    "left join (select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on nc.code=zj.code) order by to_number(fgm) desc)\n" +
+                    "union all\n" +
+                    "(select '合计',sum(nc.hs),sum(nc.hs)-sum(sn.hs),to_char(sum(nc.hs)/sum(zj.hs)*100,'fm99990.00') fgm,to_char(sum(nc.hs)/sum(zj.hs)*100-sum(nc.hs)/sum(zj.hs)*100,'fm99990.00') jsnfgm from(\n" +
+                    "select ry.c code,count(wg.c) hs from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) group by ry.c)\n" +
+                    "nc left join\n" +
+                    "(select ry.c code,count(wg.c) hs from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(2,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) group by ry.c)\n" +
+                    "sn on nc.code=sn.code\n" +
+                    "left join (select c code,count(c) hs from hzdb.hz_wcnmg_info_202012 group by c) zj on nc.code=zj.code)");
+            for(int i=0;i<date.length;i++){
+                for(int j=0;j<date[i].length;j++){
+                    if(date[i][j]==null || date[i][j].equals("") || date[i][j].equals(null)){
+                        continue;
+                    }else{
+                        billCellPanel.setValueAt(date[i][j],i+4,j+60);
+                        billCellPanel.setBackground("51,255,255",i+4,60);
+                    }
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
 
     /**
      * 102 255 102
      */
     private void getSbkCkDate() {
+        try{
+            String date[][]=UIUtil.getStringArrayByDS(null,"select * from(\n" +
+                    "select * from(\n" +
+                    "select nc.code,nc.hs,nc.hs-sn.hs,nc.ye,nc.ye-sn.ye from(\n" +
+                    "select wg.c code,count(ck.g) hs,to_char(sum(ck.ckye)/10000,'fm9999999990.00') ye from(\n" +
+                    "select ry.c,wg.b from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) where wg.b is not null) wg\n" +
+                    "left join hzdb.Grid_Data_"+DateUIUtil.getqytYearMonth(1,"yyyyMMdd")+" ck on upper(wg.b)=upper(ck.g) where ck.ckye>1000 group by wg.c) nc\n" +
+                    "left join\n" +
+                    "(select wg.c code,count(ck.g) hs,to_char(sum(ck.ckye)/10000,'fm9999999990.00') ye from(\n" +
+                    "select ry.c,wg.b from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(2,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) where wg.b is not null) wg\n" +
+                    "left join hzdb.Grid_Data_"+DateUIUtil.getqytYearMonth(2,"yyyyMMdd")+" ck on upper(wg.b)=upper(ck.g) where ck.ckye>1000 group by wg.c) sn on nc.code=sn.code) order by to_number(ye) desc)\n" +
+                    "union all\n" +
+                    "(select '合计',sum(nc.hs),sum(nc.hs)-sum(sn.hs),to_char(sum(nc.ye)),sum(nc.ye)-sum(sn.ye) from(\n" +
+                    "select wg.c code,count(ck.g) hs,to_char(sum(ck.ckye)/10000,'fm9999999990.00') ye from(\n" +
+                    "select ry.c,wg.b from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(1,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) where wg.b is not null) wg\n" +
+                    "left join hzdb.Grid_Data_"+DateUIUtil.getqytYearMonth(1,"yyyyMMdd")+" ck on upper(wg.b)=upper(ck.g) where ck.ckye>1000 group by wg.c) nc\n" +
+                    "left join\n" +
+                    "(select wg.c code,count(ck.g) hs,to_char(sum(ck.ckye)/10000,'fm9999999990.00') ye from(\n" +
+                    "select ry.c,wg.b from hzdb.hz_wcnmg_info_202012 ry left join  hzdb.s_qwyt_sbk_"+DateUIUtil.getqytYearMonth(2,"yyyyMM")+" wg on upper(ry.a)=upper(wg.b) where wg.b is not null) wg\n" +
+                    "left join hzdb.Grid_Data_"+DateUIUtil.getqytYearMonth(2,"yyyyMMdd")+" ck on upper(wg.b)=upper(ck.g) where ck.ckye>1000 group by wg.c) sn on nc.code=sn.code)");
+            for(int i=0;i<date.length;i++){
+                for(int j=0;j<date[i].length;j++){
+                    if(date[i][j]==null || date[i][j].equals("") || date[i][j].equals(null)){
+                        continue;
+                    }else{
+                        billCellPanel.setValueAt(date[i][j],i+4,j+65);
+                        billCellPanel.setBackground("102,255,102",i+4,65);
+                    }
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
 
 
@@ -103,22 +165,23 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" group by AP) zj on upper(ry.a)=upper(zj.AP)\n" +
                     "group by ry.c) nc on sy.code=nc.code) order by byblv)\n" +
                     "union all\n" +
-                    "(select '合计',sum(sy.hs) syhs,sum(sy.num) syye,to_char(sum(sy.blv),'fm99990.00') syblv,sum(dy.hs) byhs,sum(dy.hs)-sum(sy.hs)jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.num),'fm999990.00') byye,\n" +
-                    "to_char(sum(dy.num)-sum(sy.num),'fm999990.00') jsyye,to_char(sum(dy.num)-sum(nc.num),'fm999990.00') jncye,to_char(sum(dy.blv),'fm999990.00') byblv,to_char(sum(dy.blv)-sum(sy.blv),'fm999990.00') jsyblv,to_char(sum(dy.blv)-sum(nc.blv),'fm999990.00') jncblv from(\n" +
-                    "select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num,\n" +
-                    "case when sum(replace(zj.k,',','')) is null or sum(replace(wg.k,',','')) is null then 0 else round((sum(replace(wg.k,',',''))/10000)/(sum(replace(zj.k,',',''))/10000)*100,2) end blv  from  hzdb.hz_wcnmg_info_202012 ry \n" +
+                    "(select '合计',sum(sy.hs) syhs,sum(sy.num) syye,to_char(sum(sy.num)/sum(sy.zye)*100,'fm99990.00') syblv,sum(dy.hs) byhs,sum(dy.hs)-sum(sy.hs)jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,to_char(sum(dy.num),'fm999990.00') byye,\n" +
+                    "to_char(sum(dy.num)-sum(sy.num),'fm999990.00') jsyye,to_char(sum(dy.num)-sum(nc.num),'fm999990.00') jncye,\n" +
+                    "to_char(sum(dy.num)/sum(dy.zye)*100,'fm999990.00') byblv,to_char(sum(dy.num)/sum(dy.zye)*100-sum(sy.num)/sum(sy.zye)*100,'fm999990.00') jsyblv,to_char(sum(dy.num)/sum(dy.zye)*100-sum(nc.num)/sum(nc.zye)*100,'fm999990.00') jncblv from(\n" +
+                    "select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num, \n" +
+                    "case when sum(replace(zj.k,',','')) is null then 0 else round(sum(replace(zj.k,',',''))/10000,2) end zye from  hzdb.hz_wcnmg_info_202012 ry \n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" where  replace(Q,',','')>60 group by AP) wg on upper(ry.a)=upper(wg.AP)\n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(1,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",1))+" group by AP) zj on upper(ry.a)=upper(zj.AP)\n" +
                     "group by ry.c) sy\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num,\n" +
-                    "case when sum(replace(zj.k,',','')) is null or sum(replace(wg.k,',','')) is null then 0 else round((sum(replace(wg.k,',',''))/10000)/(sum(replace(zj.k,',',''))/10000)*100,2) end blv  from  hzdb.hz_wcnmg_info_202012 ry \n" +
+                    "(select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num, \n" +
+                    "case when sum(replace(zj.k,',','')) is null then 0 else round(sum(replace(zj.k,',',''))/10000,2) end zye from  hzdb.hz_wcnmg_info_202012 ry \n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" where  replace(Q,',','')>60 group by AP) wg on upper(ry.a)=upper(wg.AP)\n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+(selectDate==null?DateUIUtil.getSDateMonth(0,"yyyyMM"):DateUIUtil.getymDateMonth(selectDate,"yyyyMM",0))+" group by AP) zj on upper(ry.a)=upper(zj.AP)\n" +
                     "group by ry.c) dy on sy.code=dy.code\n" +
                     "left join\n" +
-                    "(select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num,\n" +
-                    "case when sum(replace(zj.k,',','')) is null or sum(replace(wg.k,',','')) is null then 0 else round((sum(replace(wg.k,',',''))/10000)/(sum(replace(zj.k,',',''))/10000)*100,2) end blv  from  hzdb.hz_wcnmg_info_202012 ry \n" +
+                    "(select ry.c code,count(wg.ap) hs,case when sum(replace(wg.k,',','')) is null then 0 else round(sum(replace(wg.k,',',''))/10000,2) end num, \n" +
+                    "case when sum(replace(zj.k,',','')) is null then 0 else round(sum(replace(zj.k,',',''))/10000,2) end zye from  hzdb.hz_wcnmg_info_202012 ry \n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" where  replace(Q,',','')>60 group by AP) wg on upper(ry.a)=upper(wg.AP)\n" +
                     "left join (select AP,sum(replace(k,',','')) K from hzdb.s_loan_dk_"+DateUIUtil.getYearMonth()+" group by AP) zj on upper(ry.a)=upper(zj.AP)\n" +
                     "group by ry.c) nc on sy.code=nc.code)");
@@ -466,4 +529,5 @@ public class TableWcWgStateWKPanel extends AbstractWorkPanel implements ActionLi
         String lastDate = format.format(cal.getTime());
         return lastDate;
     }
+
 }
