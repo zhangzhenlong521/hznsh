@@ -121,6 +121,59 @@ public class DateUIUtil implements Serializable {
         String lastDate = format.format(cal.getTime());
         return lastDate;
     }
+
+    /**
+     * zzl 得到前一天上月月末
+     * @return
+     */
+    public static String getqytSMonth(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date d = new Date();
+        cal.setTime(d);
+        int day = cal.get(Calendar.DATE);
+        cal.set(Calendar.DATE, day - 1);
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.MONTH,-1);
+        cal.set(Calendar.DATE,cal.getActualMaximum(Calendar.DATE));
+        String lastDate = format.format(cal.getTime());
+        return lastDate;
+    }
+    /**
+     * zzl 得到前一天年初月末日期
+     * @return
+     */
+    public static String getqytYearMonth(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date d = new Date();
+        cal.setTime(d);
+        int day = cal.get(Calendar.DATE);
+        cal.set(Calendar.DATE, day - 1);
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.YEAR,-1);
+        cal.set(Calendar.DAY_OF_YEAR,cal.getActualMaximum(Calendar.DAY_OF_YEAR));
+        String lastDate = format.format(cal.getTime());
+        return lastDate;
+    }
+    /**
+     * zzl 得到前一天年初月末日期
+     * @return
+     */
+    public static String getqytYearMonth(int a,String str){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat(str);
+        Date d = new Date();
+        cal.setTime(d);
+        int day = cal.get(Calendar.DATE);
+        cal.set(Calendar.DATE, day - 1);
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.YEAR,-a);
+        cal.set(Calendar.DAY_OF_YEAR,cal.getActualMaximum(Calendar.DAY_OF_YEAR));
+        String lastDate = format.format(cal.getTime());
+        return lastDate;
+    }
+
     /**
      * 得到前一天的日期
      *
@@ -167,7 +220,7 @@ public class DateUIUtil implements Serializable {
         return lastDate;
     }
     public static void main(String[] args) {
-        String str=DateUIUtil.getymDateMonth("2021-02","yyyyMMdd",1);
+        String str=DateUIUtil.getqytYearMonth(1,"yyyyMMdd");
         System.out.print(str);
     }
 }
