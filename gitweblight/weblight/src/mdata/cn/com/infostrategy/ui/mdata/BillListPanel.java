@@ -87,6 +87,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+import cn.com.infostrategy.to.sysapp.login.RoleVO;
 import org.apache.log4j.Logger;
 import org.jdesktop.jdic.desktop.Desktop;
 
@@ -310,6 +311,7 @@ public class BillListPanel extends BillPanel {
 	private AbstractBillListQueryCallback listQueryCallback;
 	private ExcelUtil excel = new ExcelUtil();
 	private int [] color;//zzl 修改标题颜色
+	private RoleVO [] roleVOs=ClientEnvironment.getCurrLoginUserVO().getRoleVOs();
 
 	private int count;
 
@@ -1771,7 +1773,24 @@ public class BillListPanel extends BillPanel {
 			popmenu_header.add(menu_db); // 快速数据库存处理
 			popmenu_header.add(item_state);//查看子项状态即以前用五角星和加减号来表示的意思，统统搞到这里来看，红色保留
 		} else if (getTBUtil().getSysOptionBooleanValue("列表是否可以导出", true)) {//机场财务要求不允许导出，故增加该参数【李春娟/2014-01-13】
-			popmenu_header.add(menu_excel); //
+			String str=getTBUtil().getSysOptionStringValue("Excel/Html哪些角色可以用",null);
+			if(str==null){
+				popmenu_header.add(menu_excel); //
+			}else{
+				String strs[]=str.split(";");
+				HashMap<String,String> map=new HashMap();
+				for(int i=0;i<strs.length;i++){
+					map.put(strs[i],strs[i]);
+				}
+				for(int i=0;i<roleVOs.length;i++){
+					if(map.get(roleVOs[i].getName())==null){
+
+					}else{
+						popmenu_header.add(menu_excel); //
+					}
+				}
+			}
+
 		}
 		popmenu_header.add(item_table_showsql); // 快速模板编辑
 		if (this.bo_tableislockcolumn) { //如果已锁定了
