@@ -59,7 +59,6 @@ public class TargetCheckPlanWKPanel extends AbstractWorkPanel implements ActionL
 
 	private JPanel getAllCheckPlanWKPanel() {
 		debugStep = getMenuConfMapValueAsStr("是否显示单步调试计算按钮");
-		;
 		hid_btn = getMenuConfMapValueAsStr("隐藏按钮", "");
 		List<WLTButton> list = new ArrayList<WLTButton>();// 显示的所有按钮
 		planListPanel = new BillListPanel("SAL_TARGET_CHECK_LOG_CODE1");

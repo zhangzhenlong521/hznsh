@@ -1,5 +1,10 @@
 package cn.com.pushworld.salary.bs.dinterface;
 
+import java.io.Writer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,11 +12,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import cn.com.infostrategy.to.common.HashVO;
 import org.apache.log4j.Logger;
 
 import cn.com.infostrategy.bs.common.CommDMO;
 import cn.com.infostrategy.bs.common.WLTJobIFC;
-import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.TBUtil;
 import cn.com.infostrategy.to.common.WLTLogger;
 import cn.com.infostrategy.to.mdata.InsertSQLBuilder;
@@ -106,21 +111,39 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 			if(eloan==null){
 				dmo.executeUpdateByDS(null,"create table hzdb.S_LOAN_ESIGN_"+getQYTTime("yyyyMM")+" as select * from hzdb.S_LOAN_ESIGN_"+getSMonth("yyyyMM")+"");
 			}
-			String hxdg=dmo.getStringValueByDS(null,"select CREATED from dba_objects where object_name = 'S_LOAN_HXDG_"+getQYTMonth("yyyyMM")+"' and OBJECT_TYPE='TABLE'");
-			if(hxdg==null){
-				dmo.executeUpdateByDS(null,"create table hzdb.s_loan_hxdg_"+getQYTTime("yyyyMM")+" as select * from hzdb.s_loan_hxdg_"+getSMonth("yyyyMM")+"");
+			//处理网格计算中的被考核网格，因为网格一直在变，T+1就需要计算的时候更新
+			HashVO [] vos =dmo.getHashVoArrayByDS(null,"select * from sal_person_check_post_wg where id in (select replace(checkedwg,';','') from sal_person_check_list where 1=1  and (targettype='员工定量指标')  and state='参与考核' and catalogid='215')");
+			String [] ids =dmo.getStringArrayFirstColByDS(null,"select id from hzdb.EXCEL_TAB_85 where parentid='2'");
+			StringBuffer sb=new StringBuffer();
+			for(int i=0;i<ids.length;i++){
+				if(i==ids.length-1){
+					sb.append(";"+ids[i]+";");
+				}else{
+					sb.append(";"+ids[i]);
+				}
 			}
-			if(createDate.length>0 && count!=null){
-				new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
-				state.append("个人指标计算成功");
-			}else{
-				state.append("没有数据");
+			for(int i=0;i<vos.length;i++){
+				updateClob("sal_person_check_post_wg","postid","where id='"+vos[i].getStringValue("id")+"'",sb.toString());
 			}
-			if(createDate.length>0 && count!=null){
-				new SalaryFormulaDMO().countDeptScore("", getQYTTime("yyyy-MM-dd"));
-				state.append("部门指标计算成功");
+			if(dates==null){
+				if(createDate.length>0 && count!=null){
+					new SalaryFormulaDMO().autoCalcPersonDLTargetByTimer("", getQYTTime("yyyy-MM-dd"));
+					state.append("个人指标计算成功");
+				}else{
+					state.append("没有数据");
+				}
 			}else{
-				state.append("没有数据");
+				state.append("当前的数据已经生成");
+			}
+			if(deptDates==null){
+				if(createDate.length>0 && count!=null){
+					new SalaryFormulaDMO().countDeptScore("", getQYTTime("yyyy-MM-dd"));
+					state.append("部门指标计算成功");
+				}else{
+					state.append("没有数据");
+				}
+			}else{
+				state.append("当前的数据已经生成");
 			}
 		}catch (Exception e){
 			state.append("失败"+e.toString());
@@ -324,5 +347,46 @@ import cn.com.pushworld.salary.bs.SalaryFormulaDMO;
 			sb.append(mss + "毫秒");
 		}
 		return sb.toString();
+	}
+
+	/**
+	 * zzl 修改处理clob 字段
+	 * @param tablename 表名
+	 * @param col       修改的字段
+	 * @param whereSql  条件
+	 * @param clob_content  clob字段值
+	 */
+	public void updateClob(String tablename,String col,String whereSql,String clob_content) {
+		Writer outStream = null;
+		// 通过JDBC获得数据库连接
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(
+					"jdbc:oracle:thin:@10.18.126.41:1521:GRCDB",
+					"hzdb", "hzdb");
+			con.setAutoCommit(false);
+			Statement st = con.createStatement();
+			// 插入一个空对象empty_clob()，这个是必须的
+			// insert into EMS_CUST_JS(cust_code, js_name,
+			// js_content)values('','', empty_clob())
+			st.executeUpdate("update "+tablename+" set "+col+"='empty_clob()' "+whereSql);
+			// 锁定数据行进行更新，注意“for update”语句,这里不用for update锁定不可以插入clob
+			ResultSet rs = st.executeQuery("select "+col+" from "+tablename+" "+whereSql+" for update");
+			if (rs.next()) {
+				// 得到java.sql.Clob对象后强制转换为oracle.sql.CLOB
+				oracle.sql.CLOB clob = (oracle.sql.CLOB) rs.getClob(col);
+				outStream = clob.getCharacterOutputStream();
+				// clob_content是传入的字符串
+				char[] c = clob_content.toCharArray();
+				outStream.write(c, 0, c.length);
+			}
+			outStream.flush();
+			outStream.close();
+			con.commit();
+			con.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
