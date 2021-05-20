@@ -33,8 +33,8 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 			try {
 				QuickQuery();
 			} catch (ParseException e1) {
-				e1.printStackTrace();
 				MessageBox.show(this, "上一日的一卡通数据尚未下发或正在处理，请稍后查询。");
+				e1.printStackTrace();	
 			}
 		}
 		
@@ -49,6 +49,7 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 	}
 	private void QuickQuery() throws ParseException {
 			listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_"+getQYTTime()+"");
+//		listPanel.queryDataByDS(null, "select * from v_hz_ykt_rate_20210514");
 			
 	}
 	public String getSelTime(String date) throws ParseException {
@@ -130,8 +131,10 @@ public class YktWcrate extends AbstractWorkPanel implements ActionListener, Bill
 	                    }
 	                    if(sb.toString()==null){
 	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime()+"");
+//	                    	dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_20210514");
 	                    }else{
 	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime()+" where  1=1 "+sb.toString()+"");
+//	                    	dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_20210514 where  1=1 "+sb.toString()+"");
 	                    }
 					}});
 				dialog.getBtn_confirm().setVisible(false);

@@ -54,7 +54,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     private String dgbltablename;
     private String jlMbCode;
     private Boolean flag=false;
-    private Boolean isleader=false;//判断是不是行长
+    private Boolean isleader=false;//判断是不是管理员
     private BillListPanel wglist=new BillListPanel("S_LOAN_KHXX_202001_CODE1");
     private BillListDialog dialog=null;
     private WLTSplitPane wltSplitPane=null;
@@ -86,11 +86,6 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         }catch (Exception e){
 
         }
-//        if(leadervo[0].equals("支行行长")||ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){//2021年2月7日21:39:17 fj   龙哥判断的岗位不严谨,应该用岗位归类，这里重新写一下
-//        	isleader=true;
-//        }else{
-//        	isleader=false;
-//        	}
         if(ClientEnvironment.isAdmin() || roleMap.get("绩效系统管理员")!=null){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2'");//zzl[20201012]
@@ -100,12 +95,12 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         }else if(leadervo.contains("支行行长")){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
-            listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
+            listPanel.addBatchBillListButton(new WLTButton[] {btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");
             sbsql.append("deptcode='"+vos[0].getStringValue("DEPTCODE")+"'");
         }else{
             listPanel.QueryDataByCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");//zzl[20201012]
-            listPanel.addBatchBillListButton(new WLTButton[] {btn_update,btn_card});
+            listPanel.addBatchBillListButton(new WLTButton[] {btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2' and G='"+vos[0].getStringValue("USERCODE")+"'");
             sbsql.append("deptcode='"+vos[0].getStringValue("DEPTCODE")+"'");
         }
@@ -113,6 +108,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         listPanel.repaintBillListButton();// 刷新按钮
         listPanel.addBillListHtmlHrefListener(this); // zzl[20201012]
         getTablename();
+//        tablename="grid_data_20210514";
         WLTSplitPane wltSplitPane=new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT,listPanel,new DayAvgPanel().getJLabel());
         wltSplitPane.setDividerLocation(1000);
         wltSplitPane.setDividerSize(1);
@@ -245,7 +241,9 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                 }
             });
         	dialog.getBilllistPanel().addBillListButton(btn_dr);
+        	if(isleader){
             dialog.getBilllistPanel().addBillListButton(btn_xg);
+        	}//fj20210519,现在行长也不能修改网格信息，只能管理员改
             dialog.getBilllistPanel().addBillListButton(btn_ckthan);
             dialog.getBilllistPanel().addBillListButton(btn_dkthan);
              if(flag){
