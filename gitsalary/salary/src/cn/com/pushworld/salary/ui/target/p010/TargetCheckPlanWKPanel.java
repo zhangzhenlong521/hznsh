@@ -621,7 +621,7 @@ public class TargetCheckPlanWKPanel extends AbstractWorkPanel implements ActionL
 			dsb2.setWhereCondition("logid=" + vo.getPkValue());
 			DeleteSQLBuilder dsb3 = new DeleteSQLBuilder("sal_person_check_score");
 			dsb3.setWhereCondition("logid=" + vo.getPkValue());
-			DeleteSQLBuilder dsb4 = new DeleteSQLBuilder("sal_target_check_result");
+			DeleteSQLBuilder dsb4 = new DeleteSQLBuilder("sal_target_check_result");//1312
 			dsb4.setWhereCondition("logid=" + vo.getPkValue());
 			DeleteSQLBuilder dsb5 = new DeleteSQLBuilder("sal_target_check_revise_result");
 			dsb5.setWhereCondition("logid=" + vo.getPkValue());
@@ -727,29 +727,29 @@ public class TargetCheckPlanWKPanel extends AbstractWorkPanel implements ActionL
 		try {
 			SalaryServiceIfc ifc = (SalaryServiceIfc) UIUtil.lookUpRemoteService(SalaryServiceIfc.class);
 			HashMap map = ifc.checkViladate(month);
-			String res = map.get("res") + "";
-			if ("fail".equals(res)) {
-				MessageBox.show(this, map.get("msg") + "");
-				return;
-			} else if ("error".equals(res)) {
-				MessageBox.show(this, "发生异常请与管理员联系!");
-				return;
-			} else if ("success".equals(res)) {
-				if (map.containsKey("msginfo")) {
-					if (MessageBox.showConfirmDialog(this, map.get("msginfo") + "是否继续?", "提醒", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
-						return;
+				String res = map.get("res") + "";
+				if ("fail".equals(res)) {
+					MessageBox.show(this, map.get("msg") + "");
+					return;
+				} else if ("error".equals(res)) {
+					MessageBox.show(this, "发生异常请与管理员联系!");
+					return;
+				} else if ("success".equals(res)) {
+					if (map.containsKey("msginfo")) {
+						if (MessageBox.showConfirmDialog(this, map.get("msginfo") + "是否继续?", "提醒", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
+							return;
+						}
 					}
+					map.put("loginuserid", ClientEnvironment.getCurrLoginUserVO().getId());
+					map.put("logindeptid", ClientEnvironment.getCurrLoginUserVO().getPKDept());
+					map.put("zbtype",zbtype);
+					ifc.createScoreTable(map);
+					MessageBox.show(this, "考核表生成完毕!");
+					planListPanel.refreshData();
+				} else {
+					MessageBox.show(this, "发生异常请与管理员联系!");
+					return;
 				}
-				map.put("loginuserid", ClientEnvironment.getCurrLoginUserVO().getId());
-				map.put("logindeptid", ClientEnvironment.getCurrLoginUserVO().getPKDept());
-				map.put("zbtype",zbtype);
-				ifc.createScoreTable(map);
-				MessageBox.show(this, "考核表生成完毕!");
-				planListPanel.refreshData();
-			} else {
-				MessageBox.show(this, "发生异常请与管理员联系!");
-				return;
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			MessageBox.showException(this, e);
