@@ -298,7 +298,7 @@ public class TableNhStateWKPanel extends AbstractWorkPanel implements ActionList
                     "(select nh.g code,count(wg.g) hs from hzdb.s_qwyt_nhjr_202012 nh left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.c)=upper(wg.f)\n" +
                     "group by nh.g) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select g code,count(c) hs from  hzdb.s_qwyt_nhjr_202012 group by g) zj\n" +
+                    "(select b code,d hs from hzdb.excel_tab_168) zj\n" +
                     "on sy.code=zj.code) order by to_number(dyfgm) desc)\n" +
                     "union all\n" +
                     "(select 'ºÏ¼Æ',sum(sy.hs),to_char(sum(sy.hs)/sum(zj.hs)*100,'fm999990.00') syfgm,sum(dy.hs) dyhs,sum(dy.hs)-sum(sy.hs) jsyhs,sum(dy.hs)-sum(nc.hs) jnchs,\n" +
@@ -312,7 +312,7 @@ public class TableNhStateWKPanel extends AbstractWorkPanel implements ActionList
                     "(select nh.g code,count(wg.g) hs from hzdb.s_qwyt_nhjr_202012 nh left join hzdb.s_loan_esign_"+DateUIUtil.getYearMonth()+" wg on upper(nh.c)=upper(wg.f)\n" +
                     "group by nh.g) nc on sy.code=nc.code\n" +
                     "left join\n" +
-                    "(select g code,count(c) hs from  hzdb.s_qwyt_nhjr_202012 group by g) zj on sy.code=zj.code)");
+                    "(select b code,d hs from hzdb.excel_tab_168) zj on sy.code=zj.code)");
             for(int i=0;i<date.length;i++){
                 for(int j=0;j<date[i].length;j++){
                     billCellPanel.setValueAt(date[i][j],i+4,j+29);
