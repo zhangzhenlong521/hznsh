@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 
 import cn.com.infostrategy.to.common.HashVO;
 import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.common.WLTRemoteException;
 import cn.com.infostrategy.to.mdata.BillCellItemVO;
 import cn.com.infostrategy.to.mdata.BillCellVO;
 import cn.com.infostrategy.ui.common.*;
@@ -117,157 +118,174 @@ public class SelfSalaryQueryWKPanel extends AbstractWorkPanel implements ActionL
 
 	public BillCellVO getCellVO(HashMap condition) {
 		BillCellVO cell = new BillCellVO();
-		if (condition != null && condition.containsKey("monthly")) {
-			String monthly = " 1=1 ";
-			if (condition.get("monthly") != null && !"".equals(condition.get("monthly").toString().trim())) {
-				monthly = " b.monthly='" + condition.get("monthly").toString().trim() + "' ";
+		String[][] peopleids = null;
+		try {
+			String postname = UIUtil.getStringValueByDS(null,"select stationkind from hzdb.v_sal_personinfo where id='"+ ClientEnvironment.getCurrLoginUserVO().getId() + "'");
+			if(postname.equals("支行行长")){
+//				 peopleids = UIUtil.getHashVoArrayByDS(null,"select id from hzdb.v_sal_personinfo where deptname in (select deptname from hzdb.v_sal_personinfo where id='"+ ClientEnvironment.getCurrLoginUserVO().getId() + "')");
+				peopleids = UIUtil.getStringArrayByDS(null, "select id from hzdb.v_sal_personinfo where deptname in (select deptname from hzdb.v_sal_personinfo where id='"+ ClientEnvironment.getCurrLoginUserVO().getId() + "')");
+			}else{
+				 peopleids = UIUtil.getStringArrayByDS(null,"select id from hzdb.v_sal_personinfo where id='"+ ClientEnvironment.getCurrLoginUserVO().getId() + "'");
 			}
-			try {
-				HashVO[] vos = UIUtil.getHashVoArrayByDS(null, "select d.*,b.monthly,b.name billname from sal_salarybill_detail d left join sal_salarybill b on d.salarybillid=b.id where d.userid=" + ClientEnvironment.getCurrLoginUserVO().getId() + " and " + monthly + " and d.viewname is not null  and d.factorid is not null and b.state='已开放'  order by b.monthly,d.salarybillid, d.seq");
-				if (vos != null && vos.length > 0) {
-					LinkedHashMap<String, LinkedHashMap> map = new LinkedHashMap<String, LinkedHashMap>();
-					HashMap id_name = new HashMap();
-					HashMap salaryid_name = new HashMap();
-					detailid_desc = new HashMap();
-					int maxlength = 0;
-					int j1 = 0;
-					for (int i = 0; i < vos.length; i++) {
-						id_name.put(vos[i].getStringValue("id"), vos[i].getStringValue("viewname").trim());
-						detailid_desc.put(vos[i].getStringValue("id"), vos[i].getStringValue("computedesc"));
-						salaryid_name.put(vos[i].getStringValue("salarybillid"), "" + vos[i].getStringValue("billname") + "");
-						if (map.containsKey(vos[i].getStringValue("salarybillid"))) {
-							j1 = j1 + 1;
-							if (j1 > maxlength) {
-								maxlength = j1;
+			for(int k = 0;k < peopleids.length;k++){
+				if (condition != null && condition.containsKey("monthly")) {
+					String monthly = " 1=1 ";
+					if (condition.get("monthly") != null && !"".equals(condition.get("monthly").toString().trim())) {
+						monthly = " b.monthly='" + condition.get("monthly").toString().trim() + "' ";
+					}
+					try {
+						HashVO[] vos = UIUtil.getHashVoArrayByDS(null, "select d.*,b.monthly,b.name billname from sal_salarybill_detail d left join sal_salarybill b on d.salarybillid=b.id where d.userid=" +peopleids[k][0] + " and " + monthly + " and d.viewname is not null  and d.factorid is not null and b.state='已开放'  order by b.monthly,d.salarybillid, d.seq");
+						if (vos != null && vos.length > 0) {
+							LinkedHashMap<String, LinkedHashMap> map = new LinkedHashMap<String, LinkedHashMap>();
+							HashMap id_name = new HashMap();
+							HashMap salaryid_name = new HashMap();
+							detailid_desc = new HashMap();
+							int maxlength = 0;
+							int j1 = 0;
+							for (int i = 0; i < vos.length; i++) {
+								id_name.put(vos[i].getStringValue("id"), vos[i].getStringValue("viewname").trim());
+								detailid_desc.put(vos[i].getStringValue("id"), vos[i].getStringValue("computedesc"));
+								salaryid_name.put(vos[i].getStringValue("salarybillid"), "" + vos[i].getStringValue("billname") + "");
+								if (map.containsKey(vos[i].getStringValue("salarybillid"))) {
+									j1 = j1 + 1;
+									if (j1 > maxlength) {
+										maxlength = j1;
+									}
+									((LinkedHashMap) map.get(vos[i].getStringValue("salarybillid"))).put(vos[i].getStringValue("id"), vos[i].getStringValue("factorvalue"));
+								} else {
+									LinkedHashMap item = new LinkedHashMap();
+									item.put(vos[i].getStringValue("id"), vos[i].getStringValue("factorvalue"));
+									map.put(vos[i].getStringValue("salarybillid"), item);
+									if (j1 > maxlength) {
+										maxlength = j1;
+									}
+									j1 = 1;
+								}
 							}
-							((LinkedHashMap) map.get(vos[i].getStringValue("salarybillid"))).put(vos[i].getStringValue("id"), vos[i].getStringValue("factorvalue"));
+//							BillCellItemVO[][] items = new BillCellItemVO[map.size() * 4 - 1][maxlength];
+							BillCellItemVO[][] items = new BillCellItemVO[10][maxlength];
+							String[] allkeys = map.keySet().toArray(new String[0]);
+							for (int i = 0; i < map.size(); i++) {
+								LinkedHashMap column_calue = (LinkedHashMap) map.get(allkeys[i]);
+								String[] allcolumns = (String[]) column_calue.keySet().toArray(new String[0]);
+								int rowbg = 0;
+								for (int p = 0; p < maxlength; p++) {
+									rowbg = i * 4;
+									if (p < allcolumns.length) {
+										items[rowbg + k][p] = new BillCellItemVO();
+										items[rowbg + k][p].setSpan("1," + maxlength);
+										items[rowbg + k][p].setCellkey(salaryid_name.get(allkeys[i]) + "");
+										items[rowbg + k][p].setCellvalue(salaryid_name.get(allkeys[i]) + "");
+										items[rowbg + k][p].setBackground("191,213,255");
+										items[rowbg + k][p].setFonttype("新宋体");
+										items[rowbg + k][p].setFontsize("12");
+										items[rowbg + k][p].setFontstyle("1");
+										items[rowbg + k + 1][p] = new BillCellItemVO();
+										items[rowbg + k + 1][p].setCellkey(id_name.get(allcolumns[p]) + "");
+										items[rowbg + k + 1][p].setCellvalue(id_name.get(allcolumns[p]) + "");
+										items[rowbg + k + 1][p].setBackground("191,213,255");
+										items[rowbg + k + 1][p].setFonttype("新宋体");
+										items[rowbg + k + 1][p].setFontsize("12");
+										items[rowbg + k + 1][p].setFontstyle("1");
+										items[rowbg + k + 1][p].setBackground("191,213,255");
+										items[rowbg + k + 2][p] = new BillCellItemVO();
+										items[rowbg + k + 2][p].setCellkey(allcolumns[p]);
+										items[rowbg + k + 2][p].setCellvalue(column_calue.get(allcolumns[p]) + "");
+										items[rowbg + k + 2][p].setBackground("191,213,255");
+										items[rowbg + k + 2][p].setIshtmlhref("Y");
+										items[rowbg + k + 2][p].setCelldesc("点击查看计算明细");
+										items[rowbg + k + 2][p].setCellhelp("点击查看计算明细");
+										if (i < map.size() - 1) {
+											items[rowbg + k + 3][p] = new BillCellItemVO();
+											items[rowbg + k + 3][p].setSpan("1," + allcolumns.length);
+										}
+									} else {
+										items[rowbg + k][p] = new BillCellItemVO();
+										items[rowbg + k][p].setBackground("191,213,255");
+										items[rowbg + k + 1][p] = new BillCellItemVO();
+										items[rowbg + k + 1][p].setBackground("191,213,255");
+										items[rowbg + k + 2][p] = new BillCellItemVO();
+										items[rowbg + 2][p].setBackground("191,213,255");
+										if (i < map.size() - 1) {
+											items[rowbg + 3][p] = new BillCellItemVO();
+										}
+									}
+								}
+							}
+							// 进行表格长度调整
+							FontMetrics fm = Toolkit.getDefaultToolkit().getFontMetrics(LookAndFeel.font);
+							int li_allowMaxColWidth = 175;
+							for (int j = 0; j < items[0].length; j++) {
+								int li_maxwidth = 0;
+								String str_cellValue = null;
+								for (int i = 0; i < items.length; i++) {
+									str_cellValue = items[i][j].getCellvalue();
+									if (str_cellValue == null || "null".equals(str_cellValue)) {
+										items[i][j].setCellvalue("");
+									}
+									int column = 1;
+									if (items[i][j] != null && items[i][j].getSpan() != null) {
+										column = Integer.parseInt(items[i][j].getSpan().split(",")[1]);
+									}
+									if (str_cellValue != null && !str_cellValue.trim().equals("") && column <= 1) {
+										int li_width = SwingUtilities.computeStringWidth(fm, str_cellValue);
+										if (li_width > li_maxwidth) {
+											li_maxwidth = li_width;
+										}
+									}
+								}
+								li_maxwidth = li_maxwidth + 13;
+								if (li_maxwidth > li_allowMaxColWidth) {
+									li_maxwidth = li_allowMaxColWidth;
+								}
+								for (int i = 0; i < items.length; i++) {
+									str_cellValue = items[i][j].getCellvalue();
+									if (str_cellValue != null && !str_cellValue.trim().equals("")) {
+										//								int li_width = SwingUtilities.computeStringWidth(fm, str_cellValue);
+										//								if (li_width > 0) {
+										//									int li_length = (li_width / li_maxwidth) + 1;
+										//									int li_itemRowHeight = li_length * 17 + 5;
+										//									if (i == 1) {
+										//										if (li_itemRowHeight > 35) {
+										//											items[i][j].setRowheight("" + li_itemRowHeight);
+										//										} else {
+										//											items[i][j].setRowheight("35");
+										//										}
+										//									} else {
+										//										items[i][j].setRowheight("" + li_itemRowHeight);
+										//									}
+										//									items[i][j].setColwidth("" + li_maxwidth);
+										//								}
+										items[i][j].setColwidth("" + li_maxwidth);
+									}
+								}
+							}
+							cell.setCellItemVOs(items);
+							cell.setRowlength(items.length);
+							cell.setCollength(maxlength);
 						} else {
-							LinkedHashMap item = new LinkedHashMap();
-							item.put(vos[i].getStringValue("id"), vos[i].getStringValue("factorvalue"));
-							map.put(vos[i].getStringValue("salarybillid"), item);
-							if (j1 > maxlength) {
-								maxlength = j1;
-							}
-							j1 = 1;
+							cell.setRowlength(1);
+							cell.setCollength(1);
+							BillCellItemVO[][] items = new BillCellItemVO[1][1];
+							items[0][0] = new BillCellItemVO();
+							items[0][0].setCellvalue("未查询到相应信息");
+							items[0][0].setBackground("191,213,255");
+							items[0][0].setFonttype("新宋体");
+							items[0][0].setFontsize("12");
+							items[0][0].setFontstyle("1");
+							items[0][0].setColwidth("300");
+							cell.setCellItemVOs(items);
 						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					BillCellItemVO[][] items = new BillCellItemVO[map.size() * 4 - 1][maxlength];
-					String[] allkeys = map.keySet().toArray(new String[0]);
-					for (int i = 0; i < map.size(); i++) {
-						LinkedHashMap column_calue = (LinkedHashMap) map.get(allkeys[i]);
-						String[] allcolumns = (String[]) column_calue.keySet().toArray(new String[0]);
-						int rowbg = 0;
-						for (int p = 0; p < maxlength; p++) {
-							rowbg = i * 4;
-							if (p < allcolumns.length) {
-								items[rowbg][p] = new BillCellItemVO();
-								items[rowbg][p].setSpan("1," + maxlength);
-								items[rowbg][p].setCellkey(salaryid_name.get(allkeys[i]) + "");
-								items[rowbg][p].setCellvalue(salaryid_name.get(allkeys[i]) + "");
-								items[rowbg][p].setBackground("191,213,255");
-								items[rowbg][p].setFonttype("新宋体");
-								items[rowbg][p].setFontsize("12");
-								items[rowbg][p].setFontstyle("1");
-								items[rowbg + 1][p] = new BillCellItemVO();
-								items[rowbg + 1][p].setCellkey(id_name.get(allcolumns[p]) + "");
-								items[rowbg + 1][p].setCellvalue(id_name.get(allcolumns[p]) + "");
-								items[rowbg + 1][p].setBackground("191,213,255");
-								items[rowbg + 1][p].setFonttype("新宋体");
-								items[rowbg + 1][p].setFontsize("12");
-								items[rowbg + 1][p].setFontstyle("1");
-								items[rowbg + 1][p].setBackground("191,213,255");
-								items[rowbg + 2][p] = new BillCellItemVO();
-								items[rowbg + 2][p].setCellkey(allcolumns[p]);
-								items[rowbg + 2][p].setCellvalue(column_calue.get(allcolumns[p]) + "");
-								items[rowbg + 2][p].setBackground("191,213,255");
-								items[rowbg + 2][p].setIshtmlhref("Y");
-								items[rowbg + 2][p].setCelldesc("点击查看计算明细");
-								items[rowbg + 2][p].setCellhelp("点击查看计算明细");
-								if (i < map.size() - 1) {
-									items[rowbg + 3][p] = new BillCellItemVO();
-									items[rowbg + 3][p].setSpan("1," + allcolumns.length);
-								}
-							} else {
-								items[rowbg][p] = new BillCellItemVO();
-								items[rowbg][p].setBackground("191,213,255");
-								items[rowbg + 1][p] = new BillCellItemVO();
-								items[rowbg + 1][p].setBackground("191,213,255");
-								items[rowbg + 2][p] = new BillCellItemVO();
-								items[rowbg + 2][p].setBackground("191,213,255");
-								if (i < map.size() - 1) {
-									items[rowbg + 3][p] = new BillCellItemVO();
-								}
-							}
-						}
-					}
-					// 进行表格长度调整
-					FontMetrics fm = Toolkit.getDefaultToolkit().getFontMetrics(LookAndFeel.font);
-					int li_allowMaxColWidth = 175;
-					for (int j = 0; j < items[0].length; j++) {
-						int li_maxwidth = 0;
-						String str_cellValue = null;
-						for (int i = 0; i < items.length; i++) {
-							str_cellValue = items[i][j].getCellvalue();
-							if (str_cellValue == null || "null".equals(str_cellValue)) {
-								items[i][j].setCellvalue("");
-							}
-							int column = 1;
-							if (items[i][j] != null && items[i][j].getSpan() != null) {
-								column = Integer.parseInt(items[i][j].getSpan().split(",")[1]);
-							}
-							if (str_cellValue != null && !str_cellValue.trim().equals("") && column <= 1) {
-								int li_width = SwingUtilities.computeStringWidth(fm, str_cellValue);
-								if (li_width > li_maxwidth) {
-									li_maxwidth = li_width;
-								}
-							}
-						}
-						li_maxwidth = li_maxwidth + 13;
-						if (li_maxwidth > li_allowMaxColWidth) {
-							li_maxwidth = li_allowMaxColWidth;
-						}
-						for (int i = 0; i < items.length; i++) {
-							str_cellValue = items[i][j].getCellvalue();
-							if (str_cellValue != null && !str_cellValue.trim().equals("")) {
-								//								int li_width = SwingUtilities.computeStringWidth(fm, str_cellValue);
-								//								if (li_width > 0) {
-								//									int li_length = (li_width / li_maxwidth) + 1;
-								//									int li_itemRowHeight = li_length * 17 + 5;
-								//									if (i == 1) {
-								//										if (li_itemRowHeight > 35) {
-								//											items[i][j].setRowheight("" + li_itemRowHeight);
-								//										} else {
-								//											items[i][j].setRowheight("35");
-								//										}
-								//									} else {
-								//										items[i][j].setRowheight("" + li_itemRowHeight);
-								//									}
-								//									items[i][j].setColwidth("" + li_maxwidth);
-								//								}
-								items[i][j].setColwidth("" + li_maxwidth);
-							}
-						}
-					}
-					cell.setCellItemVOs(items);
-					cell.setRowlength(items.length);
-					cell.setCollength(maxlength);
-				} else {
-					cell.setRowlength(1);
-					cell.setCollength(1);
-					BillCellItemVO[][] items = new BillCellItemVO[1][1];
-					items[0][0] = new BillCellItemVO();
-					items[0][0].setCellvalue("未查询到相应信息");
-					items[0][0].setBackground("191,213,255");
-					items[0][0].setFonttype("新宋体");
-					items[0][0].setFontsize("12");
-					items[0][0].setFontstyle("1");
-					items[0][0].setColwidth("300");
-					cell.setCellItemVOs(items);
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
 		return cell;
 	}
 
