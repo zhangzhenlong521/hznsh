@@ -25,8 +25,7 @@ public class IndicatorsCompleteWKPanel extends AbstractWorkPanel implements Bill
     private WLTSplitPane wltSplitPane;
     private final String USERCODE = ClientEnvironment.getCurrLoginUserVO()
             .getCode();
-    private final String userId = ClientEnvironment.getCurrLoginUserVO()
-            .getId();
+    private final String userId = ClientEnvironment.getCurrLoginUserVO().getId();
     private StringBuffer sbSql=new StringBuffer();
     private HashMap<String,String> deptMap=new HashMap();
     private String datadate=null;
