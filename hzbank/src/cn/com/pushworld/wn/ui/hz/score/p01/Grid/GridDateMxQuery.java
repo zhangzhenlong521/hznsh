@@ -92,7 +92,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             listPanel.addBatchBillListButton(new WLTButton[] {btn_add, btn_update,btn_card});
             listPanel.setDataFilterCustCondition("PARENTID='2'");
             sbsql.append("1=1");
-        }else if(leadervo.contains("支行行长")){
+        }else if(leadervo.equals("支行行长")){
             flag=true;
             listPanel.QueryDataByCondition("PARENTID='2' and F='"+vos[0].getStringValue("DEPTCODE")+"'");//zzl[20201012]
             listPanel.addBatchBillListButton(new WLTButton[] {btn_card});
