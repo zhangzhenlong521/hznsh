@@ -114,7 +114,8 @@ public class SecondaryDistributionWKPanel<mian> extends AbstractWorkPanel implem
     private void dataView(String date) {
         try{
             autoCalcTargetIDs= UIUtil.getStringArrayFirstColByDS(null, "select id from sal_person_check_list where state='参与考核' and secondary='Y'"); //找出所有需要计算的指标
-            String [] col=UIUtil.getStringArrayFirstColByDS(null,"select targetname from sal_person_check_auto_score where datadate='"+getDateMonthGang(date)+"' and targetid in ("+tbUtil.getInCondition(autoCalcTargetIDs)+") group by targetname");
+            String sql="select targetname from sal_person_check_auto_score where datadate='"+getDateMonthGang(date)+"' and targetid in ("+tbUtil.getInCondition(autoCalcTargetIDs)+") group by targetname";
+            String [] col=UIUtil.getStringArrayFirstColByDS(null,sql);
             LinkedHashMap<String,String> map=new LinkedHashMap();
             StringBuffer colsb=new StringBuffer();
             StringBuffer zdsb=new StringBuffer();
