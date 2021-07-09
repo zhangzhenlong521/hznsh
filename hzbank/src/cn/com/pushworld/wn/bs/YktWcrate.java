@@ -35,7 +35,7 @@ public class YktWcrate extends AbstractWorkPanel implements BillListHtmlHrefList
 	public void initialize() {
 		listPanel = new BillListPanel("V_HZ_YKT_RATE_20210127_CODE1");
 		listPanel.addBillListHtmlHrefListener(this);
-		listPanel.QueryData("select * from v_hz_ykt_rate_"+getQYTTime()+"");
+		listPanel.QueryData("select * from hzdb.v_hz_ykt_rate_"+getQYTTime()+"");
         billQueryPanel=listPanel.getQuickQueryPanel();
         billQueryPanel.setRealValueAt("time",getQYTTime());
         billQueryPanel.addBillQuickActionListener(new ActionListener() {
@@ -45,12 +45,12 @@ public class YktWcrate extends AbstractWorkPanel implements BillListHtmlHrefList
                 try {
 					time=getSelTime(billQueryPanel.getRealValueAt("time"));
 					try {
-						String [][] column=dmo.getStringArrayByDS(null,"select table_name,table_name from user_tables where table_name='HZ_YKT_RATE_"+time+"'");
+						String [][] column=dmo.getStringArrayByDS(null,"select table_name,table_name from user_tables where table_name='HZ_YKT_RATE_"+getQYTTime() +"'");
 						if(column==null||column.length==0){
 							MessageBox.show(listPanel,"没有此时间的数据");
                             return;
 						}else{
-							listPanel.QueryData("select * from v_hz_ykt_rate_"+time+"");
+							listPanel.QueryData("select * from hzbank.v_hz_ykt_rate_"+getQYTTime() +"");
 						}
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -151,10 +151,10 @@ public class YktWcrate extends AbstractWorkPanel implements BillListHtmlHrefList
 	                        sb.append(" and A034='"+A034+"'");
 	                    }
 	                    if(sb.toString()==null){
-	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+time+"");
+	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime() +"");
 //	                    	dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_20210514");
 	                    }else{
-	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+time+" where  1=1 "+sb.toString()+"");
+	                        dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_"+getQYTTime() +" where  1=1 "+sb.toString()+"");
 //	                    	dialog.getBilllistPanel().queryDataByDS(null,"select * from hzbank.hz_ykt_rate_20210514 where  1=1 "+sb.toString()+"");
 	                    }
 					}});

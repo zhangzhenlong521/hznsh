@@ -17,7 +17,7 @@ public class YktwclCount implements WLTJobIFC{
         	if(vos.length<=0){
         		return getQYTTime()+"一卡通数据没有正常下发或正在处理";
         	}else{
-        	    String [] column=dmo.getStringArrayFirstColByDS(null,"select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='HZ_YKT_RATE_"+getQYTTime()+"' ORDER BY COLUMN_ID");
+        	    String [] column=dmo.getStringArrayFirstColByDS("hzbank","select COLUMN_NAME from user_tab_columns  WHERE TABLE_NAME='HZ_YKT_RATE_"+getQYTTime()+"' ORDER BY COLUMN_ID");
         	    if(column.length>0){
         	    	return getQYTTime()+"数据已存在于库中";
         	    }else{
@@ -27,7 +27,7 @@ public class YktwclCount implements WLTJobIFC{
         				"(select name,count(name) as c from hzbank.hz_ykt_rate_"+getQYTTime()+" where A014='是' and A015='是' and A020='是' and A021='否' group by name) b on a.name=b.name left join " +
         				"(select name,count(name) as c from hzbank.hz_ykt_rate_"+getQYTTime()+" where A018='是' group by name) c on b.name=c.name left join " +
         				"(select name,count(name) as c from hzbank.hz_ykt_rate_"+getQYTTime()+" group by name) d on c.name=d.name)");
-    		return getQYTTime()+"一卡通数据处理成功";
+        		return getQYTTime()+"一卡通数据处理成功";
         	    }
         	
         }

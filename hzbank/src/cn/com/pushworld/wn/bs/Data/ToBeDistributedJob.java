@@ -184,7 +184,7 @@ public class ToBeDistributedJob implements WLTJobIFC {
             if(data.length>0){
                 dmo.executeUpdateByDS(null,"delete from hzdb.s_loan_khxx_202001 where G in(\n" +
                         "select G from hzdb.s_loan_khxx_202001 where deptcode='"+deptcode+"' group by G having count(G)>1) and rowid in(\n" +
-                        "SELECT min(rowid) FROM hzdb.s_loan_khxx_202001 where deptcode='"+deptcode+"' GROUP BY G HAVING COUNT(*) > 1)");
+                        "SELECT min(rowid) FROM hzdb.s_loan_khxx_202001 where deptcode='"+deptcode+"' GROUP BY G HAVING COUNT(*) > 1) and j<>'对公存款' and k<>'对公存款'");//20210604冯佳  极个别人既有对公存款也有个人存款，不能删除
                 deleteRepeat(deptcode);
             }else{
                 return;

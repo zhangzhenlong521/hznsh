@@ -108,7 +108,7 @@ public class DKDatacCeaning implements WLTJobIFC {
                             "left join (select '283'||XD_COL85 XD_COL85,XD_COL16,sum(XD_COL7) dkye from hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(\n" +
                             "select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" group by XD_COL1)\n" +
                             "and XD_COL4<'"+getXZTime()+" 00:00:00' group by XD_COL85,XD_COL16) dk on wg.code=dk.XD_COL85 and UPPER(wg.G)=UPPER(dk.XD_COL16)\n" +
-                            "left join(select '283'||XD_COL2 XD_COL2,XD_COL7 XD_COL7,'已建档' jdxx from hzbank.s_loan_khxx_"+getQYDayMonth()+" where to_char(cast (cast (XD_COL3 as timestamp) as date),'yyyy-mm-dd')>='"+getKHMonthTime()+"'\n" +
+                            "left join (select '283'||XD_COL2 XD_COL2,XD_COL7 XD_COL7,'已建档' jdxx from hzbank.s_loan_khxx_"+getQYDayMonth()+" where to_char(cast (cast (XD_COL3 as timestamp) as date),'yyyy-mm-dd')>='"+getKHMonthTime()+"'\n" +
                             "and to_char(cast (cast (XD_COL3 as timestamp) as date),'yyyy-mm-dd')<='"+getYmMonthTime()+"' and XD_COL32 >0 and XD_COL158>0 \n" +
                             "and  XD_COL10 in ('特优','特惠级','一般','优秀','较好') group by XD_COL2,XD_COL7) jd on wg.code=jd.XD_COL2 and UPPER(wg.G)=UPPER(jd.XD_COL7)\n" +
                             "left join (select C,F,'是' sf  from hzdb.s_loan_qnyyx_"+getSMonth(xj)+" group by C,F\n) qny\n" +

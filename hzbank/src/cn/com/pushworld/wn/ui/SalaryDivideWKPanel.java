@@ -63,19 +63,33 @@ public class SalaryDivideWKPanel extends AbstractWorkPanel implements ActionList
         HashVO [] excelVos= null;
         HashVO [] vos =null;
         try {
-            excelVos = UIUtil.getHashVoArrayByDS(null,"select * from EXCEL_TAB where 1=1 and code like'%dxzb%'");
-            for(int i=0;i<excelVos.length;i++){
-                vos=UIUtil.getHashVoArrayByDS(null,"select * from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("EXCELNAME")+"'");
-                if(vos.length>0){
-                    String strVlaue=UIUtil.getStringValueByDS(null,"select sum(VALUE) from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("EXCELNAME")+"' group by zbname");
-                    pane.addTab(excelVos[i].getStringValue("EXCELNAME"),getBillListPanel(strVlaue,vos,dates,false));
-                }else{
-                    vos=UIUtil.getHashVoArrayByDS(null,"select * from "+excelVos[i].getStringValue("tablename")+" where YEAR||MONTH='"+dates+"' and instr(A,'"+deptName+"')>0");
-                    if(vos.length>0){
-                        pane.addTab(excelVos[i].getStringValue("EXCELNAME"),getBillListPanel(vos[0].getStringValue("B"),vos,dates,true));
-                    }
+//            excelVos = UIUtil.getHashVoArrayByDS(null,"select * from EXCEL_TAB where 1=1 and code like'%dxzb%'");
+//            for(int i=0;i<excelVos.length;i++){
+//                vos=UIUtil.getHashVoArrayByDS(null,"select * from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("EXCELNAME")+"'");
+//                if(vos.length>0){
+//                    String strVlaue=UIUtil.getStringValueByDS(null,"select sum(VALUE) from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("EXCELNAME")+"' group by zbname");
+//                    pane.addTab(excelVos[i].getStringValue("EXCELNAME"),getBillListPanel(strVlaue,vos,dates,false));
+//                }else{
+//                    vos=UIUtil.getHashVoArrayByDS(null,"select * from "+excelVos[i].getStringValue("tablename")+" where YEAR||MONTH='"+dates+"' and instr(A,'"+deptName+"')>0");
+//                    if(vos.length>0){
+//                        pane.addTab(excelVos[i].getStringValue("EXCELNAME"),getBillListPanel(vos[0].getStringValue("B"),vos,dates,true));
+//                    }
+//                }
+//            }
+        	excelVos = UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_list where secondary='Y'");
+        	for(int i=0;i<excelVos.length;i++){
+        		vos=UIUtil.getHashVoArrayByDS(null,"select * from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("NAME")+"'");
+        		if(vos.length>0){
+                  String strVlaue=UIUtil.getStringValueByDS(null,"select sum(VALUE) from wn_secondary where dates='"+dates+"' and zbname='"+excelVos[i].getStringValue("NAME")+"' group by zbname");
+                  pane.addTab(excelVos[i].getStringValue("NAME"),getBillListPanel(strVlaue,vos,dates,false));
+              }else{
+            	  vos=UIUtil.getHashVoArrayByDS(null,"select * from hzdb.sal_person_check_auto_score where datadate='2021-05-31' and checkeduser in (select id from hzdb.v_sal_personinfo where deptname='"+deptName+"') and targetname='"+excelVos[i].getStringValue("NAME")+"'");
+            	  String sumvalue=UIUtil.getStringValueByDS(null,"select sum(money) from hzdb.sal_person_check_auto_score where datadate='2021-05-31' and checkeduser in (select id from hzdb.v_sal_personinfo where deptname='"+deptName+"') and targetname='"+excelVos[i].getStringValue("NAME")+"'");
+            	  if(vos.length>0){
+                    pane.addTab(excelVos[i].getStringValue("NAME"),getBillListPanel(sumvalue,vos,dates,true));
                 }
-            }
+              }
+        	}
         } catch (Exception e) {
             e.printStackTrace();
         }

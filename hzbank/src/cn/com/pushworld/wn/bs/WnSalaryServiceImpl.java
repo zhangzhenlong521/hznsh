@@ -5893,7 +5893,7 @@ public class WnSalaryServiceImpl implements WnSalaryServiceIfc {
 			HashMap<String, String> xjMap = dmo.getHashMapBySQLByDS(null, _sql);
 			result.add(xjMap);
 			// 集中作业
-			_sql = "select dept.code,to_char(5-case when yw.e<=2 then 0.0 when (yw.e-2)/0.5>=10 then 10 else  Trunc(((yw.e-2)/0.5), 0) end,'FM9999990.009')  score   from ("
+			_sql = "select dept.code,to_char(5-case when yw.e<=1 then 0.0 when (yw.e-1)/0.5>=10 then 10 else  Trunc(((yw.e-1)/0.5), 0) end,'FM9999990.009')  score   from ("
 					+ "("
 					+ "select a,e from excel_tab_152 where b='贵州赫章农村商业银行股份有限公司' and year||'-'|| month ='"+ selectDate+"'" 
 					+ " union all "
