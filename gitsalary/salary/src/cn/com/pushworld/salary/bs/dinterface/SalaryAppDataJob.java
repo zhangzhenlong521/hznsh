@@ -148,7 +148,7 @@ public class SalaryAppDataJob implements WLTJobIFC {
         try{
             String count=dmo.getStringValueByDS(null,"select dates from hzdb.s_app_chart where dates='"+DateUIUtil.getQYTTime()+"' and type='贷款' and rownum=1");
             if(count==null) {
-                String dk=dmo.getStringValueByDS(null,"select biz_dt from hzbank.s_loan_dk_"+DateUIUtil.getqytMonth()+" where biz_dt='"+DateUIUtil.getQYTTime()+"' and rownum=1");
+                String dk=dmo.getStringValueByDS(null,"select load_dates from hzbank.s_nmis_acc_loan_"+DateUIUtil.getqytMonth()+" where load_dates='"+DateUIUtil.getQYTTime()+"' and rownum=1");
                 if(dk==null) {
 
                 } else {
@@ -188,7 +188,7 @@ public class SalaryAppDataJob implements WLTJobIFC {
         try{
             String count=dmo.getStringValueByDS(null,"select dates from s_app_count where dates='"+DateUIUtil.getQYTTime()+"' and type='贷款' and rownum=1");
             if(count==null){
-                String dk=dmo.getStringValueByDS(null,"select biz_dt from hzbank.s_loan_dk_"+DateUIUtil.getqytMonth()+" where biz_dt='"+DateUIUtil.getQYTTime()+"' and rownum=1");
+                String dk=dmo.getStringValueByDS(null,"select load_dates from hzbank.s_nmis_acc_loan_"+DateUIUtil.getqytMonth()+" where load_dates='"+DateUIUtil.getQYTTime()+"' and rownum=1");
                 if(dk==null) {
 
                 }else{
@@ -254,7 +254,7 @@ public class SalaryAppDataJob implements WLTJobIFC {
         try{
             String count=dmo.getStringValueByDS(null,"select dates from s_app_count where dates='"+DateUIUtil.getQYTTime()+"' and type='不良贷款' and rownum=1");
             if(count==null){
-                String dk=dmo.getStringValueByDS(null,"select biz_dt from hzbank.s_loan_dk_"+DateUIUtil.getqytMonth()+" where biz_dt='"+DateUIUtil.getQYTTime()+"' and rownum=1");
+                String dk=dmo.getStringValueByDS(null,"select load_dates from hzbank.s_nmis_acc_loan"+DateUIUtil.getqytMonth()+" where load_dates='"+DateUIUtil.getQYTTime()+"' and rownum=1");
                 if(dk==null) {
 
                 }else{
