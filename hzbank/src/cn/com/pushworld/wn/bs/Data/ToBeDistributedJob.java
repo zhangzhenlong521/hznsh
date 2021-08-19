@@ -29,17 +29,17 @@ public class ToBeDistributedJob implements WLTJobIFC {
             ckmap=dmo.getHashMapBySQLByDS(null,"select c,b from hzdb.excel_tab_28");
             dkmap=dmo.getHashMapBySQLByDS(null,"select b,c from hzdb.excel_tab_28");
             //dk 贷款表
-            String dk=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.s_loan_dk_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+            String dk=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from hzbank.s_nmis_acc_loan_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
             //活期存款
-            String ck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+            String ck=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
             //定期存款
-            String dqck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'\n");
+            String dqck=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'\n");
             //存款客户主表
             String ckkhxx=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from  hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
             //对公活期存款
-            String dgck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.a_agr_dep_acct_ent_sv_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'");
+            String dgck=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from hzbank.a_agr_dep_acct_ent_sv_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'");
             //对公定期存款
-            String dgdqck=dmo.getStringValueByDS("hzbank","select distinct(biz_dt) from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" where biz_dt='"+getQYTTime()+"'\n");
+            String dgdqck=dmo.getStringValueByDS("hzbank","select distinct(load_dates) from hzbank.a_agr_dep_acct_ent_fx_"+getQYDayMonth()+" where load_dates='"+getQYTTime()+"'\n");
             //记录有没有执行
             String dkstate=dmo.getStringValueByDS(null,"select dkdates from hzdb.s_count_cdk where dkdates='"+getQYTTime()+"'");
             String ckstate=dmo.getStringValueByDS(null,"select ckdates from hzdb.s_count_cdk where ckdates='"+getQYTTime()+"'");
@@ -91,17 +91,17 @@ public class ToBeDistributedJob implements WLTJobIFC {
         for(Object key:map.keySet()){
             try{
                 String [][] data=dmo.getStringArrayByDS(null,"select * from(\n" +
-                        "select case when xd_col85='30100' then '28330100-xd' else '283'||xd_col85 end xd_col85,xd_col16,xd_col2,XD_COL144 from hzbank.s_loan_dk_"+getQYDayMonth()+" group by xd_col2,xd_col85,xd_col16,XD_COL144\n" +
+                        "select case when MAIN_BR_ID='2830001' then '2830001-xd' else MAIN_BR_ID end MAIN_BR_ID,CERT_CDE,CUS_NAME,INDIV_RSD_ADDR from hzbank.S_NMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_NAME,MAIN_BR_ID,CERT_CDE,INDIV_RSD_ADDR\n" +
                         ") dk\n" +
                         "left join (select xx.*,tab.b dept from hzdb.s_loan_khxx_202001 xx left join hzdb.excel_tab_28 tab on xx.deptcode=tab.c where tab.b='"+key.toString()+"') \n" +
-                        "xx on dk.xd_col85=xx.dept and upper(dk.xd_col16)=upper(xx.g) where dk.xd_col85='"+key.toString()+"' and xx.g is null");
+                        "xx on dk.MAIN_BR_ID=xx.deptcode and upper(dk.CERT_CDE)=upper(xx.g) where dk.MAIN_BR_ID='"+map.get(key.toString())+"' and xx.g is null");
                 if(data.length>0){
                     dmo.executeUpdateByDS(null,"insert into  hzdb.s_loan_khxx_202001(A,G,J,K,deptcode)\n" +
-                            "select dk.xd_col2,dk.xd_col16,'其他网格','其他网格','"+map.get(key.toString())+"' from(\n" +
-                            "select case when xd_col85='30100' then '28330100-xd' else '283'||xd_col85 end xd_col85,xd_col16,xd_col2,XD_COL144 from hzbank.s_loan_dk_"+getQYDayMonth()+" group by xd_col2,xd_col85,xd_col16,XD_COL144\n" +
+                            "select dk.CUS_NAME,dk.CERT_CDE,'其他网格','其他网格','"+map.get(key.toString())+"' from(\n" +
+                            "select case when MAIN_BR_ID='2830001' then '2830001-xd' else MAIN_BR_ID end MAIN_BR_ID,CERT_CDE,CUS_NAME,INDIV_RSD_ADDR from hzbank.S_NMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_NAME,MAIN_BR_ID,CERT_CDE,INDIV_RSD_ADDR\n" +
                             ") dk\n" +
                             "left join (select xx.*,tab.b dept from hzdb.s_loan_khxx_202001 xx left join hzdb.excel_tab_28 tab on xx.deptcode=tab.c where tab.b='"+key.toString()+"') \n" +
-                            "xx on dk.xd_col85=xx.dept and upper(dk.xd_col16)=upper(xx.g) where dk.xd_col85='"+key.toString()+"' and xx.g is null\n");
+                            "xx on dk.MAIN_BR_ID=xx.deptcode and upper(dk.CERT_CDE)=upper(xx.g) where dk.MAIN_BR_ID='"+map.get(key.toString())+"' and xx.g is null\n");
                     deleteRepeat(map.get(key.toString()).toString());
                 }
             }catch (Exception e){

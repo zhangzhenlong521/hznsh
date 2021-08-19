@@ -424,23 +424,23 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     "  left join (select wg.*,dept.B code from hzdb.excel_tab_85 wg left join hzdb.excel_tab_28 dept on wg.f=dept.C where wg.parentid='2') wg on \n" +
                     "  xx.deptcode||xx.j||xx.K=wg.F||wg.C||wg.D where wg.c='"+vo.getStringValue("c")+"' and wg.d='"+vo.getStringValue("d")+"' and wg.f='"+vo.getStringValue("f")+"') wg\n" +
                     "  left join\n" +
-                    "  (select * from(select XD_COL1,XD_COL2,XD_COL4,XD_COL5,XD_COL6,XD_COL7,XD_COL16,\n" +
-                    "case when XD_COL22='01' then '正常' when XD_COL22='02' then '关注' when XD_COL22='03' then '可疑' \n" +
-                    "  when XD_COL22='04' then '次级' when XD_COL22='05' then '损失' else XD_COL22 end XD_COL22, \n" +
-                    "    case when XD_COL86='x_wd' or XD_COL86='x_wj' then '是' else '否' end XD_COL86,XD_COL85 from\n" +
-                    "       hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" group by XD_COL1) and\n" +
-                    "        XD_COL4<'"+getKHDQMonth()+" 00:00:00')\n" +
+                    "  (select * from(select BILL_NO,CUS_NAME,LOAN_START_DATE,LOAN_END_DATE,LOAN_AMOUNT,LOAN_BALANCE,CERT_CDE,\n" +
+                    "case when CLA='10' then '正常' when CLA='20' then '关注' when CLA='30' then '可疑' \n" +
+                    "  when CLA='40' then '次级' when CLA='50' then '损失' else CLA end CLA, \n" +
+                    "    case when RESERVE='x_wd' or RESERVE='x_wj' then '是' else '否' end RESERVE,MAIN_BR_ID from\n" +
+                    "       hzbank.S_NMIS_ACC_LOAN_"+getQYDayMonth()+" where BILL_NO||LOAD_DATES in(select BILL_NO||max(LOAD_DATES) from hzbank.S_NMIS_ACC_LOAN_"+getQYDayMonth()+" group by BILL_NO) and\n" +
+                    "        LOAN_START_DATE<'"+getKHDQMonth()+")\n" +
                     "        union all\n" +
                     "(select dk.CONT_NO,xx.CUS_NAME,dk.LOAN_START_DATE,dk.LOAN_END_DATE,dk.LOAN_AMOUNT,dk.LOAN_BALANCE,xx.CERT_CODE xd_col16,\n" +
                     "case when dk.CLA='01' then '正常' when dk.CLA='02' then '关注' when dk.CLA='03' then '可疑' \n" +
                     "  when dk.CLA='04' then '次级' when dk.CLA='05' then '损失' else dk.CLA end CLA,'否','30100' xd_col85 from\n" +
-                    "  (select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||biz_dt in\n" +
-                    "  (select CUS_ID||max(biz_dt) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join \n" +
-                    "  hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0)) dk on wg.code='283'||dk.XD_COL85 and upper(wg.sfz)=upper(dk.XD_COL16) where dk.XD_COL7 is not null\n");
+                    "  (select * from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" where CUS_ID||load_dates in\n" +
+                    "  (select CUS_ID||max(load_dates) from hzbank.S_CMIS_ACC_LOAN_"+getQYDayMonth()+" group by CUS_ID)) dk left join \n" +
+                    "  hzbank.S_CMIS_CUS_BASE_"+getQYDayMonth()+" xx on dk.CUS_ID=xx.CUS_ID where dk.LOAN_BALANCE>0)) dk on wg.F=dk.MAIN_BR_ID and upper(wg.sfz)=upper(dk.CERT_CDE) where dk.LOAN_BALANCE is not null\n");
 
             Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
             templetVO.setTempletname("贷款明细查看");
-            String [] columns = new String[]{"XD_COL1","XD_COL2","XD_COL4","XD_COL5","XD_COL6","XD_COL7","XD_COL16","XD_COL22","XD_COL86","XD_COL85"};
+            String [] columns = new String[]{"BILL_NO","CUS_NAME","LOAN_START_DATE","LOAN_END_DATE","LOAN_AMOUNT","LOAN_BALANCE","CERT_CDE","CLA","RESERVE","MAIN_BR_ID"};
             String [] columnNames=new String[]{"贷款号","客户名称","贷款日期","到期日期","贷款金额","结欠金额","证件号码","五级分类","E贷","机构简称"};
             templetVO.setRealViewColumns(columns);
             templetVO.setIsshowlistpagebar(false);
@@ -480,10 +480,12 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         try{
             HashVO [] vos=UIUtil.getHashVoArrayByDS(null,"select bl.*,wg.c xzname,wg.d wgname from(\n" +
                     "select * from(\n" +
-                    "select B,case when BH='30100' then '28330100-xd' else '283'||BH end code,C,bi,D,E,F,to_number(replace(j,',','')) dkye,to_number(replace(K,',','')) jqje,AP name,replace(Q,',','') yqday from "+bltablename+" where replace(Q,',','')>60)\n" +
+                    "select a.b,b.b code,a.c,a.bi,a.d,a.e,a.f,a.dkye,a.jqje,a.name,a.yqday from (select x b,case when c='2830001' then '2830001-xd' else c end code,j c,substr(d,17) bi,r d,ab e,ac f,to_number(replace(z,',','')) dkye,to_number(replace(aa,',','')) jqje,l name,\n" +
+                    "replace(bh,',','') yqday from "+bltablename+" where replace(bh,',','')>60 and e='对私') a left join hzdb.excel_tab_28 b on a.code=b.c)\n" +
                     "union all\n" +
                     "select * from (\n" +
-                    "select C B,'28330100-xd' code,B C,'信贷部' bi,'' D,DG E,DH F,to_number(replace(DE,',','')) dkye,to_number(replace(DF,',','')) jqje,E name,EA yqday from "+dgbltablename+" where replace(EA,',','')>60)\n" +
+                    "select a.b,b.b code,a.c,a.bi,a.d,a.e,a.f,a.dkye,a.jqje,a.name,a.yqday from (select x b,case when c='2830001' then '2830001-xd' else c end code,j c,substr(d,17) bi,r d,ab e,ac f,to_number(replace(z,',','')) dkye,to_number(replace(aa,',','')) jqje,l name,\n" +
+                    "replace(bh,',','') yqday from "+bltablename+" where replace(bh,',','')>60 and e='对公') a left join hzdb.excel_tab_28 b on a.code=b.c)\n" +
                     ") bl\n" +
                     "left join(\n" +
                     "select wg.code,xx.G name,wg.id,wg.g,wg.c,wg.d,wg.a,xx.deptcode from(select deptcode,G,j,k from  hzdb.s_loan_khxx_202001 group by deptcode,G,j,k) xx \n" +
@@ -492,10 +494,12 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
                     "where wg.deptcode='"+vo.getStringValue("f")+"' and wg.c='"+vo.getStringValue("c")+"' and wg.d='"+vo.getStringValue("d")+"'");
             HashVO [] vos2=UIUtil.getHashVoArrayByDS(null,"select bl.*,wg.c xzname,wg.d wgname from(\n" +
                     "select * from(\n" +
-                    "select B,case when BH='30100' then '28330100-xd' else '283'||BH end code,C,bi,D,E,F,to_number(replace(j,',','')) dkye,to_number(replace(K,',','')) jqje,AP name,replace(Q,',','') yqday from hzdb.s_loan_dk_"+(ymfalg==true?getQYDaySMonth(2):getQYDaySMonth(1))+" where replace(Q,',','')>60)\n" +
+                    "select a.b,b.b code,a.c,a.bi,a.d,a.e,a.f,a.dkye,a.jqje,a.name,a.yqday from (select x b,case when c='2830001' then '2830001-xd' else c end code,j c,substr(d,17) bi,r d,ab e,ac f,to_number(replace(z,',','')) dkye,to_number(replace(aa,',','')) jqje,l name,\n" +
+                    "replace(bh,',','') yqday from hzdb.s_loan_dk_"+(ymfalg==true?getQYDaySMonth(2):getQYDaySMonth(1))+" where replace(bh,',','')>60 and e='对私') a left join hzdb.excel_tab_28 b on a.code=b.c)\n" +
                     "union all\n" +
                     "select * from (\n" +
-                    "select C B,'28330100-xd' code,B C,'信贷部' bi,'' D,DG E,DH F,to_number(replace(DE,',','')) dkye,to_number(replace(DF,',','')) jqje,E name,EA yqday from hzdb.s_loan_dk_dg_"+(ymfalg==true?getQYDaySMonth(2):getQYDaySMonth(1))+" where replace(EA,',','')>60)\n" +
+                    "select a.b,b.b code,a.c,a.bi,a.d,a.e,a.f,a.dkye,a.jqje,a.name,a.yqday from (select x b,case when c='2830001' then '2830001-xd' else c end code,j c,substr(d,17) bi,r d,ab e,ac f,to_number(replace(z,',','')) dkye,to_number(replace(aa,',','')) jqje,l name,\n" +
+                    "replace(bh,',','') yqday from hzdb.s_loan_dk_dg_"+(ymfalg==true?getQYDaySMonth(2):getQYDaySMonth(1))+" where replace(bh,',','')>60 and e='对公') a left join hzdb.excel_tab_28 b on a.code=b.c)\n" +
                     ") bl\n" +
                     "left join(\n" +
                     "select wg.code,xx.G name,wg.id,wg.g,wg.c,wg.d,wg.a,xx.deptcode from(select deptcode,G,j,k from  hzdb.s_loan_khxx_202001 group by deptcode,G,j,k) xx \n" +
@@ -933,7 +937,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
     public void getDkDialog(final Dialog dialog, final BillVO vo){
         Pub_Templet_1VO templetVO = new Pub_Templet_1VO();
         templetVO.setTempletname("贷款明细查看");
-        String [] columns = new String[]{"XD_COL1","XD_COL2","XD_COL4","XD_COL5","XD_COL6","XD_COL7","XD_COL16","XD_COL22","XD_COL86","XD_COL85"};
+        String [] columns = new String[]{"BILL_NO","CUS_NAME","LOAN_START_DATE","LOAN_END_DATE","LOAN_AMOUNT","LOAN_BALANCE","CERT_CDE","CLA","RESERVE","MAIN_BR_ID"};
         String [] columnNames=new String[]{"贷款号","客户名称","贷款日期","到期日期","贷款金额","结欠金额","证件号码","五级分类","E贷","机构简称"};
         templetVO.setRealViewColumns(columns);
         templetVO.setIsshowlistpagebar(false);
@@ -958,12 +962,12 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
         final BillListPanel list = new BillListPanel(templetVO);
         final HashVO[][] vos = {null};
         try{
-            vos[0] =UIUtil.getHashVoArrayByDS(null,"select XD_COL1,XD_COL2,XD_COL4,XD_COL5,XD_COL6," +
-                    "XD_COL7,XD_COL16,case when XD_COL22='01' then '正常' when XD_COL22='02' then '关注' when XD_COL22='03' then " +
-                    "'可疑' when XD_COL22='04' then '次级' when XD_COL22='05' then '损失' else XD_COL22 end XD_COL22, " +
-                    "case when XD_COL86='x_wd' or XD_COL86='x_wj' then '是' else '否' end XD_COL86,XD_COL85 from " +
-                    "hzbank.s_loan_dk_"+getQYDayMonth()+" where XD_COL1||BIZ_DT in(select XD_COL1||max(BIZ_DT) from hzbank.s_loan_dk_"+getQYDayMonth()+" " +
-                    "group by XD_COL1) and XD_COL4<'"+getKHDQMonth()+" 00:00:00' and '283'||XD_COL85='"+vo.getStringValue("code")+"' and UPPER(XD_COL16)=UPPER('"+vo.getStringValue("G")+"')");
+            vos[0] =UIUtil.getHashVoArrayByDS(null,"select BILL_NO,CUS_NAME,LOAN_START_DATE,LOAN_END_DATE,LOAN_AMOUNT," +
+                    "LOAN_BALANCE,CERT_CDE,case when CLA='10' then '正常' when CLA='20' then '关注' when CLA='30' then " +
+                    "'可疑' when CLA='40' then '次级' when CLA='50' then '损失' else CLA end CLA, " +
+                    "case when RESERVE='x_wd' or RESERVE='x_wj' then '是' else '否' end RESERVE,MAIN_BR_ID from " +
+                    "hzbank.s_nmis_acc_loan_"+getQYDayMonth()+" where BILL_NO||LOAD_DATES in(select BILL_NO||max(LOAD_DATES) from hzbank.s_nmis_acc_loan_"+getQYDayMonth()+" " +
+                    "group by BILL_NO) and LOAN_START_DATE<'"+getKHDQMonth()+"' and MAIN_BR_ID='"+vo.getStringValue("deptcode")+"' and UPPER(CERT_CDE)=UPPER('"+vo.getStringValue("G")+"') and  to_number(LOAN_BALANCE)>0");
 //            list.addBillListButton(btn_query);
               list.putValue(vos[0]);
 //            btn_query.addActionListener(new ActionListener() {
@@ -1032,8 +1036,8 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
             }
             vos[0] =UIUtil.getHashVoArrayByDS(null,"" +
                     "select a.oact_inst_no,a.cust_no,b.EXTERNAL_CUSTOMER_IC,a.f from (select oact_inst_no,cust_no cust_no,sum(f) f " +
-                    "from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" where biz_dt='"+date+"' group by oact_inst_no,cust_no union all select oact_inst_no,cust_no," +
-                    "sum(acct_bal) f from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where biz_dt='"+date+"' group by oact_inst_no,cust_no) a left join " +
+                    "from hzbank.a_agr_dep_acct_psn_sv_"+getQYDayMonth()+" where load_dates='"+date+"' group by oact_inst_no,cust_no union all select oact_inst_no,cust_no," +
+                    "sum(acct_bal) f from hzbank.A_AGR_DEP_ACCT_PSN_FX_"+getQYDayMonth()+" where load_dates='"+date+"' group by oact_inst_no,cust_no) a left join " +
                     "(select * from hzbank.S_OFCR_CI_CUSTMAST_"+getQYDayMonth()+" where load_dates='"+date+"') b on a.cust_no = b.COD_CUST_ID " +
                     "where a.oact_inst_no='"+vo.getStringValue("deptcode")+"' " +
                     "and b.EXTERNAL_CUSTOMER_IC='"+vo.getStringValue("G")+"'");
@@ -1189,7 +1193,7 @@ public class GridDateMxQuery extends AbstractWorkPanel implements
      */
     public String getKHDQMonth() {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date d = new Date();
         cal.setTime(d);
         int day = cal.get(Calendar.DATE);
