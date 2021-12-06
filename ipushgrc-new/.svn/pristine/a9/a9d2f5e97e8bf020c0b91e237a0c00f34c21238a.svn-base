@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_ward">
+  <col name="id">1</col>
+  <col name="wardname">上海分行XX员工违规放贷,被成功拦截!</col>
+  <col name="warddescr">与外部客户用虚假资料,贷款100万,结果有例行检查这被发现!</col>
+  <col name="sourcetype"></col>
+  <col name="cmp_check_id"></col>
+  <col name="cmp_check_name"></col>
+  <col name="cmp_check_item_id"></col>
+  <col name="findchannel">事中监测</col>
+  <col name="eventcorpid">;45;</col>
+  <col name="finddate">2011-10-24</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="bsactid"></col>
+  <col name="bsactname"></col>
+  <col name="appitsystype">信贷系统</col>
+  <col name="appitsyscode"></col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="refrisks"></col>
+  <col name="sug_addrisks"></col>
+  <col name="sug_editrisks"></col>
+  <col name="sug_delrisks"></col>
+  <col name="wardcust">[Ljava.lang.Object;@55eda6</col>
+  <col name="warduser">[Ljava.lang.Object;@1655fb9</col>
+  <col name="finaaccount"></col>
+  <col name="redeemlost"></col>
+  <col name="reasontype"></col>
+  <col name="reasonanalyse"></col>
+  <col name="billtype"></col>
+  <col name="busitype"></col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid"></col>
+</record>
+
+<!--2-->
+<record tabname="cmp_ward">
+  <col name="id">2</col>
+  <col name="wardname">南京分行成功防范南京德广电器有限公司违规贷款</col>
+  <col name="warddescr">南京德广电器有限公司竟然想违规贷款300万,结果在合规检查时被发现!</col>
+  <col name="sourcetype"></col>
+  <col name="cmp_check_id"></col>
+  <col name="cmp_check_name"></col>
+  <col name="cmp_check_item_id"></col>
+  <col name="findchannel">上级合规部门检查</col>
+  <col name="eventcorpid">;57;</col>
+  <col name="finddate">2011-12-05</col>
+  <col name="reportdate">2012-02-08</col>
+  <col name="reportcorp">2</col>
+  <col name="bsactid"></col>
+  <col name="bsactname"></col>
+  <col name="appitsystype">信贷系统</col>
+  <col name="appitsyscode"></col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="refrisks"></col>
+  <col name="sug_addrisks"></col>
+  <col name="sug_editrisks"></col>
+  <col name="sug_delrisks"></col>
+  <col name="wardcust">[Ljava.lang.Object;@16af7bf</col>
+  <col name="warduser">[Ljava.lang.Object;@1af4241</col>
+  <col name="finaaccount"></col>
+  <col name="redeemlost"></col>
+  <col name="reasontype"></col>
+  <col name="reasonanalyse"></col>
+  <col name="billtype"></col>
+  <col name="busitype"></col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid"></col>
+</record>
+
+</root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_bom">
+  <col name="id">1</col>
+  <col name="code">gps</col>
+  <col name="bgimgname">1</col>
+  <col name="descr">123</col>
+  <col name="afterinitcls"></col>
+</record>
+
+</root>

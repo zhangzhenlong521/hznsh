@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>中实软件WebLight平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+function openWebLight()
+{
+document.form1.scwidth.value=document.body.clientWidth-2;
+document.form1.scheight.value=document.body.clientHeight-2;
+document.form1.submit();
+}
+</script>
+</head>
+<body bgcolor="#ffffff">
+<form name="form1"  method="POST" action="./wlapplet.jsp?admin=y">
+<input type="hidden" name="scwidth"  value="1024">
+<input type="hidden" name="scheight" value="768">
+</form>
+
+<center>
+<br><br>
+
+<a href="./app"><font size=2 color=blue>Web报表查询系统</font></a><br><br><br>
+
+<a href="./login.jsp"><font size=2 color=blue>Web登录</font></a><br><br><br>
+
+<a href="JavaScript:openWebLight()"><font size=2 color=blue>WebLight平台(自适应窗口)</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="./wlapplet.jsp?admin=y"><font size=2 color=blue>WebLight平台(1024*768)</font></a><br><br><br><br>
+
+<a href="./WEBLIGHT_JRE_SETUP.exe"><font size=2 color=blue>下载WEBLIGHT插件)</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="./cluster.jsp"><font size=2 color=blue>集群访问</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="./reload.jsp"><font size=2 color=blue>Reload服务器端缓存</font></a>
+</center>
+</body>
+</html>

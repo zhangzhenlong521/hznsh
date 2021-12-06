@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="GBK"?>
+<root tablename="pub_wf_activity">
+<!--1-->
+<record tabname="pub_wf_activity">
+  <col name="ID">15403</col>
+  <col name="PROCESSID">3961</col>
+  <col name="CODE">WFA1</col>
+  <col name="WFNAME">发起</col>
+  <col name="UINAME">1</col>
+  <col name="X">103</col>
+  <col name="Y">111</col>
+  <col name="WIDTH">70</col>
+  <col name="HEIGHT">45</col>
+  <col name="VIEWTYPE">1</col>
+  <col name="FONTTYPE">宋体</col>
+  <col name="FONTSIZE">12</col>
+  <col name="FOREGROUND">0,0,0</col>
+  <col name="BACKGROUND">232,238,247</col>
+  <col name="IMGSTR">workflow/start.gif</col>
+  <col name="ACTIVITYTYPE">START</col>
+  <col name="AUTOCOMMIT">N</col>
+  <col name="ISASSIGNAPPROVER">N</col>
+  <col name="APPROVEMODEL">1</col>
+  <col name="APPROVENUMBER">0</col>
+  <col name="ISSELFCYCLE">N</col>
+  <col name="ISCANBACK">N</col>
+  <col name="ISNEEDMSG">N</col>
+  <col name="INTERCEPT2">com.pushworld.ipushgrc.bs.score.p060.ReApplyWFBSIntercept</col>
+  <col name="CANHALFSTART">N</col>
+  <col name="CANHALFEND">N</col>
+  <col name="CANSELFADDPARTICIPATE">N</col>
+  <col name="SHOWPARTICIMODE">1</col>
+  <col name="ISNEEDREPORT">N</col>
+  <col name="ISHIDETRANSSEND">N</col>
+</record>
+
+<!--2-->
+<record tabname="pub_wf_activity">
+  <col name="ID">15421</col>
+  <col name="PROCESSID">3961</col>
+  <col name="CODE">WFA2</col>
+  <col name="WFNAME">最终审核</col>
+  <col name="UINAME">2</col>
+  <col name="X">352</col>
+  <col name="Y">112</col>
+  <col name="WIDTH">69</col>
+  <col name="HEIGHT">45</col>
+  <col name="VIEWTYPE">1</col>
+  <col name="FONTTYPE">宋体</col>
+  <col name="FONTSIZE">12</col>
+  <col name="FOREGROUND">0,0,0</col>
+  <col name="BACKGROUND">232,238,247</col>
+  <col name="IMGSTR">workflow/start.gif</col>
+  <col name="ACTIVITYTYPE">NORMAL</col>
+  <col name="AUTOCOMMIT">N</col>
+  <col name="ISASSIGNAPPROVER">N</col>
+  <col name="APPROVEMODEL">1</col>
+  <col name="APPROVENUMBER">0</col>
+  <col name="ISSELFCYCLE">N</col>
+  <col name="ISCANBACK">N</col>
+  <col name="ISNEEDMSG">N</col>
+  <col name="CANHALFSTART">N</col>
+  <col name="CANHALFEND">N</col>
+  <col name="CANSELFADDPARTICIPATE">N</col>
+  <col name="SHOWPARTICIMODE">1</col>
+  <col name="ISNEEDREPORT">N</col>
+  <col name="ISHIDETRANSSEND">N</col>
+</record>
+
+<!--3-->
+<record tabname="pub_wf_activity">
+  <col name="ID">15404</col>
+  <col name="PROCESSID">3961</col>
+  <col name="CODE">WFA2</col>
+  <col name="WFNAME">审核</col>
+  <col name="UINAME">2</col>
+  <col name="X">231</col>
+  <col name="Y">112</col>
+  <col name="WIDTH">70</col>
+  <col name="HEIGHT">45</col>
+  <col name="VIEWTYPE">1</col>
+  <col name="FONTTYPE">宋体</col>
+  <col name="FONTSIZE">12</col>
+  <col name="FOREGROUND">0,0,0</col>
+  <col name="BACKGROUND">232,238,247</col>
+  <col name="IMGSTR">workflow/start.gif</col>
+  <col name="ACTIVITYTYPE">NORMAL</col>
+  <col name="AUTOCOMMIT">N</col>
+  <col name="ISASSIGNAPPROVER">N</col>
+  <col name="APPROVEMODEL">1</col>
+  <col name="APPROVENUMBER">0</col>
+  <col name="ISSELFCYCLE">Y</col>
+  <col name="ISCANBACK">N</col>
+  <col name="ISNEEDMSG">N</col>
+  <col name="CANHALFSTART">N</col>
+  <col name="CANHALFEND">N</col>
+  <col name="CANSELFADDPARTICIPATE">N</col>
+  <col name="SHOWPARTICIMODE">1</col>
+  <col name="ISNEEDREPORT">N</col>
+  <col name="ISHIDETRANSSEND">N</col>
+</record>
+
+<!--4-->
+<record tabname="pub_wf_activity">
+  <col name="ID">15405</col>
+  <col name="PROCESSID">3961</col>
+  <col name="CODE">WFA3</col>
+  <col name="WFNAME">结束</col>
+  <col name="UINAME">3</col>
+  <col name="X">490</col>
+  <col name="Y">112</col>
+  <col name="WIDTH">70</col>
+  <col name="HEIGHT">45</col>
+  <col name="VIEWTYPE">1</col>
+  <col name="FONTTYPE">宋体</col>
+  <col name="FONTSIZE">12</col>
+  <col name="FOREGROUND">0,0,0</col>
+  <col name="BACKGROUND">232,238,247</col>
+  <col name="IMGSTR">workflow/start.gif</col>
+  <col name="ACTIVITYTYPE">END</col>
+  <col name="AUTOCOMMIT">N</col>
+  <col name="ISASSIGNAPPROVER">N</col>
+  <col name="APPROVEMODEL">1</col>
+  <col name="APPROVENUMBER">0</col>
+  <col name="ISSELFCYCLE">N</col>
+  <col name="ISCANBACK">N</col>
+  <col name="ISNEEDMSG">N</col>
+  <col name="CANHALFSTART">N</col>
+  <col name="CANHALFEND">N</col>
+  <col name="CANSELFADDPARTICIPATE">N</col>
+  <col name="SHOWPARTICIMODE">1</col>
+  <col name="ISNEEDREPORT">N</col>
+  <col name="ISHIDETRANSSEND">N</col>
+</record>
+
+</root>

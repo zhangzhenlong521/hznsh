@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<table name="pub_menu" descr="菜单表">
+		<col name="id" type="decimal" length="30" descr="主键" />
+		<col name="code" type="varchar" length="30" descr="编码" />
+		<col name="name" type="varchar" length="30" descr="名称" />
+	</table>
+
+	<table name="pub_user" descr="人员表">
+		<col name="id" type="decimal" length="30" descr="主键" />
+		<col name="code" type="varchar" length="30" descr="编码" />
+		<col name="name" type="varchar" length="30" descr="名称" />
+	</table>
+
+	<view name="" descr="">
+		<sql>
+			create v_sys_pub_systables as select id,code,name from tab
+		</sql>
+	</view>
+
+	<initdata name="pub_menu">
+		<record code="001" name="平台配置" />
+		<record code="001" name="平台配置" />
+		<record code="001" name="平台配置" />
+		<record code="001" name="平台配置" />
+		<record code="001" name="平台配置" />
+	</initdata>
+</root>
+

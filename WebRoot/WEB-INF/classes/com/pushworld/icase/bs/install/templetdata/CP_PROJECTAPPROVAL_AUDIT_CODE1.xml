@@ -1,0 +1,1384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<record tabname="pub_templet_1" pkname="pk_pub_templet_1" sename="S_PUB_TEMPLET_1">
+  <col name="pk_pub_templet_1">2621</col>
+  <col name="templetcode">CP_PROJECTAPPROVAL_AUDIT_CODE1</col>
+  <col name="templetname">排查立项</col>
+  <col name="templetname_e">排查立项</col>
+  <col name="datasourcename"></col>
+  <col name="tablename">v_cp_projectapproval_audit</col>
+  <col name="dataconstraint"></col>
+  <col name="pkname">id</col>
+  <col name="pksequencename">S_CP_PROJECTAPPROVAL_AUDIT</col>
+  <col name="tostringkey"></col>
+  <col name="savedtablename">cp_projectapproval_audit</col>
+  <col name="datapolicy"></col>
+  <col name="datapolicymap"></col>
+  <col name="datasqlandorcondition"></col>
+  <col name="bsdatafilterclass"></col>
+  <col name="bsdatafilterissql">N</col>
+  <col name="ordercondition"></col>
+  <col name="autoloads"></col>
+  <col name="autoloadconstraint"></col>
+  <col name="cardinitformula">if(getItemValue("isplancontent")=="是",setItemVisiable("relevanceplannumber","true"),setItemVisiable("relevanceplannumber","false"));
+</col>
+  <col name="cardcustpanel"></col>
+  <col name="cardwidth">777</col>
+  <col name="isshowcardborder">N</col>
+  <col name="cardborder">BORDER</col>
+  <col name="cardlayout">FLOWLAYOUT</col>
+  <col name="isshowcardcustbtn">N</col>
+  <col name="cardcustbtndesc"></col>
+  <col name="cardsaveselfdesccheck"></col>
+  <col name="cardsaveifcheck">N</col>
+  <col name="mustinputcolor"></col>
+  <col name="listinitformula"></col>
+  <col name="listcustpanel"></col>
+  <col name="isshowlistpagebar">Y</col>
+  <col name="islistpagebarwrap">N</col>
+  <col name="isshowlistopebar">N</col>
+  <col name="iscollapsequickquery">N</col>
+  <col name="isshowlistquickquery">Y</col>
+  <col name="isshowcommquerybtn">N</col>
+  <col name="isshowlistcustbtn">Y</col>
+  <col name="listcustbtndesc"></col>
+  <col name="listbtnorderdesc"></col>
+  <col name="listrowheight">22,22,22,</col>
+  <col name="listheaderisgroup">N</col>
+  <col name="islistautorowheight">N</col>
+  <col name="listheadheight">40</col>
+  <col name="listweidudesc"></col>
+  <col name="definerenderer"></col>
+  <col name="treepk">id</col>
+  <col name="treeparentpk">parentid</col>
+  <col name="treeviewfield">name</col>
+  <col name="treeseqfield">seq</col>
+  <col name="treeisshowroot">Y</col>
+  <col name="treeisonlyone">N</col>
+  <col name="treeisshowtoolbar">N</col>
+  <col name="treecustbtndesc"></col>
+  <col name="treeischecked">N</col>
+  <col name="templetbtns"></col>
+  <col name="propbeanclassname"></col>
+  <col name="wfcustexport"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5701</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">id</col>
+  <col name="itemname">ID</col>
+  <col name="itemname_e">id</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">数字框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt"></col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck"></col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">1</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">200</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref"></col>
+  <col name="isquickquerywrap"></col>
+  <col name="isquickqueryshowable"></col>
+  <col name="isquickqueryeditable"></col>
+  <col name="iscommquerywrap"></col>
+  <col name="iscommqueryshowable"></col>
+  <col name="iscommqueryeditable"></col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace"></col>
+  <col name="workflowiseditable"></col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5702</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">channels</col>
+  <col name="itemname">渠道</col>
+  <col name="itemname_e">channels</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">2</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5703</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">projectapprovalnumber</col>
+  <col name="itemname">立项编号</col>
+  <col name="itemname_e">projectapprovalnumber</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">"CP-PA-"+getCurrDate()</col>
+  <col name="showorder">3</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5704</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">projectype</col>
+  <col name="itemname">项目类型</col>
+  <col name="itemname_e">projectype</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">下拉框</col>
+  <col name="comboxdesc">getCommUC("下拉框",
+"直接值","重点账户异常交易;案件排查/自查;内部举报;外部举报",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">4</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">Y</col>
+  <col name="isquickqueryeditable">Y</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5705</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">schemeapplyforname</col>
+  <col name="itemname">排查立项名称</col>
+  <col name="itemname_e">schemeapplyforname</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">5</col>
+  <col name="listwidth">153</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5706</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">isplancontent</col>
+  <col name="itemname">是否为计划内项目</col>
+  <col name="itemname_e">isplancontent</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">下拉框</col>
+  <col name="comboxdesc">getCommUC("下拉框",
+"直接值","是;否;",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula">if(getItemValue("isplancontent")=="是",setItemVisiable("relevanceplannumber","true"),setItemVisiable("relevanceplannumber","false"));
+</col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">6</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5707</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">relevanceplannumber</col>
+  <col name="itemname">关联计划</col>
+  <col name="itemname_e">relevanceplannumber</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">列表模板参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("列表模板参照",
+"模板编码","CP_INVESTIGATION_PLAN_CODE2",
+"ID字段","id",
+"NAME字段","planname",
+"附加SQL条件","channels='案防排查'",
+"可以多选","N",
+"自动查询","N"
+);</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">setRefItemName("relevanceplannumber",getColValue("CP_INVESTIGATION_PLAN","planname","id",getItemValue("relevanceplannumber")))</col>
+  <col name="editformula">setItemValue("schemestarttime",getColValue("CP_INVESTIGATION_PLAN","planstarttime","id",getItemValue("relevanceplannumber")));
+setItemValue("schemeendtime",getColValue("CP_INVESTIGATION_PLAN","planendtime","id",getItemValue("relevanceplannumber")));
+setItemValue("checkingprojectmatter",getColValue("CP_INVESTIGATION_PLAN","plancontent","id",getItemValue("relevanceplannumber")));
+setItemValue("businesstype",getColValue("CP_INVESTIGATION_PLAN","businesstype","id",getItemValue("relevanceplannumber")));</col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">7</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5708</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">checkingprojectmatter</col>
+  <col name="itemname">排查项目内容</col>
+  <col name="itemname_e">checkingprojectmatter</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">多行文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">8</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5709</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">businesstype</col>
+  <col name="itemname">业务类型</col>
+  <col name="itemname_e">businesstype</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">下拉框</col>
+  <col name="comboxdesc">getCommUC("下拉框",
+"直接值","信贷类业务;票据类业务;跨合作类业务;柜台、会计结算业务;员工异常行为排查;其他类",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">9</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">Y</col>
+  <col name="isquickqueryeditable">Y</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5710</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">checkingway</col>
+  <col name="itemname">排查方式</col>
+  <col name="itemname_e">checkingway</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">下拉框</col>
+  <col name="comboxdesc">getCommUC("下拉框",
+"直接值","现场;非现场;",
+"文本框是否可编辑","N",
+"查询时是否多选","N"
+);</col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">10</col>
+  <col name="listwidth">73</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5711</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">assistance_dept</col>
+  <col name="itemname">协查机构</col>
+  <col name="itemname_e">assistance_dept</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">树型模板参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("树型模板参照",
+"模板编码","pub_corp_dept_CODE1",
+"ID字段","id",
+"NAME字段","name",
+"附加SQL条件","",
+"可以多选","Y",
+"只能选叶子","N"
+);</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">setRefItemName("assistance_dept",getMultiRefName("pub_corp_dept","name","id",getItemValue("assistance_dept")))</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">11</col>
+  <col name="listwidth">238</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5712</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">byexaminedept</col>
+  <col name="itemname">被检查机构</col>
+  <col name="itemname_e">byexaminedept</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">树型模板参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc">getCommUC("树型模板参照",
+"模板编码","pub_corp_dept_CODE1",
+"ID字段","id",
+"NAME字段","name",
+"附加SQL条件","",
+"可以多选","Y",
+"只能选叶子","N"
+);</col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">setRefItemName("byexaminedept",getMultiRefName("pub_corp_dept","name","id",getItemValue("byexaminedept")))</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">12</col>
+  <col name="listwidth">242</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5713</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">schemestarttime</col>
+  <col name="itemname">方案开始时间</col>
+  <col name="itemname_e">schemestarttime</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">日历</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">13</col>
+  <col name="listwidth">98</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5714</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">schemeendtime</col>
+  <col name="itemname">方案结束时间</col>
+  <col name="itemname_e">schemeendtime</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">日历</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">14</col>
+  <col name="listwidth">98</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5715</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">affix</col>
+  <col name="itemname">排查方案/表格</col>
+  <col name="itemname_e">affix</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文件选择框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">15</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,415</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5716</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">schemeapplyfordept</col>
+  <col name="itemname">发起机构</col>
+  <col name="itemname_e">schemeapplyfordept</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">setRefItemName("schemeapplyfordept",getColValue("pub_corp_dept","name","id",getItemValue("schemeapplyfordept")))</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">setItemValue("schemeapplyfordept",getLoginUserDeptId());
+setRefItemName("schemeapplyfordept",getLoginUserDeptName());</col>
+  <col name="showorder">16</col>
+  <col name="listwidth">89</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">4</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5717</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">schemeapplyforpeople</col>
+  <col name="itemname">发起人</col>
+  <col name="itemname_e">schemeapplyforpeople</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">参照</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">N</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">setRefItemName("schemeapplyforpeople",getColValue("pub_user","name","id",getItemValue("schemeapplyforpeople")))</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">setItemValue("schemeapplyforpeople",getLoginUserId());
+setRefItemName("schemeapplyforpeople",getLoginUserName());</col>
+  <col name="showorder">17</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">4</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5718</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">applyfordate</col>
+  <col name="itemname">立项申请日期</col>
+  <col name="itemname_e">applyfordate</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">日历</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput">Y</col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">getCurrDate()</col>
+  <col name="showorder">18</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">115,150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">Y</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">Y</col>
+  <col name="cardiseditable">4</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">Y</col>
+  <col name="propiseditable">Y</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5719</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">BUSITYPE</col>
+  <col name="itemname">业务类型</col>
+  <col name="itemname_e">BUSITYPE</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">"排查立项与审核"</col>
+  <col name="showorder">19</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5720</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">BILLTYPE</col>
+  <col name="itemname">单据类型</col>
+  <col name="itemname_e">BILLTYPE</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">"排查立项与审核"</col>
+  <col name="showorder">20</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5721</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">WFPRINSTANCEID</col>
+  <col name="itemname">流程实例id</col>
+  <col name="itemname_e">WFPRINSTANCEID</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">21</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">Y</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5722</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">wfstatus</col>
+  <col name="itemname">审批状态</col>
+  <col name="itemname_e">wfstatus</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">N</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula">if(getItemValue("wfstatus")=="",setItemValue("wfstatus","未提交"),setItemValue("wfstatus",getItemValue("wfstatus")));
+if(getItemValue("wfstatus")=="END",setItemValue("wfstatus","流程结束"),setItemValue("wfstatus",getItemValue("wfstatus")));
+if(getItemValue("wfstatus")=="RUN",setItemValue("wfstatus","审批中..."),setItemValue("wfstatus",getItemValue("wfstatus")));
+setItemValue("wfstatus");</col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">"草稿"</col>
+  <col name="showorder">22</col>
+  <col name="listwidth">65</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">4</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">4</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5723</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">state</col>
+  <col name="itemname">状态</col>
+  <col name="itemname_e">state</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">Y</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula">"未下发"</col>
+  <col name="showorder">23</col>
+  <col name="listwidth">55</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">Y</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="pk_pub_templet_1_item">5724</col>
+  <col name="pk_pub_templet_1" reftabid="pub_templet_1.pk_pub_templet_1">2621</col>
+  <col name="itemkey">wfprinstanceid_currowner</col>
+  <col name="itemname">wfprinstanceid_currowner</col>
+  <col name="itemname_e">wfprinstanceid_currowner</col>
+  <col name="itemtiptext"></col>
+  <col name="itemtype">文本框</col>
+  <col name="comboxdesc"></col>
+  <col name="refdesc"></col>
+  <col name="isrefcanedit"></col>
+  <col name="issave">N</col>
+  <col name="isencrypt">N</col>
+  <col name="ismustinput"></col>
+  <col name="isuniquecheck">N</col>
+  <col name="loadformula"></col>
+  <col name="editformula"></col>
+  <col name="defaultvalueformula"></col>
+  <col name="showorder">24</col>
+  <col name="listwidth">125</col>
+  <col name="cardwidth">150</col>
+  <col name="listisshowable">N</col>
+  <col name="listiseditable">1</col>
+  <col name="cardisshowable">N</col>
+  <col name="cardisexport"></col>
+  <col name="listisexport">N</col>
+  <col name="cardiseditable">1</col>
+  <col name="iswrap">N</col>
+  <col name="grouptitle"></col>
+  <col name="propisshowable">N</col>
+  <col name="propiseditable">N</col>
+  <col name="hyperlinkdesc"></col>
+  <col name="showbgcolor">000000,ACD6FF</col>
+  <col name="listishtmlhref">N</col>
+  <col name="isquickquerywrap">N</col>
+  <col name="isquickqueryshowable">N</col>
+  <col name="isquickqueryeditable">N</col>
+  <col name="iscommquerywrap">N</col>
+  <col name="iscommqueryshowable">N</col>
+  <col name="iscommqueryeditable">N</col>
+  <col name="queryitemtype"></col>
+  <col name="queryitemdefine"></col>
+  <col name="querycreatetype"></col>
+  <col name="querycreatecustdef"></col>
+  <col name="querydefaultformula"></col>
+  <col name="querywidth"></col>
+  <col name="isquerymustinput"></col>
+  <col name="iskeeptrace">N</col>
+  <col name="workflowiseditable">N</col>
+  <col name="listiscombine"></col>
+  <col name="isdefaultquery"></col>
+</record>
+
+</root>

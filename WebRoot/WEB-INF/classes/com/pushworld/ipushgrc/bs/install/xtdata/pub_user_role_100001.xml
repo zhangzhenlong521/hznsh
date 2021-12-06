@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_user_role">
+  <col name="id">1</col>
+  <col name="userid">1</col>
+  <col name="roleid">1</col>
+  <col name="userdept">2</col>
+</record>
+
+<!--2-->
+<record tabname="pub_user_role">
+  <col name="id">2</col>
+  <col name="userid">2</col>
+  <col name="roleid">1</col>
+  <col name="userdept">2</col>
+</record>
+
+<!--3-->
+<record tabname="pub_user_role">
+  <col name="id">3</col>
+  <col name="userid">21</col>
+  <col name="roleid">27</col>
+  <col name="userdept">2</col>
+</record>
+
+<!--4-->
+<record tabname="pub_user_role">
+  <col name="id">4</col>
+  <col name="userid">3</col>
+  <col name="roleid">3</col>
+  <col name="userdept">7</col>
+</record>
+
+<!--5-->
+<record tabname="pub_user_role">
+  <col name="id">5</col>
+  <col name="userid">4</col>
+  <col name="roleid">3</col>
+  <col name="userdept">15</col>
+</record>
+
+<!--6-->
+<record tabname="pub_user_role">
+  <col name="id">6</col>
+  <col name="userid">23</col>
+  <col name="roleid">25</col>
+  <col name="userdept">16</col>
+</record>
+
+<!--7-->
+<record tabname="pub_user_role">
+  <col name="id">7</col>
+  <col name="userid">5</col>
+  <col name="roleid">5</col>
+  <col name="userdept">8</col>
+</record>
+
+<!--8-->
+<record tabname="pub_user_role">
+  <col name="id">8</col>
+  <col name="userid">6</col>
+  <col name="roleid">7</col>
+  <col name="userdept">10</col>
+</record>
+
+<!--9-->
+<record tabname="pub_user_role">
+  <col name="id">9</col>
+  <col name="userid">7</col>
+  <col name="roleid">9</col>
+  <col name="userdept">10</col>
+</record>
+
+<!--10-->
+<record tabname="pub_user_role">
+  <col name="id">10</col>
+  <col name="userid">8</col>
+  <col name="roleid">11</col>
+  <col name="userdept">10</col>
+</record>
+
+<!--11-->
+<record tabname="pub_user_role">
+  <col name="id">11</col>
+  <col name="userid">15</col>
+  <col name="roleid">13</col>
+  <col name="userdept">31</col>
+</record>
+
+<!--12-->
+<record tabname="pub_user_role">
+  <col name="id">12</col>
+  <col name="userid">16</col>
+  <col name="roleid">15</col>
+  <col name="userdept">32</col>
+</record>
+
+<!--13-->
+<record tabname="pub_user_role">
+  <col name="id">13</col>
+  <col name="userid">17</col>
+  <col name="roleid">5</col>
+  <col name="userdept">33</col>
+</record>
+
+<!--14-->
+<record tabname="pub_user_role">
+  <col name="id">14</col>
+  <col name="userid">18</col>
+  <col name="roleid">7</col>
+  <col name="userdept">35</col>
+</record>
+
+<!--15-->
+<record tabname="pub_user_role">
+  <col name="id">15</col>
+  <col name="userid">19</col>
+  <col name="roleid">9</col>
+  <col name="userdept">35</col>
+</record>
+
+<!--16-->
+<record tabname="pub_user_role">
+  <col name="id">16</col>
+  <col name="userid">20</col>
+  <col name="roleid">23</col>
+  <col name="userdept">35</col>
+</record>
+
+<!--17-->
+<record tabname="pub_user_role">
+  <col name="id">17</col>
+  <col name="userid">9</col>
+  <col name="roleid">13</col>
+  <col name="userdept">45</col>
+</record>
+
+<!--18-->
+<record tabname="pub_user_role">
+  <col name="id">18</col>
+  <col name="userid">10</col>
+  <col name="roleid">15</col>
+  <col name="userdept">46</col>
+</record>
+
+<!--19-->
+<record tabname="pub_user_role">
+  <col name="id">19</col>
+  <col name="userid">11</col>
+  <col name="roleid">17</col>
+  <col name="userdept">47</col>
+</record>
+
+<!--20-->
+<record tabname="pub_user_role">
+  <col name="id">20</col>
+  <col name="userid">12</col>
+  <col name="roleid">19</col>
+  <col name="userdept">48</col>
+</record>
+
+<!--21-->
+<record tabname="pub_user_role">
+  <col name="id">21</col>
+  <col name="userid">13</col>
+  <col name="roleid">21</col>
+  <col name="userdept">48</col>
+</record>
+
+<!--22-->
+<record tabname="pub_user_role">
+  <col name="id">22</col>
+  <col name="userid">14</col>
+  <col name="roleid">23</col>
+  <col name="userdept">48</col>
+</record>
+
+<!--23-->
+<record tabname="pub_user_role">
+  <col name="id">23</col>
+  <col name="userid">24</col>
+  <col name="roleid">15</col>
+  <col name="userdept">49</col>
+</record>
+
+<!--24-->
+<record tabname="pub_user_role">
+  <col name="id">24</col>
+  <col name="userid">25</col>
+  <col name="roleid">25</col>
+  <col name="userdept">50</col>
+</record>
+
+</root>

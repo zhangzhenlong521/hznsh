@@ -1,0 +1,521 @@
+package com.pushworld.ipushlbs.ui.constactmanage.p010;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import cn.com.infostrategy.bs.common.ServerEnvironment;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.to.common.WLTRemoteException;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.InsertSQLBuilder;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillCardDialog;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillListDialog;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefEvent;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefListener;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillOfficeDialog;
+import cn.com.infostrategy.ui.mdata.FrameWorkMetaDataServiceIfc;
+
+import com.pushworld.ipushgrc.ui.IPushGRCServiceIfc;
+import com.pushworld.ipushlbs.ui.printcomm.CommonHtmlOfficeConfig;
+
+/**
+ * 格式合同文本库
+ * 
+ * @author yinliang
+ * @since 2011.12.12
+ * 
+ * serverDir\tempPath 是写死的
+ * 但其前边部分的路径是可以取的，用System.getProperty("WLTUPLOADFILEDIR") 或
+ * ServerEnvironment.getProperty("WLTUPLOADFILEDIR") 取得
+ */
+public class FormatConstactWKPanel extends AbstractWorkPanel implements ActionListener, BillListHtmlHrefListener {
+	JPanel jPanel_1 = new JPanel();
+	JLabel jLabel1 = new JLabel("老版本号");
+	JLabel jLabel2 = new JLabel("新版本号");
+	JTextField jTextField1 = new JTextField();
+	JTextField jTextField2 = new JTextField();
+	JComboBox jComboBox = new JComboBox();
+	private BillListPanel mainPanel = null, childPanel = null;
+	private WLTButton btn_edit, btn_publish, btn_delete, btn_drop;
+	String serverDir; // 服务器office路径，是否写死？
+	String tempPath; // 客户端临时路径
+
+	@Override
+	public void initialize() {
+		tempPath = System.getProperty("user.home");
+		mainPanel = new BillListPanel("LBS_STDFILE_CODE1"); // 标准合同文本面板
+		childPanel = new BillListPanel("LBS_STANDHISTFILE_CODE1");
+		childPanel.setVisible(false);// 将其隐藏，如果不加入他，弹出版本窗口时找不到父窗口
+		mainPanel.addBillListHtmlHrefListener(this); // 父窗口超链接监听
+		btn_edit = WLTButton.createButtonByType(WLTButton.LIST_POPEDIT);
+		btn_edit.addActionListener(this);// 点击编辑按钮事件
+		btn_delete = WLTButton.createButtonByType(WLTButton.LIST_DELETE);
+		btn_delete.addActionListener(this);// 点击删除按钮事件
+		btn_publish = new WLTButton("发布新版本");
+		btn_publish.addActionListener(this);// 发布新版本按钮事件
+		btn_drop = new WLTButton("废止");
+		btn_drop.addActionListener(this);
+		mainPanel.addBatchBillListButton(new WLTButton[] { WLTButton.createButtonByType(WLTButton.LIST_POPINSERT), btn_edit, btn_delete, btn_publish, btn_drop });
+		mainPanel.repaintBillListButton();
+		this.add(mainPanel);
+	}
+
+	// 点击编辑按钮后
+	private void onEdit() {
+		BillVO mainvo = mainPanel.getSelectedBillVO(); // 当前选择行vo
+		if (mainvo == null) {
+			MessageBox.showSelectOne(mainPanel);
+			return;
+		}
+		if (mainvo != null && ("废止").equals(mainvo.getStringValue("EFFECT"))) {
+			MessageBox.show(mainPanel, "该合同已经被废止,不可以再进行修改！");
+			return;
+		}
+		try {
+			BillCardPanel billcard = new BillCardPanel(mainPanel.templetVO); // 创建一个BILLCARD是引用的BILLLIST格式的
+			billcard.setBillVO(mainvo); // 向billcard中引入数据
+			// 卡片编辑窗口
+			BillCardDialog dialog = new BillCardDialog(mainPanel, "编辑", billcard, WLTConstants.BILLDATAEDITSTATE_UPDATE);
+			dialog.setVisible(true);
+
+			if (dialog.getCloseType() == 1) { // 保存
+				// 修改状态为正在编辑新版本
+				if (!"未发布".equals(billcard.getBillVO().getStringValue("FILESTATE"))) {
+					UIUtil.executeUpdateByDS(null, "update lbs_stdfile set filestate='正在编辑新版本' where id = " + "'" + mainPanel.getSelectedBillVO().getStringValue("id") + "'");
+				}
+				//				mainPanel.setBillVOAt(mainPanel.getSelectedRow(), billcard.getBillVO()); // 将卡片数据保存到当前行
+				mainPanel.refreshCurrSelectedRow(); // 刷新当前行
+			}
+			// 删除客户端临时文件
+			mainPanel.refreshCurrSelectedRow();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 将服务器端的那份正文进行复制操作
+	private String copyFile(String mainid) {
+		String filename = ""; // 原始文件数据库中名称
+		String namelater = ""; // 数据库中名字，去掉前面的随即码后
+		String downloadfile = ""; // 下载到客户端的路径+文件名
+		String newFile = ""; // 新上传到服务器端的路径+文件名
+		String serverDir = "/officecompfile";
+		try {
+			filename = UIUtil.getStringValueByDS(null, "select testfile from lbs_stdfile where id =" + mainid);
+			if (filename == null || filename.trim().equals("")) // 无数据
+				return null;
+			namelater = filename.substring(filename.lastIndexOf("_") + 1); // 缺的"_"后的一串名字,即十六进制的文件名称，没有随即码的
+			downloadfile = UIUtil.downLoadFile(serverDir, filename, false, tempPath, namelater, true); // 下载文件
+			newFile = UIUtil.upLoadFile(serverDir, namelater, false, tempPath, namelater, true);// 上传文件
+			// 删除存在客户端的下载文件
+			deleteDownFile(downloadfile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (newFile == null) {
+				return null;
+			} else {
+				return newFile.substring(newFile.lastIndexOf("/") + 1);// 返回上传的文件名
+			}
+		}
+	}
+
+	// 复制附件
+	private String copyAdjunt(String mainid, String[] annexs) {
+		String filename = ""; // 原始文件数据库中名称
+		String namelater = ""; // 数据库中名字，去掉前面的随即码和日期路径后
+		String downloadfile = ""; // 下载到客户端的路径+文件名
+		String newFile = ""; // 新上传到服务器端的路径+文件名
+		String serverDir = "/upload"; // 服务器路径
+		try {
+			for (int i = 0; i < annexs.length; i++) {
+				filename = annexs[i];
+				String filedate = filename.substring(0, filename.lastIndexOf("/")); // 附件日期
+				// /XXXX
+				// XX
+				// XX
+				String filename_2 = filename.substring(filename.lastIndexOf("/") + 1); // 附件日期后名称
+				// 不带 /
+				namelater = filename.substring(filename.lastIndexOf("_") + 1); // 十六进制名字+.
+				// 类型
+				downloadfile = UIUtil.downLoadFile(serverDir + filedate, filename_2, false, tempPath, namelater, true); // 下载文件
+
+				// 处理此绝对路径，变为/日期/名称 格式
+				// 这个上传方法，不会加前5位的那个字母，现在通过判断，自己加个
+				if (i == 0)
+					newFile = PathFormat(UIUtil.upLoadFile(serverDir + filedate, namelater, false, tempPath, namelater, true), filename_2);// 上传文件绝对路径
+				else
+					newFile = newFile + ";" + PathFormat(UIUtil.upLoadFile(serverDir + filedate, namelater, false, tempPath, namelater, true), filename_2);// 上传文件
+				// 删除存在客户端的下载文件
+				deleteDownFile(downloadfile);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return newFile;
+	}
+
+	// 处理文件名
+	private String PathFormat(String filedir, String refilename) {
+		String flag1 = refilename.substring(1, 5); // 原文件名称的四位数字
+		String flag2 = filedir.substring(filedir.lastIndexOf("/")).substring(1, 5); // 现文件名称的四位数字
+		char flag = (char) (int) (refilename.substring(0, 1).charAt(0)); // 首字母
+		if (flag2.compareTo(flag1) < 0) {// 说明已经数字已经过了四位数，成为五位数，那么这个时候要使前边的字母加1
+			flag = (char) (int) (flag + 1); // 字母加1
+		}
+		String dir1 = filedir.substring(0, filedir.lastIndexOf("/")); // 没有文件名部门
+		return dir1.substring(dir1.lastIndexOf("/")) + "/" + flag + filedir.substring(filedir.lastIndexOf("/") + 1); // /日期
+		// +
+		// /文件名
+	}
+
+	// 删除客户端文件
+	private void deleteDownFile(String filename) {
+		if (filename == null)
+			return;
+		File file = new File(filename);
+		if (file != null && file.exists()) {
+			if (file.isFile())
+				file.delete();
+		}
+	}
+
+	private void onPublish() {
+		BillVO billvo = mainPanel.getSelectedBillVO();
+		if (billvo == null) {
+			MessageBox.showSelectOne(mainPanel);
+			return;
+		}
+		if (billvo.getStringValue("EFFECT") != null)
+			if (billvo.getStringValue("EFFECT").equals("废止")) {
+				MessageBox.show(mainPanel, "该合同已经被废止,不可以再进行发布！");
+				return;
+			}
+		String filestate = billvo.getStringValue("FILESTATE");
+		if (filestate != null && filestate.equals("新版本已发布")) {
+			MessageBox.show(mainPanel, "新版本已经发布!");
+			return;
+		}
+		try {
+			//如果是第一次发布新版本
+			if (("未发布".equals(billvo.getStringValue("FILESTATE")) || "正在编辑新版本".equals(billvo.getStringValue("FILESTATE"))) && (billvo.getStringValue("EDITON") == null) || "".equals(billvo.getStringValue("EDITON").trim())) {
+				PublishNew(billvo, "1.0");
+			} else {
+				String str_oldversion = billvo.getStringValue("EDITON");
+				String str_newversion = "";
+				PublishNewCmpFileVersionDialog dialog = new PublishNewCmpFileVersionDialog(this, str_oldversion);
+				dialog.setVisible(true); //
+				if (dialog.getCloseType() == 1) {
+					str_newversion = dialog.getReturnNewVersion(); //取得返回的版本号!!
+				} else {
+					return;
+				}
+				PublishNew(billvo, str_newversion);
+			}
+		} catch (Exception e1) {
+			MessageBox.show(mainPanel, "出现错误:" + e1.getMessage());
+			e1.printStackTrace();
+		}
+	}
+
+	private void PublishNew(BillVO billvo, String str_newversion) {
+		try {
+			HashMap<String, String> oldfileMap = new HashMap<String, String>();
+			String officeFileName = billvo.getStringValue("testfile"); // office文件
+			if (officeFileName != null && !officeFileName.equals("")) {
+				oldfileMap.put("office", officeFileName);
+			}
+			String annex = billvo.getStringValue("adjunct"); // 文本附件
+			if (annex == null || annex.equals("null") || annex.equals("")) // 如果为空，则不进行复制操作了
+				annex = "";
+			// 如果不为空，复制附件
+			else {
+				oldfileMap.put("adjunt", annex);
+			}
+			// 拷贝
+			IPushGRCServiceIfc server = (IPushGRCServiceIfc) UIUtil.lookUpRemoteService(IPushGRCServiceIfc.class);
+			HashMap newFiles = server.bargainCopyFile(oldfileMap);
+			String filename = (String) newFiles.get("office"); // office文件的复制版本
+			annex = (String) newFiles.get("adjunt"); // 附件的复制版本
+
+			List<String> sqlList = new ArrayList<String>();
+			// 1 将文件状态改为'新版本已发布',并更新版本号
+			String update_sql = " update lbs_stdfile set filestate='新版本已发布',editon = '" + str_newversion + "' , reldate = '" + UIUtil.getCurrDate() + "' ,effect = '有效' " + " where id = '" + billvo.getStringValue("id") + "'  ";
+			UIUtil.executeUpdateByDS(null, update_sql);
+			sqlList.add(update_sql);
+			// 2 改变历史表中的文件状态
+			HashVO[] hashvo = UIUtil.getHashVoArrayByDS(null, "select count(*) from lbs_standhistfile where fileid = '" + billvo.getStringValue("id") + "'");
+			if (hashvo.length != 0) {
+				sqlList.add("update lbs_standhistfile set filestate = '历史' where fileid = '" + billvo.getStringValue("id") + "'");
+			}
+			// 3 将新版本信息插入到历史表中
+			sqlList.add(getInsertSql(billvo, filename, annex, str_newversion));
+
+			UIUtil.executeBatchByDS(null, sqlList);
+			MessageBox.show(mainPanel, "发布成功!");
+			mainPanel.refreshCurrSelectedRow();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 复制office文件
+	private String CopyFileOffice(BillVO billvo) {
+		String mianid = billvo.getStringValue("id");
+		String copyfilename = copyFile(mianid); // 在服务器端复制一份 正文 ,获取复制正文的文件名,十六进制
+		if (copyfilename == null) {
+			MessageBox.show(mainPanel, "文件存在问题,不能进行修改操作!");
+			return null;
+		}
+		return copyfilename;
+	}
+
+	// 复制附件
+	private String CopyFileAdjunt(BillVO billvo, String[] annexs) {
+		String mianid = billvo.getStringValue("id");
+		String copyfilename = copyAdjunt(mianid, annexs); // 在服务器端复制一份 正文
+		// ,获取复制正文的文件名,十六进制
+		if (copyfilename == null) {
+			MessageBox.show(mainPanel, "文件存在问题,不能进行修改操作!");
+			return null;
+		}
+		return copyfilename;
+	}
+
+	/**
+	 * 插入历史表sql
+	 * 
+	 * @param billvo
+	 * @return String
+	 */
+	private String getInsertSql(BillVO billvo, String filename, String annex, String str_newversion) {
+
+		String seq_number1;
+		// 使用InsertSQLBuilder方法插入
+		InsertSQLBuilder sqlBuilder = new InsertSQLBuilder();
+		try {
+			seq_number1 = UIUtil.getSequenceNextValByDS(null, "s_lbs_standhistfile_item"); // 表序列
+			sqlBuilder.setTableName("lbs_standhistfile"); // 表名
+			sqlBuilder.putFieldValue("id", seq_number1); // id
+			sqlBuilder.putFieldValue("Code", billvo.getStringValue("Code"));// 编码
+			sqlBuilder.putFieldValue("Name", billvo.getStringValue("Name"));// 名称
+			sqlBuilder.putFieldValue("Type", billvo.getStringValue("Type"));// 业务类型
+			sqlBuilder.putFieldValue("busiid", billvo.getStringValue("busiid"));// 合同属性
+			sqlBuilder.putFieldValue("useway", billvo.getStringValue("useway"));// 合同属性
+			sqlBuilder.putFieldValue("Reldate", UIUtil.getCurrDate());// 创建日期
+			sqlBuilder.putFieldValue("Createorg", billvo.getStringValue("Createorg"));// 创建机构
+			sqlBuilder.putFieldValue("adjunct", annex);// 附件
+			sqlBuilder.putFieldValue("fileid", billvo.getStringValue("id"));// 合同文本ID
+			sqlBuilder.putFieldValue("editon", str_newversion);// 版本
+			sqlBuilder.putFieldValue("isforeign", billvo.getStringValue("isforeign"));// 是否外文
+			sqlBuilder.putFieldValue("filestate", "有效");// 是否有效
+			sqlBuilder.putFieldValue("creater", billvo.getStringValue("creater"));// 创建人员
+			sqlBuilder.putFieldValue("phone", billvo.getStringValue("phone"));// 联系电话
+			sqlBuilder.putFieldValue("faxes", billvo.getStringValue("faxes"));// 传真
+			sqlBuilder.putFieldValue("testfile", filename);// 合同文本
+			sqlBuilder.putFieldValue("filedis", billvo.getStringValue("filedis"));// 合同描述
+			sqlBuilder.putFieldValue("waigui", billvo.getStringValue("waigui"));// 外规
+			sqlBuilder.putFieldValue("neigui", billvo.getStringValue("neigui"));// 内规
+			sqlBuilder.putFieldValue("property", billvo.getStringValue("property"));// 合同性质
+			sqlBuilder.putFieldValue("effect", "有效");// 是否有效
+			sqlBuilder.putFieldValue("secret", billvo.getStringValue("secret"));// 机密程度
+			sqlBuilder.putFieldValue("fortruth", billvo.getStringValue("fortruth"));// 是否可信
+			return sqlBuilder.getSQL();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+	}
+
+	// 初始化版本界面
+	private void initPanel(BillVO billvo) {
+		jLabel1.setHorizontalAlignment(JLabel.RIGHT);
+		jLabel2.setHorizontalAlignment(JLabel.RIGHT);
+		jLabel1.setBounds(10, 10, 60, 20);
+		jLabel2.setBounds(10, 40, 60, 20);
+		if (billvo.getStringValue("EDITON") == null || billvo.getStringValue("EDITON").equals("")) { // 如果是第一次发布
+			jTextField1.setVisible(true);
+			jTextField1.setText("");
+			jTextField1.setEnabled(false);
+			jComboBox.removeAllItems(); // 清除原先的值
+			jComboBox.addItem("1");
+			jComboBox.setVisible(true);
+		} else { // 之前已经发布过，这次是修改后发布
+			// 将之前的值赋上
+			String editon = billvo.getStringValue("EDITON");
+			jTextField1.setVisible(true);
+			jTextField1.setText(editon);
+			jTextField1.setEnabled(false);
+			int i1, i2;
+			jComboBox.removeAllItems(); // 清除原先的值
+			if (editon.length() > 1) {
+				i1 = Integer.parseInt(editon.substring(0, editon.lastIndexOf("."))); // 小数点前版本
+				i2 = Integer.parseInt(editon.substring(editon.length() - 1)) + 1; // 小数点后
+				for (int i = i2; i < 10; i++)
+					jComboBox.addItem(i1 + "." + i);
+				jComboBox.addItem((i1 + 1) + "");
+			} else {
+				i1 = Integer.parseInt(editon);
+				for (int i = 1; i < 10; i++)
+					jComboBox.addItem(i1 + "." + i);
+				jComboBox.addItem((i1 + 1) + "");
+			}
+			jComboBox.setVisible(true);
+		}
+		jTextField1.setBounds(80, 10, 200, 20);
+		jComboBox.setBounds(80, 40, 200, 20);
+		jPanel_1.setLayout(null);
+		jPanel_1.add(jLabel1);
+		jPanel_1.add(jTextField1);
+		jPanel_1.add(jLabel2);
+		jPanel_1.add(jComboBox);
+		// 版本框大小
+		jPanel_1.setPreferredSize(new Dimension(200, 100));
+	}
+
+	// 按钮事件
+	public void actionPerformed(ActionEvent e) {
+		Object obj = e.getSource();
+		if (obj == btn_publish) // 点击发布新版本按钮
+			onPublish();
+		else if (obj == btn_edit) // 点击编辑按钮
+			onEdit();
+		else if (obj == btn_delete) // 删除按钮
+			onDelete();
+		else if (obj == btn_drop) // 废止合同按钮
+			onDrop();
+	}
+
+	// 废止合同功能
+	private void onDrop() {
+		BillVO billvo = mainPanel.getSelectedBillVO();
+		if (billvo == null) {
+			MessageBox.showSelectOne(mainPanel);
+			return;
+		}
+		if ("未发布".equals(billvo.getStringValue("FILESTATE"))) {
+			MessageBox.show(mainPanel, "合同未发布,不可以进行废止操作!");
+			return;
+		}
+		if ("废止".equals(billvo.getStringValue("effect"))) {
+			MessageBox.show(mainPanel, "合同已废止,不可以进行此操作!");
+			return;
+		}
+		if (MessageBox.confirm(mainPanel, "合同废止后将不能再被引用,是否继续?")) { // 确定要废止
+			String id = billvo.getStringValue("id"); // 当前选择行的id
+			List<String> sqlList = new ArrayList<String>();
+			try {
+				sqlList.add("update " + billvo.getSaveTableName() + " set effect = '废止' where id = " + id); // 更新当前表
+				sqlList.add("update lbs_standhistfile set effect = '废止' where fileid = " + id); // 更新历史表
+				UIUtil.executeBatchByDS(null, sqlList);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			mainPanel.refreshCurrSelectedRow();
+		}
+	}
+
+	// 删除数据
+	private void onDelete() {
+		BillVO billvo = mainPanel.getSelectedBillVO();
+		if (billvo == null) {
+			MessageBox.showSelectOne(mainPanel);
+			return;
+		}
+		if (billvo.getStringValue("EDITON") != null) {
+			MessageBox.show(mainPanel, "合同已经发布,不可被删除!");
+			return;
+		}
+		if (MessageBox.confirmDel(mainPanel)) { // 确定要删除
+			this.deleteFile(mainPanel.getSelectedBillVO(), null, true);// 删除附件及文件
+			mainPanel.doDelete(true); // 删除当前行数据
+			try {
+				UIUtil.executeUpdateByDS(null, "delete from lbs_standhistfile where fileid = " + billvo.getStringValue("id"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	// 删除文件.可以通过billvo删除，也可以直接通过文件名删除
+	private void deleteFile(BillVO vo, String path, boolean isOfficeFile) {
+		try {
+			FrameWorkMetaDataServiceIfc serives = (FrameWorkMetaDataServiceIfc) UIUtil.lookUpRemoteService(FrameWorkMetaDataServiceIfc.class);
+
+			if (vo != null) {// 通过billvo删除文件
+				String officefile = vo.getStringValue("DEAL_CONTENT");
+				String tachfile = vo.getStringValue("FILES");
+				if (officefile != null && !officefile.equals("")) {
+					serives.deleteOfficeFileName(officefile);
+				}
+				if (tachfile != null && !tachfile.equals("")) {
+					String files[] = tachfile.split(";");
+					for (int i = 0; i < files.length; i++) {
+						if (files[i] != null && !files[i].equals("")) {
+							serives.deleteZipFileName(files[i]); // 删除附件
+						}
+					}
+				}
+			}
+
+			if (path != null) {// 通过路径删除文件
+				if (isOfficeFile)
+					serives.deleteOfficeFileName(path);
+				else
+					serives.deleteOfficeFileName(path);
+			}
+
+		} catch (WLTRemoteException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// 版本号链接操作
+	public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent event) {
+		// 取得当前选中的列billvo
+		if (event.getItemkey().equals("EDITON")) { // 如果点击的是父窗口的版本号
+			BillVO billvo = event.getBillListPanel().getSelectedBillVO();
+			BillListDialog dialog = new BillListDialog(childPanel, "查看版本状态", "LBS_STANDHISTFILE_CODE1", "FILEID='" + billvo.getStringValue("ID") + "'", 700, 600, false);
+			dialog.setLocation(250, 180);
+			dialog.getBilllistPanel().addBillListHtmlHrefListener(this); // 加入超链接监听状态
+			dialog.setVisible(true);
+		}
+		if (event.getItemkey().equals("TESTFILE")) { // 如果点击的是子窗口的合同正文
+			BillVO billvo = event.getBillListPanel().getSelectedBillVO();
+			// 弹出office窗口
+			String filename = billvo.getStringValue("TESTFILE");
+			BillOfficeDialog dialog = new BillOfficeDialog(event.getBillListPanel());
+			dialog.setTitle(new TBUtil().convertHexStringToStr(filename.substring(filename.lastIndexOf("_") + 1, filename.lastIndexOf("."))));
+			// 设置弹出的窗口显示
+			CommonHtmlOfficeConfig.OfficeConfig(filename, billvo, dialog);
+			dialog.setVisible(true);
+
+		}
+	}
+
+}

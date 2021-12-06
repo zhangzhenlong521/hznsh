@@ -1,0 +1,4503 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">1</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国人民代表大会</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--2-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">2</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国人大常委会</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--3-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">3</col>
+  <col name="CODE"></col>
+  <col name="NAME">最高人民法院</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--4-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">4</col>
+  <col name="CODE"></col>
+  <col name="NAME">最高人民检察院</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--5-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">5</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--6-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">6</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院各机构</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--7-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">7</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院办公厅</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--8-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">8</col>
+  <col name="CODE"></col>
+  <col name="NAME">各部</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--9-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">9</col>
+  <col name="CODE"></col>
+  <col name="NAME">外交部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--10-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">10</col>
+  <col name="CODE"></col>
+  <col name="NAME">国防部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--11-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">11</col>
+  <col name="CODE"></col>
+  <col name="NAME">教育部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--12-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">12</col>
+  <col name="CODE"></col>
+  <col name="NAME">科学技术部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--13-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">13</col>
+  <col name="CODE"></col>
+  <col name="NAME">公安部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--14-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">14</col>
+  <col name="CODE"></col>
+  <col name="NAME">安全部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--15-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">15</col>
+  <col name="CODE"></col>
+  <col name="NAME">监察部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--16-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">16</col>
+  <col name="CODE"></col>
+  <col name="NAME">民政部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--17-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">17</col>
+  <col name="CODE"></col>
+  <col name="NAME">司法部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--18-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">18</col>
+  <col name="CODE"></col>
+  <col name="NAME">财政部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--19-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">19</col>
+  <col name="CODE"></col>
+  <col name="NAME">人事部(已撤销)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--20-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">20</col>
+  <col name="CODE"></col>
+  <col name="NAME">劳动和社会保障部(含劳动部)(已撤销)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--21-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">21</col>
+  <col name="CODE"></col>
+  <col name="NAME">国土资源部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--22-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">22</col>
+  <col name="CODE"></col>
+  <col name="NAME">建设部(已撤销)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--23-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">23</col>
+  <col name="CODE"></col>
+  <col name="NAME">铁道部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--24-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">24</col>
+  <col name="CODE"></col>
+  <col name="NAME">交通部(已撤销)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--25-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">25</col>
+  <col name="CODE"></col>
+  <col name="NAME">信息产业部(含邮电部)(已撤销)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--26-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">26</col>
+  <col name="CODE"></col>
+  <col name="NAME">水利部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--27-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">27</col>
+  <col name="CODE"></col>
+  <col name="NAME">农业部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--28-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">28</col>
+  <col name="CODE"></col>
+  <col name="NAME">商务部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--29-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">29</col>
+  <col name="CODE"></col>
+  <col name="NAME">文化部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--30-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">30</col>
+  <col name="CODE"></col>
+  <col name="NAME">卫生部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--31-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">31</col>
+  <col name="CODE"></col>
+  <col name="NAME">地质矿产部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--32-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">32</col>
+  <col name="CODE"></col>
+  <col name="NAME">电力工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--33-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">33</col>
+  <col name="CODE"></col>
+  <col name="NAME">煤炭工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--34-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">34</col>
+  <col name="CODE"></col>
+  <col name="NAME">机械工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--35-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">35</col>
+  <col name="CODE"></col>
+  <col name="NAME">电子工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--36-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">36</col>
+  <col name="CODE"></col>
+  <col name="NAME">冶金工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--37-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">37</col>
+  <col name="CODE"></col>
+  <col name="NAME">化学工业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--38-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">38</col>
+  <col name="CODE"></col>
+  <col name="NAME">林业部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--39-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">39</col>
+  <col name="CODE"></col>
+  <col name="NAME">国内贸易部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--40-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">40</col>
+  <col name="CODE"></col>
+  <col name="NAME">对外贸易与经济合作部(含原对外经济贸易部)(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--41-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">41</col>
+  <col name="CODE"></col>
+  <col name="NAME">广播电影电视部(已变更)</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--42-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">42</col>
+  <col name="CODE"></col>
+  <col name="NAME">工业和信息化部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--43-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">43</col>
+  <col name="CODE"></col>
+  <col name="NAME">交通运输部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--44-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">44</col>
+  <col name="CODE"></col>
+  <col name="NAME">人力资源和社会保障部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--45-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">45</col>
+  <col name="CODE"></col>
+  <col name="NAME">环境保护部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--46-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">46</col>
+  <col name="CODE"></col>
+  <col name="NAME">住房和城乡建设部</col>
+  <col name="PARENTID">8</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--47-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">47</col>
+  <col name="CODE"></col>
+  <col name="NAME">各委</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--48-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">48</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家发展和改革委员会(含原国家发展计划委员会、原国家计划委员会)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--49-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">49</col>
+  <col name="CODE"></col>
+  <col name="NAME">国防科学技术工业委员会(已撤销)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--50-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">50</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家民族事务委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--51-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">51</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家人口和计划生育委员会(含国家计划生育委员会)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--52-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">52</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院国有资产监督管理委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--53-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">53</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国银行业监督管理委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--54-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">54</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国证券监督管理委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--55-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">55</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国保险监督管理委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--56-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">56</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家电力监管委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--57-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">57</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国社会保障基金理事会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--58-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">58</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家自然科学基金委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--59-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">59</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家科学技术委员会(已变更)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--60-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">60</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家经济贸易委员会(已变更)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--61-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">61</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家计划生育委员会(已更名)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--62-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">62</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家经济体制改革委员会(已变更)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--63-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">63</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家体育运动委员会(已变更)</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--64-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">64</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央国家机关爱国卫生运动委员会</col>
+  <col name="PARENTID">47</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--65-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">65</col>
+  <col name="CODE"></col>
+  <col name="NAME">各局</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--66-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">66</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家税务总局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--67-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">67</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家工商行政管理总局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--68-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">68</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家质量监督检验检疫总局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--69-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">69</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家环境保护总局(已撤销)</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--70-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">70</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国民用航空总局(已撤销)</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--71-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">71</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家广播电影电视总局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--72-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">72</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家体育总局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--73-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">73</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家统计局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--74-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">74</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家林业局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--75-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">75</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家食品药品监督管理局(原国家药品监督管理局)</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--76-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">76</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家安全生产监督管理总局(原国家安全生产监督管理局)</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--77-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">77</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家知识产权局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--78-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">78</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家旅游局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--79-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">79</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家宗教事务局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--80-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">80</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院机关事务管理局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--81-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">81</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家地震局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--82-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">82</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国气象局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--83-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">83</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家预防腐败局</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--84-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">84</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华人民共和国农业部渔业局(中华人民共和国渔政局)</col>
+  <col name="PARENTID">65</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--85-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">85</col>
+  <col name="CODE"></col>
+  <col name="NAME">各署</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--86-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">86</col>
+  <col name="CODE"></col>
+  <col name="NAME">审计署</col>
+  <col name="PARENTID">85</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--87-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">87</col>
+  <col name="CODE"></col>
+  <col name="NAME">海关总署</col>
+  <col name="PARENTID">85</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--88-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">88</col>
+  <col name="CODE"></col>
+  <col name="NAME">新闻出版总署(原新闻出版署)</col>
+  <col name="PARENTID">85</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--89-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">89</col>
+  <col name="CODE"></col>
+  <col name="NAME">各办</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--90-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">90</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院侨务办公室</col>
+  <col name="PARENTID">89</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--91-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">91</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院港澳事务办公室</col>
+  <col name="PARENTID">89</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--92-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">92</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院法制办公室(含国务院法制局)</col>
+  <col name="PARENTID">89</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--93-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">93</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院研究室</col>
+  <col name="PARENTID">89</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--94-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">94</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院参事室</col>
+  <col name="PARENTID">89</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--95-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">95</col>
+  <col name="CODE"></col>
+  <col name="NAME">各银行</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--96-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">96</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民银行</col>
+  <col name="PARENTID">95</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--97-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">97</col>
+  <col name="CODE"></col>
+  <col name="NAME">各院</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--98-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">98</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国科学院</col>
+  <col name="PARENTID">97</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--99-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">99</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国社会科学院</col>
+  <col name="PARENTID">97</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--100-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">100</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国工程院</col>
+  <col name="PARENTID">97</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--101-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">101</col>
+  <col name="CODE"></col>
+  <col name="NAME">各社</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--102-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">102</col>
+  <col name="CODE"></col>
+  <col name="NAME">新华通讯社</col>
+  <col name="PARENTID">101</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--103-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">103</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院议事协调机构和临时机构</col>
+  <col name="PARENTID">6</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--104-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">104</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院中央军委空中交通管制委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--105-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">105</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国爱国卫生运动委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--106-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">106</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国绿化委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--107-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">107</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院学位委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--108-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">108</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家防汛抗旱总指挥部</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--109-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">109</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院三峡工程建设委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--110-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">110</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院残疾人工作委员会(原国务院残疾人工作协调委员会)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--111-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">111</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院扶贫开发领导小组(含国务院贫困地区经济开发领导小组)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--112-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">112</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院关税税则委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--113-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">113</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院科技教育领导小组办公室</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--114-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">114</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家禁毒委</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--115-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">115</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国整顿和规范市场经济秩序领导小组办公室</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--116-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">116</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院信息化领导小组</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--117-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">117</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院行政审批制度改革工作领导小组</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--118-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">118</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院纠正行业不正之风办公室</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--119-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">119</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院清理整顿经济鉴证类社会中介机构领导小组(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--120-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">120</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院安全生产委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--121-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">121</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家无线电管理委员会(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--122-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">122</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院退伍军人和军队离休退休干部安置领导小组(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--123-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">123</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院证券委员会(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--124-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">124</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院住房制度改革领导小组(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--125-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">125</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国禁毒工作领导小组(已变更)</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--126-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">126</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院第二次全国土地调查领导小组</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--127-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">127</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家能源委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--128-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">128</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院抗震救灾总指挥部</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--129-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">129</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院第二次全国经济普查领导小组办公室</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--130-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">130</col>
+  <col name="CODE"></col>
+  <col name="NAME">三峡库区地质灾害防治工程指挥部</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--131-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">131</col>
+  <col name="CODE"></col>
+  <col name="NAME">反垄断委员会</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--132-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">132</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院三网融合工作协调小组办公室</col>
+  <col name="PARENTID">103</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--133-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">133</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央其他机构</col>
+  <col name="PARENTID">0</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--134-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">134</col>
+  <col name="CODE"></col>
+  <col name="NAME">党</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--135-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">135</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--136-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">136</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央办公厅</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--137-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">137</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央宣传部</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--138-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">138</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央组织部</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--139-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">139</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央统战部</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--140-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">140</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央纪律检查委员会</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--141-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">141</col>
+  <col name="CODE"></col>
+  <col name="NAME">中直机关事务管理局</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--142-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">142</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央政法委</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--143-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">143</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央精神文明建设指导委员会</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--144-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">144</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央机关住房制度改革办公室</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--145-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">145</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央文明办</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--146-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">146</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央企业工作委员会</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--147-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">147</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央档案馆</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--148-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">148</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央保健委员会</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--149-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">149</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央对外宣传办公室</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--150-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">150</col>
+  <col name="CODE"></col>
+  <col name="NAME">中共中央国家机关工作委员会</col>
+  <col name="PARENTID">134</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--151-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">151</col>
+  <col name="CODE"></col>
+  <col name="NAME">政</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--152-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">152</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央人民政府(已变更)</col>
+  <col name="PARENTID">151</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--153-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">153</col>
+  <col name="CODE"></col>
+  <col name="NAME">中南军政委员会(已撤销)</col>
+  <col name="PARENTID">152</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--154-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">154</col>
+  <col name="CODE"></col>
+  <col name="NAME">政务院(已变更)</col>
+  <col name="PARENTID">151</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--155-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">155</col>
+  <col name="CODE"></col>
+  <col name="NAME">政务院秘书厅(已变更)</col>
+  <col name="PARENTID">151</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--156-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">156</col>
+  <col name="CODE"></col>
+  <col name="NAME">政务院财经委员会(已变更)</col>
+  <col name="PARENTID">151</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--157-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">157</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民政治协商会议</col>
+  <col name="PARENTID">151</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--158-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">158</col>
+  <col name="CODE"></col>
+  <col name="NAME">军</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--159-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">159</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央军委</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--160-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">160</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民解放军总参谋部</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--161-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">161</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民解放军总后勤部</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--162-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">162</col>
+  <col name="CODE"></col>
+  <col name="NAME">军事法院</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--163-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">163</col>
+  <col name="CODE"></col>
+  <col name="NAME">军事检察院</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--164-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">164</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央军委纪律检查委员会</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--165-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">165</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民解放军总政治部</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--166-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">166</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民解放军总装备部</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--167-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">167</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民武装警察部队</col>
+  <col name="PARENTID">158</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--168-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">168</col>
+  <col name="CODE"></col>
+  <col name="NAME">工青妇</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--169-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">169</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国总工会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--170-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">170</col>
+  <col name="CODE"></col>
+  <col name="NAME">共青团中央</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--171-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">171</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国妇女联合会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--172-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">172</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国少先队全委会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--173-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">173</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国青年联合会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--174-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">174</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国学生联合会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--175-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">175</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家邮政工会</col>
+  <col name="PARENTID">168</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--176-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">176</col>
+  <col name="CODE"></col>
+  <col name="NAME">协会</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--177-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">177</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国科学技术协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--178-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">178</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国科普研究所</col>
+  <col name="PARENTID">177</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--179-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">179</col>
+  <col name="CODE"></col>
+  <col name="NAME">博士后科研流动站</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--180-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">180</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家科委自然科学奖励委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--181-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">181</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家科委发明评选委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--182-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">182</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国消费者协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--183-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">183</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国法学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--184-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">184</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国律师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--185-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">185</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国知识产权研究会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--186-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">186</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国个体劳动者协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--187-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">187</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国注册会计师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--188-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">188</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国公证协会(原中国公证员协会)</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--189-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">189</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国新闻工作者协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--190-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">190</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国资产评估协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--191-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">191</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国家具协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--192-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">192</col>
+  <col name="CODE"></col>
+  <col name="NAME">出口配额招标委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--193-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">193</col>
+  <col name="CODE"></col>
+  <col name="NAME">对外承包工程商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--194-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">194</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国建筑业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--195-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">195</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国连锁经营协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--196-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">196</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国证券业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--197-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">197</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华护理学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--198-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">198</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国消防协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--199-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">199</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家南极考查委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--200-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">200</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国出租汽车暨汽车租赁协会租赁工作委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--201-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">201</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国互联网协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--202-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">202</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国人民调节委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--203-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">203</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国机电产品进出口商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--204-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">204</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国计量协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--205-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">205</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国环境管理体系认证指导委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--206-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">206</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国有色金属工业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--207-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">207</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央金融工委</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--208-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">208</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国航海学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--209-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">209</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国教育工会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--210-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">210</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国社会福利有奖募捐委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--211-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">211</col>
+  <col name="CODE"></col>
+  <col name="NAME">电信行业管理委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--212-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">212</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国海员建设工会全国委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--213-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">213</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家留学基金管理委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--214-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">214</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国软件行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--215-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">215</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国工商业联合会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--216-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">216</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国旅游饭店业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--217-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">217</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国企业联合会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--218-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">218</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国企业家协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--219-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">219</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华慈善总会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--220-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">220</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国商业联合会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--221-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">221</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国国际商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--222-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">222</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国内部审计协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--223-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">223</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国煤炭机械工业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--224-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">224</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国社会工作者协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--225-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">225</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国人民调解员协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--226-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">226</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国地名学研究会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--227-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">227</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国期货业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--228-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">228</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国盲人聋哑人协会(含中国盲人福利会和中国聋哑人福利会)</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--229-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">229</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国煤炭工业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--230-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">230</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国煤炭建设协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--231-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">231</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国建设工程造价管理协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--232-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">232</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国交通建设监理协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--233-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">233</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国粮食行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--234-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">234</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国船东协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--235-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">235</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国对外贸易经济合作企业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--236-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">236</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国土地学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--237-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">237</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国外商投资企业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--238-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">238</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国城市环境卫生协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--239-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">239</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国测绘学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--240-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">240</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国警察协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--241-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">241</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国饲料工业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--242-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">242</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国水利工程协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--243-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">243</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国公路学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--244-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">244</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国煤炭经济研究会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--245-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">245</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国轻工工艺品进出口商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--246-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">246</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国房地产估价师学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--247-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">247</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国田径协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--248-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">248</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央企业青年联合会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--249-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">249</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国计划生育协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--250-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">250</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国审计学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--251-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">251</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国施工企业管理协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--252-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">252</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国专利代理人协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--253-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">253</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国纺织品进出口商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--254-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">254</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国环境保护产业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--255-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">255</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国食品土畜进出口商会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--256-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">256</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国植物油行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--257-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">257</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国注册税务师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--258-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">258</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国门球协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--259-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">259</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国继续教育协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--260-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">260</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国水利企业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--261-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">261</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国房地产及住宅研究会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--262-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">262</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国检察官协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--263-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">263</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国银行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--264-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">264</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国煤炭行业“653工程”办公室</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--265-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">265</col>
+  <col name="CODE"></col>
+  <col name="NAME">广州2010年亚洲残疾人运动会组织委员</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--266-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">266</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国土地估价师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--267-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">267</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国质量检验协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--268-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">268</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国农业机械学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--269-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">269</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国总会计师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--270-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">270</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国农药发展与应用协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--271-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">271</col>
+  <col name="CODE"></col>
+  <col name="NAME">海峡两岸关系协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--272-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">272</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国旅游协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--273-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">273</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国认证认可协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--274-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">274</col>
+  <col name="CODE"></col>
+  <col name="NAME">海峡两岸旅游交流协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--275-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">275</col>
+  <col name="CODE"></col>
+  <col name="NAME">海峡两岸经贸协调会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--276-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">276</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国足球协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--277-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">277</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国物业管理协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--278-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">278</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国机电商会仪器仪表分会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--279-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">279</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国农机鉴定检测协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--280-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">280</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国城市燃气协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--281-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">281</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国保险行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--282-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">282</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国公路建设行业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--283-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">283</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国残疾人体育协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--284-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">284</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国女企业家协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--285-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">285</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国电力建设企业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--286-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">286</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国土地评估师协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--287-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">287</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国林学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--288-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">288</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国银联</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--289-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">289</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国会计学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--290-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">290</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国卫生信息学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--291-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">291</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国广告协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--292-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">292</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国登山协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--293-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">293</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国城市科学研究会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--294-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">294</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华全国法制新闻协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--295-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">295</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国地理信息系统协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--296-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">296</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国老年人体育协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--297-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">297</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国财贸轻纺烟草工会全国委员会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--298-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">298</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国全球定位系统技术应用协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--299-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">299</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国合作贸易企业协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--300-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">300</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国质量协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--301-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">301</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人口文化促进会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--302-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">302</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国电影家协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--303-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">303</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国电视艺术家协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--304-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">304</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国广播电视协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--305-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">305</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国技术市场协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--306-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">306</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国统计学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--307-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">307</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国国债协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--308-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">308</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国农业机械化协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--309-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">309</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国银行间市场交易商协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--310-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">310</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国人民对外友好协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--311-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">311</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国扶贫开发协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--312-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">312</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国青年志愿者协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--313-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">313</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国职业安全健康协会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--314-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">314</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国煤炭学会</col>
+  <col name="PARENTID">176</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--315-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">315</col>
+  <col name="CODE"></col>
+  <col name="NAME">其他</col>
+  <col name="PARENTID">133</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--316-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">316</col>
+  <col name="CODE"></col>
+  <col name="NAME">各部(其他)</col>
+  <col name="PARENTID">315</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--317-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">317</col>
+  <col name="CODE"></col>
+  <col name="NAME">广播电视部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--318-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">318</col>
+  <col name="CODE"></col>
+  <col name="NAME">水产部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--319-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">319</col>
+  <col name="CODE"></col>
+  <col name="NAME">水利电力部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--320-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">320</col>
+  <col name="CODE"></col>
+  <col name="NAME">内务部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--321-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">321</col>
+  <col name="CODE"></col>
+  <col name="NAME">石油工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--322-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">322</col>
+  <col name="CODE"></col>
+  <col name="NAME">能源部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--323-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">323</col>
+  <col name="CODE"></col>
+  <col name="NAME">航空航天部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--324-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">324</col>
+  <col name="CODE"></col>
+  <col name="NAME">对外经济联络部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--325-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">325</col>
+  <col name="CODE"></col>
+  <col name="NAME">农牧渔业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--326-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">326</col>
+  <col name="CODE"></col>
+  <col name="NAME">农林部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--327-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">327</col>
+  <col name="CODE"></col>
+  <col name="NAME">农垦部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--328-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">328</col>
+  <col name="CODE"></col>
+  <col name="NAME">机械电子工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--329-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">329</col>
+  <col name="CODE"></col>
+  <col name="NAME">劳动人事部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--330-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">330</col>
+  <col name="CODE"></col>
+  <col name="NAME">城乡建设环境保护部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--331-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">331</col>
+  <col name="CODE"></col>
+  <col name="NAME">轻工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--332-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">332</col>
+  <col name="CODE"></col>
+  <col name="NAME">纺织工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--333-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">333</col>
+  <col name="CODE"></col>
+  <col name="NAME">粮食部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--334-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">334</col>
+  <col name="CODE"></col>
+  <col name="NAME">商业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--335-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">335</col>
+  <col name="CODE"></col>
+  <col name="NAME">物资部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--336-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">336</col>
+  <col name="CODE"></col>
+  <col name="NAME">航空工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--337-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">337</col>
+  <col name="CODE"></col>
+  <col name="NAME">第一机械工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--338-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">338</col>
+  <col name="CODE"></col>
+  <col name="NAME">第二机械工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--339-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">339</col>
+  <col name="CODE"></col>
+  <col name="NAME">核工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--340-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">340</col>
+  <col name="CODE"></col>
+  <col name="NAME">第六机械工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--341-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">341</col>
+  <col name="CODE"></col>
+  <col name="NAME">第三机械工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--342-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">342</col>
+  <col name="CODE"></col>
+  <col name="NAME">第四机械工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--343-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">343</col>
+  <col name="CODE"></col>
+  <col name="NAME">兵器工业部(已变更)</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--344-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">344</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家森林防火指挥部</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--345-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">345</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国防治高致病性禽流感指挥部</col>
+  <col name="PARENTID">316</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--346-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">346</col>
+  <col name="CODE"></col>
+  <col name="NAME">各委(其他)</col>
+  <col name="PARENTID">315</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--347-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">347</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家教育委员会(已更名)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--348-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">348</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家语言文字工作委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--349-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">349</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国职工教育管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--350-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">350</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国国际贸易促进委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--351-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">351</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国国际单位推行委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--352-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">352</col>
+  <col name="CODE"></col>
+  <col name="NAME">机械工业委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--353-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">353</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家经济委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--354-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">354</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家基本建设委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--355-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">355</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家进出口管理委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--356-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">356</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家建设委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--357-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">357</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家农业委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--358-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">358</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家编制委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--359-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">359</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家能源委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--360-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">360</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院水土保持委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--361-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">361</col>
+  <col name="CODE"></col>
+  <col name="NAME">专利代理人考核委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--362-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">362</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国微生物菌种保藏委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--363-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">363</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家人防委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--364-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">364</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院生产委员会(已变更)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--365-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">365</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国地名委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--366-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">366</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国专利基金委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--367-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">367</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国专业标准化技术委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--368-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">368</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央社会治安综合治理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--369-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">369</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院环保委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--370-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">370</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院统一着装管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--371-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">371</col>
+  <col name="CODE"></col>
+  <col name="NAME">出口配额指标委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--372-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">372</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国海事仲裁委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--373-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">373</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国博士后管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--374-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">374</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国注册建筑师管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--375-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">375</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国注册工程师管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--376-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">376</col>
+  <col name="CODE"></col>
+  <col name="NAME">矿产储备委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--377-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">377</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院区划委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--378-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">378</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家认证认可监督管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--379-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">379</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家标准化管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--380-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">380</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国少工委</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--381-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">381</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国安全生产月活动指导委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--382-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">382</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国职业安全健康管理体系认证机构认可委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--383-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">383</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国职业安全健康管理体系审核员注册委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--384-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">384</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国勘察设计注册工程师电气专业管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--385-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">385</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央转业建设委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--386-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">386</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央法制委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--387-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">387</col>
+  <col name="CODE"></col>
+  <col name="NAME">第29届奥林匹克运动会组织委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--388-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">388</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家药典委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--389-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">389</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国继续医学教育委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--390-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">390</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国烟草品种审定委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--391-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">391</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国老龄工作委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--392-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">392</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国认证机构国家认可委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--393-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">393</col>
+  <col name="CODE"></col>
+  <col name="NAME">信用体系专家评审委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--394-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">394</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院妇女儿童工作委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--395-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">395</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家中药品种保护审评委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--396-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">396</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国城市科学研究会电子技术应用专业委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--397-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">397</col>
+  <col name="CODE"></col>
+  <col name="NAME">第十届运动会筹备委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--398-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">398</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国勘察设计注册工程师环保专业管理委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--399-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">399</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家中药品种保护审评委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--400-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">400</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国饲料工业标准化技术委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--401-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">401</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国名牌战略推进委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--402-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">402</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家减灾委员会(原中国国际减灾委员会)</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--403-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">403</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家原子能机构</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--404-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">404</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国高等教育自学考试指导委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--405-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">405</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国生物制品标准化委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--406-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">406</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国合格评定国家认可委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--407-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">407</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国旅游景区质量等级评定委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--408-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">408</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国旅游星级饭店评定委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--409-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">409</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国执业兽医资格考试委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--410-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">410</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国信息安全标准化技术委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--411-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">411</col>
+  <col name="CODE"></col>
+  <col name="NAME">华夏建设科学技术奖励委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--412-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">412</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国联合国教科文组织全国委员会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--413-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">413</col>
+  <col name="CODE"></col>
+  <col name="NAME">第16届亚运会组委会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--414-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">414</col>
+  <col name="CODE"></col>
+  <col name="NAME">2010年“中国人保－全国防灾减灾知识大赛”组委会</col>
+  <col name="PARENTID">346</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--415-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">415</col>
+  <col name="CODE"></col>
+  <col name="NAME">各局(其他)</col>
+  <col name="PARENTID">315</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--416-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">416</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家物价局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--417-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">417</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家土地管理局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--418-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">418</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家档案局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--419-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">419</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家建筑材料工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--420-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">420</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家药品监督管理局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--421-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">421</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家中医药管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--422-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">422</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家外国专家局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--423-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">423</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家烟草专卖局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--424-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">424</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家国有资产管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--425-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">425</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家黄金管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--426-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">426</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家核安全局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--427-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">427</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家测绘局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--428-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">428</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家矿产储量管理局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--429-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">429</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家文物局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--430-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">430</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家保密局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--431-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">431</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家外汇管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--432-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">432</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家出入境检验检疫局(原商检局)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--433-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">433</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家粮食局(含国家粮食储备局)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--434-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">434</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家海洋局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--435-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">435</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家(质量)技术监督局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--436-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">436</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国专利局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--437-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">437</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家版权局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--438-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">438</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院科技干部局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--439-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">439</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家水产总局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--440-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">440</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家物资局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--441-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">441</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家标准局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--442-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">442</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家劳动总局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--443-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">443</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家城市建设总局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--444-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">444</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家计量局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--445-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">445</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家出版局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--446-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">446</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院出版事业管理局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--447-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">447</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家商标局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--448-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">448</col>
+  <col name="CODE"></col>
+  <col name="NAME">城市住宅局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--449-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">449</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家房管局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--450-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">450</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家国内贸易局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--451-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">451</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家煤炭工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--452-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">452</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家机械工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--453-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">453</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家石油和化学工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--454-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">454</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家轻工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--455-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">455</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家纺织工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--456-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">456</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家邮政局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--457-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">457</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家煤矿安全监察局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--458-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">458</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家人事局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--459-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">459</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华人民共和国海事局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--460-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">460</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家冶金工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--461-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">461</col>
+  <col name="CODE"></col>
+  <col name="NAME">渔政渔港监督管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--462-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">462</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国纤维检验局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--463-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">463</col>
+  <col name="CODE"></col>
+  <col name="NAME">渔业船舶检验局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--464-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">464</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家密码管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--465-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">465</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国地质调查局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--466-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">466</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家信访局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--467-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">467</col>
+  <col name="CODE"></col>
+  <col name="NAME">中华人民共和国港务监督局(已变更)</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--468-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">468</col>
+  <col name="CODE"></col>
+  <col name="NAME">金融系统监察局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--469-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">469</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家能源局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--470-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">470</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家国防科技工业局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--471-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">471</col>
+  <col name="CODE"></col>
+  <col name="NAME">中国民用航空局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--472-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">472</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家公务员局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--473-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">473</col>
+  <col name="CODE"></col>
+  <col name="NAME">卫生检疫总所</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--474-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">474</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家事业单位登记管理局</col>
+  <col name="PARENTID">415</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--475-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">475</col>
+  <col name="CODE"></col>
+  <col name="NAME">各办(其他)</col>
+  <col name="PARENTID">315</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--476-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">476</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院特区办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--477-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">477</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院台湾事务办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--478-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">478</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院新闻办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--479-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">479</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院机电产品出口办公室(已变更)</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--480-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">480</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国控制集团购买力办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--481-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">481</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院体制改革办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--482-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">482</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院经济贸易办公室(已变更)</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--483-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">483</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院生产办公室(已变更)</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--484-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">484</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院清产核资领导小组办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--485-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">485</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央对台工作领导小组办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--486-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">486</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国清理“三乱”领导小组办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--487-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">487</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央机构编制委员会办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--488-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">488</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院机电设备进口协调办公室(已变更)</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--489-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">489</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国普及法律常识办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--490-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">490</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院三线建设调整改造规划办公室(已变更)</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--491-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">491</col>
+  <col name="CODE"></col>
+  <col name="NAME">濒危物种进出口管理办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--492-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">492</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家农业综合开发办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--493-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">493</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家编码管理委员会办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--494-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">494</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院税收财务物价大检查办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--495-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">495</col>
+  <col name="CODE"></col>
+  <col name="NAME">中央国家机关住房制度改革办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--496-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">496</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家防总办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--497-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">497</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国土地资源调查办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--498-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">498</col>
+  <col name="CODE"></col>
+  <col name="NAME">国家人民防空办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--499-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">499</col>
+  <col name="CODE"></col>
+  <col name="NAME">全国银行卡办公室</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+<!--500-->
+<record tabname="bsd_lawissuecorp">
+  <col name="ID">500</col>
+  <col name="CODE"></col>
+  <col name="NAME">国务院减轻企业负担部际联席会议</col>
+  <col name="PARENTID">475</col>
+  <col name="SEQ"></col>
+</record>
+
+</root>

@@ -1,0 +1,105 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>新员工快速学习要点</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+.table {  border-collapse:   collapse; font-size: 12px; };
+.td    {  border:   solid   1px   #888888; font-size: 12px; };
+</style>
+</head>
+<body>
+
+<p class="p_text">
+新员工如何掌握平台相关技术的步骤大纲与路线图：<br>
+1.部署与访问机制 <br>
+2.远程访问与数据库操作<br>
+3.单据模板所有属性<br>
+4.三种组件与几种布局控件<br>
+5.工作流<br>
+6.报表<br>
+7.功能/数据权限<br>
+
+
+<br>
+下面分别介绍：<br>
+<span style="color:#FF0000;"><strong>■部署与访问机制</strong></span><br>
+&nbsp;●系统是智能客户端的三层结构,不是C/S架构<br><br>
+&nbsp;●客户端就是标准的JRE带一个wltappletviewer.jar(80K左右)<br><br>
+&nbsp;●按需按包下载UI类的机制与B/S发布机制一样,与WebStart也不一样<br><br>
+&nbsp;●客户端与服务器端通讯是Http协议传输Java序列化对象<br><br>
+&nbsp;●传输的对象是压缩与加密的<br><br>
+&nbsp;●服务器端下载的类是在Classpath中,而不是相对目录,使得搭建开发环境非常方便<br><br>
+&nbsp;●开发环境中访问方式是DebugApplet<br><br>
+&nbsp;●既可以桌面快捷访问,也可浏览器访问,浏览器的访问原理是在注册表是创建自定义协议访问本地命令<br><br>
+&nbsp;●首次访问时会根据Cookie判断是否安装了客户端,如果没有则自动提示安装,且只需安装一次<br><br>
+&nbsp;●客户端缓存目录是在%user.home%环境变量下<br><br>
+&nbsp;●唯一的配置文件是weblight.xml，在里面设置数据源,相关参数等<br><br>
+&nbsp;●集群原理是通过客户端第一次请求服务器，服务器计算出一个空闲机器的地址与端口返回,然后客户端就永远访问该实际地址<br><br>
+&nbsp;●之所以采用这种技术路线是基于多方面的综合考虑,尤其是这种架构开发效率很高,客户端逻辑更容易封装,控制与调试! 而很好的解决了传统Applet与WebStart的缺陷是实现这一切的前提!<br><br>
+
+
+<br><br>
+<span style="color:#FF0000;"><strong>■远程访问与数据库操作</strong></span><br>
+&nbsp;●创建一个接口及与之对应的实现类,就可进行远程访问了,与EJB几乎一样<br><br>
+&nbsp;●可以通过调用UIUtil.commMethod()直接调用服务器方法,而不必创建接口与类,但前提是入参与出参都必须是HashMap<br><br>
+&nbsp;●常用的数据库访问都提供了平台函数,主要是在UIUtil与CommDMO中<br><br>
+&nbsp;●最常用的数据传输对象叫HashVO,本质上就是个HashMap<br><br>
+&nbsp;●一次远程调用中的所有数据库请求是一个事务,一步报错则全部回滚!可以通过吃掉异常或者新开独立事务实现特殊需求处理<br><br>
+&nbsp;●UI/TO/BS分别表示客户端,传输对象,服务器端<br><br>
+&nbsp;●理论上UI端只做界面逻辑处理,业务逻辑都放在BS端,这样一是为了保证UI端下载代码量少一点,二是保证充分运用服务器的计算性能,三是代码更安全<br><br>
+&nbsp;●由于大量所谓业务逻辑就是通过SQL操作DB,为了省事,也可以在UI端直接进行数据库操作,但一定要控制代码量以及远程访问次数<br><br>
+&nbsp;●一个业务逻辑必须控制客户端请求服务器的次数以及入参与出参的数据量大小,而服务器端请求DB的次数也要尽可能的少,在保证每条SQL执行性能的前提下,不要超过10次!<br><br>
+
+
+<br><br>
+<span style="color:#FF0000;"><strong>■单据模板所有属性</strong></span><br>
+&nbsp;●单据模板是系统中最重要的配置内容,即系统所有界面都是通过模板配置出来的<br><br>
+&nbsp;●同一个单据模板可以创建卡片,列表,树,查询框,属性框共5种组件,这种架构设计显得极其简洁而实用!<br><br>
+&nbsp;●查询表,保存表,查询条件,预加载数据等模板主表属性介绍<br><br>
+&nbsp;●控件类型,控件说明,卡片/列表宽度,是否显示等所有模板子表属性介绍<br><br>
+&nbsp;●Itemkey与查询列自动匹配显示/保存数据的原理机制<br><br>
+&nbsp;●下拉框,各种参照定义的详细介绍<br><br>
+&nbsp;●加载公式与编辑公式原理介绍<br><br>
+
+
+<br><br>
+<span style="color:#FF0000;"><strong>■三种组件与几种布局控件</strong></span><br>
+&nbsp;●列表控件的重要功能,表头右键弹出菜单,常用API函数<br>
+&nbsp;&nbsp;&nbsp;双击表头排序,锁定前几列,隐藏显示列,拖动列宽与顺序,拖动行高,快速穿透,饼图,查看UI中数据,查看DB中数据,直接修改,直接删除等是必须讲到的<br>
+&nbsp;&nbsp;&nbsp;函数:QueryDataByCondition(),getSelectedRow(),getSelectedBillVO(),getBillListBtn(String _btnCode),addBillListSelectListener(),getValueAt(int _row, String _key)是必须讲的函数<br><br>
+&nbsp;●卡片控件的重要功能,常用API函数<br>
+&nbsp;&nbsp;&nbsp;函数:updateData(),getValueAt(String _itemKey),getRealValueAt(String _itemKey),getCompentByKey(String _itemKey),是必须讲到的<br><br>
+&nbsp;●列表数据库端分页机制介绍<br><br>
+&nbsp;●查询框中各条件的类型与机制介绍<br><br>
+&nbsp;●分割器WLTSplitPane,多页签WLTTabbedPane,这两个最主要容器组件的介绍<br><br>
+&nbsp;●FlowLayout,BorderLayout这两个布局类的介绍<br><br>
+
+
+<br><br>
+<span style="color:#FF0000;"><strong>■工作流</strong></span><br>
+&nbsp;●工作流的核心原理(单据绑定流程图)<br>
+&nbsp;●流程图绘制的重要原则与技巧<br>
+&nbsp;●流程参与者的原理介绍<br>
+&nbsp;●流程运行监控的介绍<br>
+&nbsp;●流程拦截器的介绍<br>
+&nbsp;●流程导出报表<br>
+
+
+<br><br>
+<span style="color:#FF0000;"><strong>■报表</strong></span><br>
+&nbsp;●常见报表类型(列表,图表,多维网络)<br>
+&nbsp;●多维报表如何做<br>
+
+<br><br>
+<span style="color:#FF0000;"><strong>■功能/数据权限</strong></span><br>
+&nbsp;●功能权限介绍(角色<->菜单,人员<->角色)<br>
+&nbsp;●数据权限的配置与使用<br>
+
+</p>
+</body>
+</html>
+
+
+
+

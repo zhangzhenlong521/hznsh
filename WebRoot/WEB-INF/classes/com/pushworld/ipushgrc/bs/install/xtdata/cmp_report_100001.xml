@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_report">
+  <col name="id">1</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype">一月报</col>
+  <col name="reportname">北京分行1月份合规报告</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rule_build">很好!</col>
+  <col name="rile_manager">正常!</col>
+  <col name="cmp_educ">进行了5次培训!</col>
+  <col name="cmp_check">进行了10次自我检查!</col>
+  <col name="cmp_riskeval">处理了!</col>
+  <col name="cmp_event">发生了7起违规事件!</col>
+  <col name="cmp_report">一切正常!</col>
+  <col name="cmp_unwashmoney"></col>
+  <col name="check_enforce"></col>
+  <col name="commu_monitor"></col>
+  <col name="commu_law"></col>
+  <col name="commu_track"></col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report1</col>
+  <col name="busitype">grc_cmp_report1</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_report">
+  <col name="id">21</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype">一月报</col>
+  <col name="reportname">上海分行1月分合规报告</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rule_build">很好!</col>
+  <col name="rile_manager">很好</col>
+  <col name="cmp_educ"></col>
+  <col name="cmp_check"></col>
+  <col name="cmp_riskeval"></col>
+  <col name="cmp_event"></col>
+  <col name="cmp_report"></col>
+  <col name="cmp_unwashmoney"></col>
+  <col name="check_enforce"></col>
+  <col name="commu_monitor"></col>
+  <col name="commu_law"></col>
+  <col name="commu_track"></col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report1</col>
+  <col name="busitype">grc_cmp_report1</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_report">
+  <col name="id">23</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype">二月报</col>
+  <col name="reportname">南京分行2月份合规报告！</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rule_build">ok</col>
+  <col name="rile_manager">good</col>
+  <col name="cmp_educ"></col>
+  <col name="cmp_check"></col>
+  <col name="cmp_riskeval"></col>
+  <col name="cmp_event"></col>
+  <col name="cmp_report"></col>
+  <col name="cmp_unwashmoney"></col>
+  <col name="check_enforce"></col>
+  <col name="commu_monitor"></col>
+  <col name="commu_law"></col>
+  <col name="commu_track"></col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report1</col>
+  <col name="busitype">grc_cmp_report1</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+</root>

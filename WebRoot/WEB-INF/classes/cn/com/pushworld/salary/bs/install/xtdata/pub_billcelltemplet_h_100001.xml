@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="id">21</col>
+  <col name="templetcode">XX商业银行员工考核表</col>
+  <col name="templetname">XX商业银行员工考核表(高管,中层)</col>
+  <col name="billno"></col>
+  <col name="rowlength">26</col>
+  <col name="collength">6</col>
+  <col name="seq"></col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="id">22</col>
+  <col name="templetcode">XX商业银行员工考核表(一般员工)</col>
+  <col name="templetname">XX商业银行员工考核表(一般员工)</col>
+  <col name="billno"></col>
+  <col name="rowlength">27</col>
+  <col name="collength">6</col>
+  <col name="seq"></col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="pub_billcelltemplet_h">
+  <col name="id">23</col>
+  <col name="templetcode">员工简历</col>
+  <col name="templetname">员工简历</col>
+  <col name="billno"></col>
+  <col name="rowlength">17</col>
+  <col name="collength">7</col>
+  <col name="seq"></col>
+  <col name="descr">用于导出员工简历word,在线直接查看个人履历。</col>
+</record>
+
+</root>

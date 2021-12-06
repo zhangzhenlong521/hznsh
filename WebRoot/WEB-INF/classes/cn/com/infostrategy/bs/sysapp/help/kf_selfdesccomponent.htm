@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<TITLE>自定义控件开发</TITLE>
+		<style type="text/css">
+.p_text {
+	font-size: 12px;
+}
+
+;
+.tabstyle {
+	border-collapse: collapse;
+	font-size: 12px;
+	border: 1px;
+}
+
+;
+.tdstyle {
+	border: solid 1px #888888;
+	font-size: 12px;
+}
+;
+</style>
+	</head>
+	<body>
+		<p class="p_text">
+		平台已经封装了很多控件,如参照、文本框、下拉框等等,但有时候这些控件不能满足我们的需求,这时我们<br>
+		就可以自己动手定义一个控件。<br>
+		在配置模板的时候我们选择控件类型为自定义控件,公式选择自定义控件我们发现。<br>
+		自定义控件公式:<br>
+		getCommUC("自定义控件","卡片中的类","","列表渲染器","","列表编辑器","");<br>
+		其中相应的空的引号中填写相应类的全路径类名。<br>
+		从公式我们可以知道自己写一个控件无非需要三个类,控件在卡片中如何显示的面板类,<br>
+		在列表中显示时需要渲染器与编辑器(大家可以查询一下Jtable的有关知识),<br>
+		<span style="color: red">渲染器与编辑器:</span><br>
+		由于目前我们的自定义控件是按StringItemVO来存取的,所以在列表是无特殊<br>
+		处理的渲染器与编辑器完全可以使用平台自己已经实现的,以下是目前常用的:<br>
+		目前只能使用具有一个Pub_Templet_1_ItemVO类型参数构造函数的相关渲染器与编辑器<br>
+		渲染器:ListCellRender_JTextArea(文本框样子支持自动换行)、ListCellRender_JLabel(标签样子,默认)、ListCellRender_Button(按钮样子) ...<br>
+		编辑器:ListCellEditor_TextArea、ListCellEditor_Button ...<br>
+		其中默认为ListCellRender_JLabel、ListCellEditor_TextField<br>
+		<br>
+		<span style="color: red">卡片中的类:</span><br>
+		卡片中的类需要继承AbstractWLTCompentPanel。<br>
+		提供有Pub_Templet_1_ItemVO.class, BillPanel.class两个类型参数的构造函数。<br>
+		实现public abstract String getItemKey()返回目前控件的key值。<br>
+		public abstract String getItemName();返回目前控件的name值。<br>
+		public abstract String getValue();返回当前控件实际值。<br>
+		public abstract Object getObject();返回当前控件实际VO<br>
+		public abstract void setValue(String _value);设置当前控件实际值<br>
+		public abstract void setObject(Object _obj);设置当前控件实际VO<br>
+		public abstract void reset();清空数据<br>
+		public abstract void setItemEditable(boolean _bo);设置是否可编辑<br>
+		public abstract void setItemVisiable(boolean _bo);设置是否可显示<br>
+		public abstract JLabel getLabel();得到当前控件标签<br>
+		public abstract void focus();取得焦点<br>
+		public abstract int getAllWidth();获取控件长度<br>
+		<span style="color: red">例子:</span><br>
+		<textarea cols="150" rows="35" style="color: blue">
+package ui;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import cn.com.infostrategy.to.mdata.Pub_Templet_1_ItemVO;
+import cn.com.infostrategy.to.mdata.StringItemVO;
+import cn.com.infostrategy.ui.mdata.BillPanel;
+import cn.com.infostrategy.ui.mdata.cardcomp.AbstractWLTCompentPanel;
+public class MySelfDesComponent extends AbstractWLTCompentPanel {
+	private Pub_Templet_1_ItemVO templetVO = null;
+	private JLabel jla = null;
+	private JList jli = null;
+	private String[] date = new String[] { "1", "2", "3" };
+
+	public MySelfDesComponent(Pub_Templet_1_ItemVO _templetVO, BillPanel bl) {
+		this.templetVO = _templetVO;
+		init();
+	}
+
+	public void init() {
+		this.setLayout(new BorderLayout());
+		jla = this.createLabel(templetVO, false);
+		jli = new JList(date);
+		jli.setPreferredSize(new Dimension(templetVO.getCardHeight().intValue(), 50));
+		this.add(jla, BorderLayout.WEST);
+		this.add(jli, BorderLayout.EAST);
+	}
+
+	public void focus() {
+	}
+
+	public int getAllWidth() {
+		return (int) (jla.getPreferredSize().getWidth() + jli.getPreferredSize().getWidth());
+	}
+
+	public String getItemKey() {
+		return templetVO.getItemkey();
+	}
+
+	public String getItemName() {
+		return templetVO.getItemname();
+	}
+
+	public JLabel getLabel() {
+		return jla;
+	}
+
+	public Object getObject() {
+		return new StringItemVO(getValue());
+	}
+
+	public String getValue() {
+		StringBuffer sb = new StringBuffer();
+		if (jli.getSelectedValues() != null && jli.getSelectedValues().length > 0) {
+			Object[] values = jli.getSelectedValues();
+			if (values != null) {
+				for (int i = 0; i < values.length; i++) {
+					sb.append(values[i] + ";");
+				}
+			}
+		}
+		return sb.toString();
+	}
+
+	public void reset() {
+		jli.clearSelection();
+	}
+
+	public void setItemEditable(boolean _bo) {
+		jli.setEnabled(_bo);
+	}
+
+	public void setItemVisiable(boolean _bo) {
+		jla.setVisible(_bo);
+		jli.setVisible(_bo);
+	}
+
+	public void setObject(Object _obj) {
+		setValue(_obj.toString());
+	}
+
+	public void setValue(String _value) {
+		int size = jli.getModel().getSize();
+		List<Integer> selectindex = new ArrayList<Integer>();
+		if (size > 0) {
+			for (int i = 0; i < size; i++) {
+				if (_value.indexOf(jli.getModel().getElementAt(i).toString()) >= 0) {
+					selectindex.add(i);
+				}
+			}
+			int[] a = new int[selectindex.size()];
+			for (int i = 0; i < a.length; i++) {
+				a[i] = selectindex.get(i).intValue();
+			}
+			jli.setSelectedIndices(a);
+		}
+	}
+
+}
+
+		</textarea>
+		<br>
+		<span style="color: red">
+		自定义控件公式为:<br>
+		getCommUC("自定义控件","卡片中的类","ui.MySelfDesComponent","列表渲染器","","列表编辑器","");<br>
+		</span><br>
+		</p>
+	</body>
+</html>

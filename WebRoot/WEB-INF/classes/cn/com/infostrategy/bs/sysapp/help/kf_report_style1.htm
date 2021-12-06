@@ -1,0 +1,158 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>风格报表1</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+ 
+<p class="p_text">
+风格报表1就是最简单的一种单列表报表! 主要需要定义三个东西：查询面板的编码,显示数据有单据模板,后台构造数据的类名！<br>
+感觉他与列表单据很像,但实际上区别是:<br>
+1.他后台计算逻辑不是简单的一条SQL搞定的!需要复杂的计算(比如多次循环组合),这是列表搞不定的!<br>
+2.列表可以分页,这里没有分页了,因为没法控制,不过以后可以考虑扩展分页功能。。<br>
+3.查询面板与单据面板是分开来的,不是一个,这样更灵活！！<br>
+
+<br><br>
+UI端必须继承于抽象类AbstractStyleReportPanel_1,BS端类必须继承于抽象类AbstractStyleReport_1_BuildDataAdapter,而且要将BS端的类名全路径注册在UI端类的getBSBuildDataClass()方法中,具体见下面Demo例子:<br>
+<br>
+下面我们写一个完整的例子,一共三个类!代码如下：<br>
+【UI端例子代码】<br>
+<textarea cols="150" rows="20" wrap="OFF" style="color:blue">
+package com.pushdemo.ui.p100;
+ 
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+ 
+/**
+ * 真正的加载面板!
+ * @author xch
+ *
+ */
+public class TestReport1WKPanel extends AbstractWorkPanel {
+ 
+  @Override
+  public void initialize() {
+    this.add(new TestStyle1ReportPanel()); //创建一个风格报表1面板,并加入!
+  }
+ 
+}
+</textarea>
+ 
+<br><br><br>
+【UI端真正风格报表面板代码】<br>
+<textarea cols="150" rows="75" wrap="OFF" style="color:blue">
+package com.pushdemo.ui.p100;
+ 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+ 
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.report.style1.AbstractStyleReportPanel_1;
+ 
+/**
+ * 风格报表1的例子!风格报表都是JPanel而不是AbstractWorkPanel,所以必须还要创建一个AbstractWorkPanel,然后将风格报表加入！
+ * 为什么要这么设计呢?因为经常遇到使用一个多页签,将多个风格报表装在一个页面上!
+ * @author xch
+ *
+ */
+public class TestStyle1ReportPanel extends AbstractStyleReportPanel_1 implements ActionListener {
+ 
+  private WLTButton btn_1 = null; // 
+ 
+  /**
+   * 重构父类初始化方法,在后面继续处理一些逻辑,一般是要加一些自定义按钮!
+   */
+  @Override
+  protected void initialize() {
+    super.initialize(); //这一行不行少,否则界面是空的,还报错!
+    getBillListPanel().setBillListBtnVisiable("文件查看", true); //将原来模板中的某个按钮放出来显示！默认原来模板中的所有按钮都隐藏的！
+    //为什么有时需要再见显示某个按钮呢?这是因为可以“借用”原来模板上某个按钮的逻辑,比如【体系文件Html浏览】如果原来模板中这个按钮逻辑已有了,则直接显出出来即可！但像编辑等按钮还是要去掉！
+    btn_1 = new WLTButton("我的浏览"); //新加一个自己定义按钮,报表与单据不一样的是,有时需要增加一些自定义按钮!进行关联查询等!
+    btn_1.addActionListener(this); //
+    getBillListPanel().addBatchBillListButton(new WLTButton[] { btn_1 }); //
+    getBillListPanel().repaintBillListButton(); //刷新所有按钮!
+  }
+ 
+  /**
+   * 查询面板!
+   */
+  @Override
+  public String getBillQueryTempletCode() {
+    return "WLTDUAL";
+  }
+ 
+  /**
+   * 数据查询出来后,用于显示的列表模板!
+   */
+  @Override
+  public String getBillListTempletCode() {
+    return "PUB_LOOKANDFEEL_CODE1";
+  }
+ 
+  @Override
+  /**
+   * 服务器端构造数据的类名!
+   */
+  public String getBSBuildDataClass() {
+    return "com.pushdemo.bs.p100.TestReport1DataBuilder"; //必须创建这样一个类,然后放在服务器BS端
+  }
+ 
+  /**
+   * 点击按钮执行
+   */
+  public void actionPerformed(ActionEvent e) {
+    BillVO billVO = getBillListPanel().getSelectedBillVO(); //
+    if (billVO == null) {
+      MessageBox.show(this, "请选择一条记录进行此操作!"); //
+      return; //
+    }
+ 
+    MessageBox.show(this, "选中的记录是[" + billVO.toString() + "],根据这条数据进行后续处理..."); //
+  }
+ 
+}
+</textarea>
+ 
+<br><br><br><br>
+【BS端代码】<br>
+<textarea cols="150" rows="30" wrap="OFF" style="color:blue">
+package com.pushdemo.bs.p100;
+
+import java.util.HashMap;
+
+import cn.com.infostrategy.bs.common.CommDMO;
+import cn.com.infostrategy.bs.report.style1.AbstractStyleReport_1_BuildDataAdapter;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.sysapp.login.CurrLoginUserVO;
+
+/**
+ * 风格报表1的构造数据,这里完全可以查询视图,然后进行复杂的逻辑处理,比如将时间字段折算成月份等!
+ * @author xch
+ */
+public class TestReport1DataBuilder extends AbstractStyleReport_1_BuildDataAdapter {
+
+	public HashVO[] buildDataByCondition(HashMap _conditionMap, CurrLoginUserVO _userVO) throws Exception {
+		String str_sql = (String) _conditionMap.get("$SQL"); //查询面板中直接算出来的SQL！ 需要使用字符串替换其中的字段名！
+		String str_sql_1 = (String) _conditionMap.get("$SQL_1"); //同上,但自动将查询面板中的数据权限也计算好了！
+		System.out.println("查询面板生成的SQL条件是【" + str_sql_1 + "】"); //
+		//String str_realSQL = TBUtil.getTBUtil().replaceAll(str_sql_1, "date", "createdate"); //将查询条件中的字段名替换成实际表中的字段名!
+
+		CommDMO dmo = new CommDMO(); //
+		HashVO[] hvs = dmo.getHashVoArrayByDS(null, "select * from pub_lookandfeel where 1=1 order by seq"); //这里应该将上面的SQL送进来!
+		return hvs;
+	}
+
+}
+</textarea>
+ 
+<br>
+</p>
+</body>
+</html>
+ 
+ 
+

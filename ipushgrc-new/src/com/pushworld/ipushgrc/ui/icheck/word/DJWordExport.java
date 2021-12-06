@@ -1,0 +1,65 @@
+package com.pushworld.ipushgrc.ui.icheck.word;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Map;
+
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
+/**
+ * 
+ * @author zzl
+ *  word 导出
+ */
+public class DJWordExport {
+
+	 private Configuration configure = null;
+     public DJWordExport(){
+            configure= new Configuration();
+            configure.setDefaultEncoding("utf-8");
+     }
+     /**
+      * 根据Doc模板生成word文件
+      * @param dataMap Map 需要填入模板的数据
+      * @param fileName 文件名称
+      * @param savePath 保存路径
+      */
+     public void createDoc(Map<Object, Object> dataMap, String downloadType, String savePath){
+            try{
+                   Template template  = null;
+                   //加载模板文件
+//                   String dirpath = System.getProperty("user.dir");
+                   String path=this.getClass().getResource("/").toString();
+                   path=path.replace("%20"," ");   
+                   path=path.substring(6,path.length()-1);
+                   path = path + "/WebRoot/applet";
+                   System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>"+path);
+                   configure.setDirectoryForTemplateLoading(new File(path));
+                   //设置对象包装器
+                   configure.setObjectWrapper(new DefaultObjectWrapper());
+                   //设置异常处理器
+                   configure.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
+                   //定义Template对象,注意模板类型名字与downloadType要一致
+                   template= configure.getTemplate(downloadType+".ftl");
+                   //输出文档
+                   File outFile = new File(savePath);
+                   Writer out = null;
+                   out= new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile),"utf-8"));                                   
+                   template.process(dataMap,out);
+                   outFile.delete();
+                   out.close();
+                   System.out.println(">>>>>>>>>>>>>>"+"导出成功");
+            }catch (Exception e) {
+                   e.printStackTrace();
+                   System.out.println("<<<<<<<<<<<<<<<<"+"导出失败");
+            }finally{
+            }
+     }
+
+	}  
+

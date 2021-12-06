@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 标准产品的 -->
+<root>
+	<!--qiaoyifeng-begain-->
+	<table name="cp_investigation_plan" pkname="id" descr="排查计划表" remark="排查计划表" >
+		<columns>
+		<col name="id"                    type="decimal"   length="27"    	descr="主键"/>
+	    <col name="channels"              type="varchar"   length="20"      descr="渠道"/>
+	    <col name="plannumber"            type="varchar"   length="30"      descr="计划编号"/>
+	    <col name="planname"              type="varchar"   length="100"    	descr="计划名称"/> 
+	    <col name="planstarttime"         type="varchar"   length="10"   	descr="计划开始时间"/>
+	    <col name="planendtime"           type="varchar"   length="10"   	descr="计划结束时间"/>
+	    <col name="plancontent"           type="varchar"   length="2000"   	descr="计划内容"/>
+	    <col name="businesstype"          type="varchar"   length="30"   	descr="业务类型"/>
+	    <col name="planapplypeople"       type="varchar"   length="200"   	descr="计划申请人"/>
+	    <col name="planapplydept"         type="varchar"   length="20"   	descr="计划申请机构"/>
+	    <col name="planapplydate"         type="varchar"   length="20"   	descr="计划申请日期"/>
+	    <col name="affix"                 type="varchar"   length="2000"   	descr="附件"/>
+	    <col name="state"                 type="varchar"   length="10"   	descr="状态"/>
+		</columns>
+      </table>
+      
+      <table name="cp_projectapproval_audit" pkname="id" descr="立项审查表" remark="立项审查表" >
+		<columns>
+		<col name="id"                       type="decimal"   length="27"    	descr="主键"/>
+	    <col name="channels"                 type="varchar"   length="20"       descr="渠道"/>
+	    <col name="projectapprovalnumber"    type="varchar"   length="30"       descr="立项编号"/>
+	    <col name="projectype"               type="varchar"   length="100"    	descr="项目类型"/> 
+	    <col name="schemeapplyforname"       type="varchar"   length="10"   	descr="排查立项名称"/>
+	    <col name="isplancontent"            type="varchar"   length="10"   	descr="是否为计划内项目"/>
+	    <col name="relevanceplannumber"      type="varchar"   length="2000"   	descr="关联计划"/>
+	    <col name="checkingprojectmatter"    type="varchar"   length="30"   	descr="排查项目内容"/>
+	    <col name="businesstype"             type="varchar"   length="200"   	descr="计划申请人"/>
+	    <col name="checkingway"              type="varchar"   length="20"   	descr="计划申请机构"/>
+	    <col name="assistance_dept"          type="varchar"   length="20"   	descr="计划申请日期"/>
+		</columns>
+      </table>
+	
+	<!--qiaoyifeng-end-->
+</root>

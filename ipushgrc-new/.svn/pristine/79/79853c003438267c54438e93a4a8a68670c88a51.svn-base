@@ -1,0 +1,366 @@
+package com.pushworld.ipushgrc.bs.score.p090;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Vector;
+import java.util.Map.Entry;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import cn.com.infostrategy.bs.common.CommDMO;
+import cn.com.infostrategy.bs.report.ReportDMO;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.TBUtil;
+import cn.com.infostrategy.to.mdata.BillCellItemVO;
+import cn.com.infostrategy.to.mdata.BillCellVO;
+import cn.com.infostrategy.to.mdata.RefItemVO;
+
+/**
+ * 单位违规积分统计。计算部门负责人得分
+ * @com.pushworld.ipushgrc.ui.score.p080.ScoreStatisWKPanel
+ * @author lcj&hm
+ *
+ */
+public class DeptScoreReportBuilderAdapter {
+	private CommDMO dmo = new CommDMO();
+
+	public BillCellVO buildReportData(HashMap condition) throws Exception {
+		//现有查询条件
+		String scoretypeid = (String) condition.get("SCORETYPEID");//违规类型
+		String riskrank = (String) condition.get("RISKRANK");//风险等级
+		String findrank = (String) condition.get("FINDRANK");//发现渠道
+
+		String deptid = (String) condition.get("DEPTID");//违规机构
+		String state = (String) condition.get("state");//状态
+		RefItemVO ref_effectdate = (RefItemVO) condition.get("obj_EFFECTDATE");//生效日期,日期类型比较特殊,需要取得参照对象值,然后替换其中的{itemkey}
+		String punishtype = (String) condition.get("punishtype");//惩罚类型
+
+		TBUtil tbutil = new TBUtil();
+		StringBuffer sb_sql = new StringBuffer(
+				"select t1.id,t1.HAPPENDATE 发生日期, t1.scoretype 违规类型,t1.findrank 发现渠道, t1.deptid,t1.effectdate 生效日期,t1.finalscore 扣分,t1.finalscore,t1.finalmoney 罚款,t1.state 状态,t1.punishtype 惩罚类型,t1.scorestandardid,t1.scorestandard2 违规行为内容,t1.username 人员  from v_score_user t1 left join pub_corp_dept t2 on t1.deptid = t2.id where 1=1");//这里查询所有的记录
+		String reporttype = (String) condition.get("reporttype");
+		HashVO punishvos[] = dmo.getHashVoArrayByDS(null, "select * from SCORE_PUNISH2 order by SCORE"); //得到所有惩罚标准
+		boolean all = true;
+		if (!(reporttype == null || reporttype.isEmpty() || "全部显示".equals(reporttype))) {
+			all = false;
+		}
+		if (scoretypeid != null && !"".equals(scoretypeid)) {
+			sb_sql.append(" and t1.scoretypeid in(" + tbutil.getInCondition(scoretypeid) + ") ");
+		}
+		if (riskrank != null && !"".equals(riskrank)) {
+			sb_sql.append(" and t1.riskrank in(" + tbutil.getInCondition(riskrank) + ")");
+		}
+		if (findrank != null && !"".equals(findrank)) {
+			sb_sql.append(" and t1.findrank in(" + tbutil.getInCondition(findrank) + ") ");
+		}
+		if (deptid != null && !"".equals(deptid)) {
+			sb_sql.append(" and t1.deptid in(" + tbutil.getInCondition(deptid) + ") ");
+		}
+		if (state != null && !"".equals(state)) {
+			sb_sql.append(" and t1.state in(" + tbutil.getInCondition(state) + ") ");
+		}
+		if (ref_effectdate != null) {//生效日期
+			String str_cons = ref_effectdate.getHashVO().getStringValue("querycondition"); //取得查询条件itemkey
+			str_cons = tbutil.replaceAll(str_cons, "{itemkey}", "t1.effectdate"); //替换其中的特殊符号!为实际字段名!
+			sb_sql.append(" and " + str_cons);
+		}
+		if (punishtype != null && !"".equals(punishtype)) {
+			sb_sql.append(" and t1.punishtype in(" + tbutil.getInCondition(punishtype) + ") ");
+		}
+
+		sb_sql.append(" order by  t2.linkcode,t1.effectdate desc");
+		HashVO[] vos = dmo.getHashVoArrayByDS(null, sb_sql.toString());
+		String fzrRoleNamesStr = (String) condition.get("单位负责人角色名称");
+		
+		StringBuffer str_sql = new StringBuffer("select t1.id,t1.name,t1.parentid,t1.corptype,t2.username from pub_corp_Dept t1 left join v_pub_user_post_1 t2 on t1.id = t2.deptid left join v_pub_user_role_1 t3 on t2.userid = t3.userid where 1=1"); //
+		if(!tbutil.isEmpty(fzrRoleNamesStr)){
+			str_sql.append(" and t3.rolecode in("+tbutil.getInCondition(fzrRoleNamesStr)+")");
+		}
+		HashVO[] userDept = dmo.getHashVoArrayByDS(null, "select distinct(userid) userid ,deptid from v_pub_user_post_1");
+		HashVO[] hvs = new CommDMO().getHashVoArrayByDS(null, str_sql.toString()); //
+		DefaultMutableTreeNode[] node_level_1 = new DefaultMutableTreeNode[hvs.length]; // 创建所有结点数组
+		HashMap<String, DefaultMutableTreeNode> map_parent = new HashMap(); //
+		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("根结点");
+		for (int i = 0; i < hvs.length; i++) {
+			node_level_1[i] = new DefaultMutableTreeNode(hvs[i]); // 创建各个结点
+			map_parent.put(hvs[i].getStringValue("id"), node_level_1[i]); //先在哈希表中注册好..
+			rootNode.add(node_level_1[i]); //
+		}
+		for (int i = 0; i < node_level_1.length; i++) {
+			HashVO hvo = (HashVO) node_level_1[i].getUserObject();
+			String pid = hvo.getStringValue("parentid");
+			if (map_parent.containsKey(pid)) {
+				DefaultMutableTreeNode node = map_parent.get(pid);
+				node.add(node_level_1[i]);
+			}
+		}
+		LinkedHashMap<String, List> last = new LinkedHashMap<String, List>();
+		for (int i = 0; i < vos.length; i++) {
+			String scoreDeptID = vos[i].getStringValue("deptid"); //违规部门
+			if (map_parent.containsKey(scoreDeptID)) {
+				DefaultMutableTreeNode node = map_parent.get(scoreDeptID);
+				HashVO deptvo = (HashVO) node.getUserObject(); //
+				HashVO dwvo = getDeptVO(node, new String[] { "支行", "分行", "总行部门" }); //单位
+				if (dwvo != null) {
+					if (last.containsKey(dwvo.getStringValue("id"))) {
+						List l = last.get(dwvo.getStringValue("id"));
+						l.add(vos[i]);
+					} else {
+						List l = new ArrayList();
+						l.add(vos[i]);
+						last.put(dwvo.getStringValue("id"), l);
+					}
+				} else {
+					String did = vos[i].getStringValue("deptid", "");
+					if (last.containsKey(did)) {
+						List l = last.get(did);
+						l.add(vos[i]);
+					} else {
+						List l = new ArrayList();
+						l.add(vos[i]);
+						last.put(did, l);
+					}
+				}
+			}
+		}
+		//遍历某个部门或者支行下的人员
+		HashMap<String, Integer> dept_usercount = new HashMap<String, Integer>();
+		for (int i = 0; i < userDept.length; i++) {
+			HashVO uservo = userDept[i]; //人员
+			String userid = uservo.getStringValue("userid");
+			String u_deptid = uservo.getStringValue("deptid");
+			DefaultMutableTreeNode node = map_parent.get(u_deptid);
+			if (node == null) {
+				continue;
+			}
+			HashVO deptvo = (HashVO) node.getUserObject(); //
+			HashVO dwvo = getDeptVO(node, new String[] { "支行", "分行", "总行部门" }); //单位
+			if (dwvo != null) {
+				String deptid_1 = dwvo.getStringValue("id");
+				if (dept_usercount.containsKey(deptid_1)) {
+					Integer num = dept_usercount.get(deptid_1);
+					num++;
+					dept_usercount.put(u_deptid, num);
+				} else {
+					Integer num = new Integer(1);
+					dept_usercount.put(deptid_1, num);
+				}
+			} else {
+				if (dept_usercount.containsKey(u_deptid)) {
+					Integer num = dept_usercount.get(u_deptid);
+					num++;
+					dept_usercount.put(u_deptid, num);
+				} else {
+					Integer num = new Integer(1);
+					dept_usercount.put(u_deptid, num);
+				}
+			}
+		}
+		Iterator it = (Iterator) last.entrySet().iterator();
+		List lastrtvo = new ArrayList<HashVO>();
+		List cellItemList = new ArrayList();
+		BillCellItemVO title_1 = new BillCellItemVO();
+		BillCellItemVO title_2 = new BillCellItemVO();
+		BillCellItemVO title_3 = new BillCellItemVO();
+		BillCellItemVO title_4 = new BillCellItemVO();
+		BillCellItemVO title_5 = new BillCellItemVO();
+		BillCellItemVO title_6 = new BillCellItemVO();
+		title_1.setColwidth("150");
+		title_4.setColwidth("300");
+		title_1.setCellvalue("违规单位");
+		title_2.setCellvalue("负责人");
+		title_3.setCellvalue("违规平均分");
+		title_4.setCellvalue("惩罚内容");
+		title_5.setCellvalue("总分");
+		title_6.setCellvalue("单位人数");
+
+		title_1.setBackground("153,214,212");
+		title_2.setBackground("153,214,212");
+		title_3.setBackground("153,214,212");
+		title_4.setBackground("153,214,212");
+		title_5.setBackground("153,214,212");
+		title_6.setBackground("153,214,212");
+
+		title_1.setIseditable("N");
+		title_2.setIseditable("N");
+		title_3.setIseditable("N");
+		title_4.setIseditable("N");
+		title_5.setIseditable("N");
+		title_6.setIseditable("N");
+		cellItemList.add(new BillCellItemVO[] { title_1, title_2, title_3, title_4, title_5, title_6 });
+		while (it.hasNext()) {
+			Entry entry = (Entry) it.next();
+			String scoredeptid = (String) entry.getKey();
+			HashVO deptvo = (HashVO) map_parent.get(scoredeptid).getUserObject();
+			List scores = (List) entry.getValue();
+			BillCellItemVO itemvo_1 = new BillCellItemVO();
+			BillCellItemVO itemvo_2 = new BillCellItemVO();
+			itemvo_1.setCellvalue(deptvo.getStringValue("name"));
+			itemvo_2.setCellvalue(deptvo.getStringValue("username"));
+			double score = 0d;
+			for (int i = 0; i < scores.size(); i++) {
+				HashVO hvo = (HashVO) scores.get(i);
+				score += hvo.getDoubleValue("finalscore", 0d);
+			}
+			BillCellItemVO itemvo_3 = new BillCellItemVO();
+			Integer deptusers = dept_usercount.get(scoredeptid);
+			BillCellItemVO itemvo_4 = new BillCellItemVO();
+			if (deptusers != null && deptusers > 0) {
+				double avg = new BigDecimal(score / deptusers).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				String punish = getPunishContent(avg, punishvos);
+				if ((punish == null || punish.equals("")) && !all) {
+					continue;
+				}
+				itemvo_3.setCellvalue(avg + "");
+				itemvo_4.setCellvalue(punish);
+			} else {
+				if (!all) {
+					continue;
+				}
+				itemvo_3.setCellvalue("-");
+			}
+			BillCellItemVO itemvo_5 = new BillCellItemVO();
+			BillCellItemVO itemvo_6 = new BillCellItemVO();
+			itemvo_5.setCellvalue(score + "");
+			itemvo_6.setCellvalue(deptusers + "");
+			itemvo_1.setIseditable("N");
+			itemvo_2.setIseditable("N");
+			itemvo_3.setIseditable("N");
+			itemvo_4.setIseditable("N");
+			itemvo_5.setIseditable("N");
+			itemvo_6.setIseditable("N");
+			cellItemList.add(new BillCellItemVO[] { itemvo_1, itemvo_2, itemvo_3, itemvo_4, itemvo_5, itemvo_6 });
+		}
+		BillCellVO cellvo = new BillCellVO();
+		cellvo.setCollength(6);
+		cellvo.setRowlength(cellItemList.size());
+		cellvo.setCellItemVOs((BillCellItemVO[][]) cellItemList.toArray(new BillCellItemVO[0][0]));
+		return cellvo;
+	}
+
+	private String getPunishContent(double _score, HashVO pu[]) {
+		for (int i = pu.length - 1; i >= 0; i--) {
+			double puscore = pu[i].getDoubleValue("SCORE");
+			if (_score >= puscore) {
+				return pu[i].getStringValue("punish");
+			}
+		}
+		return "";
+	}
+
+	private HashVO getDeptVO(DefaultMutableTreeNode _node, String[] _type) {
+		if (_node == null || _node.isRoot()) {
+			return null;
+		}
+		HashVO hvo = (HashVO) _node.getUserObject();
+		for (int i = 0; i < _type.length; i++) {
+			if (_type[i].equals(hvo.getStringValue("corptype"))) {
+				return hvo;
+			}
+		}
+		return getDeptVO((DefaultMutableTreeNode) _node.getParent(), _type);
+	}
+
+	//增加排序字段【李春娟/2013-05-16】
+	public HashMap getGroupFieldOrderConfig() {
+		HashMap map = new HashMap();
+		try {
+			CommDMO dmo = new CommDMO();
+			String[] riskrank = dmo.getStringArrayFirstColByDS(null, "select id from pub_comboboxdict where type='违规积分_风险等级'  order by seq");
+			String[] findrank = dmo.getStringArrayFirstColByDS(null, "select id from pub_comboboxdict where type='违规积分_发现渠道' order by seq");
+			String[] punishtype = dmo.getStringArrayFirstColByDS(null, "select '无惩罚' punish from wltdual union all select * from(select punish from SCORE_PUNISH order by score)");
+			map.put("风险等级", riskrank);
+			map.put("发现渠道", findrank);
+			map.put("惩罚类型", punishtype);
+			try {
+				String year = TBUtil.getTBUtil().getCurrDate().substring(0, 4);
+				List season = new ArrayList();
+				for (int i = Integer.parseInt(year); i >= 2012; i--) {
+					for (int j = 4; j > 0; j--) {
+						season.add(year + "年" + j + "季度");
+					}
+				}
+				map.put("生效日期", (String[]) season.toArray(new String[0]));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
+
+	public HashMap getDrilGroupBind() {
+		HashMap map = new HashMap(); //
+		map.put("违规机构(第1层)", "违规机构(第2层)"); //实现点击违规机构(第1层)即可弹出违规机构(第2层)的统计结果
+		return map;
+	}
+
+	public void leftJoin(HashVO[] _hvs, String _newItemName1, String _newItemName2, String _joinedFieldName) throws Exception {
+
+		String _sql = "select id,typename,parentid from SCORE_TYPE";
+		//		HashMap standMap = new CommDMO().getHashMapBySQLByDS(null, "select id,content from cmp_score_stand");
+		HashVO vos[] = new CommDMO().getHashVoArrayAsTreeStructByDS(null, _sql, "id", "parentid", "seq", "");
+
+		HashMap standMap = new HashMap(); //类型树 
+		for (int i = 0; i < vos.length; i++) {
+			standMap.put(vos[i].getStringValue("id"), vos[i]);
+		}
+		HashVO standard2[] = dmo.getHashVoArrayByDS(null, "select id,scoretype,point from SCORE_STANDARD2");
+		HashMap standMap_2 = new HashMap(); //真正的内容
+		for (int i = 0; i < standard2.length; i++) {
+			standMap_2.put(standard2[i].getStringValue("id"), standard2[i]);
+		}
+		ReportDMO dmo = new ReportDMO();
+		TBUtil tbUtil = new TBUtil();
+		for (int i = 0; i < _hvs.length; i++) {
+			String str_custids = _hvs[i].getStringValue(_joinedFieldName);
+			if (str_custids == null || str_custids.trim().equals("")) {
+				continue;
+			}
+			if (!standMap_2.containsKey(str_custids)) {
+				continue;
+			}
+			HashVO vo = (HashVO) standMap_2.get(str_custids);
+			String scoretype = vo.getStringValue("scoretype");
+			if (scoretype == null || scoretype.equals("")) {
+				continue;
+			}
+
+			Vector p_stand = new Vector();
+			if (scoretype != null && !scoretype.equals("")) {
+				if (standMap.containsKey(scoretype)) {
+					HashVO currStandVO = (HashVO) standMap.get(scoretype);
+					String pids = currStandVO.getStringValue("$parentpathids");
+					String parent_standid[] = tbUtil.split(pids, ";");
+					for (int j = 0; j < parent_standid.length; j++) {
+						if (parent_standid[j] != null && !parent_standid[j].equals("") && !parent_standid[j].equals(str_custids) && standMap.containsKey(parent_standid[j])) {
+							HashVO pvo = (HashVO) standMap.get(parent_standid[j]);
+							p_stand.add(pvo.getStringValue("typename"));
+						}
+					}
+				}
+			}
+			if (p_stand.size() == 1) {
+				_hvs[i].setAttributeValue(_newItemName1, p_stand.get(0)); //增加新列
+				_hvs[i].setAttributeValue(_newItemName2, "-"); //增加新列
+			} else if (p_stand.size() == 2) {
+				_hvs[i].setAttributeValue(_newItemName1, p_stand.get(0)); //增加新列
+				_hvs[i].setAttributeValue(_newItemName2, p_stand.get(1)); //增加新列
+			} else {
+				_hvs[i].setAttributeValue(_newItemName1, "-"); //增加新列
+				_hvs[i].setAttributeValue(_newItemName2, "-"); //增加新列
+			}
+			//			_hvs[i].setAttributeValue(_joinedFieldName, vo.getStringValue("point")); //增加新列
+		}
+	}
+
+	public String getDrillTempletCode() throws Exception {
+		return "SCORE_USER_LCJ_Q05";
+	}
+
+}

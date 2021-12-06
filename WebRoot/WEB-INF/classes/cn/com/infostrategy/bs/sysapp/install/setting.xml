@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root icon="icon.png" name="WebPush平台" code="FLAT" >
+	<install version="5.1" date="2013-05-01" sn="" >
+		<config 	type="templet" 	descr="模板"></config>
+		<config 	type="data" 	descr="初始数据,强大的xml分析执行工具，可直接插入数据、主子数据重新生成序列插入">
+			<datafile type="oldid">./xtdata/_filelist.ini</datafile>
+			<datafile type="newid">./xtdata2/
+			</datafile>
+		</config>
+		<config 	type="classpath">  </config>
+	</install>
+
+	<updates>
+		<update descr="填写升级描述" version="5.2">
+			<config type="data">../路径 record,sql</config>
+			<config type="classpath">../路径</config>
+		</update>
+	</updates>
+	
+	<license>欢迎使用WebPush开发平台！
+	您确定要安装吗？
+	</license>
+</root>

@@ -1,0 +1,29 @@
+package com.pushworld.ipushgrc.ui.rule.p010;
+
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefEvent;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefListener;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillPanel;
+import cn.com.infostrategy.ui.mdata.cardcomp.ChildTableCommUIIntercept;
+
+import com.pushworld.ipushgrc.ui.law.LawShowHtmlDialog;
+
+public class ImportChildTableIntercept implements ChildTableCommUIIntercept,BillListHtmlHrefListener {
+	BillListPanel listP = null;
+	public void afterInitialize(BillPanel _panel) throws Exception {
+		if(_panel instanceof BillListPanel){
+			listP = (BillListPanel) _panel;
+			listP.addBillListHtmlHrefListener(this);
+		}
+	}
+
+	public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+		if(_event.getItemkey().equalsIgnoreCase("lawname")){
+				LawShowHtmlDialog dialog = new LawShowHtmlDialog(listP);
+		}else if(_event.getItemkey().equalsIgnoreCase("rulename")){
+			RuleShowHtmlDialog dialog = new RuleShowHtmlDialog(listP);
+		}
+		
+	}
+
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_report2">
+  <col name="id">1</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype"></col>
+  <col name="reportname">北京分行发生重大信息安全事件</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rebdate">2012-02-01</col>
+  <col name="reedate">2012-02-29</col>
+  <col name="retype">重大</col>
+  <col name="redetail">信息系统帐号不知为什么泄露出去了!</col>
+  <col name="suggest">必须加强管理!!</col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report2</col>
+  <col name="busitype">grc_cmp_report2</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_report2">
+  <col name="id">3</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype"></col>
+  <col name="reportname">南京分行发生一起200万的骗贷事件</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rebdate">2012-01-24</col>
+  <col name="reedate">2012-02-29</col>
+  <col name="retype">重大</col>
+  <col name="redetail">被XX客户以虚假资料骗贷200万!!</col>
+  <col name="suggest"></col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report2</col>
+  <col name="busitype">grc_cmp_report2</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_report2">
+  <col name="id">5</col>
+  <col name="reportyear">2012</col>
+  <col name="reporttype"></col>
+  <col name="reportname">总行计财部发生违规报销</col>
+  <col name="reportdate">2012-02-24</col>
+  <col name="reportcorp">2</col>
+  <col name="rebdate">2011-11-24</col>
+  <col name="reedate">2012-02-29</col>
+  <col name="retype">重大</col>
+  <col name="redetail">有个员工拿假发票报销,结果被抓！</col>
+  <col name="suggest">告诫这种员工不要干这种抱侥幸心理,干这种事!!!</col>
+  <col name="attachfile"></col>
+  <col name="billtype">grc_cmp_report2</col>
+  <col name="busitype">grc_cmp_report2</col>
+  <col name="wfprinstanceid"></col>
+  <col name="create_userid">1</col>
+  <col name="state">新建</col>
+</record>
+
+</root>

@@ -1,0 +1,126 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>树型面板监听事件与函数</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+
+<p class="p_text">
+树形面板即树形控件是一种常用的界面控件!<br>
+
+一般用树形展现的数据都具有父子关系<br>
+最典型的就是机构树，下面我们就来构建一个简单的机构树。<br>
+【建表的SQL】<br>
+<textarea cols="150" rows="13" wrap="OFF" style="color:blue">
+/**为了可快速重建表,先drop一下*/
+drop   table demo_corp;
+
+/**一个简单的机构表,这是Oracle语法,如果是其他数据库则稍微修改一下*/
+create table demo_corp(
+id        number(21) primary key,      /**主键*/
+code      varchar2(30),  /**编码*/
+name      varchar2(30),  /**名称*/
+seq       varchar2(30),  /**排序*/
+parentid  number(21)      /**父机构id*/
+);
+</textarea>
+
+<br>
+使用数据库工具执行上面SQL,建立表后,则建立模板,步骤如下:<br>
+1.进入功能点【平台配置 -> 模板配置 -> 单据模板】，点击【导入】按钮,在弹出的窗口中点击【选择表】按钮,在弹出的窗口中输入条件"demo_corp",选择过滤的记录返回!<br>
+2.根据提示,点击【确认】,模板编码就使用默认的“DEMO_CORP_CODE1”<br>
+3.回到主界面中,选择模板记录,点击【开发配置】按钮,进入配置界面,进行具体配置,这个配置也可以在先创建树形面板,然后选中根结点右键在弹出菜单选择模板编辑中配置!<br>
+4.写一个UI端代码,使用模板编码DEMO_CORP_CODE1创建一个树面板!代码如下：<br>
+
+【UI端例子代码】<br>
+<textarea cols="150" rows="15" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.mdata.BillTreePanel;
+public class TestBillTreeWKPanel extends AbstractWorkPanel {
+  private BillTreePanel bt = null;
+  public void initialize() {
+    bt = new BillTreePanel("DEMO_CORP_CODE1");
+    bt.queryDataByCondition(" 1=1 ");
+    this.add(bt);
+  }
+}
+</textarea>
+<br><br>
+写好这个类,编译后,创建一个功能点,配置成“自定义WorkpPanel”,类名就是这个类,双击菜单!就会看到该树形对象!<br>
+选中根结点右键,弹出菜单中选择【模板编辑】,进行以下配置:<br>
+在弹出编辑界面找到树形参数,有些参数解释一下:<br>
+树面板主键即主键;<br>
+树面板父亲主键即父亲ID;<br>
+树面板显示列即显示那一列;<br>
+树面板排序列即在同一个父亲节点下的子节点的排序;<br>
+树形按钮即可以在树面板上添加按钮;点开选择框->参照选择添加按钮类型为树型新增、树型编辑、树型删除、树型查看的按钮，如果没有可以新增为这些类型的按钮再添加。<br>
+由此一个最基本的树面板就出来了!并可以新增,修改,删除,查看数据了!<br>
+<br>
+<br>
+树面板还有许多监听事件,比如：<span style="color:red">选择事件、移动节点事件、弹出右键前事件、当是勾选框的树型时,点击勾选框触发的事件!下面就是这些监听事件的简单例子:</span><br>
+<textarea cols="150" rows="60" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillTreeCheckEditEvent;
+import cn.com.infostrategy.ui.mdata.BillTreeCheckEditListener;
+import cn.com.infostrategy.ui.mdata.BillTreeMoveEvent;
+import cn.com.infostrategy.ui.mdata.BillTreeMoveListener;
+import cn.com.infostrategy.ui.mdata.BillTreePanel;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectListener;
+import cn.com.infostrategy.ui.mdata.BillTreeSelectionEvent;
+
+public class TestBillTreeWKPanel extends AbstractWorkPanel implements BillTreeSelectListener, BillTreeMoveListener, 
+ActionListener, BillTreeCheckEditListener {
+	private BillTreePanel bt = null;
+	private BillListPanel bl = null;
+
+	public void initialize() {
+		bt = new BillTreePanel("DEMO_CORP_CODE1");
+		bl = new BillListPanel("DEMO_CORP_CODE1");
+		bt.queryDataByCondition(" 1=1 ");
+		bt.addBillTreeSelectListener(this);
+		bt.addBillTreeMovedListener(this);//需要在模板编辑时勾选是否显示工具条,工具条上有移动按钮
+		bt.addBillTreeBeforePopMenuActionListener(this);
+		bt.addBillTreeCheckEditListener(this);//需要在模板编辑的时候勾选是否是勾选框
+		WLTSplitPane wsp = new WLTSplitPane(WLTSplitPane.HORIZONTAL_SPLIT, bt, bl);
+		this.add(wsp);
+	}
+
+	public void onBillTreeSelectChanged(BillTreeSelectionEvent _event) {
+		if(_event.getCurrSelectedNode().isRoot()) {
+			bl.QueryDataByCondition(" parentid is null ");
+		}else {
+			bl.QueryDataByCondition(" parentid = " + _event.getCurrSelectedVO().getPkValue());
+		}
+	}
+
+	public void onBillTreeNodeMoved(BillTreeMoveEvent _event) {
+		MessageBox.show(this, "移动了[" + _event.getMovedBillVO().getRealValue("name") + "]");
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		MessageBox.show(this, "右键弹出前!");
+	}
+
+	public void onBillTreeCheckEditChanged(BillTreeCheckEditEvent _event) {
+		MessageBox.show(this, "节点[" + _event.getEditNode().getUserObject().toString() + "]" 
+		+ (_event.isChecked()? "选中了!" : "取消选中了!"));
+	}
+}
+</textarea>
+<br><br><br>
+</p>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <menu  name="违规积分new.基础信息.风险等级定义"  command="com.pushworld.ipushgrc.ui.score.p010.RiskRankEditWKPanel"  icon="[187.png][office_024.gif][office_024.gif]"  /> 
+ <menu  name="违规积分new.基础信息.发现渠道定义"  command="com.pushworld.ipushgrc.ui.score.p010.FindRankEditWKPanel"  icon="[187.png][office_024.gif][office_024.gif]"  /> 
+ <menu  name="违规积分new.基础信息.积分标准定义"  command="com.pushworld.ipushgrc.ui.score.p010.StandardEditWKPanel"  icon="[187.png][office_024.gif][office_024.gif]"  /> 
+ <menu  name="违规积分new.基础信息.积分惩罚定义"  command="com.pushworld.ipushgrc.ui.score.p010.PunishEditWKPanel"  icon="[187.png][office_024.gif][office_024.gif]"  /> 
+ <menu  name="违规积分new.基础信息.通知书模板定义"  command="com.pushworld.ipushgrc.ui.score.p010.TempletEditWKPanel"  icon="[187.png][office_024.gif][office_024.gif]"  /> 
+ <menu  name="违规积分new.违规积分登记"  command="com.pushworld.ipushgrc.ui.score.p020.RegisterEditWKPanel"  icon="[187.png][zt_057.gif]"  /> 
+ <menu  name="违规积分new.违规惩罚跟踪"  command="com.pushworld.ipushgrc.ui.score.p030.DealPunishWKPanel"  descr=""  icon="[187.png][office_066.gif]"  /> 
+ <menu  name="违规积分new.积分减免申请"  command="com.pushworld.ipushgrc.ui.score.p050.ReduceApplyEditWKPanel"  icon="[187.png][delete.gif]"  /> 
+ <menu  name="违规积分new.我的积分"  command="com.pushworld.ipushgrc.ui.score.p060.MyScoreLookWKPanel"  icon="[187.png][office_176.gif]"  /> 
+ <menu  name="违规积分new.单位积分查询"  command="com.pushworld.ipushgrc.ui.score.p070.QueryScoreWKPanel"  icon="[187.png][office_080.gif]"  /> 
+ <menu  name="违规积分new.积分统计"  command="com.pushworld.ipushgrc.ui.score.p080.ScoreStatisWKPanel"  descr=""  icon="[187.png][zt_048.gif]"  /> 	
+</root>
+

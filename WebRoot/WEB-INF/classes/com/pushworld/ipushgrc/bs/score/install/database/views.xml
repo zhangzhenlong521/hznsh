@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 产品用到的所有视图，在创建视图时，如果数据源是sqlserver，以前的语句 create or replace 会报错，所以改为了create-->
+<root>
+	
+	<!-- ********************************李春娟 违规积分模块（新）**********************************************  -->
+	<view name="v_score_risk_find" descr="积分标准定义视图">
+       <sql>
+	       create or replace view v_score_risk_find as 
+	       select t1.id as riskrank,
+	              t2.id as findrank 
+	       from PUB_COMBOBOXDICT t1,PUB_COMBOBOXDICT t2 
+	       where t1.type='违规积分_风险等级' and t2.type='违规积分_发现渠道';
+        </sql>
+    </view>
+    
+    <view name="v_score_risk_find_score" descr="可选的积分标准定义视图">
+       <sql>
+            create  or replace view v_score_risk_find_score as 
+            select  t2.id,
+                    t1.riskrank,
+                    t1.findrank,
+                    t2.score,
+                    t2.remark 
+            from score_standard t2 
+            left join v_score_risk_find t1 
+            on t1.RISKRANK=t2.RISKRANK and t1.FINDRANK=t2.FINDRANK 
+            where t2.score is not null;
+       </sql>
+    </view>
+
+    <view name="v_score_user" descr="人员违规积分视图">
+       <sql>
+             create  or replace view v_score_user as 
+            Select  t2.remark,
+                    t2.happendate,
+                    t2.finddate,
+                    t2.scoretypeid,
+                    t2.scoretype as hm_scoretype,
+                    t2.scorestandardid,
+                    t2.scorestandard2,
+                    t2.standardscore,
+                    t2.riskrank,
+                    t2.findrank,
+                    t2.referscore,
+                    t2.attachfile,
+                    t2.checkusers,
+                    t2.checkdept,
+                    t2.state as publishstate,
+                    t2.createdept,
+                    t2.creator,
+                    t2.createdate,
+                    t2.publishdate, 
+                    t3.name username,
+                    t1.* 
+           from score_user t1 
+           left join score_register t2 
+           on t1.registerid=t2.id 
+           left join pub_user t3 on t1.userid = t3.id;
+       </sql>
+    </view>
+    
+</root>
+

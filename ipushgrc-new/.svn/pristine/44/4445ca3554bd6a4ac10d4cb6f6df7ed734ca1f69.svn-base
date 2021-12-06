@@ -1,0 +1,1708 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">1</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">378</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到申请作
+出初步审查</col>
+  <col name="law_id">-17112</col>
+  <col name="law_name"> 放射性废物安全管理条例</col>
+  <col name="lawitem_id">-175137</col>
+  <col name="lawitem_title">第一条</col>
+  <col name="lawitem_content">为了加强对放射性废物的安全管理，保护环境，保障人体健康，根据《中华人民共和国放射性污染防治法》，制定本条例。</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">2</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">378</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到申请作
+出初步审查</col>
+  <col name="law_id">-16910</col>
+  <col name="law_name">中国保险监督管理委员会办公厅关于进一步做好保险业治理“小金库”工作的通知 </col>
+  <col name="lawitem_id">-170695</col>
+  <col name="lawitem_title">三、</col>
+  <col name="lawitem_content">各保监局根据2009年至今三年以来的日常监管工作情况，填报《日常监督发现“小金库”问题统计表》（保监发〔2011〕15号附件7）。</col>
+</record>
+
+<!--3-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">3</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">409</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">经过审查,
+收到放款通
+知书</col>
+  <col name="law_id">-17115</col>
+  <col name="law_name"> 中国人民银行、公安部、工商总局、银监会、证监会关于加强黄金交易所或从事黄金交易平台管理的通知</col>
+  <col name="lawitem_id">-175237</col>
+  <col name="lawitem_title">一</col>
+  <col name="lawitem_content">上海黄金交易所和上海期货交易所是经国务院批准或同意的开展黄金交易的交易所，两家交易所已能满足国内投资者的黄金现货或期货投资需求。任何地方、机构或个人均不得设立黄金交易所（交易中心），也不得在其他交易场所（交易中心）内设立黄金交易平台。</col>
+</record>
+
+<!--4-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">4</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">409</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">经过审查,
+收到放款通
+知书</col>
+  <col name="law_id">-17115</col>
+  <col name="law_name"> 中国人民银行、公安部、工商总局、银监会、证监会关于加强黄金交易所或从事黄金交易平台管理的通知</col>
+  <col name="lawitem_id">-175238</col>
+  <col name="lawitem_title">二</col>
+  <col name="lawitem_content">除上海黄金交易所和上海期货交易所外，对于有关地方（机构、个人）正在筹建黄金交易所（交易中心）或准备在其他交易场所（交易中心）内设立黄金交易平台应一律终止相关设立活动；对已经开业或开展业务的，要立即停止开办新的业务，并在当地人民政府统一领导下，由人民银行牵头，妥善做好其黄金业务的善后清理工作。当地工商部门根据人民银行或地方人民政府的决定，对被责令关闭或撤销的黄金交易所（交易中心），责令限期办理变更登记、注销登记，或者依法吊销营业执照；银行业金融机构停止为其黄金业务提供开户、托管、资金划汇、代理买卖、投资咨询等中介服务；对于涉嫌犯罪需要作出行政认定的，人民银行及其当地分支机构依照相关规定出具行政认定意见后，移送当地公安机关依法查处。</col>
+</record>
+
+<!--5-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">8</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">409</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">经过审查,
+收到放款通
+知书</col>
+  <col name="law_id">-16908</col>
+  <col name="law_name">公司债权转股权登记管理办法 </col>
+  <col name="lawitem_id">-170674</col>
+  <col name="lawitem_title">第七条</col>
+  <col name="lawitem_content">用以转为股权的债权，应当经依法设立的资产评估机构评估。
+
+债权转股权的作价出资金额不得高于该债权的评估值。</col>
+</record>
+
+<!--6-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">11</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">646</col>
+  <col name="wfactivity_code">WFA9</col>
+  <col name="wfactivity_name">审核资料的完整性、手续是否完备</col>
+  <col name="law_id">-17116</col>
+  <col name="law_name"> 财政部、工业和信息化部关于印发《政府采购促进中小企业发展暂行办法》的通知</col>
+  <col name="lawitem_id">-175243</col>
+  <col name="lawitem_title">第二条</col>
+  <col name="lawitem_content">本办法所称中小企业（含中型、小型、微型企业，下同）应当同时符合以下条件：
+
+（一）符合中小企业划分标准；
+
+（二）提供本企业制造的货物、承担的工程或者服务，或者提供其他中小企业制造的货物。本项所称货物不包括使用大型企业注册商标的货物。
+
+本办法所称中小企业划分标准，是指国务院有关部门根据企业从业人员、营业收入、资产总额等指标制定的中小企业划型标准。
+
+小型、微型企业提供中型企业制造的货物的，视同为中型企业。</col>
+</record>
+
+<!--7-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">12</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">646</col>
+  <col name="wfactivity_code">WFA9</col>
+  <col name="wfactivity_name">审核资料的完整性、手续是否完备</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175336</col>
+  <col name="lawitem_title">第八条</col>
+  <col name="lawitem_content">发生劳动争议，一方当事人可以通过与另一方当事人约见、面谈等方式协商解决。</col>
+</record>
+
+<!--8-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">13</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">646</col>
+  <col name="wfactivity_code">WFA9</col>
+  <col name="wfactivity_name">审核资料的完整性、手续是否完备</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175337</col>
+  <col name="lawitem_title">第九条</col>
+  <col name="lawitem_content">劳动者可以要求所在企业工会参与或者协助其与企业进行协商。工会也可以主动参与劳动争议的协商处理，维护劳动者合法权益。
+
+劳动者可以委托其他组织或者个人作为其代表进行协商。</col>
+</record>
+
+<!--9-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">21</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">602</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">扩大检查/稽核范围和内容</col>
+  <col name="law_id">-15977</col>
+  <col name="law_name">证券投资基金销售管理办法  （2011修订）</col>
+  <col name="lawitem_id">-149305</col>
+  <col name="lawitem_title">第二条</col>
+  <col name="lawitem_content">本办法所称证券投资基金（以下简称基金）销售，包括基金销售机构宣传推介基金，发售基金份额，办理基金份额申购、赎回等活动。
+基金销售机构是指基金管理人以及经中国证券监督管理委员会（以下简称中国证监会）认定的其他机构。
+基金销售相关机构就其参与基金销售业务的环节适用本办法。基金销售相关机构包括为基金销售机构提供支付结算服务、基金销售结算资金监督、注册登记服务等与基金销售业务相关服务的机构。</col>
+</record>
+
+<!--10-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">22</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">602</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">扩大检查/稽核范围和内容</col>
+  <col name="law_id">-16906</col>
+  <col name="law_name">深圳证券交易所融资融券交易实施细则 </col>
+  <col name="lawitem_id">-170651</col>
+  <col name="lawitem_title">第一章 总 则</col>
+  <col name="lawitem_content">1.1 为规范融资融券交易行为，维护证券市场秩序，保护投资者的合法权益，根据《证券公司融资融券业务管理办法》、《深圳证券交易所交易规则》及其他有关规定，制定本细则。
+
+1.2 本细则所称融资融券交易，是指投资者向具有深圳证券交易所（以下简称“本所”）会员资格的证券公司（以下简称“会员”）提供担保物，借入资金买入本所上市证券或借入本所上市证券并卖出的行为。
+
+1.3 在本所进行的融资融券交易，适用本细则。本细则未做规定的，适用《深圳证券交易所交易规则》和本所其他有关规定。</col>
+</record>
+
+<!--11-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">26</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">43</col>
+  <col name="cmpfile_name">银行对账作业流程图</col>
+  <col name="wfprocess_id">2578</col>
+  <col name="wfprocess_code">银行对账作业流程图_流程1</col>
+  <col name="wfprocess_name">银行对账作业流程图_流程1</col>
+  <col name="wfactivity_id">509</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">建立和维护单位存贷款账户对账信息</col>
+  <col name="law_id">-16911</col>
+  <col name="law_name">国家外汇管理局关于银行办理人民币对外汇期权组合业务有关问题的通知</col>
+  <col name="lawitem_id">-170697</col>
+  <col name="lawitem_title">一</col>
+  <col name="lawitem_content">本通知所称期权组合是指客户同时买入一个和卖出一个币种、期限、合约本金相同的人民币对外汇普通欧式期权所形成的组合，具体包括以下两种类型：
+（一）外汇看跌风险逆转期权组合：客户针对未来的实际结汇需求，买入一个执行价格较低（以一单位外汇折合人民币计量执行价格，以下同）的外汇看跌期权，同时卖出一个执行价格较高的外汇看涨期权。
+（二）外汇看涨风险逆转期权组合：客户针对未来的实际购汇需求，卖出一个执行价格较低的外汇看跌期权，同时买入一个执行价格较高的外汇看涨期权。</col>
+</record>
+
+<!--12-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">27</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">43</col>
+  <col name="cmpfile_name">银行对账作业流程图</col>
+  <col name="wfprocess_id">2578</col>
+  <col name="wfprocess_code">银行对账作业流程图_流程1</col>
+  <col name="wfprocess_name">银行对账作业流程图_流程1</col>
+  <col name="wfactivity_id">509</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">建立和维护单位存贷款账户对账信息</col>
+  <col name="law_id">-16911</col>
+  <col name="law_name">国家外汇管理局关于银行办理人民币对外汇期权组合业务有关问题的通知</col>
+  <col name="lawitem_id">-170698</col>
+  <col name="lawitem_title">二</col>
+  <col name="lawitem_content">银行对客户办理期权组合业务应坚持实需原则，并遵守以下规定：
+（一）期权组合遵循整体性原则。客户对期权组合的任何操作（包括但不限于签约、反向平仓、交割方式选择）必须针对整个期权组合，不能选择期权组合中的单一期权交易进行，且银行与客户的期权组合业务签约及任何变更均应体现在同一产品确认书中。
+（二）期权组合签约前，银行应要求客户提供基础商业合同并进行必要的审核，确保客户叙做期权组合符合套期保值原则。
+（三）期权组合到期时，仅能有一个期权买方可以行权并遵循客户优先行权原则，即仅当客户决定对其买入的期权放弃行权后，银行方能选择是否对自身买入的期权行权；如果客户选择行权，银行应放弃行权。
+对于任一期权买方行权，银行必须对客户交割的外汇收支进行真实性和合规性审核。客户作为期权卖方如果无法履约，双方按照商业原则处理。
+（四）期权组合到期后，如客户与银行均未选择行权，客户可凭相关单证叙做一笔即期结售汇业务。
+（五）期权组合中，客户卖出期权收入的期权费应不超过买入期权支付的期权费。</col>
+</record>
+
+<!--13-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">31</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">599</col>
+  <col name="wfactivity_code">WFA1</col>
+  <col name="wfactivity_name">编制计划、确定检查/稽核对象、范围、时间、内容</col>
+  <col name="law_id">-17115</col>
+  <col name="law_name"> 中国人民银行、公安部、工商总局、银监会、证监会关于加强黄金交易所或从事黄金交易平台管理的通知</col>
+  <col name="lawitem_id">-175239</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">上海黄金交易所和上海期货交易所要进一步加强系统管理，完善各项制度规则，保障市场规范运行；要围绕市场需求加大产品创新力度，为投资者提供便利化服务。
+请人民银行副省级城市中心支行以上分支机构和银监会、证监会当地派出机构与当地公安、工商部门联合将本通知转发至辖区内银行业金融机构和公安、工商部门。
+
+中国人民银行
+公 安 部
+工商总局
+银 监 会
+证 监 会</col>
+</record>
+
+<!--14-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">32</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">599</col>
+  <col name="wfactivity_code">WFA1</col>
+  <col name="wfactivity_name">编制计划、确定检查/稽核对象、范围、时间、内容</col>
+  <col name="law_id">-15049</col>
+  <col name="law_name">中国银行间市场交易商协会关于中国银行间市场交易商协会意向承销类会员（银行类）市场评价有关事项的公告 </col>
+  <col name="lawitem_id">-131004</col>
+  <col name="lawitem_title">二、</col>
+  <col name="lawitem_content">意向承销类会员（银行类）市场评价适用《中国银行间市场交易商协会意向承销类会员（银行类）市场评价标准》（见附件一）。</col>
+</record>
+
+<!--15-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">35</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">599</col>
+  <col name="wfactivity_code">WFA1</col>
+  <col name="wfactivity_name">编制计划、确定检查/稽核对象、范围、时间、内容</col>
+  <col name="law_id">-16911</col>
+  <col name="law_name">国家外汇管理局关于银行办理人民币对外汇期权组合业务有关问题的通知</col>
+  <col name="lawitem_id">-170700</col>
+  <col name="lawitem_title">四</col>
+  <col name="lawitem_content">银行办理期权组合业务，应按照汇发[2011]8号文等有关规定，分别计量和管理组合中所有期权交易的Delta头寸。</col>
+</record>
+
+<!--16-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">36</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">57</col>
+  <col name="cmpfile_name">会计检查稽核作业指导书</col>
+  <col name="wfprocess_id">2581</col>
+  <col name="wfprocess_code">会计检查/稽核管理_流程1</col>
+  <col name="wfprocess_name">会计检查/稽核管理_流程1</col>
+  <col name="wfactivity_id">599</col>
+  <col name="wfactivity_code">WFA1</col>
+  <col name="wfactivity_name">编制计划、确定检查/稽核对象、范围、时间、内容</col>
+  <col name="law_id">-15364</col>
+  <col name="law_name">中国银监会2010年政府信息公开工作报告 </col>
+  <col name="lawitem_id">-138084</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">依申请公开信息情况
+
+2010年，银监会共受理18位自然人、2家法人机构提出的共计30件有效政府信息公开申请。在收到的申请中，同意公开的20件；所申请信息银监会不掌握，但告知其获取途径的9件；申请内容涉及国家秘密不予公开的1件。所有申请均由办公厅会同相关监管部门和政策法规部全部在规定时限答复申请人，办结率100%，确保了社会公众的知情权。
+
+从申请方式看，通过依申请公开电子邮件提交申请26人次，约占申请量的87%；通过现场填表提交申请4人次，约占申请量的13%。从申请内容看，涉及大型国有商业银行13件，涉及银行业政策法规4件，涉及非银行业金融机构及外资银行业务的各2件，其他内容9件。从申请公开信息用途看，申请信息用于诉讼的9人次，用于科研及论文的8人次，了解相关政策的13人次。
+
+2010年，对依申请公开的政府信息，银监会未收取任何检索、复制、邮寄等费用。</col>
+</record>
+
+<!--17-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">37</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-17113</col>
+  <col name="law_name"> 中华人民共和国船舶吨税暂行条例</col>
+  <col name="lawitem_id">-175192</col>
+  <col name="lawitem_title">第五条</col>
+  <col name="lawitem_content">吨税的应纳税额按照船舶净吨位乘以适用税率计算。</col>
+</record>
+
+<!--18-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">38</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-17113</col>
+  <col name="law_name"> 中华人民共和国船舶吨税暂行条例</col>
+  <col name="lawitem_id">-175203</col>
+  <col name="lawitem_title">第十六条</col>
+  <col name="lawitem_content">吨税执照在期满前毁损或者遗失的，应当向原发照海关书面申请核发吨税执照副本，不再补税。</col>
+</record>
+
+<!--19-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">39</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-16911</col>
+  <col name="law_name">国家外汇管理局关于银行办理人民币对外汇期权组合业务有关问题的通知</col>
+  <col name="lawitem_id">-170701</col>
+  <col name="lawitem_title">五</col>
+  <col name="lawitem_content">银行办理期权组合业务，应遵照执行以下统计要求：
+（一）银行应将期权组合业务中任一期权买方对期权的行权，视为客户远期结售汇履约，按照《国家外汇管理局关于印发＜银行结售汇统计制度＞的通知》（汇发[2006]42号）的规定，纳入《银行结售汇统计月（旬）报表》的远期结售汇履约统计。
+（二）银行应将期权组合业务中的所有期权交易，逐笔纳入《银行结售汇综合头寸日报表》和汇发[2011]8号文规定的统计报表。其中，汇发[2011]8号文附件2规定的《银行对客户人民币对外汇期权业务统计》，按照本通知附件的规定进行调整。</col>
+</record>
+
+<!--20-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">40</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-16911</col>
+  <col name="law_name">国家外汇管理局关于银行办理人民币对外汇期权组合业务有关问题的通知</col>
+  <col name="lawitem_id">-170703</col>
+  <col name="lawitem_title">七</col>
+  <col name="lawitem_content">本通知自2011年12月1日起实施。
+国家外汇管理局各分局、外汇管理部接到本通知后，应即转发辖内城市商业银行、农村商业银行、农村合作银行和外资银行。执行中如遇问题，请与国家外汇管理局国际收支司联系。联系电话：010-68402385、68402313。
+
+
+二〇一一年十一月八日</col>
+</record>
+
+<!--21-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">41</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-16912</col>
+  <col name="law_name">国务院国有资产监督管理委员会关于进一步深化中央企业全面预算管理工作的通知 </col>
+  <col name="lawitem_id">-170704</col>
+  <col name="lawitem_title">一</col>
+  <col name="lawitem_content">切实加强组织领导，完善全面预算管理组织体系。全面预算管理是现代大企业围绕发展战略，运用现代网络与信息技术，融经营（业务）预算、资本预算、薪酬预算、财务预算于一体的综合管理系统，是企业在全球范围内优化资源配置、提高运行质量、改善经营效益、加强风险管控的有效管理工具和管理机制。全面预算管理水平直接决定大型企业战略和决策的执行力、集团管控力、内部各单元的协同力和各要素的集成力，是现代企业市场竞争能力的重要体现。各中央企业要充分认识全面预算管理工作对企业做强做优、提升国际竞争力的重要作用，进一步加强组织领导，完善组织体系，加强制度建设，落实工作责任，梳理工作流程，规范工作内容，明确质量标准，不断增强预算管理工作的系统性和协同性。各中央企业主要负责人要高度重视并组织推动全面预算管理工作，努力营造全面预算管理的工作氛围。各中央企业预算管理决策机构不仅要负责审议全面预算目标的合理性，还要高度关注预算组织机制、编制方法、编制基础、执行、监督与考核等预算管理关键环节的合理性和有效性。各中央企业应当建立以业务流程为导向、以责任分工为基础、各相关职能部门相互配合、各管理层级密切联动的全面预算管理工作体系，形成分工明确、责任清晰、相互协同、高效配合的工作机制和责任机制，为全面预算管理工作提供有效的组织保障。</col>
+</record>
+
+<!--22-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">51</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">505</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行综合部</col>
+  <col name="law_id">-16736</col>
+  <col name="law_name">中华人民共和国增值税暂行条例实施细则 （2011修订）</col>
+  <col name="lawitem_id">-166659</col>
+  <col name="lawitem_title">第四条</col>
+  <col name="lawitem_content">单位或者个体工商户的下列行为，视同销售货物：
+（一）将货物交付其他单位或者个人代销；
+（二）销售代销货物；
+（三）设有两个以上机构并实行统一核算的纳税人，将货物从一个机构移送其他机构用于销售，但相关机构设在同一县（市）的除外；
+（四）将自产或者委托加工的货物用于非增值税应税项目；
+（五）将自产、委托加工的货物用于集体福利或者个人消费；
+（六）将自产、委托加工或者购进的货物作为投资，提供给其他单位或者个体工商户；
+（七）将自产、委托加工或者购进的货物分配给股东或者投资者；
+（八）将自产、委托加工或者购进的货物无偿赠送其他单位或者个人。</col>
+</record>
+
+<!--23-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">52</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">505</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行综合部</col>
+  <col name="law_id">-16736</col>
+  <col name="law_name">中华人民共和国增值税暂行条例实施细则 （2011修订）</col>
+  <col name="lawitem_id">-166673</col>
+  <col name="lawitem_title">第十八条</col>
+  <col name="lawitem_content">条例第八条第二款第（四）项所称运输费用金额，是指运输费用结算单据上注明的运输费用（包括铁路临管线及铁路专线运输费用）、建设基金，不包括装卸费、保险费等其他杂费。</col>
+</record>
+
+<!--24-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">53</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">505</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行综合部</col>
+  <col name="law_id">-16736</col>
+  <col name="law_name">中华人民共和国增值税暂行条例实施细则 （2011修订）</col>
+  <col name="lawitem_id">-166678</col>
+  <col name="lawitem_title">第二十三条</col>
+  <col name="lawitem_content">条例第十条第（一）项和本细则所称非增值税应税项目，是指提供非增值税应税劳务、转让无形资产、销售不动产和不动产在建工程。
+前款所称不动产是指不能移动或者移动后会引起性质、形状改变的财产，包括建筑物、构筑物和其他土地附着物。
+纳税人新建、改建、扩建、修缮、装饰不动产，均属于不动产在建工程。</col>
+</record>
+
+<!--25-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">54</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">505</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行综合部</col>
+  <col name="law_id">-16705</col>
+  <col name="law_name">中华人民共和国资源税暂行条例 （2011修订）</col>
+  <col name="lawitem_id">-164797</col>
+  <col name="lawitem_title">第六条</col>
+  <col name="lawitem_content">纳税人开采或者生产应税产品，自用于连续生产应税产品的，不缴纳资源税；自用于其他方面的，视同销售，依照本条例缴纳资源税。</col>
+</record>
+
+<!--26-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">55</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">505</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行综合部</col>
+  <col name="law_id">-16705</col>
+  <col name="law_name">中华人民共和国资源税暂行条例 （2011修订）</col>
+  <col name="lawitem_id">-164801</col>
+  <col name="lawitem_title">第十条</col>
+  <col name="lawitem_content">资源税由税务机关征收。</col>
+</record>
+
+<!--27-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">58</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">387</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到通知、
+开立保函</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174824</col>
+  <col name="lawitem_title">第三十三条</col>
+  <col name="lawitem_content">投标人参加依法必须进行招标的项目的投标，不受地区或者部门的限制，任何单位和个人不得非法干涉。</col>
+</record>
+
+<!--28-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">59</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">387</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到通知、
+开立保函</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174833</col>
+  <col name="lawitem_title">第四十二条</col>
+  <col name="lawitem_content">使用通过受让或者租借等方式获取的资格、资质证书投标的，属于招标投标法第三十三条规定的以他人名义投标。
+投标人有下列情形之一的，属于招标投标法第三十三条规定的以其他方式弄虚作假的行为：
+（一）使用伪造、变造的许可证件；
+（二）提供虚假的财务状况或者业绩；
+（三）提供虚假的项目负责人或者主要技术人员简历、劳动关系证明；
+（四）提供虚假的信用状况；
+（五）其他弄虚作假的行为。</col>
+</record>
+
+<!--29-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">60</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">387</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到通知、
+开立保函</col>
+  <col name="law_id">-16904</col>
+  <col name="law_name">国务院关于清理整顿各类交易场所切实防范金融风险的决定 </col>
+  <col name="lawitem_id">-170593</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">健全管理制度、严格管理程序
+自本决定下发之日起，除依法设立的证券交易所或国务院批准的从事金融产品交易的交易场所外，任何交易场所均不得将任何权益拆分为均等份额公开发行，不得采取集中竞价、做市商等集中交易方式进行交易；不得将权益按照标准化交易单位持续挂牌交易，任何投资者买入后卖出或卖出后买入同一交易品种的时间间隔不得少于5个交易日；除法律、行政法规另有规定外，权益持有人累计不得超过200人。
+除依法经国务院或国务院期货监管机构批准设立从事期货交易的交易场所外，任何单位一律不得以集中竞价、电子撮合、匿名交易、做市商等集中交易方式进行标准化合约交易。
+从事保险、信贷、黄金等金融产品交易的交易场所，必须经国务院相关金融管理部门批准设立。
+为规范交易场所名称，凡使用“交易所”字样的交易场所，除经国务院或国务院金融管理部门批准的外，必须报省级人民政府批准；省级人民政府批准前，应征求联席会议意见。未按上述规定批准设立或违反上述规定在名称中使用“交易所”字样的交易场所，工商部门不得为其办理工商登记。</col>
+</record>
+
+<!--30-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">61</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">387</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到通知、
+开立保函</col>
+  <col name="law_id">-16913</col>
+  <col name="law_name">国务院国有资产监督管理委员会办公厅关于2012年中央企业开展全面风险管理工作有关事项的通知</col>
+  <col name="lawitem_id">-170714</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">真正做到全面风险管理与日常经营管理的深度融合
+
+各中央企业董事会（经理办公会议）要切实督导本企业建立健全全面风险管理体系，完善内部控制，并就本企业全面风险管理的有效性向国资委负责，总经理对企业全面风险管理的有效性向董事会负责。要进一步健全风险管理组织体系，加强风险管理职能部门与各业务单位、审计部门的协同配合，切实把风险管理的责任层层落实到位。要结合“三重一大”决策、惩防体系建设、内部控制系统建设、经营管理和制度流程建设等日常管理工作，进一步完善风险管理策略和解决方案，健全事前、事中、事后的风险管控措施，完善针对各项重大风险发生后的危机处理计划，确保经营管理的有效性，提高经营活动的效率和效果。要逐步建立健全重大风险监测预警指标体系，实现对重大风险管理全过程的动态监控。要重视风险管理信息系统建设，进一步提升风险管理信息系统与其他业务管理信息系统的集成度，不断提高风险管理信息化水平。要加强企业风险管理文化建设，进一步增强全员风险管理意识，促进企业建立系统、规范、高效的风险管理机制。要探索开展风险管理评价工作，逐步将风险管理考核纳入企业绩效考核体系，进一步促进全面风险管理与日常经营管理工作的深度融合。</col>
+</record>
+
+<!--31-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">62</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">387</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">收到通知、
+开立保函</col>
+  <col name="law_id">-16913</col>
+  <col name="law_name">国务院国有资产监督管理委员会办公厅关于2012年中央企业开展全面风险管理工作有关事项的通知</col>
+  <col name="lawitem_id">-170712</col>
+  <col name="lawitem_title">一</col>
+  <col name="lawitem_content">切实加强对未来风险总体形势的研判
+
+各中央企业要紧密围绕企业发展战略，结合“做强做优、培育具有国际竞争力的世界一流企业”目标的要求，加强对未来中长期所面临风险的全局性、趋势性研判，准确定位风险管理工作的方向和重点，切实为企业实现经营目标提供支撑和保障。要及时把握并深入分析国内外形势的变化，如主权债务危机蔓延、地缘政治更趋复杂、国际贸易保护主义持续升温以及国际市场竞争更趋激烈等因素对企业经营发展的影响，提高企业对经营环境变化的敏锐性和对发展趋势的预判能力，及时调整当期经营策略和应对措施，确保企业抓住机遇，合理控制风险，为企业创造更大价值。要认真总结近一段时期以来企业内外部发生的各类重大风险损失事件典型案例，从中汲取经验教训，举一反三，采取切实有效的应对措施加以改进，杜绝类似事件在本企业重复发生。</col>
+</record>
+
+<!--32-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">71</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">77</col>
+  <col name="cmpfile_name">个人业务检查作业指导书</col>
+  <col name="wfprocess_id">2596</col>
+  <col name="wfprocess_code">个人业务检查作业指导书_流程1</col>
+  <col name="wfprocess_name">个人业务检查作业指导书_流程1</col>
+  <col name="wfactivity_id">890</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">审批</col>
+  <col name="law_id">-17117</col>
+  <col name="law_name">车辆购置税征收管理办法(2011修订) </col>
+  <col name="lawitem_id">-175267</col>
+  <col name="lawitem_title">第七条</col>
+  <col name="lawitem_content">底盘发生更换的车辆，计税依据为最新核发的同类型车辆最低计税价格的70%。同类型车辆是指同国别、同排量、同车长、同吨位、配置近似等（下同）。</col>
+</record>
+
+<!--33-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">72</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">77</col>
+  <col name="cmpfile_name">个人业务检查作业指导书</col>
+  <col name="wfprocess_id">2596</col>
+  <col name="wfprocess_code">个人业务检查作业指导书_流程1</col>
+  <col name="wfprocess_name">个人业务检查作业指导书_流程1</col>
+  <col name="wfactivity_id">890</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">审批</col>
+  <col name="law_id">-17117</col>
+  <col name="law_name">车辆购置税征收管理办法(2011修订) </col>
+  <col name="lawitem_id">-175275</col>
+  <col name="lawitem_title">第十五条</col>
+  <col name="lawitem_content">主管税务机关应对纳税申报资料进行审核，确定计税依据，征收税款，核发完税证明。征税车辆在完税证明征税栏加盖车购税征税专用章，免税车辆在完税证明免税栏加盖车购税征税专用章。</col>
+</record>
+
+<!--34-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">75</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">77</col>
+  <col name="cmpfile_name">个人业务检查作业指导书</col>
+  <col name="wfprocess_id">2596</col>
+  <col name="wfprocess_code">个人业务检查作业指导书_流程1</col>
+  <col name="wfprocess_name">个人业务检查作业指导书_流程1</col>
+  <col name="wfactivity_id">890</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">审批</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174824</col>
+  <col name="lawitem_title">第三十三条</col>
+  <col name="lawitem_content">投标人参加依法必须进行招标的项目的投标，不受地区或者部门的限制，任何单位和个人不得非法干涉。</col>
+</record>
+
+<!--35-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">77</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">75</col>
+  <col name="cmpfile_name">福费廷业务流程</col>
+  <col name="wfprocess_id">2591</col>
+  <col name="wfprocess_code">福费廷业务流程_流程1</col>
+  <col name="wfprocess_name">福费廷业务流程_流程1</col>
+  <col name="wfactivity_id">814</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">收到经办单位提供的《卖出票据意向书》并询价</col>
+  <col name="law_id">-16907</col>
+  <col name="law_name">中国证券业协会关于落实《证券公司直接投资业务监管指引》有关要求的通知</col>
+  <col name="lawitem_id">-170662</col>
+  <col name="lawitem_title">四</col>
+  <col name="lawitem_content">承诺主动延长股份锁定期
+
+目前，对企业首次公开发行股票之前入股的股东，主板、中小板及创业板均有相应的股份锁定期期限要求。证券公司直投子公司在本通知第三条所述时点前，以自有资金或持有权益比例超过30%的直投基金、产业基金投资拟上市企业后，证券公司担任该企业保荐机构的，在严格执行现有股份锁定期期限要求基础上，直投子公司应承诺主动再延长股份锁定期不少于六个月。</col>
+</record>
+
+<!--36-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">78</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">506</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">总行相关职能部门</col>
+  <col name="law_id">-17118</col>
+  <col name="law_name">商业特许经营备案管理办法(2011)</col>
+  <col name="lawitem_id">-175308</col>
+  <col name="lawitem_title">第三条</col>
+  <col name="lawitem_content">商务部及省、自治区、直辖市人民政府商务主管部门是商业特许经营的备案机关。在省、自治区、直辖市范围内从事商业特许经营活动的，向特许人所在地省、自治区、直辖市人民政府商务主管部门备案；跨省、自治区、直辖市范围从事特许经营活动的，向商务部备案。
+
+商业特许经营实行全国联网备案。符合《条例》规定的特许人，依据本办法规定通过商务部设立的商业特许经营信息管理系统进行备案。</col>
+</record>
+
+<!--37-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">79</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">506</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">总行相关职能部门</col>
+  <col name="law_id">-17116</col>
+  <col name="law_name"> 财政部、工业和信息化部关于印发《政府采购促进中小企业发展暂行办法》的通知</col>
+  <col name="lawitem_id">-175246</col>
+  <col name="lawitem_title">第五条</col>
+  <col name="lawitem_content">对于非专门面向中小企业的项目，采购人或者采购代理机构应当在招标文件或者谈判文件、询价文件中作出规定，对小型和微型企业产品的价格给予6%-10%的扣除，用扣除后的价格参与评审，具体扣除比例由采购人或者采购代理机构确定。
+
+参加政府采购活动的中小企业应当提供本办法规定的《中小企业声明函》（见附件）。</col>
+</record>
+
+<!--38-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">80</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">506</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">总行相关职能部门</col>
+  <col name="law_id">-17113</col>
+  <col name="law_name"> 中华人民共和国船舶吨税暂行条例</col>
+  <col name="lawitem_id">-175191</col>
+  <col name="lawitem_title">第四条</col>
+  <col name="lawitem_content">吨税按照船舶净吨位和吨税执照期限征收。
+应税船舶负责人在每次申报纳税时，可以按照《吨税税目税率表》选择申领一种期限的吨税执照。</col>
+</record>
+
+<!--39-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">84</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">763</col>
+  <col name="wfactivity_code">WFA10</col>
+  <col name="wfactivity_name">审核银票</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174797</col>
+  <col name="lawitem_title">第七条</col>
+  <col name="lawitem_content">按照国家有关规定需要履行项目审批、核准手续的依法必须进行招标的项目，其招标范围、招标方式、招标组织形式应当报项目审批、核准部门审批、核准。项目审批、核准部门应当及时将审批、核准确定的招标范围、招标方式、招标组织形式通报有关行政监督部门。</col>
+</record>
+
+<!--40-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">85</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">763</col>
+  <col name="wfactivity_code">WFA10</col>
+  <col name="wfactivity_name">审核银票</col>
+  <col name="law_id">-17111</col>
+  <col name="law_name">国家通信保障应急预案(2011修订)</col>
+  <col name="lawitem_id">-175108</col>
+  <col name="lawitem_title">2</col>
+  <col name="lawitem_content">组织指挥体系与职责
+
+
+国务院或国务院授权工业和信息化部设立国家通信保障应急领导小组（以下简称领导小组），指挥、协调全国通信保障应急处置工作。省级通信保障应急指挥机构可由省级人民政府授权省（区、市）通信管理局设立，市（地）、县级通信保障应急指挥机构由相应地方人民政府会同省（区、市）通信管理局设立，负责组织和协调本行政区域内通信保障应急工作。必要时设立现场通信保障应急指挥机构，具体负责事发现场通信保障的组织、协调工作。
+
+领导小组办公室设在工业和信息化部，负责日常联络和事务处理工作。办公室主任由工业和信息化部主管副部长担任。
+
+领导小组下设专家组，主要职责是承担决策咨询任务、提出处置措施建议及对有关处置方案进行综合评估等。</col>
+</record>
+
+<!--41-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">86</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">763</col>
+  <col name="wfactivity_code">WFA10</col>
+  <col name="wfactivity_name">审核银票</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175337</col>
+  <col name="lawitem_title">第九条</col>
+  <col name="lawitem_content">劳动者可以要求所在企业工会参与或者协助其与企业进行协商。工会也可以主动参与劳动争议的协商处理，维护劳动者合法权益。
+
+劳动者可以委托其他组织或者个人作为其代表进行协商。</col>
+</record>
+
+<!--42-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">92</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">763</col>
+  <col name="wfactivity_code">WFA10</col>
+  <col name="wfactivity_name">审核银票</col>
+  <col name="law_id">-16913</col>
+  <col name="law_name">国务院国有资产监督管理委员会办公厅关于2012年中央企业开展全面风险管理工作有关事项的通知</col>
+  <col name="lawitem_id">-170714</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">真正做到全面风险管理与日常经营管理的深度融合
+
+各中央企业董事会（经理办公会议）要切实督导本企业建立健全全面风险管理体系，完善内部控制，并就本企业全面风险管理的有效性向国资委负责，总经理对企业全面风险管理的有效性向董事会负责。要进一步健全风险管理组织体系，加强风险管理职能部门与各业务单位、审计部门的协同配合，切实把风险管理的责任层层落实到位。要结合“三重一大”决策、惩防体系建设、内部控制系统建设、经营管理和制度流程建设等日常管理工作，进一步完善风险管理策略和解决方案，健全事前、事中、事后的风险管控措施，完善针对各项重大风险发生后的危机处理计划，确保经营管理的有效性，提高经营活动的效率和效果。要逐步建立健全重大风险监测预警指标体系，实现对重大风险管理全过程的动态监控。要重视风险管理信息系统建设，进一步提升风险管理信息系统与其他业务管理信息系统的集成度，不断提高风险管理信息化水平。要加强企业风险管理文化建设，进一步增强全员风险管理意识，促进企业建立系统、规范、高效的风险管理机制。要探索开展风险管理评价工作，逐步将风险管理考核纳入企业绩效考核体系，进一步促进全面风险管理与日常经营管理工作的深度融合。</col>
+</record>
+
+<!--43-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">93</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">8</col>
+  <col name="cmpfile_name">人民币单位通存通兑业务处理操作规程</col>
+  <col name="wfprocess_id">2</col>
+  <col name="wfprocess_code">现金通存</col>
+  <col name="wfprocess_name">现金通存</col>
+  <col name="wfactivity_id">76</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">审核业务凭证</col>
+  <col name="law_id">-16908</col>
+  <col name="law_name">公司债权转股权登记管理办法 </col>
+  <col name="lawitem_id">-170672</col>
+  <col name="lawitem_title">第五条</col>
+  <col name="lawitem_content">法律、行政法规或者国务院决定规定债权转股权须经批准的，应当依法经过批准。</col>
+</record>
+
+<!--44-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">94</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">8</col>
+  <col name="cmpfile_name">人民币单位通存通兑业务处理操作规程</col>
+  <col name="wfprocess_id">2</col>
+  <col name="wfprocess_code">现金通存</col>
+  <col name="wfprocess_name">现金通存</col>
+  <col name="wfactivity_id">76</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">审核业务凭证</col>
+  <col name="law_id">-16907</col>
+  <col name="law_name">中国证券业协会关于落实《证券公司直接投资业务监管指引》有关要求的通知</col>
+  <col name="lawitem_id">-170660</col>
+  <col name="lawitem_title">二</col>
+  <col name="lawitem_content">对照《指引》进行全面自查
+
+《指引》在总结试点经验的基础上，对规范证券公司直接投资业务提出了明确监管要求。为了尽快落实《指引》中各项规定，防范业务风险，已经设立直投子公司的证券公司应当对照《指引》的各项要求，就落实情况进行全面自查。自查的重点应当包括证券公司及直投子公司各项制度建设情况，证券公司及直投子公司防范利益冲突和信息披露情况，直投子公司具体业务开展及合规情况。证券公司自查报告在2011年12月31日之前报送协会。自查发现问题的，要及时采取措施纠正、完善。</col>
+</record>
+
+<!--45-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">97</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">441</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">对外赔付</col>
+  <col name="law_id">-17115</col>
+  <col name="law_name"> 中国人民银行、公安部、工商总局、银监会、证监会关于加强黄金交易所或从事黄金交易平台管理的通知</col>
+  <col name="lawitem_id">-175237</col>
+  <col name="lawitem_title">一</col>
+  <col name="lawitem_content">上海黄金交易所和上海期货交易所是经国务院批准或同意的开展黄金交易的交易所，两家交易所已能满足国内投资者的黄金现货或期货投资需求。任何地方、机构或个人均不得设立黄金交易所（交易中心），也不得在其他交易场所（交易中心）内设立黄金交易平台。</col>
+</record>
+
+<!--46-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">98</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">441</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">对外赔付</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174827</col>
+  <col name="lawitem_title">第三十六条</col>
+  <col name="lawitem_content">未通过资格预审的申请人提交的投标文件，以及逾期送达或者不按照招标文件要求密封的投标文件，招标人应当拒收。
+招标人应当如实记载投标文件的送达时间和密封情况，并存档备查。</col>
+</record>
+
+<!--47-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">99</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">20</col>
+  <col name="cmpfile_name">保函业务作业指导书</col>
+  <col name="wfprocess_id">2572</col>
+  <col name="wfprocess_code">保函业务作业指导书_流程1</col>
+  <col name="wfprocess_name">保函业务作业指导书_流程1</col>
+  <col name="wfactivity_id">441</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">对外赔付</col>
+  <col name="law_id">-17113</col>
+  <col name="law_name"> 中华人民共和国船舶吨税暂行条例</col>
+  <col name="lawitem_id">-175190</col>
+  <col name="lawitem_title">第三条</col>
+  <col name="lawitem_content">吨税设置优惠税率和普通税率。
+中华人民共和国籍的应税船舶，船籍国（地区）与中华人民共和国签订含有相互给予船舶税费最惠国待遇条款的条约或者协定的应税船舶，适用优惠税率。
+其他应税船舶，适用普通税率。</col>
+</record>
+
+<!--48-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">104</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">559</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">审核开户资料是否完整、手续是否完备</col>
+  <col name="law_id">-17118</col>
+  <col name="law_name">商业特许经营备案管理办法(2011)</col>
+  <col name="lawitem_id">-175308</col>
+  <col name="lawitem_title">第三条</col>
+  <col name="lawitem_content">商务部及省、自治区、直辖市人民政府商务主管部门是商业特许经营的备案机关。在省、自治区、直辖市范围内从事商业特许经营活动的，向特许人所在地省、自治区、直辖市人民政府商务主管部门备案；跨省、自治区、直辖市范围从事特许经营活动的，向商务部备案。
+
+商业特许经营实行全国联网备案。符合《条例》规定的特许人，依据本办法规定通过商务部设立的商业特许经营信息管理系统进行备案。</col>
+</record>
+
+<!--49-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">105</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">559</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">审核开户资料是否完整、手续是否完备</col>
+  <col name="law_id">-16906</col>
+  <col name="law_name">深圳证券交易所融资融券交易实施细则 </col>
+  <col name="lawitem_id">-170653</col>
+  <col name="lawitem_title">第三章 标的证券</col>
+  <col name="lawitem_content">3.1 在本所上市交易的下列证券，经本所认可，可作为融资买入标的证券和融券卖出标的证券（以下简称“标的证券”）：
+
+（一）符合本细则第3.2条规定的股票；
+
+（二）证券投资基金；
+
+（三）债券；
+
+（四）其他证券。
+
+3.2 标的证券为股票的，应当符合下列条件：
+
+（一）在本所上市交易超过三个月；
+
+（二）融资买入标的股票的流通股本不少于1亿股或流通市值不低于5亿元，融券卖出标的股票的流通股本不少于2亿股或流通市值不低于8亿元；
+
+（三）股东人数不少于4000人；
+
+（四）在过去三个月内没有出现下列情形之一：
+
+1．日均换手率低于基准指数日均换手率的15%，且日均成交金额低于5000万元；
+
+2．日均涨跌幅平均值与基准指数涨跌幅平均值的偏离值超过4%；
+
+3．波动幅度达到基准指数波动幅度的5倍以上。
+
+（五）股票发行公司已完成股权分置改革；
+
+（六）股票交易未被本所实行特别处理；
+
+（七）本所规定的其他条件。
+
+3.3 标的证券为交易型开放式指数基金（ETF）的，应当符合下列条件：
+
+（一）上市交易超过三个月；
+
+（二）近三个月内的日平均资产规模不低于20亿元；
+
+（三）基金持有户数不少于4000户。
+
+本所另有规定的除外。
+
+3.4 本所按照从严到宽、从少到多、逐步扩大的原则，从满足本细则规定的证券范围内，审核、选取并确定可作为标的证券的名单，并向市场公布。
+
+本所可根据市场情况调整标的证券的选择标准和名单。
+
+3.5 会员向其客户公布的标的证券名单，不得超出本所公布的标的证券范围。
+
+3.6 标的证券暂停交易的，会员与其客户可以根据双方约定了结相关融资融券合约。
+
+标的证券暂停交易，且恢复交易日在融资融券债务到期日之后的，融资融券的期限可以顺延，顺延的具体期限由会员与其客户自行约定。
+
+3.7 标的股票交易被实行特别处理的，本所自该股票被实行特别处理当日起将其调整出标的证券范围。
+
+3.8 标的证券进入终止上市程序的，本所自发行人作出相关公告当日起将其调整出标的证券范围。
+
+3.9 证券被调整出标的证券范围的，在调整前未了结的融资融券合约仍然有效。会员与其客户可以根据双方约定提前了结相关融资融券合约。</col>
+</record>
+
+<!--50-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">106</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">28</col>
+  <col name="cmpfile_name">人民币银行结算账户管理操作和控制程序</col>
+  <col name="wfprocess_id">2582</col>
+  <col name="wfprocess_code">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfprocess_name">人民币银行结算账户管理操作和控制程序_流程1</col>
+  <col name="wfactivity_id">559</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">审核开户资料是否完整、手续是否完备</col>
+  <col name="law_id">-16910</col>
+  <col name="law_name">中国保险监督管理委员会办公厅关于进一步做好保险业治理“小金库”工作的通知 </col>
+  <col name="lawitem_id">-170694</col>
+  <col name="lawitem_title">二、</col>
+  <col name="lawitem_content">各单位要根据中治金〔2011〕7号文件的要求，继续抓紧完成整改落实，确保三年来发现的“小金库”问题全部整改到位，并将整改落实工作情况形成专题报告。</col>
+</record>
+
+<!--51-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">110</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">954</col>
+  <col name="wfactivity_code">WFA41</col>
+  <col name="wfactivity_name">收到票款</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174825</col>
+  <col name="lawitem_title">第三十四条</col>
+  <col name="lawitem_content">与招标人存在利害关系可能影响招标公正性的法人、其他组织或者个人，不得参加投标。
+单位负责人为同一人或者存在控股、管理关系的不同单位，不得参加同一标段投标或者未划分标段的同一招标项目投标。
+违反前两款规定的，相关投标均无效。</col>
+</record>
+
+<!--52-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">111</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">954</col>
+  <col name="wfactivity_code">WFA41</col>
+  <col name="wfactivity_name">收到票款</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175337</col>
+  <col name="lawitem_title">第九条</col>
+  <col name="lawitem_content">劳动者可以要求所在企业工会参与或者协助其与企业进行协商。工会也可以主动参与劳动争议的协商处理，维护劳动者合法权益。
+
+劳动者可以委托其他组织或者个人作为其代表进行协商。</col>
+</record>
+
+<!--53-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">112</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">954</col>
+  <col name="wfactivity_code">WFA41</col>
+  <col name="wfactivity_name">收到票款</col>
+  <col name="law_id">-16912</col>
+  <col name="law_name">国务院国有资产监督管理委员会关于进一步深化中央企业全面预算管理工作的通知 </col>
+  <col name="lawitem_id">-170707</col>
+  <col name="lawitem_title">四</col>
+  <col name="lawitem_content">积极推动对标管理，突出做强做优。各中央企业要坚持把对标管理理念引入全面预算管理，探索对标管理与全面预算管理的有机结合。一是要强化各类定额、标准的制订工作，通过收集整理各类对标数据，将企业的历史标准、行业标准与国际先进标准相结合，明确成本费用、科技投入、资产效率等经营指标的管理定额和标准，并纳入预算编制、执行、监督、考核体系。二是要广泛开展预算目标对标工作，在深入分析研判国内外市场形势的基础上，充分参考国内外同行业企业的情况，制定既有挑战性、又有可实现性的预算目标。三是要强化预算管控的对标工作，加强对可控成本费用的对标管理，实现降本增效，提高盈利空间；加强对应收账款、存货、现金流量、投资回报等指标的对标管理，不断提高企业运行效率和运行质量。四是要积极推行与优秀企业的对标管理，选取国际、国内同行领先企业作为预算标杆，通过持续不断的对标推动企业做强做优，不断提升国际竞争力。</col>
+</record>
+
+<!--54-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">116</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">423</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">分行个人业务部</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174792</col>
+  <col name="lawitem_title">第三条</col>
+  <col name="lawitem_content">依法必须进行招标的工程建设项目的具体范围和规模标准，由国务院发展改革部门会同国务院有关部门制订，报国务院批准后公布施行。</col>
+</record>
+
+<!--55-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">117</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">423</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">分行个人业务部</col>
+  <col name="law_id">-17111</col>
+  <col name="law_name">国家通信保障应急预案(2011修订)</col>
+  <col name="lawitem_id">-175102</col>
+  <col name="lawitem_title">1</col>
+  <col name="lawitem_content">总则</col>
+</record>
+
+<!--56-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">118</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">423</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">分行个人业务部</col>
+  <col name="law_id">-17111</col>
+  <col name="law_name">国家通信保障应急预案(2011修订)</col>
+  <col name="lawitem_id">-175117</col>
+  <col name="lawitem_title">4.2</col>
+  <col name="lawitem_content">先期处置和信息报告
+
+事件发生后，相关基础电信运营企业应立即采取有效处置措施，控制事态发展，并按照有关规定及时上报事件信息；通信保障应急指挥机构接到事件信息报告后，应立即采取应对措施，并及时上报上级通信保障应急指挥机构。</col>
+</record>
+
+<!--57-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">119</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">41</col>
+  <col name="cmpfile_name">投诉处理作业流程图</col>
+  <col name="wfprocess_id">2575</col>
+  <col name="wfprocess_code">投诉处理作业流程图_流程1</col>
+  <col name="wfprocess_name">投诉处理作业流程图_流程1</col>
+  <col name="wfactivity_id">423</col>
+  <col name="wfactivity_code">WFA3</col>
+  <col name="wfactivity_name">分行个人业务部</col>
+  <col name="law_id">-16910</col>
+  <col name="law_name">中国保险监督管理委员会办公厅关于进一步做好保险业治理“小金库”工作的通知 </col>
+  <col name="lawitem_id">-170695</col>
+  <col name="lawitem_title">三、</col>
+  <col name="lawitem_content">各保监局根据2009年至今三年以来的日常监管工作情况，填报《日常监督发现“小金库”问题统计表》（保监发〔2011〕15号附件7）。</col>
+</record>
+
+<!--58-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">124</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">43</col>
+  <col name="cmpfile_name">银行对账作业流程图</col>
+  <col name="wfprocess_id">2578</col>
+  <col name="wfprocess_code">银行对账作业流程图_流程1</col>
+  <col name="wfprocess_name">银行对账作业流程图_流程1</col>
+  <col name="wfactivity_id">512</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行信息科技部</col>
+  <col name="law_id">-16950</col>
+  <col name="law_name"> 中华人民共和国招标投标法实施条例</col>
+  <col name="lawitem_id">-174836</col>
+  <col name="lawitem_title">第四十四条</col>
+  <col name="lawitem_content">招标人应当按照招标文件规定的时间、地点开标。
+投标人少于3个的，不得开标；招标人应当重新招标。
+投标人对开标有异议的，应当在开标现场提出，招标人应当当场作出答复，并制作记录。</col>
+</record>
+
+<!--59-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">125</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">43</col>
+  <col name="cmpfile_name">银行对账作业流程图</col>
+  <col name="wfprocess_id">2578</col>
+  <col name="wfprocess_code">银行对账作业流程图_流程1</col>
+  <col name="wfprocess_name">银行对账作业流程图_流程1</col>
+  <col name="wfactivity_id">512</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行信息科技部</col>
+  <col name="law_id">-16910</col>
+  <col name="law_name">中国保险监督管理委员会办公厅关于进一步做好保险业治理“小金库”工作的通知 </col>
+  <col name="lawitem_id">-170695</col>
+  <col name="lawitem_title">三、</col>
+  <col name="lawitem_content">各保监局根据2009年至今三年以来的日常监管工作情况，填报《日常监督发现“小金库”问题统计表》（保监发〔2011〕15号附件7）。</col>
+</record>
+
+<!--60-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">126</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">43</col>
+  <col name="cmpfile_name">银行对账作业流程图</col>
+  <col name="wfprocess_id">2578</col>
+  <col name="wfprocess_code">银行对账作业流程图_流程1</col>
+  <col name="wfprocess_name">银行对账作业流程图_流程1</col>
+  <col name="wfactivity_id">512</col>
+  <col name="wfactivity_code">WFA5</col>
+  <col name="wfactivity_name">分行信息科技部</col>
+  <col name="law_id">-17118</col>
+  <col name="law_name">商业特许经营备案管理办法(2011)</col>
+  <col name="lawitem_id">-175311</col>
+  <col name="lawitem_title">第六条</col>
+  <col name="lawitem_content">申请备案的特许人应当向备案机关提交以下材料：
+
+（一）商业特许经营基本情况。
+
+（二）中国境内全部被特许人的店铺分布情况。
+
+（三）特许人的市场计划书。
+
+（四）企业法人营业执照或其他主体资格证明。
+
+（五）与特许经营活动相关的商标权、专利权及其他经营资源的注册证书。
+
+（六）符合《条例》第七条第二款规定的证明文件。
+
+在2007年5月1日前已经从事特许经营活动的特许人在提交申请商业特许经营备案材料时不适用于上款的规定。
+
+（七）与中国境内的被特许人订立的第一份特许经营合同。
+
+（八）特许经营合同样本。
+
+（九）特许经营操作手册的目录（须注明每一章节的页数和手册的总页数，对于在特许系统内部网络上提供此类手册的，须提供估计的打印页数）。
+
+（十）国家法律法规规定经批准方可开展特许经营的产品和服务，须提交相关主管部门的批准文件。
+
+外商投资企业应当提交《外商投资企业批准证书》，《外商投资企业批准证书》经营范围中应当包括"以特许经营方式从事商业活动"项目。
+
+（十一）经法定代表人签字盖章的特许人承诺。
+
+（十二）备案机关认为应当提交的其他资料。
+
+以上文件在中华人民共和国境外形成的，需经所在国公证机关公证（附中文译本），并经中华人民共和国驻所在国使领馆认证，或者履行中华人民共和国与所在国订立的有关条约中规定的证明手续。在香港、澳门、台湾地区形成的，应当履行相关的证明手续。</col>
+</record>
+
+<!--61-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">130</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">10</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">确认名单</col>
+  <col name="law_id">-16906</col>
+  <col name="law_name">深圳证券交易所融资融券交易实施细则 </col>
+  <col name="lawitem_id">-170652</col>
+  <col name="lawitem_title">第二章 业务流程</col>
+  <col name="lawitem_content">2.1 会员申请本所融资融券交易权限的，应当向本所提交下列书面文件：
+
+（一）中国证券监督管理委员会（以下简称“证监会”）颁发的获准开展融资融券业务的《经营证券业务许可证》及其他有关批准文件；
+
+（二）融资融券业务实施方案、内部管理制度的相关文件；
+
+（三）负责融资融券业务的高级管理人员与业务人员名单及其联络方式；
+
+（四）本所要求提交的其他文件。
+
+2.2 会员在本所从事融资融券业务，应当通过融资融券专用交易单元进行。
+
+2.3 会员按照有关规定开立融券专用证券账户、客户信用交易担保证券账户、融资专用资金账户及客户信用交易担保资金账户后，应当在三个交易日内报本所备案。
+
+2.4 会员在向客户融资、融券前，应当按照有关规定与客户签订融资融券合同及融资融券交易风险揭示书，并为其开立信用证券账户和信用资金账户。
+
+2.5 投资者应当按照有关规定选定一家会员为其开立一个信用证券账户，用于在本所进行的融资融券交易。
+
+信用证券账户的开立和注销，根据会员和本所指定登记结算机构有关规定办理。
+
+2.6 会员接受客户的融资融券交易委托后，应当按照本所规定的格式申报，申报指令应包括客户的信用证券账户号码、融资融券专用交易单元代码、证券代码、买卖方向、价格、数量、融资融券相关标识等内容。
+
+2.7 融资买入、融券卖出的申报数量应当为100股（份）或其整数倍。
+
+2.8 融券卖出的申报价格不得低于该证券的最近成交价；当天还没有产生成交的，其申报价格不得低于前收盘价。低于上述价格的申报为无效申报。
+
+投资者在融券期间卖出通过其所有或控制的证券账户所持有与其融入证券相同证券的，其卖出该证券的价格应当满足前款要求，但超出融券数量的部分除外。
+
+2.9 本所不接受融券卖出的市价申报。
+
+2.10 投资者融资买入证券后，可以通过直接还款或卖券还款的方式向会员偿还融入资金。
+
+以直接还款方式偿还融入资金的，按照会员与客户之间的约定办理。
+
+2.11 投资者融券卖出后，可以通过直接还券或买券还券的方式向会员偿还融入证券。
+
+以直接还券方式偿还融入证券的，按照会员与客户之间约定，以及本所指定登记结算机构的有关规定办理。
+
+2.12 投资者卖出信用证券账户内融资买入尚未了结合约的证券所得价款，应当先偿还该投资者的融资欠款。
+
+2.13 未了结相关融券交易前，投资者融券卖出所得价款除买券还券外不得另作他用。
+
+2.14 会员与客户约定的融资、融券期限自客户实际使用资金或证券之日起开始计算，最长不得超过六个月。
+
+2.15 会员融券专用证券账户不得用于证券买卖。
+
+2.16 投资者信用证券账户不得用于买入或转入除可充抵保证金证券范围以外的证券，也不得用于参与定向增发、证券投资基金申购及赎回、债券回购等。
+
+2.17 融资融券交易暂不采用大宗交易方式。
+
+2.18 投资者未能按期交足担保物或者到期未偿还融资融券债务的，会员应当根据约定采取强制平仓措施，处分客户担保物，不足部分可以向客户追索。
+
+2.19 会员根据与客户的约定采取强制平仓措施的，应按照本所规定的格式申报强制平仓指令，申报指令应包括客户的信用证券账户号码、融资融券专用交易单元代码、证券代码、买卖方向、价格、数量、融资强制平仓或融券强制平仓标识等内容。</col>
+</record>
+
+<!--62-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">131</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">10</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">确认名单</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175336</col>
+  <col name="lawitem_title">第八条</col>
+  <col name="lawitem_content">发生劳动争议，一方当事人可以通过与另一方当事人约见、面谈等方式协商解决。</col>
+</record>
+
+<!--63-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">132</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">10</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">确认名单</col>
+  <col name="law_id">-17116</col>
+  <col name="law_name"> 财政部、工业和信息化部关于印发《政府采购促进中小企业发展暂行办法》的通知</col>
+  <col name="lawitem_id">-175244</col>
+  <col name="lawitem_title">第三条</col>
+  <col name="lawitem_content">任何单位和个人不得阻挠和限制中小企业自由进入本地区和本行业的政府采购市场，政府采购活动不得以注册资本金、资产总额、营业收入、从业人员、利润、纳税额等供应商的规模条件对中小企业实行差别待遇或者歧视待遇。</col>
+</record>
+
+<!--64-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">133</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">10</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">确认名单</col>
+  <col name="law_id">-16904</col>
+  <col name="law_name">国务院关于清理整顿各类交易场所切实防范金融风险的决定 </col>
+  <col name="lawitem_id">-170593</col>
+  <col name="lawitem_title">三</col>
+  <col name="lawitem_content">健全管理制度、严格管理程序
+自本决定下发之日起，除依法设立的证券交易所或国务院批准的从事金融产品交易的交易场所外，任何交易场所均不得将任何权益拆分为均等份额公开发行，不得采取集中竞价、做市商等集中交易方式进行交易；不得将权益按照标准化交易单位持续挂牌交易，任何投资者买入后卖出或卖出后买入同一交易品种的时间间隔不得少于5个交易日；除法律、行政法规另有规定外，权益持有人累计不得超过200人。
+除依法经国务院或国务院期货监管机构批准设立从事期货交易的交易场所外，任何单位一律不得以集中竞价、电子撮合、匿名交易、做市商等集中交易方式进行标准化合约交易。
+从事保险、信贷、黄金等金融产品交易的交易场所，必须经国务院相关金融管理部门批准设立。
+为规范交易场所名称，凡使用“交易所”字样的交易场所，除经国务院或国务院金融管理部门批准的外，必须报省级人民政府批准；省级人民政府批准前，应征求联席会议意见。未按上述规定批准设立或违反上述规定在名称中使用“交易所”字样的交易场所，工商部门不得为其办理工商登记。</col>
+</record>
+
+<!--65-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">137</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">12</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">调查责任，认定责任人</col>
+  <col name="law_id">-17117</col>
+  <col name="law_name">车辆购置税征收管理办法(2011修订) </col>
+  <col name="lawitem_id">-175265</col>
+  <col name="lawitem_title">第五条</col>
+  <col name="lawitem_content">已经办理纳税申报的车辆发生下列情形之一的，纳税人应按本办法规定重新办理纳税申报：
+（一）底盘发生更换的；
+（二）免税条件消失的。</col>
+</record>
+
+<!--66-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">138</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">12</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">调查责任，认定责任人</col>
+  <col name="law_id">-16908</col>
+  <col name="law_name">公司债权转股权登记管理办法 </col>
+  <col name="lawitem_id">-170673</col>
+  <col name="lawitem_title">第六条</col>
+  <col name="lawitem_content">债权转股权作价出资金额与其他非货币财产作价出资金额之和，不得高于公司注册资本的百分之七十。</col>
+</record>
+
+<!--67-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">139</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">12</col>
+  <col name="wfactivity_code">WFA6</col>
+  <col name="wfactivity_name">调查责任，认定责任人</col>
+  <col name="law_id">-16904</col>
+  <col name="law_name">国务院关于清理整顿各类交易场所切实防范金融风险的决定 </col>
+  <col name="lawitem_id">-170592</col>
+  <col name="lawitem_title">二</col>
+  <col name="lawitem_content">建立分工明确、密切协作的工作机制
+为加强对清理整顿交易场所和规范市场秩序工作的组织领导，形成既有分工又相互配合的监管机制，建立由证监会牵头，有关部门参加的“清理整顿各类交易场所部际联席会议”（以下简称联席会议）制度。联席会议的主要任务是，统筹协调有关部门和省级人民政府清理整顿违法证券期货交易工作，督导建立对各类交易场所和交易产品的规范管理制度，完成国务院交办的其他事项。联席会议日常办事机构设在证监会。
+联席会议不代替国务院有关部门和省级人民政府的监管职责。对经国务院或国务院金融管理部门批准设立从事金融产品交易的交易场所，由国务院金融管理部门负责日常监管。其他交易场所均由省级人民政府按照属地管理原则负责监管，并切实做好统计监测、违规处理和风险处置工作。联席会议及相关部门和省级人民政府要及时沟通情况，加强协调配合，齐心协力做好各类交易场所清理整顿和规范工作。</col>
+</record>
+
+<!--68-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">143</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">44</col>
+  <col name="cmpfile_name">出口保理业务作业指导书</col>
+  <col name="wfprocess_id">2577</col>
+  <col name="wfprocess_code">出口保理业务作业指导书_1_流程1</col>
+  <col name="wfprocess_name">出口保理业务作业指导书_1_流程1</col>
+  <col name="wfactivity_id">521</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">审核材料</col>
+  <col name="law_id">-17118</col>
+  <col name="law_name">商业特许经营备案管理办法(2011)</col>
+  <col name="lawitem_id">-175310</col>
+  <col name="lawitem_title">第五条</col>
+  <col name="lawitem_content">任何单位或者个人对违反本办法规定的行为，有权向商务主管部门举报，商务主管部门应当依法处理。</col>
+</record>
+
+<!--69-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">145</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">44</col>
+  <col name="cmpfile_name">出口保理业务作业指导书</col>
+  <col name="wfprocess_id">2577</col>
+  <col name="wfprocess_code">出口保理业务作业指导书_1_流程1</col>
+  <col name="wfprocess_name">出口保理业务作业指导书_1_流程1</col>
+  <col name="wfactivity_id">565</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">受理我行申
+请，向保理
+商申请</col>
+  <col name="law_id">-17111</col>
+  <col name="law_name">国家通信保障应急预案(2011修订)</col>
+  <col name="lawitem_id">-175111</col>
+  <col name="lawitem_title">3.2</col>
+  <col name="lawitem_content">预警分级
+
+按影响范围，将通信预警划分为特别严重（Ⅰ级）、严重（Ⅱ级）、较严重（Ⅲ级）和一般（Ⅳ级）四个等级，依次标为红色、橙色、黄色和蓝色：
+
+Ⅰ级（红色）：电信网络出现故障或其他事件征兆，经研判可能引发2个以上省（区、市）通信大面积中断的情况。
+
+Ⅱ级（橙色）：电信网络出现故障或其他事件征兆，经研判可能引发1个省（区、市）内2个以上市（地）通信大面积中断的情况。
+
+Ⅲ级（黄色）：电信网络出现故障或其他事件征兆，经研判可能引发1个市（地）内2个以上县通信大面积中断的情况。
+
+Ⅳ级（蓝色）：电信网络出现故障或其他事件征兆，经研判可能引发1个县通信中断的情况。
+
+发生特殊情况，可结合实际，适当调整预警相应级别。</col>
+</record>
+
+<!--70-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">147</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">39</col>
+  <col name="cmpfile_name">金库管理作业流程图</col>
+  <col name="wfprocess_id">2573</col>
+  <col name="wfprocess_code">金库管理作业流程图_流程1</col>
+  <col name="wfprocess_name">金库管理作业流程图_流程1</col>
+  <col name="wfactivity_id">328</col>
+  <col name="wfactivity_code">WFA2</col>
+  <col name="wfactivity_name">整点入库现金填写入库票</col>
+  <col name="law_id">-16915</col>
+  <col name="law_name">保险公司偿付能力报告编报规则--问题解答第13号：次级债和股东增资 </col>
+  <col name="lawitem_id">-170726</col>
+  <col name="lawitem_title">（一）</col>
+  <col name="lawitem_content">不带可赎回条款的次级债，应当按照《保险公司偿付能力报告编报规则第6号：认可负债》的规定进行认可。</col>
+</record>
+
+<!--71-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">149</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">10</col>
+  <col name="cmpfile_name">诚信举报操作规程</col>
+  <col name="wfprocess_id">10</col>
+  <col name="wfprocess_code">诚信举报流程图</col>
+  <col name="wfprocess_name">诚信举报流程图</col>
+  <col name="wfactivity_id">155</col>
+  <col name="wfactivity_code">WFA1</col>
+  <col name="wfactivity_name">受理</col>
+  <col name="law_id">-16913</col>
+  <col name="law_name">国务院国有资产监督管理委员会办公厅关于2012年中央企业开展全面风险管理工作有关事项的通知</col>
+  <col name="lawitem_id">-170717</col>
+  <col name="lawitem_title">二</col>
+  <col name="lawitem_content">2012年度企业风险评估情况
+（一）结合2012年度本企业经营目标，简要描述本企业2012年面临的内外部环境因素的变化，并就其对经营目标的影响进行总体研判和简要分析。
+（二）企业开展2012年度风险评估的范围、方式及参与人员等有关情况。
+（三）按照企业风险分类，列示企业2012年度风险评估的结果，以及经评估确定的重大风险（以附件形式列示企业在分析风险发生的可能性、发生后对企业目标的影响程度时，所采用的评估标准）。
+（四）简要说明企业对重大风险关键成因进行量化分析的情况（包括建立分析、预测模型等）。
+（五）按照风险事件发生的可能性和发生后对企业目标的影响程度两个维度，将企业2012年度的重大风险绘制成风险坐标图。</col>
+</record>
+
+<!--72-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">151</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">4</col>
+  <col name="cmpfile_name">合规问责管理操作规程</col>
+  <col name="wfprocess_id">2561</col>
+  <col name="wfprocess_code">合规问责制度流程</col>
+  <col name="wfprocess_name">合规问责制度流程</col>
+  <col name="wfactivity_id">14</col>
+  <col name="wfactivity_code">WFA8</col>
+  <col name="wfactivity_name">通知责任人7日之内申辩</col>
+  <col name="law_id">-17119</col>
+  <col name="law_name"> 企业劳动争议协商调解规定</col>
+  <col name="lawitem_id">-175343</col>
+  <col name="lawitem_title">第十四条</col>
+  <col name="lawitem_content">小微型企业可以设立调解委员会，也可以由劳动者和企业共同推举人员，开展调解工作。</col>
+</record>
+
+<!--73-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">153</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">8</col>
+  <col name="cmpfile_name">人民币单位通存通兑业务处理操作规程</col>
+  <col name="wfprocess_id">2</col>
+  <col name="wfprocess_code">现金通存</col>
+  <col name="wfprocess_name">现金通存</col>
+  <col name="wfactivity_id">83</col>
+  <col name="wfactivity_code">WFA13</col>
+  <col name="wfactivity_name">清点现金</col>
+  <col name="law_id">-16912</col>
+  <col name="law_name">国务院国有资产监督管理委员会关于进一步深化中央企业全面预算管理工作的通知 </col>
+  <col name="lawitem_id">-170708</col>
+  <col name="lawitem_title">五</col>
+  <col name="lawitem_content">加强关键指标预算控制，努力提升企业运行质量。各中央企业在全面预算管理工作中，要以提高运营质量、努力为未来健康发展提供保障为目标，紧紧抓住企业生产经营各环节的关键性指标，从业务前端入手，加大管控力度，确保预算对各项生产经营活动的有效控制。一是加强成本费用预算控制。通过强化定额和对标管理，明确制订成本费用控制标准，落实成本费用管控责任，积极推动各预算单位改进生产流程、开展技术创新、采用集中招标采购等措施压缩可控费用，努力实现降本增效。二是加强投资项目预算控制。各中央企业在确定年度投资项目时要坚持效益优先和资金保障原则，严控亏损或低效投资，严控资金难以落实的投资，严控超越财务承受能力、过度依赖负债的投资。三是加强现金流量预算管理。结合企业面临的市场形势、创现能力等因素，合理确定赊销和库存规模，加强应收款项和存货的预算管控，加快资金周转，提升现金保障能力。四是加强债务规模与结构的预算管理。通过对预算资产负债率、带息负债比率等债务风险类指标设定合理的目标控制线等措施，严格控制债务规模过快增长；结合速动比率、流动负债比率等指标分析，优化债务结构，切实防范债务风险。</col>
+</record>
+
+<!--74-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">155</col>
+  <col name="relationtype">流程</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id"></col>
+  <col name="wfactivity_code"></col>
+  <col name="wfactivity_name"></col>
+  <col name="law_id">-17116</col>
+  <col name="law_name"> 财政部、工业和信息化部关于印发《政府采购促进中小企业发展暂行办法》的通知</col>
+  <col name="lawitem_id">-175242</col>
+  <col name="lawitem_title">第一条</col>
+  <col name="lawitem_content">为了发挥政府采购的政策功能，促进符合国家经济和社会发展政策目标，产品、服务、信誉较好的中小企业发展，根据《中华人民共和国政府采购法》、《中华人民共和国中小企业促进法》等有关法律法规，制定本办法。</col>
+</record>
+
+<!--75-->
+<record tabname="cmp_cmpfile_law">
+  <col name="id">157</col>
+  <col name="relationtype">环节</col>
+  <col name="cmpfile_id">30</col>
+  <col name="cmpfile_name">商业汇票作业指导书</col>
+  <col name="wfprocess_id">2584</col>
+  <col name="wfprocess_code">商业汇票作业指导书_流程1</col>
+  <col name="wfprocess_name">商业汇票作业指导书_流程1</col>
+  <col name="wfactivity_id">757</col>
+  <col name="wfactivity_code">WFA4</col>
+  <col name="wfactivity_name">出具保证金到账通知书</col>
+  <col name="law_id">-17115</col>
+  <col name="law_name"> 中国人民银行、公安部、工商总局、银监会、证监会关于加强黄金交易所或从事黄金交易平台管理的通知</col>
+  <col name="lawitem_id">-175240</col>
+  <col name="lawitem_title">二○一一年十二月二十日</col>
+  <col name="lawitem_content"></col>
+</record>
+
+</root>
