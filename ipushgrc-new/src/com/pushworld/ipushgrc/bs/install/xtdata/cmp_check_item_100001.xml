@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_check_item">
+  <col name="id">1</col>
+  <col name="cmp_check_id">1</col>
+  <col name="checkitem_descr">检查合规问责操作流程</col>
+  <col name="cmp_cmpfile_id">4</col>
+  <col name="cmp_cmpfile_name">合规问责管理操作规程</col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog">一切正常</col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--2-->
+<record tabname="cmp_check_item">
+  <col name="id">3</col>
+  <col name="cmp_check_id">1</col>
+  <col name="checkitem_descr">检查内部财务操作规程</col>
+  <col name="cmp_cmpfile_id">12</col>
+  <col name="cmp_cmpfile_name">内部财务操作规程</col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog">发现一点小的违规问题,但不严重！</col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--3-->
+<record tabname="cmp_check_item">
+  <col name="id">5</col>
+  <col name="cmp_check_id">1</col>
+  <col name="checkitem_descr">检查诚信举报流程</col>
+  <col name="cmp_cmpfile_id">10</col>
+  <col name="cmp_cmpfile_name">诚信举报操作规程</col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog">暂时没发现什么问题！！</col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--4-->
+<record tabname="cmp_check_item">
+  <col name="id">8</col>
+  <col name="cmp_check_id">3</col>
+  <col name="checkitem_descr">检查挂失业务是否规范</col>
+  <col name="cmp_cmpfile_id">6</col>
+  <col name="cmp_cmpfile_name">单位挂失业务操作规程</col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--5-->
+<record tabname="cmp_check_item">
+  <col name="id">10</col>
+  <col name="cmp_check_id">3</col>
+  <col name="checkitem_descr">检查票据业务是否规范</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog">基本上正常,但也有一些问题</col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--6-->
+<record tabname="cmp_check_item">
+  <col name="id">12</col>
+  <col name="cmp_check_id">3</col>
+  <col name="checkitem_descr">检查房款金额是否超标</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--7-->
+<record tabname="cmp_check_item">
+  <col name="id">14</col>
+  <col name="cmp_check_id">3</col>
+  <col name="checkitem_descr">检查房款利贷款比例是否控制在17%以下?</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--8-->
+<record tabname="cmp_check_item">
+  <col name="id">16</col>
+  <col name="cmp_check_id">5</col>
+  <col name="checkitem_descr">检查授信流程是否规范</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--9-->
+<record tabname="cmp_check_item">
+  <col name="id">18</col>
+  <col name="cmp_check_id">5</col>
+  <col name="checkitem_descr">检查不相容责职是否严格执行?</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--10-->
+<record tabname="cmp_check_item">
+  <col name="id">20</col>
+  <col name="cmp_check_id">5</col>
+  <col name="checkitem_descr">检查金额是否超标</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--11-->
+<record tabname="cmp_check_item">
+  <col name="id">22</col>
+  <col name="cmp_check_id">5</col>
+  <col name="checkitem_descr">检查合同是否按时执行</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+<!--12-->
+<record tabname="cmp_check_item">
+  <col name="id">24</col>
+  <col name="cmp_check_id">5</col>
+  <col name="checkitem_descr">检查领导是否越权签字</col>
+  <col name="cmp_cmpfile_id"></col>
+  <col name="cmp_cmpfile_name"></col>
+  <col name="checkuser"></col>
+  <col name="checkdate"></col>
+  <col name="cmp_risk_ids"></col>
+  <col name="cmp_risk_names"></col>
+  <col name="checklog"></col>
+  <col name="checkidea"></col>
+  <col name="attachfile"></col>
+</record>
+
+</root>

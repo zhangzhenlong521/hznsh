@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="bsd_icsys">
+  <col name="id">1</col>
+  <col name="name">内控环境</col>
+  <col name="parentid"></col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--2-->
+<record tabname="bsd_icsys">
+  <col name="id">2</col>
+  <col name="name">风险识别评估及管理</col>
+  <col name="parentid"></col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--3-->
+<record tabname="bsd_icsys">
+  <col name="id">3</col>
+  <col name="name">运行控制</col>
+  <col name="parentid"></col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--4-->
+<record tabname="bsd_icsys">
+  <col name="id">4</col>
+  <col name="name">检查监督与持续改进</col>
+  <col name="parentid"></col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--5-->
+<record tabname="bsd_icsys">
+  <col name="id">5</col>
+  <col name="name">信息交流与反馈</col>
+  <col name="parentid"></col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--6-->
+<record tabname="bsd_icsys">
+  <col name="id">6</col>
+  <col name="name">公司治理</col>
+  <col name="parentid">1</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--7-->
+<record tabname="bsd_icsys">
+  <col name="id">7</col>
+  <col name="name">风险识别与评估</col>
+  <col name="parentid">2</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--8-->
+<record tabname="bsd_icsys">
+  <col name="id">8</col>
+  <col name="name">设计开发</col>
+  <col name="parentid">3</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--9-->
+<record tabname="bsd_icsys">
+  <col name="id">9</col>
+  <col name="name">监督、检查</col>
+  <col name="parentid">4</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--10-->
+<record tabname="bsd_icsys">
+  <col name="id">10</col>
+  <col name="name">信息交流沟通</col>
+  <col name="parentid">5</col>
+  <col name="seq">1</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--11-->
+<record tabname="bsd_icsys">
+  <col name="id">11</col>
+  <col name="name">文件控制</col>
+  <col name="parentid">5</col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--12-->
+<record tabname="bsd_icsys">
+  <col name="id">21</col>
+  <col name="name">高管层责任</col>
+  <col name="parentid">1</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--13-->
+<record tabname="bsd_icsys">
+  <col name="id">22</col>
+  <col name="name">政策与目标管理</col>
+  <col name="parentid">1</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--14-->
+<record tabname="bsd_icsys">
+  <col name="id">24</col>
+  <col name="name">组织结构</col>
+  <col name="parentid">1</col>
+  <col name="seq">24</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--15-->
+<record tabname="bsd_icsys">
+  <col name="id">25</col>
+  <col name="name">企业文化</col>
+  <col name="parentid">1</col>
+  <col name="seq">25</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--16-->
+<record tabname="bsd_icsys">
+  <col name="id">26</col>
+  <col name="name">人力资源</col>
+  <col name="parentid">1</col>
+  <col name="seq">26</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--17-->
+<record tabname="bsd_icsys">
+  <col name="id">27</col>
+  <col name="name">市场风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">27</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--18-->
+<record tabname="bsd_icsys">
+  <col name="id">28</col>
+  <col name="name">信用风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">28</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--19-->
+<record tabname="bsd_icsys">
+  <col name="id">29</col>
+  <col name="name">操作风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">29</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--20-->
+<record tabname="bsd_icsys">
+  <col name="id">30</col>
+  <col name="name">合规风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">30</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--21-->
+<record tabname="bsd_icsys">
+  <col name="id">31</col>
+  <col name="name">流动性风险</col>
+  <col name="parentid">2</col>
+  <col name="seq">31</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--22-->
+<record tabname="bsd_icsys">
+  <col name="id">32</col>
+  <col name="name">风险报告</col>
+  <col name="parentid">2</col>
+  <col name="seq">32</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--23-->
+<record tabname="bsd_icsys">
+  <col name="id">33</col>
+  <col name="name">风险应对</col>
+  <col name="parentid">2</col>
+  <col name="seq">33</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--24-->
+<record tabname="bsd_icsys">
+  <col name="id">34</col>
+  <col name="name">外规识别与管理</col>
+  <col name="parentid">2</col>
+  <col name="seq">34</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--25-->
+<record tabname="bsd_icsys">
+  <col name="id">35</col>
+  <col name="name">采购及外包控制</col>
+  <col name="parentid">3</col>
+  <col name="seq">2</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--26-->
+<record tabname="bsd_icsys">
+  <col name="id">36</col>
+  <col name="name">财务管理</col>
+  <col name="parentid">3</col>
+  <col name="seq">3</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--27-->
+<record tabname="bsd_icsys">
+  <col name="id">37</col>
+  <col name="name">资金业务</col>
+  <col name="parentid">3</col>
+  <col name="seq">4</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--28-->
+<record tabname="bsd_icsys">
+  <col name="id">38</col>
+  <col name="name">授信业务</col>
+  <col name="parentid">3</col>
+  <col name="seq">5</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--29-->
+<record tabname="bsd_icsys">
+  <col name="id">39</col>
+  <col name="name">中间业务</col>
+  <col name="parentid">3</col>
+  <col name="seq">6</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--30-->
+<record tabname="bsd_icsys">
+  <col name="id">40</col>
+  <col name="name">渠道管理</col>
+  <col name="parentid">3</col>
+  <col name="seq">7</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--31-->
+<record tabname="bsd_icsys">
+  <col name="id">41</col>
+  <col name="name">柜台及会计结算</col>
+  <col name="parentid">3</col>
+  <col name="seq">8</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--32-->
+<record tabname="bsd_icsys">
+  <col name="id">42</col>
+  <col name="name">法律事务</col>
+  <col name="parentid">3</col>
+  <col name="seq">9</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--33-->
+<record tabname="bsd_icsys">
+  <col name="id">43</col>
+  <col name="name">安全保卫</col>
+  <col name="parentid">3</col>
+  <col name="seq">10</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--34-->
+<record tabname="bsd_icsys">
+  <col name="id">44</col>
+  <col name="name">后勤管理</col>
+  <col name="parentid">3</col>
+  <col name="seq">11</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--35-->
+<record tabname="bsd_icsys">
+  <col name="id">45</col>
+  <col name="name">工会管理</col>
+  <col name="parentid">3</col>
+  <col name="seq">12</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--36-->
+<record tabname="bsd_icsys">
+  <col name="id">46</col>
+  <col name="name">社会责任</col>
+  <col name="parentid">3</col>
+  <col name="seq">13</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--37-->
+<record tabname="bsd_icsys">
+  <col name="id">47</col>
+  <col name="name">系统控制</col>
+  <col name="parentid">3</col>
+  <col name="seq">14</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--38-->
+<record tabname="bsd_icsys">
+  <col name="id">48</col>
+  <col name="name">应急管理</col>
+  <col name="parentid">3</col>
+  <col name="seq">15</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--39-->
+<record tabname="bsd_icsys">
+  <col name="id">49</col>
+  <col name="name">违规处置和改进措施</col>
+  <col name="parentid">4</col>
+  <col name="seq">49</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--40-->
+<record tabname="bsd_icsys">
+  <col name="id">50</col>
+  <col name="name">体系评价</col>
+  <col name="parentid">4</col>
+  <col name="seq">50</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--41-->
+<record tabname="bsd_icsys">
+  <col name="id">51</col>
+  <col name="name">管理评审</col>
+  <col name="parentid">4</col>
+  <col name="seq">51</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+<!--42-->
+<record tabname="bsd_icsys">
+  <col name="id">52</col>
+  <col name="name">记录/档案控制</col>
+  <col name="parentid">5</col>
+  <col name="seq">52</col>
+  <col name="linkcode"></col>
+  <col name="descr"></col>
+</record>
+
+</root>

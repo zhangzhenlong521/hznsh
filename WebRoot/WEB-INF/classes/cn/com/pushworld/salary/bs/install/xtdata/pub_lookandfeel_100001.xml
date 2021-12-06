@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_lookandfeel">
+  <col name="id">1</col>
+  <col name="code">描述</col>
+  <col name="name">描述</col>
+  <col name="style1">雅红风格</col>
+  <col name="style2">天蓝风格</col>
+  <col name="style3">米黄风格</col>
+  <col name="style4">清绿风格</col>
+  <col name="style5">银灰风格</col>
+  <col name="style6">水晶风格</col>
+  <col name="seq">1</col>
+</record>
+
+<!--2-->
+<record tabname="pub_lookandfeel">
+  <col name="id">2</col>
+  <col name="code">defaultShadeColor1</col>
+  <col name="name">系统默认渐变色1 </col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">245,245,225</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">2</col>
+</record>
+
+<!--3-->
+<record tabname="pub_lookandfeel">
+  <col name="id">3</col>
+  <col name="code">sys_bgcolor</col>
+  <col name="name">系统默认面板底色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">245,245,225</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">3</col>
+</record>
+
+<!--4-->
+<record tabname="pub_lookandfeel">
+  <col name="id">4</col>
+  <col name="code">desktop_Background</col>
+  <col name="name">首页公告背景颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">245,245,225</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">4</col>
+</record>
+
+<!--5-->
+<record tabname="pub_lookandfeel">
+  <col name="id">5</col>
+  <col name="code">desktop_OutLookBarBg</col>
+  <col name="name">桌面抽屉背景颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">245,245,225</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">5</col>
+</record>
+
+<!--6-->
+<record tabname="pub_lookandfeel">
+  <col name="id">6</col>
+  <col name="code">desktop_BtnBarBg</col>
+  <col name="name">桌面按钮条的背景颜色</col>
+  <col name="style1">117,117,151</col>
+  <col name="style2">65,126,196</col>
+  <col name="style3">148,121,38</col>
+  <col name="style4">105,132,89</col>
+  <col name="style5">100,100,100</col>
+  <col name="style6">150,150,150</col>
+  <col name="seq">6</col>
+</record>
+
+<!--7-->
+<record tabname="pub_lookandfeel">
+  <col name="id">7</col>
+  <col name="code">btn_bgcolor</col>
+  <col name="name">系统默认按钮的底色</col>
+  <col name="style1">190,190,225</col>
+  <col name="style2">190,220,240</col>
+  <col name="style3">245,245,225</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">7</col>
+</record>
+
+<!--8-->
+<record tabname="pub_lookandfeel">
+  <col name="id">8</col>
+  <col name="code">desktop_OutLookBarFont</col>
+  <col name="name">桌面左边抽屉工具条字体</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,0,12</col>
+  <col name="style4">宋体,0,12</col>
+  <col name="style5">宋体,0,12</col>
+  <col name="style6">宋体,0,12</col>
+  <col name="seq">8</col>
+</record>
+
+<!--9-->
+<record tabname="pub_lookandfeel">
+  <col name="id">9</col>
+  <col name="code">desktop_GroupTitleFont</col>
+  <col name="name">首页每个分组标题的字体</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,0,12</col>
+  <col name="style4">宋体,0,12</col>
+  <col name="style5">宋体,0,12</col>
+  <col name="style6">宋体,0,12</col>
+  <col name="seq">9</col>
+</record>
+
+<!--10-->
+<record tabname="pub_lookandfeel">
+  <col name="id">10</col>
+  <col name="code">desktop_Foreground</col>
+  <col name="name">首页公告,前景字的颜色</col>
+  <col name="style1">72,115,172</col>
+  <col name="style2">0,0,0</col>
+  <col name="style3">0,0,0</col>
+  <col name="style4">72,115,172</col>
+  <col name="style5">0,0,0</col>
+  <col name="style6">81,81,124</col>
+  <col name="seq">10</col>
+</record>
+
+<!--11-->
+<record tabname="pub_lookandfeel">
+  <col name="id">11</col>
+  <col name="code">sys_font</col>
+  <col name="name">系统默认字体1</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,0,12</col>
+  <col name="style4">宋体,0,12</col>
+  <col name="style5">宋体,0,12</col>
+  <col name="style6">宋体,0,12</col>
+  <col name="seq">11</col>
+</record>
+
+<!--12-->
+<record tabname="pub_lookandfeel">
+  <col name="id">12</col>
+  <col name="code">table_font2</col>
+  <col name="name">网格内的选中字体2</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,0,12</col>
+  <col name="style4">宋体,0,12</col>
+  <col name="style5">宋体,0,12</col>
+  <col name="style6">宋体,0,12</col>
+  <col name="seq">12</col>
+</record>
+
+<!--13-->
+<record tabname="pub_lookandfeel">
+  <col name="id">13</col>
+  <col name="code">sys_Fontcolor</col>
+  <col name="name">系统默认字体颜色</col>
+  <col name="style1">66,66,66</col>
+  <col name="style2">66,66,66</col>
+  <col name="style3">66,66,66</col>
+  <col name="style4">66, 66, 66</col>
+  <col name="style5">66, 66, 66</col>
+  <col name="style6">66, 66, 66</col>
+  <col name="seq">13</col>
+</record>
+
+<!--14-->
+<record tabname="pub_lookandfeel">
+  <col name="id">14</col>
+  <col name="code">split_DividerColor</col>
+  <col name="name">分隔条的颜色</col>
+  <col name="style1">225,225,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">14</col>
+</record>
+
+<!--15-->
+<record tabname="pub_lookandfeel">
+  <col name="id">15</col>
+  <col name="code">tabbedPanel_sys_SelectedBg</col>
+  <col name="name">系统多页签选中的颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">15</col>
+</record>
+
+<!--16-->
+<record tabname="pub_lookandfeel">
+  <col name="id">16</col>
+  <col name="code">tabbedPanel_sys_NotSelectedBg</col>
+  <col name="name">系统多页签没有选中的颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,240</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">217,229,209</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">240,240,240</col>
+  <col name="seq">16</col>
+</record>
+
+<!--17-->
+<record tabname="pub_lookandfeel">
+  <col name="id">17</col>
+  <col name="code">tabbedPanel_app_SelectedBg</col>
+  <col name="name">自定义多页签选中的颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">17</col>
+</record>
+
+<!--18-->
+<record tabname="pub_lookandfeel">
+  <col name="id">18</col>
+  <col name="code">tabbedPanel_app_NotSelectedBg</col>
+  <col name="name">自定义多页签没有选中的颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,240</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">217,229,209</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">240,240,240</col>
+  <col name="seq">18</col>
+</record>
+
+<!--19-->
+<record tabname="pub_lookandfeel">
+  <col name="id">19</col>
+  <col name="code">scrollBar_Background</col>
+  <col name="name">滑动槽的背景颜色</col>
+  <col name="style1">240,240,240</col>
+  <col name="style2">240,240,240</col>
+  <col name="style3">240,240,240</col>
+  <col name="style4">240,240,240</col>
+  <col name="style5">250,250,250</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">19</col>
+</record>
+
+<!--20-->
+<record tabname="pub_lookandfeel">
+  <col name="id">20</col>
+  <col name="code">scrollBar_TarckColor</col>
+  <col name="name">滚动条的底色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,240</col>
+  <col name="style3">255,255,210</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">240,240,240</col>
+  <col name="seq">20</col>
+</record>
+
+<!--21-->
+<record tabname="pub_lookandfeel">
+  <col name="id">21</col>
+  <col name="code">scrollBar_BorderColor</col>
+  <col name="name">滚动条的边框颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">21</col>
+</record>
+
+<!--22-->
+<record tabname="pub_lookandfeel">
+  <col name="id">22</col>
+  <col name="code">sys_compBorderLineColor</col>
+  <col name="name">常用控件的边框颜色</col>
+  <col name="style1">199, 199, 199</col>
+  <col name="style2">199, 199, 199</col>
+  <col name="style3">199, 199, 199</col>
+  <col name="style4">199,199,199</col>
+  <col name="style5">199, 199, 199</col>
+  <col name="style6">150,150,150</col>
+  <col name="seq">22</col>
+</record>
+
+<!--23-->
+<record tabname="pub_lookandfeel">
+  <col name="id">23</col>
+  <col name="code">tree_PathHighlightFontcolor</col>
+  <col name="name">当前功能点路径字体高亮颜色</col>
+  <col name="style1">190,30,30</col>
+  <col name="style2">255,100,35</col>
+  <col name="style3">239,153,157</col>
+  <col name="style4">69,5,69</col>
+  <col name="style5">134,134,134</col>
+  <col name="style6">50,50,50</col>
+  <col name="seq">23</col>
+</record>
+
+<!--24-->
+<record tabname="pub_lookandfeel">
+  <col name="id">24</col>
+  <col name="code">tree_bgcolor</col>
+  <col name="name">树控件的背景颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">255,200,200</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">24</col>
+</record>
+
+<!--25-->
+<record tabname="pub_lookandfeel">
+  <col name="id">25</col>
+  <col name="code">tree_SelectedFontcolor</col>
+  <col name="name">树节点选中字体颜色</col>
+  <col name="style1">10,10,10</col>
+  <col name="style2">10,10,10</col>
+  <col name="style3">30,30,30</col>
+  <col name="style4">255,254,172</col>
+  <col name="style5">30,30,30</col>
+  <col name="style6">50,50,50</col>
+  <col name="seq">25</col>
+</record>
+
+<!--26-->
+<record tabname="pub_lookandfeel">
+  <col name="id">26</col>
+  <col name="code">tree_NotSelectedFontcolor</col>
+  <col name="name">树节点未选中字体颜色</col>
+  <col name="style1">50,50,50</col>
+  <col name="style2">50,50,50</col>
+  <col name="style3">50,50,50</col>
+  <col name="style4">50,50,50</col>
+  <col name="style5">50,50,50</col>
+  <col name="style6">50,50,50</col>
+  <col name="seq">26</col>
+</record>
+
+<!--27-->
+<record tabname="pub_lookandfeel">
+  <col name="id">27</col>
+  <col name="code">table_toolBarBgcolor</col>
+  <col name="name">表格工具条背景色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">27</col>
+</record>
+
+<!--28-->
+<record tabname="pub_lookandfeel">
+  <col name="id">28</col>
+  <col name="code">table_headFontColor</col>
+  <col name="name">表头字体颜色</col>
+  <col name="style1">0,0,0</col>
+  <col name="style2">0,0,0</col>
+  <col name="style3">84,51,51</col>
+  <col name="style4">112,71,112</col>
+  <col name="style5">59,58,58</col>
+  <col name="style6">0,0,0</col>
+  <col name="seq">28</col>
+</record>
+
+<!--29-->
+<record tabname="pub_lookandfeel">
+  <col name="id">29</col>
+  <col name="code">table_HeadLineColor</col>
+  <col name="name">表格_网线的颜色</col>
+  <col name="style1">200,200,200</col>
+  <col name="style2">198,223,253</col>
+  <col name="style3">175,175,175</col>
+  <col name="style4">200,200,200</col>
+  <col name="style5">170,170,170</col>
+  <col name="style6">200,200,200</col>
+  <col name="seq">29</col>
+</record>
+
+<!--30-->
+<record tabname="pub_lookandfeel">
+  <col name="id">30</col>
+  <col name="code">table_headerbgcolor</col>
+  <col name="name">表格表头的背景颜色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,230</col>
+  <col name="style4">187,207,175</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">30</col>
+</record>
+
+<!--31-->
+<record tabname="pub_lookandfeel">
+  <col name="id">31</col>
+  <col name="code">table_bgcolor</col>
+  <col name="name">表格偶数行背景颜色</col>
+  <col name="style1">242,242,249</col>
+  <col name="style2">239,248,254</col>
+  <col name="style3">255,255,240</col>
+  <col name="style4">217,229,209</col>
+  <col name="style5">245,245,245</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">31</col>
+</record>
+
+<!--32-->
+<record tabname="pub_lookandfeel">
+  <col name="id">32</col>
+  <col name="code">table_bgcolor_odd</col>
+  <col name="name">表格奇数行背景颜色</col>
+  <col name="style1">255,255,255</col>
+  <col name="style2">255,255,255</col>
+  <col name="style3">255,255,255</col>
+  <col name="style4">255,255,255</col>
+  <col name="style5">255,255,255</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">32</col>
+</record>
+
+<!--33-->
+<record tabname="pub_lookandfeel">
+  <col name="id">33</col>
+  <col name="code">table_rowselectbgcolor</col>
+  <col name="name">表格选中行背景</col>
+  <col name="style1">249,254,186</col>
+  <col name="style2">249,254,186</col>
+  <col name="style3">191,191,255</col>
+  <col name="style4">255,255,175</col>
+  <col name="style5">255,255,175</col>
+  <col name="style6">255,255,175</col>
+  <col name="seq">33</col>
+</record>
+
+<!--34-->
+<record tabname="pub_lookandfeel">
+  <col name="id">34</col>
+  <col name="code">table_htmlrefcolor</col>
+  <col name="name">表格超链接文字颜色</col>
+  <col name="style1">51,102,255</col>
+  <col name="style2">51,102,255</col>
+  <col name="style3">51,102,255</col>
+  <col name="style4">51,102,255</col>
+  <col name="style5">51,102,255</col>
+  <col name="style6">0,0,255</col>
+  <col name="seq">34</col>
+</record>
+
+<!--35-->
+<record tabname="pub_lookandfeel">
+  <col name="id">35</col>
+  <col name="code">sys_query_panelbgcolor</col>
+  <col name="name">列表快速查询面板的底色</col>
+  <col name="style1">215,215,230</col>
+  <col name="style2">232,239,255</col>
+  <col name="style3">255,255,217</col>
+  <col name="style4">255,243,243</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">35</col>
+</record>
+
+<!--36-->
+<record tabname="pub_lookandfeel">
+  <col name="id">36</col>
+  <col name="code">sys_toolpanelbgcolor</col>
+  <col name="name">卡片工具条的底色</col>
+  <col name="style1">226, 239, 255</col>
+  <col name="style2">226, 239, 255</col>
+  <col name="style3">255,255,240</col>
+  <col name="style4">255, 235, 253</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">225,225,225</col>
+  <col name="seq">36</col>
+</record>
+
+<!--37-->
+<record tabname="pub_lookandfeel">
+  <col name="id">37</col>
+  <col name="code">card_inputbgcolor_enable</col>
+  <col name="name">卡片可编辑文本框背景</col>
+  <col name="style1">255,255,255</col>
+  <col name="style2">255,255,255</col>
+  <col name="style3">255,255,240</col>
+  <col name="style4">255,240,250</col>
+  <col name="style5">255,255,255</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">37</col>
+</record>
+
+<!--38-->
+<record tabname="pub_lookandfeel">
+  <col name="id">38</col>
+  <col name="code">card_inputbgcolor_disable</col>
+  <col name="name">卡片不可编辑文本框背景</col>
+  <col name="style1">230,230,230</col>
+  <col name="style2">230,230,230</col>
+  <col name="style3">230,230,230</col>
+  <col name="style4">230,230,230</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">240,240,240</col>
+  <col name="seq">38</col>
+</record>
+
+<!--39-->
+<record tabname="pub_lookandfeel">
+  <col name="id">39</col>
+  <col name="code">cardbgcolor</col>
+  <col name="name">卡片背景颜色</col>
+  <col name="style1">206,228,250</col>
+  <col name="style2">190,220,255</col>
+  <col name="style3">255,255,240</col>
+  <col name="style4">255,243,243</col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">255,255,255</col>
+  <col name="seq">39</col>
+</record>
+
+<!--40-->
+<record tabname="pub_lookandfeel">
+  <col name="id">40</col>
+  <col name="code">groupTitlecolor</col>
+  <col name="name">分组条颜色</col>
+  <col name="style1">177,214,248</col>
+  <col name="style2">177,214,248</col>
+  <col name="style3">239,223,170</col>
+  <col name="style4">255,217,217</col>
+  <col name="style5">153,153,153</col>
+  <col name="style6">200,200,200</col>
+  <col name="seq">40</col>
+</record>
+
+<!--41-->
+<record tabname="pub_lookandfeel">
+  <col name="id">41</col>
+  <col name="code">card_inputlabelcolor</col>
+  <col name="name">标签名称</col>
+  <col name="style1">0,0,0</col>
+  <col name="style2">0,0,0</col>
+  <col name="style3">0,0,0</col>
+  <col name="style4">0,0,0</col>
+  <col name="style5">0,0,0</col>
+  <col name="style6">0,0,0</col>
+  <col name="seq">41</col>
+</record>
+
+<!--42-->
+<record tabname="pub_lookandfeel">
+  <col name="id">42</col>
+  <col name="code">sys_font_b</col>
+  <col name="name">系统默认字体(粗)</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,1,12</col>
+  <col name="style4">宋体,1,12</col>
+  <col name="style5">宋体,1,12</col>
+  <col name="style6">宋体,1,12</col>
+  <col name="seq">42</col>
+</record>
+
+<!--43-->
+<record tabname="pub_lookandfeel">
+  <col name="id">43</col>
+  <col name="code">sys_font_big</col>
+  <col name="name">系统默认大号字体</col>
+  <col name="style1">宋体,0,12</col>
+  <col name="style2">宋体,0,12</col>
+  <col name="style3">宋体,0,12</col>
+  <col name="style4">宋体,0,12</col>
+  <col name="style5">宋体,0,12</col>
+  <col name="style6">宋体,0,12</col>
+  <col name="seq">43</col>
+</record>
+
+<!--44-->
+<record tabname="pub_lookandfeel">
+  <col name="id">44</col>
+  <col name="code">card_inputforecolor_enable</col>
+  <col name="name">卡片控件有效时的前景颜色 </col>
+  <col name="style1">50,50,50</col>
+  <col name="style2">50,50,50</col>
+  <col name="style3">0,0,0 </col>
+  <col name="style4">0,0,0 </col>
+  <col name="style5">0,0,0 </col>
+  <col name="style6">0,0,0 </col>
+  <col name="seq">44</col>
+</record>
+
+<!--45-->
+<record tabname="pub_lookandfeel">
+  <col name="id">45</col>
+  <col name="code">card_inputforecolor_disable</col>
+  <col name="name">卡片控件无效时的前景颜色</col>
+  <col name="style1">100,100,100 </col>
+  <col name="style2">100,100,100 </col>
+  <col name="style3">100,100,100 </col>
+  <col name="style4">100,100,100 </col>
+  <col name="style5">100,100,100 </col>
+  <col name="style6">50,50,50</col>
+  <col name="seq">45</col>
+</record>
+
+<!--46-->
+<record tabname="pub_lookandfeel">
+  <col name="id">46</col>
+  <col name="code">card_inputbgcolor_disable </col>
+  <col name="name">卡片控件无效时的背景颜色</col>
+  <col name="style1">230,230,230 </col>
+  <col name="style2">230,230,230 </col>
+  <col name="style3">230,230,230 </col>
+  <col name="style4">230,230,230 </col>
+  <col name="style5">220,220,220</col>
+  <col name="style6">250,250,250</col>
+  <col name="seq">46</col>
+</record>
+
+</root>

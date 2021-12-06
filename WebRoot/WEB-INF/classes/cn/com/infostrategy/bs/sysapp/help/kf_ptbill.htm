@@ -1,0 +1,323 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>单据模板配置</title>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+.table {  border-collapse:   collapse; font-size: 12px; border:1px;};
+.td    {  border:   solid   1px   #888888; font-size: 12px; };
+</style>
+</head>
+
+<body>
+普信公司 WebPush 平台在表单配置方面可以实现以下功能 
+<table width="70%" align="left" class="table" cellspacing=0 cellpadding=5>
+  <tr  bgcolor="#DCFAC8">
+    <td class="td" align="center">序号 </td>
+    <td class="td" align="center">功能 ( 单项字段设置 ) </td>
+    <td class="td" align="center">说明 </td>
+  </tr>
+  <tr>
+    <td class="td">1 </td>
+    <td class="td">修改字段显示名称 </td>
+    <td class="td">即显示名称 , 比如有的叫 [ 工号 ], 有的叫 [ 人员编码 ], 最基本的需求 </td>
+  </tr>
+  <tr>
+    <td class="td">2 </td>
+    <td class="td">更改字段控件类型 </td>
+    <td class="td">有 25 种控件类型可以切换 , 比如文本框 , 下拉框 , 参照 , 上传文件 </td>
+  </tr>
+  <tr>
+    <td class="td">3 </td>
+    <td class="td">更改控件参数定义 </td>
+    <td class="td">每个控件都有对应的控件类型 , 比如下拉框 , 参照都需定义其构造参数，这是可以修改的 </td>
+  </tr>
+  <tr>
+    <td class="td">4 </td>
+    <td class="td">必输项定义 </td>
+    <td class="td">决定某一项是否是必输项 , 或者是警告项 </td>
+  </tr>
+  <tr>
+    <td class="td">5 </td>
+    <td class="td">是否保存至数据库 </td>
+    <td class="td">有的字段不参与保存至数据库，只属于显示字段 , 比如单价 * 数量 = 总额 </td>
+  </tr>
+  <tr>
+    <td class="td">6 </td>
+    <td class="td">唯一性校验 </td>
+    <td class="td">基本功能 , 即有的字段必须有唯一性约束 </td>
+  </tr>
+  <tr>
+    <td class="td">7 </td>
+    <td class="td">痕迹保存 </td>
+    <td class="td">像浏览器中输入过的密码，表单值能自动保存 , 下次输入时能 自动提醒带出来 </td>
+  </tr>
+  <tr>
+    <td class="td">8 </td>
+    <td class="td">加载公式 </td>
+    <td class="td">就是查询加载数据时 , 需要根据某种计算对页面中的数据进行处理 , 比如根据人员 id, 查询出人员名称 </td>
+  </tr>
+  <tr>
+    <td class="td">9 </td>
+    <td class="td">编辑公式 </td>
+    <td class="td">就是在编辑时，需要进行计算 , 比如选择了某个下拉框就让另一个文本框变成不可编辑或隐藏 ! 比如选择了 [ 已婚 ], 就会显示一个 [ 配偶名称 ] 项 , 而改成未婚 , 又会隐藏之 </td>
+  </tr>
+  <tr>
+    <td class="td">10 </td>
+    <td class="td">显示顺序 </td>
+    <td class="td">决定控件之间的排列顺序 </td>
+  </tr>
+  <tr>
+    <td class="td">11 </td>
+    <td class="td">显示颜色 </td>
+    <td class="td">设置某一项的显示颜色 , 而且可以根据实际值动态计算显示不同色 , 比如 [ 审批中 ] 就显示蓝色 ,[ 已审批 ] 就是红色 </td>
+  </tr>
+  <tr>
+    <td class="td">12 </td>
+    <td class="td">默认值公式 </td>
+    <td class="td">基本功能 , 就是进行新增数据时 , 有些项需要设置默认初始值 , 比如 [ 制单日期 ] 是当前日期 ,[ 制单人 ] 是登录人等 </td>
+  </tr>
+  <tr>
+    <td class="td">13 </td>
+    <td class="td">分组显示 </td>
+    <td class="td">可以将表单中的若干控件分成多组显示 ! 然后可以展开与收缩这些组 </td>
+  </tr>
+  <tr>
+    <td class="td">14 </td>
+    <td class="td">卡片中是否显示 </td>
+    <td class="td">基本需求 , 决定各项是否显示 </td>
+  </tr>
+  <tr>
+    <td class="td">15 </td>
+    <td class="td">卡片中是否可编辑 </td>
+    <td class="td">基本需求 , 决定各项是否可编辑 , 但可区分在新增状态与编辑状态的编辑属性不一样 , 即有时在新增状态下是可编辑的 , 但在修改时却不行 </td>
+  </tr>
+  <tr>
+    <td class="td">16 </td>
+    <td class="td">卡片中显示宽度 </td>
+    <td class="td">基本需求 , 即显示宽度与高度 ( 多行文本框就有高度属性 ) </td>
+  </tr>
+  <tr>
+    <td class="td">17 </td>
+    <td class="td">卡片中的控件自由布局 </td>
+    <td class="td">核心基本需求 , 即通过 [ 卡片是否换行 ], 宽度 , 显示顺序三者可以实现任意布局效果 , 之所有没有使用直接拖拉控件自由布局的方式 , 是因为我们经过反复试验 , 发现这种效率更高 , 因为拖拉布局的模式在中间新增一项时，调整起来特别费事 ! 对齐 , 间距相等调整也太费劲 ! 而我们这种方式却没这些麻烦 !! </td>
+  </tr>
+  <tr>
+    <td class="td">18 </td>
+    <td class="td">是否参与导出 </td>
+    <td class="td">表单可以导出报表 , 但有的项是不需要参与导出的 , 所以要可配置 </td>
+  </tr>
+  <tr>
+    <td class="td">19 </td>
+    <td class="td">列表中是否显示 </td>
+    <td class="td">某一项在列表模式是可以不显示 , 但可能在卡片模式下是显示的 , 这也是常见的方法 , 即初始页面是个表格只显示关键信息 , 点击 [ 查看 ] 按钮弹出卡片 , 显示详细信息 </td>
+  </tr>
+  <tr>
+    <td class="td">20 </td>
+    <td class="td">列表中显示宽度与顺序 </td>
+    <td class="td">基本需求 , 即在表格模式下 , 定义各列的宽度 , 以及显示的先后顺序 </td>
+  </tr>
+  <tr>
+    <td class="td">21 </td>
+    <td class="td">列表中是否可编辑 </td>
+    <td class="td">在列表模式 , 编辑时有些项也是不可编辑的 ! 比如只可以编辑 [ 单价 ] 与 [ 数量 ],[ 总额 ] 是通过编辑公式计算出来的 , 是不可编辑的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">22 </td>
+    <td class="td">列表状态是否是超链接状态 </td>
+    <td class="td">可以直接将某一项定义成是否是超链接显示方式 ! 即有个下划线 , 点击后弹出新窗口 ! </td>
+  </tr>
+  <tr>
+    <td class="td">23 </td>
+    <td class="td">查询框中的控件类型 </td>
+    <td class="td">查询框中的各个控件也是可定义的 , 比如是文本框 , 下拉框等 , 需要特别指出的是 , 在卡片中编辑时往往是一个单项值，但在查询时往往是多选或一个范围 , 比如制单日期 , 录入时是某一天 , 但查询时是 [ 起始日 - 结束日 ], 即是个范围 ! 下拉框也一项 , 查询时是可以多选的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">24 </td>
+    <td class="td">查询框中创建 SQL 的机制 </td>
+    <td class="td">查询条件输入后，生成 SQL 语锃的机制可以有多种 , 比如有的是 like or 机制 , 有的是 in () 机制 , 有的是 between 机制 , 这是可以配置的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">25 </td>
+    <td class="td">查询框中是否显示 </td>
+    <td class="td">查询框中有的控件是隐藏 , 但参与 SQL 计算 , 比如制单人必须是本人 ! </td>
+  </tr>
+  <tr>
+    <td class="td">26 </td>
+    <td class="td">查询框中布局 </td>
+    <td class="td">与卡片自由布局一样 , 查询框中也一样可自由布局 , 原理也一样 ! </td>
+  </tr>
+  <tr>
+    <td class="td">27 </td>
+    <td class="td">查询框中是否可编辑 </td>
+    <td class="td">有的查询条件是默认强制的 , 不可编辑的 , 比如单据所属机构必须是本机构 , 就需要设成不可编辑，然后强行参与 SQL 过滤条件条件 </td>
+  </tr>
+  <tr>
+    <td class="td">28 </td>
+    <td class="td">查询框中显示宽度 </td>
+    <td class="td">查询框中的控件宽度是可以定义的 </td>
+  </tr>
+  <tr>
+    <td class="td">29 </td>
+    <td class="td">查询框中在通用查询模式下的定义 </td>
+    <td class="td">查询有快捷查询与通用查询两种 , 所谓快速查询就是最常用的查询 , 通用查询就是更多的条件 ! 但不常用 , 需要点击一下才出来 ! 也是可定义的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">30 </td>
+    <td class="td">表单项在工作流提交时是否可编辑 </td>
+    <td class="td">有的表单在正常编辑与在工作流提交时编辑状态是不一样的 , 比如在工作流提交时只有几个字段是可以编辑的 , 大部分是不可编辑的 ! </td>
+  </tr>
+  <tr  bgcolor="#DCFAC8">
+    <td class="td" align="center">序号 </td>
+    <td class="td" align="center">功能 ( 整体设置 ) </td>
+    <td class="td" align="center">说明 </td>
+  </tr>
+  <tr>
+    <td class="td">31 </td>
+    <td class="td">整个表单名称的修改 </td>
+    <td class="td">每个表单都有个名称 , 在页面的最左上角显示 , 表示你现在维护的是个什么业务对象 , 比如是 [ 销售单 ] 还是 [ 采购单 ] ，这是可以修改的 ! 也是基本需求 </td>
+  </tr>
+  <tr>
+    <td class="td">32 </td>
+    <td class="td">数据源定义 </td>
+    <td class="td">一个系统可以有多个数据源 , 比如从外接系统抽取数据 , 所以需要定义这个表单是从哪个数据源读数据的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">33 </td>
+    <td class="td">查询的表名 </td>
+    <td class="td">任意一个表单 , 无论是卡片 / 列表 / 树 , 都是必然从一个物理表或视图读取数据的 ! 这肯定是可以定义的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">34 </td>
+    <td class="td">查询时的 SQL 条件补充 </td>
+    <td class="td">点击查询时 , 除了从查询框中生成 SQL 外 , 可以指定附加补充的 SQL 条件 , 这个条件是可以根据公式计算的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">35 </td>
+    <td class="td">页面打开时是否自动加载数据 </td>
+    <td class="td">有的页面一打开就自动查询出数据 , 有的则不需要 , 是可以通过开关控制的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">36 </td>
+    <td class="td">自动加载时的 SQL 条件 </td>
+    <td class="td">打开页面自动加载数据的逻辑与点击查询时有时可能不一样 , 比如自动加载时只查当前月份的 ! 所以需要区分定义 ! </td>
+  </tr>
+  <tr>
+    <td class="td">37 </td>
+    <td class="td">排序条件 </td>
+    <td class="td">基本需求 , 查询的数据最后都要 order by 排序一下 ! 肯定要可配置 ! </td>
+  </tr>
+  <tr>
+    <td class="td">38 </td>
+    <td class="td">启用的数据权限策略 </td>
+    <td class="td">表单要与数据权限引擎勾连起来 , 决定该表单启用什么数据权限 ! 至于数据权限的原理与配置机制如何 , 需要单独开篇详细说明 ( 本身很复杂 )! </td>
+  </tr>
+  <tr>
+    <td class="td">39 </td>
+    <td class="td">服务器端 BS 动态代码过滤器 </td>
+    <td class="td">SQL 语句过滤后 , 仍然有的复杂逻辑用 SQL 条件是搞不定的 , 必须使用 Java 语言来处理过滤 , 所以可以直接在系统中写动态 Java 代码来实现过滤 ! 这些代码是无需编译的 , 而是使用 BSH 引擎直接运行的动态代码 ! 可以理解成是最极限的配置 ! </td>
+  </tr>
+  <tr>
+    <td class="td">40 </td>
+    <td class="td">保存到的表名 </td>
+    <td class="td">查询的可能是视图 , 保存的却永远是物理表 , 两者名称可能不一样 ! 所以需要与查询表名区分定义 ! </td>
+  </tr>
+  <tr>
+    <td class="td">41 </td>
+    <td class="td">主键字段名 </td>
+    <td class="td">有的表有主键 , 有的可能没有 , 大部分表主键都叫 id, 但有的可能不是 , 可以定义 ! 主键字段到处需要使用 ! 必须明确指定 </td>
+  </tr>
+  <tr>
+    <td class="td">42 </td>
+    <td class="td">主键对应的序列名 </td>
+    <td class="td">既然就主键 , 就有新增时为主键自动编辑的序列与之定义 , 这个序列名是可以配置的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">43 </td>
+    <td class="td">卡片上方的按钮定义 </td>
+    <td class="td">卡片页面上面肯定要摆放一排按钮的 ! 比如 [ 新增 ],[ 修改 ],[ 删除 ] 等 ! 没有按钮就搞不了逻辑 ! 肯定是可以配置的 , 而像增删改这些按钮是通用逻辑按钮 , 是无需写逻辑代码的 ! </td>
+  </tr>
+  <tr>
+    <td class="td">44 </td>
+    <td class="td">卡片加载时的初始化公式 </td>
+    <td class="td">卡片打开时可以自动执行一些初始化公式 ! 比如设置哪些项是隐藏的等 ! </td>
+  </tr>
+  <tr>
+    <td class="td">45 </td>
+    <td class="td">卡片自定义校验器 </td>
+    <td class="td">唯一性与必输项校验有时不够 , 需要代码实现一些复杂校验 ! 比如结束日期必须大于起始日期 30 天 , 所以可以定义类名 ! 这也是面向修改关闭 , 而向扩展开放的设计原则 !! </td>
+  </tr>
+  <tr>
+    <td class="td">46 </td>
+    <td class="td">列表模式下是否是否查询框 </td>
+    <td class="td">一个列表有时需要上面的个查询框 , 有的时候不需要 , 比如用为子表显示时 ! 所以需要可定义 ! </td>
+  </tr>
+  <tr>
+    <td class="td">47 </td>
+    <td class="td">列表模式下是否显示分页系列按钮 </td>
+    <td class="td">基本需求 , 绝大部分表格都是需分页功能的 , 但在作为子表显示时是不需要的 ! 所以可配置 ! </td>
+  </tr>
+  <tr>
+    <td class="td">48 </td>
+    <td class="td">列表模式下表头是否可分组 </td>
+    <td class="td">列表情况下 , 可以将有的列头分组显示 , 即有两行 , 第一行是事合并第二行的若干列 ! </td>
+  </tr>
+  <tr>
+    <td class="td">49 </td>
+    <td class="td">列表中的表格宽度是否自动撑高 </td>
+    <td class="td">表格中的数据可以自动随着数据多少而改变宽度与高度 , 这是 html 表格的显示风格 , 但我们的系统则支持两种 , 还有一种是强制高度，不随数据多少而变 ! 这两种模式就是根据这个开关来定义 ! </td>
+  </tr>
+  <tr>
+    <td class="td">50 </td>
+    <td class="td">列表模式下的上方的按钮定义 </td>
+    <td class="td">列表上面肯定也要有 [ 新增 ][ 删除 ][ 修改 ] 等按钮 , 否则做不了逻辑 , 常用按钮是有逻辑的 , 自定义按钮需要指定类名进行扩展 ! </td>
+  </tr>
+  <tr>
+    <td class="td">51 </td>
+    <td class="td">列表的表头高度 </td>
+    <td class="td">表格的表头高度也是可定义的 , 虽然这种需求不常见 , 但也遇到过 ! </td>
+  </tr>
+  <tr>
+    <td class="td">52 </td>
+    <td class="td">列表的行高 </td>
+    <td class="td">表格行高也是可定义 , 一般不会改 ! </td>
+  </tr>
+  <tr>
+    <td class="td">53 </td>
+    <td class="td">列表的初始化公式 </td>
+    <td class="td">与卡片初始化公式一样 , 列表初始时也有公式定义 ! </td>
+  </tr>
+  <tr>
+    <td class="td">54 </td>
+    <td class="td">树型面板是否显示原始根结点 </td>
+    <td class="td">树总有一个原始的真正的根结束 ( 即数据库中是没有这条记录的 ), 可是决定是否显示 !! </td>
+  </tr>
+  <tr>
+    <td class="td">55 </td>
+    <td class="td">树型面板是否显示工具条 </td>
+    <td class="td">树型面板中可以有快速搜索，按钮栏等 , 这个可以配置是否隐藏 </td>
+  </tr>
+  <tr>
+    <td class="td">56 </td>
+    <td class="td">树型面板是否只能同时展开一层 </td>
+    <td class="td">树有个特性 , 即展开某一个结点时可以同时把其他结点收缩掉 , 从而做到永远无法同时看到所有结点 ! 达到保护数据与页面清爽之目的 ! 这是可以配置的 , 如果是否 , 则是可以任意展开所有结点的 , 即一览无余所有结点 ! </td>
+  </tr>
+  <tr>
+    <td class="td">57 </td>
+    <td class="td">树型面板中是否是勾选框 </td>
+    <td class="td">树的结点可以使用勾选框，从而实现多选的效果，这是可配置的 ! 而且可以实现先中父亲结点，自动选中所有子孙结点的联动效果 ( 通过 Shift 键可以控制是否要这个 )! </td>
+  </tr>
+  <tr>
+    <td class="td">58 </td>
+    <td class="td">树型面板中的按钮定义 </td>
+    <td class="td">与卡片 , 列表一样 , 树型面板上方也可以定义按钮 !! 常用的 30 种按钮是无需逻辑的 , 比如 [ 增 / 删 / 改 ],[ 移顺序 ] 等 , 自定义按钮是可以配置类名实现 ! 遵循面向修改关闭 , 面向扩展开放的设计原则 ! </td>
+  </tr>
+  <tr>
+    <td class="td">59 </td>
+    <td class="td">树型面板可以支持拖动迁移结点 </td>
+    <td class="td">将树中某个结点选中拖动到另一个结点下 , 就自动修改了隶属关系 ( 就像 windows 的文件管理器一样 ), 这是可配置的 ! 
+        拖动虽好 , 但容易误操作 , 有的地方不一定需要这个功能 ! </td>
+  </tr>
+</table>
+</body>
+</html>

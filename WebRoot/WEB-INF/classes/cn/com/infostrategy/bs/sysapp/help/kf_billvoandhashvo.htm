@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<TITLE>BillVO与HashVO的区别与使用</TITLE>
+		<style type="text/css">
+.p_text {
+	font-size: 12px;
+}
+
+;
+.tabstyle {
+	border-collapse: collapse;
+	font-size: 12px;
+	border: 1px;
+}
+
+;
+.tdstyle {
+	border: solid 1px #888888;
+	font-size: 12px;
+}
+;
+</style>
+	</head>
+	<body>
+		<p class="p_text">
+			<span style="color: red">HashVO:</span><br>
+			1、简述:<br>
+			简单理解可以看成一个带排序的HashMap。此类常用作查询数据库时返回的数据对象。<br>
+			2、常用方法介绍：<br>
+			   public String getStringValue(String attrname, String _isNullConvertStr) <br>
+			   public int getIntegerValue(String attrname, int _nvl)<br>
+			   public Long getLognValue(String attrname, long _nvl)<br>
+			   public Double getDoubleValue(String attrname, Double _nvldouble)<br>
+			   public Boolean getBooleanValue(String attrname, boolean _nvl)<br>
+			   public java.sql.Date getDateValue(String attrname)<br>
+			   public java.sql.Timestamp getTimeStampValue(String attrname)<br>
+			   以上为常用获取某一项的值的常用方法第2个参数为如果取到的值为null时的默认值<br>
+			   public void setAttributeValue(String key, Object value)//设置某一项的值<br>
+			   public void removeItem(String _key)//移除某一项<br>
+			   public HashVO clone()//克隆<br>
+			   public HashVO deepClone()//克隆<br>
+			 3、例子:<br>
+			 <textarea cols="150" rows="3" style="color: blue">
+HashVO[] vos = UIUtil.getHashVoArrayByDS(null, "select * from pub_user where code='admin' ");
+String username = vos[0].getStringValue("name", "空");
+			 </textarea><br>
+			<span style="color: red">BillVO:</span><br>
+			1、简述:<br>
+			简单理解可以看成由几个数组和一些变量组成的数据对象。主要有存实际数据的数组、存key的数组、<br>
+			存name的数组、存控件类型的数组、模板名、保存查询的表名。其中<span style="color: red">实际数据存储的是经过封装的<br>
+			VO(StringItemVO、RefItemVO、ComBoxItemVO)</span>。BillVO一般可以从UI端的卡片列表以及树中得到。<br>
+			2、方法介绍：<br>
+			public Object getObject(String _key)//获取某一项的实际VO需要类型转化一下<br>
+			public String getRealValue(String _key)//获取某一项的实际值<br>
+			public String getStringValue(String _key, String _nvl)//获取某一项的实际值<br>
+			public String getStringViewValue(String _key)//获取某一项的显示值<br>
+			public void setObject(String _key, Object _obj)//设置某一项的VO<br>
+			public String getInsertSQL()//通过billvo获取插入sql<br>
+			public String getUpdateSQL()//通过billvo获取更新sql<br>
+			public String getDeleteSQL()//通过billvo获取删除sql<br>
+			public HashVO convertToHashVO()//将billvo的实际值转化成hashvo<br>
+			public HashVO convertViewToHashVO()//将billvo的显示值转化成hashvo<br>
+			public String getTempletName()//获取模板名称<br>
+			public String getSaveTableName()//获取保存表名<br>
+			public String getQueryTableName()//获取查询表名<br>
+			3、例子:<br>
+			 <textarea cols="150" rows="3" style="color: blue">
+BillVO vo = billListPanel.getSelectedBillVO();
+BillVO vo = billCardPanel.getBillVO();
+BillVO vo = billTreePanel.getSelectedVO();
+			</textarea><br>
+		</p>
+	</body>
+</html>		

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<record tabname="pub_templet_1" pkname="pk_pub_templet_1" sename="S_PUB_TEMPLET_1">
+  <col name="PK_PUB_TEMPLET_1">3403</col>
+  <col name="TEMPLETCODE">EVA_QUERY_1</col>
+  <col name="TEMPLETNAME">EVA_QUERY_1</col>
+  <col name="TEMPLETNAME_E">查询</col>
+  <col name="DATASOURCENAME"></col>
+  <col name="TABLENAME">wltdual</col>
+  <col name="DATACONSTRAINT"></col>
+  <col name="PKNAME">id</col>
+  <col name="PKSEQUENCENAME">S_WLTDUAL</col>
+  <col name="TOSTRINGKEY"></col>
+  <col name="SAVEDTABLENAME">wltdual</col>
+  <col name="BSDATAFILTERCLASS"></col>
+  <col name="BSDATAFILTERISSQL">N</col>
+  <col name="ORDERCONDITION"></col>
+  <col name="AUTOLOADS"></col>
+  <col name="AUTOLOADCONSTRAINT"></col>
+  <col name="CARDINITFORMULA"></col>
+  <col name="CARDCUSTPANEL"></col>
+  <col name="CARDWIDTH">777</col>
+  <col name="ISSHOWCARDBORDER">N</col>
+  <col name="CARDBORDER">BORDER</col>
+  <col name="CARDLAYOUT">FLOWLAYOUT</col>
+  <col name="ISSHOWCARDCUSTBTN">N</col>
+  <col name="CARDCUSTBTNDESC"></col>
+  <col name="CARDSAVESELFDESCCHECK"></col>
+  <col name="CARDSAVEIFCHECK">N</col>
+  <col name="MUSTINPUTCOLOR"></col>
+  <col name="LISTINITFORMULA"></col>
+  <col name="LISTCUSTPANEL"></col>
+  <col name="ISSHOWLISTPAGEBAR">N</col>
+  <col name="ISSHOWLISTOPEBAR">N</col>
+  <col name="ISCOLLAPSEQUICKQUERY">N</col>
+  <col name="ISSHOWLISTQUICKQUERY">N</col>
+  <col name="ISSHOWCOMMQUERYBTN"></col>
+  <col name="ISSHOWLISTCUSTBTN">N</col>
+  <col name="LISTCUSTBTNDESC"></col>
+  <col name="LISTROWHEIGHT"></col>
+  <col name="LISTHEADERISGROUP">N</col>
+  <col name="ISLISTAUTOROWHEIGHT">N</col>
+  <col name="LISTHEADHEIGHT"></col>
+  <col name="LISTWEIDUDESC"></col>
+  <col name="DEFINERENDERER"></col>
+  <col name="TREEPK">id</col>
+  <col name="TREEPARENTPK">parentid</col>
+  <col name="TREEVIEWFIELD">name</col>
+  <col name="TREESEQFIELD">seq</col>
+  <col name="TREEISSHOWROOT">Y</col>
+  <col name="TREEISONLYONE">N</col>
+  <col name="TREEISSHOWTOOLBAR">N</col>
+  <col name="TREECUSTBTNDESC"></col>
+  <col name="TREEISCHECKED">N</col>
+  <col name="TEMPLETBTNS"></col>
+  <col name="PROPBEANCLASSNAME"></col>
+  <col name="DATAPOLICY"></col>
+  <col name="DATAPOLICYMAP"></col>
+  <col name="ISLISTPAGEBARWRAP">N</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">7605</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">3403</col>
+  <col name="ITEMKEY">evacase</col>
+  <col name="ITEMNAME">内控方案</col>
+  <col name="ITEMNAME_E">evacase</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">列表模板参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC">getListTempletRef("IC_EVACASE_CODE1","id","name","","可以多选=N;自动查询=N;查询面板隐藏=N;");  //5个参数,第1个是模板名,第2个是参数id的取值项,第3个是参照name的取值项,第4个是参照自定义过滤条件(与模板的过滤条件做and叠加),第5个是参数设置项</col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">N</col>
+  <col name="ISMUSTINPUT"></col>
+  <col name="ISUNIQUECHECK"></col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">1</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">1</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">N</col>
+  <col name="PROPISEDITABLE">N</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR"></col>
+  <col name="LISTISHTMLHREF"></col>
+  <col name="ISQUICKQUERYWRAP"></col>
+  <col name="ISQUICKQUERYSHOWABLE">Y</col>
+  <col name="ISQUICKQUERYEDITABLE">Y</col>
+  <col name="ISCOMMQUERYWRAP"></col>
+  <col name="ISCOMMQUERYSHOWABLE"></col>
+  <col name="ISCOMMQUERYEDITABLE"></col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE"></col>
+  <col name="WORKFLOWISEDITABLE"></col>
+  <col name="ISENCRYPT"></col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">7563</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">3403</col>
+  <col name="ITEMKEY">process</col>
+  <col name="ITEMNAME">业务流程</col>
+  <col name="ITEMNAME_E">process</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">树型模板参照</col>
+  <col name="COMBOXDESC">select '业务类型－发现问题数'  id , '' code , '业务类型－发现问题数' name  from wltdual union all
+select '内控体系－发现问题数' id,'' code ,'内控体系－发现问题数' name from wltdual</col>
+  <col name="REFDESC">getTreeTempletRef("IC_PROCESS_CODE1","id","name","","可以多选=y;只能选叶子=y;只留前几层=0;返回路径链名=Y");  //5个参数,第1个是单据模板,第2个是指定从模板中哪一项作为参照的ID,第3个是参照的Name,第4个是参照自定义过滤条件(与模板的过滤条件做and叠加),第5个是参数设置项</col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">N</col>
+  <col name="ISMUSTINPUT">N</col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">2</col>
+  <col name="LISTWIDTH">180</col>
+  <col name="CARDWIDTH">300</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">1</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">N</col>
+  <col name="PROPISEDITABLE">N</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR"></col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">N</col>
+  <col name="ISQUICKQUERYSHOWABLE">Y</col>
+  <col name="ISQUICKQUERYEDITABLE">Y</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH">80,170</col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="ISENCRYPT">N</col>
+</record>
+
+<record tabname="pub_templet_1_item" pkname="pk_pub_templet_1_item" sename="S_PUB_TEMPLET_1_ITEM">
+  <col name="PK_PUB_TEMPLET_1_ITEM">7591</col>
+  <col name="PK_PUB_TEMPLET_1" reftabid="pub_templet_1.pk_pub_templet_1">3403</col>
+  <col name="ITEMKEY">depts</col>
+  <col name="ITEMNAME">部门</col>
+  <col name="ITEMNAME_E">depts</col>
+  <col name="ITEMTIPTEXT"></col>
+  <col name="ITEMTYPE">树型模板参照</col>
+  <col name="COMBOXDESC"></col>
+  <col name="REFDESC">getTreeTempletRef("PUB_CORP_DEPT_1","id","name","","可以多选=Y;只能选叶子=n;只留前几层=0;返回路径链名=Y");  //5个参数,第1个是单据模板,第2个是指定从模板中哪一项作为参照的ID,第3个是参照的Name,第4个是参照自定义过滤条件(与模板的过滤条件做and叠加),第5个是参数设置项</col>
+  <col name="ISREFCANEDIT"></col>
+  <col name="ISSAVE">N</col>
+  <col name="ISMUSTINPUT"></col>
+  <col name="ISUNIQUECHECK">N</col>
+  <col name="LOADFORMULA"></col>
+  <col name="EDITFORMULA"></col>
+  <col name="DEFAULTVALUEFORMULA"></col>
+  <col name="SHOWORDER">3</col>
+  <col name="LISTWIDTH">125</col>
+  <col name="CARDWIDTH">150</col>
+  <col name="LISTISSHOWABLE">Y</col>
+  <col name="LISTISEDITABLE">1</col>
+  <col name="CARDISSHOWABLE">Y</col>
+  <col name="CARDISEXPORT"></col>
+  <col name="CARDISEDITABLE">1</col>
+  <col name="ISWRAP">N</col>
+  <col name="GROUPTITLE"></col>
+  <col name="PROPISSHOWABLE">N</col>
+  <col name="PROPISEDITABLE">N</col>
+  <col name="HYPERLINKDESC"></col>
+  <col name="SHOWBGCOLOR"></col>
+  <col name="LISTISHTMLHREF">N</col>
+  <col name="ISQUICKQUERYWRAP">Y</col>
+  <col name="ISQUICKQUERYSHOWABLE">Y</col>
+  <col name="ISQUICKQUERYEDITABLE">Y</col>
+  <col name="ISCOMMQUERYWRAP">N</col>
+  <col name="ISCOMMQUERYSHOWABLE">N</col>
+  <col name="ISCOMMQUERYEDITABLE">N</col>
+  <col name="QUERYITEMTYPE"></col>
+  <col name="QUERYITEMDEFINE"></col>
+  <col name="QUERYCREATETYPE"></col>
+  <col name="QUERYCREATECUSTDEF"></col>
+  <col name="QUERYDEFAULTFORMULA"></col>
+  <col name="QUERYWIDTH"></col>
+  <col name="ISQUERYMUSTINPUT"></col>
+  <col name="ISKEEPTRACE">N</col>
+  <col name="WORKFLOWISEDITABLE">N</col>
+  <col name="ISENCRYPT">N</col>
+</record>
+
+</root>

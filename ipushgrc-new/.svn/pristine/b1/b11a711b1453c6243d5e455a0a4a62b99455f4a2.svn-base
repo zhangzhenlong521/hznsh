@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="cmp_event_track">
+  <col name="id">1</col>
+  <col name="cmp_event_id">1</col>
+  <col name="trackdate">2012-02-29</col>
+  <col name="trackuserid">1</col>
+  <col name="trackusername">总行系统管理员</col>
+  <col name="trackcorpid">2</col>
+  <col name="trackcorpname">总行</col>
+  <col name="trackinfo">还是没有整改</col>
+  <col name="nexttrackdate">2012-02-20</col>
+</record>
+
+<!--2-->
+<record tabname="cmp_event_track">
+  <col name="id">2</col>
+  <col name="cmp_event_id">1</col>
+  <col name="trackdate">2012-02-07</col>
+  <col name="trackuserid">1</col>
+  <col name="trackusername">总行系统管理员</col>
+  <col name="trackcorpid">2</col>
+  <col name="trackcorpname">总行</col>
+  <col name="trackinfo">继续跟踪!!</col>
+  <col name="nexttrackdate">2012-02-23</col>
+</record>
+
+</root>

@@ -1,0 +1,38 @@
+package com.pushworld.ipushgrc.ui.lawcase.p020;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.pushworld.ipushgrc.ui.lawcase.p010.LawyerImportWorkPanel;
+
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillListButtonActinoListener;
+import cn.com.infostrategy.ui.mdata.BillListButtonClickedEvent;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.cardcomp.CardCPanel_ChildTableImport;
+
+public class DeCaseEditWKPanel extends LawyerImportWorkPanel{
+	private static final long serialVersionUID = 1L;
+	private BillListPanel billList = null; //
+	private WLTButton insertbtn;
+	private WLTButton editbtn;
+	private WLTButton deletebtn;
+
+	@Override
+	public void initialize() {
+		this.setLayout(new BorderLayout()); //
+		billList = new BillListPanel("LBS_DECASE_CODE1"); //
+		billList.addBillListButtonActinoListener(this);
+		insertbtn = WLTButton.createButtonByType(WLTButton.LIST_POPINSERT);
+		editbtn = WLTButton.createButtonByType(WLTButton.LIST_POPEDIT);
+		deletebtn = WLTButton.createButtonByType(WLTButton.LIST_DELETE);
+		billList.addBatchBillListButton(new WLTButton[] { insertbtn, editbtn, deletebtn });
+		billList.repaintBillListButton();
+		this.add(billList, BorderLayout.CENTER); //
+	}
+}

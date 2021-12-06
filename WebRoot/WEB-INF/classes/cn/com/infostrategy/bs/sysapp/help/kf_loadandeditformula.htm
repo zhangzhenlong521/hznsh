@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<TITLE>加载公式与编辑公式</TITLE>
+		<style type="text/css">
+.p_text {
+	font-size: 12px;
+}
+
+;
+.tabstyle {
+	border-collapse: collapse;
+	font-size: 12px;
+	border: 1px;
+}
+
+;
+.tdstyle {
+	border: solid 1px #888888;
+	font-size: 12px;
+}
+;
+</style>
+	</head>
+	<body>
+		<p class="p_text">
+			在编辑模板的时候我们会看到有
+			<span style="color: red">编辑公式</span>与
+			<span style="color: red">加载公式</span>两项,他们如何使用？有何区别？
+			<br>
+			1、编辑公式:顾名思义就是在UI界面上进行操作时触发,我们会联想到JS。
+			<br>
+			2、加载公式:一般是在查询数据时在BS端执行,例如列表查询数据时如果有加载公式,<br>
+			会在BS端查询完数据时执行加载公式,最常用的就是存储人员ID实际在页面需要显示姓名。
+			<br>
+			我们的公式引擎是利用的JEP这个开源jar包实现的:
+			<br>
+			JEP使用关键代码如下:
+			<br>
+			<textarea cols="150" rows="35" style="color: blue">
+import java.util.Stack;
+import org.nfunk.jep.JEP;
+import org.nfunk.jep.ParseException;
+import org.nfunk.jep.function.PostfixMathCommandI;
+public class JepTest {
+	public static void main(String[] args) {
+		JEP parser = new JEP();
+		parser.addFunction("functionname", new MyFunction());//注册函数
+		parser.parseExpression("functionname(\"world\")");//执行
+		System.out.println(parser.getValueAsObject());//得到结果
+	}
+}
+class MyFunction implements PostfixMathCommandI {
+	public MyFunction() {
+
+	}
+
+	public boolean checkNumberOfParameters(int i) {
+		return true;
+	}
+
+	public int getNumberOfParameters() {
+		return 1;
+	}
+
+	public void run(Stack stack) throws ParseException {
+		String a = stack.pop().toString();
+		System.out.println("哦了");
+		stack.push("hello " + a + " !");
+	}
+
+	public void setCurNumberOfParameters(int i) {
+	}
+}
+</textarea>
+			<br>
+			卡片与列表执行编辑公式见BillCardPanel、BillListPanel中execEditFormula方法。
+			<br>
+			我们到底有那些加载公式和编辑公式？
+			<br>
+			具体参照JepFormulaParse、JepFormulaParseAtBS、JepFormulaParseAtUI这几个类中的公式以及JEP自带的标准公式(jep的addStandardFunctions方法有具体代码)。
+			<br>
+			一般情况下JepFormulaParseAtBS中的公式为BS端加载公式、JepFormulaParseAtUI中的公式为UI端编辑公式。<br>
+			下面针对一些常用的公式进行介绍,具体请参照系统中的说明:
+			<br>
+		<table width="60%" class="tabstyle" cellspacing=0 cellpadding=5>
+			<tr bgcolor="#DCFAC8">
+				<td class="tdstyle">
+					<p align="center">
+						<strong>公式</strong>
+				</td>
+				<td class="tdstyle">
+					<p align="center">
+						<strong>说明</strong><strong></strong>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					getColValue2("tablename","fieldname","con_field","itemKey")
+				</td>
+				<td class="tdstyle">
+					根据参数拼成select {fieldname} from {tablename} where
+					{con_field}=getItemValue({itemKey}),返回Sql查询值,编辑公式与加载公式都可用.
+				</td>
+			</tr>
+			<tr>
+				<td class="tdstyle">
+					getSQLValue("数组","select * from pub_user","null")
+				</td>
+				<td class="tdstyle">
+					根据SQL语句，查询相应的数据,返回字符串或者拼接字符串,第一个参数如
+					果是数组则返回拼接字符串,如果是字符串则返回一个字符串,最后一个参数如果是null则执行第二个参
+					数的SQL语句,如果不是,则需要把第二个参数拼成in的条件，第三个参数就是in条件里面的内容,注意不要加(),编辑公式与加载公式都可用.
+				</td>
+			<tr>
+				<td class="tdstyle">
+					getClassValue("cn.com.infostrategy.to.mdata.jepfunctions.IClassJepFormulaParseIFC","aa","bb")
+				</td>
+				<td class="tdstyle">
+					自己写类实现IClassJepFormulaParseIFC,然后将类名复制在第一个引号中,后面可以加多个参数不限制。
+					自己实现getForMulaValue(String[] _pars)方法可以获取传的参数,编辑公式与加载公式都可用.
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

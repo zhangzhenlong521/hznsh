@@ -1,0 +1,279 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>新员工快速学习要点</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+<p class="p_text">
+
+调用UIUtil中的相关方法可以操作数据库，但如果我不是一个操作数据库，而是一个自定义的方法呢？比如送一个String,一个int,然后循环拼接返回String呢?<br>
+说白了就是,如果平台中的方法不能满足我的需要,我想自定义一个远程调用怎么办？<br>
+办法有两种：<br>
+第一种是：自定义一个远程服务接口与实现类,然后在weblight.xml中注册一下,就可以使用了!<br>
+第二种是：使用UIUtil中的方法【HashMap commMethod(String _className, String _functionName, HashMap _parMap)】<br>
+
+下面先介绍第一种方法:<br>
+先定义一个远程服务接口(interface),这个接口必须继承于平台接口<span style="color:red">WLTRemoteCallServiceIfc</span>,例码如下:<br>
+<textarea cols="150" rows="20" wrap="OFF" style="color:blue">
+package com.xuchanghua.ui;
+
+import cn.com.infostrategy.ui.common.WLTRemoteCallServiceIfc;
+
+/**
+ * 这是一个自定义远程服务的客户端接口！
+ * 也称之为“桩”,服务器有一个类继承于这个接口,然后客户端UI代码调用这个接口中的方法,平如底层就自动完成了对服务器端类的相关调用!!
+ * @author xch
+ */
+public interface MyTestServiceIfc extends WLTRemoteCallServiceIfc {
+
+  //我的一个函数
+  public String fn_1(String _par) throws Exception;
+
+  //我的第二个函数
+  public String fn_2(String _par, int _count) throws Exception;
+}
+</textarea>
+
+
+<br><br>再定义上述接口的实现类,例码如下:<br>
+<textarea cols="150" rows="30" wrap="OFF" style="color:blue">
+package com.xuchanghua.bs;
+
+import com.xuchanghua.ui.MyTestServiceIfc;
+
+/**
+ * 服务器疫实现类,继承了接口[MyTestServiceIfc],并实现了其中两个方法!!
+ * @author xch
+ *
+ */
+public class MyTestServiceImpl implements MyTestServiceIfc {
+
+  //第一个函数方法
+  public String fn_1(String _par) throws Exception {
+    return _par + _par;
+  }
+
+  //第二个函数方法
+  public String fn_2(String _par, int _count) throws Exception {
+    String str_return = ""; //
+    for (int i = 0; i < _count; i++) {
+      str_return = str_return + "【" + _par + "】";
+    }
+    return str_return;
+  }
+
+}
+</textarea>
+
+
+<br><br>写完接口与实现类后,必须在<span style="color:red">weblight.xml</span>中注册一下,如下:<br>
+<textarea cols="150" rows="12" style="color:blue">
+<moduleservices>
+.....
+....
+  <service name="com.xuchanghua.ui.MyTestServiceIfc" descr="我的自定义服务">
+     <implclass>com.xuchanghua.bs.MyTestServiceImpl</implclass>
+     <initsize>2</initsize>
+     <poolsize>1000</poolsize>
+  </service>
+</moduleservices>
+</textarea>
+
+
+<br><br>再写一个UI端的类,搞一个按钮,然后调用上面远程服务接口<br>
+<textarea cols="150" rows="47" wrap="OFF" style="color:blue" >
+package com.xuchanghua.ui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+
+/**
+ * 一个调用自定义远程服务的UI端类
+ * 即有一个按钮,点击后调用自定义远程服务！！！
+ * 调用自定义远程服务的方法是UIUtil.lookUpRemoteService(Class _cls);  //
+ * @author xch
+ *
+ */
+public class CallMyServiceWKPanel extends AbstractWorkPanel implements ActionListener {
+
+  private WLTButton btn_1 = null; //按钮
+
+  @Override
+  public void initialize() {
+    btn_1 = new WLTButton("远程调用"); //
+    btn_1.addActionListener(this); // 
+
+    this.setLayout(new FlowLayout(FlowLayout.LEFT)); //设置布局!!
+    this.add(btn_1); //在面板中加入按钮
+  }
+
+  //点击按钮执行的逻辑
+  public void actionPerformed(ActionEvent e) {
+    try {
+      MyTestServiceIfc service = (MyTestServiceIfc) UIUtil.lookUpRemoteService(MyTestServiceIfc.class); //使用UIUtil中的lookUpRemoteService方法去寻找到服务！入参是个class
+      String str_return = service.fn_2("abcd", 5); //真正远程调用...
+      MessageBox.show(this, "远程调用返回的结果:\r\n" + str_return); //弹出框显示!!
+    } catch (Exception _ex) {
+      MessageBox.showException(this, _ex); //
+    }
+  }
+}
+</textarea>
+
+
+<br>上述三个类,加一个xml中的注册,就是一个完整的自定义远程调用的实现!!!<br>
+需要特别说明的是:<br>
+1.理论上一个项目中只要注册一个自定义服务就够了,可以在自定义服务中增加更多的方法,而不需要增加更多的服务类！！<br>
+2.如果一个项目中的自定义方法太多,则一个模块注册一个远程服务就可以了！没有必要更細,因为平台本身已有大量有用的方法了,比如常用的数据库操作!<br>
+3.注册自定义服务后,必须重启Web服务器<br>
+4.接口放在....ui包中,实现类放在....bs包中,在开发环境中似乎看不出什么玄机,但在实际运行环境下,接口类会随UI包下载到客户端,而实现类是不会下载到客户端的,是依然在服务器的,比如Tomcat中！<br>
+  接口中没有任何业务逻辑,真正的业务逻辑是在服务器端,UI只处理纯页面的逻辑,比如创建页面控件,选中表格数据,点击按钮等，然后通过远程调用,将UI端的数据提交到服务器端进行业务逻辑计算,并把结果返回输出到UI控件上!这与Web原理是一样的!<br>
+  即Web也是客户端是Html/JavaScript,只处理界面与控件逻辑,通过提交Form表单,实际逻辑在服务器端的Servlet/JSP中,只不过Servlet中执行业务逻辑与输出返回页面的代码常常混写在一起,<br>
+   
+
+<br>◆◆◆◆◆◆◆◆◆◆◆◆◆<br>
+下面再讲第二种远程调用的方法:
+第二种远程调用是使用<span style="color:red">UIUtil.commMethod()</span>直接进行调用,即它不需要先定义一个远程服务接口与实现类<br>
+UIUtil.commMethod()的参数有三个,第一个是服务器端类名(带包名),第二个是类中的方法名,第三个是一个HashMap, 用来存储提交到服务器的参数,即有个key,参数值放在对应的value中!<br>
+服务器端再写个类,类名对应上客户端调用的类名,再写个方法,名称也与客户端调用的方法名一样,这个方法的入参只有一个,且类型是HashMap,其值就是从客户端传过来的,返回值类型也必须是HashMap,这是关键点,如果入参与出参的类型是其他则都会报错！<br>
+无论是入参还是出参,都必须先往一头Map中塞入实际值,然后再在另一头中取出实际值！<br>
+
+即第二种方法与第一种方法的区别是,第二种方法可以省去写一个接口的麻烦,但麻烦是远程方法的入参与出参都必须是HashMap,赋值与取值都必须通过HashMap转一下！<br>
+在实际开发过程中,建议使用第一种方法,因为第一种方法在需要重命名类与方法时,会产生编译异常,从而及时修正！而第二种方法只有在运行时发生运行异常！！<br>
+第二种方法普遍应用于维护阶段,即维护阶段突然发现需要增加一个自定义的远程调用,但又不能修改原来的类了(因为已编译)！这时第二种方法就派上了用场！！<br>
+
+
+下面是第二种方法的实际代码：<br><br>【BS端的类】<br>
+<textarea cols="150" rows="30" wrap="OFF" style="color:blue">
+package com.xuchanghua.bs;
+
+import java.util.HashMap;
+
+/**
+ * 服务器端类,被调用的远程方法入参与出参都必须是java.uti.HashMap
+ * @author xch
+ *
+ */
+public class MyTestBSO {
+
+  //定义一个普通方法,这个方法入参与出参必须都是java.util.HashMap
+  public HashMap getAppendStr(HashMap _parMap) throws Exception {
+    String str_item = (String) _parMap.get("itemStr"); //从入参中取得变量
+    int li_cycle = (Integer) _parMap.get("cycle"); //从入参中取得变量
+    String str_return = ""; //
+    for (int i = 0; i < li_cycle; i++) { //循环次数!
+      str_return = str_return + "【" + str_item + "】\r\n"; //拼接!!
+    }
+    HashMap returnMap = new HashMap(); //创建返回的Map对象!
+    returnMap.put("returnStr", str_return); //设置返回的内容!
+    return returnMap; //
+  }
+  
+}
+</textarea>
+
+<br><br>【UI端的类】<br>
+<textarea cols="150" rows="50" wrap="OFF" style="color:blue">
+package com.xuchanghua.ui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.UIUtil;
+import cn.com.infostrategy.ui.common.WLTButton;
+
+/**
+ * 这里使用UIUtil.commMethod()去进行一个个性化远程调用..
+ * @author xch
+ *
+ */
+public class CallMyServiceWKPanel2 extends AbstractWorkPanel implements ActionListener {
+
+  private WLTButton btn_1 = null; //按钮
+
+  @Override
+  public void initialize() {
+    btn_1 = new WLTButton("远程调用"); //
+    btn_1.addActionListener(this); // 
+
+    this.setLayout(new FlowLayout(FlowLayout.LEFT)); //设置布局!!
+    this.add(btn_1); //在面板中加入按钮
+  }
+
+  //点击按钮执行的逻辑
+  public void actionPerformed(ActionEvent e) {
+    try {
+      HashMap parMap = new HashMap(); //入参
+      parMap.put("itemStr", "abcd"); //想进行循环拼接的字符串
+      parMap.put("cycle", 10); //拼接的循环次数!
+      HashMap returnMap = UIUtil.commMethod("com.xuchanghua.bs.MyTestBSO", "getAppendStr", parMap); //真正进行远程调用!
+      String str_return = (String) returnMap.get("returnStr"); //
+      MessageBox.show(this, "远程调用返回的结果:\r\n" + str_return); //弹出框显示!!
+    } catch (Exception _ex) {
+      MessageBox.showException(this, _ex); //
+    }
+  }
+
+}
+</textarea>
+<br><br><br>
+<font color="red">关于事务处理的机制说明</font>
+<br><br>
+数据有“事务处理”的需求与机制，即执行一大批操作数据库的SQL要保证“要么一起提交，要么一起回滚”，不允许只提交前几条SQL。。。
+<br><br>
+为什么要这样控制呢？这是因为：
+<br><br>
+比如你从银行的一个A帐号转100元至另一个B帐号，它实际上是两步操作，首先从A帐号减100元,然后在B帐号加100元，试想，如果当往B帐号增加100元金额时发生异常，那前面对A帐号的减钱要不要回滚呢？显然是要的！即这两步操作必须是一个“整体事务”！！
+<br><br>
+那我们平台的事务处理的原理是什么呢？
+<br><br>
+我们平台的机制是，一次远程调用是一个事务！但有个前提是，BS端所有对数据库操作的方法发生异常必须保证能“重抛出去”，而不是把异常Catch吃掉！！ 
+<br><br>
+这是什么意思？
+<br><br>
+平台的远程调用入口在RemoteCallServlet中,在这个类中逻辑伪码如下：<br>
+try{<br>
+.....调用BS端类。。<br><br>
+  commitTrans();  //如果没有发生异常,就提交事务<br>
+}catch(Exception ex){<br>
+  rollbackTrans();  //如果发生异常，就回滚事务<br>
+}<br><br>
+
+在BS类中，还可能再调用另一个BS类,另一个再调整用另一个.....依次反复，形成一个调用链！！！<br><br>
+即：BS1 -> BS2 -> BS3 -> BS4
+
+每个BS类中，开发人员不要自己去手工创建数据库连接，而是直接使用平台的CommDMO来操作数据库！不要自己去提交或回滚事务！为什么要这样控制呢？？？
+<br><br>
+因为任何一个BS类或方法，不仅仅是你“一个人的方法”，而实际上是经常会被其他模块调用的！ 比如你在财务模块写了一个“生成凭证”的方法，这个方法会经常采购,销售等模块调用，销售模块在生成一张销售单时，需要调用这个财务模块的这个“生成凭证”方法，这两者必须是一个事务！
+<br><br>
+这就是说：任何一个BS端方法都可能“被动参与”到一个复杂的业务处理链中，而成为一个更大事务链中的一环！而这整个处理是一个事务！！
+<br><br>
+这样一来，每个方法就不能单独控制事务的提交与回滚了，否则就没法实现模块间的集成！！！
+<br><br>
+现在的问题是，我们许多开发人员没有注意这个原理，经常在自己的业务方法中Catch掉异常,这样一来，RemoteCallServlet中就截获不到异常，然后就提交了！所以发生这种情况:执行一批100条的SQL,最后一条报错时,前99条竟然提交进库了？？？这就是因为自己吃掉异常了！
+<br><br>
+正确的方法是,要么不要Catch异常,永远在方法上定义throws Exception，要么Catch到异常处理后，继续重抛一下异常,即 throw new Exception("")....
+<br><br>
+现在有人发现Mysql5.1.57中即使重抛异常，也会发生前几条依然提交的情况，这是因为Mysql高版本(5.0.27就没问题)中如果使用Root用户登录，永远是立即提交机制,必须使用普通用户登录,且设置Mysql启动参数为AutoCommit=false
+<br><br>
+平台以后可以增加机制,如果发生数据库异常，即使被开发人员Catch掉了，依然能知道，依然能回滚,即除了异常通道判断外，还有另外的通道。。。
+<br><br>
+各人写各的BS，为什么最后一互相调用，就自动保证一个事务的呢？这是因为在从数据库连接池中获得连接时，平台保证了他们得到的是同一个java.sql.Connection,只要是同一个Connection，就能控制一起commit与rollback...
+<br><br>
+那又是如何保证获得是同一个Connection的呢?这就是Java的线程原理，或者说叫InitContext(上下文会话)，具体逻辑见代码类:WLTInitContext
+<br><br>
+</p>
+</body>
+</html>

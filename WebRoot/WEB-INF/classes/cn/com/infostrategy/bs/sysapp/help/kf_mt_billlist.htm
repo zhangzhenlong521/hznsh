@@ -1,0 +1,201 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>方法论/知识库中心</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+
+<p class="p_text">
+
+列表开发,所谓“列表”就是一个表格！也是最普通，最重要的界面控件！<br>
+
+为了更好的介绍一个列表的开发,干脆从建一个新表开始!!<br>
+最典型的是一个人员表,包括工号,姓名,简历等,正好有文本框,下拉框,多行文本框,上传附件等控件!建表SQL如下：<br>
+【建表的SQL】<br>
+<textarea cols="150" rows="18" wrap="OFF" style="color:blue">
+/**为了可快速重建表,先drop一下*/
+drop   table demo_user;
+
+/**一个人员例子表,这是MySQL语法,如果是Oracle则稍微修改一下*/
+create table demo_user(
+id        decimal,      /**主键*/
+code      varchar(30),  /**工号*/
+name      varchar(30),  /**姓名*/
+sex       varchar(10),  /**性别,下拉框,取值:男;女*/
+age       decimal,      /**年龄*/
+ismarry   char(1),      /**是否结婚,勾选框*/
+degreen   varchar(30),  /**学历,从平台下拉字典中取值*/
+resume    varchar(300), /**简单,上传文件附件,即文件选择框*/
+remark    varchar(300), /**备注,多行文本框*/
+constraint pk_demo_user primary key(id)  /**设置主键约束*/
+) default charset GBK;
+</textarea>
+
+<br>
+使用数据库工具执行上面SQL,建立表后,则建立模板,步骤如下:<br>
+1.进入功能点【平台配置 -> 模板配置 -> 单据模板】，点击【导入】按钮,在弹出的窗口中点击【选择表】按钮,在弹出的窗口中输入条件"demo_user",选择过滤的记录返回!<br>
+2.根据提示,点击【确认】,模板编码就使用默认的“DEMO_USER_CODE1”<br>
+3.回到主界面中,选择模板记录,点击【开发配置】按钮,进入配置界面,进行具体配置,这个配置也可以在先创建列表界面,然后在列表上右键弹出菜单中配置！<br>
+4.写一个UI端代码,使用模板编码“DEMO_USER_CODE1”创建一个列表对象!代码如下：<br>
+
+
+【UI端例子代码】<br>
+<textarea cols="150" rows="27" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+
+/**
+ * 这是创建列表对象的例子的UI类!
+ * 创建列表对象就使用 new BillListPanel()即可!
+ * 但构造方法有两种:一种就是一个String对象,另一种是ServerTMODefine对象! 
+ * 如果是字符串对象,则有智能判断,如果数据库中没有该编码,则自动从安装盘的xml中找! 如果编码中带包路径,则会自动使用TMO对象反射创建!
+ * 如果是ServerTMODefine对象,则可以指定有个特定的XML对象!而且创建过程是服务器端,即TMO对象应该放在服务器端的,没必要下载到UI端！！
+ * @author xch
+ */
+public class TestBillListWKPanel extends AbstractWorkPanel {
+
+  private BillListPanel billList = null; //
+
+  @Override
+  public void initialize() {
+    billList = new BillListPanel("DEMO_USER_CODE1"); //创建列表对象控件!
+    this.add(billList); //
+  }
+}
+</textarea>
+
+<br><br>
+写好这个类,编译后,创建一个功能点,配置成“自定义WorkpPanel”,类名就是这个类,点击运行!就会看到该列表对象的!<br>
+在表头上右键,弹出菜单中【快速模板编辑 -> 2.编辑整个模板】,进行以下配置：<br>
+1.在子表中将ItemName配置成中文，比如：工号,姓名,性别。。等,具体请参照建表SQL后面的说明<br>
+2.将"sex"的控件类型设置成【下拉框】,控件定义是【getCommUC("下拉框","直接值","男;女;");】<br>
+3.将"ismarry"的控件类型设置成【勾选框】<br>
+4.将"degreen"的控件类型设置成【下拉框】,控件定义是【getCommUC("下拉框","SQL语句","select id,code,name from pub_comboboxdict where type = '学历' order by seq");】<br>
+5.将"resume"的控件类型设置成【文件选择框】,卡片宽度是【400】<br>
+6.将"remark"的控件类型设置成【多行文本框】,卡片宽度是【400*100】<br>
+7.在模板主表配置中,将“列表按钮”配置项中加入一些“系统注册型”,包括:【$列表弹出新增;$列表弹出编辑;$列表直接删除;$列表查看;】<br>
+8.在模板主表配置中,将"是否显示查询面板"勾上<br>
+9.将模板子表中的"code","name"设置成“快速查询是否显示”与“快速查询是否编辑”都为true<br>
+<br>
+由此一个最基本的列表雏形就出来了！并可以新增,修改,删除,查询数据了！<br>
+
+<br>
+为了让新员工更好的比较与学习,平台中已以XML文件格式存储了一个调整好了的模板,可以使用这个xml来创建列表,就可以直接看到上述配置后的效果！代码如下：<br>
+【UI端例子代码,使用平台提供的xml例子创建】<br>
+<textarea cols="150" rows="25" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import cn.com.infostrategy.to.mdata.templetvo.ServerTMODefine;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+
+/**
+ * 这是使用ServerTMODefine对象作为构造参数创建BillListPanel对象,并且指定是一个xml文件
+ * @author xch
+ */
+public class TestBillListWKPanel2 extends AbstractWorkPanel {
+
+  private BillListPanel billList = null; //
+
+  @Override
+  public void initialize() {
+    billList = new BillListPanel(new ServerTMODefine("/cn/com/infostrategy/bs/sysapp/help/DEMO_USER_CODE2.xml"));
+    this.add(billList); //
+  }
+
+}
+</textarea>
+<br>
+即将上述代码复制下来,重新创建类,然后注册功能点,打开后就可以直接看到配置后的效果!<br>
+
+<br>
+列表还有许多监听事件,比如：<span style="color:red">选择记录变化事件,点击某个是html超链风格的列数据,点击查询按钮后的后续逻辑,双击列表记录等！下面就是这些监听事件的例码：</span><br>
+<textarea cols="150" rows="85" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.BorderLayout;
+import cn.com.infostrategy.to.mdata.BillVO;
+import cn.com.infostrategy.to.mdata.templetvo.ServerTMODefine;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTSplitPane;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+import cn.com.infostrategy.ui.mdata.BillListAfterQueryEvent;
+import cn.com.infostrategy.ui.mdata.BillListAfterQueryListener;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefEvent;
+import cn.com.infostrategy.ui.mdata.BillListHtmlHrefListener;
+import cn.com.infostrategy.ui.mdata.BillListMouseDoubleClickedEvent;
+import cn.com.infostrategy.ui.mdata.BillListMouseDoubleClickedListener;
+import cn.com.infostrategy.ui.mdata.BillListPanel;
+import cn.com.infostrategy.ui.mdata.BillListSelectListener;
+import cn.com.infostrategy.ui.mdata.BillListSelectionEvent;
+
+/**
+ * 这是使用ServerTMODefine对象作为构造参数创建BillListPanel对象,并且指定是一个xml文件
+ * @author xch
+ */
+public class TestBillListWKPanel3 extends AbstractWorkPanel implements BillListSelectListener, BillListHtmlHrefListener, BillListAfterQueryListener, BillListMouseDoubleClickedListener {
+
+  private BillListPanel billList = null; //
+  private BillCardPanel billCard = null; //
+
+  @Override
+  public void initialize() {
+    billList = new BillListPanel(new ServerTMODefine("/cn/com/infostrategy/bs/sysapp/help/DEMO_USER_CODE2.xml")); //列表
+    billCard = new BillCardPanel(new ServerTMODefine("/cn/com/infostrategy/bs/sysapp/help/DEMO_USER_CODE2.xml")); //卡片
+
+    billList.addBillListSelectListener(this); //列表增加记录选择变化事件！！
+    billList.addBillListHtmlHrefListener(this); //列表增加超链接点击监听事件,即有的列设置成超链接,点击后可以实现自己的逻辑!
+    billList.addBillListAfterQueryListener(this); //点击【查询】按钮查询后要进行的逻辑！比如重新查询列表数据后，需要清空卡片中的数据，因为此时卡片中保留的可能上一次选择记录时查询的数据！所以要清空卡片！
+    billList.addBillListMouseDoubleClickedListener(this); //双击列表中某条记录后执行的逻辑！
+
+    WLTSplitPane splitPanel = new WLTSplitPane(WLTSplitPane.VERTICAL_SPLIT, billList, billCard); //创建一个分割器!上面上列表,下面是卡片,选择列表时刷新卡片中的内容！
+    splitPanel.setDividerLocation(250); //分割器上方的空间,高度是250个像素!
+    this.setLayout(new BorderLayout()); //设置布局.
+    this.add(splitPanel); //
+  }
+
+  //列表记录选择发生变化时触发的方法！
+  public void onBillListSelectChanged(BillListSelectionEvent _event) {
+    BillVO billVO = _event.getCurrSelectedVO(); //选中的记录的VO
+    String str_id = billVO.getStringValue("id"); //选中记录的id
+    billCard.queryDataByCondition("id='" + str_id + "'"); //
+  }
+
+  //点击某一个是Html超链接显示方式的列！
+  public void onBillListHtmlHrefClicked(BillListHtmlHrefEvent _event) {
+    String str_itemKey = _event.getItemkey(); //
+    if (str_itemKey.equalsIgnoreCase("code")) { //如果点击的“工号”这个列,则进行某种特殊处理！即可能有多个列都是设置成超链接！
+      BillListPanel listPanel = _event.getBillListPanel(); //列表对象
+      int li_row = _event.getRow(); //点击选中的行!
+      BillVO billVO = listPanel.getBillVO(li_row); //选中行的数据,即得到BillVO对象
+      String str_name = billVO.getStringValue("name"); //这条记录数据的name列！
+      MessageBox.show(this, "选中了第[" + li_row + "]条记录,这条记录的人员姓名是[" + str_name + "]"); //
+    }
+
+  }
+
+  //点击列表【查询】按钮后要执行的逻辑,即在重新查询列表数据后,需要清空卡片中的数据！
+  public void onBillListAfterQuery(BillListAfterQueryEvent _event) {
+    billCard.reset(); //重置卡片中的数据!!
+  }
+
+  //双击列表中某条记录后执行的逻辑
+  public void onMouseDoubleClicked(BillListMouseDoubleClickedEvent _event) {
+    BillVO billVO = _event.getCurrSelectedVO(); //
+    String str_name = billVO.getStringValue("name"); //人员姓名
+    MessageBox.show(this, "双击记录的人员姓名是【" + str_name + "】"); //
+  }
+
+}
+</textarea>
+<br><br><br>
+</p>
+</body>
+</html>
+

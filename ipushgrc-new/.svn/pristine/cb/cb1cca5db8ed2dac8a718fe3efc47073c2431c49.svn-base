@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+<!--1-->
+<record tabname="pub_bom">
+  <col name="id">1</col>
+  <col name="code">gps</col>
+  <col name="bgimgname">-21</col>
+  <col name="descr">首页管理导航图</col>
+</record>
+
+<!--2-->
+<record tabname="pub_bom">
+  <col name="id">3</col>
+  <col name="code">smeom</col>
+  <col name="bgimgname">-22</col>
+  <col name="descr">风险地图-机构视图</col>
+</record>
+
+<!--3-->
+<record tabname="pub_bom">
+  <col name="id">5</col>
+  <col name="code">icmap</col>
+  <col name="bgimgname">-23</col>
+  <col name="descr">风险地图-内控五要素视图</col>
+</record>
+
+</root>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root icon="icon.png" name="薪资绩效系统" code="SAL" >
+	<install version="1.0" date="2013-06-01" sn="" >
+		<config 	type="templet" 	descr="模板"></config>
+		<config 	type="data" 	descr="初始数据,强大的xml分析执行工具，可直接插入数据、主子数据重新生成序列插入">
+			<datafile type="oldid">./xtdata/_filelist.ini</datafile>
+			<datafile type="newid">./xtdata2/</datafile>
+		</config>
+		<config 	type="classpath">  </config>
+	</install>
+	
+	<license>
+		普信咨询-WebPush平台许可及服务协议
+		欢迎您安装WebPush平台，本公司开发的所有系统都依托于此平台，安装平台应当阅读《普信咨询-WebPush平台许可及服务协议》(一下简称"本协议"),
+		一、协议范围
+		二、许可范围
+		三、软件升级
+		四、软件获取
+		五、知识产权申明
+		六、其他
+		O(∩_∩)O哈哈~
+	</license>
+	
+	<service name="cn.com.pushworld.salary.ui.SalaryServiceIfc" descr="系统管理服务">
+			<implclass>cn.com.pushworld.salary.bs.SalaryServiceImpl</implclass>
+			<initsize>1</initsize>
+			<poolsize>10000</poolsize>
+	</service>
+</root>

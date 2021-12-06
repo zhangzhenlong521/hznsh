@@ -1,0 +1,15 @@
+package com.pushworld.ipushgrc.ui.cmpevent.p110;
+
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.report.BillReportPanel;
+
+public class CmpWardStatisWKPanel extends AbstractWorkPanel {
+
+	@Override
+	public void initialize() {
+		BillReportPanel reportPanel = new BillReportPanel("CMP_WARD_Report", "com.pushworld.ipushgrc.bs.cmpevent.WardReportBuilderAdapter");
+		this.add(reportPanel);	
+
+	}
+
+}

@@ -1,0 +1,184 @@
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<TITLE>卡片面板监听事件与函数</TITLE>
+<style type="text/css"> 
+.p_text  { font-size: 12px;};
+</style>
+</head>
+<body>
+
+<p class="p_text">
+
+卡片面板即表单是一种常用的界面控件!<br>
+
+一般用卡片面板来进行新增、编辑、查看操作!<br>
+其实我们在讲列表、树形时,在新增、编辑、查看操作时已经看到了卡片面板,只不过是平台封装了的按钮实现了弹出一个卡片对话框。<br>
+下面我们就自己动手写一个按钮来弹出一个卡片面板!<br>
+建表与模板的步骤我们省略就使用列表帮助文档中的模板DEMO_USER_CODE1!<br>
+下面我们写一个UI端代码!代码如下：<br>
+【UI端例子代码】<br>
+<textarea cols="150" rows="47" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.BillDialog;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.common.WLTPanel;
+import cn.com.infostrategy.ui.mdata.BillCardButtonActinoListener;
+import cn.com.infostrategy.ui.mdata.BillCardButtonClickedEvent;
+import cn.com.infostrategy.ui.mdata.BillCardEditEvent;
+import cn.com.infostrategy.ui.mdata.BillCardEditListener;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+
+public class TestBillCardWKPanel extends AbstractWorkPanel implements ActionListener, BillCardButtonActinoListener, BillCardEditListener {
+	private WLTButton btn1, btn_confirm, btn_cancel, btn_save = null;
+	private BillCardPanel bc = null;
+
+	public void initialize() {
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		btn1 = WLTButton.createButtonByType(WLTButton.COMM, "弹出卡片");//创建一个按钮
+		btn1.addActionListener(this);//增加点击事件
+		this.add(btn1);
+	}
+
+	private void openCard() {
+		bc = new BillCardPanel("DEMO_CORP_CODE1");
+		bc.setEditableByInsertInit();
+		bc.setEditState(WLTConstants.BILLDATAEDITSTATE_INSERT);
+		bc.addBillCardButtonActinoListener(this);//目前还未使用此事件
+		bc.addBillCardEditListener(this);//在编辑表单时调用
+		
+		BillDialog bd = new BillDialog(this);//面板类不能直接显示需要放置在顶级容器上
+		bd.getContentPane().add(bc, BorderLayout.CENTER);
+		bd.getContentPane().add(getSouthPanel(), BorderLayout.SOUTH);//增加确定、取消、保存按钮,在新增卡片是应该有的
+		int li_width = (int) bc.getPreferredSize().getWidth() + 60; //找到合适的长度与高度
+		int li_height = (int) bc.getPreferredSize().getHeight() + 120; //
+		if (li_width > 1000) {
+			li_width = 1000;
+		}
+		if (li_height > 730) {
+			li_height = 730;
+		}
+		bd.setSize(li_width, li_height);
+		bd.locationToCenterPosition();//居中显示
+		bd.setVisible(true);//显示
+	}
+
+	private JPanel getSouthPanel() {
+		JPanel panel = WLTPanel.createDefaultPanel(new FlowLayout());
+		btn_confirm = new WLTButton("确定");
+		btn_save = new WLTButton("保存");
+		btn_cancel = new WLTButton("关闭");
+
+		btn_save.addActionListener(this);
+		btn_cancel.addActionListener(this);
+		btn_confirm.addActionListener(this);
+		if (bc.getEditState().equals("INIT")) {
+			panel.add(btn_cancel); //
+		} else {
+			panel.add(btn_confirm); //
+			panel.add(btn_save); //
+			panel.add(btn_cancel); //
+		}
+		return panel;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_save) {
+			onSave();
+		} else if (e.getSource() == btn_confirm) {
+			onConfirm();
+		} else if (e.getSource() == btn_cancel) {
+			onCancel();
+		} else if (e.getSource() == btn1) {
+			openCard();
+		}
+	}
+
+	public void onSave() {
+	}
+
+	public void onConfirm() {
+	}
+
+	public void onCancel() {
+
+	}
+
+	public void onBillCardButtonClicked(BillCardButtonClickedEvent _event) {
+	}
+
+	public void onBillCardValueChanged(BillCardEditEvent _evt) {
+		MessageBox.show(bc, "编辑了:" + _evt.getItemKey() + ",当前值为:" + _evt.getNewObject());
+	}
+}
+</textarea>
+
+<br>
+如何配置功能点这里不再赘述。大家可以看到我们在弹出一个卡片需要自己创建一个卡片放到JDialog上,<br>
+还需要自己写确定保存等按钮,其实平台已经封装了这些,如果只是简单的保存查看可以使用如下代码:<br>
+<textarea cols="150" rows="35" wrap="OFF" style="color:blue">
+package com.pushdemo.ui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import cn.com.infostrategy.to.common.WLTConstants;
+import cn.com.infostrategy.ui.common.AbstractWorkPanel;
+import cn.com.infostrategy.ui.common.MessageBox;
+import cn.com.infostrategy.ui.common.WLTButton;
+import cn.com.infostrategy.ui.mdata.BillCardDialog;
+import cn.com.infostrategy.ui.mdata.BillCardEditEvent;
+import cn.com.infostrategy.ui.mdata.BillCardEditListener;
+import cn.com.infostrategy.ui.mdata.BillCardPanel;
+
+public class TestBillCardWKPanel2 extends AbstractWorkPanel implements ActionListener, BillCardEditListener {
+	private WLTButton btn1, btn_confirm, btn_cancel, btn_save = null;
+	private BillCardDialog bcd = null;
+	private BillCardPanel bc = null;
+
+	public void initialize() {
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		btn1 = WLTButton.createButtonByType(WLTButton.COMM, "弹出卡片");//创建一个按钮
+		btn1.addActionListener(this);//增加点击事件
+		this.add(btn1);
+	}
+
+	private void openCard() {
+		bcd = new BillCardDialog(this, "DEMO_CORP_CODE1", WLTConstants.BILLDATAEDITSTATE_INSERT);
+		bc = bcd.getBillcardPanel();
+		bc.addBillCardEditListener(this);
+		//注意第3个参数为卡片的编辑状态一般填写
+		//WLTConstants.BILLDATAEDITSTATE_INSERT新增
+		//WLTConstants.BILLDATAEDITSTATE_INIT查看
+		//WLTConstants.BILLDATAEDITSTATE_UPDATE编辑
+		bcd.setVisible(true);//显示
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn1) {
+			openCard();
+		}
+	}
+
+	public void onBillCardValueChanged(BillCardEditEvent _evt) {
+		MessageBox.show(bc, "编辑了:" + _evt.getItemKey() + ",当前值为:" + _evt.getNewObject());
+	}
+}
+</textarea>
+<br>
+</p>
+</body>
+</html>
+

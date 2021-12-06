@@ -1,0 +1,53 @@
+package com.pushworld.ipushgrc.bs.indexpage;
+
+import cn.com.infostrategy.bs.common.CommDMO;
+import cn.com.infostrategy.bs.common.ServerEnvironment;
+import cn.com.infostrategy.bs.sysapp.login.DeskTopNewsDataBuilderIFC;
+import cn.com.infostrategy.to.common.HashVO;
+import cn.com.infostrategy.to.common.TBUtil;
+
+/**
+ * 首页数据构造器-内部制度-按发布日期排序并取前20条。
+ * @author hm
+ *
+ */
+public class RuleDataBuilder implements DeskTopNewsDataBuilderIFC {
+
+	public HashVO[] getNewData(String _userCode) throws Exception {
+		String dbType = ServerEnvironment.getDefaultDataSourceType().toUpperCase();
+		HashVO[] hvs = null;
+		String _tableName = "rule_rule";
+		StringBuffer sql_sb = new StringBuffer();
+		//泗洪农商行提出首页法规和制度点击更多时显示所有，故增加该参数，-1或0 显示所有，默认为20【李春娟/2018-05-23】
+		//其他项目不建议显示所有，登录时会加载数据，肯定比以前登录要慢【李春娟/2018-05-23】
+		int count = TBUtil.getTBUtil().getSysOptionIntegerValue("首页法规和制度点击更多显示几条记录", 20);
+		if (count > 0) {
+			if (dbType.equalsIgnoreCase("MYSQL")) {
+				sql_sb.append("select *  from " + _tableName + " order by publishdate desc limit 0,"+count);
+			} else if (dbType.equalsIgnoreCase("ORACLE")) {
+				sql_sb.append("select " + _tableName + ".* from (select " + _tableName + ".*,Rownum RN from (select " + _tableName + ".* from " + _tableName + " order by publishdate desc )" + _tableName);
+				sql_sb.append("  where Rownum <="+count+") " + _tableName);
+				sql_sb.append(" where RN > " + 0);
+			} else if (dbType.equals("SQLSERVER")) {
+				StringBuilder sb_sql_new = new StringBuilder(); //
+				sb_sql_new.append("with _t1 as "); //
+				sb_sql_new.append("("); //
+				sb_sql_new.append("select row_number() over (order by publishdate desc) _rownum,");
+				sb_sql_new.append(" * from " + _tableName); // 将原来的select后面开始的内容接上来!
+				sb_sql_new.append(") ");
+				sb_sql_new.append("select top " + (count) + " * from _t1 where _rownum >= " + 0 + ""); // 分页!!!
+				sql_sb.append(sb_sql_new.toString()); //
+			} else if (dbType.equals("DB2")) {
+				sql_sb.append("select * from " + _tableName + " order by publishdate desc fetch first "+count+" rows only");
+			}
+		} else {//显示所有
+			sql_sb.append("select *  from " + _tableName + " order by publishdate desc ");
+		}
+
+		hvs = new CommDMO().getHashVoArrayByDS(null, sql_sb.toString());
+		for (int i = 0; i < hvs.length; i++) {
+			hvs[i].setToStringFieldName("rulename"); // 标题!!!
+		}
+		return hvs;
+	}
+}

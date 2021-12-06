@@ -1,0 +1,387 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color:#FFFFFF;
+	margin-top:0px;
+	margin-bottom:0px;
+	font-size:12px;
+	font-family:tahoma, ????, fantasy;
+	text-align:center;
+	scrollbar-face-color: #6595d6; 
+	scrollbar-highlight-color:#ddeefe; 
+	scrollbar-shadow-color: #8eb2d7; 
+	scrollbar-3dlight-color: #8eb2d7; 
+	scrollbar-arrow-color: #2e63b1; 
+	scrollbar-track-color: #ddeefe; 
+	scrollbar-darkshadow-color: #2e63b1;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+a:hover {
+	text-decoration: underline;
+	color:#3366CC;
+}
+a:active {
+	text-decoration: none;
+	color: #00FFFF;
+}
+
+.mainbar {
+    border-width:1px;
+	border-style:solid;
+	border-color:#6595d6;
+	text-align:center;
+	font-size:6px;
+}
+
+#topbarTop {
+   font-size:0px;
+   color:#6595d6;
+   background-image:url(../images/topbg.gif);
+   line-height:9px;
+   height:9px;
+}
+
+#loginImg {
+   text-align:left;
+}
+
+#topbarBottom {
+   font-size:0px;
+   color:#6595d6;
+   background-image:url(../images/bottombg.gif);
+   line-height:9px;
+   height:9px;
+}
+.topOption {
+   font-size:12px;
+   color:#333333;
+   text-align:center;
+}
+.topYes {
+   font-size:12px;
+   color:#333333;
+   text-align:left;
+}
+.topMenu {
+   font-size:12px;
+   color:#333333;
+   text-align:left;
+   height:23px;
+   background-image:url(../images/tabs_m_tile.gif);
+}
+
+.mainBody{
+    border-width:1px;
+	border-style:solid;
+	border-color:#6595d6;
+	text-align:1;
+	font-size:12px;
+}
+
+.lineImgUp{
+    font-size:12px;
+	font-weight:bolder;
+	color:#FFFFFF;
+	text-align:left;
+	height:25px;
+	background-color:#6595d6;
+    background-image:url(../images/bg1.gif);
+}
+.lineImgDown {
+    font-size:12px;
+	font-weight:bolder;
+	color:#FFFFFF;
+	text-align:center;
+	height:25px;
+	background-color:#6595d6;
+    background-image:url(../images/bg1.gif);
+}
+.tableLeft{
+    width:150px;
+	text-align:center;
+}
+
+.tableRight{
+    width:830px;
+}
+
+.leftTable {
+    border-right-width:1px;
+	border-right-style:solid;
+	border-right-color:#6595d6;
+	text-align:center;
+	font-size:12px;
+	width:150px;
+	height:680px;
+}
+
+.bottomTable {
+   border-top-width:1px;
+   border-top-style:solid;
+   border-top-color:#6595d6;
+   text-align:center;
+   font-family:Arial, Helvetica, sans-serif;
+   font-size:12px;
+   color:#000000;
+}
+
+.leftMenu {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #6595d6;
+	text-align:left;
+}
+
+.input {
+	border: 1px solid #6595d6;
+	width:100px;
+	height:18px;
+}
+
+.sInput {
+	border: 1px inset #CCCCCC;
+	width:100px;
+	height:16px;
+}
+
+.addInput {
+	font-size:12px;
+	border: 1px inset #CCCCCC;
+	width:100px;
+	height:16px;
+}
+
+.nameInput {
+    font-size:12px;
+    border: 1px inset #CCCCCC;
+	width:90px;
+	height:16px;
+}
+
+.searchInput {
+    font-size:12px;
+    border: 1px inset #CCCCCC;
+	width:110px;
+	height:16px;
+}
+.searchSelect {
+    border: 1px solid #6595d6;
+	width:80px;
+	height:11px;
+	font-size:12px;
+}
+.selectElement {
+    border: 1px solid #6595d6;
+	width:80px;
+	height:16px;
+	font-size:10px;
+}
+
+.callSelect {
+    border: 1px solid #6595d6;
+	width:55px;
+	height:16px;
+	font-size:10px;
+}
+
+.submit {
+   font-size:13px;
+   letter-spacing:2px;
+   border: 1px solid #6595d6;
+   background-color:#FFFFFF;
+   width:42px;
+   height:16px;
+}
+.chooseSubmit {
+   border: 1px solid #6595d6;
+   background-color:#FFFFFF;
+   width:48px;
+   height:19px;
+}
+.button {
+   border: 1px solid #6595d6;
+   background-color:#FFFFFF;
+   width:48px;
+   height:19px;
+}
+
+.longButton {
+   border: 1px solid #6595d6;
+   background-color:#FFFFFF;
+   width:60px;
+   height:19px;
+}
+
+.moduleTitle{
+	font-size:15px;
+	font-weight:lighter;
+	color:#333333;
+	letter-spacing: 2px;
+	width:800px;
+	height: 25px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #6595d6;
+}
+
+.subTitle{
+	font-size:15px;
+	font-weight:normal;
+	color:#990000;
+	letter-spacing: 2px;
+}
+.addTitle{
+	font-size:13px;
+	font-weight:lighter;
+	color:#333333;
+	letter-spacing: 2px;
+	height: 20px;
+}
+.search {
+    font-size:12px;
+    height:25px;
+	width:800px;
+    background-color:#e4e8ef;
+}
+
+.blankLine {
+   height:8px;
+}
+.export {
+  font-size:12px;
+  color:#FF0000;
+  height:20px;
+  text-align:left;
+}
+.navigation {
+  font-size:12px;
+  height:25px;
+  text-align:right;
+}
+.listTable {
+     width:800px;
+}
+
+.titleLine {
+   height:20px;
+   width:800px;
+   font-size:12px;
+   background-color:#e4e8ef;
+}
+.fondwl {
+   height:20px;
+   width:800px;
+   font-size:12px;
+   background-color:#ffffff;
+}
+.moduleList {
+    height:100%;
+    font-size:12px;
+	color:#333333;
+	width:83%;
+        
+}
+.submitLine {
+    height:25px;
+}
+.eMailContentTable {
+    width:600px;
+	font-size:12px;
+	color:#333333;
+}
+.eMailContentTr{
+    height:25px;
+    border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #6595d6;
+}
+
+.procotolTitle {
+    text-align:center;
+	text-indent:10px;
+	height:25px;
+    font-size:12px;
+	font-weight:bolder;
+	color:#000000;
+}
+
+.procotolSubmit {
+	text-align:center;
+	height:22px;
+	background-color:#e4e8ef;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #6595d6;
+}
+.pSubmitButton {
+   font-size:10px;
+   letter-spacing:2px;
+   border: 1px solid #6595d6;
+   background-color:#FFFFFF;
+   width:50px;
+   height:16px;
+}
+.procotolText {
+   height:25px;
+   font-size:12px;
+   text-indent:60px;
+}
+.redWord {
+   height:25px;
+   color:#FF0000;
+   text-indent:90px;
+}
+.registerItem {
+	text-indent:80px;
+}
+
+.moreItem {
+    width:11px;
+	height:11px;
+	border:0px;
+	cursor:pointer;
+}
+.menuInDiv {
+   	left: 707px;
+	top: 110px;
+	width:80px;
+	font-size:12px;
+	color:#333333;
+	position:absolute;
+	visibility: hidden;
+	z-index:1;
+}
+.linkTable {
+    border-width:1px;
+	border-style:solid;
+	border-color:#6595d6;
+	background-color:#e4e8ef;
+}
+.linkInTable {
+   	font-size:12px;
+	color:#333333;
+	height:22px;
+	text-align:center;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #6595d6;
+}
+.telconInDiv {
+   	left: 160px;
+	top: 260px;
+	width:830px;
+	font-size:12px;
+	color:#333333;
+	position:absolute;
+	visibility: hidden;
+	z-index:1;
+}
